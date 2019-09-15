@@ -115,16 +115,19 @@ def check_r(source):
         # Grab df with parse info
         parse_df = get_parse_data(sf)
         r_df = pandas2ri.rpy2py_dataframe(parse_df)
+        # print(r_df)
         return parse_r(r_df)
     except:
         pass
     return False
 
 if __name__ == "__main__":
-    test_strings = """df$a
+    test_strings = """df <- data.frame(a = c(1,2,3))
+    df$a
     df$a[[10]]
     df$a <- filter(df, a > 1)
     df[['a']]
+    df$Title[df$Title == 'Mlle'] <- 'Miss'
     df[1]
     df[1:3
     df[1:3, 2:4]

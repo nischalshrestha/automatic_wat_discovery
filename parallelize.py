@@ -77,18 +77,6 @@ def filter_code_cells(fname):
 
 flatten = lambda l: [item for sublist in l for item in sublist]
 
-# start_time = time.time()
-# all_snippets = [] 
-# for file in file_list:
-#     all_snippets.append(filter_code_cells(file))
-
-# all_snippets = flatten(all_snippets)
-# print(len(all_snippets))
-
-# end_time = time.time()    
- 
-# print("Time for SerialSquirrel: %ssecs" % (end_time - start_time))
-
 start_time = time.time()
 
 with multiprocessing.Pool(processes=NUM_WORKERS) as pool:
@@ -98,7 +86,8 @@ with multiprocessing.Pool(processes=NUM_WORKERS) as pool:
  
 end_time = time.time()
  
-print("Time for MultiProcessingSquirrel: %ssecs" % (end_time - start_time))
+print(f"Time for MultiProcessingSquirrel: {round((end_time - start_time), 2)} secs")
+print(f"Parsed snippets: {len(all_snippets)} Failed snippets: {failed}")
 
 df = pd.DataFrame(list(set(all_snippets)), columns=["snippets"])
 df.to_csv("pythonsnips.csv", index=False)

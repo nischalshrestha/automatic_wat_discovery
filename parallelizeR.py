@@ -61,10 +61,14 @@ def filter_code_cells(fname):
         if c["cell_type"] == "code" and "source" in c:
             # cells will require further cleaning like removing comments
             source = c["source"]
+            # if file is using data.table don't consider snippets of this file
             if source != None:
                 cleaned = clean(source, "#").splitlines()
+                # print(cleaned)
                 for snippet in cleaned: # process line by line
-                    # print(cleaned)
+                    if "data.table" in snippet: 
+                        # print('file is using data.table')
+                        return 0, []
                     try:
                         valid = check_r(snippet)
                         if valid and snippet not in snippets:
@@ -79,18 +83,6 @@ def filter_code_cells(fname):
 
 flatten = lambda l: [item for sublist in l for item in sublist]
 
-# start_time = time.time()
-# all_snippets = [] 
-# for file in file_list:
-#     all_snippets.append(filter_code_cells(file))
-
-# all_snippets = flatten(all_snippets)
-# print(len(all_snippets))
-
-# end_time = time.time()    
- 
-# print("Time for SerialSquirrel: %ssecs" % (end_time - start_time))
-
 start_time = time.time()
 
 with multiprocessing.Pool(processes=NUM_WORKERS) as pool:
@@ -103,11 +95,8 @@ with multiprocessing.Pool(processes=NUM_WORKERS) as pool:
  
 end_time = time.time()
  
-print("Time for MultiProcessingSquirrel: %ssecs" % round((end_time - start_time), 2))
+print(f"Time for MultiProcessingSquirrel: {round((end_time - start_time), 2)} secs")
 print(f"Parsed snippets: {len(all_snippets)} Failed snippets: {failed}")
-
-# Time for MultiProcessingSquirrel: 120.45secs
-# Parsed snippets: 6806 Failed snippets: 34738
 
 df = pd.DataFrame(list(set(all_snippets)), columns=["snippets"])
 df.to_csv("rsnips.csv", index=False)
