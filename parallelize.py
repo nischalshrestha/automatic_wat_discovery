@@ -56,6 +56,7 @@ def filter_code_cells(fname):
     nb = nbformat.read(fname, as_version=nbformat.NO_CONVERT)
     cells = nb.cells
     snippets = []
+    failed = 0
     for i, c in enumerate(cells):
         if c["cell_type"] == "code" and "source" in c:
             # cells will require further cleaning like removing comments
@@ -71,23 +72,27 @@ def filter_code_cells(fname):
                             snippets.append(snippet)
                             # print(snippet, '\n', valid)
                     except:
+                        failed += 1
                         # print('issue parsing code')
                         pass
-    return snippets
+    return failed, snippets
 
 flatten = lambda l: [item for sublist in l for item in sublist]
 
 start_time = time.time()
 
 with multiprocessing.Pool(processes=NUM_WORKERS) as pool:
-    results = pool.map_async(filter_code_cells, file_list)
+    results = pool.map_async(filter_code_cells, file_list[:200])
     results.wait()
-    all_snippets = flatten(results.get())
+    result = results.get()
+    result = list(zip(*result))
+    excluded = len(result[0])
+    all_snippets = list(set(flatten(result[1])))
  
 end_time = time.time()
  
 print(f"Time for MultiProcessingSquirrel: {round((end_time - start_time), 2)} secs")
-print(f"Parsed snippets: {len(all_snippets)} Failed snippets: {failed}")
+print(f"Parsed snippets: {len(all_snippets)} Excluded snippets: {excluded}")
 
-df = pd.DataFrame(list(set(all_snippets)), columns=["snippets"])
+df = pd.DataFrame(all_snippets, columns=["snippets"])
 df.to_csv("pythonsnips.csv", index=False)
