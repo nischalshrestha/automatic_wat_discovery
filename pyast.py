@@ -51,7 +51,7 @@ import autopep8
 # CALLS = ['.', 'loc', 'iloc', 'head', 'shape', 'query', 'drop', 'drop_duplicates', 
 #         'sort_values', 'rename', 'assign', 'describe', 'groupby', 'len', 'read_csv', \
 #         'to_csv', 'DataFrame']
-CALLS = ['.', 'loc', 'iloc', 'head', 'shape', 'query', 'drop', 'drop_duplicates', 'read_csv'] 
+CALLS = ['.', 'loc', 'iloc', 'head', 'shape', 'query', 'drop', 'drop_duplicates', 'describe', 'read_csv'] 
 ASSIGN_CALLS = ['read_csv']
 
 class AssignChecker(ast.NodeVisitor):
@@ -84,7 +84,6 @@ class AssignChecker(ast.NodeVisitor):
         call = node.func.attr if 'attr' in node.func.__dict__ else node.func
         # print('call', call)
         if call in ASSIGN_CALLS:
-            # print('call', call)
             self.valid = True
 
 class CallChecker(ast.NodeVisitor):
@@ -95,7 +94,7 @@ class CallChecker(ast.NodeVisitor):
         self.code = source
 
     def recursive(func):
-        """ decorator to make visitor work recursive """
+        """Decorator to make visitor work recursive"""
         def wrapper(self, node):
             func(self, node)
             for child in ast.iter_child_nodes(node):
@@ -111,10 +110,9 @@ class CallChecker(ast.NodeVisitor):
         """check if call is in calls list"""
         # print('call', astor.dump_tree(node))
         call = node.func.attr if 'attr' in node.func.__dict__ else node.func
-        if not call in CALLS:
+        if call not in CALLS:
             self.valid = False
-    
-
+            
 class ASTChecker(ast.NodeVisitor):
     
     valid = False
@@ -139,35 +137,36 @@ class ASTChecker(ast.NodeVisitor):
                 self.valid = True
         elif 'slice' in node.__dict__:
             slicing = node.slice
-            # print('subscript slice', astor.dump_tree(slicing))
-            # if slicing in CALLS:
-            self.valid = True
+            # print('subscript slice', astor.dump_tree(node))
+            num_slices = 0
+            for child in ast.iter_child_nodes(node):
+                if type(child) == ast.ExtSlice:
+                    num_slices += 1
+            self.valid = False if num_slices != 0 else True
     
     def visit_Call(self, node):
         """check if call is in calls list"""
         call = node.func.attr if 'attr' in node.func.__dict__ else node.func
         # print('call', call)
         # print('call node', astor.dump_tree(node))
+
         if call in CALLS:
             self.valid = True
     
     def visit_Attribute(self, node):
         # print('attr', astor.dump_tree(node))
-        if 'attr' in node.__dict__ and node.attr in CALLS:
+        if node.attr in CALLS:
             self.valid = True
     
-    # Excluding assignments for now
+    # Excluding assignments for now except for calls in CALLS
     def visit_Assign(self, node):
-        self.valid = False
-        # # print(node.value)
-        # # Check rhs of assignment (
-        # rhs_checker = AssignChecker(node.value)
-        checker = CallChecker(node.value)
-        if checker.check():
+        # print(node.value)
+        # print(node.targets)
+        # Check rhs of assignment
+        rhs_checker = AssignChecker(node.value)
+        if rhs_checker.check() and type(node.targets[0]) == ast.Name:
             self.valid = True
-            # self.valid = False
-        # if rhs_checker.check():        
-
+    
     def visit_AugAssign(self, node):
         self.valid = False
 
@@ -175,9 +174,6 @@ class ASTChecker(ast.NodeVisitor):
         self.valid = False
 
     def visit_Del(self, node):
-        self.valid = False
-
-    def visit_ExtSlice(self, node):
         self.valid = False
 
     def visit_Return(self, node):
@@ -200,148 +196,88 @@ class ASTChecker(ast.NodeVisitor):
     
     def visit_Try(self, node):
         self.valid = False
-    
 
-class SimpleVisitor(ast.NodeVisitor):
-    """ simple visitor for comparison """
-    stack = []
-
-    def recursive(func):
-        """ decorator to make visitor work recursive """
-        def wrapper(self, node):
-            func(self, node)
-            for child in ast.iter_child_nodes(node):
-                self.visit(child)
-        return wrapper
-
-    def visit_Assign(self,node):
-        """ visit a Assign node """
-        print(type(node).__name__)
-
-    def visit_BinOp(self, node):
-        """ visit a BinOp node """
-        print(type(node).__name__)
-
-    @recursive
-    def visit_Subscript(self, node):
-        """[, [[, loc and iloc are Subscript objects"""
-        print(type(node).__name__)
-        print(astor.dump_tree(node))
-        # if 'attr' in node.value.__dict__:
-        #     verb = node.value.attr
-        #     # print('subscript verb', verb)
-        #     # print('subscript node', astor.dump_tree(node))
-        #     if verb in CALLS:
-        #         self.valid = True
-        # elif 'slice' in node.__dict__:
-        #     slicing = node.slice
-        #     print('subscript', astor.dump(slicing))
-        #     print('subscript slice', astor.dump_tree(slicing))
-        #     # if slicing in CALLS:
-        #     self.valid = True
-
-    @recursive
-    def visit_Call(self,node):
-        """ visit a Call node """
-        print(type(node).__name__, node.func.attr)
-
-    def visit_Lambda(self,node):
-        """ visit a Function node """
-        print(type(node).__name__)
-
-    def visit_FunctionDef(self,node):
-        """ visit a Function node """
-        print(type(node).__name__)
-
-def recurse_tree(test_tree):
-    """ recurse on tree """
-    for child in ast.iter_child_nodes(test_tree):
-        # print('yo', child)
-        # The 4 we need to examine: Attribute, Subscript, Index, Call
-        # if type(child) == ast.Attribute:
-        #     print('----')
-        #     print(type(child).__name__, '\n', astor.dump_tree(child))
-        #     # print(child.func.attr)
-        # elif type(child) == ast.Subscript:
-        #     print('----')
-        #     print(type(child).__name__, '\n', astor.dump_tree(child))
-        # elif type(child) == ast.Index:
-        #     print('----')
-        #     print(type(child).__name__,'\n', astor.dump_tree(child))
-        # elif type(child) == ast.Call:
-        #     print('----')
-        #     print(type(child).__name__)
-        # elif type(child) == ast.Name:
-        #     print('----')
-        #     print(type(child).__name__,'\n', astor.dump_tree(child))
-        # elif type(child) == ast.Num:
-        #     print('----')
-        #     print(type(child).__name__,'\n', astor.dump_tree(child))
-        recurse_tree(child)
-
-
-# def create_df(row, col):
-#     return pd.DataFrame()
-
-def eval_expr(df, expr):
+def eval_expr(expr):
     """
     Evals a an expression given a dataframe.
     Currently, this does not factor in args for expr
     """
-    code_str = "%s ; %s" % (df, expr)
+    # code_str = "%s ; %s" % (df, expr)
+    # code_obj = compile(code_str, '', 'single')
 
-    code_obj = compile(code_str, '', 'single')
+    code_obj = compile(expr, '', 'single')
     print(code_obj)
-    eval(code_obj)
+    
+    try:
+        eval(code_obj)
+    except NameError as e:
+        print(e)
+        print(str(e).split("'"))
+        pass
+    # print(type(locals()['df']))
 
 # eval_expr("df = pd.DataFrame({'a':[1,2,3], 'b':[4,5,6]})", "df.head()")
+
+class Normalizer(ast.NodeTransformer):
+
+    def __init__(self, node, *args, **kwargs):
+        self.tree = node
+
+    def normalize(self):
+        result = self.visit(self.tree)
+        return astor.to_source(result)
+
+    def visit_Assign(self, node):
+        self.visit(node.targets[0])
+        return node
+    
+    def visit_Name(self, node):
+        # print(astor.dump_tree(node))
+        # print(node.id)
+        node.id = "df"
+        return node
 
 def test_pyast():
     import sys
     test_strings = [ \
         # valid ones
-        "df = pd.read_csv('blah.csv')",
-        "df.shape", 
-        "df.head()", 
-        "df.loc[1:2, 'a']",
-        "df.iloc[:9]", 
-        "df[df.col1 == 1]",
-        "df.query('col1 == 1 & col2 == 1')", # might need to exclude as this requires parsing Str expr
-        "df[(df.col1 == 1) & (df.col2 == 1)]", 
-        "df[['col1']]",
-        "df[['col1', 'col2']]", 
-        "df.loc[:, 'col1':'col3']",
-        "df.drop(cols_to_drop, axis=1)", 
-        "df[['col1']].drop_duplicates()", 
-        "df[['col1', 'col2']].drop_duplicates()",
-        "df[:9][:9]", 
-        "df[['a']].shape",
+        "train = pd.read_csv('train.csv')",
+        "train.shape", 
+        "train.head()", 
+        "train.loc[1:2, 'a']",
+        "train.iloc[:9]", 
+        "train[train.col1 == 1]",
+        "train.query('col1 == 1 & col2 == 1')", # might need to exclude as this requires parsing Str expr
+        "train[(train.col1 == 1) & (train.col2 == 1)]", 
+        "train[['col1']]",
+        "train[['col1', 'col2']]", 
+        "train.loc[:, 'col1':'col3']",
+        "train.drop(cols_to_drop, axis=1)", 
+        "train[['col1']].drop_duplicates()", 
+        "train[['col1', 'col2']].drop_duplicates()",
+        "train[:9][:9]", 
+        "train[-5::-2]",
+        "train[['a']].shape",
         "train_df.drop_duplicates(train_df.loc['a':'b', 3:4].query(axis=0), axis=0).drop().loc[[\"Survived\"]]", # complex case handled
         # invalid ones
-        "df[['col1']].corr()['col2']",
+        "train[['col1']].corr()['col2']",
         "train_df.fillna(train_df.loc['a':'b', 3:4].mean(axis=0), axis=0).corr()[\"Survived\"].shape", 
         "xTsigmax += S[i][j]*(x[i]-mu[label][i])*(x[j]-mu[label][j])",
         "del train['Cabin_num1']",
-        "df[:2, :-1]" # TODO ignore these extslice type operations that stand by themselves
+        "train[:2, :-1]"
         ]
     
     failed = 0
     for t in test_strings:
-        # print(t)
         test_tree = ast.parse(autopep8.fix_code(t))
-        # eval_expr(t)
-        # eval_expr("df = pd.DataFrame({'a':[1,2,3], 'b':[4,5,6]}); print(df)", t)
+        normalizer = Normalizer(test_tree)
+        tree = normalizer.normalize()
+        print(tree)
         # recurse_tree(test_tree)
-        # self.visit(child)
-        # simple_visitor = SimpleVisitor()
-        # simple_visitor.visit(test_tree)
-
         checker = ASTChecker(test_tree)
         if not checker.check():
             failed += 1
             print('tree not valid', t)
-        else:
-            print('valid', t)
     if failed == 0:
         print('Passed all tests!')
     else:

@@ -10,6 +10,11 @@ end = 2
 
 col = "a"
 
+print(df[0::2])
+
+# print(df.columns.values)
+# for i in df.columns:
+#     print(i)
 # print(df.loc[f'{col}'])
 
 # print(df.index.values)
@@ -18,5 +23,5 @@ col = "a"
 # print(df.loc[0:2,:])
 # print(df[0:2])
 
-print(df)
-print(df.loc['a', 'a':'b'])
+# print(df)
+# print(df.loc['a', 'a':'b'])

@@ -4,7 +4,7 @@ import nbformat
 import pandas as pd
 
 import ast
-from pyast import ASTChecker
+from pyast import ASTChecker, Normalizer
 
 NUM_WORKERS = 4
 file_list = [f.rstrip() for f in open("filesnb.txt", "r").readlines()]
@@ -56,7 +56,7 @@ def filter_code_cells(fname):
     nb = nbformat.read(fname, as_version=nbformat.NO_CONVERT)
     cells = nb.cells
     snippets = []
-    failed = 0
+    excluded = 0
     for i, c in enumerate(cells):
         if c["cell_type"] == "code" and "source" in c:
             # cells will require further cleaning like removing comments
@@ -66,27 +66,30 @@ def filter_code_cells(fname):
                 for snippet in cleaned: # process line by line
                     # print(cleaned)
                     try:
-                        checker = ASTChecker(ast.parse(snippet))
+                        tree = ast.parse(snippet)
+                        checker = ASTChecker(tree)
                         valid = checker.check()
                         if valid and snippet not in snippets:
-                            snippets.append(snippet)
+                            n = Normalizer(tree)
+                            snippets.append(n.normalize().strip())
                             # print(snippet, '\n', valid)
+                        else:
+                            excluded += 1
                     except:
-                        failed += 1
                         # print('issue parsing code')
                         pass
-    return failed, snippets
+    return excluded, snippets
 
 flatten = lambda l: [item for sublist in l for item in sublist]
 
 start_time = time.time()
 
 with multiprocessing.Pool(processes=NUM_WORKERS) as pool:
-    results = pool.map_async(filter_code_cells, file_list[:200])
+    results = pool.map_async(filter_code_cells, file_list[:100])
     results.wait()
     result = results.get()
     result = list(zip(*result))
-    excluded = len(result[0])
+    excluded = sum(result[0])
     all_snippets = list(set(flatten(result[1])))
  
 end_time = time.time()
