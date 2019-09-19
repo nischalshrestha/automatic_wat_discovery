@@ -8,10 +8,6 @@ import astor
 import pandas as pd
 import autopep8
 
-# TODO use NodeTransformer to normalize df variables and args names
-# TODO generate random values for df and args
-# TODO use eval for a simple testing harness
-
 # Notes:
 
 # calls like head() query() drop() have a Name value with id and attr:
@@ -160,12 +156,13 @@ class ASTChecker(ast.NodeVisitor):
     
     # Excluding assignments for now except for calls in CALLS
     def visit_Assign(self, node):
+        self.valid = False
         # print(node.value)
         # print(node.targets)
         # Check rhs of assignment
-        rhs_checker = AssignChecker(node.value)
-        if rhs_checker.check() and type(node.targets[0]) == ast.Name:
-            self.valid = True
+        # rhs_checker = AssignChecker(node.value)
+        # if rhs_checker.check() and type(node.targets[0]) == ast.Name:
+        #     self.valid = True
     
     def visit_AugAssign(self, node):
         self.valid = False
@@ -197,26 +194,8 @@ class ASTChecker(ast.NodeVisitor):
     def visit_Try(self, node):
         self.valid = False
 
-def eval_expr(expr):
-    """
-    Evals a an expression given a dataframe.
-    Currently, this does not factor in args for expr
-    """
-    # code_str = "%s ; %s" % (df, expr)
-    # code_obj = compile(code_str, '', 'single')
-
-    code_obj = compile(expr, '', 'single')
-    print(code_obj)
-    
-    try:
-        eval(code_obj)
-    except NameError as e:
-        print(e)
-        print(str(e).split("'"))
-        pass
-    # print(type(locals()['df']))
-
-# eval_expr("df = pd.DataFrame({'a':[1,2,3], 'b':[4,5,6]})", "df.head()")
+    def visit_Lambda(self, node):
+        self.valid = False
 
 class Normalizer(ast.NodeTransformer):
 
@@ -266,13 +245,12 @@ def test_pyast():
         "del train['Cabin_num1']",
         "train[:2, :-1]"
         ]
-    
     failed = 0
     for t in test_strings:
         test_tree = ast.parse(autopep8.fix_code(t))
         normalizer = Normalizer(test_tree)
         tree = normalizer.normalize()
-        print(tree)
+        # print(tree)
         # recurse_tree(test_tree)
         checker = ASTChecker(test_tree)
         if not checker.check():
@@ -281,7 +259,7 @@ def test_pyast():
     if failed == 0:
         print('Passed all tests!')
     else:
-         print(f'{failed} tests failed!')
+        print(f'{failed} tests failed!')
 
 if __name__ == '__main__':
     test_pyast()

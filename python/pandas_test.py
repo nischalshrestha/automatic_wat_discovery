@@ -10,7 +10,9 @@ end = 2
 
 col = "a"
 
-print(df[0::2])
+# print(df[0::2])
+
+print(df.drop('a'))
 
 # print(df.columns.values)
 # for i in df.columns:

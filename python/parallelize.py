@@ -85,7 +85,7 @@ flatten = lambda l: [item for sublist in l for item in sublist]
 start_time = time.time()
 
 with multiprocessing.Pool(processes=NUM_WORKERS) as pool:
-    results = pool.map_async(filter_code_cells, file_list[:100])
+    results = pool.map_async(filter_code_cells, file_list)
     results.wait()
     result = results.get()
     result = list(zip(*result))
