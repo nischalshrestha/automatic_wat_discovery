@@ -37,35 +37,6 @@ def eval_expr(expr):
     except Exception as e:
         # print(e)
         pass
-    
-def construct_df(df_template, row_num=100, col_num=20):
-    data = OrderedDict()
-    n_rows = np.random.randint(1, row_num + 1)
-    # n_rows = 
-    print(n_rows)
-    print(df_template.dtypes)
-    # series_generator = SeriesGenerator(n_values=n_rows)
-    for col_name in df_template.columns.values:
-        # print(col_name)
-        generate_series(df_template, col_name)
-        # data[col_name] = 
-    #   data[col_name] = series_generator.generate(column)
-    # df = pd.DataFrame()
-
-def generate_series(template, column):
-    if template.dtypes[column] == np.int64:
-        print('int')
-        return 
-    elif template.dtypes[column] == np.float64:
-        print('float')
-    elif template.dtypes[column] == np.bool:
-        print('bool')
-    elif template.dtypes[column] == np.object:
-        try:
-            str(template.dtypes[column])
-            print('str')
-        except:
-            pass
 
 def print_full(x):
     pd.set_option('display.max_rows', len(x))
@@ -105,9 +76,8 @@ def test_pyexec():
     out_dict = dict(successful_snips)
     df_store = DataframeStore(out_dict)
     pickle.dump(df_store, open("py_dfs.pkl", "wb"))
-    test_dict = pickle.load(open("py_dfs.pkl", "rb")).pairs
+    # test_dict = pickle.load(open("py_dfs.pkl", "rb")).pairs
     # print(print_full(test_dict["df.drop('Survived', axis=1, inplace=True)"]))
 
 if __name__ == '__main__':
     test_pyexec()
-    

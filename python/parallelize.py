@@ -71,7 +71,8 @@ def filter_code_cells(fname):
                         valid = checker.check()
                         if valid and snippet not in snippets:
                             n = Normalizer(tree)
-                            snippets.append(n.normalize().strip())
+                            normalized = n.normalize().strip()
+                            snippets.append(normalized)
                             # print(snippet, '\n', valid)
                         else:
                             excluded += 1

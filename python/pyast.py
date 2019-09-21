@@ -89,6 +89,10 @@ class CallChecker(ast.NodeVisitor):
     def __init__(self, source, *args, **kwargs):
         self.code = source
 
+    def check(self):
+        self.visit(self.code)
+        return self.valid
+
     def recursive(func):
         """Decorator to make visitor work recursive"""
         def wrapper(self, node):
@@ -96,10 +100,6 @@ class CallChecker(ast.NodeVisitor):
             for child in ast.iter_child_nodes(node):
                 self.visit(child)
         return wrapper
-    
-    def check(self):
-        self.visit(self.code)
-        return self.valid
     
     @recursive
     def visit_Call(self, node):
@@ -213,7 +213,7 @@ class Normalizer(ast.NodeTransformer):
     def visit_Name(self, node):
         # print(astor.dump_tree(node))
         # print(node.id)
-        node.id = "df"
+        node.id = "mslacc" 
         return node
 
 def test_pyast():
@@ -238,19 +238,24 @@ def test_pyast():
         "train[-5::-2]",
         "train[['a']].shape",
         "train_df.drop_duplicates(train_df.loc['a':'b', 3:4].query(axis=0), axis=0).drop().loc[[\"Survived\"]]", # complex case handled
+        # tricky renaming cases that don't matter much for now since we focus on dfs only
+        # they are still accepted
+        "ax[row, col]",
+        "data[cond_notnull & cond_m][\"Age\"]",
+        "data[df.cond_notnull & df.cond_m][\"Age\"]",
         # invalid ones
         "train[['col1']].corr()['col2']",
         "train_df.fillna(train_df.loc['a':'b', 3:4].mean(axis=0), axis=0).corr()[\"Survived\"].shape", 
         "xTsigmax += S[i][j]*(x[i]-mu[label][i])*(x[j]-mu[label][j])",
         "del train['Cabin_num1']",
-        "train[:2, :-1]"
+        "train[:2, :-1]",
         ]
     failed = 0
     for t in test_strings:
         test_tree = ast.parse(autopep8.fix_code(t))
         normalizer = Normalizer(test_tree)
         tree = normalizer.normalize()
-        # print(tree)
+        # print(t, tree)
         # recurse_tree(test_tree)
         checker = ASTChecker(test_tree)
         if not checker.check():
