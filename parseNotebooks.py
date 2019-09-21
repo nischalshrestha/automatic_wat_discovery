@@ -44,31 +44,30 @@ def parse_notebooks(lang="r", snippet_type="all"):
     counter = 0
     files = []
     for entry in os.scandir("Notebooks/"+lang):
-        if counter < 2515:
-            # go through each user folder
-            for file in os.scandir(entry.path):
-                # go through the project folder that holds the notebook
-                project = entry.path + "/" + file.name
-                for file in os.scandir(project):
-                    if "kernel-metadata.json" not in project and not os.path.isdir(file):
-                        with open(file, "r") as f:
-                            # only look at files that are notebooks
-                            if lang == "r" and ".irnb" in f.name:
-                                print(counter)
-                                counter += 1
-                                # nb = nbformat.read(f.name, as_version=nbformat.NO_CONVERT)
-                                # cells = nb.cells
-                                # do something with cells
-                                # print_code_cells(cells)
-                                files.append(f.name)
-                            if lang == "python" and ".ipynb" in f.name:
-                                counter += 1
-                                print(counter)
-                                # nb = nbformat.read(f.name, as_version=nbformat.NO_CONVERT)
-                                # cells = nb.cells
-                                # do something with cells
-                                # print_code_cells(cells)
-                                files.append(f.name)
+        # go through each user folder
+        for file in os.scandir(entry.path):
+            # go through the project folder that holds the notebook
+            project = entry.path + "/" + file.name
+            for file in os.scandir(project):
+                if "kernel-metadata.json" not in project and not os.path.isdir(file):
+                    with open(file, "r") as f:
+                        # only look at files that are notebooks
+                        if lang == "r" and ".irnb" in f.name:
+                            print(counter)
+                            counter += 1
+                            # nb = nbformat.read(f.name, as_version=nbformat.NO_CONVERT)
+                            # cells = nb.cells
+                            # do something with cells
+                            # print_code_cells(cells)
+                            files.append(f.name)
+                        if lang == "py" and ".ipynb" in f.name:
+                            counter += 1
+                            print(counter)
+                            # nb = nbformat.read(f.name, as_version=nbformat.NO_CONVERT)
+                            # cells = nb.cells
+                            # do something with cells
+                            # print_code_cells(cells)
+                            files.append(f.name)
     return files, counter
 
 def prettify_notebook(notebook):
@@ -90,17 +89,18 @@ def prettify_dirs(lang="r"):
                 with open(entry.path + "/" + file.name, "w") as f:
                     f.write(pretty)
 
-snippet_type = "all"
-# prettify_dirs("python")
-files, total = parse_notebooks("r", snippet_type) # total notebooks: 646
-# files, total = parse_notebooks("python", snippet_type) # total notebooks: 2515
-print(total, len(files))
-
-with open('filesrnb.txt', 'w') as file:
-    for f in files:
-        file.write(f+'\n')
-
-# do something else
-
-
+if __name__ == '__main__':
+    import sys
+    if len(sys.argv) > 1:
+        print('hollar', sys.argv[1])
+        language = sys.argv[1]
+        if language == "py" or "r":
+            snippet_type = "all"
+            # prettify_dirs("python")
+            files, total = parse_notebooks(language, snippet_type) # total notebooks: 646
+            # files, total = parse_notebooks("python", snippet_type) # total notebooks: 2515
+            print(total, len(files))
+            with open(f'filelist_{language}nb.txt', 'w') as file:
+                for f in files:
+                    file.write(f+'\n')
 

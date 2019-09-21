@@ -41,8 +41,10 @@ def parse_r(parsed_df):
     """
     valid = False
     terminals = parsed_df[parsed_df.terminal == 1]
-    # print(len(terminals))
-    if len(terminals) == 1 and terminals.token[0] == SYMBOL:
+    # print(terminals.token  == "LEFT_ASSIGN")
+    if sum(terminals.token == LEFT_ASSIGN) > 0:
+        valid = False
+    elif len(terminals) == 1 and terminals.token[0] == SYMBOL:
         # print('variable')
         valid = False
     elif len(terminals) == 3:
@@ -54,30 +56,30 @@ def parse_r(parsed_df):
         if terminals.token[0] == SYMBOL and (terminals.token[1] == LBB or terminals.token[1] == DOLLA):
             # print('column reference')
             # print(terminals.text)
-            if terminals.token[3] == LEFT_ASSIGN:
-                # print('assignment')
-                if terminals.token[4] == SYMBOL_FUNCTION_CALL:
-                    # print('call')
-                    # Handle calls
-                    valid = is_valid_call(terminals)
-                elif not terminals.token[4] == NUM_CONST:
-                    valid = True
-            else:
+            # if terminals.token[3] == LEFT_ASSIGN:
+            #     # print('assignment')
+            #     if terminals.token[4] == SYMBOL_FUNCTION_CALL:
+            #         # print('call')
+            #         # Handle calls
+            #         valid = is_valid_call(terminals)
+            #     elif not terminals.token[4] == NUM_CONST:
+            #         valid = True
+            # else:
                 # print(terminals.text)
-                valid = True
+            valid = True
         elif terminals.token[0] == SYMBOL and terminals.token[1] == LB:
             # print('subsetting')
             valid = True
-        elif terminals.token[0] == SYMBOL and terminals.token[1] == LEFT_ASSIGN:
-            # print('assignment')
-            if terminals.token[2] == SYMBOL_FUNCTION_CALL:
-                # print('call')
-                # Handle calls
-                valid = is_valid_call(terminals)
-            elif len(terminals) >= 4:  # Handle other types of rhs exprs
-                if terminals.token[2] == SYMBOL and (terminals.token[3] == LB or terminals.token[3] == LBB):
-                    # if not terminals.token[4] == NUM_CONST:
-                    valid = True
+        # elif terminals.token[0] == SYMBOL and terminals.token[1] == LEFT_ASSIGN:
+        #     # print('assignment')
+        #     if terminals.token[2] == SYMBOL_FUNCTION_CALL:
+        #         # print('call')
+        #         # Handle calls
+        #         valid = is_valid_call(terminals)
+        #     elif len(terminals) >= 4:  # Handle other types of rhs exprs
+        #         if terminals.token[2] == SYMBOL and (terminals.token[3] == LB or terminals.token[3] == LBB):
+        #             # if not terminals.token[4] == NUM_CONST:
+        #             valid = True
         elif terminals.token[0] == SYMBOL and terminals.token[1] == SPECIAL and terminals.token[2] == SYMBOL_FUNCTION_CALL:
             # print('pipe')
             # Validate all calls 
@@ -129,7 +131,7 @@ if __name__ == "__main__":
     df[['a']]
     df$Title[df$Title == 'Mlle'] <- 'Miss'
     df[1]
-    df[1:3
+    df[1:3]
     df[1:3, 2:4]
     df[c(1,2,3)]
     df <- read.csv(\"test.csv\")
@@ -141,7 +143,7 @@ if __name__ == "__main__":
     select(df, a) %>% filter(a > 0)
     select(df, a) %>% filter(a > 0)""".splitlines()
     failed = 0
-    for t in test_strings[0:1]:
+    for t in test_strings:
         if not check_r(t):
             failed += 1
             print('failed:', t.lstrip())

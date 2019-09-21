@@ -1,3 +1,8 @@
+"""
+This module filters Python notebooks to accept certain expressions and stores 
+it in a csv file for later use.
+"""
+
 import time
 import multiprocessing
 import nbformat
@@ -7,7 +12,7 @@ import ast
 from pyast import ASTChecker, Normalizer
 
 NUM_WORKERS = 4
-file_list = [f.rstrip() for f in open("filesnb.txt", "r").readlines()]
+file_list = [f.rstrip() for f in open("../filelist_pynb.txt", "r").readlines()]
 
 def clean(lines, sep):
     """
@@ -53,7 +58,7 @@ def filter_code_cells(fname):
     currently cleans up and checks for select ASTs (see pyast.py)
     """
     # print(fname)
-    nb = nbformat.read(fname, as_version=nbformat.NO_CONVERT)
+    nb = nbformat.read("../"+fname, as_version=nbformat.NO_CONVERT)
     cells = nb.cells
     snippets = []
     excluded = 0
@@ -95,8 +100,8 @@ with multiprocessing.Pool(processes=NUM_WORKERS) as pool:
  
 end_time = time.time()
  
-print(f"Time for MultiProcessingSquirrel: {round((end_time - start_time), 2)} secs")
+print(f"Time taken: {round((end_time - start_time), 2)} secs")
 print(f"Parsed snippets: {len(all_snippets)} Excluded snippets: {excluded}")
 
 df = pd.DataFrame(all_snippets, columns=["snippets"])
-df.to_csv("pythonsnips.csv", index=False)
+df.to_csv("pysnips.csv", index=False)

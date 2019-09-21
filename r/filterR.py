@@ -8,7 +8,7 @@ import ast
 from rast import *
 
 NUM_WORKERS = 4
-file_list = [f.rstrip() for f in open("filesrnb.txt", "r").readlines()]
+file_list = [f.rstrip() for f in open("../filelist_rnb.txt", "r").readlines()]
 
 def clean(lines, sep):
     """
@@ -52,8 +52,8 @@ def filter_code_cells(fname):
     This function can be used to filter code cells from .irnb files. It 
     currently cleans up and checks for select expressions (see rast.py)
     """
-    # print(fname)
-    nb = nbformat.read(fname, as_version=nbformat.NO_CONVERT)
+    print(fname)
+    nb = nbformat.read("../"+fname, as_version=nbformat.NO_CONVERT)
     cells = nb.cells
     snippets = []
     failed = 0
@@ -95,7 +95,7 @@ with multiprocessing.Pool(processes=NUM_WORKERS) as pool:
  
 end_time = time.time()
  
-print(f"Time for MultiProcessingSquirrel: {round((end_time - start_time), 2)} secs")
+print(f"Time taken: {round((end_time - start_time), 2)} secs")
 print(f"Parsed snippets: {len(all_snippets)} Failed snippets: {failed}")
 
 df = pd.DataFrame(list(set(all_snippets)), columns=["snippets"])

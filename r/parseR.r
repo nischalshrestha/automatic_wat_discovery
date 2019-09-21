@@ -1,13 +1,13 @@
 library(lobstr)
 library(rlang)
-
-# lobstr::ast(full_data$Title[full_data[['Title']] == 'Mlle'])
-# subset_enexpr(full_data$Title[full_data[['Title']] == 'Mlle'])
+library(dplyr)
 
 # TODO: Could ignore tidyverse for now but need to write more test cases for subset expressions
 
-# source <- "full_data$Title[full_dat[['Title']] == 'Mlle' & full_data[0:10,]$Fare > 200, ]$Title"
-source <- "mtcars[mtcars[['cyl']] == 6 & mtcars$disp > 160, ][['cyl']]"
+# source <- "full$Mother[full$Sex == 'female' & full$Parch > 0 & full$Age > 18 & full$Title != 'Miss'] <- 'Mother'"
+# source <- "full_data$Title[full_data[['Title']] == 'Mlle']"
+# source <- "full_data$Title[full_data[['Title']] == 'Mlle' & full_data[0:10,]$Fare > 200, ]$Title"
+# source <- "mtcars[mtcars[['cyl']] == 6 & mtcars$disp > 160, ][['cyl']]"
 # source <- "full_data[full_data$Fare > 200, ]"
 sf <- srcfile(source)
 parse(text = source, srcfile=sf)
@@ -15,6 +15,7 @@ df <- getParseData(sf)
 df <- df[df$text != '',]
 # df
 
+# TODO: wrap these into functions
 # Figure out the locations of $, [, and [[ which operate on dfs
 dbrackets <- which(df$text == "[[")
 brackets <- which(df$text == "[")
@@ -27,19 +28,31 @@ if (nrow(dfDollars) > 0) {
 } else {
   print("could not replace variable in front of $")
 }
-# replace variables to left of [ unless it's working off of a column
+
+# replace variables to left of [
 dfBrackets <- df[brackets - 1, ]
-dfBrackets <- dfBrackets[df[brackets - 2, ]$text == "$", ]
-if (nrow(dfBrackets) > 0) { # skip if [ is for a column
-  print("could not replace variable in front of [")
-} else { # otherwise, rename
-  df[brackets - 1, ]$text <- "df"
+twoTokensBack <- brackets - 2
+# find the cases where we don't have a [ on a column and replace those vars
+dfBracketsNoDollar <- dfBrackets[df[twoTokensBack, ]$text != "$", ]
+if (nrow(dfBracketsNoDollar) == 0 && twoTokensBack > 0) { # skip if [ is for a column
+  # print("all [ operated on a column")
+} else { # otherwise, rename for those that operated directly on a dataframe
+  # print("some [ operated on a column")
+  if (twoTokensBack > 0) {
+    df[rownames(dfBracketsNoDollar), ]$text <- "df"
+  } else {
+    df[rownames(dfBrackets), ]$text <- "df"
+  }
 }
 # [[ could have a ] next to it when reference a column of a dataframe result
 # from a subset operation using [
 dfDbrackets <- df[dbrackets - 1, ]
-df[rownames(dfDbrackets[dfDbrackets$text != "]",]), ]$text <- "df"
+if (nrow(dfDbrackets) > 0) { 
+  df[rownames(dfDbrackets[dfDbrackets$text != "]",]), ]$text <- "df"
+}
 
-# test that resulting renamed expression works
+# concatenate all text into one expression
 renamed <- paste(df$text, collapse='')
-eval(parse(text=paste("df<-mtcars;", renamed, collapse='')))
+renamed
+# can test this later for execution
+# eval(parse(text=paste("df<-read.csv(\"../train.csv\");", renamed, collapse='')))
