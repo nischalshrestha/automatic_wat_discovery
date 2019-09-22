@@ -170,7 +170,8 @@ class Normalizer(ast.NodeTransformer):
 
     def normalize(self):
         result = self.visit(self.tree)
-        return astor.to_source(result)
+        renamed = astor.to_source(result)
+        return renamed.replace(" ", "").strip()
 
     def visit_Assign(self, node):
         self.visit(node.targets[0])

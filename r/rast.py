@@ -1,6 +1,7 @@
 """
 This module is used to parse R code using rpy2
 """
+
 import os, sys
 import pandas as pd
 import rpy2.robjects as robjects
@@ -20,6 +21,15 @@ DOLLA = "\'$\'"
 SPECIAL = "SPECIAL"
 EQ_ASSIGN = "EQ_ASSIGN"
 CALLS = ["c", "read.csv", "dim", "head", "slice", "filter", "select", "distinct", "arrange", "summary", "summarise"]
+
+# Load R functions for parsing
+srcfile = robjects.r['srcfile']
+rparse = robjects.r['parse']
+get_parse_data = robjects.r['getParseData']
+# Load R script and its functions for normalizing name
+robjects.r.source("astparseR.R")
+find_vars = robjects.r['find_vars']
+replace_variable_name = robjects.r['replace_variable_name']
 
 def parse_r(parsed_df):
     """
@@ -41,19 +51,17 @@ def parse_r(parsed_df):
     valid = False
     terminals = parsed_df[parsed_df.terminal == 1]
     # print(terminals.token)
-    # if sum(terminals.token == LEFT_ASSIGN) > 0 or sum(terminals.token == SPECIAL) > 0 or sum(terminals.token == EQ_ASSIGN) > 0:
-    #     valid = False
-    # if len(terminals) == 1 and terminals.token[0] == SYMBOL:
-    #     # print('variable')
-    #     valid = False
-    # el
     if len(terminals) == 3:
         # print('column reference')
-        if terminals.token[0] == SYMBOL and terminals.token[1] == DOLLA and terminals.token[2] == SYMBOL:
+        if terminals.token[0] == SYMBOL \
+            and terminals.token[1] == DOLLA \
+            and terminals.token[2] == SYMBOL:
             # print(terminals.text)
             valid = True
     elif len(terminals) > 3:
-        if terminals.token[0] == SYMBOL and (terminals.token[1] == LBB or terminals.token[1] == DOLLA):
+        if terminals.token[0] == SYMBOL \
+            and (terminals.token[1] == LBB \
+            or terminals.token[1] == DOLLA):
             # print('column reference')
             # print(terminals.text)
             if terminals.token[3] == LEFT_ASSIGN:
@@ -76,10 +84,12 @@ def parse_r(parsed_df):
         #         # Handle calls
                 valid = is_valid_call(terminals)
             elif len(terminals) >= 4:  # Handle other types of rhs exprs
-                if terminals.token[2] == SYMBOL and (terminals.token[3] == LB or terminals.token[3] == LBB):
+                if terminals.token[2] == SYMBOL \
+                    and (terminals.token[3] == LB or terminals.token[3] == LBB):
                     if not terminals.token[4] == NUM_CONST:
                        valid = True
-        elif terminals.token[0] == SYMBOL and terminals.token[1] == SPECIAL and terminals.token[2] == SYMBOL_FUNCTION_CALL:
+        elif terminals.token[0] == SYMBOL and terminals.token[1] == SPECIAL \
+            and terminals.token[2] == SYMBOL_FUNCTION_CALL:
         #     # print('pipe')
         #     # Validate all calls 
             valid = is_valid_call(terminals)
@@ -101,13 +111,9 @@ def check_r(source):
     This function parses R code using rpy2 and returns whether or not it has
     the simple grammar we want to accept.
     """
-    # Load R functions
-    srcfile = robjects.r['srcfile']
-    rparse = robjects.r['parse']
-    get_parse_data = robjects.r['getParseData']
     try:
         # Filter out some things like block expressions
-        if 'if' in source or 'for' in source or 'while' in source: return False
+        if 'if' in source or 'for' in source or 'while' in source or 'function' in source: return False
         if 'ggplot' in source or 'geom' in source or 'facet' in source: return False
         # Call R functions
         sf = srcfile(source)
@@ -120,6 +126,16 @@ def check_r(source):
     except:
         pass
     return False
+
+def normalize(expression):
+    """
+    Given an expression, this renames the main dataframe variable as best as
+    it can, then returns it with whitespace removed
+    """
+    vars = list(find_vars(expression))
+    renamed = replace_variable_name(expression, vars[0])
+    renamed = list(renamed)[0]
+    return renamed.replace(" ", "")
 
 if __name__ == "__main__":
     test_strings = """df <- data.frame(a = c(1,2,3))
@@ -136,12 +152,15 @@ if __name__ == "__main__":
     df <- select(df, 'a')
     df <- df[1]
     df <- df[[1]]
-    select(a)
+    select(df, 'a')
     df %>% select(a) %>% filter(a > 0)
     select(df, a) %>% filter(a > 0)
     select(df, a) %>% filter(a > 0)
     df = df[1]
-    select(df, col_one = col1)""".splitlines()
+    select(df, col_one = col1)
+    mtcars[mtcars[['cyl']] == 6 & mtcars$disp > 160, ][['cyl']]
+    full_data$Title[full_data[['Title']] == 'Mlle']
+    full$Mother[full$Sex == 'female' & full$Parch > 0 & full$Age > 18 & full$Title != 'Miss'] <- 'Mother'""".splitlines()
     failed = 0
     for t in test_strings:
         if not check_r(t):

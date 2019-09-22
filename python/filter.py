@@ -47,7 +47,7 @@ def filter_code_lines(fname, base="../"):
                     valid = checker.check()
                     if valid and snippet not in snippets:
                         n = Normalizer(tree)
-                        normalized = n.normalize().strip()
+                        normalized = n.normalize()
                         snippets.append(normalized)
                         # print(snippet, '\n', valid)
                     else:
@@ -81,7 +81,7 @@ def filter_code_cells(fname, base="../"):
                         valid = checker.check()
                         if valid and snippet not in snippets:
                             n = Normalizer(tree)
-                            normalized = n.normalize().strip()
+                            normalized = n.normalize()
                             snippets.append(normalized)
                             # print(snippet, '\n', valid)
                         else:

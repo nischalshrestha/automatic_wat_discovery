@@ -44,11 +44,12 @@ def filter_code_lines(fname, base="../"):
                 try:
                     valid = check_r(snippet)
                     if valid and snippet not in snippets:
-                        snippets.append(snippet)
+                        normalized = normalize(snippet)
+                        snippets.append(normalized)
                         # print(snippet, '\n', valid)
                     else:
                         excluded += 1
-                except Exception as e::
+                except Exception as e:
                     # print(e, snippet)
                     pass
     return excluded, snippets
@@ -78,11 +79,12 @@ def filter_code_cells(fname, base="../"):
                     try:
                         valid = check_r(snippet)
                         if valid and snippet not in snippets:
-                            snippets.append(snippet)
+                            normalized = normalize(snippet)
+                            snippets.append(normalized)
                             # print(snippet, '\n', valid)
                         else:
                             excluded += 1
-                    except Exception as e::
+                    except Exception as e:
                         # print('issue parsing code')
                         pass
     return excluded, snippets
