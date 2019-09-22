@@ -8,39 +8,6 @@ import astor
 import pandas as pd
 import autopep8
 
-# Notes:
-
-# calls like head() query() drop() have a Name value with id and attr:
-# for e.g. df.head() -> Call(func=Attribute(value=Name(id='df'), attr='head'), args=[], keywords=[])
-# w. actual args like df.query('col1 == 1 & col2 == 1'):
-# Call(func=Attribute(value=Name(id='df'), attr='query'), args=[Str(s='col1 == 1 & col2 == 1')], keywords=[])
-
-# Subscripts look different, they have an Index object which contains different types
-# In the case of logical expressions inside [], you have Index(value=BinOp(...))
-# df[(df.col1 == 1) & (df.col2 == 1)]
-# Index(
-# value=BinOp(
-#     left=Compare(left=Attribute(value=Name(id='df'), attr='col1'), ops=[Eq], comparators=[Num(n=1)]),
-#     op=BitAnd,
-#     right=Compare(left=Attribute(value=Name(id='df'), attr='col2'), ops=[Eq], comparators=[Num(n=1)])))
-
-# In the case of one or more labels inside [], you have Index(value=List(...))
-# df[['col1']]
-# Index(value=List(elts=[Str(s='col1')]))
-# df[['col1', 'col2]]
-# Index(value=List(elts=[Str(s='col1'), Str(s='col2')]))
-# df[df.col1 == 1]
-# Index(value=Compare(left=Attribute(value=Name(id='df'), attr='col1'), ops=[Eq], comparators=[Num(n=1)]))
-
-# In the case of nums:
-# df.iloc[:9]
-# Subscript(value=Attribute(value=Name(id='df'), attr='iloc'), slice=Slice(lower=None, upper=Num(n=9), step=None))
-# df.loc['a']
-# Subscript(value=Attribute(value=Name(id='df'), attr='loc'), slice=Index(value=Str(s='a')))
-# df.loc[1:2, 'a'] contains the extended slice 
-# Subscript(value=Attribute(value=Name(id='df'), attr='loc'),
-# slice=ExtSlice(dims=[Slice(lower=Num(n=1), upper=Num(n=2), step=None), Index(value=Str(s='a'))]))
-
 # Find all expressions in querying/filtering/sampling here:
 # https://pandas.pydata.org/pandas-docs/stable/getting_started/comparison/comparison_with_r.html
 
@@ -48,7 +15,7 @@ import autopep8
 #         'sort_values', 'rename', 'assign', 'describe', 'groupby', 'len', 'read_csv', \
 #         'to_csv', 'DataFrame']
 CALLS = ['.', 'loc', 'iloc', 'head', 'shape', 'query', 'drop', 'drop_duplicates', 'describe', 'read_csv'] 
-ASSIGN_CALLS = ['read_csv']
+ASSIGN_CALLS = ['read_csv', 'drop', 'query']
 
 class AssignChecker(ast.NodeVisitor):
 
@@ -145,7 +112,6 @@ class ASTChecker(ast.NodeVisitor):
         call = node.func.attr if 'attr' in node.func.__dict__ else node.func
         # print('call', call)
         # print('call node', astor.dump_tree(node))
-
         if call in CALLS:
             self.valid = True
     
@@ -160,9 +126,9 @@ class ASTChecker(ast.NodeVisitor):
         # print(node.value)
         # print(node.targets)
         # Check rhs of assignment
-        # rhs_checker = AssignChecker(node.value)
-        # if rhs_checker.check() and type(node.targets[0]) == ast.Name:
-        #     self.valid = True
+        rhs_checker = AssignChecker(node.value)
+        if rhs_checker.check():
+            self.valid = True
     
     def visit_AugAssign(self, node):
         self.valid = False
@@ -208,6 +174,7 @@ class Normalizer(ast.NodeTransformer):
 
     def visit_Assign(self, node):
         self.visit(node.targets[0])
+        self.visit(node.value)
         return node
     
     def visit_Name(self, node):
@@ -221,6 +188,9 @@ def test_pyast():
     test_strings = [ \
         # valid ones
         "train = pd.read_csv('train.csv')",
+        "train = train.query('col1 == 1 & col2 == 1')",
+        "train = train.drop(cols_to_drop, axis=1)",
+        # "train = pd.read_csv('train.csv')",
         "train.shape", 
         "train.head()", 
         "train.loc[1:2, 'a']",

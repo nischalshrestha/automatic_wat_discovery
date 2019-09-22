@@ -51,8 +51,8 @@ def parse_notebooks(lang="r", snippet_type="all"):
             for file in os.scandir(project):
                 if "kernel-metadata.json" not in project and not os.path.isdir(file):
                     with open(file, "r") as f:
-                        # only look at files that are notebooks
-                        if lang == "r" and ".irnb" in f.name:
+                        # only look at files that are notebooks or .py
+                        if lang == "r" and ".R" in f.name:
                             print(counter)
                             counter += 1
                             # nb = nbformat.read(f.name, as_version=nbformat.NO_CONVERT)
@@ -60,7 +60,7 @@ def parse_notebooks(lang="r", snippet_type="all"):
                             # do something with cells
                             # print_code_cells(cells)
                             files.append(f.name)
-                        if lang == "py" and ".ipynb" in f.name:
+                        if lang == "py" and ".py" in f.name:
                             counter += 1
                             print(counter)
                             # nb = nbformat.read(f.name, as_version=nbformat.NO_CONVERT)
@@ -100,7 +100,7 @@ if __name__ == '__main__':
             files, total = parse_notebooks(language, snippet_type) # total notebooks: 646
             # files, total = parse_notebooks("python", snippet_type) # total notebooks: 2515
             print(total, len(files))
-            with open(f'filelist_{language}nb.txt', 'w') as file:
+            with open(f'filelist_{language}.txt', 'w') as file:
                 for f in files:
                     file.write(f+'\n')
 

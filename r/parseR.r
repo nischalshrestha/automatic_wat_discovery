@@ -56,3 +56,6 @@ renamed <- paste(df$text, collapse='')
 renamed
 # can test this later for execution
 # eval(parse(text=paste("df<-read.csv(\"../train.csv\");", renamed, collapse='')))
+
+
+
