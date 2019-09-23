@@ -1,6 +1,10 @@
 import random as random
 import pandas as pd
 import numpy as np
+
+from rpy2.robjects import pandas2ri
+pandas2ri.activate()
+
 from collections import OrderedDict
 
 # PassengerId      int64
@@ -44,23 +48,27 @@ def generate_series(template: pd.DataFrame, column: str, rows: int) -> pd.Series
         arr = np.random.randint(0, 2, rows, bool)
     elif template.dtypes[column] == np.object:
         unique = set(template[column])
-        arr = [random.choice(template[column]) for _ in range(rows)]
+        arr = [str(random.choice(template[column])) for _ in range(rows)]
     # throw in some random NAs if there were any in the original column
     if template[column].isna().sum() > 0:
         for i in range(len(arr)):
             chance = random.random()
             if chance < 0.1:
-                if template.dtypes[column] in {int, float}:
-                    arr[i] = np.NAN
-                else:
-                    arr[i] = ''
+                # if template.dtypes[column] in {int, float}:
+                #     arr[i] = np.NAN
+                # else:
+                #     print(template.dtypes[column])
+                arr[i] = np.NAN
     return np.asarray(arr)
 
-def generate_args(n_args=256):
+def generate_args(n_args=256, lang="py"):
     args = []
     df = pd.read_csv(FILEPATH)
     for n in range(n_args):
-        args.append(construct_df(df, df.shape[0]))
+        new_df = construct_df(df, df.shape[0])
+        if lang == "r":
+            new_df = pandas2ri.py2rpy(new_df)
+        args.append(new_df)
     return args
 
 if __name__ == '__main__':

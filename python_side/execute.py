@@ -1,16 +1,10 @@
-from collections import OrderedDict
+
 import time
 import multiprocessing
 import pickle
-from io import StringIO
-# import dill
-
-import ast
-import astor
-import autopep8
 import pandas as pd
-import numpy as np
-
+import sys
+sys.path.append("../")
 from generate import generate_args
 
 NUM_WORKERS=4
@@ -66,13 +60,12 @@ def execute_statement(snip):
             # executed += 1
         else:
             err = str(result)
-            
             if "not defined" in str(result) \
                 or "not contained" in err \
                 or "no attribute" in err \
                 or "does not exist" in err: 
                 return snip, ["ERROR: "+str(result)]
-            test_results.append("ERROR: "+str(result))
+            test_results.append("ERROR: "+err)
             # failed += 1
     return snip, test_results
     
