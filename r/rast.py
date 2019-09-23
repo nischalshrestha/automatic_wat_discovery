@@ -9,7 +9,7 @@ from rpy2.robjects import pandas2ri
 from rpy2.robjects.vectors import DataFrame
 
 # this is to silence R errors/warnings
-sys.stderr = open(os.devnull, 'w') 
+sys.stderr = open(os.devnull, 'w')
 
 SYMBOL = "SYMBOL"
 NUM_CONST = "NUM_CONST"
