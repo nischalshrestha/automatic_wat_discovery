@@ -95,12 +95,10 @@ class ASTChecker(ast.NodeVisitor):
         # print('subscript', astor.dump(node))
         if 'attr' in node.value.__dict__:
             verb = node.value.attr
-            # print('subscript verb', astor.dump_tree(node))
             if verb in CALLS:
                 self.valid = True
         elif 'slice' in node.__dict__:
             slicing = node.slice
-            # print('subscript slice', astor.dump_tree(node))
             num_slices = 0
             for child in ast.iter_child_nodes(node):
                 if type(child) == ast.ExtSlice:
@@ -110,21 +108,16 @@ class ASTChecker(ast.NodeVisitor):
     def visit_Call(self, node):
         """check if call is in calls list"""
         call = node.func.attr if 'attr' in node.func.__dict__ else node.func
-        # print('call', call)
-        # print('call node', astor.dump_tree(node))
         if call in CALLS:
             self.valid = True
     
     def visit_Attribute(self, node):
-        # print('attr', astor.dump_tree(node))
         if node.attr in CALLS:
             self.valid = True
     
     # Excluding assignments for now except for calls in CALLS
     def visit_Assign(self, node):
         self.valid = False
-        # print(node.value)
-        # print(node.targets)
         # Check rhs of assignment
         rhs_checker = AssignChecker(node.value)
         if rhs_checker.check():
@@ -270,13 +263,10 @@ def test_pyast():
         normalizer = Normalizer(test_tree)
         tree = normalizer.normalize()
         # print(t, tree)
-        # recurse_tree(test_tree)
         checker = ASTChecker(test_tree)
         if not checker.check():
             failed += 1
             print('tree not valid', t)
-        else:
-            print('tree valid', tree)
     if failed == 0:
         print('Passed all tests!')
     else:
