@@ -172,16 +172,56 @@ class Normalizer(ast.NodeTransformer):
         result = self.visit(self.tree)
         renamed = astor.to_source(result)
         return renamed.replace(" ", "").strip()
+    
+    def recursive(func):
+        """Decorator to make visitor work recursive"""
+        def wrapper(self, node):
+            func(self, node)
+            for child in ast.iter_child_nodes(node):
+                self.visit(child)
+        return wrapper
 
     def visit_Assign(self, node):
-        self.visit(node.targets[0])
+        # print('assign', astor.dump_tree(node))
+        node.targets[0].id = "mslacc"
         self.visit(node.value)
         return node
     
-    def visit_Name(self, node):
-        # print(astor.dump_tree(node))
-        # print(node.id)
-        node.id = "mslacc" 
+    def visit_Subscript(self, node):
+        # print('sub', astor.dump_tree(node))
+        # rename the main variable and a nested Subscript if there is one
+        for child in ast.iter_child_nodes(node):
+            if type(child) == ast.Subscript:
+                child.value.id = "mslacc"
+            elif type(child) == ast.Name:
+                child.id = "mslacc"
+        # then rename if there are attributes inside of the slice
+        if 'slice' in node.__dict__:
+            node.slice = self.visit(node.slice)
+        # finally, deal with loc / iloc since they will be subsumed by this visit
+        if type(node.value) == ast.Attribute:
+            node.value = self.visit(node.value)
+        return node
+    
+    def visit_Call(self, node):
+        # print('call', astor.dump_tree(node))
+        call = node.func.attr if 'attr' in node.func.__dict__ else node.func
+        # only rename the variable we're calling on, if it's a valid call 
+        if call in CALLS and call != 'read_csv':
+            for child in ast.iter_child_nodes(node):
+                if type(child) == ast.Attribute:
+                    if type(child.value) != ast.Name:
+                        child.value = self.visit(child.value)
+                    else:
+                        child.value.id = "mslacc"
+        return node
+    
+    def visit_Attribute(self, node):
+        # print('attr', astor.dump_tree(node))
+        if type(node.value) != ast.Name:
+            node.value = self.visit(node.value)
+        else:
+            node.value.id = "mslacc"
         return node
 
 def test_pyast():
@@ -190,8 +230,7 @@ def test_pyast():
         # valid ones
         "train = pd.read_csv('train.csv')",
         "train = train.query('col1 == 1 & col2 == 1')",
-        "train = train.drop(cols_to_drop, axis=1)",
-        # "train = pd.read_csv('train.csv')",
+        "train = train.drop([cols_to_drop], axis=1)",
         "train.shape", 
         "train.head()", 
         "train.loc[1:2, 'a']",
@@ -208,9 +247,9 @@ def test_pyast():
         "train[:9][:9]", 
         "train[-5::-2]",
         "train[['a']].shape",
-        "train_df.drop_duplicates(train_df.loc['a':'b', 3:4].query(axis=0), axis=0).drop().loc[[\"Survived\"]]", # complex case handled
-        # tricky renaming cases that don't matter much for now since we focus on dfs only
-        # they are still accepted
+        # "train_df.drop_duplicates(train_df.loc['a':'b', 3:4].query(axis=0), axis=0).drop().loc[[\"Survived\"]]", # complex case handled
+        # # tricky renaming cases that don't matter much for now since we focus on dfs only
+        # # they are still accepted
         "ax[row, col]",
         "data[cond_notnull & cond_m][\"Age\"]",
         "data[df.cond_notnull & df.cond_m][\"Age\"]",
@@ -220,6 +259,10 @@ def test_pyast():
         "xTsigmax += S[i][j]*(x[i]-mu[label][i])*(x[j]-mu[label][j])",
         "del train['Cabin_num1']",
         "train[:2, :-1]",
+        # weird renaming cases
+        "df.drop([variable],axis=1)",
+        "df[[var]][idx]",
+        "df.loc[(df['Parch']>4)&(df['Parch']>4),'Parch']"
         ]
     failed = 0
     for t in test_strings:
@@ -232,6 +275,8 @@ def test_pyast():
         if not checker.check():
             failed += 1
             print('tree not valid', t)
+        else:
+            print('tree valid', tree)
     if failed == 0:
         print('Passed all tests!')
     else:

@@ -31,9 +31,9 @@ robjects.r.source("astparseR.R")
 find_vars = robjects.r['find_vars']
 replace_variable_name = robjects.r['replace_variable_name']
 
-def parse_r(parsed_df):
+def parse_r(parsed_df: pd.DataFrame) -> bool:
     """
-    Parses for following grammar:
+    Parses for following grammar and returns if expression satisfies it:
 
     symbol 
     symbol left_assign symbol
@@ -99,14 +99,14 @@ def parse_r(parsed_df):
             valid = is_valid_call(terminals)
     return valid
 
-def is_valid_call(terminals):
+def is_valid_call(terminals: pd.DataFrame) -> bool:
     all_symbol_funcs = terminals[terminals.token == SYMBOL_FUNCTION_CALL].text
     if all(x in CALLS for x in all_symbol_funcs.values):
         # print('valid')
         return True
     return False
 
-def check_r(source):
+def check_r(source: str) -> bool:
     """
     This function parses R code using rpy2 and returns whether or not it has
     the simple grammar we want to accept.
@@ -127,13 +127,16 @@ def check_r(source):
         pass
     return False
 
-def normalize(expression):
+def normalize(expression: str) -> str:
     """
     Given an expression, this renames the main dataframe variable as best as
-    it can, then returns it with whitespace removed
+    it can, then returns it with whitespace removed.
     """
     vars = list(find_vars(expression))
     renamed = replace_variable_name(expression, vars[0])
+    # There might potentially be many variable names but pick the first one
+    # in the list as it's likely to be referencing the df; in dplyr verbs with
+    # piping, this is almost always the case since %>% allows data to flow forward.
     renamed = list(renamed)[0]
     return renamed.replace(" ", "")
 

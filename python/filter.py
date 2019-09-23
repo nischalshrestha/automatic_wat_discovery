@@ -49,6 +49,7 @@ def filter_code_lines(fname, base="../"):
                         n = Normalizer(tree)
                         normalized = n.normalize()
                         snippets.append(normalized)
+                        # snippets.append(snippet)
                         # print(snippet, '\n', valid)
                     else:
                         excluded += 1
