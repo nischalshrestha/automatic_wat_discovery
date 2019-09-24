@@ -28,21 +28,22 @@ class DataframeStore:
     def get_output(self):
        return self.pairs
     
-def eval_expr(mslacc, expr):
+def eval_expr(df, expr):
     """
     Evals an R expression given a dataframe.
     Currently, this does not factor in args for expr
     """
     try:
-        robjects.globalenv['mslacc'] = mslacc
-        # print(robjects.globalenv['mslacc'])
-        robjects.r(f"""
-        out <- {expr}
-        out""")
-        # return(ifelse(out == NULL, mslacc, out))
-        print('expr', expr)
+        robjects.globalenv['mslacc'] = df
+        robjects.r(f"""out <- {expr}""")
+        # print('expr', expr)
         # when we retrieve the dataframe from out
-        return expr, robjects.globalenv['out']
+        output = robjects.globalenv['out']
+        if type(output) == rpy2.rinterface.NULLType:
+            output = robjects.globalenv['mslacc']
+        robjects.r("rm(list = ls())")
+        # print('type', type(output))
+        return expr, output
     except Exception as e:
         # print(e)
         return e
@@ -73,21 +74,8 @@ def execute_statements():
         results.wait()
         result = dict(results.get())
     end_time = time.time()
-    # successful_snips = list(filter(None, successful_snips)) # just in case
     print(f"Total snips: {len(result)}")
     print(f"Time taken: {round((end_time - start_time), 2)} secs")
-    # uniques = set()
-    # for k, v in result.items():
-    #     # if type(v) == np.ndarray:
-    #     for i in range(len(v)):
-    #         if k in uniques: break
-    #         if type(v[i]) != rpy2.rinterface.NULLType:
-    #             print(type(v[i]))
-    #             uniques.add(k)
-    #         # if type(v[i]) == pd.DataFrame and not v[i].empty and k not in uniques:
-    #         #     print(k)
-    #         #     uniques.add(k)
-    # print(len(uniques))
     return result
 
 def print_full(x):
@@ -102,8 +90,6 @@ if __name__ == '__main__':
     executions = execute_statements()
     df_store = DataframeStore(executions)
     pickle.dump(df_store, open(PICKLE_PATH+"r_dfs.pkl", "wb"))
-    # testing if we are able to load the pickle in memory: we're good for now
-    # test_dict = pickle.load(open(PICKLE_PATH+"r_dfs.pkl", "rb")).pairs
-    # print(test_dict["mslacc$Status[mslacc$Age>=18]<-\"Adult\""][0])
+
 
 
