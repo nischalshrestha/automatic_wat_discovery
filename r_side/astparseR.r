@@ -77,6 +77,8 @@ replace_variable_name <- function(stmt, var_name) {
     deparse(x)
 }
 
+print(find_vars("Xtrainset<-df[,-1]"))
+
 # print(find_assign('table(hello$bbc == common, two)'))
 # print(find_assign("full_data$Title[full_data$Title == 'Mlle'] <- 'Miss'"))
 

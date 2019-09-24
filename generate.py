@@ -3,7 +3,7 @@ import pandas as pd
 import numpy as np
 
 from rpy2.robjects import pandas2ri
-pandas2ri.activate()
+# pandas2ri.activate()
 
 from collections import OrderedDict
 

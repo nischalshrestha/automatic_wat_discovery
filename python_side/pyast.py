@@ -17,40 +17,8 @@ import autopep8
 CALLS = ['.', 'loc', 'iloc', 'head', 'shape', 'query', 'drop', 'drop_duplicates', 'describe', 'read_csv'] 
 ASSIGN_CALLS = ['read_csv', 'drop', 'query']
 
-class AssignChecker(ast.NodeVisitor):
-
-    valid = False
-
-    def __init__(self, source, *args, **kwargs):
-        self.code = source
-    
-    def check(self):
-        self.visit(self.code)
-        return self.valid
-    
-    # Ignoring subscripts for now
-    # def visit_Subscript(self, node):
-    #     """[, [[, loc and iloc are Subscript objects"""
-    #     # print('subscript', astor.dump(node))
-    #     if 'attr' in node.value.__dict__:
-    #         verb = node.value.attr
-    #         # print('subscript verb', verb)
-    #         if verb in CALLS:
-    #             self.valid = True
-    #     elif 'slice' in node.__dict__:
-    #         slicing = node.slice
-    #         # print('subscript slice', astor.dump_tree(slicing))
-    #         self.valid = True
-    
-    def visit_Call(self, node):
-        """check if call is in calls list"""
-        call = node.func.attr if 'attr' in node.func.__dict__ else node.func
-        # print('call', call)
-        if call in ASSIGN_CALLS:
-            self.valid = True
-
 class CallChecker(ast.NodeVisitor):
-
+    """Recursively visits and validates all Calls and their children"""
     valid = True
 
     def __init__(self, source, *args, **kwargs):
@@ -79,15 +47,13 @@ class CallChecker(ast.NodeVisitor):
 class ASTChecker(ast.NodeVisitor):
     
     valid = False
-
-    def __init__(self, source, *args, **kwargs):
-        self.code = source
     
-    def check(self):
-        checker = CallChecker(self.code)
+    def check(self, node):
+        # First check all calls and make sure they're in CALLS
+        checker = CallChecker(node)
         if not checker.check():
             return False
-        self.visit(self.code)
+        self.visit(node)
         return self.valid
     
     def visit_Subscript(self, node):
@@ -99,29 +65,30 @@ class ASTChecker(ast.NodeVisitor):
                 self.valid = True
         elif 'slice' in node.__dict__:
             slicing = node.slice
+            # Exclude the ExtSlice syntax that works on List but not DataFrame
             num_slices = 0
             for child in ast.iter_child_nodes(node):
                 if type(child) == ast.ExtSlice:
                     num_slices += 1
             self.valid = False if num_slices != 0 else True
-    
+
     def visit_Call(self, node):
-        """check if call is in calls list"""
+        # Only valid if call is in CALLS list
         call = node.func.attr if 'attr' in node.func.__dict__ else node.func
         if call in CALLS:
             self.valid = True
     
     def visit_Attribute(self, node):
+        # Standalone Attribute(s) should be accepted as long as they're in our list
+        # for e.g. iloc/loc
         if node.attr in CALLS:
             self.valid = True
     
-    # Excluding assignments for now except for calls in CALLS
     def visit_Assign(self, node):
+        # Excluding assignments for now except for calls in CALLS
         self.valid = False
         # Check rhs of assignment
-        rhs_checker = AssignChecker(node.value)
-        if rhs_checker.check():
-            self.valid = True
+        self.valid = self.check(node.value)
     
     def visit_AugAssign(self, node):
         self.valid = False
@@ -214,21 +181,27 @@ def test_pyast():
     test_strings = [ \
         # valid ones
         "train = pd.read_csv('train.csv')",
-        "train = train.query('col1 == 1 & col2 == 1')",
-        "train = train.drop([cols_to_drop], axis=1)",
         "train.shape", 
         "train.head()", 
         "train.loc[1:2, 'a']",
         "train.iloc[:9]", 
+        "train = train.loc[1:2, 'a']",
+        "train = train.iloc[:9]",
         "train[train.col1 == 1]",
+        "train = train[train.col1 == 1]",
         "train.query('col1 == 1 & col2 == 1')", # might need to exclude as this requires parsing Str expr
+        "train = train.query('col1 == 1 & col2 == 1')",
         "train[(train.col1 == 1) & (train.col2 == 1)]", 
+        "train = train[(train.col1 == 1) & (train.col2 == 1)]",
         "train[['col1']]",
+        "train = train[['col1']]",
         "train[['col1', 'col2']]", 
         "train.loc[:, 'col1':'col3']",
         "train.drop(cols_to_drop, axis=1)", 
         "train[['col1']].drop_duplicates()", 
+        "train = train[['col1']].drop_duplicates()",
         "train[['col1', 'col2']].drop_duplicates()",
+        "train = train.drop([cols_to_drop], axis=1)",
         "train[:9][:9]", 
         "train[-5::-2]",
         "train[['a']].shape",
@@ -244,6 +217,8 @@ def test_pyast():
         "xTsigmax += S[i][j]*(x[i]-mu[label][i])*(x[j]-mu[label][j])",
         "del train['Cabin_num1']",
         "train[:2, :-1]",
+        "train = train.locc[1:2, 'a']",
+        "train = train[['col1']].corr()['col2']",
         # weird renaming cases
         "df.drop([variable],axis=1)",
         "df[[var]][idx]",
@@ -255,8 +230,8 @@ def test_pyast():
         normalizer = Normalizer(test_tree)
         tree = normalizer.normalize()
         # print(t, tree)
-        checker = ASTChecker(test_tree)
-        if not checker.check():
+        checker = ASTChecker()
+        if not checker.check(test_tree):
             failed += 1
             print('tree not valid', t)
     if failed == 0:

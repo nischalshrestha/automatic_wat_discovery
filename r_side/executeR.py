@@ -34,15 +34,21 @@ def eval_expr(df, expr):
     Currently, this does not factor in args for expr
     """
     try:
+        # Introduce df as mslacc into global env
         robjects.globalenv['mslacc'] = df
-        robjects.r(f"""out <- {expr}""")
-        # print('expr', expr)
-        # when we retrieve the dataframe from out
-        output = robjects.globalenv['out']
+        # Rpy2 when evaluating using 'r', returns _something_ no matter what
+        # even if expr is just an assignment
+        output = robjects.r(f"""{expr}""")
+        # If the output is a NULL it means expression doesn't return anything.
+        # For e.g. when setting a column to NULL and deleting it
+        # In such a case, simply return the original dataframe as the output
+        # Note: need to be careful in analysis since it doesn't mean the expr
+        # actually produced a dataframe; a solution to add another meta data
+        # indicating that in fact, the expr returned a NULL.
         if type(output) == rpy2.rinterface.NULLType:
             output = robjects.globalenv['mslacc']
+        # print(expr, type(output))
         robjects.r("rm(list = ls())")
-        # print('type', type(output))
         return expr, output
     except Exception as e:
         # print(e)
@@ -51,6 +57,7 @@ def eval_expr(df, expr):
 def execute_statement(snip):
     test_results = []
     for i, arg in enumerate(generated_args):
+        # print(type(arg))
         result = eval_expr(arg, snip)
         if type(result) == tuple:
             test_results.append(result[1])
@@ -90,6 +97,4 @@ if __name__ == '__main__':
     executions = execute_statements()
     df_store = DataframeStore(executions)
     pickle.dump(df_store, open(PICKLE_PATH+"r_dfs.pkl", "wb"))
-
-
 

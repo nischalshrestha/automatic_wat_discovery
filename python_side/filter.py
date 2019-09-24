@@ -43,13 +43,12 @@ def filter_code_lines(fname, base="../"):
                 # print(snippet)
                 try:
                     tree = ast.parse(snippet)
-                    checker = ASTChecker(tree)
-                    valid = checker.check()
+                    checker = ASTChecker()
+                    valid = checker.check(tree)
                     if valid and snippet not in snippets:
                         n = Normalizer(tree)
                         normalized = n.normalize()
                         snippets.append(normalized)
-                        # snippets.append(snippet)
                         # print(snippet, '\n', valid)
                     else:
                         excluded += 1
@@ -78,8 +77,8 @@ def filter_code_cells(fname, base="../"):
                     # print(cleaned)
                     try:
                         tree = ast.parse(snippet)
-                        checker = ASTChecker(tree)
-                        valid = checker.check()
+                        checker = ASTChecker()
+                        valid = checker.check(tree)
                         if valid and snippet not in snippets:
                             n = Normalizer(tree)
                             normalized = n.normalize()
