@@ -114,9 +114,10 @@ if __name__ == '__main__':
             result = list(zip(*result))
             failed = sum(result[0])
             all_snippets = flatten(list(result[1]))
+            all_snippets = list(set(all_snippets))
         end_time = time.time()
         print(f"Time taken: {round((end_time - start_time), 2)} secs")
         print(f"Parsed snippets: {len(all_snippets)} Failed snippets: {failed}")
-        df = pd.DataFrame(list(set(all_snippets)), columns=["snippets"])
+        df = pd.DataFrame(all_snippets, columns=["snippets"])
         df.to_csv("rsnips.csv", index=False)
         

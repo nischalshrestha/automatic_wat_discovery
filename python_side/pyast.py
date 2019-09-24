@@ -165,14 +165,6 @@ class Normalizer(ast.NodeTransformer):
         result = self.visit(self.tree)
         renamed = astor.to_source(result)
         return renamed.replace(" ", "").strip()
-    
-    def recursive(func):
-        """Decorator to make visitor work recursive"""
-        def wrapper(self, node):
-            func(self, node)
-            for child in ast.iter_child_nodes(node):
-                self.visit(child)
-        return wrapper
 
     def visit_Assign(self, node):
         # print('assign', astor.dump_tree(node))

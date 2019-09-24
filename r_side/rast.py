@@ -41,7 +41,6 @@ def parse_r(parsed_df: pd.DataFrame) -> bool:
     symbol lbb 
     symbol $ symbol
     symbol '[' symbol_function_call
-    symbol special symbol_function_call
     symbol left_assign (symbol_function_call | symbol lb | symbol lbb)
     symbol_function_call
 
@@ -51,7 +50,9 @@ def parse_r(parsed_df: pd.DataFrame) -> bool:
     valid = False
     terminals = parsed_df[parsed_df.terminal == 1]
     # print(terminals.token)
-    if len(terminals) == 3:
+    if sum(terminals.token == SPECIAL) > 0:
+        valid = False
+    elif len(terminals) == 3:
         # print('column reference')
         if terminals.token[0] == SYMBOL \
             and terminals.token[1] == DOLLA \
@@ -88,11 +89,11 @@ def parse_r(parsed_df: pd.DataFrame) -> bool:
                     and (terminals.token[3] == LB or terminals.token[3] == LBB):
                     if not terminals.token[4] == NUM_CONST:
                        valid = True
-        elif terminals.token[0] == SYMBOL and terminals.token[1] == SPECIAL \
-            and terminals.token[2] == SYMBOL_FUNCTION_CALL:
-        #     # print('pipe')
-        #     # Validate all calls 
-            valid = is_valid_call(terminals)
+        # elif terminals.token[0] == SYMBOL and terminals.token[1] == SPECIAL \
+        #     and terminals.token[2] == SYMBOL_FUNCTION_CALL:
+        # #     # print('pipe')
+        # #     # Validate all calls 
+        #     valid = is_valid_call(terminals)
         elif terminals.token[0] == SYMBOL_FUNCTION_CALL:
             # print('call')
             # print(terminals.text)
@@ -157,7 +158,7 @@ if __name__ == "__main__":
     df <- df[[1]]
     select(df, 'a')
     df %>% select(a) %>% filter(a > 0)
-    select(df, a) %>% filter(a > 0)
+    select(df, a) %>% filter(a > 0) 
     select(df, a) %>% filter(a > 0)
     df = df[1]
     select(df, col_one = col1)
