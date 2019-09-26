@@ -12,6 +12,8 @@ if __name__ == '__main__':
     # print(type(pydict))
     # print(pydict["mslacc.drop(['Fare'],1,inplace=True)"])
     # print(test_dict["mslacc.drop(['Fare'],1,inplace=True)"][0])
+    # TODO gather stats on the returned type for each expression's output(s)
+    
     uniques = set()
     for k, v in pydict.items():
         # if type(v) == np.ndarray:

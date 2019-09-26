@@ -3,7 +3,7 @@ import pandas as pd
 import numpy as np
 
 from rpy2.robjects import pandas2ri
-# pandas2ri.activate()
+pandas2ri.activate()
 
 from collections import OrderedDict
 
@@ -40,7 +40,8 @@ def generate_series(template: pd.DataFrame, column: str, rows: int) -> pd.Series
         if template.dtypes[column] == np.float64:
             if column == 'Age':
                 arr = pd.Series(np.round(np.random.uniform(min_val, max_val, size=(rows,)), 0))
-            elif column == 'Fare':
+            # elif column == 'Fare':
+            else:
                 arr = pd.Series(np.random.uniform(min_val, max_val, size=(rows,)))
         else:
             arr = pd.Series(np.random.randint(min_val, max_val + 1, rows))
@@ -61,6 +62,36 @@ def generate_series(template: pd.DataFrame, column: str, rows: int) -> pd.Series
                 arr[i] = np.NAN
     return np.asarray(arr)
 
+def construct_simple_df(df_template: pd.DataFrame) -> pd.DataFrame:
+    """Construct dataframe based on a template with psuedo-random values"""
+    data = OrderedDict()
+    # n_rows = np.random.randint(1, max_row_num + 1)
+    for col_name in df_template.columns.values:
+        data[col_name] = generate_simple_series(df_template, col_name, df_template.shape[0])
+    return pd.DataFrame(data=data)
+
+def generate_simple_series(template: pd.DataFrame, column: str, rows: int) -> pd.Series:
+    """
+    Construct and return a Series for a specific column of a dataframe using information
+    gleaned from the template dataframe.
+    """
+    if template.dtypes[column] == np.int64 or template.dtypes[column] == np.float64:
+        arr = template[column]
+    elif template.dtypes[column] == np.bool:
+        arr = template[column]
+    elif template.dtypes[column] == np.object:
+        arr = [str(template[column][i]) for i in range(rows)]
+    return np.asarray(arr)
+
+def generate_args_from_df(df, n_args=256, lang="py"):
+    args = []
+    for n in range(n_args):
+        new_df = construct_simple_df(df, 5, 5)
+        if lang == "r":
+            new_df = pandas2ri.py2rpy(new_df)
+        args.append(new_df)
+    return args
+
 def generate_args(n_args=256, lang="py"):
     args = []
     df = pd.read_csv(FILEPATH)
@@ -70,6 +101,13 @@ def generate_args(n_args=256, lang="py"):
             new_df = pandas2ri.py2rpy(new_df)
         args.append(new_df)
     return args
+
+def generate_simple_arg(lang="py"):
+    df = pd.read_csv(FILEPATH)
+    new_df = construct_simple_df(df)
+    if lang == "r":
+        new_df = pandas2ri.py2rpy(new_df)
+    return [new_df]
 
 if __name__ == '__main__':
     # df = pd.read_csv(FILEPATH)

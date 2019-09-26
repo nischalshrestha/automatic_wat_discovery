@@ -101,6 +101,10 @@ def parse_r(parsed_df: pd.DataFrame) -> bool:
     return valid
 
 def is_valid_call(terminals: pd.DataFrame) -> bool:
+    """
+    Given a df contained parsed tokens of an expression, return True if all calls
+    in the expression are valid, False otherwise.
+    """
     all_symbol_funcs = terminals[terminals.token == SYMBOL_FUNCTION_CALL].text
     if all(x in CALLS for x in all_symbol_funcs.values):
         # print('valid')

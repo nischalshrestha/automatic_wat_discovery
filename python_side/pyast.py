@@ -1,6 +1,6 @@
 """
 This module is used to parse Python code using ast module and has functions to
-test a subset of various dataframe expressions.
+test a subset of various dataframe expressions in Pandas
 """
 
 import ast
@@ -57,7 +57,7 @@ class ASTChecker(ast.NodeVisitor):
         return self.valid
     
     def visit_Subscript(self, node):
-        """[, [[, loc and iloc are Subscript objects"""
+        # [, [[, loc and iloc are Subscript objects
         # print('subscript', astor.dump(node))
         if 'attr' in node.value.__dict__:
             verb = node.value.attr
@@ -90,38 +90,29 @@ class ASTChecker(ast.NodeVisitor):
         # Check rhs of assignment
         self.valid = self.check(node.value)
     
-    def visit_AugAssign(self, node):
-        self.valid = False
+    # Exclude these:
 
-    def visit_Delete(self, node):
-        self.valid = False
+    def visit_AugAssign(self, node): self.valid = False
 
-    def visit_Del(self, node):
-        self.valid = False
+    def visit_Delete(self, node): self.valid = False
 
-    def visit_Return(self, node):
-        self.valid = False
+    def visit_Del(self, node): self.valid = False
 
-    def visit_Import(self, node):
-        self.valid = False
-    
-    def visit_ImportFrom(self, node):
-        self.valid = False
-    
-    def visit_FuntionDef(self, node):
-        self.valid = False
-    
-    def visit_For(self, node):
-        self.valid = False
-    
-    def visit_While(self, node):
-        self.valid = False
-    
-    def visit_Try(self, node):
-        self.valid = False
+    def visit_Return(self, node): self.valid = False
 
-    def visit_Lambda(self, node):
-        self.valid = False
+    def visit_Import(self, node): self.valid = False
+    
+    def visit_ImportFrom(self, node): self.valid = False
+    
+    def visit_FuntionDef(self, node): self.valid = False
+    
+    def visit_For(self, node): self.valid = False
+    
+    def visit_While(self, node):self.valid = False
+    
+    def visit_Try(self, node): self.valid = False
+
+    def visit_Lambda(self, node): self.valid = False
 
 class Normalizer(ast.NodeTransformer):
 

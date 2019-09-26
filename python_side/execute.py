@@ -5,12 +5,13 @@ import pickle
 import pandas as pd
 import sys
 sys.path.append("../")
-from generate import generate_args
+from generate import generate_args, generate_simple_arg
 
 NUM_WORKERS=4
 PICKLE_PATH = '/Volumes/TarDisk/snippets/'
 PYSNIPS_PATH = 'pysnips.csv'
-generated_args = generate_args(10)
+# generated_args = generate_args(1)
+generated_args = generate_simple_arg()
 
 flatten = lambda l: [item for sublist in l for item in sublist]
 
@@ -47,10 +48,12 @@ class DataframeStore:
        return self.pairs
     
 def execute_statement(snip):
+    # TODO change the return value to be a dict that has keys: expr, outputs
     test_results = []
     for i, arg in enumerate(generated_args):
         result = eval_expr(arg, snip)
         if type(result) == tuple:
+            # if type(result[1]) == pd.DataFrame:
             test_results.append(result[1])
         else:
             err = str(result)
@@ -62,6 +65,7 @@ def execute_statement(snip):
                 or "does not exist" in err: 
                 return snip, ["ERROR: "+str(result)]
             test_results.append("ERROR: "+err)
+    # return (snip, test_results) if len(test_results) == len(generated_args) else None
     return snip, test_results
     
 def execute_statements():
@@ -77,8 +81,12 @@ def execute_statements():
         results = pool.map_async(execute_statement, snippets)
         results.wait()
         result = dict(results.get())
+        # print(type(result))
     end_time = time.time()
-    # successful_snips = list(filter(None, successful_snips)) # just in case
+    # print('before', len(result))
+    # filtered = list(filter(None, result))
+    # print('after', len(filtered))
+    # result = dict(list(filtered)) # just in case
     print(f"Time taken: {round((end_time - start_time), 2)} secs")
     return result
 

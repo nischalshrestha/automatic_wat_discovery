@@ -10,7 +10,7 @@ pandas2ri.activate()
 
 import sys
 sys.path.append("../")
-from generate import generate_args
+from generate import generate_args, generate_simple_arg
 
 NUM_WORKERS = 4
 PICKLE_PATH = '/Volumes/TarDisk/snippets/'
@@ -18,7 +18,8 @@ RSNIPS_PATH = "rsnips.csv"
 
 flatten = lambda l: [item for sublist in l for item in sublist]
 
-generated_args = generate_args(10, lang="r")
+# generated_args = generate_args(1, lang="r")
+generated_args = generate_simple_arg(lang="r")
 
 class DataframeStore:
     """Just a class to store a dict of <snippet, output> so it can be pickled"""
@@ -55,11 +56,13 @@ def eval_expr(df, expr):
         return e
     
 def execute_statement(snip):
+    # TODO change the return value to be a dict that has keys: expr, outputs
     test_results = []
     for i, arg in enumerate(generated_args):
         # print(type(arg))
         result = eval_expr(arg, snip)
         if type(result) == tuple:
+            # print(type(result[1]))
             test_results.append(result[1])
         else:
             err = str(result)

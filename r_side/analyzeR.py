@@ -13,6 +13,8 @@ PICKLE_PATH = '/Volumes/TarDisk/snippets/'
 if __name__ == '__main__':
     rdict = pickle.load(open(PICKLE_PATH+"r_dfs.pkl", "rb")).pairs
     # print(type(rdict))
+    # TODO check if all ndarrays were actually supposed to be Series; there might
+    # have been a lost in translation for vectors (it might need to be explicit)
     uniques = set()
     for k, v in rdict.items():
         # if type(v) == np.ndarray:
