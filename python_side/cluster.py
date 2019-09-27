@@ -24,6 +24,16 @@ PICKLE_PATH = '/Volumes/TarDisk/snippets/'
 # Embarked        object (level) - randomize
 df = pd.read_csv("../train.csv")
 
+# Comparison procedure
+# Input: pydata, rdata
+# Check types
+#   If same type, perform comparison for that data type
+#       Calculate similarity score between the two snippets for that particular execution
+#   If not same type, no need for comparison and similarity is 0
+#   Continually update the snippet's similarity score based on:
+#       mean of all the similarity scores for each execution comparison
+#   Restore the respective python and r data back to the pickle (with similarity score now associated)
+
 # Clustering algorithm:
 # Input: F - List of Functions with Input and Output 
 # Output: C - List of clusters

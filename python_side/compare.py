@@ -2,53 +2,6 @@ import numpy as np
 import pandas as pd
 import time
 
-# Comparison procedure
-# Input: pydata, rdata
-# Check types
-#   If same type, perform comparison for that data type
-#       Calculate similarity score between the two snippets for that particular execution
-#   If not same type, no need for comparison and similarity is 0
-#   Continually update the snippet's similarity score based on:
-#       mean of all the similarity scores for each execution comparison
-#   Restore the respective python and r data back to the pickle (with similarity score now associated)
-
-# # Cases to cover:
-# # Not the same type
-# TODO wrap into function
-# a = df['Survived']
-# b = 1
-# c = False
-# if type(a) != type(b):
-#     print(f'not same type a={type(a).__name__}, b={type(b).__name__}: similarity is 0')
-
-# # Same type:
-# # Scalars 
-
-# TODO wrap into function
-# # int/float
-# # sim score: size diff
-# a = 1
-# b = 1.0
-# b = 1.1 # diff
-# # bools
-# # a = True
-# # b = False
-# if (type(a) == int or type(a) == float) and (type(b) == float or type(b) == float)\
-#     or (type(a) == bool and type(b) == bool):
-#     if type(a) == int:
-#         print(f'{a == b}, size diff: {abs(a-b)}')
-
-# TODO wrap into function
-# # Arrays:
-# # sim score: in common / total
-# a = [1,2,3]
-# b = [1,2,3]
-# b = [12,3,4,5]
-# # if (type(a) == int or type(a) == float) and (type(b) == float or type(b) == float)\
-# #     or (type(a) == bool and type(b) == bool):
-# print(f'{a == b}, array similarity: {len(set(a) & set(b))/(len(a)+len(b))}')
-
-
 def df_diff(df1, df2):
     """
     This simply uses pandas `eq` to calculate difference between two dataframes.
@@ -56,7 +9,7 @@ def df_diff(df1, df2):
 
     The semantic similarity score is also calculated differently:
 
-    sim_score = 
+    sim_score = diff dataframe / number of elements in diff dataframe
 
     """
     # print("~~~~")
@@ -83,7 +36,7 @@ def compare_df(df1, df2):
     the smaller (column-wise) dataframe around on the bigger dataframe, counting 
     common elements for each window. A similarity score is then calculated as: 
     
-    sim_score = common cells in window / total cells in window
+    sim_score = common cells in window / total cells in window 
 
     Once all the similarity scores for all windows have been calculated, the average
     is returned as the overall semantic similarity score between df1 and df2.
@@ -100,7 +53,7 @@ def compare_df(df1, df2):
     # Convert to ndarrays for a more efficient comparison
     df1_arr = df1.values
     df2_arr = df2.values
-    print(df1_arr, '\n---\n', df2_arr)
+    # print(df1_arr, '\n---\n', df2_arr)
     # Make the one with more columns be bottom
     if df2_col > df1_col:
         bottom, top = df2_arr, df1_arr
@@ -170,45 +123,121 @@ def compare_df(df1, df2):
         # print('trs', trs)
         i += 1
         wb += 1
-    print('windows:', windows)
+    # print('windows:', windows)
+    # overall_score = max(windows)
     overall_score = sum(windows)/len(windows)
     return overall_score
 
+def compare(a, b):
+    """
+    Given two data a and b, determine and return the semantic similarity score.
+    """
+    if (type(a) == int or type(a) == float) and (type(b) == int or type(b) == float) \
+    or (type(a) == bool and type(b) == bool):
+        if type(a) == int or type(a) == float:
+            sim_score = int(a == b)
+            size_diff = abs(a-b)
+            print(f'sim_score: {sim_score}, size diff: {size_diff}')
+        elif type(a) == bool:
+            sim_score = int(a == b)
+            print(f'sim_score: {sim_score}')
+    # pandas stuff
+    # Pandas output for series were saved as Series but output for R was
+    # converted to ndarray so need to check for either possibility
+    elif (type(a) == np.ndarray or type(a) == list) and (type(b) == np.ndarray or type(b) == list)\
+        or (type(a) == pd.Series or type(a) == np.ndarray) and (type(b) == np.ndarray or type(b) == pd.Series):
+        if type(a) == pd.Series:
+            a = a.values
+        if type(b) == pd.Series:
+            b = b.values
+        # for arrays, use jaccard
+        s1 = set(a)
+        s2 = set(b)
+        sim_score = len(s1.intersection(s2)) / len(s1.union(s2))
+        print(f'sim_score: {sim_score}')
+    elif type(a) == pd.DataFrame and type(b) == pd.DataFrame:
+        sim_score = compare_df(a, b)
+        print(f'sim_score: {sim_score}')
+    elif type(a) != type(b):
+        sim_score = 0
+        print(f'not same type a={type(a).__name__}, b={type(b).__name__}: similarity is {sim_score}')
+    return sim_score
+
 if __name__ == '__main__':
+    df = pd.read_csv("../train.csv")
+    # Cases to cover:
+    # Not the same type
+    a = df['Survived']
+    b = 1
+    c = False
+    d = 1.0
+    e = 1.0
+    f = df[0:2]
+    g = True
+    # compare(c, d)
+
+    # Arrays:
+    # sim score: in common / total
+    a = [1,2,3]
+    b = [1,2,3]
+    c = [1,2,3,4]
+    d = np.arange(1,5)
+    e = df['PassengerId']
+    f = e.values
+    g = df['Survived']
+    h = np.arange(3,8)
+    # compare(d, h)
+
+    # Dataframes:
     # Let's start by testing smaller random dataframes just based on numbers
 
     # identical case
-    # df1 = pd.DataFrame({'a': [1,2], 'b':[3,4]})
-    # df2 = pd.DataFrame({'a': [1,2], 'b':[3,4]})
+    df1 = pd.DataFrame({'a': [1,2], 'b':[3,4]})
+    df2 = pd.DataFrame({'a': [1,2], 'b':[3,4]})
+    # compare(df1, df2)
 
     # identical bigger case
-    # df1 = pd.DataFrame({'a': [1,2,3], 'b':[4,5,6], 'c':[7,8,9]})
-    # df2 = pd.DataFrame({'a': [1,2,3], 'b':[4,5,6], 'c':[7,8,9]})
+    df1 = pd.DataFrame({'a': [1,2,3], 'b':[4,5,6], 'c':[7,8,9]})
+    df2 = pd.DataFrame({'a': [1,2,3], 'b':[4,5,6], 'c':[7,8,9]})
+    # compare(df1, df2)
 
     # same dims but different values
-    # df1 = pd.DataFrame({'a': [1,2], 'b':[3,4]})
-    # df2 = pd.DataFrame({'a': [1,2], 'b':[4,5]})
+    df1 = pd.DataFrame({'a': [1,2], 'b':[3,4]})
+    df2 = pd.DataFrame({'a': [1,2], 'b':[4,5]})
+    # compare(df1, df2)
 
     # row difference and df2 (bottom) is taller and wider
     df1 = pd.DataFrame({'a': [1,2,3], 'b':[4,5,6]})
     df2 = pd.DataFrame({'a': [1,2,3,4], 'b':[5,6,7,8]})
+    # compare(df1, df2)
 
     # col and row difference and df2 (bottom) is taller and wider
-    # df1 = pd.DataFrame({'a': [1,2,3], 'b':[4,5,6]})
-    # df2 = pd.DataFrame({'a': [1,2,3,4], 'b':[5,6,7,8], 'c':[9,10,11,12]})
+    df1 = pd.DataFrame({'a': [1,2,3], 'b':[4,5,6]})
+    df2 = pd.DataFrame({'a': [1,2,3,4], 'b':[5,6,7,8], 'c':[9,10,11,12]})
+    # compare(df1, df2)
 
     # col and row difference when the df2 (bottom) is shorter and wider
-    # df1 = pd.DataFrame({'a': [1,2,3], 'b':[4,5,6]})
-    # df2 = pd.DataFrame({'a': [3,2], 'b':[6,5], 'c':['a','b'], 'd':[6,5]})
+    df1 = pd.DataFrame({'a': [1,2,3], 'b':[4,5,6]})
+    df2 = pd.DataFrame({'a': [3,2], 'b':[6,5], 'c':['a','b'], 'd':[6,5]})
+    # compare(df1, df2)
 
-    # Comparing the two methods score and performance
-    start = time.time()
-    print(f"overall score (compare_df): {compare_df(df1, df2)}")
-    # df_diff(df1, df2)
-    print("time taken: %.6fs" % (time.time()-start))
+    # Now for real world-y dataframes
+    df = pd.read_csv("../train.csv")
+    a = df.iloc[:2, :2]
+    b = df.iloc[:2, :2] # exact
+    c = df.query('Survived == 1').iloc[:2, :2] # same shape but different values
+    d = df.iloc[:4, :5] # both rol/col different
+    e = df.iloc[:2, :5] # only col different
+    compare(a, c)
 
-    start = time.time()
-    # print('overall score:', compare_df(df1, df2))
-    print(f"overall score (pandas.eq): {df_diff(df1, df2)}")
-    print("time taken: %.6fs" % (time.time()-start))
+    # # Comparing the two methods score and performance
+    # start = time.time()
+    # print(f"overall score (compare_df): {compare_df(df1, df2)}")
+    # # df_diff(df1, df2)
+    # print("time taken: %.6fs" % (time.time()-start))
+
+    # start = time.time()
+    # # print('overall score:', compare_df(df1, df2))
+    # print(f"overall score (pandas.eq): {df_diff(df1, df2)}")
+    # print("time taken: %.6fs" % (time.time()-start))
 
