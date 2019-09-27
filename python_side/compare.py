@@ -87,14 +87,9 @@ from execute import DataframeStore
 # # Either row or col is different
 
 def df_diff(df1, df2):
-    # Semantic score approach for now:
-    # - First, are there shared columns? If so, are rows shared? If so, calculate sim score.
-    # - If 0 columns are shared similarity is 0
-    #   Reasoning: when you as a user look at two dataframes, likely you will see the column
-    #   label as well and note if they are different and would not consider cells if you 
-    #   know they are different.
-    # df1 = df1.reset_index(drop=True)
-    # df2 = df2.reset_index(drop=True)
+    """
+    This simply uses pandas `eq` to calculate difference between two dataframes.
+    """
     print("~~~~")
     print(df1)
     print("----")
@@ -106,86 +101,86 @@ def df_diff(df1, df2):
     print(f"{df1.eq(df2)}\nrow_diff: {row_diff} col_diff: {col_diff}")
     total_cells = diff.shape[0]*diff.shape[1]
     sim_score = round(sum(diff.sum()) / (diff.shape[0]*diff.shape[1]), 2)
-    print(f"common values: {sum(diff.sum())} total cells: {total_cells}")
-    print(f"sim score: {sim_score}")
-
-# # https://stackoverflow.com/questions/29464234/compare-python-pandas-dataframes-for-matching-rows/29464365#29464365
+    return sim_score
 
 def compare_df(df1, df2):
-    # if df1.shape == df2.shape:
-    #     print('same shape', df1.shape)
-    #     df_diff(df1, df2)
-    #     return
+    """
+    Compares two dataframes and calculates the semantic similartiy score, which
+    is defined as the highest similarity score of the largest common area between 
+    them. This method is more efficient than the pandas `eq` method.
+    """
     # Find the largest common area between the two
     df1_row = df1.shape[0]
     df1_col = df1.shape[1]
     df2_row = df2.shape[0]
     df2_col = df2.shape[1]
     lca = (min(df1_row, df2_row), min(df1_col, df2_col))
+    # Note the row and col dimension diff
+    row_diff = abs(df1_row - df2_row)
+    col_diff = abs(df1_col - df2_col)
+    # Convert to ndarrays for a more efficient comparison
     df1_arr = df1.values
     df2_arr = df2.values
-    print(df1_arr)
-    print(df2_arr)
     # Make the one with more columns be bottom
     if df2_col > df1_col:
         bottom, top = df2_arr, df1_arr
     elif df2_col < df1_col:
         bottom, top = df1_arr, df2_arr
-    else:  
+    else:
         # If tied, make the one with more rows be bottom
         if df1_row > df2_row:
             bottom, top = df1_arr, df2_arr
         else:
             bottom, top = df2_arr, df1_arr
-    print('lca', lca)
-    print('bottom\n', bottom)
-    # Need to keep sliding LCA portion sideways then down, sideways then down...
-    # Until we reach and process the last overlap at the top
-
-    # top[len(top)-lca[0]-i:len(top)-i] # where i is the current LCA on bottom.
-    # i starts at the first LCA block on bottom so that's the row of LCA
-    lcar = lca[0]
-    lcac = lca[1]
-    # print('lca_row', lcar, 'lca_col', lcac)
-    tr, br, tc, bc = top.shape[0], bottom.shape[0], top.shape[1], bottom.shape[1]
-    # print(tr, br, tc, bc)
+    # print('lca', lca)
+    # print('bottom\n', bottom)
+    lca_row = lca[0]
+    lca_col = lca[1]
+    # print('lca_row', lca_row, 'lca_col', lca_col)
+    # STore the top and bottom dataframe row/col dimensions
+    trow, brow = top.shape[0], bottom.shape[0]
+    tcol, bcol = top.shape[1], bottom.shape[1]
+    # print(trow, brow, tcol, bcol)
+    # i is the current LCA row and j is the current LCA col when sliding
     i, j = 0, 0
+    # The sliding window's current position
     wl, wr, wt, wb = 0, 0, 0, 0
-    tt, tb = 0, 0
-    print('top is taller?', tr > br)
-    print('start iteration')
-    # trs is the number of rows we've covered in case top is taller
+    # The top dataframe's current top to bottom 
+    ttop, tbot = 0, 0
+    # trs is the number of rows processed when the top is taller than the bottom
     trs = 0
-    # stores the windows with the dimension of both top and bottom and the scores
+    # print('start iteration')
+    # Stores the windows with the dimension of both top and bottom and the scores
     windows = []
-    while (i + lcar - 1 < br) or (tr > br and trs < tr):  
+    while (i + lca_row - 1 < brow) or (trow > brow and trs < trow):  
         # Need to handle the case when top is taller so its window starts from the bottom
-        if tr > br:
-            tt = tr - lcar - i
-            tb = tr - i
+        if trow > brow:
+            ttop = trow - lca_row - i
+            tbot = trow - i
         else: 
             # Normally, we use the full size of the top to superimpose
-            tt, tb = 0, tr
-        # Current top is the LCA window starting from bottom
-        curr_top = top[tt:tb, :]
-        print('row', i, '\ntop\n', curr_top)
+            ttop, tbot = 0, trow
+        # Current top in the LCA window
+        curr_top = top[ttop:tbot, :]
+        # print('row', i, '\ntop\n', curr_top)
         wt = i
-        wb = i + lcar
+        wb = i + lca_row
         # print(wt, wb)
         # Slide top across until hitting the edge of bottom 
         wl, wr, j = 0, 0, 0
-        while wr < bc:
+        while wr < bcol:
             wl = j
-            wr = j + lcac
-            curr_bottom = bottom[:, wl:wr]
-            print('wl', wl, 'wr', wr, '\nbot\n', curr_bottom)
+            wr = j + lca_col
+            curr_bottom = bottom[i:, wl:wr]
+            # print('wl', wl, 'wr', wr, '\nbot\n', curr_bottom)
             j += 1
-        # Again, deal with the top being tall case
-        if tr > br:
-            trs = lcar + i
+        # Update the trs flag if the top is taller than bottom
+        if trow > brow:
+            trs = lca_row + i
+        # print('trs', trs)
         i += 1
         wb += 1
-        print('trs', trs)
+        
 
 if __name__ == '__main__':
     # Let's start by testing smaller random dataframes just based on numbers
@@ -199,13 +194,13 @@ if __name__ == '__main__':
     # df2 = pd.DataFrame({'a': [1,2,3], 'b':[4,5,6], 'c':[7,8,9]})
 
     # row difference when df2 is taller and wider
-    # df1 = pd.DataFrame({'a': [1,2,3], 'b':[4,5,6]})
-    # df2 = pd.DataFrame({'a': [3,2,3,2], 'b':[6,5,6,5], 'c':['a','b','c','a'], 'd':[6,5,6,5]})
+    df1 = pd.DataFrame({'a': [1,2,3], 'b':[4,5,6]})
+    df2 = pd.DataFrame({'a': [3,2,3,2], 'b':[6,5,6,5], 'c':['a','b','c','a'], 'd':[6,5,6,5]})
 
     # row difference when df2 is shorter and wider
-    df1 = pd.DataFrame({'a': [1,2,3], 'b':[4,5,6]})
-    df2 = pd.DataFrame({'a': [3,2], 'b':[6,5], 'c':['a','b'], 'd':[6,5]})
-    # df2 = pd.DataFrame({'a': [1,2,3], 'b':[4,5,6]})
+    # df1 = pd.DataFrame({'a': [1,2,3], 'b':[4,5,6]})
+    # df2 = pd.DataFrame({'a': [3,2], 'b':[6,5], 'c':['a','b'], 'd':[6,5]})
+
     start = time.time()
     compare_df(df1, df2)
     # df_diff(df1, df2)
