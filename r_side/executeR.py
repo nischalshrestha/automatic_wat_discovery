@@ -18,8 +18,9 @@ RSNIPS_PATH = "rsnips.csv"
 
 flatten = lambda l: [item for sublist in l for item in sublist]
 
-# generated_args = generate_args(1, lang="r")
-generated_args = generate_simple_arg(lang="r")
+generated_args = generate_args(1, lang="r")
+# TODO iteratively improve performance, testing a small amount of arg first
+# generated_args = generate_simple_arg(lang="r")
 
 class DataframeStore:
     """Just a class to store a dict of <snippet, output> so it can be pickled"""
@@ -44,8 +45,8 @@ def eval_expr(df, expr):
         # For e.g. when setting a column to NULL and deleting it
         # In such a case, simply return the original dataframe as the output
         # Note: need to be careful in analysis since it doesn't mean the expr
-        # actually produced a dataframe; a solution to add another meta data
-        # indicating that in fact, the expr returned a NULL.
+        # actually produced a dataframe; a solution is to add another meta data
+        # indicating that the expr had returned a NULL.
         if type(output) == rpy2.rinterface.NULLType:
             output = robjects.globalenv['mslacc']
         # print(expr, type(output))
@@ -56,21 +57,20 @@ def eval_expr(df, expr):
         return e
     
 def execute_statement(snip):
-    # TODO change the return value to be a dict that has keys: expr, outputs
     test_results = []
     for i, arg in enumerate(generated_args):
-        # print(type(arg))
         result = eval_expr(arg, snip)
         if type(result) == tuple:
-            # print(type(result[1]))
-            test_results.append(result[1])
+            if type(result[1]) == pd.DataFrame:
+                test_results.append(result[1])
+            else:
+                return None
         else:
-            err = str(result)
-            # quit early when err contains one of these strings
-            if "Error in" in err or "cannot open" in err:
-                return snip, ["ERROR: "+err]
-            test_results.append("ERROR: "+err)
-    return snip, test_results
+            # err = str(result)
+            # test_results.append("ERROR: "+err)
+            return None
+    rtn = {'expr': snip, 'test_results': test_results}
+    return rtn
     
 def execute_statements():
     """Execute R snippets with random dataframes"""
@@ -82,11 +82,12 @@ def execute_statements():
     with multiprocessing.Pool(processes=NUM_WORKERS) as pool:
         results = pool.map_async(execute_statement, snippets)
         results.wait()
-        result = dict(results.get())
+        result = results.get()
     end_time = time.time()
-    print(f"Total snips: {len(result)}")
+    filtered = list(filter(None, result))
+    print(f"Total snips: {len(filtered)}")
     print(f"Time taken: {round((end_time - start_time), 2)} secs")
-    return result
+    return filtered
 
 def print_full(x):
     try:

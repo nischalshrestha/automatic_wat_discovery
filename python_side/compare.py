@@ -1,6 +1,6 @@
 import numpy as np
 import pandas as pd
-import time
+import time, os, sys
 
 def df_diff(df1, df2):
     """
@@ -41,6 +41,8 @@ def compare_df(df1, df2):
     Once all the similarity scores for all windows have been calculated, the average
     is returned as the overall semantic similarity score between df1 and df2.
     """
+    if df1.empty or df2.empty:
+        return 0
     # Find the largest common area between the two
     df1_row = df1.shape[0]
     df1_col = df1.shape[1]
@@ -65,7 +67,7 @@ def compare_df(df1, df2):
             bottom, top = df1_arr, df2_arr
         else:
             bottom, top = df2_arr, df1_arr
-    print('lca', lca)
+    # print('lca', lca)
     # print('bottom\n', bottom)
     lca_row = lca[0]
     lca_col = lca[1]
@@ -112,7 +114,11 @@ def compare_df(df1, df2):
             # print('wl', wl, 'wr', wr, '\nbot\n', curr_bottom)
             # Compare current top and current bottom
             cbr, cbc = curr_bottom.shape[0], curr_bottom.shape[1]
-            common = sum([curr_bottom[r][c] == curr_top[r][c] for c in range(cbc) for r in range(cbr)])
+            try:
+                common = sum([curr_bottom[r][c] == curr_top[r][c] for c in range(cbc) for r in range(cbr)])
+            except e:
+                common = 0
+                print("ERROR", e)
             sim_score = common / (cbr*cbc)
             windows.append(sim_score)
             # print("current window's sim_score", sim_score)
@@ -124,8 +130,8 @@ def compare_df(df1, df2):
         i += 1
         wb += 1
     # print('windows:', windows)
-    # overall_score = max(windows)
-    overall_score = sum(windows)/len(windows)
+    overall_score = max(windows)
+    # overall_score = sum(windows)/len(windows)
     return overall_score
 
 def compare(a, b):
@@ -137,15 +143,20 @@ def compare(a, b):
         if type(a) == int or type(a) == float:
             sim_score = int(a == b)
             size_diff = abs(a-b)
-            print(f'sim_score: {sim_score}, size diff: {size_diff}')
+            # print(f'sim_score: {sim_score}, size diff: {size_diff}')
         elif type(a) == bool:
             sim_score = int(a == b)
-            print(f'sim_score: {sim_score}')
+            # print(f'sim_score: {sim_score}')
+    elif type(a) == str and type(b) == str:
+        s1 = set(a)
+        s2 = set(b)
+        sim_score = len(s1.intersection(s2)) / len(s1.union(s2))
+        # print(f'sim_score: {sim_score}')
     # pandas stuff
     # Pandas output for series were saved as Series but output for R was
     # converted to ndarray so need to check for either possibility
     elif (type(a) == np.ndarray or type(a) == list) and (type(b) == np.ndarray or type(b) == list)\
-        or (type(a) == pd.Series or type(a) == np.ndarray) and (type(b) == np.ndarray or type(b) == pd.Series):
+        or (type(a) == pd.Series or type(a) == np.ndarray) and (type(b) == pd.Series or type(b) == np.ndarray):
         if type(a) == pd.Series:
             a = a.values
         if type(b) == pd.Series:
@@ -154,19 +165,21 @@ def compare(a, b):
         s1 = set(a)
         s2 = set(b)
         sim_score = len(s1.intersection(s2)) / len(s1.union(s2))
-        print(f'sim_score: {sim_score}')
+        # print(f'sim_score: {sim_score}')
     elif type(a) == pd.DataFrame and type(b) == pd.DataFrame:
         sim_score = compare_df(a, b)
-        print(f'sim_score: {sim_score}')
+        # print(f'sim_score: {sim_score}')
     elif type(a) != type(b):
         sim_score = 0
-        print(f'not same type a={type(a).__name__}, b={type(b).__name__}: similarity is {sim_score}')
+        # print(f'not same type a={type(a).__name__}, b={type(b).__name__}: similarity is {sim_score}')
     return sim_score
 
 if __name__ == '__main__':
     df = pd.read_csv("../train.csv")
     # Cases to cover:
     # Not the same type
+
+    # Some primitives
     a = df['Survived']
     b = 1
     c = False
@@ -174,7 +187,10 @@ if __name__ == '__main__':
     e = 1.0
     f = df[0:2]
     g = True
-    # compare(c, d)
+    h = "hello"
+    i = "hello"
+    j = "hell"
+    # compare(h, j)
 
     # Arrays:
     # sim score: in common / total
@@ -228,7 +244,7 @@ if __name__ == '__main__':
     c = df.query('Survived == 1').iloc[:2, :2] # same shape but different values
     d = df.iloc[:4, :5] # both rol/col different
     e = df.iloc[:2, :5] # only col different
-    compare(a, c)
+    # compare(a, c)
 
     # # Comparing the two methods score and performance
     # start = time.time()

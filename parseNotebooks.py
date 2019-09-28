@@ -92,7 +92,6 @@ def prettify_dirs(lang="r"):
 if __name__ == '__main__':
     import sys
     if len(sys.argv) > 1:
-        print('hollar', sys.argv[1])
         language = sys.argv[1]
         if language == "py" or "r":
             snippet_type = "all"

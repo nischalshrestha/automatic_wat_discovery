@@ -25,6 +25,7 @@ def construct_df(df_template: pd.DataFrame, max_row_num: int=100, col_num: int=2
     """Construct dataframe based on a template with psuedo-random values"""
     data = OrderedDict()
     n_rows = np.random.randint(1, max_row_num + 1)
+    print(n_rows)
     for col_name in df_template.columns.values:
         data[col_name] = generate_series(df_template, col_name, n_rows)
     return pd.DataFrame(data=data)
@@ -40,7 +41,6 @@ def generate_series(template: pd.DataFrame, column: str, rows: int) -> pd.Series
         if template.dtypes[column] == np.float64:
             if column == 'Age':
                 arr = pd.Series(np.round(np.random.uniform(min_val, max_val, size=(rows,)), 0))
-            # elif column == 'Fare':
             else:
                 arr = pd.Series(np.random.uniform(min_val, max_val, size=(rows,)))
         else:
@@ -55,10 +55,6 @@ def generate_series(template: pd.DataFrame, column: str, rows: int) -> pd.Series
         for i in range(len(arr)):
             chance = random.random()
             if chance < 0.1:
-                # if template.dtypes[column] in {int, float}:
-                #     arr[i] = np.NAN
-                # else:
-                #     print(template.dtypes[column])
                 arr[i] = np.NAN
     return np.asarray(arr)
 
@@ -86,17 +82,17 @@ def generate_simple_series(template: pd.DataFrame, column: str, rows: int) -> pd
 def generate_args_from_df(df, n_args=256, lang="py"):
     args = []
     for n in range(n_args):
-        new_df = construct_simple_df(df, 5, 5)
+        new_df = construct_simple_df(df)
         if lang == "r":
             new_df = pandas2ri.py2rpy(new_df)
         args.append(new_df)
     return args
 
-def generate_args(n_args=256, lang="py"):
+def generate_args(n_args=256, max_rows=100, lang="py"):
     args = []
     df = pd.read_csv(FILEPATH)
     for n in range(n_args):
-        new_df = construct_df(df, df.shape[0])
+        new_df = construct_df(df, max_rows)
         if lang == "r":
             new_df = pandas2ri.py2rpy(new_df)
         args.append(new_df)
