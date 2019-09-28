@@ -80,7 +80,7 @@ def execute_statements():
     # Eval expressions and collect successful ones paired with output: (expr, output)
     start_time = time.time()
     with multiprocessing.Pool(processes=NUM_WORKERS) as pool:
-        results = pool.map_async(execute_statement, snippets)
+        results = pool.map_async(execute_statement, snippets, chunksize=len(snippets)//4)
         results.wait()
         result = results.get()
     end_time = time.time()

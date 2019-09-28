@@ -25,7 +25,6 @@ def construct_df(df_template: pd.DataFrame, max_row_num: int=100, col_num: int=2
     """Construct dataframe based on a template with psuedo-random values"""
     data = OrderedDict()
     n_rows = np.random.randint(1, max_row_num + 1)
-    print(n_rows)
     for col_name in df_template.columns.values:
         data[col_name] = generate_series(df_template, col_name, n_rows)
     return pd.DataFrame(data=data)
