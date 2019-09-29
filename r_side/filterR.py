@@ -8,7 +8,8 @@ import ast
 from rast import *
 
 NUM_WORKERS = 4
-file_list = [f.rstrip() for f in open("../filelist_rnb.txt", "r").readlines()]
+R_NOTEBOOK_LIST = "../files/filelist_rnb.txt"
+R_LIST = "../files/filelist_r.txt"
 
 def clean(lines, sep):
     """
@@ -96,10 +97,10 @@ if __name__ == '__main__':
     if len(sys.argv) > 1:
         language = sys.argv[1]
         if language == "notebook":
-            file_list = [f.rstrip() for f in open("../filelist_rnb.txt", "r").readlines()]
+            file_list = [f.rstrip() for f in open(R_NOTEBOOK_LIST, "r").readlines()]
             filter_func = filter_code_cells
         elif language == "script":
-            file_list = [f.rstrip() for f in open("../filelist_r.txt", "r").readlines()]
+            file_list = [f.rstrip() for f in open(R_LIST, "r").readlines()]
             filter_func = filter_code_lines
         else:
             print(f"Invalid option {sys.argv[1]}, please enter either 'notebook' or 'script'")

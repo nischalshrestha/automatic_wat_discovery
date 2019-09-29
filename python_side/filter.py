@@ -12,6 +12,8 @@ import ast
 from pyast import ASTChecker, Normalizer
 
 NUM_WORKERS = 4
+PYTHON_NOTEBOOK_LIST = "../files/filelist_pynb.txt"
+PYTHON_LIST = "../files/filelist_py.txt"
 
 def clean(lines, sep):
     """
@@ -98,10 +100,10 @@ if __name__ == '__main__':
     if len(sys.argv) > 1:
         language = sys.argv[1]
         if language == "notebook":
-            file_list = [f.rstrip() for f in open("../filelist_pynb.txt", "r").readlines()]
+            file_list = [f.rstrip() for f in open(PYTHON_NOTEBOOK_LIST, "r").readlines()]
             filter_func = filter_code_cells
         elif language == "script":
-            file_list = [f.rstrip() for f in open("../filelist_py.txt", "r").readlines()]
+            file_list = [f.rstrip() for f in open(PYTHON_LIST, "r").readlines()]
             filter_func = filter_code_lines
         else:
             print(f"Invalid option {sys.argv[1]}, please enter either 'notebook' or 'script'")

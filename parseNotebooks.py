@@ -99,7 +99,7 @@ if __name__ == '__main__':
             files, total = parse_notebooks(language, snippet_type) # total notebooks: 646
             # files, total = parse_notebooks("python", snippet_type) # total notebooks: 2515
             print(total, len(files))
-            with open(f'filelist_{language}.txt', 'w') as file:
+            with open(f'files/filelist_{language}.txt', 'w') as file:
                 for f in files:
                     file.write(f+'\n')
 
