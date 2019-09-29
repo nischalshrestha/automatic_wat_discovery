@@ -1,6 +1,6 @@
 """
-This module filters Python notebooks to accept certain expressions and stores 
-it in a csv file for later use.
+This module filters Python notebooks or .py files to accept certain expressions and stores 
+it in a csv file for later use by the execute module.
 """
 
 import time
@@ -14,6 +14,8 @@ from pyast import ASTChecker, Normalizer
 NUM_WORKERS = 4
 PYTHON_NOTEBOOK_LIST = "../files/filelist_pynb.txt"
 PYTHON_LIST = "../files/filelist_py.txt"
+
+flatten = lambda l: [item for sublist in l for item in sublist]
 
 def clean(lines, sep):
     """
@@ -93,8 +95,6 @@ def filter_code_cells(fname, base="../"):
                         pass
     return excluded, snippets
 
-flatten = lambda l: [item for sublist in l for item in sublist]
-
 if __name__ == '__main__':
     import sys
     if len(sys.argv) > 1:
@@ -109,7 +109,8 @@ if __name__ == '__main__':
             print(f"Invalid option {sys.argv[1]}, please enter either 'notebook' or 'script'")
             sys.exit(1)
         start_time = time.time()
-        # Parellelize the file processing since each one is independent
+        # Parellelize the file processing since each file is independent of another
+        # Time taken for filtering scripts: 16.13 secs using 4 processes
         with multiprocessing.Pool(processes=NUM_WORKERS) as pool:
             results = pool.map_async(filter_func, file_list)
             results.wait()
@@ -120,5 +121,7 @@ if __name__ == '__main__':
         end_time = time.time()
         print(f"Time taken: {round((end_time - start_time), 2)} secs")
         print(f"Parsed snippets: {len(all_snippets)} Excluded snippets: {excluded}")
+        # Using current data and filtering: 
+        # Parsed snippets: 6619 Excluded snippets: 282520
         df = pd.DataFrame(all_snippets, columns=["snippets"])
         df.to_csv("pysnips.csv", index=False)

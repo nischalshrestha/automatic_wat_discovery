@@ -86,7 +86,7 @@ def compare_df(df1, df2):
     trs = 0
     # Stores the windows with the dimension of both top and bottom and the scores
     windows = []
-    # Slide top across until hitting the edge of bottom 
+    # Slide top across the bottom until hitting the edge of bottom 
     while (i + lca_row - 1 < brow) or (trow > brow and trs < trow):  
         # Need to handle the case when top is taller so its window starts from the bottom
         if trow > brow:

@@ -1,3 +1,8 @@
+"""
+This module filters R notebooks or .r files to accept certain expressions and stores 
+it in a csv file for later use by the executeR module.
+"""
+
 import os, sys
 import time
 import multiprocessing
@@ -10,6 +15,8 @@ from rast import *
 NUM_WORKERS = 4
 R_NOTEBOOK_LIST = "../files/filelist_rnb.txt"
 R_LIST = "../files/filelist_r.txt"
+
+flatten = lambda l: [item for sublist in l for item in sublist]
 
 def clean(lines, sep):
     """
@@ -90,8 +97,6 @@ def filter_code_cells(fname, base="../"):
                         pass
     return excluded, snippets
 
-flatten = lambda l: [item for sublist in l for item in sublist]
-
 if __name__ == '__main__':
     import sys
     if len(sys.argv) > 1:
@@ -105,8 +110,9 @@ if __name__ == '__main__':
         else:
             print(f"Invalid option {sys.argv[1]}, please enter either 'notebook' or 'script'")
             sys.exit(1)
-        start_time = time.time()
         # Parellelize the file processing since each one is independent
+        # Time taken for filtering scripts: 44.96 secs using 4 processes
+        start_time = time.time()
         with multiprocessing.Pool(processes=NUM_WORKERS) as pool:
             filter_func = filter_code_lines
             results = pool.map_async(filter_func, file_list)
@@ -118,7 +124,10 @@ if __name__ == '__main__':
             all_snippets = list(set(all_snippets))
         end_time = time.time()
         print(f"Time taken: {round((end_time - start_time), 2)} secs")
-        print(f"Parsed snippets: {len(all_snippets)} Failed snippets: {failed}")
+        print(f"Parsed snippets: {len(all_snippets)} Failed snippets: {failed}") 
+        # Using current data and filtering: 
+        # Parsed snippets: 1013 Failed snippets: 11991
         df = pd.DataFrame(all_snippets, columns=["snippets"])
         df.to_csv("rsnips.csv", index=False)
+
         

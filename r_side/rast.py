@@ -146,6 +146,7 @@ def normalize(expression: str) -> str:
     return renamed.replace(" ", "")
 
 if __name__ == "__main__":
+    # Testing the module
     test_strings = """df <- data.frame(a = c(1,2,3))
     df$a
     df$a[[10]]

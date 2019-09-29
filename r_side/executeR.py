@@ -13,13 +13,13 @@ sys.path.append("../")
 from generate import generate_args, generate_simple_arg
 
 NUM_WORKERS = 4
-PICKLE_PATH = '/Volumes/TarDisk/snippets/'
+R_PICKLE_PATH = '/Volumes/TarDisk/snippets/r_dfs.pkl'
 RSNIPS_PATH = "rsnips.csv"
 
 flatten = lambda l: [item for sublist in l for item in sublist]
-
-generated_args = generate_args(1, lang="r")
 # TODO iteratively improve performance, testing a small amount of arg first
+# For now only testing against a single randomly-generated dataframe
+generated_args = generate_args(1, lang="r")
 # generated_args = generate_simple_arg(lang="r")
 
 class DataframeStore:
@@ -50,13 +50,17 @@ def eval_expr(df, expr):
         if type(output) == rpy2.rinterface.NULLType:
             output = robjects.globalenv['mslacc']
         # print(expr, type(output))
-        robjects.r("rm(list = ls())")
+        robjects.r("rm(list = ls())") # clear locals after execution
         return expr, output
     except Exception as e:
         # print(e)
         return e
     
 def execute_statement(snip):
+    """
+    Given a R snippet (one-liner), this executes it against the generated
+    argument which are lists of different dataframes.
+    """
     test_results = []
     for i, arg in enumerate(generated_args):
         result = eval_expr(arg, snip)
@@ -98,7 +102,8 @@ def print_full(x):
         pass
 
 if __name__ == '__main__':
+    # TODO add optional argument for types of outputs we want to store the executions of
+    # TODO accept argument for how many input arguements to use and max row/col
     executions = execute_statements()
     df_store = DataframeStore(executions)
-    pickle.dump(df_store, open(PICKLE_PATH+"r_dfs.pkl", "wb"))
-
+    pickle.dump(df_store, open(R_PICKLE_PATH, "wb"))

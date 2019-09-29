@@ -1,12 +1,13 @@
 import random as random
 import pandas as pd
 import numpy as np
-
 from rpy2.robjects import pandas2ri
 pandas2ri.activate()
 
 from collections import OrderedDict
 
+# Using absolute path is safest: update as necessary
+TEMPLATE_PATH = "/Users/nischal/Documents/ProgrammingExps/rpy2_exps/kaggle_parsing/train.csv"
 # PassengerId      int64
 # Survived         int64 (level) - randomize
 # Pclass           int64 (level) - randomize
@@ -19,14 +20,13 @@ from collections import OrderedDict
 # Fare           float64
 # Cabin           object (level) - randomize
 # Embarked        object (level) - randomize
-FILEPATH = "../train.csv"
 
-def construct_df(df_template: pd.DataFrame, max_row_num: int=100, col_num: int=20) -> pd.DataFrame:
+def construct_df(template: pd.DataFrame, max_row_num: int=100, col_num: int=20) -> pd.DataFrame:
     """Construct dataframe based on a template with psuedo-random values"""
     data = OrderedDict()
     n_rows = np.random.randint(1, max_row_num + 1)
-    for col_name in df_template.columns.values:
-        data[col_name] = generate_series(df_template, col_name, n_rows)
+    for col_name in template.columns.values:
+        data[col_name] = generate_series(template, col_name, n_rows)
     return pd.DataFrame(data=data)
 
 def generate_series(template: pd.DataFrame, column: str, rows: int) -> pd.Series:
@@ -58,7 +58,7 @@ def generate_series(template: pd.DataFrame, column: str, rows: int) -> pd.Series
     return np.asarray(arr)
 
 def construct_simple_df(df_template: pd.DataFrame) -> pd.DataFrame:
-    """Construct dataframe based on a template with psuedo-random values"""
+    """Construct a single dataframe based on a template with psuedo-random values"""
     data = OrderedDict()
     # n_rows = np.random.randint(1, max_row_num + 1)
     for col_name in df_template.columns.values:
@@ -78,7 +78,19 @@ def generate_simple_series(template: pd.DataFrame, column: str, rows: int) -> pd
         arr = [str(template[column][i]) for i in range(rows)]
     return np.asarray(arr)
 
+def generate_args(n_args=256, max_rows=100, lang="py"):
+    """This will create dataframes based on a template (FILENAME)"""
+    args = []
+    df_template = pd.read_csv(TEMPLATE_PATH)
+    for n in range(n_args):
+        new_df = construct_df(df_template, max_rows)
+        if lang == "r":
+            new_df = pandas2ri.py2rpy(new_df)
+        args.append(new_df)
+    return args
+
 def generate_args_from_df(df, n_args=256, lang="py"):
+    """This will create one dataframe based on a supplied dataframe"""
     args = []
     for n in range(n_args):
         new_df = construct_simple_df(df)
@@ -87,25 +99,16 @@ def generate_args_from_df(df, n_args=256, lang="py"):
         args.append(new_df)
     return args
 
-def generate_args(n_args=256, max_rows=100, lang="py"):
-    args = []
-    df = pd.read_csv(FILEPATH)
-    for n in range(n_args):
-        new_df = construct_df(df, max_rows)
-        if lang == "r":
-            new_df = pandas2ri.py2rpy(new_df)
-        args.append(new_df)
-    return args
-
 def generate_simple_arg(lang="py"):
-    df = pd.read_csv(FILEPATH)
+    """This will create one dataframe based on templated (TEMPLATE_PATH)"""
+    df = pd.read_csv(TEMPLATE_PATH)
     new_df = construct_simple_df(df)
     if lang == "r":
         new_df = pandas2ri.py2rpy(new_df)
     return [new_df]
 
 if __name__ == '__main__':
-    # df = pd.read_csv(FILEPATH)
+    # df = pd.read_csv(TEMPLATE_PATH)
     # new_df = construct_df(df, df.shape[0])
     # print(new_df.shape)
     args = generate_args(10)

@@ -96,8 +96,7 @@ if __name__ == '__main__':
         if language == "py" or "r":
             snippet_type = "all"
             # prettify_dirs("python")
-            files, total = parse_notebooks(language, snippet_type) # total notebooks: 646
-            # files, total = parse_notebooks("python", snippet_type) # total notebooks: 2515
+            files, total = parse_notebooks(language, snippet_type)
             print(total, len(files))
             with open(f'files/filelist_{language}.txt', 'w') as file:
                 for f in files:
