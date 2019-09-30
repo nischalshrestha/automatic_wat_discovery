@@ -17,7 +17,7 @@ pandas2ri.activate()
 from collections import OrderedDict
 
 # Using absolute path is safest: update as necessary
-TEMPLATE_PATH = "/Users/nischal/Documents/ProgrammingExps/rpy2_exps/kaggle_parsing/train.csv"
+TEMPLATE_PATH = "../titanic/train.csv"
 # PassengerId      int64
 # Survived         int64 (level) - randomize
 # Pclass           int64 (level) - randomize

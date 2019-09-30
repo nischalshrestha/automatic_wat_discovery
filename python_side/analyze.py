@@ -8,7 +8,7 @@ import pickle
 
 from execute import DataframeStore
 
-PICKLE_PATH = '/Volumes/TarDisk/snippets/'
+PICKLE_PATH = './files'
 
 if __name__ == '__main__':
     pysnips = pickle.load(open(PICKLE_PATH+"py_dfs.pkl", "rb")).pairs

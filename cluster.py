@@ -20,8 +20,8 @@ sys.path.append("./python_side")
 from execute import DataframeStore
 
 NUM_WORKERS = 4
-PY_PICKLE_PATH = '/Volumes/TarDisk/snippets/py_dfs.pkl'
-R_PICKLE_PATH = '/Volumes/TarDisk/snippets/r_dfs.pkl'
+PY_PICKLE_PATH = './files/py_dfs.pkl'
+R_PICKLE_PATH = './files/r_dfs.pkl'
 SIM_T = 0.85
 
 flatten = lambda l: [item for sublist in l for item in sublist]
@@ -76,7 +76,7 @@ def cluster(pysnips, rsnips):
     snips = pysnips + rsnips
     clusters = [] # list of dicts {"rep": s, snip, snip,...}
     cnt = 0
-    start = time.time()
+    start_time = time.time()
     for s in snips:
         for c in clusters:
             # print(c)
@@ -90,7 +90,7 @@ def cluster(pysnips, rsnips):
         if sum([s['expr'] in c['snippets'] for c in clusters]) == 0:
             cluster = {'rep': s, 'snippets':[]}
             clusters.append(cluster)
-    print(f"Time taken: {time.time()-start}") # 200 snippets takes ~2min
+    print(f"Time taken: {round((time.time() - start_time), 2)}") # 200 snippets takes ~2min
     return clusters
 
 def print_clusters(clusters):
@@ -118,7 +118,6 @@ if __name__ == '__main__':
                     SIM_T = float(sys.argv[2])
                     SIM_T = min(1.0, max(0, SIM_T)) # lower bound to 0 and upper bound to 1
                 clusters = cluster(pysnips, rsnips)
-                print(len(clusters))
                 print_clusters(clusters)
             else:
                 print("invalid value for number of snippets!")

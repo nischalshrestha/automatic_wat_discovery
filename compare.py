@@ -72,7 +72,7 @@ def compare_df(df1, df2):
     lca_row = lca[0]
     lca_col = lca[1]
     # print('lca_row', lca_row, 'lca_col', lca_col)
-    # STore the top and bottom dataframe row/col dimensions
+    # Store the top and bottom dataframe row/col dimensions
     trow, brow = top.shape[0], bottom.shape[0]
     tcol, bcol = top.shape[1], bottom.shape[1]
     # print(trow, brow, tcol, bcol)

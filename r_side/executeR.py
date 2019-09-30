@@ -13,7 +13,7 @@ sys.path.append("../")
 from generate import generate_args, generate_simple_arg
 
 NUM_WORKERS = 4
-R_PICKLE_PATH = '/Volumes/TarDisk/snippets/r_dfs.pkl'
+R_PICKLE_PATH = '../files/r_dfs.pkl'
 RSNIPS_PATH = "rsnips.csv"
 NUM_ARGS = 1 # the default number of arguments (dataframes) to generate as inputs
 MAX_ARGS = 256 # the max number of arguments
@@ -95,7 +95,7 @@ def execute_statements():
         result = results.get()
     end_time = time.time()
     filtered = list(filter(None, result))
-    print(f"Total snips: {len(filtered)}")
+    print(f"Total snips executed: {len(filtered)}")
     print(f"Time taken: {round((end_time - start_time), 2)} secs")
     return filtered
 
@@ -131,6 +131,7 @@ if __name__ == '__main__':
             df_store = DataframeStore(executions)
             pickle.dump(df_store, open(R_PICKLE_PATH, "wb"))
         except Exception as e:
+            print(e)
             print("invalid option!")
             print("usage: python executeR.py [number of inputs to test <= 256]")
             sys.exit(1)

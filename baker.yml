@@ -1,0 +1,19 @@
+name: mslacc
+vm: 
+  ip: 34.130.2.99
+lang:
+  - python3.6
+  - R
+commands:
+  # filter/normalize the snippets in Kaggle .py/.r files
+  # output: [lang]snips.csv in [lang]_side directory
+  filterPy: cd python_side/; python filter.py script; cd ..
+  filterR: cd r_side/; python filterR.py script; cd ..
+  # execute the filtered snippets for each language
+  # default here is 5 input arguments (dataframes) and only store dataframe outputs
+  # output: [lang]_dfs.pkl file in [lang]_side directory
+  executePy: cd python_side/; python execute.py 5 dataframe; cd ..
+  executeR: cd r_side/; python executeR.py 5 dataframe; cd ..
+  # cluster the executed results in pickle files for both languages
+  # output: clustered.csv file containing pairs of snippets with semantic scores
+  cluster: python cluster.py 20 0.6

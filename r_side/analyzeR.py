@@ -11,7 +11,7 @@ pandas2ri.activate()
 
 from executeR import DataframeStore
 
-PICKLE_PATH = '/Volumes/TarDisk/snippets/'
+PICKLE_PATH = './files'
 
 if __name__ == '__main__':
     rsnips = pickle.load(open(PICKLE_PATH+"r_dfs.pkl", "rb")).pairs

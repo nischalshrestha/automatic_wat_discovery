@@ -124,7 +124,7 @@ if __name__ == '__main__':
             all_snippets = list(set(all_snippets))
         end_time = time.time()
         print(f"Time taken: {round((end_time - start_time), 2)} secs")
-        print(f"Parsed snippets: {len(all_snippets)} Failed snippets: {failed}") 
+        print(f"Parsed snippets: {len(all_snippets)} Excluded snippets: {failed}") 
         # Using current data and filtering: 
         # Parsed snippets: 1013 Failed snippets: 11991
         df = pd.DataFrame(all_snippets, columns=["snippets"])
