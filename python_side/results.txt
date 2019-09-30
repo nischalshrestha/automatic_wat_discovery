@@ -1,0 +1,17 @@
+0    1
+1    1
+2    0
+3    1
+4    0
+Name: SibSp, dtype: int64
+Empty DataFrame
+Columns: [PassengerId, Survived, Pclass, Name, Sex, Age, SibSp, Parch, Ticket, Fare, Cabin, Embarked]
+Index: []
+     PassengerId  Survived  Pclass                        Name     Sex   Age  \
+177          178         0       1  Isham, Miss. Ann Elizabeth  female  50.0   
+
+     SibSp  Parch    Ticket     Fare Cabin Embarked  
+177      0      0  PC 17595  28.7125   C49        C  
+[]
+Time for MultiProcessingSquirrel: 0.13 secs
+Executed snippets: 0

@@ -1,0 +1,6 @@
+nbformat
+numpy
+pandas
+astor
+rpy2==3.1.0
+python-Levenshtein

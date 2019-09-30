@@ -4,4 +4,3 @@ __pycache__/
 Notebooks/
 *.csv
 *.pkl
-*.txt
