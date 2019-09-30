@@ -15,12 +15,14 @@ from generate import generate_args, generate_simple_arg
 NUM_WORKERS = 4
 R_PICKLE_PATH = '/Volumes/TarDisk/snippets/r_dfs.pkl'
 RSNIPS_PATH = "rsnips.csv"
+NUM_ARGS = 1 # the default number of arguments (dataframes) to generate as inputs
+MAX_ARGS = 256 # the max number of arguments
+# this is the type of outputs we want to store when executing snippets so that
+# we can control the number of execution results that are stored; None by default
+# meaning we accept all types of outputs except for errors.
+OUTPUT_TYPE_FILTER = None 
 
 flatten = lambda l: [item for sublist in l for item in sublist]
-# TODO iteratively improve performance, testing a small amount of arg first
-# For now only testing against a single randomly-generated dataframe
-generated_args = generate_args(1, lang="r")
-# generated_args = generate_simple_arg(lang="r")
 
 class DataframeStore:
     """Just a class to store a dict of <snippet, output> so it can be pickled"""
@@ -45,7 +47,7 @@ def eval_expr(df, expr):
         # For e.g. when setting a column to NULL and deleting it
         # In such a case, simply return the original dataframe as the output
         # Note: need to be careful in analysis since it doesn't mean the expr
-        # actually produced a dataframe; a solution is to add another meta data
+        # actually produced a dataframe; TODO a solution is to add another meta data
         # indicating that the expr had returned a NULL.
         if type(output) == rpy2.rinterface.NULLType:
             output = robjects.globalenv['mslacc']
@@ -65,10 +67,14 @@ def execute_statement(snip):
     for i, arg in enumerate(generated_args):
         result = eval_expr(arg, snip)
         if type(result) == tuple:
-            if type(result[1]) == pd.DataFrame:
-                test_results.append(result[1])
+            output = result[1]
+            if OUTPUT_TYPE_FILTER != None:
+                if type(output) == OUTPUT_TYPE_FILTER:
+                    test_results.append(output)
+                else:
+                    return None
             else:
-                return None
+                test_results.append(output)
         else:
             # err = str(result)
             # test_results.append("ERROR: "+err)
@@ -102,8 +108,34 @@ def print_full(x):
         pass
 
 if __name__ == '__main__':
-    # TODO add optional argument for types of outputs we want to store the executions of
-    # TODO accept argument for how many input arguements to use and max row/col
-    executions = execute_statements()
-    df_store = DataframeStore(executions)
-    pickle.dump(df_store, open(R_PICKLE_PATH, "wb"))
+    if len(sys.argv) > 1:
+        try:
+            NUM_ARGS = int(sys.argv[1]) 
+            NUM_ARGS = 1 if NUM_ARGS <= 0 else NUM_ARGS
+            if NUM_ARGS >= MAX_ARGS: 
+                print("beyond max arguments of 256 inputs")
+                sys.exit(1)
+            # If user specifies, the particular type of outputs to store
+            # to reduce number of executions
+            if len(sys.argv) > 2:
+                if "dataframe" in sys.argv[2]:
+                    OUTPUT_TYPE_FILTER = pd.DataFrame
+                elif "series" in sys.argv[2]: 
+                    # Note: for R, rpy2 isn't converting properly to Series
+                    # and this means there are no Series as output (use array instead)
+                    OUTPUT_TYPE_FILTER = pd.Series
+                elif "array" in sys.argv[2]:
+                    OUTPUT_TYPE_FILTER = np.ndarray
+            generated_args = generate_args(NUM_ARGS, lang="r")
+            executions = execute_statements()
+            df_store = DataframeStore(executions)
+            pickle.dump(df_store, open(R_PICKLE_PATH, "wb"))
+        except Exception as e:
+            print("invalid option!")
+            print("usage: python executeR.py [number of inputs to test <= 256]")
+            sys.exit(1)
+    else:
+        print("invalid option!")
+        print("usage: python executeR.py [number of inputs to test <= 256]")
+        sys.exit(1)
+

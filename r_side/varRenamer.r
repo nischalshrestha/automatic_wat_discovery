@@ -1,4 +1,5 @@
 # Borrowed from George
+# Has functions to parse an R expression and rename variables not part of global functions
 
 library(base)
 

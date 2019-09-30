@@ -1,5 +1,6 @@
 """
-This module is used to parse R code using rpy2
+This module is used to parse R code using rpy2 mainly to filter out expressions
+that are complex (e.g. plotting, pipes etc.) and only keep the dataframe expressions.
 """
 
 import os, sys
@@ -8,7 +9,7 @@ import rpy2.robjects as robjects
 from rpy2.robjects import pandas2ri
 from rpy2.robjects.vectors import DataFrame
 
-# this is to silence R errors/warnings
+# This is to silence R errors/warnings
 sys.stderr = open(os.devnull, 'w')
 
 SYMBOL = "SYMBOL"
@@ -27,13 +28,17 @@ srcfile = robjects.r['srcfile']
 rparse = robjects.r['parse']
 get_parse_data = robjects.r['getParseData']
 # Load R script and its functions for normalizing name
-robjects.r.source("astparseR.R")
+robjects.r.source("varRenamer.R")
 find_vars = robjects.r['find_vars']
 replace_variable_name = robjects.r['replace_variable_name']
 
 def parse_r(parsed_df: pd.DataFrame) -> bool:
     """
-    Parses for following grammar and returns if expression satisfies it:
+    Parses for a subset of R grammar and returns if expression satisfies it. 
+
+    This is a poor-man's parser using getParseData(); in the future, use a systematic
+    tree walker instead. For now it is sufficient enough to filter for dataframe
+    expressions like these:
 
     symbol 
     symbol left_assign symbol
@@ -44,8 +49,7 @@ def parse_r(parsed_df: pd.DataFrame) -> bool:
     symbol left_assign (symbol_function_call | symbol lb | symbol lbb)
     symbol_function_call
 
-    where symbol_function_call is one of:
-    "c", "read.csv", "dim", "head", "slice", "filter", "select", "distinct", "arrange", "summary", "summarise"
+    where symbol_function_call is one of the items in CALLS.
     """
     valid = False
     terminals = parsed_df[parsed_df.terminal == 1]
@@ -147,6 +151,7 @@ def normalize(expression: str) -> str:
 
 if __name__ == "__main__":
     # Testing the module
+    # TODO make this testing better by incorporating expected values
     test_strings = """df <- data.frame(a = c(1,2,3))
     df$a
     df$a[[10]]

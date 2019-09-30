@@ -1,6 +1,7 @@
 """
-This module executes the clustering algorithm and stores a pickle/csv file that
-records the pairs with the semantic similary scores.
+This module executes the clustering algorithm on the executed Python and R
+snippets and stores a pickle/csv file that records the pairs with the semantic 
+similary scores.
 """
 
 import numpy as np
@@ -12,7 +13,7 @@ import random
 
 from compare import compare
 
-from generate import generate_args_from_df
+from generate import generate_arg_from_df
 
 import sys
 sys.path.append("./python_side")
@@ -98,7 +99,6 @@ def print_clusters(clusters):
         print(c['rep']['expr'], len(c['snippets']))
 
 if __name__ == '__main__':
-    # TODO add optional argument for SIM_T as well
     if len(sys.argv) > 1:
         num_snippets = sys.argv[1]
         try:
@@ -108,16 +108,30 @@ if __name__ == '__main__':
                 # Load executed python and r snippets with their results
                 pysnips = pickle.load(open(PY_PICKLE_PATH, "rb")).pairs[:split+remainder]
                 rsnips = pickle.load(open(R_PICKLE_PATH, "rb")).pairs[:split]
+                bigger = max(len(pysnips), len(rsnips))
+                if split > bigger:
+                    split, remainder = divmod(bigger, 2)
+                    print(split, remainder)
+                pysnips = pysnips[:split+remainder]
+                rsnips = rsnips[:split]
+                if len(sys.argv) > 2:
+                    SIM_T = float(sys.argv[2])
+                    SIM_T = min(1.0, max(0, SIM_T)) # lower bound to 0 and upper bound to 1
                 clusters = cluster(pysnips, rsnips)
                 print(len(clusters))
                 print_clusters(clusters)
             else:
                 print("invalid value for number of snippets!")
-                print("usage: python cluster.py [number of snippets >= 2]")
-        except:
-            print("invalid option!")
-            print("usage: python cluster.py [number of snippets >= 2]")
+                print("usage: python cluster.py [number of snippets >= 2] [0 <= SIM_T <= 1.0]")
+        except Exception as e:
+            print("invalid option!", e)
+            print("usage: python cluster.py [number of snippets >= 2] [0 <= SIM_T <= 1.0]")
             sys.exit(1)
+    else:
+        print("invalid option!")
+        print("usage: python cluster.py [number of snippets >= 2] [0 <= SIM_T <= 1.0]")
+        sys.exit(1)
+
 
 
    

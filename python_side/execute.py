@@ -3,6 +3,7 @@ import time
 import multiprocessing
 import pickle
 import pandas as pd
+import numpy as np
 import sys
 sys.path.append("../")
 from generate import generate_args, generate_simple_arg
@@ -10,9 +11,12 @@ from generate import generate_args, generate_simple_arg
 NUM_WORKERS=4
 PY_PICKLE_PATH = '/Volumes/TarDisk/snippets/py_dfs.pkl'
 PYSNIPS_PATH = 'pysnips.csv'
-generated_args = generate_args(1)
-# TODO iteratively improve performance, testing a small amount of arg first
-# generated_args = generate_simple_arg() 
+NUM_ARGS = 1 # the default number of arguments (dataframes) to generate as inputs
+MAX_ARGS = 256 # the max number of arguments
+# this is the type of outputs we want to store when executing snippets so that
+# we can control the number of execution results that are stored; None by default
+# meaning we accept all types of outputs except for errors.
+OUTPUT_TYPE_FILTER = None 
 
 flatten = lambda l: [item for sublist in l for item in sublist]
 
@@ -36,6 +40,9 @@ def eval_expr(mslacc, expr):
         eval(code_obj)
         output = locals()['out']
         # If the output is None then grab the mslacc (for now)
+        # Note: need to be careful in analysis since it doesn't mean the expr
+        # actually produced a dataframe; TODO a solution is to add another meta data
+        # indicating that the expr had returned a NULL.
         if output is None:
             output = locals()['mslacc']
         return expr, output
@@ -53,15 +60,18 @@ def execute_statement(snip):
     for i, arg in enumerate(generated_args):
         result = eval_expr(arg, snip)
         if type(result) == tuple:
-            # For now just accept a snippetsfor which the output is a Dataframe
-            # TODO make this more generic using a variable for the type we include
-            if type(result[1]) == pd.DataFrame:
-                test_results.append(result[1])
+            output = result[1]
+            if OUTPUT_TYPE_FILTER != None:
+                if type(output) == OUTPUT_TYPE_FILTER:
+                    test_results.append(output)
+                else:
+                    return None
             else:
-                return None
+                test_results.append(output)
         else:
             # err = str(result)
             # test_results.append("ERROR: "+err)
+            # For now throwing out the ones where there was an Exception
             return None
     rtn = {'expr': snip, 'test_results': test_results}
     return rtn
@@ -82,24 +92,46 @@ def execute_statements():
     # Eval expressions and collect successful ones paired with output: (expr, output)
     start_time = time.time()
     with multiprocessing.Pool(processes=NUM_WORKERS) as pool:
-        results = pool.map_async(execute_statement, snippets, chunksize=len(snippets)//4)
+        results = pool.map_async(execute_statement, snippets)
         results.wait()
         result = results.get()
     end_time = time.time()
     filtered = list(filter(None, result))
+    print(f"Total snips: {len(filtered)}")
     print(f"Time taken: {round((end_time - start_time), 2)} secs")
     # For ~6.6K snippets:
     # Time taken: 1.05 secs
     return filtered
 
-def test_pyexec():
-    # Save results
-    executions = execute_statements()
-    # print(len(executions))
-    df_store = DataframeStore(executions)
-    pickle.dump(df_store, open(PY_PICKLE_PATH, "wb"))
-
 if __name__ == '__main__':
-    # TODO add optional argument for types of outputs we want to store the executions of
-    # TODO accept argument for how many input arguements to use and max row/col
-    test_pyexec()
+    if len(sys.argv) > 1:
+        try:
+            NUM_ARGS = int(sys.argv[1]) 
+            NUM_ARGS = 1 if NUM_ARGS <= 0 else NUM_ARGS
+            if NUM_ARGS > MAX_ARGS: 
+                print("beyond max arguments of 256 inputs")
+                sys.exit(1)
+            # If user specifies, the particular type of outputs to store
+            # to reduce number of executions
+            if len(sys.argv) > 2:
+                if "dataframe" in sys.argv[2]:
+                    OUTPUT_TYPE_FILTER = pd.DataFrame
+                elif "series" in sys.argv[2]:
+                    OUTPUT_TYPE_FILTER = pd.Series
+                elif "array" in sys.argv[2]:
+                    OUTPUT_TYPE_FILTER = np.ndarray
+            generated_args = generate_args(NUM_ARGS)
+            # print(len(generated_args))
+            executions = execute_statements()
+            # Save results
+            df_store = DataframeStore(executions)
+            pickle.dump(df_store, open(PY_PICKLE_PATH, "wb"))
+        except Exception as e:
+            print("invalid option!")
+            print("usage: python execute.py [number of inputs to test <= 256] [(dataframe | series | array)]")
+            sys.exit(1)
+    else:
+        print("invalid option!")
+        print("usage: python executeR.py [number of inputs to test <= 256] [(dataframe | series | array)]")
+        sys.exit(1)
+

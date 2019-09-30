@@ -1,3 +1,13 @@
+"""
+This module is used to generate random dataframes given a template csv file,
+or a pandas.DataFrame.
+
+Main functions are:
+- generate_args (and variants)
+- construct_df (and variants)
+- generate_series (and variants)
+"""
+
 import random as random
 import pandas as pd
 import numpy as np
@@ -79,7 +89,7 @@ def generate_simple_series(template: pd.DataFrame, column: str, rows: int) -> pd
     return np.asarray(arr)
 
 def generate_args(n_args=256, max_rows=100, lang="py"):
-    """This will create dataframes based on a template (FILENAME)"""
+    """This will create multiple dataframes (n_args) based on a template (TEMPLATE_PATH)"""
     args = []
     df_template = pd.read_csv(TEMPLATE_PATH)
     for n in range(n_args):
@@ -89,7 +99,7 @@ def generate_args(n_args=256, max_rows=100, lang="py"):
         args.append(new_df)
     return args
 
-def generate_args_from_df(df, n_args=256, lang="py"):
+def generate_arg_from_df(df, lang="py"):
     """This will create one dataframe based on a supplied dataframe"""
     args = []
     for n in range(n_args):
@@ -108,6 +118,7 @@ def generate_simple_arg(lang="py"):
     return [new_df]
 
 if __name__ == '__main__':
+    # Testing module
     # df = pd.read_csv(TEMPLATE_PATH)
     # new_df = construct_df(df, df.shape[0])
     # print(new_df.shape)

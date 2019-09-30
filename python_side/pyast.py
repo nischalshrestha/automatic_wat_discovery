@@ -1,12 +1,14 @@
 """
 This module is used to parse Python code using ast module and has functions to
-test a subset of various dataframe expressions in Pandas
+test a subset of various dataframe expressions in Pandas.
+
+It also includes the Normalizer class that tries its best to rename the dataframe
+variables in Pandas expressions.
 """
 
 import ast
 import astor
 import pandas as pd
-import autopep8
 
 # Find all expressions in querying/filtering/sampling here:
 # https://pandas.pydata.org/pandas-docs/stable/getting_started/comparison/comparison_with_r.html
@@ -57,7 +59,7 @@ class ASTChecker(ast.NodeVisitor):
         return self.valid
     
     def visit_Subscript(self, node):
-        # [, [[, loc and iloc are Subscript objects
+        # [, [[, loc and iloc are subsumed as Subscript objects
         # print('subscript', astor.dump(node))
         if 'attr' in node.value.__dict__:
             verb = node.value.attr
@@ -80,14 +82,14 @@ class ASTChecker(ast.NodeVisitor):
     
     def visit_Attribute(self, node):
         # Standalone Attribute(s) should be accepted as long as they're in our list
-        # for e.g. iloc/loc
+        # for e.g. iloc/loc by themselves and not nested in another expression
         if node.attr in CALLS:
             self.valid = True
     
     def visit_Assign(self, node):
         # Excluding assignments for now except for calls in CALLS
         self.valid = False
-        # Check rhs of assignment
+        # Check rhs of assignment on this visitor
         self.valid = self.check(node.value)
     
     # Exclude these:
@@ -169,6 +171,8 @@ class Normalizer(ast.NodeTransformer):
 
 def test_pyast():
     import sys
+    # Testing the module
+    # TODO make this testing better by incorporating expected values
     test_strings = [ \
         # valid ones
         "train = pd.read_csv('train.csv')",
@@ -217,7 +221,7 @@ def test_pyast():
         ]
     failed = 0
     for t in test_strings:
-        test_tree = ast.parse(autopep8.fix_code(t))
+        test_tree = ast.parse(t)
         normalizer = Normalizer(test_tree)
         tree = normalizer.normalize()
         # print(t, tree)
