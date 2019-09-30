@@ -8,7 +8,7 @@ import pickle
 
 from execute import DataframeStore
 
-PICKLE_PATH = './files'
+PICKLE_PATH = '../files/'
 
 if __name__ == '__main__':
     pysnips = pickle.load(open(PICKLE_PATH+"py_dfs.pkl", "rb")).pairs
@@ -34,4 +34,4 @@ if __name__ == '__main__':
             # if type(v[i]) == pd.Series and v[i].size > 0:
             #     print(k)
             #     uniques.add(k)
-    print(len(uniques), count_results)
+    print(f"snippets: {len(uniques)}")

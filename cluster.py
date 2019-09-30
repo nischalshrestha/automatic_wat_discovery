@@ -6,10 +6,13 @@ similary scores.
 
 import numpy as np
 import pandas as pd
+from collections import OrderedDict
+import itertools
 import time
 import pickle
 import multiprocessing
 import random
+import Levenshtein
 
 from compare import compare
 
@@ -73,30 +76,82 @@ def cluster(pysnips, rsnips):
                 C ← C ∪ C 
         return C
     """
-    snips = pysnips + rsnips
+    snips = [pair for pair in itertools.zip_longest(pysnips,rsnips)]
+    snips = list(filter(None, snips))
+    print(len(snips))
+    # for i in filtered: 
+    #     py = i[0]
+    #     if i[1] == None: break
+    #     r = i[1]
+
+    # for s in snips:
+    #     print(s['expr'])
     clusters = [] # list of dicts {"rep": s, snip, snip,...}
     cnt = 0
     start_time = time.time()
     for s in snips:
+        py = s[0]
+        if s[1] == None: break
+        r = s[1]
+        # print('py', py['expr'], 'r', r['expr'])
         for c in clusters:
             # print(c)
             rep = c['rep']
-            # print(rep['expr'])
-            score = compare(rep['test_results'][0], s['test_results'][0])
+            # print('expr', rep['expr'])
+            # TODO scale this to go through all executions when input args > 1
+            score = compare(rep['test_results'][0], r['test_results'][0])
             if score >= SIM_T:
-                c['snippets'].append(s['expr'])
+                py_expr = rep['expr']
+                r_expr = r['expr']
+                # print('here', score, py_expr, r_expr)
+                edit_distance = jaro(py_expr, r_expr)
+                # Saving tuple of (expr, semantic score, edit distance?)
+                if len(c['snippets'].items()) == 0:
+                    c['snippets'] = {}
+                c['snippets'][r_expr] = (round(score, 3), edit_distance)
+                # print(c['snippets'])
+                # print(py_expr, c['snippets'][r_expr])
+                # c['snippets'].append({expr: (expr, round(score,3), edit_distance)})
                 # print(s['expr'])
                 break
-        if sum([s['expr'] in c['snippets'] for c in clusters]) == 0:
-            cluster = {'rep': s, 'snippets':[]}
+        if sum([py['expr'] in c['rep']['expr'] for c in clusters]) == 0:
+            # print('oy', py['expr'])
+            cluster = {'rep': py, 'snippets':{}}
             clusters.append(cluster)
     print(f"Time taken: {round((time.time() - start_time), 2)}") # 200 snippets takes ~2min
     return clusters
 
+def levenshtein(r_snippet, py_snippet):
+  return Levenshtein.distance(r_snippet, py_snippet)
+
+def hamming(r_snippet, py_snippet):
+  return Levenshtein.hamming(r_snippet, py_snippet)
+
+def jaro(r_snippet, py_snippet):
+  return 1.0 - Levenshtein.jaro(r_snippet, py_snippet)
+
+def jaro_winkler(r_snippet, py_snippet):
+  return 1.0 - Levenshtein.jaro_winkler(r_snippet, py_snippet)
+
 def print_clusters(clusters):
     """Use this to debug clusters found"""
     for c in clusters:
-        print(c['rep']['expr'], len(c['snippets']))
+        if len(c['snippets'].items()) > 0:
+            print('----\n', c['rep']['expr'], len(c['snippets'].items()), '\n~~~~')
+            for k, v in c['snippets'].items():
+                print(f"R: semantic score: {v[0]} edit distance: {round(v[1], 3)}) {k}")
+            print('----\n')
+        else:
+            print(c['rep']['expr'], len(c['snippets'].items()))
+
+def store_clusters(clusters):
+    # TODO store clusters in a csv file to query for pairs later
+    data = OrderedDict()
+    for c in clusters:
+        data['rep'] = c['rep']
+        if len(c['snippets'].items()) > 0:
+            for k, v in c['snippets']:
+                print(k, v)
 
 if __name__ == '__main__':
     if len(sys.argv) > 1:
@@ -106,12 +161,12 @@ if __name__ == '__main__':
             if num_snippets >= 2:
                 split, remainder = divmod(num_snippets, 2)
                 # Load executed python and r snippets with their results
-                pysnips = pickle.load(open(PY_PICKLE_PATH, "rb")).pairs[:split+remainder]
-                rsnips = pickle.load(open(R_PICKLE_PATH, "rb")).pairs[:split]
+                pysnips = pickle.load(open(PY_PICKLE_PATH, "rb")).pairs
+                rsnips = pickle.load(open(R_PICKLE_PATH, "rb")).pairs
                 bigger = max(len(pysnips), len(rsnips))
                 if split > bigger:
                     split, remainder = divmod(bigger, 2)
-                    print(split, remainder)
+                    print(len(pysnips), len(rsnips))
                 pysnips = pysnips[:split+remainder]
                 rsnips = rsnips[:split]
                 if len(sys.argv) > 2:

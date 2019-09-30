@@ -118,6 +118,7 @@ def compare_df(df1, df2):
                 common = sum([curr_bottom[r][c] == curr_top[r][c] for c in range(cbc) for r in range(cbr)])
             except e:
                 common = 0
+                
                 print("ERROR", e)
             sim_score = common / (cbr*cbc)
             windows.append(sim_score)
@@ -150,7 +151,8 @@ def compare(a, b):
     elif type(a) == str and type(b) == str:
         s1 = set(a)
         s2 = set(b)
-        sim_score = len(s1.intersection(s2)) / len(s1.union(s2))
+        unioned = len(s1.union(s2))
+        sim_score = len(s1.intersection(s2)) / unioned if unioned > 0 else 0
         # print(f'sim_score: {sim_score}')
     # pandas stuff
     # Pandas output for series were saved as Series but output for R was
@@ -164,7 +166,8 @@ def compare(a, b):
         # for arrays, use jaccard
         s1 = set(a)
         s2 = set(b)
-        sim_score = len(s1.intersection(s2)) / len(s1.union(s2))
+        unioned = len(s1.union(s2))
+        sim_score = len(s1.intersection(s2)) / unioned if unioned > 0 else 0
         # print(f'sim_score: {sim_score}')
     elif type(a) == pd.DataFrame and type(b) == pd.DataFrame:
         sim_score = compare_df(a, b)

@@ -11,7 +11,7 @@ pandas2ri.activate()
 
 from executeR import DataframeStore
 
-PICKLE_PATH = './files'
+PICKLE_PATH = '../files/'
 
 if __name__ == '__main__':
     rsnips = pickle.load(open(PICKLE_PATH+"r_dfs.pkl", "rb")).pairs
@@ -36,6 +36,5 @@ if __name__ == '__main__':
             # if type(v[i]) == pd.Series and v[i].size > 0:
             #     print(k)
             #     uniques.add(k)
-    print(len(uniques), count_results)
-    # print(rdict["mslacc$Sex[which(mslacc$Sex==\"female\")]<-1"])
+    print(f"snippets: {len(uniques)}")
     
