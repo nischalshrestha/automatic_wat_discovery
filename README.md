@@ -4,17 +4,41 @@ This repo contains modules to parse Kaggle jupyter notebooks/scripts from compet
 
 # Installation/Running:
 
-It's best to use [baker](https://docs.getbaker.io/bakerScript/basic/) in conjunction with the requirements.txt file. Once baker is installed on your computer, simply execute the following in the root directory:
+It's easiest to use [baker](https://docs.getbaker.io/bakerScript/basic/) which makes use of VirtualBox to quickly spin up a VM for the project. Once baker/VirtualBox is installed on your computer, simply execute the following in the root directory:
 
 `baker bake --local .` 
 
-This sets up a VM for the project synced with the local folder and installs all dependencies for both Python and R.
+This sets up a VM for the project synced with the local folder and installs Python and R including all dependencies (`requirements.txt`).
 
 Then execute the following in the root directory:
 
 `baker run [cmd]` 
 
-Where `cmd` runs one of the phases described below and detailed in commands within [baker.yml](https://github.com/nischalshrestha/kaggle_parsing/blob/master/baker.yml#L7). You can also directly run the modules with the arguments.
+Where `cmd` runs one of the phases described below and detailed in the default commands within [baker.yml](https://github.com/nischalshrestha/kaggle_parsing/blob/master/baker.yml#L7). For example, to filter all the scripts for Python snippets, one can execute:
+
+`baker run filterPy`
+
+You can also directly run the modules if you need more control:
+
+Within root:
+
+`python parseNotebooks.py [py|r]`
+
+`python cluster.py [number of snippets >= 2] [0 <= SIM_T <= 1.0]` 
+
+where `number of snippets` are how many snippets in total you want to cluster, and `SIM_T` is the similarity score. 
+
+Within `py_side`:
+
+`python filter.py [notebook|script]`
+
+`python execute.py [number of inputs to test <= 256] [(dataframe | series | array)]`
+
+Within `r_side`:
+
+`python filterR.py [notebook|script]`
+
+`python executeR.py [number of inputs to test <= 256] [(dataframe | series | array)]`
 
 # Execution Phases:
 
