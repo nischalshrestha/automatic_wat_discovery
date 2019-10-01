@@ -78,14 +78,6 @@ def cluster(pysnips, rsnips):
     """
     snips = [pair for pair in itertools.zip_longest(pysnips,rsnips)]
     snips = list(filter(None, snips))
-    print(len(snips))
-    # for i in filtered: 
-    #     py = i[0]
-    #     if i[1] == None: break
-    #     r = i[1]
-
-    # for s in snips:
-    #     print(s['expr'])
     clusters = [] # list of dicts {"rep": s, snip, snip,...}
     cnt = 0
     start_time = time.time()
@@ -175,8 +167,7 @@ if __name__ == '__main__':
                 clusters = cluster(pysnips, rsnips)
                 print_clusters(clusters)
             else:
-                print("invalid value for number of snippets!")
-                print("usage: python cluster.py [number of snippets >= 2] [0 <= SIM_T <= 1.0]")
+                raise Exception("num_snippets needs to be >= 2")
         except Exception as e:
             print("invalid option!", e)
             print("usage: python cluster.py [number of snippets >= 2] [0 <= SIM_T <= 1.0]")
@@ -185,8 +176,4 @@ if __name__ == '__main__':
         print("invalid option!")
         print("usage: python cluster.py [number of snippets >= 2] [0 <= SIM_T <= 1.0]")
         sys.exit(1)
-
-
-
    
-    
