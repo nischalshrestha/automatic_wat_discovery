@@ -1,0 +1,17 @@
+{
+  "id": "walidsalah/titanic-a-journey-through-python",
+  "enable_internet": false,
+  "kernel_type": "notebook",
+  "competition_sources": [
+    "titanic"
+  ],
+  "keywords": [],
+  "id_no": 140094,
+  "dataset_sources": [],
+  "title": "Titanic: A Journey through Python",
+  "is_private": false,
+  "kernel_sources": [],
+  "language": "python",
+  "enable_gpu": false,
+  "code_file": "titanic-a-journey-through-python.ipynb"
+}

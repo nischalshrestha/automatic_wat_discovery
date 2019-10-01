@@ -1,0 +1,23 @@
+{
+  "dataset_sources": [],
+  "competition_sources": [
+    "titanic"
+  ],
+  "title": "Titanic: Bow to stern in Python",
+  "kernel_type": "notebook",
+  "enable_internet": false,
+  "id": "rjconstable/titanic-bow-to-stern-in-python",
+  "language": "python",
+  "keywords": [
+    "tutorial",
+    "beginner",
+    "eda",
+    "classification",
+    "xgboost"
+  ],
+  "kernel_sources": [],
+  "is_private": false,
+  "id_no": 679681,
+  "code_file": "titanic-bow-to-stern-in-python.ipynb",
+  "enable_gpu": false
+}

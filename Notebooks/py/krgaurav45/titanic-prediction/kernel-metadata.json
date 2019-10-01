@@ -1,0 +1,17 @@
+{
+  "kernel_type": "notebook",
+  "kernel_sources": [],
+  "id": "krgaurav45/titanic-prediction",
+  "enable_gpu": false,
+  "competition_sources": [
+    "titanic"
+  ],
+  "enable_internet": false,
+  "language": "python",
+  "title": "Titanic_Prediction",
+  "keywords": [],
+  "is_private": false,
+  "code_file": "titanic-prediction.ipynb",
+  "id_no": 1879297,
+  "dataset_sources": []
+}

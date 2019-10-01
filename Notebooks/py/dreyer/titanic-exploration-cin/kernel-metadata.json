@@ -1,0 +1,17 @@
+{
+  "kernel_type": "notebook",
+  "language": "python",
+  "title": "Titanic - Exploration CIN ",
+  "id_no": 399763,
+  "is_private": false,
+  "code_file": "titanic-exploration-cin.ipynb",
+  "id": "dreyer/titanic-exploration-cin",
+  "enable_internet": true,
+  "kernel_sources": [],
+  "dataset_sources": [],
+  "enable_gpu": false,
+  "keywords": [],
+  "competition_sources": [
+    "titanic"
+  ]
+}

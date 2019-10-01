@@ -1,0 +1,17 @@
+{
+  "keywords": [],
+  "enable_internet": false,
+  "title": "Playing with Titanic Dataset (R)",
+  "enable_gpu": false,
+  "is_private": false,
+  "id_no": 88484,
+  "code_file": "playing-with-titanic-dataset-r.irnb",
+  "kernel_sources": [],
+  "kernel_type": "notebook",
+  "id": "jasminegoel/playing-with-titanic-dataset-r",
+  "language": "r",
+  "competition_sources": [
+    "titanic"
+  ],
+  "dataset_sources": []
+}

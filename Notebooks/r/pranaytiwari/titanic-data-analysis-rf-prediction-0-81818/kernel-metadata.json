@@ -1,0 +1,17 @@
+{
+  "enable_internet": false,
+  "title": "Titanic - Data Analysis + RF Prediction 0.81818 ",
+  "id_no": 350428,
+  "code_file": "titanic-data-analysis-rf-prediction-0-81818.irnb",
+  "enable_gpu": false,
+  "dataset_sources": [],
+  "kernel_type": "notebook",
+  "id": "pranaytiwari/titanic-data-analysis-rf-prediction-0-81818",
+  "competition_sources": [
+    "titanic"
+  ],
+  "is_private": false,
+  "keywords": [],
+  "kernel_sources": [],
+  "language": "r"
+}

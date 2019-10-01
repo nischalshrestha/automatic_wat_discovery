@@ -1,0 +1,17 @@
+{
+  "id": "tanveerbaba/fork-of-titanic-ml-for-disaster",
+  "keywords": [],
+  "enable_internet": false,
+  "id_no": 707074,
+  "kernel_type": "notebook",
+  "competition_sources": [
+    "titanic"
+  ],
+  "is_private": false,
+  "enable_gpu": false,
+  "kernel_sources": [],
+  "dataset_sources": [],
+  "code_file": "fork-of-titanic-ml-for-disaster.ipynb",
+  "language": "python",
+  "title": "Fork of Titanic ML for Disaster"
+}

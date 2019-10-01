@@ -1,0 +1,23 @@
+{
+  "keywords": [
+    "tutorial",
+    "beginner",
+    "data cleaning",
+    "classification",
+    "feature engineering"
+  ],
+  "id_no": 1927648,
+  "title": "Titanic Competition: Who Lives and Who Dies",
+  "language": "python",
+  "enable_gpu": false,
+  "id": "nicholashz/titanic-competition-who-lives-and-who-dies",
+  "kernel_sources": [],
+  "dataset_sources": [],
+  "code_file": "titanic-competition-who-lives-and-who-dies.ipynb",
+  "enable_internet": false,
+  "is_private": false,
+  "kernel_type": "notebook",
+  "competition_sources": [
+    "titanic"
+  ]
+}

@@ -1,0 +1,919 @@
+{
+  "cells": [
+    {
+      "cell_type": "markdown",
+      "metadata": {
+        "_cell_guid": "60baeac5-f20f-6c96-a300-a6b30df354c3"
+      },
+      "source": [
+        "0.Problem Statement\n",
+        "-------------------\n",
+        "\n",
+        "Predict whether a passenger survived the titanic disaster or not\n",
+        "\n",
+        "1.Import the training dataset and get the structure\n",
+        "---------------------------------------------------"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "_cell_guid": "ef2f76ca-f93a-f21f-352c-f60fdaf1d6e2"
+      },
+      "outputs": [],
+      "source": [
+        "#Libraries#\n",
+        "library(\"dplyr\");\n",
+        "# Import the titanic training dataset.\n",
+        "train<-read.csv(\"../input/train.csv\");\n",
+        "test<-read.csv(\"../input/test.csv\");\n",
+        "test$Survived<-rep(\"NA\",nrow(test))\n",
+        "full<-rbind(train,test)\n",
+        "str(train)"
+      ]
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {
+        "_cell_guid": "71a6f817-baee-10ae-3646-e04a26fb136f"
+      },
+      "source": [
+        "2.Data Exploration\n",
+        "------------------\n",
+        "\n",
+        "Independent variable : Survived (boolean)\n",
+        "\n",
+        "\n",
+        "2.1 Univariate Analysis\n",
+        "-----------------------\n",
+        "\n",
+        "Each variable's summary statistics will be analysed and looked for missing values.invalid values, outliers.\n",
+        "After analysing will decide whether a variable has to be removed,transformed,binned & encoded.\n",
+        "First will go through the categorical variables and then the numerical variables\n",
+        " "
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "_cell_guid": "88516aa8-4017-784d-5267-05e28b414068"
+      },
+      "outputs": [],
+      "source": [
+        "#Target Variable:Categorical#\n",
+        "train%>%group_by(Survived)%>%count->freq;\n",
+        "freq$frequency<-freq$n/nrow(train)*100;\n",
+        "colnames(freq)[2]<-\"count\";\n",
+        "freq\n",
+        "barplot(freq$count,names.arg=freq$Survived)"
+      ]
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {
+        "_cell_guid": "81516b93-243a-5c31-5762-caca583179ed"
+      },
+      "source": [
+        "There are fewer survivors and the data is positively skewed.\n",
+        "Change?: Variable has to be converted to logical type"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "_cell_guid": "1ad45076-9324-0179-6c12-f8fe71399455"
+      },
+      "outputs": [],
+      "source": [
+        "#Pclass#\n",
+        "train%>%group_by(Pclass)%>%count()->freq;\n",
+        "freq$frequency<-freq$n/nrow(train)*100;\n",
+        "colnames(freq)[2]<-\"count\";\n",
+        "freq"
+      ]
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {
+        "_cell_guid": "9e7069be-64df-9a2d-b17a-f21afe2c25f7"
+      },
+      "source": [
+        "A large number of passengers travelled in third class(more than half)\n",
+        "Change?: Variable has to be converted to factor type"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "_cell_guid": "a2f8a743-dcd4-2d44-e463-54f5da8063ed"
+      },
+      "outputs": [],
+      "source": [
+        "#Sex#\n",
+        "train%>%group_by(Sex)%>%count()->freq;\n",
+        "freq$frequency<-freq$n/nrow(train);\n",
+        "colnames(freq)[2]<-\"count\";\n",
+        "freq"
+      ]
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {
+        "_cell_guid": "9c2feeb3-f6a8-55bd-383c-af02206d75bd"
+      },
+      "source": [
+        "Male passengers were more than female passengers.\n",
+        "Change?:No Change"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "_cell_guid": "b7037b2e-12c7-02a3-b68e-e26d06f1fc01"
+      },
+      "outputs": [],
+      "source": [
+        "#Ticket#\n",
+        "train%>%group_by(Ticket)%>%count()->freq;\n",
+        "freq$frequency<-freq$n/nrow(train);\n",
+        "colnames(freq)[2]<-\"count\";\n",
+        "head(freq)\n",
+        "barplot(freq$count,names.arg=freq$Ticket)\n",
+        "NTicket<-freq[,1:2];\n"
+      ]
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {
+        "_cell_guid": "d8d3680f-447d-8984-821d-492ccab3d4c1"
+      },
+      "source": [
+        "Change?:A new variable has to be created \"Number Of People Accompanied\".As we can see from the above, a couple of tickets count are more than one which means the ticket has been booked for a group of people.The above count is nothing but the number of people travelling under the ticket."
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "_cell_guid": "8011c3ab-869d-750c-c4ff-ff420c4e4e61"
+      },
+      "outputs": [],
+      "source": [
+        "#Cabin#\n",
+        "train%>%group_by(Cabin)%>%count()->freq;\n",
+        "freq$frequency<-freq$n/nrow(train)*100;\n",
+        "colnames(freq)[2]<-\"count\";\n",
+        "head(freq)"
+      ]
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {
+        "_cell_guid": "d2ce724d-d7fc-6350-f69c-4b6ef4c30fbe"
+      },
+      "source": [
+        "More than 70% of this variables record is missing.\n",
+        "Change?:Handle missing records"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "_cell_guid": "83e17d69-6809-6152-fc3c-c4e1ce3713ab"
+      },
+      "outputs": [],
+      "source": [
+        "#Embarked#\n",
+        "train%>%group_by(Embarked)%>%count()->freq;\n",
+        "freq$frequency<-freq$n/nrow(train)*100;\n",
+        "colnames(freq)[2]<-\"count\";\n",
+        "freq"
+      ]
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {
+        "_cell_guid": "7a3373f2-19ca-1ed0-e394-063d55295ee6"
+      },
+      "source": [
+        "Most passenger embarked from the port of Cherbourg.Change?:Handle 2 missing records"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "_cell_guid": "0e7d47e5-45bd-6443-55db-1d2228f5007f"
+      },
+      "outputs": [],
+      "source": [
+        "#Fare#Numeric#\n",
+        "summary(train$Fare)\n",
+        "hist(train$Fare)"
+      ]
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {
+        "_cell_guid": "dd4897ba-3070-d47c-d075-9d8fe2461c11"
+      },
+      "source": [
+        "Since there were lot of passengers travelling in third class tickets, the fares for most of the ticket is also lower.\n",
+        "Change?:Handle Outliers"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "_cell_guid": "65cae3c0-088e-4f40-bea4-55747c2b0b7f"
+      },
+      "outputs": [],
+      "source": [
+        "#Age#Numeric#\n",
+        "summary(train$Age)\n",
+        "hist(train$Age)"
+      ]
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {
+        "_cell_guid": "c13bded6-bafa-522e-0540-46412bb8f076"
+      },
+      "source": [
+        "Most of the passengers are aged between 20-40.Change?:Bin the variable.Handle missing values."
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "_cell_guid": "5549fcfa-d9b2-1890-4592-690b34f74f99"
+      },
+      "outputs": [],
+      "source": [
+        "#Sibsp#\n",
+        "train%>%group_by(SibSp)%>%count()->freq;\n",
+        "freq$frequency<-freq$n/nrow(train)*100;\n",
+        "colnames(freq)[2]<-\"count\";\n",
+        "freq"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "_cell_guid": "be8eccb0-72ee-c256-00e4-a38cae5386de"
+      },
+      "outputs": [],
+      "source": [
+        "#Parch#\n",
+        "train%>%group_by(Parch)%>%count()->freq;\n",
+        "freq$frequency<-freq$n/nrow(train)*100;\n",
+        "colnames(freq)[2]<-\"count\";\n",
+        "freq;"
+      ]
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {
+        "_cell_guid": "f90a6359-eb92-f747-ef9f-181cfa87c3c3"
+      },
+      "source": [
+        "2.2 Bi Variate Analysis\n",
+        "-----------------------"
+      ]
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {
+        "_cell_guid": "ff64c29c-46ed-6e96-7f72-a8784fdd397b"
+      },
+      "source": [
+        "Before we proceed to bi-variate analysis, a new feature \"No of people accompanied\" will be created.Analysis of Target variable \"Survived\" with all other variables"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "_cell_guid": "b0043481-2c18-dbbd-dabe-540412e95ef3"
+      },
+      "outputs": [],
+      "source": [
+        "#Join NTicket and train#\n",
+        "colnames(NTicket)[2]<-\"NAccompanied\"\n",
+        "NTicket$NAccompanied<-NTicket$NAccompanied-1\n",
+        "train<-merge(train,NTicket,by=\"Ticket\",all.x=\"TRUE\")\n",
+        "head(train)"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "_cell_guid": "b807f063-70e3-20ec-7d4e-f57c737da270"
+      },
+      "outputs": [],
+      "source": [
+        "ind<-which(is.na(train$Age))\n",
+        "Age_train<-train[-ind,]\n",
+        "Impute_Age<-train[ind,]"
+      ]
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {
+        "_cell_guid": "bf996ad3-8177-272d-de29-9d481bed1e48"
+      },
+      "source": [
+        "Age.For age the number of missing records is high.Rather than substituting we will impute the missing values using Fare, N Accompanied, P class, Sex, Port Embarked. The concept is fare will be related to age,N Accompanied,Sex,port,P class. Since we know the last four we can use them to predict the age."
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "_cell_guid": "ca6d93d5-4057-f715-756f-474bf072b23b"
+      },
+      "outputs": [],
+      "source": [
+        "age_lm_mod<-lm(Age~Pclass+Sex+Fare+Embarked+NAccompanied,data=Age_train)\n",
+        "Imputed_age<-predict(age_lm_mod,newdata=Impute_Age)\n",
+        "train$Age[ind]<-as.numeric(Imputed_age)"
+      ]
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {
+        "_cell_guid": "94928629-754f-c395-3959-6cc7476f449f"
+      },
+      "source": [
+        "For Cabin the number of missing records is high.We will indicate all the missing records as missing and then use it in the variable."
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "_cell_guid": "5541eee5-b888-7541-b637-f4fbaf1adc95"
+      },
+      "outputs": [],
+      "source": [
+        "ind<-which(is.na(train$Cabin))\n",
+        "levels(train$Cabin)<-c(levels(train$Cabin),\"Missing\")\n",
+        "train$Cabin[ind]<-\"Missing\""
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "_cell_guid": "1fbcafef-ae8b-29fe-a910-a809a81d79dd"
+      },
+      "outputs": [],
+      "source": [
+        "par(mfrow=c(2,2))\n",
+        "dt<-table(train$Survived,train$Pclass)\n",
+        "barplot(dt,xlab=\"Class\",beside=TRUE,col=c(\"red\",\"blue\"),legend=rownames(dt))\n",
+        "text(1.5,100,dt[1,1])\n",
+        "text(2.5,150,dt[2,1])\n",
+        "text(4.5,150,dt[1,2])\n",
+        "text(5.5,150,dt[2,2])\n",
+        "text(7.5,350,dt[1,3])\n",
+        "text(8.5,150,dt[2,3])\n",
+        "dt<-table(train$Survived,train$Sex)\n",
+        "barplot(dt,xlab=\"SEX\",beside=TRUE,col=c(\"red\",\"blue\"),legend=rownames(dt))\n",
+        "text(1.5,100,dt[1,1])\n",
+        "text(2.5,300,dt[2,1])\n",
+        "text(4.5,300,dt[1,2])\n",
+        "text(5.5,130,dt[2,2])\n",
+        "dt<-table(train$Survived,train$Embarked)\n",
+        "barplot(dt,xlab=\"Port\",beside=TRUE,col=c(\"red\",\"blue\"),legend=rownames(dt))"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "_cell_guid": "4fb10943-c13b-44b6-3787-6da431fbc439"
+      },
+      "outputs": [],
+      "source": [
+        "age<-cut(train$Age,breaks=c(0,1,seq(from=5,to=100,by=5)))\n",
+        "barplot(table(train$Survived,age),col=c(\"red\",\"blue\"),legend=rownames(table(train$Survived,age)))\n",
+        "table(train$Survived,is.na(train$Age))"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "_cell_guid": "738af89e-a5fc-1452-f20e-e643ed08c38f"
+      },
+      "outputs": [],
+      "source": [
+        "par(mfrow=c(2,2))\n",
+        "barplot(table(train$Survived,train$NAccompanied),xlab=\"NAccompanied\",col=c(\"red\",\"blue\"),legend=rownames(table(train$Survived,train$NAccompanied)))\n",
+        "barplot(table(train$Survived,train$SibSp),xlab=\"SibSp\",col=c(\"red\",\"blue\"),legend=rownames(table(train$Survived,train$SibSp)))\n",
+        "barplot(table(train$Survived,train$Parch),xlab=\"ParCh\",col=c(\"red\",\"blue\"),legend=rownames(table(train$Survived,train$Parch)))"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "_cell_guid": "4fce71c9-fe74-077e-e565-9f1c2b537ec3"
+      },
+      "outputs": [],
+      "source": [
+        "train%>%select(Fare,Survived)%>%group_by(Survived)%>%summarise(mean(Fare),sd(Fare),min(Fare),max(Fare))"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "_cell_guid": "ea8a56ed-ade1-3bff-d326-b2a5f31965e6"
+      },
+      "outputs": [],
+      "source": [
+        "ind<-which(train$Embarked==\"\")\n",
+        "train[ind,]"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "_cell_guid": "6fac63d4-ea56-7f07-f7ba-3c93eee2e0a6"
+      },
+      "outputs": [],
+      "source": [
+        "train%>%filter(Sex==\"female\",Pclass==\"1\",NAccompanied==1,Fare>=75,Fare<=85)%>%group_by(Embarked)"
+      ]
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {
+        "_cell_guid": "4e755646-2e32-270f-fa95-7c6ac7aeee2d"
+      },
+      "source": [
+        "The entries 11767 & 36947 are very similar to our missing records.The entries 19877 & 36973 & PC 17604 are not similar because the accompanied person is not female/under same class"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "_cell_guid": "c2fd0f65-f7bf-ff91-94d6-2cd0157b475d"
+      },
+      "outputs": [],
+      "source": [
+        "ind<-which(train$Embarked==\"\")\n",
+        "train$Embarked[ind]<-\"C\"\n",
+        "full$Embarked[ind]<-\"C\""
+      ]
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {
+        "_cell_guid": "310cd17c-3f12-9fe2-e3ae-a0d5504720e1"
+      },
+      "source": [
+        "3.Data Cleaning\\Transformation\n",
+        "-------------\n",
+        "\n",
+        "3.1 Handle Missing Values\n",
+        "-------------------------"
+      ]
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {
+        "_cell_guid": "cca18168-225b-0784-b15d-68b08a5bad1c"
+      },
+      "source": [
+        "2.2 Encoding\\Binning variables"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "_cell_guid": "73614ba6-1d36-8485-52a2-68ca4c50819d"
+      },
+      "outputs": [],
+      "source": [
+        "train$Survived<-as.logical(train$Survived)\n",
+        "train$Male<-as.logical(train$Sex==\"male\")\n",
+        "train$FirstClass<-as.logical(train$Pclass==1)\n",
+        "train$ThirdClass<-as.logical(train$Pclass==3)\n",
+        "train$Embarked_C<-as.logical(train$Embarked==\"C\")\n",
+        "train$Embarked_Q<-as.logical(train$Embarked==\"Q\")\n",
+        "train$Age<-cut(as.numeric(train$Age),breaks=c(0,1,seq(from=5,to=100,by=5)))\n",
+        "train_clean<-train[,c(\"Survived\",\"Male\",\"FirstClass\",\"ThirdClass\",\"Embarked_C\",\"Embarked_Q\",\"Age\",\"Cabin\",\"Fare\",\"NAccompanied\",\"Parch\",\"SibSp\")]\n",
+        "head(train_clean)"
+      ]
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {
+        "_cell_guid": "7d854a52-ca36-c14f-92aa-8ba77d9edab2"
+      },
+      "source": [
+        "3.Model\n",
+        "-------\n",
+        "Now we have the cleaned dataset let's split it to a training and validation dataset and apply different type of machine learning models."
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "_cell_guid": "ef96f91c-2952-872b-9d0c-43ed40141792"
+      },
+      "outputs": [],
+      "source": [
+        "#Split Data#\n",
+        "set.seed(100)\n",
+        "ind<-sample(1:nrow(train_clean),0.85*nrow(train_clean))\n",
+        "train_clean<-train_clean[ind,]\n",
+        "valid_clean<-train_clean[-ind,]\n",
+        "train_clean<-train_clean[,]"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "_cell_guid": "3166246c-7028-f83a-351f-3083e0a926f9"
+      },
+      "outputs": [],
+      "source": [
+        "#After running the first model, removing the unsignificant variables#\n",
+        "train_clean<-train_clean[,-8]"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "_cell_guid": "8518bfe3-2074-59c3-cbf9-954080f5bacf"
+      },
+      "outputs": [],
+      "source": [
+        "library(e1071)\n",
+        "library(rpart)\n",
+        "log_model<-glm(Survived~.,data=train_clean,family=binomial(link='logit'))\n",
+        "svm_model<-svm(factor(Survived)~.,data=train_clean,kernel='linear')\n",
+        "dtree_model<-rpart(Survived~.,data=train_clean,method=\"class\")"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "_cell_guid": "3735a3b9-ef9a-7612-6eb1-28da5215b225"
+      },
+      "outputs": [],
+      "source": [
+        "summary(log_model)"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "_cell_guid": "318328b3-30b9-0ca7-b682-de46942a12cc"
+      },
+      "outputs": [],
+      "source": [
+        "#Train with only significant variable#\n",
+        "log_model_sig<-glm(Survived~.,data=train_clean[,-c(5,6,8,9,10)],family=binomial(link='logit'))\n",
+        "summary(log_model_sig)"
+      ]
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {
+        "_cell_guid": "5e6b9b74-263d-e7de-4378-db98da469552"
+      },
+      "source": [
+        "4.Evaluation on Validation set\n",
+        "------------------------------"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "_cell_guid": "e65bd197-b425-dec4-fde2-30999b913ab4"
+      },
+      "outputs": [],
+      "source": [
+        "library(ROCR)\n",
+        "library(gplots)\n",
+        "Predict_lm<-predict(log_model,newdata=valid_clean,type='response')\n",
+        "Predict_svm<-predict(svm_model,newdata=valid_clean)\n",
+        "Predict_dt<-predict(dtree_model,newdata=valid_clean)\n",
+        "Predict_lm<-ifelse(Predict_lm>0.5,TRUE,FALSE)\n",
+        "Predic_svm<-as.logical(Predict_svm)\n",
+        "Predict_dtree<-ifelse(Predict_dt[,2]>0.5,TRUE,FALSE)\n",
+        "Predict_lm_sig<-predict(log_model_sig,newdata=valid_clean,type='response')\n",
+        "Predict_lm_sig<-ifelse(Predict_lm_sig>0.5,TRUE,FALSE)"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "_cell_guid": "5fb47e6c-c4ae-d568-7347-8527eb36e766"
+      },
+      "outputs": [],
+      "source": [
+        "misClasificError<-mean(Predict_dtree != valid_clean$Survived)\n",
+        "print(paste('Accuracy Dtree',1-misClasificError))\n",
+        "misClasificError<-mean(Predict_svm != valid_clean$Survived)\n",
+        "print(paste('Accuracy SVM',1-misClasificError))\n",
+        "misClasificError<-mean(Predict_lm != valid_clean$Survived)\n",
+        "print(paste('Accuracy Logit',1-misClasificError))\n",
+        "misClasificError<-mean(Predict_lm_sig!= valid_clean$Survived)\n",
+        "print(paste('Accuracy Logit Sig',1-misClasificError))"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "_cell_guid": "489440f5-aec0-da7d-7e55-c6b66b048de5"
+      },
+      "outputs": [],
+      "source": [
+        "par(mfrow=c(2,2))\n",
+        "Predict_lm<-predict(log_model,newdata=valid_clean,type='response')\n",
+        "Predict_svm<-as.numeric(predict(svm_model,newdata=valid_clean))\n",
+        "Predict_dtree<-predict(dtree_model,newdata=valid_clean)[,2]\n",
+        "Predict_lm_sig<-predict(log_model_sig,newdata=valid_clean,type='response')\n",
+        "pr_dt <- prediction(Predict_dtree, valid_clean$Survived)\n",
+        "prf_dt <- performance(pr_dt, measure = \"tpr\", x.measure = \"fpr\")\n",
+        "plot(prf_dt)\n",
+        "pr_svm <- prediction(Predict_svm, valid_clean$Survived)\n",
+        "prf_svm <- performance(pr_svm, measure = \"tpr\", x.measure = \"fpr\")\n",
+        "plot(prf_svm)\n",
+        "pr_lm <- prediction(Predict_lm, valid_clean$Survived)\n",
+        "prf_lm <- performance(pr_lm , measure = \"tpr\", x.measure = \"fpr\")\n",
+        "plot(prf_lm)\n",
+        "pr_lm_sig <- prediction(Predict_lm_sig, valid_clean$Survived)\n",
+        "prf_lm_sig <- performance(pr_lm_sig , measure = \"tpr\", x.measure = \"fpr\")\n",
+        "plot(prf_lm_sig)\n",
+        "\n",
+        "\n",
+        "auc_dt <- performance(pr_dt, measure = \"auc\")\n",
+        "auc_dt <- auc_dt@y.values[[1]]\n",
+        "paste(\"AUC DT: \",auc_dt)\n",
+        "auc_svm <- performance(pr_svm, measure = \"auc\")\n",
+        "auc_svm <- auc_svm@y.values[[1]]\n",
+        "paste(\"AUC SVM: \",auc_svm)\n",
+        "auc_lm <- performance(pr_lm, measure = \"auc\")\n",
+        "auc_lm <- auc_lm@y.values[[1]]\n",
+        "paste(\"AUC LM: \",auc_lm)\n",
+        "auc_lm <- performance(pr_lm_sig, measure = \"auc\")\n",
+        "auc_lm <- auc_lm@y.values[[1]]\n",
+        "paste(\"AUC LM: \",auc_lm)"
+      ]
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {
+        "_cell_guid": "cef8ed2d-089d-c094-0a4a-6f88c24b789b"
+      },
+      "source": [
+        "Adjust Threshold for better accuracy in log model"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "_cell_guid": "df604cfc-d2de-56e4-5668-a74bd4fd4bba"
+      },
+      "outputs": [],
+      "source": [
+        "Predict_lm_sig<-predict(log_model_sig,newdata=valid_clean,type='response')\n",
+        "Predict_lm_sig<-ifelse(Predict_lm_sig>0.55,TRUE,FALSE)\n",
+        "misClasificError<-mean(Predict_lm_sig!= valid_clean$Survived)\n",
+        "print(paste('Accuracy Logit Sig',1-misClasificError))"
+      ]
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {
+        "_cell_guid": "ec025782-4559-717e-01b0-3955307ef3c0"
+      },
+      "source": [
+        "5.Test Set Result & Conclusion\n",
+        "------------------------------\n",
+        "\n",
+        "Both Decision Tree and Logistic regression performed well in the validation set.Now the test dataset will be downloaded and performance against test dataset will be observed."
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "_cell_guid": "f04bcb48-e1c6-2511-ddcd-972beae3e30b"
+      },
+      "outputs": [],
+      "source": [
+        "#Load Test Set#\n",
+        "test<-read.csv(\"../input/test.csv\");\n",
+        "summary(test)"
+      ]
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {
+        "_cell_guid": "57d4e1e3-fc67-6e76-e9de-55492e4519d5"
+      },
+      "source": [
+        "The test dataset too has to be cleaned.The procedures applied for training dataset will be repeated for the test dataset. In order to do that the test set was combined with the training dataset in the beginning. Nowtransformation which were done in training set will also be done to the test dataset."
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "_cell_guid": "cb2150f5-5098-da33-73fd-e561e0f448d1"
+      },
+      "outputs": [],
+      "source": [
+        "#missing value#\n",
+        "ind<-which(is.na(full$Fare))\n",
+        "full[ind,]\n",
+        "full[-ind,]%>%filter(Pclass==3,Sex==\"male\",Age>=30,Embarked==\"S\")%>%summarise(mean(Fare))\n",
+        "full$Fare[ind]<-11.4508"
+      ]
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {
+        "_cell_guid": "8d8ff46a-c19b-63cb-0136-ddc1c4c0d660"
+      },
+      "source": [
+        "Variable transformation for test dataset\n",
+        "Missing Value in test dataset : Fare\n",
+        "The missing value in test Fare will be replaced by the average Fare for male in third class with Age >30(Refer to section 5)"
+      ]
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {
+        "_cell_guid": "bd729b0d-da91-b1a2-aca0-113770af2e84"
+      },
+      "source": [
+        "The missing value in test Fare will be replaced by the average Fare for male in third class with Age >30."
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "_cell_guid": "865faf5b-7e08-a374-8a1f-147d5fd6642e"
+      },
+      "outputs": [],
+      "source": [
+        "#variable transformation for full set#\n",
+        "full%>%group_by(Ticket)%>%count()->freq;\n",
+        "freq$frequency<-freq$n/nrow(full);\n",
+        "colnames(freq)[2]<-\"count\";\n",
+        "NTicket<-freq[,1:2];\n",
+        "colnames(NTicket)[2]<-\"NAccompanied\"\n",
+        "NTicket$NAccompanied<-NTicket$NAccompanied-1\n",
+        "full<-merge(full,NTicket,by=\"Ticket\",all.x=\"TRUE\")"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "_cell_guid": "6c9f03c3-7d93-55a0-bdfe-38fb036a1b10"
+      },
+      "outputs": [],
+      "source": [
+        "ind<-which(is.na(full$Age))\n",
+        "Age_full<-full[-ind,]\n",
+        "Impute_Age<-full[ind,]\n",
+        "age_lm_mod<-lm(Age~Pclass+Sex+Fare+Embarked+NAccompanied,data=Age_full)\n",
+        "Imputed_age<-predict(age_lm_mod,newdata=Impute_Age)\n",
+        "full$Age[ind]<-as.numeric(Imputed_age)"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "_cell_guid": "6c3f123b-deb4-47a8-85e9-452bc5d00383"
+      },
+      "outputs": [],
+      "source": [
+        "full$Male<-as.logical(full$Sex==\"male\")\n",
+        "full$FirstClass<-as.logical(full$Pclass==1)\n",
+        "full$ThirdClass<-as.logical(full$Pclass==3)\n",
+        "full$Embarked_C<-as.logical(full$Embarked==\"C\")\n",
+        "full$Embarked_Q<-as.logical(full$Embarked==\"Q\")\n",
+        "full$Age<-cut(as.numeric(full$Age),breaks=c(0,1,seq(from=5,to=100,by=5)))\n",
+        "full_clean<-full[,c(\"Male\",\"FirstClass\",\"ThirdClass\",\"Embarked_C\",\"Embarked_Q\",\"Age\",\"Fare\",\"NAccompanied\",\"Parch\",\"SibSp\")]\n",
+        "head(full_clean)"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "_cell_guid": "b361c3be-d71c-66a6-1301-63e14db97f7e"
+      },
+      "outputs": [],
+      "source": [
+        "test_clean<-full_clean[-(1:891),]\n",
+        "str(test_clean)"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "_cell_guid": "10555184-6912-4913-e86a-57cd2781dcbd"
+      },
+      "outputs": [],
+      "source": [
+        "valid_clean<-valid_clean[,-8]"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "_cell_guid": "7d120984-5443-ef46-62f4-8aa888a02da6"
+      },
+      "outputs": [],
+      "source": [
+        "#for dataset train it on full dataset#\n",
+        "log_model<-glm(Survived~.,data=rbind(train_clean,valid_clean),family=binomial(link='logit'))\n",
+        "svm_model<-svm(factor(Survived)~.,data=rbind(train_clean,valid_clean),kernel='linear')\n",
+        "dtree_model<-rpart(Survived~.,data=rbind(train_clean,valid_clean),method=\"class\")\n",
+        "Predict_lm<-predict(log_model,newdata=test_clean,type='response')\n",
+        "Predict_svm<-predict(svm_model,newdata=test_clean)\n",
+        "Predict_dt<-predict(dtree_model,newdata=test_clean)\n"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "_cell_guid": "a538738d-9cb6-7d90-804e-8cda3df8fe03"
+      },
+      "outputs": [],
+      "source": [
+        "output<-cbind(test$PassengerId,Predict_lm,Predic_svm,Predict_dt[,2])\n",
+        "path <- \"../data/\";\n",
+        "kaggle <- F;\n",
+        "if(!dir.exists(path)) {\n",
+        "        kaggle <- T;\n",
+        "\tpath <- \"../input/\"; # changing path to Kaggle's environment\n",
+        "}\n",
+        "\n",
+        "if(kaggle) {\n",
+        "\twrite.csv(output, \"submission.csv\", row.names =F, quote=F);\n",
+        "} else {\n",
+        "\twrite.csv(output, \"../data/submission.csv\", row.names =F, quote=F);\n",
+        "}"
+      ]
+    }
+  ],
+  "metadata": {
+    "_change_revision": 0,
+    "_is_fork": false,
+    "kernelspec": {
+      "display_name": "R",
+      "language": "R",
+      "name": "ir"
+    },
+    "language_info": {
+      "codemirror_mode": "r",
+      "file_extension": ".r",
+      "mimetype": "text/x-r-source",
+      "name": "R",
+      "pygments_lexer": "r",
+      "version": "3.4.0"
+    }
+  },
+  "nbformat": 4,
+  "nbformat_minor": 0
+}

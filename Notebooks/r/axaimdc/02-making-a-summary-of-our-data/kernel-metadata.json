@@ -1,0 +1,17 @@
+{
+  "language": "r",
+  "code_file": "02-making-a-summary-of-our-data.irnb",
+  "kernel_type": "notebook",
+  "id_no": 305997,
+  "dataset_sources": [],
+  "competition_sources": [
+    "titanic"
+  ],
+  "keywords": [],
+  "enable_gpu": false,
+  "id": "axaimdc/02-making-a-summary-of-our-data",
+  "enable_internet": false,
+  "title": "02 Making a Summary of Our Data",
+  "kernel_sources": [],
+  "is_private": false
+}

@@ -1,0 +1,17 @@
+{
+  "code_file": "titanic.ipynb",
+  "id_no": 402252,
+  "kernel_sources": [],
+  "title": "Titanic",
+  "language": "python",
+  "kernel_type": "notebook",
+  "dataset_sources": [],
+  "enable_internet": false,
+  "enable_gpu": false,
+  "keywords": [],
+  "is_private": false,
+  "competition_sources": [
+    "titanic"
+  ],
+  "id": "oceanzy/titanic"
+}

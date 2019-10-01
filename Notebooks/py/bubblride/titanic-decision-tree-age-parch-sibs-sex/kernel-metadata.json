@@ -1,0 +1,17 @@
+{
+  "kernel_sources": [],
+  "language": "python",
+  "id": "bubblride/titanic-decision-tree-age-parch-sibs-sex",
+  "enable_internet": false,
+  "dataset_sources": [],
+  "id_no": 1900006,
+  "is_private": false,
+  "competition_sources": [
+    "titanic"
+  ],
+  "enable_gpu": false,
+  "keywords": [],
+  "kernel_type": "notebook",
+  "code_file": "titanic-decision-tree-age-parch-sibs-sex.ipynb",
+  "title": "titanic, decision tree, Age + Parch + SibS + Sex"
+}

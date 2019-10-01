@@ -1,0 +1,17 @@
+{
+  "enable_internet": false,
+  "id": "jacksapper/xx-sampleanalysis-xx",
+  "language": "python",
+  "keywords": [],
+  "id_no": 448589,
+  "code_file": "xx-sampleanalysis-xx.ipynb",
+  "kernel_type": "notebook",
+  "is_private": false,
+  "enable_gpu": false,
+  "kernel_sources": [],
+  "dataset_sources": [],
+  "title": "Xx_SampleAnalysis_xX",
+  "competition_sources": [
+    "titanic"
+  ]
+}

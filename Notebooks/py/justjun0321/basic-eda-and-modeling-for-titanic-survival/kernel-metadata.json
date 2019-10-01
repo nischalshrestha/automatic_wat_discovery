@@ -1,0 +1,22 @@
+{
+  "kernel_sources": [],
+  "is_private": false,
+  "enable_gpu": false,
+  "code_file": "basic-eda-and-modeling-for-titanic-survival.ipynb",
+  "title": "Basic EDA and modeling for Titanic Survival",
+  "dataset_sources": [],
+  "kernel_type": "notebook",
+  "competition_sources": [
+    "titanic"
+  ],
+  "id_no": 551980,
+  "keywords": [
+    "tutorial",
+    "eda",
+    "data visualization",
+    "feature engineering"
+  ],
+  "id": "justjun0321/basic-eda-and-modeling-for-titanic-survival",
+  "enable_internet": false,
+  "language": "python"
+}

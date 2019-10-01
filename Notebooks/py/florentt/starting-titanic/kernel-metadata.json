@@ -1,0 +1,17 @@
+{
+  "competition_sources": [
+    "titanic"
+  ],
+  "id_no": 546746,
+  "language": "python",
+  "enable_gpu": false,
+  "kernel_type": "notebook",
+  "dataset_sources": [],
+  "id": "florentt/starting-titanic",
+  "enable_internet": false,
+  "code_file": "starting-titanic.ipynb",
+  "title": "Starting : Titanic",
+  "is_private": false,
+  "kernel_sources": [],
+  "keywords": []
+}

@@ -1,0 +1,21 @@
+{
+  "code_file": "beginner-using-decision-tree-classifier.ipynb",
+  "kernel_sources": [],
+  "keywords": [
+    "beginner",
+    "classification",
+    "binary classification"
+  ],
+  "enable_gpu": false,
+  "is_private": false,
+  "enable_internet": false,
+  "kernel_type": "notebook",
+  "dataset_sources": [],
+  "competition_sources": [
+    "titanic"
+  ],
+  "id": "devasu/beginner-using-decision-tree-classifier",
+  "language": "python",
+  "title": "['Beginner']Using Decision Tree Classifier",
+  "id_no": 1495409
+}

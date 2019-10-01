@@ -1,0 +1,17 @@
+{
+  "kernel_sources": [],
+  "id_no": 100396,
+  "enable_internet": false,
+  "code_file": "a-journey-through-titanic.irnb",
+  "keywords": [],
+  "dataset_sources": [],
+  "enable_gpu": false,
+  "id": "r0zeabi/a-journey-through-titanic",
+  "language": "r",
+  "kernel_type": "notebook",
+  "title": "A Journey through Titanic",
+  "is_private": false,
+  "competition_sources": [
+    "titanic"
+  ]
+}

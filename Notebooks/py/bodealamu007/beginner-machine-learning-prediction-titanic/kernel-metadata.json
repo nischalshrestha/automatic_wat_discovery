@@ -1,0 +1,21 @@
+{
+  "id": "bodealamu007/beginner-machine-learning-prediction-titanic",
+  "id_no": 545442,
+  "title": "Beginner : Machine learning prediction Titanic",
+  "code_file": "beginner-machine-learning-prediction-titanic.ipynb",
+  "language": "python",
+  "kernel_type": "notebook",
+  "is_private": false,
+  "enable_gpu": false,
+  "enable_internet": false,
+  "keywords": [
+    "beginner",
+    "eda",
+    "data visualization"
+  ],
+  "dataset_sources": [],
+  "kernel_sources": [],
+  "competition_sources": [
+    "titanic"
+  ]
+}

@@ -1,0 +1,17 @@
+{
+  "language": "python",
+  "id": "dennise/sklearn-runthrough-everybody-need-a-titanic-kernel",
+  "kernel_sources": [],
+  "id_no": 584021,
+  "code_file": "sklearn-runthrough-everybody-need-a-titanic-kernel.ipynb",
+  "keywords": [],
+  "is_private": false,
+  "dataset_sources": [],
+  "competition_sources": [
+    "titanic"
+  ],
+  "enable_gpu": false,
+  "title": "Everyone needs a titanic kernel...",
+  "kernel_type": "notebook",
+  "enable_internet": false
+}

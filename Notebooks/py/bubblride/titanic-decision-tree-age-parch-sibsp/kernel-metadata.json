@@ -1,0 +1,17 @@
+{
+  "is_private": false,
+  "competition_sources": [
+    "titanic"
+  ],
+  "kernel_type": "notebook",
+  "id": "bubblride/titanic-decision-tree-age-parch-sibsp",
+  "enable_internet": false,
+  "title": "titanic, decision tree, Age + Parch + SibSp",
+  "keywords": [],
+  "language": "python",
+  "id_no": 1899886,
+  "code_file": "titanic-decision-tree-age-parch-sibsp.ipynb",
+  "kernel_sources": [],
+  "enable_gpu": false,
+  "dataset_sources": []
+}

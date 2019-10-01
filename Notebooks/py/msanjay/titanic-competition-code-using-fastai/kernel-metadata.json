@@ -1,0 +1,17 @@
+{
+  "competition_sources": [
+    "titanic"
+  ],
+  "enable_internet": false,
+  "id": "msanjay/titanic-competition-code-using-fastai",
+  "dataset_sources": [],
+  "code_file": "titanic-competition-code-using-fastai.ipynb",
+  "kernel_type": "notebook",
+  "enable_gpu": false,
+  "language": "python",
+  "keywords": [],
+  "is_private": false,
+  "title": "Titanic Competition-code Using Fastai",
+  "kernel_sources": [],
+  "id_no": 2023686
+}

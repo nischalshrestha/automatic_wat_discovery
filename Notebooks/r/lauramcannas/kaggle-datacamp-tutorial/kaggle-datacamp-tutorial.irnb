@@ -1,0 +1,103 @@
+{
+  "cells": [
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "_cell_guid": "5e6384f5-686a-1c14-7c05-74e7e8d0909e"
+      },
+      "outputs": [],
+      "source": [
+        "# This R environment comes with all of CRAN preinstalled, as well as many other helpful packages\n",
+        "# The environment is defined by the kaggle/rstats docker image: https://github.com/kaggle/docker-rstats\n",
+        "# For example, here's several helpful packages to load in \n",
+        "\n",
+        "library(ggplot2) # Data visualization\n",
+        "library(readr) # CSV file I/O, e.g. the read_csv function\n",
+        "\n",
+        "# Input data files are available in the \"../input/\" directory.\n",
+        "# For example, running this (by clicking run or pressing Shift+Enter) will list the files in the input directory\n",
+        "\n",
+        "system(\"ls ../input\")\n",
+        "# Any results you write to the current directory are saved as output."
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "_cell_guid": "fe453b57-52cf-df6d-4f24-9844da38cbe2"
+      },
+      "outputs": [],
+      "source": [
+        "#load train and test dataset\n",
+        "train <- read_csv (\"../input/train.csv\")\n",
+        "test <- read_csv (\"../input/test.csv\")\n"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "_cell_guid": "d92d7726-1d20-13c0-a72c-91b3bba32a35"
+      },
+      "outputs": [],
+      "source": [
+        "# understanding data\n",
+        "summary(train)\n",
+        "\n"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "_cell_guid": "ce4890bb-5b2c-0446-5fec-b81406586a57"
+      },
+      "outputs": [],
+      "source": [
+        "# decision tree as it is proposed in the Kaggle DataCamp tutorial\n",
+        "library(rpart)\n",
+        "#library(rattle)\n",
+        "\n",
+        "my_tree <- rpart(Survived ~ Pclass + Sex + Age + SibSp + Parch + Fare + Embarked, data = train, method = \"class\")\n",
+        "#plot(my_tree)\n",
+        "#fancyRpartPlot(my_tree)\n",
+        "\n",
+        "my_prediction <- predict(my_tree, test, type = \"class\")\n",
+        "my_solution <- data.frame(PassengerId = test$PassengerId, Survived = my_prediction)\n",
+        "#write.csv(my_solution, file = \"my_solution.csv\", row.names = FALSE)\n"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "_cell_guid": "08f0b748-a3ed-27c8-8ee5-82a83db427a5"
+      },
+      "outputs": [],
+      "source": [
+        "write.csv(my_solution, file = \"my_solution.csv\", row.names = FALSE)"
+      ]
+    }
+  ],
+  "metadata": {
+    "_change_revision": 0,
+    "_is_fork": false,
+    "kernelspec": {
+      "display_name": "R",
+      "language": "R",
+      "name": "ir"
+    },
+    "language_info": {
+      "codemirror_mode": "r",
+      "file_extension": ".r",
+      "mimetype": "text/x-r-source",
+      "name": "R",
+      "pygments_lexer": "r",
+      "version": "3.3.3"
+    }
+  },
+  "nbformat": 4,
+  "nbformat_minor": 0
+}

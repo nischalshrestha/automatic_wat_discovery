@@ -1,0 +1,17 @@
+{
+  "title": "Titanic Random Forest Starter",
+  "competition_sources": [
+    "titanic"
+  ],
+  "dataset_sources": [],
+  "keywords": [],
+  "language": "python",
+  "is_private": false,
+  "id": "yuchenhu/titanic-random-forest-starter",
+  "kernel_sources": [],
+  "enable_gpu": false,
+  "id_no": 310290,
+  "enable_internet": false,
+  "code_file": "titanic-random-forest-starter.ipynb",
+  "kernel_type": "notebook"
+}

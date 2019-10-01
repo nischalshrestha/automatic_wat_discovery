@@ -1,0 +1,17 @@
+{
+  "kernel_sources": [],
+  "dataset_sources": [],
+  "enable_gpu": false,
+  "is_private": false,
+  "keywords": [],
+  "kernel_type": "notebook",
+  "id_no": 1559793,
+  "id": "clevertrevor/titanic-notebook",
+  "code_file": "titanic-notebook.ipynb",
+  "enable_internet": false,
+  "title": "Titanic Notebook",
+  "language": "python",
+  "competition_sources": [
+    "titanic"
+  ]
+}

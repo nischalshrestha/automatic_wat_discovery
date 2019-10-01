@@ -1,0 +1,17 @@
+{
+  "dataset_sources": [],
+  "title": "Over 0.8 with VotingClassifier",
+  "competition_sources": [
+    "titanic"
+  ],
+  "keywords": [],
+  "is_private": false,
+  "language": "r",
+  "enable_internet": false,
+  "code_file": "over-0-8-with-votingclassifier.irnb",
+  "kernel_type": "notebook",
+  "enable_gpu": false,
+  "kernel_sources": [],
+  "id": "nkrishnan/over-0-8-with-votingclassifier",
+  "id_no": 287648
+}

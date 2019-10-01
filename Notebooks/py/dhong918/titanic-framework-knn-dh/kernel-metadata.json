@@ -1,0 +1,17 @@
+{
+  "dataset_sources": [],
+  "kernel_type": "notebook",
+  "competition_sources": [
+    "titanic"
+  ],
+  "kernel_sources": [],
+  "enable_internet": false,
+  "enable_gpu": false,
+  "code_file": "titanic-framework-knn-dh.ipynb",
+  "keywords": [],
+  "title": " Titanic Framework KNN DH",
+  "is_private": false,
+  "language": "python",
+  "id_no": 1522226,
+  "id": "dhong918/titanic-framework-knn-dh"
+}

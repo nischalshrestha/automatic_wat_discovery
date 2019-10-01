@@ -1,0 +1,17 @@
+{
+  "dataset_sources": [],
+  "title": "Titanic\u30bf\u30a4\u30bf\u30cb\u30c3\u30af\u53f7\u306e\u751f\u5b58\u78ba\u7387\uff08kaggle\u521d\u30c1\u30e3\u30ec\u30f3\u30b8\uff09",
+  "id_no": 246426,
+  "id": "junjunjun/titanic-kaggle",
+  "enable_internet": false,
+  "competition_sources": [
+    "titanic"
+  ],
+  "keywords": [],
+  "kernel_type": "notebook",
+  "code_file": "titanic-kaggle.irnb",
+  "language": "r",
+  "kernel_sources": [],
+  "is_private": false,
+  "enable_gpu": false
+}

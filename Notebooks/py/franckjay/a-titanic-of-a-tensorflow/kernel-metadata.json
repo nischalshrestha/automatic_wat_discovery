@@ -1,0 +1,17 @@
+{
+  "is_private": false,
+  "kernel_type": "notebook",
+  "language": "python",
+  "enable_internet": false,
+  "id_no": 216005,
+  "dataset_sources": [],
+  "id": "franckjay/a-titanic-of-a-tensorflow",
+  "competition_sources": [
+    "titanic"
+  ],
+  "keywords": [],
+  "kernel_sources": [],
+  "enable_gpu": false,
+  "code_file": "a-titanic-of-a-tensorflow.ipynb",
+  "title": "A Titanic of a TensorFlow"
+}

@@ -1,0 +1,17 @@
+{
+  "competition_sources": [
+    "titanic"
+  ],
+  "id_no": 2127855,
+  "title": "Titanic - Data Preprocessing and Visualization",
+  "enable_gpu": true,
+  "id": "nirajtiwary/titanic-data-preprocessing-and-visualization",
+  "kernel_type": "notebook",
+  "kernel_sources": [],
+  "language": "python",
+  "keywords": [],
+  "enable_internet": false,
+  "dataset_sources": [],
+  "code_file": "titanic-data-preprocessing-and-visualization.ipynb",
+  "is_private": false
+}

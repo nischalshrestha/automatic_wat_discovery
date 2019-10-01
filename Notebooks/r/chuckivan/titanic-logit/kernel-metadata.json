@@ -1,0 +1,17 @@
+{
+  "competition_sources": [
+    "titanic"
+  ],
+  "language": "r",
+  "keywords": [],
+  "kernel_sources": [],
+  "dataset_sources": [],
+  "code_file": "titanic-logit.irnb",
+  "enable_gpu": false,
+  "title": "Titanic (Logit)",
+  "id": "chuckivan/titanic-logit",
+  "id_no": 1239528,
+  "kernel_type": "notebook",
+  "enable_internet": false,
+  "is_private": false
+}

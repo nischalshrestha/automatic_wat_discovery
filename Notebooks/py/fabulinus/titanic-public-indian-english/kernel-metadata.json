@@ -1,0 +1,21 @@
+{
+  "id_no": 887483,
+  "language": "python",
+  "title": "Titanic Public - Indian English ",
+  "dataset_sources": [],
+  "id": "fabulinus/titanic-public-indian-english",
+  "keywords": [
+    "tutorial",
+    "beginner",
+    "data cleaning"
+  ],
+  "enable_internet": false,
+  "competition_sources": [
+    "titanic"
+  ],
+  "kernel_sources": [],
+  "is_private": false,
+  "enable_gpu": false,
+  "kernel_type": "notebook",
+  "code_file": "titanic-public-indian-english.ipynb"
+}

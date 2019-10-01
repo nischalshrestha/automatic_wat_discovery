@@ -1,0 +1,80 @@
+{
+  "cells": [
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "_cell_guid": "9ed4226c-da98-3442-0160-c55bdb75f2cd"
+      },
+      "outputs": [],
+      "source": [
+        "# This R environment comes with all of CRAN preinstalled, as well as many other helpful packages\n",
+        "# The environment is defined by the kaggle/rstats docker image: https://github.com/kaggle/docker-rstats\n",
+        "# For example, here's several helpful packages to load in \n",
+        "\n",
+        "library(ggplot2) # Data visualization\n",
+        "library(readr) # CSV file I/O, e.g. the read_csv function\n",
+        "\n",
+        "# Input data files are available in the \"../input/\" directory.\n",
+        "# For example, running this (by clicking run or pressing Shift+Enter) will list the files in the input directory\n",
+        "\n",
+        "system(\"ls ../input\")\n",
+        "\n",
+        "# Any results you write to the current directory are saved as output."
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "_cell_guid": "f18575f5-6a7c-d218-a957-78d89cba0930"
+      },
+      "outputs": [],
+      "source": [
+        "# Load packages\n",
+        "library('ggplot2') # visualization\n",
+        "library('ggthemes') # visualization\n",
+        "library('scales') # visualization\n",
+        "library('dplyr') # data manipulation\n",
+        "library('mice') # imputation\n",
+        "library('randomForest') # classification algorithm"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "_cell_guid": "f30d1d21-2b3a-7732-33cf-abd4e8172c65"
+      },
+      "outputs": [],
+      "source": [
+        "train <- read.csv('../input/train.csv', stringsAsFactors = F)\n",
+        "test  <- read.csv('../input/test.csv', stringsAsFactors = F)\n",
+        "\n",
+        "full  <- bind_rows(train, test) # bind training & test data\n",
+        "\n",
+        "# check data\n",
+        "str(full)"
+      ]
+    }
+  ],
+  "metadata": {
+    "_change_revision": 0,
+    "_is_fork": false,
+    "kernelspec": {
+      "display_name": "R",
+      "language": "R",
+      "name": "ir"
+    },
+    "language_info": {
+      "codemirror_mode": "r",
+      "file_extension": ".r",
+      "mimetype": "text/x-r-source",
+      "name": "R",
+      "pygments_lexer": "r",
+      "version": "3.3.2"
+    }
+  },
+  "nbformat": 4,
+  "nbformat_minor": 0
+}

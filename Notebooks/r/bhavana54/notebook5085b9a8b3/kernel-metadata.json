@@ -1,0 +1,17 @@
+{
+  "id_no": 210569,
+  "kernel_type": "notebook",
+  "language": "python",
+  "is_private": false,
+  "title": "Notebook5085b9a8b3",
+  "competition_sources": [
+    "titanic"
+  ],
+  "id": "bhavana54/notebook5085b9a8b3",
+  "enable_gpu": false,
+  "dataset_sources": [],
+  "code_file": "notebook5085b9a8b3.ipynb",
+  "enable_internet": false,
+  "keywords": [],
+  "kernel_sources": []
+}

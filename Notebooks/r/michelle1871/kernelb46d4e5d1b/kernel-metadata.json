@@ -1,0 +1,17 @@
+{
+  "id_no": 2041720,
+  "title": "kernelb46d4e5d1b",
+  "id": "michelle1871/kernelb46d4e5d1b",
+  "is_private": false,
+  "dataset_sources": [],
+  "enable_internet": false,
+  "competition_sources": [
+    "titanic"
+  ],
+  "enable_gpu": false,
+  "language": "r",
+  "kernel_sources": [],
+  "code_file": "kernelb46d4e5d1b.irnb",
+  "keywords": [],
+  "kernel_type": "notebook"
+}

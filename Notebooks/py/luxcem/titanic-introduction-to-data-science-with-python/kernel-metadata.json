@@ -1,0 +1,22 @@
+{
+  "enable_gpu": false,
+  "title": "Titanic: Introduction to data science with python",
+  "enable_internet": false,
+  "kernel_sources": [],
+  "id": "luxcem/titanic-introduction-to-data-science-with-python",
+  "code_file": "titanic-introduction-to-data-science-with-python.ipynb",
+  "language": "python",
+  "dataset_sources": [],
+  "kernel_type": "notebook",
+  "competition_sources": [
+    "titanic"
+  ],
+  "id_no": 559677,
+  "is_private": false,
+  "keywords": [
+    "beginner",
+    "data visualization",
+    "feature engineering",
+    "gradient boosting"
+  ]
+}

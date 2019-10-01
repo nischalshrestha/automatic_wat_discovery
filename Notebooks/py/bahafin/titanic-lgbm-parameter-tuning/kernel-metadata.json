@@ -1,0 +1,19 @@
+{
+  "code_file": "titanic-lgbm-parameter-tuning.ipynb",
+  "id": "bahafin/titanic-lgbm-parameter-tuning",
+  "is_private": false,
+  "enable_internet": false,
+  "id_no": 1007734,
+  "kernel_sources": [],
+  "dataset_sources": [],
+  "kernel_type": "notebook",
+  "competition_sources": [
+    "titanic"
+  ],
+  "language": "python",
+  "title": "Titanic LGBM & Parameter Tuning ",
+  "keywords": [
+    "binary classification"
+  ],
+  "enable_gpu": false
+}

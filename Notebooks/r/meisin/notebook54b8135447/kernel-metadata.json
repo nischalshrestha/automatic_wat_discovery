@@ -1,0 +1,17 @@
+{
+  "enable_internet": false,
+  "id_no": 112406,
+  "code_file": "notebook54b8135447.irnb",
+  "language": "r",
+  "id": "meisin/notebook54b8135447",
+  "enable_gpu": false,
+  "keywords": [],
+  "is_private": false,
+  "kernel_type": "notebook",
+  "title": "Notebook54b8135447",
+  "kernel_sources": [],
+  "competition_sources": [
+    "titanic"
+  ],
+  "dataset_sources": []
+}

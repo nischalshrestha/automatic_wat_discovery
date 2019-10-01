@@ -1,0 +1,17 @@
+{
+  "kernel_sources": [],
+  "is_private": false,
+  "competition_sources": [
+    "titanic"
+  ],
+  "id": "kmmaller/fork-of-titanic-survival-predictions",
+  "language": "python",
+  "dataset_sources": [],
+  "title": "Fork of Titanic Survival Predictions",
+  "code_file": "fork-of-titanic-survival-predictions.ipynb",
+  "keywords": [],
+  "id_no": 178921,
+  "enable_internet": false,
+  "enable_gpu": false,
+  "kernel_type": "notebook"
+}

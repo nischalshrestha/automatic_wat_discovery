@@ -1,0 +1,17 @@
+{
+  "is_private": false,
+  "title": "Titanic Models",
+  "kernel_sources": [],
+  "id": "beatnick/titanic-models",
+  "enable_internet": false,
+  "code_file": "titanic-models.irnb",
+  "language": "r",
+  "enable_gpu": false,
+  "id_no": 284305,
+  "kernel_type": "notebook",
+  "competition_sources": [
+    "titanic"
+  ],
+  "keywords": [],
+  "dataset_sources": []
+}

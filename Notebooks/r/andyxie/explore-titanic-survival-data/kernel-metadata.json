@@ -1,0 +1,17 @@
+{
+  "language": "r",
+  "kernel_type": "notebook",
+  "is_private": false,
+  "id_no": 397630,
+  "enable_gpu": false,
+  "code_file": "explore-titanic-survival-data.irnb",
+  "dataset_sources": [],
+  "kernel_sources": [],
+  "competition_sources": [
+    "titanic"
+  ],
+  "keywords": [],
+  "id": "andyxie/explore-titanic-survival-data",
+  "title": "Explore Titanic Survival Data",
+  "enable_internet": false
+}

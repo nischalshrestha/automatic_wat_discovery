@@ -1,0 +1,17 @@
+{
+  "enable_gpu": false,
+  "dataset_sources": [],
+  "is_private": false,
+  "competition_sources": [
+    "titanic"
+  ],
+  "id_no": 223939,
+  "id": "lululavignel/fork-of-notebook75bccea98a",
+  "language": "r",
+  "kernel_type": "notebook",
+  "enable_internet": false,
+  "title": "Fork of Notebook75bccea98a",
+  "keywords": [],
+  "code_file": "fork-of-notebook75bccea98a.irnb",
+  "kernel_sources": []
+}

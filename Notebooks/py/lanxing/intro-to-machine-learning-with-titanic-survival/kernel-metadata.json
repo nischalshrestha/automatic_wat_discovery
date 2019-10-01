@@ -1,0 +1,17 @@
+{
+  "id_no": 300145,
+  "competition_sources": [
+    "titanic"
+  ],
+  "keywords": [],
+  "language": "python",
+  "code_file": "intro-to-machine-learning-with-titanic-survival.ipynb",
+  "dataset_sources": [],
+  "enable_internet": false,
+  "kernel_sources": [],
+  "kernel_type": "notebook",
+  "is_private": false,
+  "title": "Intro to Machine Learning with Titanic Survival",
+  "id": "lanxing/intro-to-machine-learning-with-titanic-survival",
+  "enable_gpu": false
+}

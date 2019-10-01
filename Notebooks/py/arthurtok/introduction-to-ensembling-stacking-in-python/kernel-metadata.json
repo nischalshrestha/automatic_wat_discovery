@@ -1,0 +1,21 @@
+{
+  "id": "arthurtok/introduction-to-ensembling-stacking-in-python",
+  "code_file": "introduction-to-ensembling-stacking-in-python.ipynb",
+  "dataset_sources": [],
+  "enable_gpu": false,
+  "kernel_type": "notebook",
+  "kernel_sources": [],
+  "language": "python",
+  "id_no": 182517,
+  "competition_sources": [
+    "titanic"
+  ],
+  "keywords": [
+    "tutorial",
+    "ensembling",
+    "xgboost"
+  ],
+  "title": "Introduction to Ensembling/Stacking in Python",
+  "is_private": false,
+  "enable_internet": false
+}

@@ -1,0 +1,17 @@
+{
+  "code_file": "a-journey-through-titanic.irnb",
+  "enable_internet": false,
+  "keywords": [],
+  "enable_gpu": false,
+  "is_private": false,
+  "competition_sources": [
+    "titanic"
+  ],
+  "kernel_sources": [],
+  "language": "r",
+  "title": "A Journey through Titanic",
+  "id": "haichenliu/a-journey-through-titanic",
+  "kernel_type": "notebook",
+  "id_no": 164136,
+  "dataset_sources": []
+}

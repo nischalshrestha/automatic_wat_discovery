@@ -1,0 +1,17 @@
+{
+  "keywords": [],
+  "dataset_sources": [],
+  "title": "Titanic project",
+  "kernel_type": "notebook",
+  "is_private": false,
+  "id": "rihadv/titanic-project",
+  "id_no": 2044349,
+  "language": "python",
+  "code_file": "titanic-project.ipynb",
+  "competition_sources": [
+    "titanic"
+  ],
+  "kernel_sources": [],
+  "enable_internet": false,
+  "enable_gpu": false
+}

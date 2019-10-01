@@ -1,0 +1,17 @@
+{
+  "kernel_sources": [],
+  "code_file": "how-to-kaggle-1-titanic-survival-prediction.ipynb",
+  "title": "How to Kaggle #1 - Titanic Survival Prediction",
+  "language": "python",
+  "competition_sources": [
+    "titanic"
+  ],
+  "dataset_sources": [],
+  "enable_gpu": false,
+  "keywords": [],
+  "kernel_type": "notebook",
+  "enable_internet": false,
+  "id_no": 254799,
+  "id": "gmgarrison/how-to-kaggle-1-titanic-survival-prediction",
+  "is_private": false
+}

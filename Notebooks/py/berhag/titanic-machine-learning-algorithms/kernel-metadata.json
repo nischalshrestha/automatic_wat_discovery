@@ -1,0 +1,17 @@
+{
+  "is_private": false,
+  "enable_internet": false,
+  "competition_sources": [
+    "titanic"
+  ],
+  "language": "python",
+  "dataset_sources": [],
+  "title": "Titanic: Machine Learning Algorithms",
+  "code_file": "titanic-machine-learning-algorithms.ipynb",
+  "keywords": [],
+  "kernel_type": "notebook",
+  "id": "berhag/titanic-machine-learning-algorithms",
+  "id_no": 326594,
+  "enable_gpu": false,
+  "kernel_sources": []
+}

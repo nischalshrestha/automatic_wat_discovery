@@ -1,0 +1,17 @@
+{
+  "competition_sources": [
+    "titanic"
+  ],
+  "title": "The Who's Who of Dead Passengers",
+  "enable_gpu": false,
+  "id": "informed/the-who-s-who-of-dead-passengers",
+  "language": "python",
+  "dataset_sources": [],
+  "kernel_type": "notebook",
+  "is_private": false,
+  "kernel_sources": [],
+  "enable_internet": false,
+  "keywords": [],
+  "code_file": "the-who-s-who-of-dead-passengers.ipynb",
+  "id_no": 240120
+}

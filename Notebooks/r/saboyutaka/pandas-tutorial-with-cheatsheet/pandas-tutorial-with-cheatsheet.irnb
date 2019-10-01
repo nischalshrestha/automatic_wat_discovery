@@ -1,0 +1,234 @@
+{
+  "cells": [
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "_cell_guid": "d5cac512-0ce2-8840-4827-0276108acfd5"
+      },
+      "outputs": [],
+      "source": [
+        "# This Python 3 environment comes with many helpful analytics libraries installed\n",
+        "# It is defined by the kaggle/python docker image: https://github.com/kaggle/docker-python\n",
+        "# For example, here's several helpful packages to load in \n",
+        "\n",
+        "import numpy as np # linear algebra\n",
+        "import pandas as pd # data processing, CSV file I/O (e.g. pd.read_csv)\n",
+        "\n",
+        "# Input data files are available in the \"../input/\" directory.\n",
+        "# For example, running this (by clicking run or pressing Shift+Enter) will list the files in the input directory\n",
+        "\n",
+        "from subprocess import check_output\n",
+        "print(check_output([\"ls\", \"../input\"]).decode(\"utf8\"))\n",
+        "\n",
+        "# Any results you write to the current directory are saved as output."
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "_cell_guid": "8266a3f3-0745-5b80-3d03-d7048177b449"
+      },
+      "outputs": [],
+      "source": [
+        "df = pd.read_csv(\"../input/train.csv\")"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "_cell_guid": "f9482ae8-1788-7e3c-6d3a-5f72b1f4716d"
+      },
+      "outputs": [],
+      "source": [
+        "df.head()"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "_cell_guid": "8270ac24-3e3d-f525-124a-ae7322aff8d5"
+      },
+      "outputs": [],
+      "source": [
+        "df.columns"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "_cell_guid": "10260049-2dcf-2eb7-24fe-f94a8a423fe0"
+      },
+      "outputs": [],
+      "source": [
+        "df.index"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "_cell_guid": "2d078f16-7bc6-b4b5-bf7d-e4b620327b6c"
+      },
+      "outputs": [],
+      "source": [
+        "df.to_csv('../working/train2.csv')"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "_cell_guid": "ec7dd770-3801-f52b-ea45-82bb789ad0ab"
+      },
+      "outputs": [],
+      "source": [
+        "df[['Sex', 'Age']].to_excel('../working/sexage.xlsx')"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "_cell_guid": "24ab35bd-00a9-83a3-a712-37a0125f33c1"
+      },
+      "outputs": [],
+      "source": [
+        "!ls"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "_cell_guid": "1adc17cf-244c-e480-b120-40f7a8d3b977"
+      },
+      "outputs": [],
+      "source": [
+        "df['Sex'].head()"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "_cell_guid": "5462d732-201b-6bb5-a4e0-0544532e2e0f"
+      },
+      "outputs": [],
+      "source": [
+        "df2 = df[['Sex', 'Age']]"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "_cell_guid": "5f0c3e37-b3e3-0b86-ceef-9b825113205c"
+      },
+      "outputs": [],
+      "source": [
+        "df2[(df2['Age'] > 20) & (df2['Sex'] == 'female')]['Age'].mean()"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "_cell_guid": "661fc666-02d1-6d85-d851-22dd8aebff87"
+      },
+      "outputs": [],
+      "source": [
+        "df_na = df.dropna()"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "_cell_guid": "317b0e0d-b968-e611-a25e-6e7b09aa41b7"
+      },
+      "outputs": [],
+      "source": [
+        "df3 = df2.copy()"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "_cell_guid": "6051ab75-8a59-3a61-b3a5-50043bdb6d34"
+      },
+      "outputs": [],
+      "source": [
+        "df4 = df3.fillna(value=df3['Age'].mean())"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "_cell_guid": "c9051b72-4a04-10f5-6918-af24e9a0c46f"
+      },
+      "outputs": [],
+      "source": [
+        "df4 = df.copy()"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "_cell_guid": "fa26bb3d-4062-5eca-baf9-7d931eb22003"
+      },
+      "outputs": [],
+      "source": [
+        "df4['Family'] = df4['SibSp'] + df4['Parch']"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "_cell_guid": "025d0108-f722-0464-c786-2f88938ff39b"
+      },
+      "outputs": [],
+      "source": [
+        "pd.pivot_table(df, values='Survived', index=['Sex'], columns=['Embarked'], aggfunc=np.mean)"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "_cell_guid": "b39362b5-6ec6-07cd-04f0-af802f5ce7a7"
+      },
+      "outputs": [],
+      "source": [
+        ""
+      ]
+    }
+  ],
+  "metadata": {
+    "_change_revision": 0,
+    "_is_fork": false,
+    "kernelspec": {
+      "display_name": "R",
+      "language": "R",
+      "name": "ir"
+    },
+    "language_info": {
+      "codemirror_mode": "r",
+      "file_extension": ".r",
+      "mimetype": "text/x-r-source",
+      "name": "R",
+      "pygments_lexer": "r",
+      "version": "3.3.2"
+    }
+  },
+  "nbformat": 4,
+  "nbformat_minor": 0
+}

@@ -1,0 +1,17 @@
+{
+  "competition_sources": [
+    "titanic"
+  ],
+  "id": "yuikitaml/method-examples",
+  "language": "python",
+  "dataset_sources": [],
+  "code_file": "method-examples.ipynb",
+  "is_private": false,
+  "kernel_type": "notebook",
+  "enable_internet": false,
+  "enable_gpu": false,
+  "id_no": 1459471,
+  "keywords": [],
+  "title": "Method examples",
+  "kernel_sources": []
+}

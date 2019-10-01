@@ -1,0 +1,17 @@
+{
+  "language": "python",
+  "enable_gpu": false,
+  "competition_sources": [
+    "titanic"
+  ],
+  "id_no": 1731922,
+  "enable_internet": false,
+  "code_file": "machine-learning-from-disaster.ipynb",
+  "is_private": false,
+  "keywords": [],
+  "kernel_sources": [],
+  "kernel_type": "notebook",
+  "title": "Machine Learning From Disaster",
+  "id": "spomatthews/machine-learning-from-disaster",
+  "dataset_sources": []
+}

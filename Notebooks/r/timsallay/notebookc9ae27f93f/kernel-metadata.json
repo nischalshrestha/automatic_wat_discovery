@@ -1,0 +1,17 @@
+{
+  "code_file": "notebookc9ae27f93f.irnb",
+  "is_private": false,
+  "dataset_sources": [],
+  "enable_internet": false,
+  "enable_gpu": false,
+  "competition_sources": [
+    "titanic"
+  ],
+  "id_no": 176165,
+  "kernel_type": "notebook",
+  "title": "Notebook697b9f03b4",
+  "language": "r",
+  "id": "timsallay/notebookc9ae27f93f",
+  "keywords": [],
+  "kernel_sources": []
+}

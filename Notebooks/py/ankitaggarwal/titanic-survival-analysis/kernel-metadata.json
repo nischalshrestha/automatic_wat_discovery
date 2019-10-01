@@ -1,0 +1,17 @@
+{
+  "id_no": 448562,
+  "keywords": [],
+  "title": "Titanic Survival Analysis",
+  "enable_gpu": false,
+  "competition_sources": [
+    "titanic"
+  ],
+  "id": "ankitaggarwal/titanic-survival-analysis",
+  "is_private": false,
+  "kernel_type": "notebook",
+  "language": "python",
+  "dataset_sources": [],
+  "enable_internet": false,
+  "kernel_sources": [],
+  "code_file": "titanic-survival-analysis.ipynb"
+}

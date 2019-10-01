@@ -1,0 +1,23 @@
+{
+  "id": "impratiksingh/titanic-survival-prediction",
+  "dataset_sources": [],
+  "title": "Titanic : Survival Prediction",
+  "enable_internet": false,
+  "kernel_type": "notebook",
+  "language": "python",
+  "enable_gpu": false,
+  "code_file": "titanic-survival-prediction.ipynb",
+  "competition_sources": [
+    "titanic"
+  ],
+  "is_private": false,
+  "id_no": 547126,
+  "kernel_sources": [],
+  "keywords": [
+    "beginner",
+    "data cleaning",
+    "data visualization",
+    "ensembling",
+    "gradient boosting"
+  ]
+}

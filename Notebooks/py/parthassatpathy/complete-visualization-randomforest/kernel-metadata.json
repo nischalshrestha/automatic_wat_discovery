@@ -1,0 +1,17 @@
+{
+  "id": "parthassatpathy/complete-visualization-randomforest",
+  "enable_gpu": false,
+  "enable_internet": false,
+  "dataset_sources": [],
+  "language": "python",
+  "id_no": 245280,
+  "keywords": [],
+  "kernel_sources": [],
+  "competition_sources": [
+    "titanic"
+  ],
+  "title": "Complete Visualization & RandomForest",
+  "code_file": "complete-visualization-randomforest.ipynb",
+  "is_private": false,
+  "kernel_type": "notebook"
+}

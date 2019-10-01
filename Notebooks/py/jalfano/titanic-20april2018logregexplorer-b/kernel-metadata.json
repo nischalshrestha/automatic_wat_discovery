@@ -1,0 +1,17 @@
+{
+  "code_file": "titanic-20april2018logregexplorer-b.ipynb",
+  "enable_gpu": false,
+  "id_no": 886051,
+  "id": "jalfano/titanic-20april2018logregexplorer-b",
+  "is_private": false,
+  "competition_sources": [
+    "titanic"
+  ],
+  "dataset_sources": [],
+  "title": "Titanic_20April2018LogRegExplorer_B",
+  "kernel_sources": [],
+  "language": "python",
+  "kernel_type": "notebook",
+  "enable_internet": false,
+  "keywords": []
+}

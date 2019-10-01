@@ -1,0 +1,23 @@
+{
+  "enable_internet": false,
+  "competition_sources": [
+    "titanic"
+  ],
+  "keywords": [
+    "beginner",
+    "data visualization",
+    "feature engineering",
+    "pipeline code",
+    "logistic regression"
+  ],
+  "id_no": 399690,
+  "dataset_sources": [],
+  "title": "Titanic: logistic regression with python",
+  "id": "mnassrib/titanic-logistic-regression-with-python",
+  "is_private": false,
+  "enable_gpu": false,
+  "code_file": "titanic-logistic-regression-with-python.ipynb",
+  "language": "python",
+  "kernel_sources": [],
+  "kernel_type": "notebook"
+}

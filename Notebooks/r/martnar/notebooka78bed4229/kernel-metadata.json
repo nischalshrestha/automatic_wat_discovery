@@ -1,0 +1,17 @@
+{
+  "id": "martnar/notebooka78bed4229",
+  "keywords": [],
+  "kernel_type": "notebook",
+  "code_file": "notebooka78bed4229.ipynb",
+  "title": "Notebooka78bed4229",
+  "is_private": false,
+  "dataset_sources": [],
+  "competition_sources": [
+    "titanic"
+  ],
+  "language": "python",
+  "id_no": 218390,
+  "enable_internet": false,
+  "kernel_sources": [],
+  "enable_gpu": false
+}

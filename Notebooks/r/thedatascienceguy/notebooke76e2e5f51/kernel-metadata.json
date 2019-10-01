@@ -1,0 +1,17 @@
+{
+  "dataset_sources": [],
+  "competition_sources": [
+    "titanic"
+  ],
+  "title": "Learning R by Titaninc",
+  "id": "thedatascienceguy/notebooke76e2e5f51",
+  "is_private": false,
+  "kernel_sources": [],
+  "kernel_type": "notebook",
+  "code_file": "notebooke76e2e5f51.irnb",
+  "enable_internet": false,
+  "language": "r",
+  "keywords": [],
+  "enable_gpu": false,
+  "id_no": 132045
+}

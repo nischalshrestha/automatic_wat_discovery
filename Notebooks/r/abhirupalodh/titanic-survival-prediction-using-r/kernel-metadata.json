@@ -1,0 +1,17 @@
+{
+  "dataset_sources": [],
+  "keywords": [],
+  "title": "Titanic Survival Prediction using R",
+  "id_no": 361538,
+  "kernel_sources": [],
+  "language": "r",
+  "code_file": "titanic-survival-prediction-using-r.irnb",
+  "enable_gpu": false,
+  "enable_internet": false,
+  "competition_sources": [
+    "titanic"
+  ],
+  "is_private": false,
+  "kernel_type": "notebook",
+  "id": "abhirupalodh/titanic-survival-prediction-using-r"
+}

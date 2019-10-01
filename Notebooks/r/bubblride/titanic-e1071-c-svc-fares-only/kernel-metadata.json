@@ -1,0 +1,17 @@
+{
+  "is_private": false,
+  "kernel_type": "notebook",
+  "dataset_sources": [],
+  "competition_sources": [
+    "titanic"
+  ],
+  "enable_internet": false,
+  "keywords": [],
+  "enable_gpu": false,
+  "language": "r",
+  "id_no": 1672709,
+  "title": "titanic, e1071, C-SVC (Fares Only)",
+  "kernel_sources": [],
+  "code_file": "titanic-e1071-c-svc-fares-only.irnb",
+  "id": "bubblride/titanic-e1071-c-svc-fares-only"
+}

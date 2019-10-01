@@ -1,0 +1,21 @@
+{
+  "is_private": false,
+  "enable_gpu": false,
+  "competition_sources": [
+    "titanic"
+  ],
+  "language": "python",
+  "id_no": 1487348,
+  "enable_internet": false,
+  "kernel_sources": [],
+  "id": "adishah3103/titanic-disaster-prediction",
+  "dataset_sources": [],
+  "code_file": "titanic-disaster-prediction.ipynb",
+  "kernel_type": "notebook",
+  "title": "Titanic Disaster Prediction",
+  "keywords": [
+    "tutorial",
+    "data visualization",
+    "model comparison"
+  ]
+}

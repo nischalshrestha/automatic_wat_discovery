@@ -1,0 +1,17 @@
+{
+  "language": "r",
+  "is_private": false,
+  "keywords": [],
+  "id_no": 226286,
+  "competition_sources": [
+    "titanic"
+  ],
+  "code_file": "notebook97ae597dee.irnb",
+  "kernel_sources": [],
+  "dataset_sources": [],
+  "title": "Notebook97ae597dee",
+  "enable_internet": false,
+  "kernel_type": "notebook",
+  "id": "sarahgazelle/notebook97ae597dee",
+  "enable_gpu": false
+}

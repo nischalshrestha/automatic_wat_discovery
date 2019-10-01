@@ -1,0 +1,17 @@
+{
+  "language": "python",
+  "enable_gpu": false,
+  "enable_internet": false,
+  "keywords": [],
+  "is_private": false,
+  "id_no": 222054,
+  "title": "Titanic best working Classifier",
+  "competition_sources": [
+    "titanic"
+  ],
+  "kernel_type": "notebook",
+  "kernel_sources": [],
+  "id": "zubairahmed/titanic-best-working-classifier",
+  "dataset_sources": [],
+  "code_file": "titanic-best-working-classifier.ipynb"
+}

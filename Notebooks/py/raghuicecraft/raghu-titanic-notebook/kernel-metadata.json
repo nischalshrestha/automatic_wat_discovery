@@ -1,0 +1,17 @@
+{
+  "competition_sources": [
+    "titanic"
+  ],
+  "language": "python",
+  "code_file": "raghu-titanic-notebook.ipynb",
+  "id_no": 384614,
+  "kernel_sources": [],
+  "dataset_sources": [],
+  "title": "Raghu Titanic Notebook",
+  "kernel_type": "notebook",
+  "is_private": false,
+  "enable_internet": false,
+  "id": "raghuicecraft/raghu-titanic-notebook",
+  "keywords": [],
+  "enable_gpu": false
+}

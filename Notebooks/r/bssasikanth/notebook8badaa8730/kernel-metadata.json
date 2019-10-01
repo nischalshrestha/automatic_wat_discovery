@@ -1,0 +1,17 @@
+{
+  "is_private": false,
+  "code_file": "notebook8badaa8730.ipynb",
+  "kernel_type": "notebook",
+  "keywords": [],
+  "dataset_sources": [],
+  "id_no": 213327,
+  "language": "python",
+  "competition_sources": [
+    "titanic"
+  ],
+  "kernel_sources": [],
+  "id": "bssasikanth/notebook8badaa8730",
+  "enable_internet": false,
+  "title": "Notebook8badaa8730",
+  "enable_gpu": false
+}

@@ -1,0 +1,17 @@
+{
+  "kernel_type": "notebook",
+  "code_file": "beginning-in-kaggle-with-titanic-ensembles.ipynb",
+  "language": "python",
+  "title": "Beginning in Kaggle with Titanic (Ensembles)",
+  "is_private": false,
+  "id": "akoeppl/beginning-in-kaggle-with-titanic-ensembles",
+  "id_no": 528751,
+  "keywords": [],
+  "kernel_sources": [],
+  "enable_gpu": false,
+  "dataset_sources": [],
+  "enable_internet": false,
+  "competition_sources": [
+    "titanic"
+  ]
+}

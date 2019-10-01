@@ -1,0 +1,17 @@
+{
+  "competition_sources": [
+    "titanic"
+  ],
+  "id_no": 291380,
+  "id": "cjfowler93/intro-to-machine-learning-with-titanic-survival",
+  "is_private": false,
+  "language": "python",
+  "keywords": [],
+  "enable_gpu": false,
+  "kernel_sources": [],
+  "kernel_type": "notebook",
+  "code_file": "intro-to-machine-learning-with-titanic-survival.ipynb",
+  "enable_internet": false,
+  "dataset_sources": [],
+  "title": "Intro to Machine Learning with Titanic Survival"
+}

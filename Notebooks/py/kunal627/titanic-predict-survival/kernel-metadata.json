@@ -1,0 +1,17 @@
+{
+  "enable_gpu": false,
+  "code_file": "titanic-predict-survival.ipynb",
+  "is_private": false,
+  "language": "python",
+  "id_no": 1377774,
+  "kernel_type": "notebook",
+  "keywords": [],
+  "enable_internet": false,
+  "id": "kunal627/titanic-predict-survival",
+  "dataset_sources": [],
+  "title": "Titanic - Predict Survival",
+  "competition_sources": [
+    "titanic"
+  ],
+  "kernel_sources": []
+}

@@ -1,0 +1,57 @@
+{
+  "cells": [
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "_cell_guid": "bd90a0dc-e5de-48bc-b7ca-0c20be9546ae"
+      },
+      "outputs": [],
+      "source": [
+        "\n",
+        "# This R script will run on our backend. You can write arbitrary code here!\n",
+        "\n",
+        "# Many standard libraries are already installed, such as randomForest\n",
+        "library(randomForest)\n",
+        "\n",
+        "# The train and test data is stored in the ../input directory\n",
+        "train <- read.csv(\"../input/train.csv\")\n",
+        "test  <- read.csv(\"../input/test.csv\")\n",
+        "\n",
+        "# We can inspect the train data. The results of this are printed in the log tab below\n",
+        "summary(train)\n",
+        "\n",
+        "# Here we will plot the passenger survival by class\n",
+        "train$Survived <- factor(train$Survived, levels=c(1,0))\n",
+        "levels(train$Survived) <- c(\"Survived\", \"Died\")\n",
+        "train$Pclass <- as.factor(train$Pclass)\n",
+        "levels(train$Pclass) <- c(\"1st Class\", \"2nd Class\", \"3rd Class\")\n",
+        "\n",
+        "png(\"1_survival_by_class.png\", width=800, height=600)\n",
+        "mosaicplot(train$Pclass ~ train$Survived, main=\"Passenger Survival by Class\",\n",
+        "           color=c(\"#8dd3c7\", \"#fb8072\"), shade=FALSE,  xlab=\"\", ylab=\"\",\n",
+        "           off=c(0), cex.axis=1.4)\n",
+        "dev.off()\n"
+      ]
+    }
+  ],
+  "metadata": {
+    "_change_revision": 0,
+    "_is_fork": false,
+    "kernelspec": {
+      "display_name": "R",
+      "language": "R",
+      "name": "ir"
+    },
+    "language_info": {
+      "codemirror_mode": "r",
+      "file_extension": ".r",
+      "mimetype": "text/x-r-source",
+      "name": "R",
+      "pygments_lexer": "r",
+      "version": "3.3.3"
+    }
+  },
+  "nbformat": 4,
+  "nbformat_minor": 0
+}

@@ -1,0 +1,23 @@
+{
+  "id": "devghiles/from-problem-to-solution-step-by-step",
+  "id_no": 590227,
+  "title": "From problem to solution, step-by-step.",
+  "code_file": "from-problem-to-solution-step-by-step.ipynb",
+  "language": "python",
+  "kernel_type": "notebook",
+  "is_private": false,
+  "enable_gpu": false,
+  "enable_internet": false,
+  "keywords": [
+    "eda",
+    "data visualization",
+    "classification",
+    "feature engineering",
+    "gradient boosting"
+  ],
+  "dataset_sources": [],
+  "kernel_sources": [],
+  "competition_sources": [
+    "titanic"
+  ]
+}

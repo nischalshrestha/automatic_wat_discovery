@@ -1,0 +1,17 @@
+{
+  "is_private": false,
+  "code_file": "cs-100-ml-with-the-titanic-dataset.ipynb",
+  "id": "seventimessix/cs-100-ml-with-the-titanic-dataset",
+  "enable_internet": false,
+  "competition_sources": [
+    "titanic"
+  ],
+  "enable_gpu": false,
+  "kernel_sources": [],
+  "id_no": 393193,
+  "title": "CS 100: ML with the Titanic Dataset",
+  "keywords": [],
+  "dataset_sources": [],
+  "language": "python",
+  "kernel_type": "notebook"
+}

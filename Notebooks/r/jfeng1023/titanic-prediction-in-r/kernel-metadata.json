@@ -1,0 +1,22 @@
+{
+  "kernel_sources": [],
+  "code_file": "titanic-prediction-in-r.irnb",
+  "kernel_type": "notebook",
+  "competition_sources": [
+    "titanic"
+  ],
+  "keywords": [
+    "classification",
+    "random forest",
+    "svm",
+    "decision tree"
+  ],
+  "language": "r",
+  "enable_gpu": false,
+  "id": "jfeng1023/titanic-prediction-in-r",
+  "id_no": 874442,
+  "dataset_sources": [],
+  "is_private": false,
+  "title": "Titanic prediction in R",
+  "enable_internet": false
+}

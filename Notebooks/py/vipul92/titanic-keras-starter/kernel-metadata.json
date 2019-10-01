@@ -1,0 +1,17 @@
+{
+  "language": "python",
+  "kernel_sources": [],
+  "competition_sources": [
+    "titanic"
+  ],
+  "enable_internet": false,
+  "keywords": [],
+  "enable_gpu": false,
+  "title": "Titanic : Keras | Starter",
+  "code_file": "titanic-keras-starter.ipynb",
+  "id_no": 1658847,
+  "kernel_type": "notebook",
+  "is_private": false,
+  "id": "vipul92/titanic-keras-starter",
+  "dataset_sources": []
+}

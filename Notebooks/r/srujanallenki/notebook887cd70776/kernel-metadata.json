@@ -1,0 +1,17 @@
+{
+  "title": "Notebook887cd70776",
+  "competition_sources": [
+    "titanic"
+  ],
+  "id": "srujanallenki/notebook887cd70776",
+  "is_private": false,
+  "code_file": "notebook887cd70776.irnb",
+  "dataset_sources": [],
+  "enable_internet": false,
+  "kernel_type": "notebook",
+  "kernel_sources": [],
+  "id_no": 203428,
+  "keywords": [],
+  "enable_gpu": false,
+  "language": "r"
+}

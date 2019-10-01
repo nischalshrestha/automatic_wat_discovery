@@ -1,0 +1,17 @@
+{
+  "enable_gpu": false,
+  "dataset_sources": [],
+  "enable_internet": false,
+  "kernel_type": "notebook",
+  "title": "Movie Vs Data ...   ",
+  "code_file": "movie-vs-data.irnb",
+  "language": "r",
+  "kernel_sources": [],
+  "id": "souravroy1/movie-vs-data",
+  "keywords": [],
+  "is_private": false,
+  "id_no": 298910,
+  "competition_sources": [
+    "titanic"
+  ]
+}

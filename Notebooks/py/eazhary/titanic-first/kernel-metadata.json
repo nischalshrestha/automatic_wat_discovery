@@ -1,0 +1,17 @@
+{
+  "enable_gpu": false,
+  "kernel_sources": [],
+  "title": "Titanic First",
+  "language": "python",
+  "is_private": false,
+  "keywords": [],
+  "enable_internet": false,
+  "code_file": "titanic-first.ipynb",
+  "id_no": 289461,
+  "id": "eazhary/titanic-first",
+  "competition_sources": [
+    "titanic"
+  ],
+  "dataset_sources": [],
+  "kernel_type": "notebook"
+}

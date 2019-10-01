@@ -1,0 +1,17 @@
+{
+  "id_no": 210158,
+  "keywords": [],
+  "dataset_sources": [],
+  "language": "r",
+  "competition_sources": [
+    "titanic"
+  ],
+  "kernel_sources": [],
+  "is_private": false,
+  "title": "Notebook3b4a139492",
+  "id": "tomsitek/notebook3b4a139492",
+  "enable_gpu": false,
+  "code_file": "notebook3b4a139492.irnb",
+  "kernel_type": "notebook",
+  "enable_internet": false
+}

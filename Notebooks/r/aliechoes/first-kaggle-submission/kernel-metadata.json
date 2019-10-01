@@ -1,0 +1,17 @@
+{
+  "is_private": false,
+  "kernel_type": "notebook",
+  "dataset_sources": [],
+  "kernel_sources": [],
+  "title": "First Kaggle Submission",
+  "competition_sources": [
+    "titanic"
+  ],
+  "enable_gpu": false,
+  "id": "aliechoes/first-kaggle-submission",
+  "enable_internet": false,
+  "code_file": "first-kaggle-submission.irnb",
+  "keywords": [],
+  "language": "r",
+  "id_no": 138143
+}

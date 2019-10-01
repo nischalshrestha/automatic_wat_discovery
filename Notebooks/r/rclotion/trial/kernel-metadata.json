@@ -1,0 +1,17 @@
+{
+  "is_private": false,
+  "enable_gpu": false,
+  "kernel_type": "notebook",
+  "dataset_sources": [],
+  "enable_internet": false,
+  "code_file": "trial.irnb",
+  "kernel_sources": [],
+  "keywords": [],
+  "language": "r",
+  "competition_sources": [
+    "titanic"
+  ],
+  "id_no": 92818,
+  "id": "rclotion/trial",
+  "title": "trial"
+}

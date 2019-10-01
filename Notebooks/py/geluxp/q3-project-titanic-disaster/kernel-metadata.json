@@ -1,0 +1,19 @@
+{
+  "title": "Q3 Project Titanic Disaster",
+  "kernel_type": "notebook",
+  "enable_gpu": false,
+  "keywords": [
+    "beginner"
+  ],
+  "kernel_sources": [],
+  "id": "geluxp/q3-project-titanic-disaster",
+  "is_private": false,
+  "enable_internet": false,
+  "id_no": 548581,
+  "dataset_sources": [],
+  "competition_sources": [
+    "titanic"
+  ],
+  "code_file": "q3-project-titanic-disaster.ipynb",
+  "language": "python"
+}

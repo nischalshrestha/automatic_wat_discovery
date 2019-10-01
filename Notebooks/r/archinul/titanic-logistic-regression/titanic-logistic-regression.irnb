@@ -1,0 +1,105 @@
+{
+  "metadata": {
+    "kernelspec": {
+      "display_name": "R",
+      "language": "R",
+      "name": "ir"
+    },
+    "language_info": {
+      "codemirror_mode": "r",
+      "file_extension": ".r",
+      "mimetype": "text/x-r-source",
+      "name": "R",
+      "pygments_lexer": "r",
+      "version": "3.4.0"
+    }
+  },
+  "nbformat": 4,
+  "nbformat_minor": 0,
+  "cells": [
+    {
+      "metadata": {
+        "_cell_guid": "38739fad-fc4d-d9f0-f940-8d90aec1d0d5",
+        "_active": false,
+        "collapsed": false
+      },
+      "source": null,
+      "execution_count": null,
+      "cell_type": "markdown",
+      "outputs": [],
+      "execution_state": "idle"
+    },
+    {
+      "metadata": {
+        "_cell_guid": "0d9217f2-dca0-a880-0105-16a420a61334",
+        "_active": false,
+        "collapsed": false
+      },
+      "source": "# This R environment comes with all of CRAN preinstalled, as well as many other helpful packages\n# The environment is defined by the kaggle/rstats docker image: https://github.com/kaggle/docker-rstats\n# For example, here's several helpful packages to load in \n\nlibrary(ggplot2) # Data visualization\nlibrary(readr) # CSV file I/O, e.g. the read_csv function\nlibrary(caret)\n\n# Input data files are available in the \"../input/\" directory.\n# For example, running this (by clicking run or pressing Shift+Enter) will list the files in the input directory\n\nlist.files(\"../input/\")\n\n# Any results you write to the current directory are saved as output.",
+      "execution_count": null,
+      "cell_type": "code",
+      "outputs": [],
+      "execution_state": "idle"
+    },
+    {
+      "metadata": {
+        "_cell_guid": "8142e6cf-5064-2416-fe87-628074608809",
+        "_active": false,
+        "collapsed": false
+      },
+      "source": "train=read.csv(\"../input/train.csv\")\ntrain$Survived=factor(train$Survived,labels=c(\"0\",\"1\"))",
+      "execution_count": null,
+      "cell_type": "code",
+      "outputs": [],
+      "execution_state": "idle"
+    },
+    {
+      "metadata": {
+        "_cell_guid": "d5c313e0-736f-4e31-22ae-8ee19a31b628",
+        "_active": false,
+        "collapsed": false
+      },
+      "source": "\nggplot(data=train,aes(x=Age,y=Parch,group=Survived))+\n   geom_jitter(aes(shape=Survived,color=Survived))",
+      "execution_count": null,
+      "cell_type": "code",
+      "outputs": [],
+      "execution_state": "idle"
+    },
+    {
+      "metadata": {
+        "_cell_guid": "5996d371-b9c3-95d6-9900-c98df5de5d6e",
+        "_active": true,
+        "collapsed": false
+      },
+      "source": "set.seed(42)\ntrainingRows<-createDataPartition(train, p=0.8, list=FALSE)\nTrain <- train[c(trainingRows)]\nTest <- train[c(-trainingRows)]",
+      "execution_count": null,
+      "cell_type": "code",
+      "outputs": [],
+      "execution_state": "idle"
+    },
+    {
+      "metadata": {
+        "_cell_guid": "9118603d-12aa-5885-554c-036993a155e2",
+        "_active": false,
+        "collapsed": false
+      },
+      "source": "view(Train)",
+      "execution_count": null,
+      "cell_type": "code",
+      "outputs": [],
+      "execution_state": "idle"
+    },
+    {
+      "metadata": {
+        "_cell_guid": "81979335-fae2-3206-0b7f-6bb6bc62b25c",
+        "_active": false,
+        "collapsed": false
+      },
+      "source": null,
+      "execution_count": null,
+      "cell_type": "code",
+      "outputs": [],
+      "execution_state": "idle"
+    }
+  ]
+}

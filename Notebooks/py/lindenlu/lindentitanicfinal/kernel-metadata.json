@@ -1,0 +1,17 @@
+{
+  "id": "lindenlu/lindentitanicfinal",
+  "kernel_type": "notebook",
+  "id_no": 243424,
+  "dataset_sources": [],
+  "competition_sources": [
+    "titanic"
+  ],
+  "enable_gpu": false,
+  "kernel_sources": [],
+  "code_file": "lindentitanicfinal.ipynb",
+  "language": "python",
+  "keywords": [],
+  "is_private": false,
+  "title": "LindenTitanicFinal",
+  "enable_internet": false
+}

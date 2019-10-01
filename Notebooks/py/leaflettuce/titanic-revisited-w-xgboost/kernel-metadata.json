@@ -1,0 +1,17 @@
+{
+  "dataset_sources": [],
+  "kernel_type": "notebook",
+  "is_private": false,
+  "code_file": "titanic-revisited-w-xgboost.ipynb",
+  "enable_internet": false,
+  "kernel_sources": [],
+  "enable_gpu": false,
+  "title": "Titanic Revisited w/ XGBoost",
+  "competition_sources": [
+    "titanic"
+  ],
+  "id": "leaflettuce/titanic-revisited-w-xgboost",
+  "keywords": [],
+  "language": "python",
+  "id_no": 1454615
+}

@@ -1,0 +1,21 @@
+{
+  "keywords": [
+    "beginner",
+    "logistic regression",
+    "neural networks"
+  ],
+  "id": "anezka/titanic-problem",
+  "is_private": false,
+  "code_file": "titanic-problem.ipynb",
+  "kernel_type": "notebook",
+  "kernel_sources": [],
+  "id_no": 738361,
+  "enable_gpu": false,
+  "dataset_sources": [],
+  "title": "Titanic problem",
+  "enable_internet": false,
+  "language": "python",
+  "competition_sources": [
+    "titanic"
+  ]
+}

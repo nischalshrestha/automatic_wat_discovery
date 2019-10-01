@@ -1,0 +1,17 @@
+{
+  "language": "r",
+  "id_no": 221250,
+  "kernel_type": "notebook",
+  "code_file": "notebook63718419f7.irnb",
+  "enable_gpu": false,
+  "keywords": [],
+  "id": "supratik/notebook63718419f7",
+  "kernel_sources": [],
+  "competition_sources": [
+    "titanic"
+  ],
+  "is_private": false,
+  "dataset_sources": [],
+  "title": "Notebook63718419f7",
+  "enable_internet": false
+}

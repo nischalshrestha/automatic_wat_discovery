@@ -1,0 +1,223 @@
+{
+  "cells": [
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "_cell_guid": "d03feaf0-86a0-8c62-33a8-b074b3b05ec6"
+      },
+      "outputs": [],
+      "source": [
+        "# This R environment comes with all of CRAN preinstalled, as well as many other helpful packages\n",
+        "# The environment is defined by the kaggle/rstats docker image: https://github.com/kaggle/docker-rstats\n",
+        "# For example, here's several helpful packages to load in \n",
+        "\n",
+        "library(ggplot2) # Data visualization\n",
+        "library(readr) # CSV file I/O, e.g. the read_csv function\n",
+        "\n",
+        "# Input data files are available in the \"../input/\" directory.\n",
+        "# For example, running this (by clicking run or pressing Shift+Enter) will list the files in the input directory\n",
+        "\n",
+        "system(\"ls ../input\")\n",
+        "\n",
+        "# Any results you write to the current directory are saved as output."
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "_cell_guid": "37de3f86-a537-5524-6ccf-726a3b4af660"
+      },
+      "outputs": [],
+      "source": [
+        "setwd('../input/titanic')"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "_cell_guid": "e9afd575-8511-c65a-775e-3dbf02e97c13"
+      },
+      "outputs": [],
+      "source": [
+        "# Read train data to titanic file\n",
+        "setwd('../input/titanic')\n",
+        "dir()\n",
+        "\n",
+        "titanic<-read.csv('train.csv',header=TRUE)\n",
+        "\n",
+        "# first and last 3 lines of info\n",
+        "head(titanic,3)\n",
+        "tail(titanic,3)"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "_cell_guid": "0680eb56-a5fa-e43d-5974-e453e01ac535"
+      },
+      "outputs": [],
+      "source": [
+        "#data frame structure of titanic\n",
+        "str(titanic)\n",
+        "#number of survived\n",
+        "num_survived<-length(which(titanic$Survived==1))\n",
+        "num_survived\n",
+        "#number of loss\n",
+        "num_loss<-length(which(titanic$Survived==0))\n",
+        "num_loss\n",
+        "# numbers of missing values in each column \n",
+        "missing_values<-c(length(which(is.na(titanic$PassengerId))),length(which(is.na(titanic$Pclass))),length(which(is.na(titanic$Sex))),length(which(is.na(titanic$Age))),length(which(is.na(titanic$SibSp))),length(which(is.na(titanic$Parch))),length(which(is.na(titanic$Ticket))), length(which(is.na(titanic$Fare))),length(which(titanic$Cabin=='')),length(which(titanic$Embarked=='')))\n",
+        "missing_values"
+      ]
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {
+        "_cell_guid": "a751e9db-f529-4353-320d-54875765d7a8"
+      },
+      "source": [
+        "Observations:\n",
+        "1. Total 891 observations, in which 342 survived and 549 loss\n",
+        "2. All the missing values: 177 missing values (19.9%) in Age, 687 missing values (77%) in 'Cabin', 2 missing values in 'Embarked'. So will drop 'Cabin' values in the analysis"
+      ]
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {
+        "_cell_guid": "d996da0c-80e7-d0b8-5448-65827b32200d"
+      },
+      "source": [
+        "**Visualization of the relations of features impact on survival** "
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "_cell_guid": "8e48f4c8-2ac6-2800-3637-30cfaaebe1f9"
+      },
+      "outputs": [],
+      "source": [
+        "par(mfrow=c(4,2))\n",
+        "\n",
+        "# Sex V.S. Survival\n",
+        "Sex_survival<-table(titanic$Survived,titanic$Sex)\n",
+        "barplot(Sex_survival,xlab='Sex', ylab='Headcounts', col = c('grey','green'),legend=rownames(Sex_survival),beside =T)\n",
+        "# Pclass V.S. Survival\n",
+        "Pclass_survival<-table(titanic$Survived,titanic$Pclass)\n",
+        "barplot(Pclass_survival,xlab='Pclass', ylab='Headcounts', col = c('grey','green'),legend=rownames(Pclass_survival),beside =T)\n",
+        "\n",
+        "#Parch V.S. Survival\n",
+        "Parch_survival<-table(titanic$Survived,titanic$Parch)\n",
+        "barplot(Parch_survival,xlab='Parch', ylab='Headcounts', col = c('grey','green'),legend=rownames(Parch_survival),beside =T)\n",
+        "\n",
+        "#Age V.S. Survival\n",
+        "survival<-titanic[which(titanic$Survived==1),]\n",
+        "loss<-titanic[which(titanic$Survived==0),]\n",
+        "hist(survival$Age, col=rgb(1,0,0,0.5),main='Histogram of Age',xlab='Age')\n",
+        "hist(loss$Age, col=rgb(0,0,1,0.5),add=T)\n",
+        "\n",
+        "#SibSp V.S. Survival\n",
+        "SibSp_survival<-table(titanic$Survived,titanic$SibSp)\n",
+        "barplot(SibSp_survival,xlab='SibSp', ylab='Headcounts', col = c('grey','green'),legend=rownames(SibSp_survival),beside =T)\n",
+        "\n",
+        "#Fare V.S. Survival\n",
+        "survival<-titanic[which(titanic$Survived==1),]\n",
+        "loss<-titanic[which(titanic$Survived==0),]\n",
+        "hist(survival$Fare, col=rgb(1,0,0,0.5),main='Histogram of Fare',xlab='Fare')\n",
+        "hist(loss$Fare, col=rgb(0,0,1,0.5),add=T)\n",
+        "\n",
+        "#Embarked V.S. Survival\n",
+        "Embarked_survival<-table(titanic$Survived,titanic$Embarked)\n",
+        "barplot(Embarked_survival,xlab='Embarked', ylab='Headcounts', col = c('grey','green'),legend=rownames(Embarked_survival),beside =T)"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "_cell_guid": "72188454-ae1a-cc58-4ddd-ca90688fddef"
+      },
+      "outputs": [],
+      "source": [
+        "# Transfer the useful data to new_titanic;\n",
+        "new_titanic<-titanic[,c(2,3,5,6,7,8,10,12)]\n",
+        "\n",
+        "# Info of new_titanic\n",
+        "str(new_titanic)"
+      ]
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {
+        "_cell_guid": "5784aa7f-0408-879f-f9c7-48c34ecc6e46"
+      },
+      "source": [
+        "**Start to clean the data**"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "_cell_guid": "5240c3d6-892e-c996-588b-a2e5fcaea63d"
+      },
+      "outputs": [],
+      "source": [
+        "# convert the 'sex' data to numeric data\n",
+        "# Convert the levels of sex from 'female','male' to '1' and '2' respectfully\n",
+        "levels(new_titanic$Sex)<-c(1,2)\n",
+        "\n",
+        "# Convert the sex column first to factor and then to numeric\n",
+        "new_titanic$Sex<-as.numeric(factor(new_titanic$Sex))\n",
+        "\n",
+        "# Convert the Embarked column to numeric\n",
+        "levels(new_titanic$Embarked)<-c(NA,1,2,3)\n",
+        "new_titanic$Embarked<-as.numeric(factor(new_titanic$Embarked))\n",
+        "\n",
+        "# Show head and tail of new_titanic\n",
+        "head(new_titanic)\n",
+        "tail(new_titanic)\n",
+        "str(new_titanic)"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "_cell_guid": "610d3d6b-a77d-60c0-34b4-81a7096e687f"
+      },
+      "outputs": [],
+      "source": [
+        "# Remove the NA in the data\n",
+        "nrow(new_titanic)\n",
+        "new_titanic<-na.omit(new_titanic)\n",
+        "nrow(new_titanic)\n",
+        "write.csv(new_titanic,'clean_file.csv')"
+      ]
+    }
+  ],
+  "metadata": {
+    "_change_revision": 0,
+    "_is_fork": false,
+    "kernelspec": {
+      "display_name": "R",
+      "language": "R",
+      "name": "ir"
+    },
+    "language_info": {
+      "codemirror_mode": "r",
+      "file_extension": ".r",
+      "mimetype": "text/x-r-source",
+      "name": "R",
+      "pygments_lexer": "r",
+      "version": "3.3.3"
+    }
+  },
+  "nbformat": 4,
+  "nbformat_minor": 0
+}

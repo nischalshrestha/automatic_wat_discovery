@@ -1,0 +1,19 @@
+{
+  "keywords": [],
+  "title": "Titanic!",
+  "id_no": 260632,
+  "is_private": false,
+  "id": "michaelswierszcz/titanic",
+  "kernel_type": "notebook",
+  "language": "python",
+  "code_file": "titanic.ipynb",
+  "kernel_sources": [],
+  "competition_sources": [
+    "titanic"
+  ],
+  "dataset_sources": [
+    "girardi69/marathon-time-predictions"
+  ],
+  "enable_internet": false,
+  "enable_gpu": false
+}

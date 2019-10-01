@@ -1,0 +1,17 @@
+{
+  "is_private": false,
+  "keywords": [],
+  "kernel_sources": [],
+  "language": "python",
+  "enable_internet": false,
+  "enable_gpu": false,
+  "code_file": "notebook345d76d343.ipynb",
+  "kernel_type": "notebook",
+  "id": "jawadrasool/notebook345d76d343",
+  "title": "Notebook345d76d343",
+  "competition_sources": [
+    "titanic"
+  ],
+  "id_no": 236322,
+  "dataset_sources": []
+}

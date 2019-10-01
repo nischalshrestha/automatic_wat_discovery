@@ -1,0 +1,17 @@
+{
+  "enable_internet": false,
+  "title": "TitanicNotebook_R",
+  "kernel_sources": [],
+  "keywords": [],
+  "language": "r",
+  "dataset_sources": [],
+  "competition_sources": [
+    "titanic"
+  ],
+  "is_private": false,
+  "id": "lfl1001/titanicnotebook-r",
+  "enable_gpu": false,
+  "code_file": "titanicnotebook-r.irnb",
+  "kernel_type": "notebook",
+  "id_no": 252217
+}

@@ -1,0 +1,17 @@
+{
+  "kernel_type": "notebook",
+  "dataset_sources": [],
+  "enable_gpu": false,
+  "code_file": "my-first-submission.irnb",
+  "id_no": 517620,
+  "enable_internet": false,
+  "kernel_sources": [],
+  "is_private": false,
+  "id": "abidislam8042/my-first-submission",
+  "competition_sources": [
+    "titanic"
+  ],
+  "title": "My First Submission",
+  "language": "r",
+  "keywords": []
+}

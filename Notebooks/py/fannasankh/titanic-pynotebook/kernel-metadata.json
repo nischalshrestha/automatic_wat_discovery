@@ -1,0 +1,17 @@
+{
+  "id_no": 479127,
+  "kernel_sources": [],
+  "kernel_type": "notebook",
+  "enable_internet": false,
+  "id": "fannasankh/titanic-pynotebook",
+  "title": "Titanic PyNotebook",
+  "code_file": "titanic-pynotebook.ipynb",
+  "keywords": [],
+  "competition_sources": [
+    "titanic"
+  ],
+  "is_private": false,
+  "dataset_sources": [],
+  "language": "python",
+  "enable_gpu": false
+}

@@ -1,0 +1,17 @@
+{
+  "kernel_type": "notebook",
+  "id_no": 2188260,
+  "enable_gpu": false,
+  "kernel_sources": [],
+  "enable_internet": false,
+  "competition_sources": [
+    "titanic"
+  ],
+  "id": "filwaitman/80-accuracy-simple-and-non-overfitting-model",
+  "title": "80% accuracy: simple and non-overfitting model",
+  "dataset_sources": [],
+  "language": "python",
+  "keywords": [],
+  "is_private": false,
+  "code_file": "80-accuracy-simple-and-non-overfitting-model.ipynb"
+}

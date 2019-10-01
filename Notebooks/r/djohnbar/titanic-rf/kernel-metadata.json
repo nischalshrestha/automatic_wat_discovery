@@ -1,0 +1,17 @@
+{
+  "code_file": "titanic-rf.irnb",
+  "dataset_sources": [],
+  "kernel_type": "notebook",
+  "enable_internet": false,
+  "id": "djohnbar/titanic-rf",
+  "is_private": false,
+  "enable_gpu": false,
+  "kernel_sources": [],
+  "language": "r",
+  "keywords": [],
+  "title": "Titanic RF",
+  "competition_sources": [
+    "titanic"
+  ],
+  "id_no": 1375634
+}

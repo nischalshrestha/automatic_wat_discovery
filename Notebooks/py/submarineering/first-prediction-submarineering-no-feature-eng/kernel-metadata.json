@@ -1,0 +1,17 @@
+{
+  "kernel_sources": [],
+  "id": "submarineering/first-prediction-submarineering-no-feature-eng",
+  "title": "First Prediction(Submarineering) no feature eng .",
+  "keywords": [],
+  "code_file": "first-prediction-submarineering-no-feature-eng.ipynb",
+  "competition_sources": [
+    "titanic"
+  ],
+  "id_no": 417073,
+  "enable_gpu": false,
+  "kernel_type": "notebook",
+  "dataset_sources": [],
+  "is_private": false,
+  "enable_internet": false,
+  "language": "python"
+}

@@ -1,0 +1,20 @@
+{
+  "competition_sources": [
+    "titanic"
+  ],
+  "kernel_sources": [],
+  "is_private": false,
+  "code_file": "out-of-the-box-different-models-accuracy.ipynb",
+  "keywords": [
+    "beginner",
+    "classification"
+  ],
+  "kernel_type": "notebook",
+  "language": "python",
+  "enable_internet": false,
+  "id": "syncush/out-of-the-box-different-models-accuracy",
+  "dataset_sources": [],
+  "title": "Out of the Box Different Models Accuracy",
+  "enable_gpu": false,
+  "id_no": 1503290
+}

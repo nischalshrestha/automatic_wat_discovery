@@ -1,0 +1,22 @@
+{
+  "dataset_sources": [],
+  "is_private": false,
+  "title": "Comparing ML algorithms, train ACCURACY > 90%",
+  "kernel_type": "notebook",
+  "id": "aldemuro/comparing-ml-algorithms-train-accuracy-90",
+  "competition_sources": [
+    "titanic"
+  ],
+  "enable_internet": false,
+  "kernel_sources": [],
+  "language": "python",
+  "enable_gpu": false,
+  "code_file": "comparing-ml-algorithms-train-accuracy-90.ipynb",
+  "keywords": [
+    "internet",
+    "beginner",
+    "data visualization",
+    "dailychallenge"
+  ],
+  "id_no": 513881
+}

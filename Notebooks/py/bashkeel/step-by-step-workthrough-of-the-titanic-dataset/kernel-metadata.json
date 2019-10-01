@@ -1,0 +1,22 @@
+{
+  "code_file": "step-by-step-workthrough-of-the-titanic-dataset.ipynb",
+  "id_no": 1079446,
+  "is_private": false,
+  "kernel_type": "notebook",
+  "language": "python",
+  "dataset_sources": [],
+  "enable_internet": false,
+  "keywords": [
+    "tutorial",
+    "data visualization",
+    "feature engineering",
+    "model comparison"
+  ],
+  "title": "Step by Step Workthrough of the Titanic Dataset",
+  "enable_gpu": false,
+  "id": "bashkeel/step-by-step-workthrough-of-the-titanic-dataset",
+  "competition_sources": [
+    "titanic"
+  ],
+  "kernel_sources": []
+}

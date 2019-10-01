@@ -1,0 +1,19 @@
+{
+  "title": "Strategies for estimating a model performance",
+  "enable_internet": false,
+  "language": "python",
+  "keywords": [
+    "advanced"
+  ],
+  "id": "pliptor/strategies-for-estimating-a-model-performance",
+  "competition_sources": [
+    "titanic"
+  ],
+  "dataset_sources": [],
+  "id_no": 681664,
+  "is_private": false,
+  "code_file": "strategies-for-estimating-a-model-performance.ipynb",
+  "enable_gpu": false,
+  "kernel_sources": [],
+  "kernel_type": "notebook"
+}

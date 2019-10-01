@@ -1,0 +1,17 @@
+{
+  "keywords": [],
+  "title": "Titanic Using Random Forest",
+  "id_no": 230935,
+  "competition_sources": [
+    "titanic"
+  ],
+  "id": "edubot/titanic-using-random-forest",
+  "enable_gpu": false,
+  "kernel_sources": [],
+  "language": "python",
+  "code_file": "titanic-using-random-forest.ipynb",
+  "is_private": false,
+  "kernel_type": "notebook",
+  "dataset_sources": [],
+  "enable_internet": false
+}

@@ -1,0 +1,17 @@
+{
+  "is_private": false,
+  "id": "enerrio/scikit-learn-ml-from-start-to-finish",
+  "code_file": "scikit-learn-ml-from-start-to-finish.ipynb",
+  "id_no": 247360,
+  "language": "python",
+  "enable_internet": false,
+  "keywords": [],
+  "enable_gpu": false,
+  "dataset_sources": [],
+  "kernel_type": "notebook",
+  "title": "Scikit-Learn ML from Start to Finish",
+  "kernel_sources": [],
+  "competition_sources": [
+    "titanic"
+  ]
+}

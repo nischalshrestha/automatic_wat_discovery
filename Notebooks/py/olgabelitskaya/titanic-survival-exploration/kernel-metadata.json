@@ -1,0 +1,21 @@
+{
+  "is_private": false,
+  "id": "olgabelitskaya/titanic-survival-exploration",
+  "language": "python",
+  "kernel_sources": [],
+  "dataset_sources": [],
+  "code_file": "titanic-survival-exploration.ipynb",
+  "enable_internet": false,
+  "enable_gpu": false,
+  "kernel_type": "notebook",
+  "competition_sources": [
+    "titanic"
+  ],
+  "id_no": 192763,
+  "keywords": [
+    "data visualization",
+    "classification",
+    "neural networks"
+  ],
+  "title": "Titanic_Survival_Exploration"
+}

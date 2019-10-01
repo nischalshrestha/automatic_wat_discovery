@@ -1,0 +1,17 @@
+{
+  "enable_internet": false,
+  "kernel_sources": [],
+  "is_private": false,
+  "competition_sources": [
+    "titanic"
+  ],
+  "title": "Notebook93d24a0012",
+  "keywords": [],
+  "id_no": 219477,
+  "id": "vinit17/notebook93d24a0012",
+  "kernel_type": "notebook",
+  "code_file": "notebook93d24a0012.ipynb",
+  "language": "python",
+  "enable_gpu": false,
+  "dataset_sources": []
+}

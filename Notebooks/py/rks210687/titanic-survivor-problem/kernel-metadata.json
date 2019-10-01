@@ -1,0 +1,17 @@
+{
+  "keywords": [],
+  "enable_internet": false,
+  "title": "Titanic survivor problem",
+  "dataset_sources": [],
+  "is_private": false,
+  "kernel_type": "notebook",
+  "code_file": "titanic-survivor-problem.ipynb",
+  "id_no": 1263062,
+  "language": "python",
+  "enable_gpu": false,
+  "competition_sources": [
+    "titanic"
+  ],
+  "id": "rks210687/titanic-survivor-problem",
+  "kernel_sources": []
+}

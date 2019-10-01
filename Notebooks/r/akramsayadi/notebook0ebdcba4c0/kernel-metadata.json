@@ -1,0 +1,17 @@
+{
+  "competition_sources": [
+    "titanic"
+  ],
+  "title": "Notebook0ebdcba4c0",
+  "id_no": 174172,
+  "dataset_sources": [],
+  "kernel_type": "notebook",
+  "language": "r",
+  "enable_internet": false,
+  "kernel_sources": [],
+  "enable_gpu": false,
+  "id": "akramsayadi/notebook0ebdcba4c0",
+  "keywords": [],
+  "code_file": "notebook0ebdcba4c0.irnb",
+  "is_private": false
+}

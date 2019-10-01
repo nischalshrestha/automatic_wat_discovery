@@ -1,0 +1,17 @@
+{
+  "enable_internet": false,
+  "id_no": 258605,
+  "kernel_type": "notebook",
+  "title": "An Interactive Data Science Tutorial",
+  "kernel_sources": [],
+  "competition_sources": [
+    "titanic"
+  ],
+  "is_private": false,
+  "language": "python",
+  "dataset_sources": [],
+  "keywords": [],
+  "code_file": "an-interactive-data-science-tutorial.ipynb",
+  "id": "vk4503/an-interactive-data-science-tutorial",
+  "enable_gpu": false
+}

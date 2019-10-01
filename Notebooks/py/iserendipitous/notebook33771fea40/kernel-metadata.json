@@ -1,0 +1,17 @@
+{
+  "id": "iserendipitous/notebook33771fea40",
+  "id_no": 140255,
+  "title": "my first kernel.credit goes to a lot of resources ",
+  "code_file": "notebook33771fea40.ipynb",
+  "language": "python",
+  "kernel_type": "notebook",
+  "is_private": false,
+  "enable_gpu": false,
+  "enable_internet": false,
+  "keywords": [],
+  "dataset_sources": [],
+  "kernel_sources": [],
+  "competition_sources": [
+    "titanic"
+  ]
+}

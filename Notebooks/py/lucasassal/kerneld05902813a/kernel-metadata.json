@@ -1,0 +1,17 @@
+{
+  "language": "python",
+  "id_no": 1495274,
+  "kernel_sources": [],
+  "enable_gpu": false,
+  "code_file": "kerneld05902813a.ipynb",
+  "enable_internet": false,
+  "dataset_sources": [],
+  "competition_sources": [
+    "titanic"
+  ],
+  "is_private": false,
+  "keywords": [],
+  "title": "kerneld05902813a",
+  "kernel_type": "notebook",
+  "id": "lucasassal/kerneld05902813a"
+}

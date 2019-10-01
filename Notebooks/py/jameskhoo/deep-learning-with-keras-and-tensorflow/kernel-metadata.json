@@ -1,0 +1,19 @@
+{
+  "code_file": "deep-learning-with-keras-and-tensorflow.ipynb",
+  "dataset_sources": [],
+  "kernel_sources": [],
+  "title": "Deep Learning with Keras and TensorFlow",
+  "id": "jameskhoo/deep-learning-with-keras-and-tensorflow",
+  "keywords": [
+    "deep learning"
+  ],
+  "competition_sources": [
+    "titanic"
+  ],
+  "is_private": false,
+  "enable_gpu": false,
+  "enable_internet": false,
+  "kernel_type": "notebook",
+  "id_no": 376558,
+  "language": "python"
+}

@@ -1,0 +1,47 @@
+{
+  "cells": [
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "_cell_guid": "44dfa109-a945-95ee-558b-161bdbed0e66"
+      },
+      "outputs": [],
+      "source": [
+        "# Load packages\n",
+        "library('ggplot2') # visualization\n",
+        "library('ggthemes') # visualization\n",
+        "library('scales') # visualization\n",
+        "library('dplyr') # data manipulation\n",
+        "library('mice') # imputation\n",
+        "library('randomForest') # classification algorithm\n",
+        "train <- read.csv('../input/train.csv', stringsAsFactors = F)\n",
+        "test  <- read.csv('../input/test.csv', stringsAsFactors = F)\n",
+        "\n",
+        "full  <- bind_rows(train, test) # bind training & test data\n",
+        "\n",
+        "# check data\n",
+        "str(full)"
+      ]
+    }
+  ],
+  "metadata": {
+    "_change_revision": 0,
+    "_is_fork": false,
+    "kernelspec": {
+      "display_name": "R",
+      "language": "R",
+      "name": "ir"
+    },
+    "language_info": {
+      "codemirror_mode": "r",
+      "file_extension": ".r",
+      "mimetype": "text/x-r-source",
+      "name": "R",
+      "pygments_lexer": "r",
+      "version": "3.3.2"
+    }
+  },
+  "nbformat": 4,
+  "nbformat_minor": 0
+}

@@ -1,0 +1,17 @@
+{
+  "keywords": [],
+  "dataset_sources": [],
+  "kernel_type": "notebook",
+  "enable_gpu": false,
+  "language": "python",
+  "id": "jaicky/notebook1c9d7c2898",
+  "enable_internet": false,
+  "id_no": 205390,
+  "title": "Notebook1c9d7c2898",
+  "kernel_sources": [],
+  "competition_sources": [
+    "titanic"
+  ],
+  "is_private": false,
+  "code_file": "notebook1c9d7c2898.ipynb"
+}

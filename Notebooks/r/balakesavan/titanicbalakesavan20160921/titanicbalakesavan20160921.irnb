@@ -1,0 +1,85 @@
+{
+  "cells": [
+    {
+      "cell_type": "markdown",
+      "metadata": {
+        "_cell_guid": "b1e40c09-8f83-adb4-b623-26896d6bb2cd"
+      },
+      "source": [
+        "Trying out Kaggle"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "_cell_guid": "c6779190-ef3e-f39a-392d-e6dd6c206e5f"
+      },
+      "outputs": [],
+      "source": [
+        "library(caret)\n",
+        "\n",
+        "trainData1 <- (read.csv(\"../input/train.csv\"))\n",
+        "testData1 <- (read.csv(\"../input/test.csv\"))\n",
+        "\n",
+        "#check for NA\n",
+        "summary(trainData1)\n",
+        "\n",
+        "#fixing NA\n",
+        "trainData1$Age[which(is.na(trainData1$Age))] <- mean(as.numeric(trainData1$Age[which(!is.na(trainData1$Age))]))\n",
+        "trainData1$Age <- as.numeric(trainData1$Age)\n",
+        "\n",
+        "testData1$Age[which(is.na(testData1$Age))] <- mean(as.numeric(testData1$Age[which(!is.na(testData1$Age))]))\n",
+        "testData1$Age <- as.numeric(testData1$Age)\n",
+        "\n",
+        "\n",
+        "modelTitanic14 <- glm(Survived~(Pclass+Sex+Age+SibSp)^2, data = trainData1, family=binomial(\"logit\"))\n",
+        "summary(modelTitanic14)\n",
+        "\n",
+        "#prediction and conversion to 0/1\n",
+        "predTitanic <- as.data.frame(predict(modelTitanic14, testData1, type=\"response\"))\n",
+        "colnames(predTitanic) <-c(\"Survived\")\n",
+        "predTitanic$Survived[predTitanic$Survived>0.5] <- 1\n",
+        "predTitanic$Survived[predTitanic$Survived!=1] <- 0\n",
+        "predTitanic['PassengerId'] <- testData1$PassengerId\n",
+        "\n",
+        "#output\n",
+        "write.csv(predTitanic, \"predTitanic.csv\", row.names = F, col.names = T)\n",
+        "\n",
+        "#classifier testing code\n",
+        "predTitanicTrain <- as.data.frame(predict(modelTitanic14, trainData1, type=\"response\"))\n",
+        "colnames(predTitanicTrain) <-c(\"Survived\")\n",
+        "predTitanicTrain['PassengerId'] <- trainData1$PassengerId\n",
+        "\n",
+        "predTitanicTrain01 <- predTitanicTrain\n",
+        "\n",
+        "predTitanicTrain01$Survived <- ifelse(predTitanicTrain01$Survived>0.5,1,0)\n",
+        "\n",
+        "\n",
+        "conMatTitanic <- confusionMatrix(trainData1$Survived,predTitanicTrain01$Survived,positive = '1')\n",
+        "conMatTitanic\n",
+        "\n",
+        "\n"
+      ]
+    }
+  ],
+  "metadata": {
+    "_change_revision": 0,
+    "_is_fork": false,
+    "kernelspec": {
+      "display_name": "R",
+      "language": "R",
+      "name": "ir"
+    },
+    "language_info": {
+      "codemirror_mode": "r",
+      "file_extension": ".r",
+      "mimetype": "text/x-r-source",
+      "name": "R",
+      "pygments_lexer": "r",
+      "version": "3.3.1"
+    }
+  },
+  "nbformat": 4,
+  "nbformat_minor": 0
+}

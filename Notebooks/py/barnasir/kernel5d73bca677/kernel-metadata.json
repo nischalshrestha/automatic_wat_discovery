@@ -1,0 +1,17 @@
+{
+  "is_private": false,
+  "title": "kernel5d73bca677",
+  "id": "barnasir/kernel5d73bca677",
+  "code_file": "kernel5d73bca677.ipynb",
+  "dataset_sources": [],
+  "id_no": 2132636,
+  "kernel_sources": [],
+  "competition_sources": [
+    "titanic"
+  ],
+  "language": "python",
+  "enable_gpu": true,
+  "kernel_type": "notebook",
+  "keywords": [],
+  "enable_internet": false
+}

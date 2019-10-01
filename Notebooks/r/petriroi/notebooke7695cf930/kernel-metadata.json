@@ -1,0 +1,17 @@
+{
+  "id": "petriroi/notebooke7695cf930",
+  "is_private": false,
+  "competition_sources": [
+    "titanic"
+  ],
+  "enable_gpu": false,
+  "id_no": 199725,
+  "dataset_sources": [],
+  "enable_internet": false,
+  "language": "python",
+  "title": "Notebooke7695cf930",
+  "kernel_sources": [],
+  "code_file": "notebooke7695cf930.ipynb",
+  "kernel_type": "notebook",
+  "keywords": []
+}

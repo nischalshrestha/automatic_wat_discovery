@@ -1,0 +1,17 @@
+{
+  "id": "jmohitj/simple-logistic-regression",
+  "kernel_sources": [],
+  "enable_internet": false,
+  "competition_sources": [
+    "titanic"
+  ],
+  "language": "python",
+  "title": "Simple Logistic Regression ",
+  "kernel_type": "notebook",
+  "enable_gpu": false,
+  "is_private": false,
+  "id_no": 921342,
+  "code_file": "simple-logistic-regression.ipynb",
+  "dataset_sources": [],
+  "keywords": []
+}

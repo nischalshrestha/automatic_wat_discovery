@@ -1,0 +1,17 @@
+{
+  "id": "rojofanamperana/data-analytic-assignment-rojo-titanic",
+  "id_no": 526513,
+  "title": "Data Analytic Assignment Rojo: Titanic",
+  "code_file": "data-analytic-assignment-rojo-titanic.ipynb",
+  "language": "python",
+  "kernel_type": "notebook",
+  "is_private": false,
+  "enable_gpu": false,
+  "enable_internet": false,
+  "keywords": [],
+  "dataset_sources": [],
+  "kernel_sources": [],
+  "competition_sources": [
+    "titanic"
+  ]
+}

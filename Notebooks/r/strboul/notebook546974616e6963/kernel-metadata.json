@@ -1,0 +1,17 @@
+{
+  "kernel_sources": [],
+  "id": "strboul/notebook546974616e6963",
+  "title": "Notebook546974616e6963",
+  "language": "r",
+  "is_private": false,
+  "enable_internet": false,
+  "dataset_sources": [],
+  "keywords": [],
+  "id_no": 495934,
+  "kernel_type": "notebook",
+  "enable_gpu": false,
+  "competition_sources": [
+    "titanic"
+  ],
+  "code_file": "notebook546974616e6963.irnb"
+}

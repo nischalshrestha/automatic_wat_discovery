@@ -1,0 +1,308 @@
+{
+  "cells": [
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "_cell_guid": "f1c6b4b9-b1ae-3f61-138c-73ca23fc54ea"
+      },
+      "outputs": [],
+      "source": [
+        "# This R environment comes with all of CRAN preinstalled, as well as many other helpful packages\n",
+        "# The environment is defined by the kaggle/rstats docker image: https://github.com/kaggle/docker-rstats\n",
+        "# For example, here's several helpful packages to load in \n",
+        "\n",
+        "library(ggplot2) # Data visualization\n",
+        "library(readr) # CSV file I/O, e.g. the read_csv function\n",
+        "\n",
+        "# Input data files are available in the \"../input/\" directory.\n",
+        "# For example, running this (by clicking run or pressing Shift+Enter) will list the files in the input directory\n",
+        "\n",
+        "system(\"ls ../input\")\n",
+        "\n",
+        "# Any results you write to the current directory are saved as output."
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "_cell_guid": "10407d13-b78f-4cf2-797d-170028cc5c38"
+      },
+      "outputs": [],
+      "source": [
+        "library(h2o)\n",
+        "library(statmod)"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "_cell_guid": "e950ee26-98fc-3124-f68c-838962c7b971"
+      },
+      "outputs": [],
+      "source": [
+        "c1 <- h2o.init()"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "_cell_guid": "55bb44ba-c9af-2f39-636d-7234436206d0"
+      },
+      "outputs": [],
+      "source": [
+        "df <- h2o.importFile(path =\"../input/train.csv\")"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "_cell_guid": "0092a512-24d2-7642-1e00-c9e9f95f0a48"
+      },
+      "outputs": [],
+      "source": [
+        "df"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "_cell_guid": "53e9570b-48d6-277f-de85-2f7347f1a053"
+      },
+      "outputs": [],
+      "source": [
+        "response <- \"Survived\"\n",
+        "df[[response]] <- as.factor(df[[response]])\n",
+        "predictors <- setdiff(names(df), c(response, \"Name\"))\n",
+        "summary(df,exact_quantiles=TRUE)"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "_cell_guid": "efda39a9-1276-63ce-934e-3f29de2ac143"
+      },
+      "outputs": [],
+      "source": [
+        "splits <- h2o.splitFrame(\n",
+        "  data = df, \n",
+        "  ratios = c(0.6,0.2),   ## only need to specify 2 fractions, the 3rd is implied\n",
+        "  destination_frames = c(\"train.hex\", \"valid.hex\", \"test.hex\"), seed = 1234\n",
+        ")\n",
+        "train <- splits[[1]]\n",
+        "valid <- splits[[2]]\n",
+        "test  <- splits[[3]]"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "_cell_guid": "ae968b3e-8bd5-94c5-f776-0c5d6dc4dbcf"
+      },
+      "outputs": [],
+      "source": [
+        "## We only provide the required parameters, everything else is default\n",
+        "gbm <- h2o.gbm(x = predictors, y = response, training_frame = train)\n",
+        "\n",
+        "## Show a detailed model summary\n",
+        "gbm\n",
+        "\n",
+        "## Get the AUC on the validation set\n",
+        "h2o.auc(h2o.performance(gbm, newdata = valid)) "
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "_cell_guid": "36a6f355-f430-5366-5294-aeae633b3215"
+      },
+      "outputs": [],
+      "source": [
+        "## New model\n",
+        "## h2o.rbind makes a copy here, so it's better to use splitFrame with `ratios = c(0.8)` instead above\n",
+        "gbm <- h2o.gbm(x = predictors, y = response, training_frame = h2o.rbind(train, valid), nfolds = 5, seed = 0xDECAF)\n",
+        "\n",
+        "## Show a detailed summary of the cross validation metrics\n",
+        "## This gives you an idea of the variance between the folds\n",
+        "gbm@model$cross_validation_metrics_summary\n",
+        "\n",
+        "## Get the cross-validated AUC by scoring the combined holdout predictions.\n",
+        "## (Instead of taking the average of the metrics across the folds)\n",
+        "h2o.auc(h2o.performance(gbm, xval = TRUE))"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "_cell_guid": "7c19afe4-c4a3-921e-bf4c-bd1764d41ce0"
+      },
+      "outputs": [],
+      "source": [
+        "## New model\n",
+        "gbm <- h2o.gbm(\n",
+        "  ## standard model parameters\n",
+        "  x = predictors, \n",
+        "  y = response, \n",
+        "  training_frame = train, \n",
+        "  validation_frame = valid,\n",
+        "  \n",
+        "  ## more trees is better if the learning rate is small enough \n",
+        "  ## here, use \"more than enough\" trees - we have early stopping\n",
+        "  ntrees = 10000,                                                            \n",
+        "  \n",
+        "  ## smaller learning rate is better (this is a good value for most datasets, but see below for annealing)\n",
+        "  learn_rate=0.01,                                                         \n",
+        "  \n",
+        "  ## early stopping once the validation AUC doesn't improve by at least 0.01% for 5 consecutive scoring events\n",
+        "  stopping_rounds = 5, stopping_tolerance = 1e-4, stopping_metric = \"AUC\", \n",
+        "  \n",
+        "  ## sample 80% of rows per tree\n",
+        "  sample_rate = 0.8,                                                       \n",
+        "\n",
+        "  ## sample 80% of columns per split\n",
+        "  col_sample_rate = 0.8,                                                   \n",
+        "\n",
+        "  ## fix a random number generator seed for reproducibility\n",
+        "  seed = 1234,                                                             \n",
+        "  \n",
+        "  ## score every 10 trees to make early stopping reproducible (it depends on the scoring interval)\n",
+        "  score_tree_interval = 10                                                 \n",
+        ")\n",
+        "\n",
+        "## Get the AUC on the validation set\n",
+        "h2o.auc(h2o.performance(gbm, valid = TRUE))"
+      ]
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {
+        "_cell_guid": "7e86afc1-bd2b-5d66-28da-49c2c14f2a3e"
+      },
+      "source": [
+        "# Hyper parameter search"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "_cell_guid": "37fd93f5-dc32-37ed-98cd-a242f9bb9c0f"
+      },
+      "outputs": [],
+      "source": [
+        "## Depth 10 is usually plenty of depth for most datasets, but you never know\n",
+        "hyper_params = list( ntrees=c(10,100,1000, 10000), max_depth = seq(1,29,2) )\n",
+        "#hyper_params = list( max_depth = c(4,6,8,12,16,20) ) ##faster for larger datasets\n",
+        "\n",
+        "grid <- h2o.grid(\n",
+        "  ## hyper parameters\n",
+        "  hyper_params = hyper_params,\n",
+        "  \n",
+        "  ## full Cartesian hyper-parameter search\n",
+        "  search_criteria = list(strategy = \"Cartesian\"),\n",
+        "  \n",
+        "  ## which algorithm to run\n",
+        "  algorithm=\"gbm\",\n",
+        "  \n",
+        "  ## identifier for the grid, to later retrieve it\n",
+        "  grid_id=\"depth_grid\",\n",
+        "  \n",
+        "  ## standard model parameters\n",
+        "  x = predictors, \n",
+        "  y = response, \n",
+        "  training_frame = train, \n",
+        "  validation_frame = valid,\n",
+        "  \n",
+        "  ## more trees is better if the learning rate is small enough \n",
+        "  ## here, use \"more than enough\" trees - we have early stopping\n",
+        "  #ntrees = 10000,                                                            \n",
+        "  \n",
+        "  ## smaller learning rate is better\n",
+        "  ## since we have learning_rate_annealing, we can afford to start with a bigger learning rate\n",
+        "  learn_rate = 0.05,                                                         \n",
+        "  \n",
+        "  ## learning rate annealing: learning_rate shrinks by 1% after every tree \n",
+        "  ## (use 1.00 to disable, but then lower the learning_rate)\n",
+        "  learn_rate_annealing = 0.99,                                               \n",
+        "  \n",
+        "  ## sample 80% of rows per tree\n",
+        "  sample_rate = 0.8,                                                       \n",
+        "\n",
+        "  ## sample 80% of columns per split\n",
+        "  col_sample_rate = 0.8, \n",
+        "  \n",
+        "  ## fix a random number generator seed for reproducibility\n",
+        "  seed = 1234,                                                             \n",
+        "  \n",
+        "  ## early stopping once the validation AUC doesn't improve by at least 0.01% for 5 consecutive scoring events\n",
+        "  stopping_rounds = 5,\n",
+        "  stopping_tolerance = 1e-4,\n",
+        "  stopping_metric = \"AUC\", \n",
+        "  \n",
+        "  ## score every 10 trees to make early stopping reproducible (it depends on the scoring interval)\n",
+        "  score_tree_interval = 10                                                \n",
+        ")\n",
+        "\n",
+        "## by default, display the grid search results sorted by increasing logloss (since this is a classification task)\n",
+        "grid                                                                       \n",
+        "\n",
+        "## sort the grid models by decreasing AUC\n",
+        "sortedGrid <- h2o.getGrid(\"depth_grid\", sort_by=\"auc\", decreasing = TRUE)    \n",
+        "sortedGrid\n",
+        "\n",
+        "## find the range of max_depth for the top 5 models\n",
+        "topDepths = sortedGrid@summary_table$max_depth[1:5]                       \n",
+        "minDepth = min(as.numeric(topDepths))\n",
+        "maxDepth = max(as.numeric(topDepths))"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "_cell_guid": "6ac3fd07-c93f-15c1-6828-b3da90284291"
+      },
+      "outputs": [],
+      "source": [
+        "maxDepth"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "_cell_guid": "57c7653b-92b7-0dcb-00ea-8b576c5d2d7e"
+      },
+      "outputs": [],
+      "source": ""
+    }
+  ],
+  "metadata": {
+    "_change_revision": 0,
+    "_is_fork": false,
+    "kernelspec": {
+      "display_name": "R",
+      "language": "R",
+      "name": "ir"
+    },
+    "language_info": {
+      "codemirror_mode": "r",
+      "file_extension": ".r",
+      "mimetype": "text/x-r-source",
+      "name": "R",
+      "pygments_lexer": "r",
+      "version": "3.3.2"
+    }
+  },
+  "nbformat": 4,
+  "nbformat_minor": 0
+}

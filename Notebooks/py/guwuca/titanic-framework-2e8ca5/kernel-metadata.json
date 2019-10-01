@@ -1,0 +1,17 @@
+{
+  "is_private": false,
+  "id": "guwuca/titanic-framework-2e8ca5",
+  "code_file": "titanic-framework-2e8ca5.ipynb",
+  "keywords": [],
+  "kernel_sources": [],
+  "enable_internet": false,
+  "title": " Titanic Framework 2e8ca5",
+  "enable_gpu": false,
+  "kernel_type": "notebook",
+  "language": "python",
+  "dataset_sources": [],
+  "id_no": 1521615,
+  "competition_sources": [
+    "titanic"
+  ]
+}

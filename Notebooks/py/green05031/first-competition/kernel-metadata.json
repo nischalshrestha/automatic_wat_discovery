@@ -1,0 +1,17 @@
+{
+  "kernel_sources": [],
+  "enable_internet": false,
+  "kernel_type": "notebook",
+  "id": "green05031/first-competition",
+  "dataset_sources": [],
+  "title": "First competition",
+  "is_private": false,
+  "id_no": 372059,
+  "language": "python",
+  "competition_sources": [
+    "titanic"
+  ],
+  "code_file": "first-competition.ipynb",
+  "enable_gpu": false,
+  "keywords": []
+}

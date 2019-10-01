@@ -1,0 +1,17 @@
+{
+  "code_file": "titanic-crash-course-decision-tree-visualization.ipynb",
+  "competition_sources": [
+    "titanic"
+  ],
+  "id_no": 1626689,
+  "title": "titanic crash course - decision tree visualization",
+  "id": "alissecian/titanic-crash-course-decision-tree-visualization",
+  "dataset_sources": [],
+  "language": "python",
+  "is_private": false,
+  "enable_gpu": false,
+  "kernel_sources": [],
+  "keywords": [],
+  "kernel_type": "notebook",
+  "enable_internet": false
+}

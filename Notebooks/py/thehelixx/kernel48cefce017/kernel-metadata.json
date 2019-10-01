@@ -1,0 +1,20 @@
+{
+  "dataset_sources": [],
+  "kernel_type": "notebook",
+  "language": "python",
+  "code_file": "kernel48cefce017.ipynb",
+  "id_no": 1984383,
+  "is_private": false,
+  "enable_gpu": false,
+  "competition_sources": [
+    "titanic"
+  ],
+  "id": "thehelixx/kernel48cefce017",
+  "kernel_sources": [],
+  "title": "kernel48cefce017",
+  "enable_internet": false,
+  "keywords": [
+    "beginner",
+    "starter code"
+  ]
+}

@@ -1,0 +1,17 @@
+{
+  "id_no": 864610,
+  "dataset_sources": [],
+  "enable_gpu": true,
+  "language": "python",
+  "id": "darkcoderrises/sinking-of-the-titanic-in-ml",
+  "competition_sources": [
+    "titanic"
+  ],
+  "title": "Sinking of the Titanic in ML",
+  "kernel_sources": [],
+  "kernel_type": "notebook",
+  "keywords": [],
+  "is_private": false,
+  "code_file": "sinking-of-the-titanic-in-ml.ipynb",
+  "enable_internet": false
+}

@@ -1,0 +1,17 @@
+{
+  "keywords": [],
+  "dataset_sources": [],
+  "enable_gpu": false,
+  "is_private": false,
+  "kernel_type": "notebook",
+  "title": "Confusion Matrix",
+  "language": "r",
+  "enable_internet": false,
+  "id_no": 70160,
+  "code_file": "notebook-ca1a5c0b25f9cf665670.irnb",
+  "kernel_sources": [],
+  "id": "greenpencil/notebook-ca1a5c0b25f9cf665670",
+  "competition_sources": [
+    "titanic"
+  ]
+}

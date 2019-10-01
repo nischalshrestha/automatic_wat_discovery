@@ -1,0 +1,17 @@
+{
+  "kernel_type": "notebook",
+  "enable_gpu": false,
+  "dataset_sources": [],
+  "code_file": "titanic-comp.ipynb",
+  "enable_internet": false,
+  "kernel_sources": [],
+  "title": "titanic comp",
+  "language": "python",
+  "keywords": [],
+  "id": "nitikakamboj/titanic-comp",
+  "competition_sources": [
+    "titanic"
+  ],
+  "is_private": false,
+  "id_no": 896694
+}

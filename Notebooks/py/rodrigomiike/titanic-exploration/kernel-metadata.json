@@ -1,0 +1,17 @@
+{
+  "title": "Titanic Exploration",
+  "id_no": 404507,
+  "competition_sources": [
+    "titanic"
+  ],
+  "kernel_sources": [],
+  "code_file": "titanic-exploration.ipynb",
+  "is_private": false,
+  "id": "rodrigomiike/titanic-exploration",
+  "enable_gpu": false,
+  "enable_internet": false,
+  "kernel_type": "notebook",
+  "keywords": [],
+  "language": "python",
+  "dataset_sources": []
+}

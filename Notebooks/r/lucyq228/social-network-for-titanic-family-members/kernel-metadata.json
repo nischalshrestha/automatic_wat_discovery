@@ -1,0 +1,17 @@
+{
+  "language": "r",
+  "is_private": false,
+  "id_no": 228402,
+  "id": "lucyq228/social-network-for-titanic-family-members",
+  "keywords": [],
+  "dataset_sources": [],
+  "enable_gpu": false,
+  "code_file": "social-network-for-titanic-family-members.irnb",
+  "enable_internet": false,
+  "kernel_type": "notebook",
+  "kernel_sources": [],
+  "competition_sources": [
+    "titanic"
+  ],
+  "title": "Social Network for Titanic Family Members"
+}

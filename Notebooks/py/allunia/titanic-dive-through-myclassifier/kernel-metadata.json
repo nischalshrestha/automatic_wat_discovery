@@ -1,0 +1,19 @@
+{
+  "code_file": "titanic-dive-through-myclassifier.ipynb",
+  "keywords": [],
+  "id_no": 1247506,
+  "competition_sources": [
+    "titanic"
+  ],
+  "language": "python",
+  "id": "allunia/titanic-dive-through-myclassifier",
+  "kernel_type": "notebook",
+  "dataset_sources": [
+    "allunia/titanicdivethrough"
+  ],
+  "enable_gpu": false,
+  "kernel_sources": [],
+  "enable_internet": false,
+  "title": "Titanic Dive Through - MyClassifier",
+  "is_private": false
+}

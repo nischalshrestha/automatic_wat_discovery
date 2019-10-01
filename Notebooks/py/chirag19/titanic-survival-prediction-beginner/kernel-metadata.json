@@ -1,0 +1,23 @@
+{
+  "id_no": 1808700,
+  "enable_gpu": false,
+  "kernel_type": "notebook",
+  "id": "chirag19/titanic-survival-prediction-beginner",
+  "dataset_sources": [],
+  "title": "Titanic Survival Prediction (Beginner)",
+  "is_private": false,
+  "enable_internet": false,
+  "code_file": "titanic-survival-prediction-beginner.ipynb",
+  "language": "python",
+  "keywords": [
+    "beginner",
+    "eda",
+    "data visualization",
+    "classification",
+    "feature engineering"
+  ],
+  "competition_sources": [
+    "titanic"
+  ],
+  "kernel_sources": []
+}

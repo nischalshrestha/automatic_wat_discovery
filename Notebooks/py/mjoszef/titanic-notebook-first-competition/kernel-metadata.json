@@ -1,0 +1,17 @@
+{
+  "language": "python",
+  "id_no": 670839,
+  "competition_sources": [
+    "titanic"
+  ],
+  "dataset_sources": [],
+  "enable_gpu": false,
+  "kernel_type": "notebook",
+  "kernel_sources": [],
+  "code_file": "titanic-notebook-first-competition.ipynb",
+  "is_private": false,
+  "id": "mjoszef/titanic-notebook-first-competition",
+  "enable_internet": false,
+  "keywords": [],
+  "title": "Titanic Notebook -- First Competition"
+}

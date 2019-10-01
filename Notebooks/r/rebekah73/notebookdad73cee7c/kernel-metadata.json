@@ -1,0 +1,17 @@
+{
+  "language": "python",
+  "is_private": false,
+  "enable_internet": false,
+  "kernel_sources": [],
+  "keywords": [],
+  "competition_sources": [
+    "titanic"
+  ],
+  "code_file": "notebookdad73cee7c.ipynb",
+  "dataset_sources": [],
+  "id": "rebekah73/notebookdad73cee7c",
+  "id_no": 204274,
+  "enable_gpu": false,
+  "title": "Notebookdad73cee7c",
+  "kernel_type": "notebook"
+}

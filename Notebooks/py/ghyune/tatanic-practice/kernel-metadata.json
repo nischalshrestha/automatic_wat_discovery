@@ -1,0 +1,17 @@
+{
+  "competition_sources": [
+    "titanic"
+  ],
+  "title": "Tatanic practice",
+  "dataset_sources": [],
+  "kernel_sources": [],
+  "code_file": "tatanic-practice.ipynb",
+  "kernel_type": "notebook",
+  "enable_internet": false,
+  "is_private": false,
+  "id": "ghyune/tatanic-practice",
+  "language": "python",
+  "enable_gpu": false,
+  "id_no": 397893,
+  "keywords": []
+}

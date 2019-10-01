@@ -1,0 +1,17 @@
+{
+  "enable_internet": false,
+  "title": "Getting Started in Competitions",
+  "kernel_type": "notebook",
+  "keywords": [],
+  "competition_sources": [
+    "titanic"
+  ],
+  "is_private": false,
+  "kernel_sources": [],
+  "code_file": "getting-started-in-competitions.ipynb",
+  "id_no": 274900,
+  "id": "ibacaraujo/getting-started-in-competitions",
+  "language": "python",
+  "enable_gpu": false,
+  "dataset_sources": []
+}

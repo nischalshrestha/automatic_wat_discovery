@@ -1,0 +1,17 @@
+{
+  "enable_internet": false,
+  "id": "hiktsu/implementation-using-tensorflow-for-titanic",
+  "dataset_sources": [],
+  "kernel_sources": [],
+  "code_file": "implementation-using-tensorflow-for-titanic.ipynb",
+  "kernel_type": "notebook",
+  "enable_gpu": false,
+  "competition_sources": [
+    "titanic"
+  ],
+  "keywords": [],
+  "id_no": 1080559,
+  "is_private": false,
+  "title": "Implementation using TensorFlow  for Titanic",
+  "language": "python"
+}

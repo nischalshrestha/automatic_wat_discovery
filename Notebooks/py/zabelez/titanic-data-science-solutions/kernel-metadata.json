@@ -1,0 +1,17 @@
+{
+  "id": "zabelez/titanic-data-science-solutions",
+  "enable_internet": false,
+  "code_file": "titanic-data-science-solutions.ipynb",
+  "competition_sources": [
+    "titanic"
+  ],
+  "title": "Titanic Data Science Solutions",
+  "language": "python",
+  "kernel_sources": [],
+  "enable_gpu": false,
+  "dataset_sources": [],
+  "is_private": false,
+  "kernel_type": "notebook",
+  "keywords": [],
+  "id_no": 264766
+}

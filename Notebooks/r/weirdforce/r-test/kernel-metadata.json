@@ -1,0 +1,17 @@
+{
+  "kernel_sources": [],
+  "code_file": "r-test.irnb",
+  "dataset_sources": [],
+  "competition_sources": [
+    "titanic"
+  ],
+  "keywords": [],
+  "id": "weirdforce/r-test",
+  "id_no": 194789,
+  "enable_gpu": false,
+  "language": "r",
+  "is_private": false,
+  "enable_internet": false,
+  "kernel_type": "notebook",
+  "title": "R_test"
+}

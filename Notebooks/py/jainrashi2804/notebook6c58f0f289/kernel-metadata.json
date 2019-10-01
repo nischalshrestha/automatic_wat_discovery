@@ -1,0 +1,17 @@
+{
+  "keywords": [],
+  "enable_internet": false,
+  "code_file": "notebook6c58f0f289.ipynb",
+  "competition_sources": [
+    "titanic"
+  ],
+  "enable_gpu": false,
+  "kernel_sources": [],
+  "id": "jainrashi2804/notebook6c58f0f289",
+  "id_no": 438036,
+  "title": "Notebook6c58f0f289",
+  "is_private": false,
+  "dataset_sources": [],
+  "language": "python",
+  "kernel_type": "notebook"
+}

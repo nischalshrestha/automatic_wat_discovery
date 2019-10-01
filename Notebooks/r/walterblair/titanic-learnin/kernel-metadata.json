@@ -1,0 +1,17 @@
+{
+  "dataset_sources": [],
+  "id": "walterblair/titanic-learnin",
+  "title": "Titanic Learnin'",
+  "kernel_type": "notebook",
+  "code_file": "titanic-learnin.ipynb",
+  "id_no": 229140,
+  "is_private": false,
+  "competition_sources": [
+    "titanic"
+  ],
+  "enable_gpu": false,
+  "keywords": [],
+  "language": "python",
+  "kernel_sources": [],
+  "enable_internet": false
+}

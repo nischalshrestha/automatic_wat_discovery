@@ -1,0 +1,17 @@
+{
+  "id": "lhzhu91/titanic",
+  "keywords": [],
+  "code_file": "titanic.irnb",
+  "title": "Titanic",
+  "id_no": 214066,
+  "kernel_sources": [],
+  "competition_sources": [
+    "titanic"
+  ],
+  "enable_internet": false,
+  "language": "r",
+  "enable_gpu": false,
+  "kernel_type": "notebook",
+  "dataset_sources": [],
+  "is_private": false
+}

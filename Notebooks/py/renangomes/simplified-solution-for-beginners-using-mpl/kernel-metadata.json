@@ -1,0 +1,22 @@
+{
+  "enable_gpu": false,
+  "kernel_sources": [],
+  "id": "renangomes/simplified-solution-for-beginners-using-mpl",
+  "language": "python",
+  "keywords": [
+    "beginner",
+    "classification",
+    "deep learning",
+    "neural networks"
+  ],
+  "title": "Simplified Solution for Beginners using MPL",
+  "enable_internet": false,
+  "dataset_sources": [],
+  "is_private": false,
+  "id_no": 940249,
+  "competition_sources": [
+    "titanic"
+  ],
+  "kernel_type": "notebook",
+  "code_file": "simplified-solution-for-beginners-using-mpl.ipynb"
+}

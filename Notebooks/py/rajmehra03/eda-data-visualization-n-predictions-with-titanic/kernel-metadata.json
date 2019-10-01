@@ -1,0 +1,23 @@
+{
+  "keywords": [
+    "tutorial",
+    "beginner",
+    "eda",
+    "data cleaning",
+    "classification"
+  ],
+  "is_private": false,
+  "code_file": "eda-data-visualization-n-predictions-with-titanic.ipynb",
+  "kernel_sources": [],
+  "enable_internet": false,
+  "title": "EDA,DATA VISUALIZATION n PREDICTIONS WITH TITANIC",
+  "competition_sources": [
+    "titanic"
+  ],
+  "language": "python",
+  "enable_gpu": false,
+  "kernel_type": "notebook",
+  "id": "rajmehra03/eda-data-visualization-n-predictions-with-titanic",
+  "id_no": 1266423,
+  "dataset_sources": []
+}

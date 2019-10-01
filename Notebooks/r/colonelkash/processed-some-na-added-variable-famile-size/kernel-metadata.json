@@ -1,0 +1,17 @@
+{
+  "kernel_type": "notebook",
+  "title": "processed some NA , added Variable \"Famile_Size\"",
+  "enable_internet": false,
+  "is_private": false,
+  "kernel_sources": [],
+  "code_file": "processed-some-na-added-variable-famile-size.irnb",
+  "id_no": 1093881,
+  "dataset_sources": [],
+  "competition_sources": [
+    "titanic"
+  ],
+  "language": "r",
+  "id": "colonelkash/processed-some-na-added-variable-famile-size",
+  "enable_gpu": false,
+  "keywords": []
+}

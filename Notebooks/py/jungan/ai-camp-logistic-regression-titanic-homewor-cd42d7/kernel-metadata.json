@@ -1,0 +1,17 @@
+{
+  "kernel_sources": [],
+  "is_private": false,
+  "id_no": 1678494,
+  "kernel_type": "notebook",
+  "enable_gpu": false,
+  "code_file": "ai-camp-logistic-regression-titanic-homewor-cd42d7.ipynb",
+  "competition_sources": [
+    "titanic"
+  ],
+  "keywords": [],
+  "title": "AI Camp Logistic Regression Titanic Homewor cd42d7",
+  "enable_internet": false,
+  "language": "python",
+  "dataset_sources": [],
+  "id": "jungan/ai-camp-logistic-regression-titanic-homewor-cd42d7"
+}

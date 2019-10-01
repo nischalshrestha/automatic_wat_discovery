@@ -1,0 +1,17 @@
+{
+  "keywords": [],
+  "enable_gpu": false,
+  "language": "python",
+  "competition_sources": [
+    "titanic"
+  ],
+  "is_private": false,
+  "dataset_sources": [],
+  "kernel_type": "notebook",
+  "kernel_sources": [],
+  "code_file": "fork-of-simple-logistic-regression.ipynb",
+  "id_no": 1986084,
+  "title": "Fork of Simple Logistic Regression",
+  "enable_internet": false,
+  "id": "akaoni/fork-of-simple-logistic-regression"
+}

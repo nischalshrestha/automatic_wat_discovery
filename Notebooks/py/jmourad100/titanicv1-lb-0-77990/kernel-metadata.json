@@ -1,0 +1,17 @@
+{
+  "enable_gpu": false,
+  "kernel_sources": [],
+  "dataset_sources": [],
+  "language": "python",
+  "id_no": 1864270,
+  "keywords": [],
+  "code_file": "titanicv1-lb-0-77990.ipynb",
+  "kernel_type": "notebook",
+  "competition_sources": [
+    "titanic"
+  ],
+  "title": "TitanicV1_LB_0.77990",
+  "enable_internet": false,
+  "id": "jmourad100/titanicv1-lb-0-77990",
+  "is_private": false
+}

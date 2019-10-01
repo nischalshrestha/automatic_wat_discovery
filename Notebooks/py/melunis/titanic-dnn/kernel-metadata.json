@@ -1,0 +1,17 @@
+{
+  "dataset_sources": [],
+  "enable_internet": true,
+  "id": "melunis/titanic-dnn",
+  "title": "Titanic-DNN",
+  "keywords": [],
+  "is_private": false,
+  "id_no": 1417993,
+  "enable_gpu": true,
+  "kernel_sources": [],
+  "language": "python",
+  "code_file": "titanic-dnn.ipynb",
+  "kernel_type": "notebook",
+  "competition_sources": [
+    "titanic"
+  ]
+}

@@ -1,0 +1,17 @@
+{
+  "id_no": 211717,
+  "competition_sources": [
+    "titanic"
+  ],
+  "keywords": [],
+  "kernel_sources": [],
+  "enable_gpu": false,
+  "dataset_sources": [],
+  "enable_internet": false,
+  "id": "yuikns/hello-notebook",
+  "title": "Hello, Notebook",
+  "kernel_type": "notebook",
+  "code_file": "hello-notebook.ipynb",
+  "is_private": false,
+  "language": "python"
+}

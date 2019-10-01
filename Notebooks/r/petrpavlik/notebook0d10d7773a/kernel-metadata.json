@@ -1,0 +1,17 @@
+{
+  "enable_internet": false,
+  "enable_gpu": false,
+  "id_no": 240446,
+  "code_file": "notebook0d10d7773a.ipynb",
+  "kernel_type": "notebook",
+  "id": "petrpavlik/notebook0d10d7773a",
+  "is_private": false,
+  "competition_sources": [
+    "titanic"
+  ],
+  "kernel_sources": [],
+  "dataset_sources": [],
+  "title": "Notebook0d10d7773a",
+  "keywords": [],
+  "language": "python"
+}

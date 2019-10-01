@@ -1,0 +1,23 @@
+{
+  "enable_internet": false,
+  "is_private": false,
+  "id": "raoulma/titanic-survival-class-79-90-test-acc",
+  "dataset_sources": [],
+  "kernel_type": "notebook",
+  "code_file": "titanic-survival-class-79-90-test-acc.ipynb",
+  "kernel_sources": [],
+  "id_no": 512552,
+  "title": "Titanic Survival Class. 79.90% Test Acc.",
+  "competition_sources": [
+    "titanic"
+  ],
+  "keywords": [
+    "data visualization",
+    "classification",
+    "ensembling",
+    "feature engineering",
+    "neural networks"
+  ],
+  "language": "python",
+  "enable_gpu": false
+}

@@ -1,0 +1,22 @@
+{
+  "dataset_sources": [],
+  "id_no": 1654885,
+  "title": "Titanic EDA with basic Predictive Modelling",
+  "enable_internet": false,
+  "competition_sources": [
+    "titanic"
+  ],
+  "keywords": [
+    "eda",
+    "data cleaning",
+    "classification",
+    "feature engineering"
+  ],
+  "enable_gpu": false,
+  "kernel_sources": [],
+  "code_file": "titanic-eda-with-basic-predictive-modelling.ipynb",
+  "language": "python",
+  "id": "rahulpalnitkar/titanic-eda-with-basic-predictive-modelling",
+  "kernel_type": "notebook",
+  "is_private": false
+}

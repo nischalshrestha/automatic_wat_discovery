@@ -1,0 +1,17 @@
+{
+  "competition_sources": [
+    "titanic"
+  ],
+  "dataset_sources": [],
+  "keywords": [],
+  "enable_internet": false,
+  "code_file": "example-file-xgboost.irnb",
+  "enable_gpu": false,
+  "language": "r",
+  "id_no": 1466762,
+  "kernel_sources": [],
+  "title": "Example file xgboost",
+  "is_private": false,
+  "kernel_type": "notebook",
+  "id": "chocozzz/example-file-xgboost"
+}

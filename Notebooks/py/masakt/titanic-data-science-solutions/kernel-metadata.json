@@ -1,0 +1,17 @@
+{
+  "competition_sources": [
+    "titanic"
+  ],
+  "keywords": [],
+  "kernel_type": "notebook",
+  "kernel_sources": [],
+  "dataset_sources": [],
+  "enable_gpu": false,
+  "enable_internet": false,
+  "id": "masakt/titanic-data-science-solutions",
+  "id_no": 407642,
+  "language": "python",
+  "is_private": false,
+  "title": "Titanic Data Science Solutions",
+  "code_file": "titanic-data-science-solutions.ipynb"
+}

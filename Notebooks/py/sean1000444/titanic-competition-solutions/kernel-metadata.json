@@ -1,0 +1,17 @@
+{
+  "competition_sources": [
+    "titanic"
+  ],
+  "code_file": "titanic-competition-solutions.ipynb",
+  "title": "Titanic Competition Solutions",
+  "kernel_type": "notebook",
+  "language": "python",
+  "enable_gpu": false,
+  "dataset_sources": [],
+  "id_no": 1657394,
+  "id": "sean1000444/titanic-competition-solutions",
+  "keywords": [],
+  "is_private": false,
+  "kernel_sources": [],
+  "enable_internet": false
+}

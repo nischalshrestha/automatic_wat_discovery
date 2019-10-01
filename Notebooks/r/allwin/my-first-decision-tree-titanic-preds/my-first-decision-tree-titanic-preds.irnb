@@ -1,0 +1,97 @@
+{
+  "cells": [
+    {
+      "cell_type": "markdown",
+      "metadata": {
+        "_cell_guid": "86375b72-c6fa-10cb-bcaa-69d460cd8835"
+      },
+      "source": [
+        "My first Decision Tree Titanic Preds"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "_cell_guid": "7804c373-b64f-8af2-178d-ca5240c181eb"
+      },
+      "outputs": [],
+      "source": [
+        "setwd(\"C:/Users/aall/Desktop/R Prog/Titanic\") ####Setting Work Directory\n",
+        "prod = read.csv(\"train.csv\",stringsAsFactors = F) ### Importing Files\n",
+        "test = read.csv(\"test.csv\",stringsAsFactors = F)  ### Importing Files\n",
+        "\n",
+        "######Binding rows #########\n",
+        "library(gtools)\n",
+        "indata = smartbind(prod,test)\n",
+        "str(indata)\n",
+        "head(indata)\n",
+        "tail(indata)\n",
+        "\n",
+        "####Passenger Name Title Split######\n",
+        "library('dplyr')\n",
+        "indata$title = gsub('(.*, )|(\\\\..*)',(\"\"),indata$Name)\n",
+        "str(indata$title)\n",
+        "table(indata$Sex,indata$title)\n",
+        "indatacommon = c('Miss', 'Mrs', 'Mr','Master')\n",
+        "indatanoble = c('Don', 'Dona','Sir','the Countess', 'Lady', 'Jonkheer')\n",
+        "##########Family Size #############\n",
+        "library(ggplot2)\n",
+        "indata$size = indata$SibSp + indata$Parch + 1\n",
+        "ggplot(indata[1:891, ],aes(x = size, fill = factor(Survived))) +\n",
+        "  geom_bar(stat='count', position='dodge') +\n",
+        "  scale_x_continuous(breaks=c(1:11)) +\n",
+        "  labs(x = 'Family Size')\n",
+        "\n",
+        "#####Spliting the production data ######\n",
+        "install.packages(\"caToolS\")\n",
+        "library(caTools)\n",
+        "library(rpart)\n",
+        "library(rpart.plot)\n",
+        "set.seed(560)\n",
+        "splitvar = sample.split(prod$Survived, SplitRatio = .7)\n",
+        "traindsn = subset(prod, splitvar == TRUE)\n",
+        "testdsn  = subset(prod, splitvar == FALSE)\n",
+        "dtmod = rpart(Survived ~ Age + Sex + SibSp + Parch + Pclass + Fare,data = traindsn, method= 'class',cp = 0)\n",
+        "prp(dtmod)\n",
+        "dtmod\n",
+        "predict(dtmod,type = 'class')\n",
+        "preds = predict(dtmod,type = 'class')\n",
+        "tt = table(traindsn$Survived,preds)\n",
+        "sum(diag(tt))/sum(tt)\n",
+        "dtmodtest = rpart(Survived ~ Age + Sex + SibSp + Parch + Pclass + Fare,data = testdsn, method= 'class',cp = 0)\n",
+        "prp(dtmodtest)\n",
+        "dtmodtest\n",
+        "predict(dtmodtest,type = 'class')\n",
+        "predstest = predict(dtmodtest,type = 'class')\n",
+        "tt2 = table(testdsn$Survived,predstest)\n",
+        "sum(diag(tt2))/sum(tt2)\n",
+        "sum(diag(tt))/sum(tt)\n",
+        "\n",
+        "###### Output Prediction ######\n",
+        "prediction <- predict(dtmod, test)\n",
+        "output <- data.frame(PassengerID = test$PassengerId, Survived = prediction)\n",
+        "write.csv(output, file = 'output_DTmod.csv',row.names=FALSE)"
+      ]
+    }
+  ],
+  "metadata": {
+    "_change_revision": 0,
+    "_is_fork": false,
+    "kernelspec": {
+      "display_name": "R",
+      "language": "R",
+      "name": "ir"
+    },
+    "language_info": {
+      "codemirror_mode": "r",
+      "file_extension": ".r",
+      "mimetype": "text/x-r-source",
+      "name": "R",
+      "pygments_lexer": "r",
+      "version": "3.3.2"
+    }
+  },
+  "nbformat": 4,
+  "nbformat_minor": 0
+}

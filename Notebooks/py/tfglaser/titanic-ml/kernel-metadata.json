@@ -1,0 +1,17 @@
+{
+  "competition_sources": [
+    "titanic"
+  ],
+  "title": "Titanic ML",
+  "enable_gpu": false,
+  "keywords": [],
+  "id_no": 35264,
+  "dataset_sources": [],
+  "id": "tfglaser/titanic-ml",
+  "code_file": "titanic-ml.ipynb",
+  "enable_internet": false,
+  "is_private": false,
+  "kernel_sources": [],
+  "language": "python",
+  "kernel_type": "notebook"
+}

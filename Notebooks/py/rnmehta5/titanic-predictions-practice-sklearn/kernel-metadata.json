@@ -1,0 +1,20 @@
+{
+  "language": "python",
+  "keywords": [
+    "eda",
+    "classification"
+  ],
+  "dataset_sources": [],
+  "id": "rnmehta5/titanic-predictions-practice-sklearn",
+  "kernel_type": "notebook",
+  "kernel_sources": [],
+  "title": "Titanic predictions & practice SKlearn",
+  "is_private": false,
+  "id_no": 346654,
+  "code_file": "titanic-predictions-practice-sklearn.ipynb",
+  "enable_internet": false,
+  "enable_gpu": false,
+  "competition_sources": [
+    "titanic"
+  ]
+}

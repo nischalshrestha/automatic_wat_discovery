@@ -1,0 +1,23 @@
+{
+  "code_file": "titanic-machine-learning-with-statistical-analysis.ipynb",
+  "dataset_sources": [],
+  "id_no": 1317890,
+  "is_private": false,
+  "id": "kyen89/titanic-machine-learning-with-statistical-analysis",
+  "enable_gpu": false,
+  "kernel_sources": [],
+  "language": "python",
+  "competition_sources": [
+    "titanic"
+  ],
+  "enable_internet": false,
+  "kernel_type": "notebook",
+  "title": "Titanic:Machine Learning with Statistical Analysis",
+  "keywords": [
+    "data cleaning",
+    "data visualization",
+    "classification",
+    "ensembling",
+    "feature engineering"
+  ]
+}

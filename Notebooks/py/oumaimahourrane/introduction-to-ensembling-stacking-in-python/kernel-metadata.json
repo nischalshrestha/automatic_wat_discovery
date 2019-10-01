@@ -1,0 +1,17 @@
+{
+  "kernel_sources": [],
+  "enable_gpu": false,
+  "language": "python",
+  "is_private": false,
+  "code_file": "introduction-to-ensembling-stacking-in-python.ipynb",
+  "id": "oumaimahourrane/introduction-to-ensembling-stacking-in-python",
+  "keywords": [],
+  "competition_sources": [
+    "titanic"
+  ],
+  "kernel_type": "notebook",
+  "dataset_sources": [],
+  "enable_internet": false,
+  "id_no": 1943276,
+  "title": "Introduction to Ensembling/Stacking in Python"
+}

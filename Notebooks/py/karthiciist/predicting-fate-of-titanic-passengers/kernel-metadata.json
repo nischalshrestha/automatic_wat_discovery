@@ -1,0 +1,17 @@
+{
+  "id": "karthiciist/predicting-fate-of-titanic-passengers",
+  "id_no": 294879,
+  "enable_internet": false,
+  "kernel_type": "notebook",
+  "competition_sources": [
+    "titanic"
+  ],
+  "enable_gpu": false,
+  "dataset_sources": [],
+  "keywords": [],
+  "code_file": "predicting-fate-of-titanic-passengers.ipynb",
+  "language": "python",
+  "title": "Predicting fate of Titanic passengers",
+  "is_private": false,
+  "kernel_sources": []
+}

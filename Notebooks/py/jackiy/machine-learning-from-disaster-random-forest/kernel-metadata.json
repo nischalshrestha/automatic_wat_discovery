@@ -1,0 +1,17 @@
+{
+  "id_no": 1089876,
+  "competition_sources": [
+    "titanic"
+  ],
+  "code_file": "machine-learning-from-disaster-random-forest.ipynb",
+  "kernel_sources": [],
+  "title": "Machine Learning from Disaster - Random Forest",
+  "dataset_sources": [],
+  "is_private": false,
+  "language": "python",
+  "enable_gpu": false,
+  "kernel_type": "notebook",
+  "keywords": [],
+  "id": "jackiy/machine-learning-from-disaster-random-forest",
+  "enable_internet": false
+}

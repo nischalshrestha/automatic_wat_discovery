@@ -1,0 +1,17 @@
+{
+  "enable_internet": false,
+  "keywords": [],
+  "is_private": false,
+  "id": "soserian/titanic-test",
+  "dataset_sources": [],
+  "enable_gpu": false,
+  "kernel_sources": [],
+  "id_no": 1494512,
+  "kernel_type": "notebook",
+  "competition_sources": [
+    "titanic"
+  ],
+  "language": "python",
+  "code_file": "titanic-test.ipynb",
+  "title": "Titanic Test"
+}

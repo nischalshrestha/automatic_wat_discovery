@@ -1,0 +1,17 @@
+{
+  "keywords": [],
+  "title": "titanic - Try to make complex",
+  "id": "tonypythoneer/titanic-try-to-make-complex",
+  "enable_internet": false,
+  "dataset_sources": [],
+  "enable_gpu": false,
+  "is_private": false,
+  "code_file": "titanic-try-to-make-complex.ipynb",
+  "language": "python",
+  "kernel_sources": [],
+  "competition_sources": [
+    "titanic"
+  ],
+  "kernel_type": "notebook",
+  "id_no": 1127876
+}

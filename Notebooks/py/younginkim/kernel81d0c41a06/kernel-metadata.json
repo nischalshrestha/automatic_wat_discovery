@@ -1,0 +1,17 @@
+{
+  "id_no": 1973011,
+  "competition_sources": [
+    "titanic"
+  ],
+  "is_private": false,
+  "language": "python",
+  "kernel_type": "notebook",
+  "id": "younginkim/kernel81d0c41a06",
+  "kernel_sources": [],
+  "dataset_sources": [],
+  "title": "kernel81d0c41a06",
+  "enable_internet": false,
+  "enable_gpu": false,
+  "keywords": [],
+  "code_file": "kernel81d0c41a06.ipynb"
+}

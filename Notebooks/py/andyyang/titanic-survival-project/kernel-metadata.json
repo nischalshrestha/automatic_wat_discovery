@@ -1,0 +1,17 @@
+{
+  "id_no": 304080,
+  "is_private": false,
+  "enable_internet": false,
+  "dataset_sources": [],
+  "code_file": "titanic-survival-project.ipynb",
+  "kernel_sources": [],
+  "language": "python",
+  "enable_gpu": false,
+  "kernel_type": "notebook",
+  "title": "Titanic Survival Project",
+  "keywords": [],
+  "id": "andyyang/titanic-survival-project",
+  "competition_sources": [
+    "titanic"
+  ]
+}

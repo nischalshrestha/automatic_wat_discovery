@@ -1,0 +1,17 @@
+{
+  "id": "itsukara/titanic-simple-trial-based-on-handson-ml-v1-1",
+  "title": "Titanic simple trial based on handson-ml v1.1",
+  "competition_sources": [
+    "titanic"
+  ],
+  "enable_internet": false,
+  "keywords": [],
+  "dataset_sources": [],
+  "kernel_sources": [],
+  "code_file": "titanic-simple-trial-based-on-handson-ml-v1-1.ipynb",
+  "language": "python",
+  "id_no": 1558845,
+  "kernel_type": "notebook",
+  "is_private": false,
+  "enable_gpu": false
+}

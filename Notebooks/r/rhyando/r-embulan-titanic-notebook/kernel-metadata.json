@@ -1,0 +1,17 @@
+{
+  "id": "rhyando/r-embulan-titanic-notebook",
+  "keywords": [],
+  "kernel_sources": [],
+  "title": "R-EMBULAN_Titanic_Notebook",
+  "dataset_sources": [],
+  "language": "r",
+  "id_no": 104704,
+  "code_file": "r-embulan-titanic-notebook.irnb",
+  "enable_gpu": false,
+  "kernel_type": "notebook",
+  "enable_internet": false,
+  "competition_sources": [
+    "titanic"
+  ],
+  "is_private": false
+}

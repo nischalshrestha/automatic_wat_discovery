@@ -1,0 +1,17 @@
+{
+  "competition_sources": [
+    "titanic"
+  ],
+  "id": "kylorensdad/notebook7004c25b6c",
+  "language": "r",
+  "kernel_sources": [],
+  "kernel_type": "notebook",
+  "title": "Notebook7ee5a17df3",
+  "enable_gpu": false,
+  "enable_internet": false,
+  "dataset_sources": [],
+  "keywords": [],
+  "id_no": 123736,
+  "code_file": "notebook7004c25b6c.irnb",
+  "is_private": false
+}

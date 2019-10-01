@@ -1,0 +1,17 @@
+{
+  "id": "lihao1030/titanic-exploration-notebook-0-8-score",
+  "kernel_sources": [],
+  "competition_sources": [
+    "titanic"
+  ],
+  "is_private": false,
+  "kernel_type": "notebook",
+  "code_file": "titanic-exploration-notebook-0-8-score.ipynb",
+  "dataset_sources": [],
+  "language": "python",
+  "title": "*** Titanic: exploration notebook (~0.8 score) ***",
+  "keywords": [],
+  "id_no": 262118,
+  "enable_gpu": false,
+  "enable_internet": false
+}

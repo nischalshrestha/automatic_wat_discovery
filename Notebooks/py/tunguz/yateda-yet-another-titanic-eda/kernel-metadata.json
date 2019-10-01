@@ -1,0 +1,17 @@
+{
+  "kernel_type": "notebook",
+  "dataset_sources": [],
+  "is_private": false,
+  "competition_sources": [
+    "titanic"
+  ],
+  "title": "YATEDA - Yet Another Titanic EDA",
+  "enable_internet": false,
+  "id_no": 1222486,
+  "enable_gpu": false,
+  "id": "tunguz/yateda-yet-another-titanic-eda",
+  "kernel_sources": [],
+  "keywords": [],
+  "language": "python",
+  "code_file": "yateda-yet-another-titanic-eda.ipynb"
+}

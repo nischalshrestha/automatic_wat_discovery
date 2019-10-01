@@ -1,0 +1,17 @@
+{
+  "enable_internet": false,
+  "competition_sources": [
+    "titanic"
+  ],
+  "code_file": "titanic-data-cleaning-and-feature-engineering.irnb",
+  "kernel_sources": [],
+  "dataset_sources": [],
+  "is_private": false,
+  "language": "r",
+  "id": "andyxie/titanic-data-cleaning-and-feature-engineering",
+  "id_no": 406770,
+  "kernel_type": "notebook",
+  "keywords": [],
+  "title": "Titanic Data Cleaning and Feature Engineering",
+  "enable_gpu": false
+}

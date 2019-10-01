@@ -1,0 +1,17 @@
+{
+  "language": "python",
+  "id_no": 1300633,
+  "keywords": [],
+  "dataset_sources": [],
+  "title": "Titanic data set as a learning project",
+  "code_file": "titanic-data-set-as-a-learning-project.ipynb",
+  "kernel_sources": [],
+  "enable_gpu": false,
+  "id": "pandit95/titanic-data-set-as-a-learning-project",
+  "kernel_type": "notebook",
+  "competition_sources": [
+    "titanic"
+  ],
+  "is_private": false,
+  "enable_internet": false
+}

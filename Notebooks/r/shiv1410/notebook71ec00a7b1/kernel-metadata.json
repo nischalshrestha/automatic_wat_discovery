@@ -1,0 +1,17 @@
+{
+  "enable_internet": false,
+  "id_no": 218158,
+  "id": "shiv1410/notebook71ec00a7b1",
+  "kernel_type": "notebook",
+  "title": "Notebook71ec00a7b1",
+  "enable_gpu": false,
+  "is_private": false,
+  "language": "python",
+  "kernel_sources": [],
+  "code_file": "notebook71ec00a7b1.ipynb",
+  "dataset_sources": [],
+  "competition_sources": [
+    "titanic"
+  ],
+  "keywords": []
+}

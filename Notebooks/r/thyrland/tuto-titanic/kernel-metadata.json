@@ -1,0 +1,17 @@
+{
+  "is_private": false,
+  "enable_gpu": false,
+  "competition_sources": [
+    "titanic"
+  ],
+  "kernel_sources": [],
+  "kernel_type": "notebook",
+  "code_file": "tuto-titanic.irnb",
+  "keywords": [],
+  "enable_internet": false,
+  "id": "thyrland/tuto-titanic",
+  "language": "r",
+  "title": "Tuto_Titanic",
+  "dataset_sources": [],
+  "id_no": 63529
+}

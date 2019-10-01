@@ -1,0 +1,17 @@
+{
+  "code_file": "try-to-get-8-score-using-2nd-degree-pred-peng.ipynb",
+  "id": "padyue/try-to-get-8-score-using-2nd-degree-pred-peng",
+  "keywords": [],
+  "title": "try to get .8 score using 2nd degree pred//Peng",
+  "kernel_type": "notebook",
+  "dataset_sources": [],
+  "language": "python",
+  "kernel_sources": [],
+  "enable_gpu": false,
+  "is_private": false,
+  "competition_sources": [
+    "titanic"
+  ],
+  "enable_internet": false,
+  "id_no": 912088
+}

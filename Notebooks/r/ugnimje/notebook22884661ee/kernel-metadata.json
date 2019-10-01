@@ -1,0 +1,17 @@
+{
+  "competition_sources": [
+    "titanic"
+  ],
+  "keywords": [],
+  "kernel_type": "notebook",
+  "id_no": 219016,
+  "dataset_sources": [],
+  "language": "python",
+  "enable_internet": false,
+  "is_private": false,
+  "id": "ugnimje/notebook22884661ee",
+  "kernel_sources": [],
+  "title": "Notebook22884661ee",
+  "code_file": "notebook22884661ee.ipynb",
+  "enable_gpu": false
+}

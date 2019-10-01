@@ -1,0 +1,17 @@
+{
+  "competition_sources": [
+    "titanic"
+  ],
+  "is_private": false,
+  "enable_gpu": false,
+  "dataset_sources": [],
+  "id": "dmw1124/notebookf299aca260",
+  "code_file": "notebookf299aca260.irnb",
+  "enable_internet": false,
+  "language": "r",
+  "kernel_type": "notebook",
+  "id_no": 202523,
+  "keywords": [],
+  "title": "Notebookf299aca260",
+  "kernel_sources": []
+}

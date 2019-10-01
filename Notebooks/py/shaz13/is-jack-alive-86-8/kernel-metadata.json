@@ -1,0 +1,17 @@
+{
+  "competition_sources": [
+    "titanic"
+  ],
+  "id": "shaz13/is-jack-alive-86-8",
+  "code_file": "is-jack-alive-86-8.ipynb",
+  "dataset_sources": [],
+  "kernel_sources": [],
+  "language": "python",
+  "enable_internet": false,
+  "keywords": [],
+  "id_no": 315122,
+  "enable_gpu": false,
+  "kernel_type": "notebook",
+  "is_private": false,
+  "title": "Is Jack Alive?  - 86.8%"
+}

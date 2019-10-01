@@ -1,0 +1,17 @@
+{
+  "code_file": "titanic-neural-network.ipynb",
+  "id_no": 284136,
+  "competition_sources": [
+    "titanic"
+  ],
+  "language": "python",
+  "enable_gpu": false,
+  "id": "liyenhsu/titanic-neural-network",
+  "keywords": [],
+  "kernel_sources": [],
+  "title": "Titanic - Neural Network",
+  "dataset_sources": [],
+  "is_private": false,
+  "kernel_type": "notebook",
+  "enable_internet": false
+}

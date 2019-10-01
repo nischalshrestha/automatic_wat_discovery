@@ -1,0 +1,17 @@
+{
+  "id_no": 96551,
+  "code_file": "notebook21815d9f77.irnb",
+  "enable_internet": false,
+  "id": "damleadwait/notebook21815d9f77",
+  "enable_gpu": false,
+  "title": "Notebook5a6852f116",
+  "kernel_type": "notebook",
+  "keywords": [],
+  "language": "r",
+  "kernel_sources": [],
+  "is_private": false,
+  "competition_sources": [
+    "titanic"
+  ],
+  "dataset_sources": []
+}

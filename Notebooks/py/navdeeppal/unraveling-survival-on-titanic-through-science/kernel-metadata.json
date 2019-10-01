@@ -1,0 +1,22 @@
+{
+  "title": "Unraveling Survival on Titanic Through Science",
+  "kernel_sources": [],
+  "id_no": 364779,
+  "is_private": false,
+  "kernel_type": "notebook",
+  "enable_gpu": false,
+  "enable_internet": false,
+  "dataset_sources": [],
+  "competition_sources": [
+    "titanic"
+  ],
+  "code_file": "unraveling-survival-on-titanic-through-science.ipynb",
+  "language": "python",
+  "id": "navdeeppal/unraveling-survival-on-titanic-through-science",
+  "keywords": [
+    "tutorial",
+    "data visualization",
+    "random forest",
+    "xgboost"
+  ]
+}

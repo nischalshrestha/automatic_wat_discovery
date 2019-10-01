@@ -1,0 +1,17 @@
+{
+  "id_no": 216575,
+  "title": "Notebook2028e4bdc7",
+  "id": "rafidmorshedi/notebook2028e4bdc7",
+  "kernel_type": "notebook",
+  "dataset_sources": [],
+  "enable_gpu": false,
+  "enable_internet": false,
+  "is_private": false,
+  "kernel_sources": [],
+  "language": "python",
+  "competition_sources": [
+    "titanic"
+  ],
+  "code_file": "notebook2028e4bdc7.ipynb",
+  "keywords": []
+}

@@ -1,0 +1,17 @@
+{
+  "competition_sources": [
+    "titanic"
+  ],
+  "dataset_sources": [],
+  "language": "python",
+  "enable_gpu": false,
+  "keywords": [],
+  "kernel_sources": [],
+  "is_private": false,
+  "id": "abhinavagarwal/titanic-abhinav",
+  "enable_internet": false,
+  "title": "Titanic - Abhinav",
+  "id_no": 263839,
+  "code_file": "titanic-abhinav.ipynb",
+  "kernel_type": "notebook"
+}

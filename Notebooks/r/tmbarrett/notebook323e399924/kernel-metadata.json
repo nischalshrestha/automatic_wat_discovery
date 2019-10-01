@@ -1,0 +1,17 @@
+{
+  "competition_sources": [
+    "titanic"
+  ],
+  "id_no": 192069,
+  "language": "r",
+  "code_file": "notebook323e399924.irnb",
+  "enable_internet": false,
+  "is_private": false,
+  "title": "Notebook323e399924",
+  "keywords": [],
+  "id": "tmbarrett/notebook323e399924",
+  "kernel_type": "notebook",
+  "enable_gpu": false,
+  "dataset_sources": [],
+  "kernel_sources": []
+}

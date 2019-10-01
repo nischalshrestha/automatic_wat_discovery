@@ -1,0 +1,17 @@
+{
+  "language": "python",
+  "dataset_sources": [],
+  "title": "GradientBoostingClassifier  80.111111",
+  "enable_gpu": false,
+  "code_file": "gradientboostingclassifier-80-111111.ipynb",
+  "kernel_type": "notebook",
+  "is_private": false,
+  "id_no": 326238,
+  "kernel_sources": [],
+  "keywords": [],
+  "competition_sources": [
+    "titanic"
+  ],
+  "enable_internet": false,
+  "id": "lakeron/gradientboostingclassifier-80-111111"
+}

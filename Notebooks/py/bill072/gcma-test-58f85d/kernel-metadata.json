@@ -1,0 +1,17 @@
+{
+  "enable_gpu": false,
+  "kernel_sources": [],
+  "title": "GCMA Test 58f85d",
+  "competition_sources": [
+    "titanic"
+  ],
+  "id_no": 537528,
+  "keywords": [],
+  "id": "bill072/gcma-test-58f85d",
+  "code_file": "gcma-test-58f85d.ipynb",
+  "is_private": false,
+  "kernel_type": "notebook",
+  "enable_internet": false,
+  "dataset_sources": [],
+  "language": "python"
+}

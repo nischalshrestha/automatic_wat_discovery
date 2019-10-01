@@ -1,0 +1,20 @@
+{
+  "is_private": false,
+  "enable_internet": false,
+  "enable_gpu": false,
+  "kernel_type": "notebook",
+  "title": "titanic2.py",
+  "dataset_sources": [],
+  "kernel_sources": [],
+  "language": "python",
+  "competition_sources": [
+    "titanic"
+  ],
+  "id": "arshadgeek/titanic2-py",
+  "id_no": 2123802,
+  "code_file": "titanic2-py.ipynb",
+  "keywords": [
+    "beginner",
+    "data visualization"
+  ]
+}

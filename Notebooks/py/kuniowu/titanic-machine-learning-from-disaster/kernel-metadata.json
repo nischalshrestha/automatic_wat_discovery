@@ -1,0 +1,17 @@
+{
+  "title": "Titanic:Machine Learning From Disaster",
+  "code_file": "titanic-machine-learning-from-disaster.ipynb",
+  "is_private": false,
+  "id_no": 1541761,
+  "kernel_type": "notebook",
+  "competition_sources": [
+    "titanic"
+  ],
+  "language": "python",
+  "dataset_sources": [],
+  "enable_gpu": true,
+  "keywords": [],
+  "id": "kuniowu/titanic-machine-learning-from-disaster",
+  "kernel_sources": [],
+  "enable_internet": false
+}

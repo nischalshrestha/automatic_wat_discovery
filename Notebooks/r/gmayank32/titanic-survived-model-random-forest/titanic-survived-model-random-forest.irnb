@@ -1,0 +1,728 @@
+{
+  "cells": [
+    {
+      "cell_type": "markdown",
+      "metadata": {
+        "_cell_guid": "63e0ec37-32c7-031d-5835-13a4ff525c6f"
+      },
+      "source": [
+        "The following notebook is based on:\n",
+        "\n",
+        "1. https://www.kaggle.com/mrisdal/titanic/exploring-survival-on-the-titanic\n",
+        "2. https://www.kaggle.com/zubairahmed/titanic/titanic-best-working-classifier\n",
+        "\n",
+        "I would like to thank contributors of above notebooks. It helped me a lot.\n",
+        "\n",
+        "If at any point anyone feels that something is not right in this notebook, please feel free to comment. I am open for discussions.\n",
+        "\n",
+        "I have tried to implement RandomForest after feature engineering on the training and test data."
+      ]
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {
+        "_cell_guid": "32ad0a6d-e4d0-9d68-1b5d-91154f4bdd36"
+      },
+      "source": [
+        "## 1. Loading Data And Summary of Data\n",
+        "\n",
+        "Read Training and test data from CSV"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "_cell_guid": "162d1b9e-0886-746e-539f-e290c0a42523"
+      },
+      "outputs": [],
+      "source": [
+        "titanic.train <- read.csv('../input/train.csv')\n",
+        "titanic.test <- read.csv('../input/test.csv')\n",
+        "\n",
+        "# Creating a column flag (0 for train, 1 for test data). We will \n",
+        "# separate the data into train test on the basis of this variable.\n",
+        "titanic.train[,'flag'] <- 0\n",
+        "titanic.test[,'flag'] <- 1\n",
+        "\n",
+        "# In order to bind train and test data, both should have\n",
+        "# same number of columns so adding survived to test data.\n",
+        "titanic.test[, 'Survived'] <- 0\n",
+        "whole.data <- rbind(titanic.train,titanic.test)"
+      ]
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {
+        "_cell_guid": "7db83bdf-7061-356f-e317-1e1a916521c3"
+      },
+      "source": [
+        "Summary of data"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "_cell_guid": "45691611-2d2b-84aa-4fa3-f03555230eb7"
+      },
+      "outputs": [],
+      "source": [
+        "head(whole.data)"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "_cell_guid": "3d9b3f47-6177-fdf2-e10b-7f2747cb363d"
+      },
+      "outputs": [],
+      "source": [
+        "summary(whole.data)"
+      ]
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {
+        "_cell_guid": "f6764d9d-d25b-a03f-2c6f-541a2b76f6c9"
+      },
+      "source": [
+        "Description of each column\n",
+        "\n",
+        "    Variable    Definition                                            Key\n",
+        "    survival    Survival                                      0 = No, 1 = Yes\n",
+        "    pclass      Ticket class                                  1 = 1st, 2 = 2nd, 3 = 3rd\n",
+        "    sex         Sex \t\n",
+        "    Age         Age in years \t\n",
+        "    sibsp       # of siblings / spouses aboard the Titanic \t\n",
+        "    parch       # of parents / children aboard the Titanic \t\n",
+        "    ticket      Ticket number \t\n",
+        "    fare        Passenger fare \t\n",
+        "    cabin       Cabin number \t\n",
+        "    embarked    Port of Embarkation                           C = Cherbourg, Q = Queenstown, S = Southampton"
+      ]
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {
+        "_cell_guid": "55e7e3b9-0d89-4f0d-340e-c933ea32ea8a"
+      },
+      "source": [
+        "## 2. Feature Engineering\n",
+        "### 2.1 Title Of Passengers\n",
+        "\n",
+        "From the data, we observed that sex variable can be further divided into subcategories using title of names\n",
+        "\n",
+        "    Mr        Male\n",
+        "    Master    Child\n",
+        "    Miss      Child/Unmarried\n",
+        "    Mrs       Married\n",
+        "    Others    Titles which are less in number as compared to titles mentione above.\n",
+        "    \n",
+        "From Names, we can extract titles."
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "_cell_guid": "c005f49d-52fb-772c-7530-88006af0fe71"
+      },
+      "outputs": [],
+      "source": [
+        "m <- regexpr(\"(?<=, ).+?(?=\\\\. )\", whole.data$Name,perl = TRUE)\n",
+        "#get titles\n",
+        "unique(as.factor(regmatches(whole.data$Name, m)))"
+      ]
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {
+        "_cell_guid": "d99d878d-e8a8-5fdc-1721-159a1d74fa94"
+      },
+      "source": [
+        "Most common titles here are: Mr, Mrs, Miss, Master and other titles can be classified as \"Others\"."
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "_cell_guid": "59eac452-ee5a-5a01-284c-872e9a2acc2e"
+      },
+      "outputs": [],
+      "source": [
+        "whole.data[,'Title'] <- regmatches(whole.data$Name, m)\n",
+        "others = c(\"Don\", \"Rev\", \"Dr\", \"Major\", \"Lady\", \"Sir\", \"Col\", \"Capt\", \"the Countess\", \"Jonkheer\", \"Dona\")\n",
+        "whole.data[whole.data$Title == 'Mlle' | whole.data$Title == 'Ms', 'Title'] <- 'Miss'\n",
+        "whole.data[whole.data$Title == 'Mme', 'Title'] <- 'Mrs'\n",
+        "whole.data[whole.data$Title %in% others, 'Title'] <- 'Others'\n",
+        "whole.data[,'Title'] <- as.factor(whole.data[,'Title'])"
+      ]
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {
+        "_cell_guid": "85f21374-06eb-17bf-a1df-1c06e417adb4"
+      },
+      "source": [
+        "Plotting title vs Survived."
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "_cell_guid": "647e52e8-3bf4-7e47-79b8-6b57471b222d"
+      },
+      "outputs": [],
+      "source": [
+        "library(ggplot2)\n",
+        "g <- ggplot(whole.data, aes(x = factor(Survived))) + geom_bar() + facet_wrap( ~ Title)\n",
+        "g"
+      ]
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {
+        "_cell_guid": "c967cdaa-a09b-6556-5293-7edb3b79dc92"
+      },
+      "source": [
+        "### 2.2 Does no. of Family Members matters"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "_cell_guid": "89bc26dc-77f4-0676-91b5-30327394b400"
+      },
+      "outputs": [],
+      "source": [
+        "# Adding number of children for a person and its sibling and spouse. +1 for himself/herself \n",
+        "whole.data[,'FamilySize'] <- whole.data$SibSp + whole.data$Parch +1\n",
+        "\n",
+        "family.survived <- ggplot(whole.data[whole.data$flag==0,], aes(x = FamilySize, fill = factor(Survived))) + geom_bar(position = 'dodge') + scale_x_continuous(breaks = c(1:11))\n",
+        "family.survived"
+      ]
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {
+        "_cell_guid": "e5caf9a2-81ec-02ce-f6a5-dabcdc2cd465"
+      },
+      "source": [
+        "We can see from the graph above that a single person or a person with more than 4 family members are not likely to survive. Dividing the family members into groups."
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "_cell_guid": "83bb5ae1-4490-025e-1fb8-61055fc960c3"
+      },
+      "outputs": [],
+      "source": [
+        "whole.data[whole.data$FamilySize == 1,'FamilyGroup'] <- 'single'\n",
+        "whole.data[whole.data$FamilySize > 1 & whole.data$FamilySize < 5,'FamilyGroup'] <- 'small size'\n",
+        "whole.data[whole.data$FamilySize > 4,'FamilyGroup'] <- 'large'"
+      ]
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {
+        "_cell_guid": "8db0038e-0623-7f61-6cc2-6094590c2b53"
+      },
+      "source": [
+        "### 2.3 Pclass and Fare.\n",
+        "\n",
+        "We need to find out if there is a relationship between the survival of a passenger and how much passenger paid for traveling in a class."
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "_cell_guid": "7da689d0-710b-c6ba-fc55-1c3e0b050889"
+      },
+      "outputs": [],
+      "source": [
+        "class.paid.survival <- ggplot(whole.data[whole.data$flag==0 & !is.na(whole.data$Age), ], aes(Fare, fill = factor(Survived))) + geom_histogram(binwidth = 10, position = \"dodge\") + facet_wrap(~Pclass) + scale_x_continuous(limits = c(1,250), breaks = seq(0, 250, 20))\n",
+        "class.paid.survival"
+      ]
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {
+        "_cell_guid": "cfac6723-25b1-a556-1b97-b3374e591d4d"
+      },
+      "source": [
+        "Those who are traveling in third class and have paid 10-30 have not survived.\n",
+        "Those who have paid more than 40 in first class are more likely to survive.\n",
+        "Those who have paid more than 20 but less than 60 in 2nd class are more likely to survive.\n",
+        "We will create fare bins after filling NAs."
+      ]
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {
+        "_cell_guid": "10d989d4-f9f6-1967-39f0-9fda6a92effe"
+      },
+      "source": [
+        "## 3. Data Cleaning"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "_cell_guid": "de5b3a33-acaa-9be0-f0b2-4f68ed229a62"
+      },
+      "outputs": [],
+      "source": [
+        "summary(whole.data)"
+      ]
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {
+        "_cell_guid": "7716ba56-b90b-233d-f2ad-4943e10cff95"
+      },
+      "source": [
+        "### 3.1 Filling Null Ages"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "_cell_guid": "e1e9e126-9c6b-4f57-cd3f-c371126af422"
+      },
+      "outputs": [],
+      "source": [
+        "g <- ggplot(whole.data, aes(Age, fill = Survived)) + geom_histogram(binwidth = 5) + facet_wrap(~Title)\n",
+        "g"
+      ]
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {
+        "_cell_guid": "6e3fd8be-1b37-9f01-d72a-77a6e68d2b4b"
+      },
+      "source": [
+        "Calculating NA values by taking mean of ages of people with same title."
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "_cell_guid": "08a865be-d531-ffa1-d839-222efc256cf1"
+      },
+      "outputs": [],
+      "source": [
+        "titles <- unique(whole.data$Title)\n",
+        "for (i in titles){\n",
+        "  whole.data[is.na(whole.data$Age) & whole.data$Title == i,'Age'] <- mean(whole.data[!is.na(whole.data$Age) & whole.data$Title == i,'Age'])\n",
+        "}"
+      ]
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {
+        "_cell_guid": "8994e7c6-9b35-ca40-fe91-7d6954430ddb"
+      },
+      "source": [
+        "Taking summary again if we are left with NULL values."
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "_cell_guid": "5af7abe6-2405-2ebc-d597-cd95d3cc53de"
+      },
+      "outputs": [],
+      "source": [
+        "summary(whole.data)"
+      ]
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {
+        "_cell_guid": "d31817ab-7d91-c8d5-6491-bb3db1079ef5"
+      },
+      "source": [
+        "### 3.2 For NA in Fares in data."
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "_cell_guid": "0d6c6711-5bb5-53d8-8449-a1b194b73995"
+      },
+      "outputs": [],
+      "source": [
+        "for (i in unique(whole.data$Pclass)){(\n",
+        "  whole.data[whole.data[,'Pclass']==i & is.na(whole.data$Fare), 'Fare'] <- median(whole.data[whole.data[,'Pclass']==i & !is.na(whole.data$Fare), 'Fare']))\n",
+        "}"
+      ]
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {
+        "_cell_guid": "17ca05bc-9ca0-901a-6846-0c4738db033d"
+      },
+      "source": [
+        "### 3.3 For filling NULL embarked."
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "_cell_guid": "c34c9852-016c-ee69-025f-6a7fefffd6ad"
+      },
+      "outputs": [],
+      "source": [
+        "whole.data[whole.data$Embarked == \"\",]"
+      ]
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {
+        "_cell_guid": "d1b6f5f0-f40b-a32c-1c37-15c086ace821"
+      },
+      "source": [
+        "Can we predict the value of Embarked based on Pclass, Sex, Age, Title and Survived.\n",
+        "Let's see the stats of ages of survived females who have embarked from different ports traveling in 1st class."
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "_cell_guid": "0bb720d1-9d65-0fc7-2cd1-bb03c3bbe5c9"
+      },
+      "outputs": [],
+      "source": [
+        "females.embarked <- ggplot(whole.data[whole.data$Embarked != \"\" & whole.data$Sex == 'female' & whole.data$Survived == 1 & whole.data$Pclass == 1 & whole.data$Fare > 75 & whole.data$Fare < 85,], aes(Age)) + geom_histogram(binwidth = 1) + facet_grid(~ Embarked)\n",
+        "females.embarked"
+      ]
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {
+        "_cell_guid": "c13264de-cc9e-e531-6e39-7b135740df41"
+      },
+      "source": [
+        "More likely to be C or S.\n",
+        "Still not clear.\n",
+        "\n",
+        "What is the median price paid by the passengers embarked from different ports, travelling in 1st class and paid 80."
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "_cell_guid": "29757996-7083-ae76-6a7c-92d23df71e2e"
+      },
+      "outputs": [],
+      "source": [
+        "females.paid <- ggplot(whole.data[whole.data$Pclass==1 & whole.data$Embarked != \"\",], aes(x = Embarked, y = Fare)) + geom_boxplot() + geom_hline(aes(yintercept = 80))\n",
+        "females.paid"
+      ]
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {
+        "_cell_guid": "d2243f89-d675-80a3-b913-2f31e704bc21"
+      },
+      "source": [
+        "So most of the females who have paid 80 for travelling in 1st class embarked from C."
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "_cell_guid": "1fdb9b7c-d0ff-2f7c-1653-19b127725f9f"
+      },
+      "outputs": [],
+      "source": [
+        "whole.data[whole.data$Embarked == \"\", 'Embarked'] <- 'C'"
+      ]
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {
+        "_cell_guid": "0398260a-288b-28da-022d-28cb323cd9fc"
+      },
+      "source": [
+        "## 4. Feature Engineeriing Part 2:\n",
+        "Since we have filled all the null values now we can go ahead with extracting features from the variables.\n",
+        "\n",
+        "### 4.1 Creating Age Bins\n",
+        "Why do we need to create Bins in first place? We know that creating bins may lead to loss of information. Then why?\n",
+        "\n",
+        "Let's see the pattern first. age vs survival"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "_cell_guid": "e1944a96-b206-92c3-d32f-1812ee0c546a"
+      },
+      "outputs": [],
+      "source": [
+        "age.survived <- ggplot(whole.data[whole.data$flag==0,], aes(Age, fill = factor(Survived))) + geom_histogram(binwidth = 10, position = 'dodge')\n",
+        "age.survived"
+      ]
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {
+        "_cell_guid": "43a5afbd-d0f7-bb9e-eb84-1595ff40d8c3"
+      },
+      "source": [
+        "We see that all the people who have age above 20 yrs are less likely to survive.\n",
+        "Which means children below age of 10 are more likely to survive also old passengers above age of 75.\n",
+        "So, if we bin these ages we can easily guess that in the age bin passengers are more likely to survive or less likely to survive. Since we are going to use trees as a classifier, it would be easy to guess for it too."
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "_cell_guid": "6d3e5c83-bd2e-361a-1bb9-9b6211f216e6"
+      },
+      "outputs": [],
+      "source": [
+        "whole.data[whole.data$Age>=0 & whole.data$Age<21, 'AgeBin'] <- '1'\n",
+        "whole.data[whole.data$Age>=21 & whole.data$Age<28, 'AgeBin'] <- '2'\n",
+        "whole.data[whole.data$Age>=28 & whole.data$Age<39, 'AgeBin'] <- '3'\n",
+        "whole.data[whole.data$Age>=39, 'AgeBin'] <- '4'"
+      ]
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {
+        "_cell_guid": "bc65b3ae-8f42-6fad-7e17-0c7d4552cbc2"
+      },
+      "source": [
+        "### 4.2 Child or not(0: child, 1: Adult)\n",
+        "Since children are more likely to survive we can create another feature if a passenger is a child or not."
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "_cell_guid": "b50da8c1-9218-1ce1-a7fa-52c4af793ea8"
+      },
+      "outputs": [],
+      "source": [
+        "whole.data[whole.data$Age<18, 'Child'] <- '0'\n",
+        "whole.data[whole.data$Age>=18, 'Child'] <- '1'"
+      ]
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {
+        "_cell_guid": "13e96528-6aed-401a-4f9b-b5da30edd2bc"
+      },
+      "source": [
+        "### 4.3 Creating Fare Bins\n",
+        "Since we have filled all the null fare we can now bin fares according to quantiles."
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "_cell_guid": "b93d5005-7551-5850-239c-b32401ba59d4"
+      },
+      "outputs": [],
+      "source": [
+        "whole.data[whole.data$Fare>=0 & whole.data$Fare<8, 'FareBin'] <- '1'\n",
+        "whole.data[whole.data$Fare>=8 & whole.data$Fare<15, 'FareBin'] <- '2'\n",
+        "whole.data[whole.data$Fare>=15 & whole.data$Fare<31, 'FareBin'] <- '3'\n",
+        "whole.data[whole.data$Fare>=31, 'FareBin'] <- '4'"
+      ]
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {
+        "_cell_guid": "ea4e4c24-60f9-dd6f-a59c-21a6eee8be44"
+      },
+      "source": [
+        "### 4.4 Converting to Factor Variables\n",
+        "Converting survived, Pclass, SibSp, Parch to factor variable."
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "_cell_guid": "24997522-4633-6408-2388-7e4a47dcba1b"
+      },
+      "outputs": [],
+      "source": [
+        "for (name in c(\"Survived\", \"Pclass\", \"SibSp\", \"Parch\", \"FamilyGroup\", \"FareBin\", \"AgeBin\", \"Child\")){\n",
+        "  whole.data[, name] <- as.factor(whole.data[, name])\n",
+        "}\n",
+        "head(whole.data)"
+      ]
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {
+        "_cell_guid": "feb67b7e-b2e1-83d2-7838-f31a143a93c7"
+      },
+      "source": [
+        "### 4.5 Dropping Columns\n",
+        "We don't need Names anymore, we can drop it with PassengerId, Cabin and ticket.\n",
+        "Note : We will see in future how we can use them. Most of the values in Cabin are NAs."
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "_cell_guid": "99750b1b-940e-24dd-57b0-f6f38072b399"
+      },
+      "outputs": [],
+      "source": [
+        "whole.data <- whole.data[,!(names(whole.data) %in% c(\"Name\", \"Cabin\", \"Ticket\", \"FamilySize\",\"PassengerId\", \"SibSp\", \"Parch\", \"Age\", \"Fare\"))]\n",
+        "head(whole.data)"
+      ]
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {
+        "_cell_guid": "57d61d18-af87-2a73-4703-d5f6bcafe7ce"
+      },
+      "source": [
+        "### 4.6 Splitting whole.data to training and testing"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "_cell_guid": "afc145e3-c86c-8850-3d06-3f8336198fda"
+      },
+      "outputs": [],
+      "source": [
+        "titanic.train <- whole.data[whole.data$flag == 0,]\n",
+        "titanic.train <- titanic.train[,!(names(titanic.train) %in% c(\"flag\"))]\n",
+        "titanic.test <- whole.data[whole.data$flag == 1,]\n",
+        "titanic.test <- titanic.test[,!(names(titanic.test) %in% c(\"flag\", \"Survived\"))]\n",
+        "head(titanic.train)"
+      ]
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {
+        "_cell_guid": "dc18e8ee-315a-8120-282b-d1b2f13c4b6c"
+      },
+      "source": [
+        "## 5. Training Model\n",
+        "\n",
+        "### 5.1 Simple Trees\n",
+        "\n",
+        "First creating simple tree"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "_cell_guid": "28e2db91-1ec1-f382-75ef-f012a6d4d451"
+      },
+      "outputs": [],
+      "source": [
+        "library(tree)\n",
+        "titanic.tree <- tree(Survived ~ ., titanic.train)\n",
+        "summary(titanic.tree)"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "_cell_guid": "8ff48504-77c7-ebd6-8f28-9f14f9505948"
+      },
+      "outputs": [],
+      "source": [
+        "plot(titanic.tree)\n",
+        "text(titanic.tree, pretty = TRUE)"
+      ]
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {
+        "_cell_guid": "c4965452-7641-5e69-be9c-237c84abac95"
+      },
+      "source": [
+        "### 5.2 Random Forest "
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "_cell_guid": "fb4c2f50-2dd2-4eb7-78e7-abcf5d43788b"
+      },
+      "outputs": [],
+      "source": [
+        "library(randomForest)\n",
+        "titanic.tree <- randomForest(Survived ~ ., data = titanic.train, importance = TRUE)\n",
+        "titanic.tree"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "_cell_guid": "4e9614c7-a3d0-d432-4888-fb380c62509d"
+      },
+      "outputs": [],
+      "source": [
+        "varImpPlot(titanic.tree)"
+      ]
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {
+        "_cell_guid": "8afc1ce6-b8e6-7fb0-920a-c8b7fc73bcbb"
+      },
+      "source": [
+        "**Conclusion :** Pclass, Title, Sex appears to be important."
+      ]
+    }
+  ],
+  "metadata": {
+    "_change_revision": 0,
+    "_is_fork": false,
+    "kernelspec": {
+      "display_name": "R",
+      "language": "R",
+      "name": "ir"
+    },
+    "language_info": {
+      "codemirror_mode": "r",
+      "file_extension": ".r",
+      "mimetype": "text/x-r-source",
+      "name": "R",
+      "pygments_lexer": "r",
+      "version": "3.3.3"
+    }
+  },
+  "nbformat": 4,
+  "nbformat_minor": 0
+}

@@ -1,0 +1,17 @@
+{
+  "id": "ashishdhiman/trainingfortitanic-randomforest",
+  "keywords": [],
+  "code_file": "trainingfortitanic-randomforest.ipynb",
+  "dataset_sources": [],
+  "id_no": 436502,
+  "language": "python",
+  "enable_gpu": false,
+  "title": "TrainingForTitanic - RandomForest",
+  "competition_sources": [
+    "titanic"
+  ],
+  "is_private": false,
+  "enable_internet": false,
+  "kernel_sources": [],
+  "kernel_type": "notebook"
+}

@@ -1,0 +1,17 @@
+{
+  "language": "python",
+  "id": "tcvieira/titanic-decision-tree",
+  "is_private": false,
+  "competition_sources": [
+    "titanic"
+  ],
+  "code_file": "titanic-decision-tree.ipynb",
+  "kernel_sources": [],
+  "id_no": 1370001,
+  "keywords": [],
+  "kernel_type": "notebook",
+  "dataset_sources": [],
+  "enable_gpu": false,
+  "enable_internet": false,
+  "title": "Titanic - Decision Tree"
+}

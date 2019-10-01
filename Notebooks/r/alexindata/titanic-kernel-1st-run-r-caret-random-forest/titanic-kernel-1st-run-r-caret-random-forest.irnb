@@ -1,0 +1,312 @@
+{
+  "cells": [
+    {
+      "cell_type": "markdown",
+      "metadata": {
+        "_cell_guid": "30694f81-6eaa-665f-eb55-9c1e937153eb"
+      },
+      "source": [
+        "## Intro\n",
+        "\n",
+        "This is a starter script using R caret/random forest, and parallel processing."
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "_cell_guid": "600dfb41-3436-bd7a-8bda-ad9b2db08f1d"
+      },
+      "outputs": [],
+      "source": [
+        "rm(list=ls())\n",
+        "set.seed(12345)\n",
+        "train <- read.csv(\"../input/train.csv\", stringsAsFactors=F, na.strings=c(\"NA\", \"\"))\n",
+        "test <- read.csv(\"../input/test.csv\", stringsAsFactors=F, na.strings=c(\"NA\", \"\"))\n",
+        "test$Survived <- NA\n",
+        "full <- rbind(train, test)\n",
+        "\n",
+        "dim(train); dim(test); dim(full)\n",
+        "\n",
+        "colnames(train)\n",
+        "\n",
+        "str(train)\n",
+        "\n",
+        "# line 27"
+      ]
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {
+        "_cell_guid": "a5e99eed-54a8-25f7-446b-756065c157f4"
+      },
+      "source": [
+        "## Data munging"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "_cell_guid": "e7ee0e22-2f1e-4403-1e0b-a1c779fe5acc"
+      },
+      "outputs": [],
+      "source": [
+        "library(dplyr)\n",
+        "\n",
+        "# convert Sex to a factor variable, gender\n",
+        "full$gender <- as.factor(full$Sex)\n",
+        "full$gender <- relevel(full$gender, ref=\"female\")\n",
+        "\n",
+        "# impute the Cabin NAs\n",
+        "full$cabin_deck <- toupper(substring(full$Cabin, 1, 1))\n",
+        "table(full$Survived, full$cabin_deck, useNA=\"ifany\")\n",
+        "full[full$cabin_deck %in% c('A', 'G', 'T'), ]$cabin_deck <- 'AGT'\n",
+        "full[full$cabin_deck %in% c('B', 'D', 'E'), ]$cabin_deck <- 'BDE'\n",
+        "full[full$cabin_deck %in% c('C', 'F'), ]$cabin_deck <- 'CF'\n",
+        "full[is.na(full$Cabin), ]$cabin_deck <- \"unknown\"\n",
+        "full$cabin_deck <- as.factor(full$cabin_deck)\n",
+        "\n",
+        "# social status, title in names\n",
+        "title <- unique(gsub(\"^.+, (.+?)\\\\. .+$\", \"\\\\1\", full$Name))\n",
+        "title\n",
+        "\n",
+        "noble <- c(\"Dona\", \"Jonkheer\", \"the Countess\", \"Sir\", \"Lady\", \"Don\")\n",
+        "pros <- c(\"Col\", \"Capt\", \"Major\", \"Dr\")\n",
+        "\n",
+        "full$title <- gsub(\"^.+, (.+?)\\\\. .+$\", \"\\\\1\", full$Name)\n",
+        "full[full$title == \"Mlle\", ]$title <- \"Miss\"\n",
+        "full[full$title == \"Mme\" | full$title == \"Ms\", ]$title <- \"Mrs\"\n",
+        "full[full$title %in% noble, ]$title <- \"noble\"\n",
+        "full[full$title %in% pros, ]$title <- \"pros\"\n",
+        "full$title <- as.factor(full$title)\n",
+        "\n",
+        "# impute NA in Fare, convert Fare to a factor variable, fare_type\n",
+        "median_fare <- full %>% group_by(Pclass) %>% summarize(medians=median(Fare, na.rm=T))\n",
+        "full[is.na(full$Fare), ]$Fare <- \n",
+        "      median_fare[median_fare$Pclass==full[is.na(full$Fare), ]$Pclass ,]$medians\n",
+        "\n",
+        "quantile <- quantile(full$Fare, probs=seq(0, 1, 0.2), na.rm=T)\n",
+        "full$fare_grade <- as.factor(cut(full$Fare, breaks=quantile, include.lowest=T, \n",
+        "                                 labels=c('low', 'low_mid', 'mid', 'mid_hi', 'hi')))\n",
+        "\n",
+        "# split Ticket into ticket string and ticket numbers\n",
+        "full$ticket_str <- gsub(\"(\\\\D*)\\\\d+\", \"\\\\1\", full$Ticket)\n",
+        "full[full$ticket_str == \"\", ]$ticket_str <- \"unavailable\"\n",
+        "full$ticket_str <- as.factor(toupper(substring(full$ticket_str, 1, 1)))\n",
+        "\n",
+        "full$ticket_num <- sapply(full$Ticket, function(x) \n",
+        "      unlist(strsplit(x, split=\" \"))[length(unlist(strsplit(x, split=\" \")))])\n",
+        "full[full$ticket_num == \"LINE\", ]$ticket_num <- 1\n",
+        "full$ticket_num <- as.numeric(full$ticket_num)\n",
+        "full$ticket_num <- as.factor(round(log10(full$ticket_num)))\n",
+        "\n",
+        "# factorize Embarked variable\n",
+        "full$embarked <- as.factor(full$Embarked)\n",
+        "full[is.na(full$embarked), ]$embarked <- 'S'\n",
+        "\n",
+        "# factorize Pclass\n",
+        "full$pclass <- as.factor(full$Pclass)\n",
+        "\n",
+        "# combine SibSp and Parch\n",
+        "full$family <- full$SibSp + full$Parch + 1\n",
+        "\n",
+        "# impute the Age NAs, using median age by \"title\"\n",
+        "library(dplyr)\n",
+        "full$age <- full$Age\n",
+        "medians <- full %>% group_by(title) %>% summarize(medians=median(Age, na.rm=T))\n",
+        "full <- inner_join(full, medians, by='title')\n",
+        "full[is.na(full$age), ]$age <- full[is.na(full$age), ]$medians\n",
+        "\n",
+        "# line 100"
+      ]
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {
+        "_cell_guid": "89160944-1a12-ebe1-bac2-ab97384c818b"
+      },
+      "source": [
+        "## Parallel, training, and evaluation setup"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "_cell_guid": "64b7a64b-ab82-4f8c-e0c2-b1342d0173c9"
+      },
+      "outputs": [],
+      "source": [
+        "# model training on training dataset\n",
+        "library(caret, quietly=TRUE, warn.conflicts=FALSE)\n",
+        "library(randomForest, quietly=TRUE, warn.conflicts=FALSE)\n",
+        "\n",
+        "library(parallel, quietly=TRUE, warn.conflicts=FALSE)\n",
+        "library(doParallel, quietly=TRUE, warn.conflicts=FALSE)\n",
+        "cluster <- makeCluster(detectCores() - 1) # 1 core for the OS\n",
+        "registerDoParallel(cluster)\n",
+        "\n",
+        "# partition full dataset back to training, devset, and test set\n",
+        "train_dev_idx <- 1:dim(train)[1]\n",
+        "test_idx <- (dim(train)[1]+1):dim(full)[1] # dont forget to use () before the :\n",
+        "inTrain_idx <- sample(train_dev_idx, replace=F, round(0.7*length(train_dev_idx)))\n",
+        "inDev_idx <- train_dev_idx[-inTrain_idx]\n",
+        "\n",
+        "# line 125"
+      ]
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {
+        "_cell_guid": "53039b9a-afb7-0334-57bc-a10e921847e2"
+      },
+      "source": [
+        "## Loopinp through combinations of variables to id the best combo\n",
+        "\n",
+        "Evaluated on devset performance"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "_cell_guid": "b21d6950-22f1-1eb8-7d97-cb1468f81c6b"
+      },
+      "outputs": [],
+      "source": [
+        "# loop over the list var\n",
+        "colnames(full)\n",
+        "\n",
+        "var <- list(c(\"age\", \"gender\"), \n",
+        "            c(\"age\", \"gender\", \"Fare\"),\n",
+        "            c(\"age\", \"gender\", \"fare_grade\"),\n",
+        "            c(\"age\", \"gender\", \"Fare\", \"family\", \"title\", \"pclass\", \"embarked\", \"ticket_str\", \"cabin_deck\")\n",
+        ")\n",
+        "\n",
+        "data <- list()\n",
+        "accuracy <- list()\n",
+        "rfmod <- list()\n",
+        "\n",
+        "for (i in 1:length(var)) {\n",
+        "      data[[i]] <- full[train_dev_idx, var[[i]], drop=F]\n",
+        "      data[[i]] <- cbind(train$Survived, data[[i]])\n",
+        "      colnames(data[[i]])[1] <- 'Survived'\n",
+        "      data[[i]]$Survived <- as.factor(data[[i]]$Survived)\n",
+        "      \n",
+        "      # model training\n",
+        "      \n",
+        "      trControl <- trainControl(method=\"cv\", number=10, allowParallel=TRUE)\n",
+        "      \n",
+        "      training <- data[[i]][inTrain_idx, , drop=F]\n",
+        "      rfmod[[i]] <- train(Survived ~., method=\"rf\", data=training, \n",
+        "                          trControl=trControl, metric=\"Accuracy\")\n",
+        "      \n",
+        "      # model evaluation with devset\n",
+        "      prediction <- as.data.frame(matrix(0, nrow=length(inDev_idx), ncol=length(var)))\n",
+        "\n",
+        "      devset <- data[[i]][inDev_idx, , drop=F]\n",
+        "      prediction[, i] <- predict(rfmod[[i]], newdata=devset[, -1, drop=F])\n",
+        "      \n",
+        "      accuracy[[i]] <- (sum(prediction[, i] == data[[1]][inDev_idx, ][, 1]) \n",
+        "                                          / length(data[[1]][inDev_idx, ][, 1])) * 100\n",
+        "      print(paste(\"Variable set\", as.character(i), \n",
+        "                  \"of total\", as.character(length(var)), \"for the var list.\"))\n",
+        "}\n",
+        "\n",
+        "max(unlist(accuracy))\n",
+        "max_acc_idx <- which(unlist(accuracy) == max(unlist(accuracy)))\n",
+        "max_acc_idx\n",
+        "\n",
+        "# line 178"
+      ]
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {
+        "_cell_guid": "b41ac16e-babf-719f-1879-d4328543f2e7"
+      },
+      "source": [
+        "## Make prediction for the actual test set using the feature set with the best performance on devset"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "_cell_guid": "b0f78b37-9831-c3fa-59f9-d63961b142db"
+      },
+      "outputs": [],
+      "source": [
+        "best_var <- c(\"age\", \"gender\", \"Fare\", \"family\", \"title\", \"pclass\", \"embarked\", \"ticket_str\", \"cabin_deck\")\n",
+        "\n",
+        "# re-build the model on the full original training set, train\n",
+        "data <- full[train_dev_idx, best_var]\n",
+        "data <- cbind(train$Survived, data)\n",
+        "colnames(data)[1] <- \"Survived\"\n",
+        "data$Survived <- as.factor(data$Survived)\n",
+        "\n",
+        "# model training \n",
+        "trControl <- trainControl(method=\"cv\", number=10, allowParallel=TRUE)\n",
+        "rfmod <- train(Survived ~., method=\"rf\", data=data, \n",
+        "                          trControl=trControl, metric=\"Accuracy\")\n",
+        "\n",
+        "rfmod$results\n",
+        "\n",
+        "# model evaluation with devset\n",
+        "testset <- full[test_idx, best_var]\n",
+        "prediction <- predict(rfmod, newdata=testset)\n",
+        "\n",
+        "# write to file\n",
+        "# df <- data.frame(PassengerId=test$PassengerId, Survived=prediction)\n",
+        "# write.csv(df, file=\"./data/kaggleTitanicRKernel.csv\", row.names=F)\n",
+        "\n",
+        "# using random forest in R does not give a good score.\n",
+        "\n",
+        "# line 214"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "_cell_guid": "2dbb296a-b298-3904-5bbb-2469ccf69ebe"
+      },
+      "outputs": [],
+      "source": [
+        "stopCluster(cluster)\n",
+        "date()"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "_cell_guid": "2f36b4ae-846f-6f47-ab45-a79a2acbd07d"
+      },
+      "outputs": [],
+      "source": [
+        ""
+      ]
+    }
+  ],
+  "metadata": {
+    "_change_revision": 0,
+    "_is_fork": false,
+    "kernelspec": {
+      "display_name": "R",
+      "language": "R",
+      "name": "ir"
+    },
+    "language_info": {
+      "codemirror_mode": "r",
+      "file_extension": ".r",
+      "mimetype": "text/x-r-source",
+      "name": "R",
+      "pygments_lexer": "r",
+      "version": "3.3.2"
+    }
+  },
+  "nbformat": 4,
+  "nbformat_minor": 0
+}

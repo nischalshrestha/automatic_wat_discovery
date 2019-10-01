@@ -1,0 +1,17 @@
+{
+  "dataset_sources": [],
+  "enable_gpu": false,
+  "code_file": "notebooke09a3d4b23.ipynb",
+  "language": "python",
+  "id_no": 228724,
+  "competition_sources": [
+    "titanic"
+  ],
+  "title": "Notebooke09a3d4b23",
+  "id": "rubenvelasco/notebooke09a3d4b23",
+  "keywords": [],
+  "kernel_sources": [],
+  "is_private": false,
+  "enable_internet": false,
+  "kernel_type": "notebook"
+}

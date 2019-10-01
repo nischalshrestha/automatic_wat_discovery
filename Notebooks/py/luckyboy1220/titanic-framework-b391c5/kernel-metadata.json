@@ -1,0 +1,17 @@
+{
+  "is_private": false,
+  "code_file": "titanic-framework-b391c5.ipynb",
+  "competition_sources": [
+    "titanic"
+  ],
+  "kernel_sources": [],
+  "id_no": 1559309,
+  "dataset_sources": [],
+  "id": "luckyboy1220/titanic-framework-b391c5",
+  "enable_gpu": false,
+  "language": "python",
+  "keywords": [],
+  "kernel_type": "notebook",
+  "title": " Titanic Framework b391c5",
+  "enable_internet": false
+}

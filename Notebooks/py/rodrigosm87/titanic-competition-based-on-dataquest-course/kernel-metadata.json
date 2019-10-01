@@ -1,0 +1,17 @@
+{
+  "id": "rodrigosm87/titanic-competition-based-on-dataquest-course",
+  "id_no": 415135,
+  "title": "Titanic competition (based on dataquest course)",
+  "code_file": "titanic-competition-based-on-dataquest-course.ipynb",
+  "language": "python",
+  "kernel_type": "notebook",
+  "is_private": false,
+  "enable_gpu": false,
+  "enable_internet": false,
+  "keywords": [],
+  "dataset_sources": [],
+  "kernel_sources": [],
+  "competition_sources": [
+    "titanic"
+  ]
+}

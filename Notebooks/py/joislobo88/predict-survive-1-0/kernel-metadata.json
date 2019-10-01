@@ -1,0 +1,21 @@
+{
+  "id": "joislobo88/predict-survive-1-0",
+  "id_no": 326144,
+  "title": "Predict Survive (1/0) ",
+  "code_file": "predict-survive-1-0.ipynb",
+  "language": "python",
+  "kernel_type": "notebook",
+  "is_private": false,
+  "enable_gpu": false,
+  "enable_internet": false,
+  "keywords": [
+    "beginner",
+    "data cleaning",
+    "starter code"
+  ],
+  "dataset_sources": [],
+  "kernel_sources": [],
+  "competition_sources": [
+    "titanic"
+  ]
+}

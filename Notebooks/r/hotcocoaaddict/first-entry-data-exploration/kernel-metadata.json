@@ -1,0 +1,17 @@
+{
+  "kernel_type": "notebook",
+  "code_file": "first-entry-data-exploration.irnb",
+  "kernel_sources": [],
+  "keywords": [],
+  "enable_gpu": false,
+  "language": "r",
+  "enable_internet": false,
+  "competition_sources": [
+    "titanic"
+  ],
+  "title": "First Entry - Data Exploration",
+  "is_private": false,
+  "id_no": 150486,
+  "id": "hotcocoaaddict/first-entry-data-exploration",
+  "dataset_sources": []
+}

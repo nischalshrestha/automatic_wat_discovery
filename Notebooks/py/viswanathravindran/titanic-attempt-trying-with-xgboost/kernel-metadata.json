@@ -1,0 +1,17 @@
+{
+  "id": "viswanathravindran/titanic-attempt-trying-with-xgboost",
+  "code_file": "titanic-attempt-trying-with-xgboost.ipynb",
+  "is_private": false,
+  "dataset_sources": [],
+  "kernel_sources": [],
+  "enable_internet": false,
+  "competition_sources": [
+    "titanic"
+  ],
+  "enable_gpu": false,
+  "keywords": [],
+  "title": "Titanic Attempt - Trying with XGBoost ",
+  "id_no": 242803,
+  "language": "python",
+  "kernel_type": "notebook"
+}

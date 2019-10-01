@@ -1,0 +1,17 @@
+{
+  "id": "tflare/testing-multiple-models-with-scikit-learn-0-79425",
+  "enable_gpu": false,
+  "id_no": 350930,
+  "kernel_sources": [],
+  "code_file": "testing-multiple-models-with-scikit-learn-0-79425.ipynb",
+  "title": "Testing multiple models with scikit-learn(0.79425)",
+  "enable_internet": false,
+  "is_private": false,
+  "language": "python",
+  "kernel_type": "notebook",
+  "keywords": [],
+  "competition_sources": [
+    "titanic"
+  ],
+  "dataset_sources": []
+}

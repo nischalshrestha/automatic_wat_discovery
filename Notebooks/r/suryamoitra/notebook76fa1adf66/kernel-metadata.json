@@ -1,0 +1,17 @@
+{
+  "language": "python",
+  "dataset_sources": [],
+  "keywords": [],
+  "kernel_type": "notebook",
+  "enable_gpu": false,
+  "kernel_sources": [],
+  "id": "suryamoitra/notebook76fa1adf66",
+  "competition_sources": [
+    "titanic"
+  ],
+  "enable_internet": false,
+  "id_no": 242783,
+  "code_file": "notebook76fa1adf66.ipynb",
+  "title": "Notebook76fa1adf66",
+  "is_private": false
+}

@@ -1,0 +1,23 @@
+{
+  "title": "Titanic Dive Through - Feature cave",
+  "id_no": 1305258,
+  "enable_gpu": false,
+  "kernel_type": "notebook",
+  "enable_internet": false,
+  "dataset_sources": [
+    "allunia/titanicdivethrough"
+  ],
+  "code_file": "titanic-dive-through-feature-cave.ipynb",
+  "is_private": false,
+  "keywords": [
+    "categorical data",
+    "tutorial",
+    "beginner"
+  ],
+  "kernel_sources": [],
+  "id": "allunia/titanic-dive-through-feature-cave",
+  "competition_sources": [
+    "titanic"
+  ],
+  "language": "python"
+}

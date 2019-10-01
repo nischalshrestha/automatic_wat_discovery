@@ -1,0 +1,17 @@
+{
+  "title": "Question12 : Common EDA steps followed",
+  "is_private": false,
+  "keywords": [],
+  "competition_sources": [
+    "titanic"
+  ],
+  "language": "python",
+  "enable_gpu": false,
+  "dataset_sources": [],
+  "code_file": "question12-common-eda-steps-followed.ipynb",
+  "enable_internet": false,
+  "id_no": 1335449,
+  "kernel_type": "notebook",
+  "kernel_sources": [],
+  "id": "jyothiallada/question12-common-eda-steps-followed"
+}

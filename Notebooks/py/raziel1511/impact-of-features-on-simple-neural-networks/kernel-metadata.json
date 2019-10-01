@@ -1,0 +1,17 @@
+{
+  "title": "Impact of Features on simple Neural Networks",
+  "enable_internet": false,
+  "is_private": false,
+  "language": "python",
+  "kernel_type": "notebook",
+  "dataset_sources": [],
+  "id": "raziel1511/impact-of-features-on-simple-neural-networks",
+  "kernel_sources": [],
+  "keywords": [],
+  "competition_sources": [
+    "titanic"
+  ],
+  "enable_gpu": false,
+  "id_no": 372780,
+  "code_file": "impact-of-features-on-simple-neural-networks.ipynb"
+}

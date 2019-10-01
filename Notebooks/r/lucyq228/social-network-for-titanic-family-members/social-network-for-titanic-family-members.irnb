@@ -1,0 +1,273 @@
+{
+  "cells": [
+    {
+      "cell_type": "markdown",
+      "metadata": {
+        "_cell_guid": "abfcb0f3-9f52-d391-e902-e3815fc441e1"
+      },
+      "source": [
+        "In the titanic dataset, the variable \"Ticket\" probably doesn't turn to be useful when building the prediction model. However, I was recently wondering if a single member's survival rate should be impacted by her/his other family members' survival rates. It's common sense that the family always travels together as a group. If the majority of family members survived, there should be higher survival rate for other family members. If this logic is correct, the variable \"Ticket\" turns out to be a key variable to find family members and calculate each family member's survival rate, which proves to be another powerful predictor. This concept is probably used in other social network analysis. The code below is just to demonstrate how to define family members and its prediction power. "
+      ]
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {
+        "_cell_guid": "cd7748ae-f9d4-8fb7-8339-9d48ab2d0ef0"
+      },
+      "source": [
+        "First, read data and do some simple missing value imputation. I only took the simplest way for imputation by assigning the median value to the missing values. However, there should be other more accurate way for missing value imputation. For this analysis, I only want to focus on family member network illustration."
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "_cell_guid": "110bb6b7-13d2-e91c-d966-2eeb43922096"
+      },
+      "outputs": [],
+      "source": [
+        "library(dplyr)\n",
+        "library(igraph)\n",
+        "\n",
+        "#read data\n",
+        "train <- read.csv(\"../input/train.csv\")\n",
+        "test <- read.csv(\"../input/test.csv\")\n",
+        "\n",
+        "train$cat <- \"train\"\n",
+        "test$cat <- \"test\"\n",
+        "\n",
+        "#assign avg. survival rate from training set to test set \n",
+        "test$Survived <- round(sum(train$Survived)/nrow(train),2)\n",
+        "dat_all <- rbind(train, test)\n",
+        "\n",
+        "#data cleaning and missing value imputation (very simple approach)\n",
+        "dat_all[is.na(dat_all$Age)==TRUE,\"Age\"] <- mean(dat_all$Age, na.rm=TRUE)\n",
+        "#assign missing Embarked to \"S\" (majority values)\n",
+        "dat_all[dat_all$Embarked=='', \"Embarked\"] <- \"S\"\n",
+        "\n",
+        "head(dat_all,2)"
+      ]
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {
+        "_cell_guid": "b844446d-6d1a-130f-f1d6-2110e855420c"
+      },
+      "source": [
+        "As the table shown below, the last names of passengers who had the same ticket number are the same. So it makes sense to use \"Ticket\" variable to find family members. More specifically, passengers who had the same ticket number should be grouped together as a family.  A quick note, I took the average survival rate from training set as the test set survival rate (0.38). The calculation is in the first part."
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "_cell_guid": "8275a8f0-7207-6b58-2dd4-49fe334e404d"
+      },
+      "outputs": [],
+      "source": [
+        "arrange(dat_all[dat_all$Ticket %in% c(\"2666\", \"230136\"),\n",
+        "                names(dat_all)%in%c(\"PassengerId\", \"Ticket\", \"Survived\", \"Name\",\"cat\")],Ticket)\n"
+      ]
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {
+        "_cell_guid": "d29f000b-5636-ac72-0f87-b78c9801bc53"
+      },
+      "source": [
+        "Create first new variable \"with_fam\" to indicate if the passenger was with family or traveled alone."
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "_cell_guid": "23238b69-814a-6543-5d0f-3012c8f6e462"
+      },
+      "outputs": [],
+      "source": [
+        "#create with_fam variable based on if Ticket was shown more than once. \n",
+        "\n",
+        "ticket_freq <- as.data.frame(table(dat_all$Ticket))\n",
+        "ticket_freq$with_fam <- ifelse(ticket_freq$Freq >1, 1, 0)\n",
+        "colnames(ticket_freq)[1] <- \"Ticket\"\n",
+        "\n",
+        "dat_all <- merge(dat_all, ticket_freq[, c(1,3)], by=\"Ticket\", all.x = TRUE)\n",
+        "\n",
+        "arrange(dat_all[dat_all$Ticket %in% c(\"2666\", \"110564\"),\n",
+        "                names(dat_all)%in%c(\"PassengerId\", \"Ticket\", \"Name\",\"cat\", \"with_fam\")],Ticket)\n"
+      ]
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {
+        "_cell_guid": "72c6f700-1d23-1a7e-1056-ef8223ba8836"
+      },
+      "source": [
+        "The code below is to create the second variable \"FM_Survive\" which indicates other family members' survival rate, excluding the passenger self. If the passenger didn't travel with the family, the survival rate is calculated based on other single passengers' survival rate in the training set. "
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "_cell_guid": "aa8f1a2e-c7d9-c6bb-694a-2a761be8a22b"
+      },
+      "outputs": [],
+      "source": [
+        "#second var: famimly member survival rate\n",
+        "#first pick one ticket, then based on ticket, pick passengers that associated based on ticket\n",
+        "#one by one to calculate their survival rate\n",
+        "relative <- data.frame()\n",
+        "for (j in (1:nrow(ticket_freq))){\n",
+        "  test_member <- dat_all[dat_all$Ticket==ticket_freq[j,1] ,]\n",
+        "  \n",
+        "  for (i in (1:nrow(test_member))){\n",
+        "    if (nrow(test_member) == 0) {\n",
+        "      relative2 <- data.frame(dat_all[dat_all$Ticket==ticket_freq[j,1], \"PassengerId\"], \n",
+        "                              ticket_freq[j,\"Ticket\"], NaN) #have no relative\n",
+        "      colnames(relative2) <- c(\"test_member.i...PassengerId..\", \"test_member.i...Ticket..\", \"survive\")\n",
+        "    } \n",
+        "    else {#have relative\n",
+        "      sub <- subset(test_member, !(test_member$PassengerId %in% test_member$PassengerId[i]))\n",
+        "      survive <- sum(sub[, \"Survived\"]) / nrow(sub)\n",
+        "      relative2 <- data.frame(test_member[i,\"PassengerId\"], test_member[i,\"Ticket\"],survive)\n",
+        "      \n",
+        "    }\n",
+        "    relative <- rbind(relative, relative2)\n",
+        "  }\n",
+        "}\n",
+        "\n",
+        "colnames(relative) <- c(\"PassengerId\", \"Ticket\", \"FM_Survive\")\n",
+        "\n",
+        "#merge back with dat_all\n",
+        "dat_all <- merge(dat_all, relative[,c(1,3)], by=\"PassengerId\", all.x = TRUE)\n",
+        "\n",
+        "#deal with NaN for single passengers in test dataset. \n",
+        "#Assign general single survival rate based on training\n",
+        "single_survive <-\n",
+        "  sum(dat_all[dat_all$with_fam==0 & dat_all$cat==\"train\", \"Survived\"])/\n",
+        "  length(dat_all[dat_all$with_fam==0 & dat_all$cat==\"train\", \"Survived\"])\n",
+        "\n",
+        "dat_all[dat_all$with_fam==0, \"FM_Survive\"] <- single_survive\n",
+        "\n",
+        "arrange(dat_all[dat_all$Ticket %in% c(\"2666\", \"230136\"),\n",
+        "                names(dat_all)%in%c(\"PassengerId\", \"Ticket\", \"Survived\", \"Name\",\"cat\", \"with_fam\",\n",
+        "                                    \"FM_Survive\")],Ticket)"
+      ]
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {
+        "_cell_guid": "672dc6b7-298a-79d2-1291-fc67a22ce397"
+      },
+      "source": [
+        "The masterpiece is done. Now is to use library(igraph) to visualize the family network based on PassengerID. For the chart below, passengers clustered in a group indicates they were from the same family. Color green stands for survived. Gray stands for deceased. Yellow stands for unknown (from test set). It looks like there are some survival patterns among the family. For example, for passenger 1235, his/her other family members all survived, so he/she probably had higher chance to survive too.  The opposite inference for passenger 1024 as all his/her other families deceased. "
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "_cell_guid": "e8db6255-7aed-433d-6856-4e963c2f45ab"
+      },
+      "outputs": [],
+      "source": [
+        "set.seed(111)\n",
+        "\n",
+        "#random select 10 ticket number based on each family size (ticket frequency)\n",
+        "ran_ticket <- ticket_freq %>% group_by(Freq) %>% sample_n(10, replace=TRUE)\n",
+        "ran_ticket <- unique(ran_ticket$Ticket)\n",
+        "\n",
+        "network <- dat_all[dat_all$Ticket%in%ran_ticket,\n",
+        "                   names(dat_all)%in%c(\"PassengerId\", \"Ticket\", \"Survived\", \"cat\", \"FM_Survive\")]\n",
+        "\n",
+        "\n",
+        "#transform dataset to igraph format (\"from\", \"to\")\n",
+        "member <- data.frame()\n",
+        "for (g in (1: length(unique(network$Ticket)))){\n",
+        "  FM <- network[network$Ticket==unique(network$Ticket)[g],\"PassengerId\"]\n",
+        "\n",
+        "  for (k in (1:length(FM))){\n",
+        "    member2 <- data.frame(FM[1],FM[k])\n",
+        "    member <- rbind(member, member2)\n",
+        "  }\n",
+        "}\n",
+        "\n",
+        "colnames(member) <- c(\"from\", \"to\")\n",
+        "member <- member[member$from!=member$to,] #remove \"from\" \"to\" same value row #data\n",
+        "nodes <- network[,c(\"PassengerId\", \"Survived\")] #serve as data description\n",
+        "\n",
+        "#transform \"survived\" into categorical data.Survived=3, unknown=2, deceased=1\n",
+        "nodes$Survived <- ifelse(nodes$Survived==1,3,\n",
+        "                ifelse(nodes$Survived==0,1,2)) \n",
+        "\n",
+        "#graph\n",
+        "net <- graph_from_data_frame(d=member, vertices = nodes, directed = T)\n",
+        "\n",
+        "plot(net, edge.arrow.size=.1,\n",
+        "     vertex.color=c(\"gray50\", \"gold\",\"green\")[V(net)$Survived],\n",
+        "     vertex.size=10, vertex.label.cex=0.8)\n"
+      ]
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {
+        "_cell_guid": "29c5e156-3af8-ba36-8702-1616ce905aaa"
+      },
+      "source": [
+        "Lastly, use the two new variables (with_fam, FM_Survive) in prediction model. Here I only selected certain variables and logistic regression just for demonstration.  It shows family member survival rate (FM_Survive) is statically significant and has decent prediction power, next to \"Pclass\". "
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "_cell_guid": "67d8d260-cf3d-6acd-ffcc-368d93633f33"
+      },
+      "outputs": [],
+      "source": [
+        "train <- dat_all[dat_all$cat==\"train\",]\n",
+        "test <- dat_all[dat_all$cat==\"test\",]\n",
+        "\n",
+        "library(caret)\n",
+        "set.seed(111)\n",
+        "part <- createDataPartition(train$Survived, p=0.8, list = FALSE)\n",
+        "ttrain <- train[part,!names(train)==\"cat\"]\n",
+        "ttest <- train[-part,!names(train)==\"cat\"]\n",
+        "\n",
+        "ttrain$Survived <- as.factor(ttrain$Survived)\n",
+        "ttest$Survived <- as.factor(ttest$Survived)\n",
+        "model_glm <- train(Survived~., data=ttrain[,names(ttrain)%in%c(\"Survived\",\n",
+        "                                                              \"Pclass\",\n",
+        "                                                              \"Age\",\n",
+        "                                                              \"Fare\",\n",
+        "                                                              \"with_fam\",\n",
+        "                                                              \"FM_Survive\")], \n",
+        "                   method=\"glm\", family=\"binomial\")\n",
+        "\n",
+        "summary(model_glm)\n",
+        "varImp(model_glm)"
+      ]
+    }
+  ],
+  "metadata": {
+    "_change_revision": 0,
+    "_is_fork": false,
+    "kernelspec": {
+      "display_name": "R",
+      "language": "R",
+      "name": "ir"
+    },
+    "language_info": {
+      "codemirror_mode": "r",
+      "file_extension": ".r",
+      "mimetype": "text/x-r-source",
+      "name": "R",
+      "pygments_lexer": "r",
+      "version": "3.3.3"
+    }
+  },
+  "nbformat": 4,
+  "nbformat_minor": 0
+}

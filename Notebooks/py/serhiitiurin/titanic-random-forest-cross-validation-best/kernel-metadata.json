@@ -1,0 +1,17 @@
+{
+  "is_private": false,
+  "title": "Titanic , random forest + cross validation + best",
+  "code_file": "titanic-random-forest-cross-validation-best.ipynb",
+  "kernel_sources": [],
+  "id": "serhiitiurin/titanic-random-forest-cross-validation-best",
+  "enable_gpu": false,
+  "competition_sources": [
+    "titanic"
+  ],
+  "enable_internet": false,
+  "kernel_type": "notebook",
+  "language": "python",
+  "id_no": 2114077,
+  "dataset_sources": [],
+  "keywords": []
+}

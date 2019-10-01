@@ -1,0 +1,17 @@
+{
+  "enable_gpu": false,
+  "id": "gisbee/notebookc808dd442c",
+  "is_private": false,
+  "keywords": [],
+  "dataset_sources": [],
+  "competition_sources": [
+    "titanic"
+  ],
+  "language": "r",
+  "enable_internet": false,
+  "id_no": 211883,
+  "kernel_type": "notebook",
+  "code_file": "notebookc808dd442c.irnb",
+  "title": "Notebookc808dd442c",
+  "kernel_sources": []
+}

@@ -1,0 +1,17 @@
+{
+  "id": "anthonyfong/titanic-ml-guide-for-begineers",
+  "dataset_sources": [],
+  "code_file": "titanic-ml-guide-for-begineers.ipynb",
+  "id_no": 536658,
+  "language": "python",
+  "kernel_sources": [],
+  "title": "Titanic ML guide for begineers",
+  "enable_internet": false,
+  "is_private": false,
+  "keywords": [],
+  "enable_gpu": false,
+  "competition_sources": [
+    "titanic"
+  ],
+  "kernel_type": "notebook"
+}

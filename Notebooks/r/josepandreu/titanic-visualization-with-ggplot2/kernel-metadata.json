@@ -1,0 +1,19 @@
+{
+  "enable_internet": false,
+  "id_no": 489048,
+  "code_file": "titanic-visualization-with-ggplot2.irnb",
+  "kernel_type": "notebook",
+  "is_private": false,
+  "title": "Titanic Visualization with ggplot2 ",
+  "keywords": [
+    "data visualization"
+  ],
+  "language": "r",
+  "dataset_sources": [],
+  "kernel_sources": [],
+  "competition_sources": [
+    "titanic"
+  ],
+  "enable_gpu": false,
+  "id": "josepandreu/titanic-visualization-with-ggplot2"
+}

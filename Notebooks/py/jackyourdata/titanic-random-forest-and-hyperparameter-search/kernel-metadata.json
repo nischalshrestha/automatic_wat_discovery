@@ -1,0 +1,17 @@
+{
+  "language": "python",
+  "code_file": "titanic-random-forest-and-hyperparameter-search.ipynb",
+  "title": "Titanic - Random forest and Hyperparameter search",
+  "kernel_type": "notebook",
+  "id_no": 1440999,
+  "competition_sources": [
+    "titanic"
+  ],
+  "kernel_sources": [],
+  "dataset_sources": [],
+  "enable_gpu": true,
+  "enable_internet": false,
+  "id": "jackyourdata/titanic-random-forest-and-hyperparameter-search",
+  "keywords": [],
+  "is_private": false
+}

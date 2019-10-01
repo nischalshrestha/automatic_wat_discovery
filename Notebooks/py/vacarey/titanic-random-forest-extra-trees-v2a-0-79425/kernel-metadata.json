@@ -1,0 +1,17 @@
+{
+  "id": "vacarey/titanic-random-forest-extra-trees-v2a-0-79425",
+  "id_no": 380518,
+  "title": "Titanic -Random Forest (Extra Trees) v2a [0.79425]",
+  "code_file": "titanic-random-forest-extra-trees-v2a-0-79425.ipynb",
+  "language": "python",
+  "kernel_type": "notebook",
+  "is_private": false,
+  "enable_gpu": false,
+  "enable_internet": false,
+  "keywords": [],
+  "dataset_sources": [],
+  "kernel_sources": [],
+  "competition_sources": [
+    "titanic"
+  ]
+}

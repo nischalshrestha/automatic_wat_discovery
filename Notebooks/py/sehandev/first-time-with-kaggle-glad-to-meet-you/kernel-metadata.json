@@ -1,0 +1,17 @@
+{
+  "title": "First time with kaggle! Glad to meet you~",
+  "enable_gpu": false,
+  "is_private": false,
+  "kernel_sources": [],
+  "id": "sehandev/first-time-with-kaggle-glad-to-meet-you",
+  "language": "python",
+  "code_file": "first-time-with-kaggle-glad-to-meet-you.ipynb",
+  "competition_sources": [
+    "titanic"
+  ],
+  "kernel_type": "notebook",
+  "id_no": 2089764,
+  "keywords": [],
+  "enable_internet": false,
+  "dataset_sources": []
+}

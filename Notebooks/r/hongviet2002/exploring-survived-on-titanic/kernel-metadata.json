@@ -1,0 +1,17 @@
+{
+  "is_private": false,
+  "kernel_sources": [],
+  "id": "hongviet2002/exploring-survived-on-titanic",
+  "dataset_sources": [],
+  "competition_sources": [
+    "titanic"
+  ],
+  "id_no": 116712,
+  "language": "r",
+  "keywords": [],
+  "kernel_type": "notebook",
+  "enable_gpu": false,
+  "enable_internet": false,
+  "title": "Exploring Survived On Titanic",
+  "code_file": "exploring-survived-on-titanic.irnb"
+}

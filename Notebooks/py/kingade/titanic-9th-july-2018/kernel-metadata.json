@@ -1,0 +1,17 @@
+{
+  "keywords": [],
+  "id_no": 1268858,
+  "language": "python",
+  "competition_sources": [
+    "titanic"
+  ],
+  "enable_internet": false,
+  "is_private": false,
+  "dataset_sources": [],
+  "kernel_sources": [],
+  "code_file": "titanic-9th-july-2018.ipynb",
+  "enable_gpu": false,
+  "kernel_type": "notebook",
+  "title": "Titanic 9th July 2018",
+  "id": "kingade/titanic-9th-july-2018"
+}

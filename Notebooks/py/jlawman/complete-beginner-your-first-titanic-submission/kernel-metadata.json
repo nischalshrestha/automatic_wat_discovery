@@ -1,0 +1,17 @@
+{
+  "id": "jlawman/complete-beginner-your-first-titanic-submission",
+  "kernel_sources": [],
+  "enable_gpu": false,
+  "kernel_type": "notebook",
+  "language": "python",
+  "is_private": false,
+  "enable_internet": false,
+  "code_file": "complete-beginner-your-first-titanic-submission.ipynb",
+  "title": "Complete Beginner: Your First Titanic Submission",
+  "competition_sources": [
+    "titanic"
+  ],
+  "id_no": 421162,
+  "dataset_sources": [],
+  "keywords": []
+}

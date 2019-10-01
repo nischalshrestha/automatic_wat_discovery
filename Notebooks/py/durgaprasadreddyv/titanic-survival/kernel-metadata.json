@@ -1,0 +1,17 @@
+{
+  "kernel_type": "notebook",
+  "competition_sources": [
+    "titanic"
+  ],
+  "code_file": "titanic-survival.ipynb",
+  "language": "python",
+  "dataset_sources": [],
+  "is_private": false,
+  "kernel_sources": [],
+  "id_no": 380089,
+  "title": "titanic survival",
+  "keywords": [],
+  "enable_internet": false,
+  "id": "durgaprasadreddyv/titanic-survival",
+  "enable_gpu": false
+}

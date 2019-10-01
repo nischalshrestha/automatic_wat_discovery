@@ -1,0 +1,17 @@
+{
+  "id_no": 112586,
+  "enable_internet": false,
+  "is_private": false,
+  "enable_gpu": false,
+  "code_file": "titanic-data-analysis.ipynb",
+  "competition_sources": [
+    "titanic"
+  ],
+  "title": "Titanic Data Analysis",
+  "kernel_type": "notebook",
+  "kernel_sources": [],
+  "id": "ahmethamzaemra/titanic-data-analysis",
+  "language": "python",
+  "keywords": [],
+  "dataset_sources": []
+}

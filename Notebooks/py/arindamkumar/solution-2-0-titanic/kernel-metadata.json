@@ -1,0 +1,17 @@
+{
+  "language": "python",
+  "dataset_sources": [],
+  "enable_internet": false,
+  "kernel_sources": [],
+  "keywords": [],
+  "code_file": "solution-2-0-titanic.ipynb",
+  "title": "Solution 2.0 titanic",
+  "kernel_type": "notebook",
+  "enable_gpu": false,
+  "competition_sources": [
+    "titanic"
+  ],
+  "id_no": 1780500,
+  "is_private": false,
+  "id": "arindamkumar/solution-2-0-titanic"
+}

@@ -1,0 +1,17 @@
+{
+  "kernel_type": "notebook",
+  "kernel_sources": [],
+  "competition_sources": [
+    "titanic"
+  ],
+  "is_private": false,
+  "enable_internet": false,
+  "title": "kernel_tita",
+  "code_file": "kernel-tita.ipynb",
+  "language": "python",
+  "id": "ryou01/kernel-tita",
+  "enable_gpu": false,
+  "id_no": 1580348,
+  "keywords": [],
+  "dataset_sources": []
+}

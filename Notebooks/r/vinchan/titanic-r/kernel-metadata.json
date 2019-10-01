@@ -1,0 +1,17 @@
+{
+  "language": "r",
+  "code_file": "titanic-r.irnb",
+  "competition_sources": [
+    "titanic"
+  ],
+  "enable_internet": false,
+  "id_no": 396314,
+  "title": "Titanic R",
+  "keywords": [],
+  "id": "vinchan/titanic-r",
+  "is_private": false,
+  "dataset_sources": [],
+  "kernel_sources": [],
+  "kernel_type": "notebook",
+  "enable_gpu": false
+}

@@ -1,0 +1,17 @@
+{
+  "language": "r",
+  "kernel_type": "notebook",
+  "id_no": 1697740,
+  "keywords": [],
+  "is_private": false,
+  "competition_sources": [
+    "titanic"
+  ],
+  "code_file": "my-titanic.irnb",
+  "id": "ablearcher/my-titanic",
+  "kernel_sources": [],
+  "title": "My Titanic",
+  "enable_gpu": false,
+  "dataset_sources": [],
+  "enable_internet": false
+}

@@ -1,0 +1,17 @@
+{
+  "dataset_sources": [],
+  "kernel_sources": [],
+  "title": "Titanic Disaster ",
+  "is_private": false,
+  "id": "devaraju/titanic-disaster",
+  "language": "python",
+  "kernel_type": "notebook",
+  "keywords": [],
+  "enable_internet": false,
+  "code_file": "titanic-disaster.ipynb",
+  "enable_gpu": false,
+  "id_no": 422983,
+  "competition_sources": [
+    "titanic"
+  ]
+}

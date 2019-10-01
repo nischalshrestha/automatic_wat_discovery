@@ -1,0 +1,17 @@
+{
+  "code_file": "titanic-visialize.ipynb",
+  "enable_internet": false,
+  "language": "python",
+  "keywords": [],
+  "dataset_sources": [],
+  "id": "ankhaatk/titanic-visialize",
+  "kernel_sources": [],
+  "competition_sources": [
+    "titanic"
+  ],
+  "title": "Titanic Visialize",
+  "kernel_type": "notebook",
+  "is_private": false,
+  "id_no": 2017286,
+  "enable_gpu": false
+}

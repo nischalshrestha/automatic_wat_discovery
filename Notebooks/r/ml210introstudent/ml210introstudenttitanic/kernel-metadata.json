@@ -1,0 +1,17 @@
+{
+  "title": "ML210IntroStudentTitanic",
+  "enable_gpu": false,
+  "dataset_sources": [],
+  "language": "r",
+  "competition_sources": [
+    "titanic"
+  ],
+  "kernel_sources": [],
+  "code_file": "ml210introstudenttitanic.irnb",
+  "is_private": false,
+  "enable_internet": false,
+  "kernel_type": "notebook",
+  "id": "ml210introstudent/ml210introstudenttitanic",
+  "keywords": [],
+  "id_no": 690208
+}

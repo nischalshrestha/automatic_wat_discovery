@@ -1,0 +1,17 @@
+{
+  "kernel_sources": [],
+  "enable_internet": false,
+  "title": "Titanic",
+  "is_private": false,
+  "competition_sources": [
+    "titanic"
+  ],
+  "keywords": [],
+  "dataset_sources": [],
+  "kernel_type": "notebook",
+  "code_file": "titanic.ipynb",
+  "id": "maouriyan/titanic",
+  "language": "python",
+  "id_no": 2121377,
+  "enable_gpu": false
+}

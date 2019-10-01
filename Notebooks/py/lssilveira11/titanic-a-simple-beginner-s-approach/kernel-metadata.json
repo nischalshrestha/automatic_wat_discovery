@@ -1,0 +1,21 @@
+{
+  "id_no": 879296,
+  "id": "lssilveira11/titanic-a-simple-beginner-s-approach",
+  "language": "python",
+  "code_file": "titanic-a-simple-beginner-s-approach.ipynb",
+  "competition_sources": [
+    "titanic"
+  ],
+  "enable_internet": false,
+  "keywords": [
+    "beginner",
+    "data visualization",
+    "deep learning"
+  ],
+  "is_private": false,
+  "enable_gpu": false,
+  "title": "Titanic: a simple beginner's approach",
+  "kernel_type": "notebook",
+  "kernel_sources": [],
+  "dataset_sources": []
+}

@@ -1,0 +1,17 @@
+{
+  "dataset_sources": [],
+  "id": "eacontang/titanic-disaster",
+  "is_private": false,
+  "enable_internet": false,
+  "language": "python",
+  "kernel_sources": [],
+  "kernel_type": "notebook",
+  "keywords": [],
+  "id_no": 244384,
+  "competition_sources": [
+    "titanic"
+  ],
+  "title": "Titanic Disaster",
+  "code_file": "titanic-disaster.ipynb",
+  "enable_gpu": false
+}

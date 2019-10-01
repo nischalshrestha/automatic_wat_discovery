@@ -1,0 +1,19 @@
+{
+  "id": "damondouglas/yc-dd-titanic",
+  "title": "yc_dd_titanic",
+  "enable_gpu": false,
+  "code_file": "yc-dd-titanic.ipynb",
+  "keywords": [],
+  "competition_sources": [
+    "titanic"
+  ],
+  "enable_internet": false,
+  "is_private": false,
+  "dataset_sources": [
+    "damondouglas/names"
+  ],
+  "id_no": 1931189,
+  "kernel_sources": [],
+  "language": "python",
+  "kernel_type": "notebook"
+}

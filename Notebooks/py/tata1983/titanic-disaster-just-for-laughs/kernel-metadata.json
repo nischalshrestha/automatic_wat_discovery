@@ -1,0 +1,17 @@
+{
+  "enable_internet": false,
+  "title": "Titanic Disaster-just for laughs",
+  "code_file": "titanic-disaster-just-for-laughs.ipynb",
+  "id_no": 2189306,
+  "keywords": [],
+  "enable_gpu": false,
+  "id": "tata1983/titanic-disaster-just-for-laughs",
+  "is_private": false,
+  "kernel_sources": [],
+  "dataset_sources": [],
+  "language": "python",
+  "competition_sources": [
+    "titanic"
+  ],
+  "kernel_type": "notebook"
+}

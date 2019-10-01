@@ -1,0 +1,17 @@
+{
+  "enable_internet": false,
+  "keywords": [],
+  "language": "python",
+  "enable_gpu": false,
+  "kernel_sources": [],
+  "id_no": 229717,
+  "is_private": false,
+  "id": "zbspeed/notebook18e78b4ed7",
+  "competition_sources": [
+    "titanic"
+  ],
+  "code_file": "notebook18e78b4ed7.ipynb",
+  "dataset_sources": [],
+  "title": "Notebook18e78b4ed7",
+  "kernel_type": "notebook"
+}

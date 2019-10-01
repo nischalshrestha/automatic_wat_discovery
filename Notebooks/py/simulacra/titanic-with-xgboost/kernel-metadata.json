@@ -1,0 +1,17 @@
+{
+  "enable_gpu": false,
+  "kernel_sources": [],
+  "id_no": 513088,
+  "keywords": [],
+  "language": "python",
+  "code_file": "titanic-with-xgboost.ipynb",
+  "is_private": false,
+  "competition_sources": [
+    "titanic"
+  ],
+  "dataset_sources": [],
+  "kernel_type": "notebook",
+  "title": "Titanic with XGBoost",
+  "id": "simulacra/titanic-with-xgboost",
+  "enable_internet": false
+}

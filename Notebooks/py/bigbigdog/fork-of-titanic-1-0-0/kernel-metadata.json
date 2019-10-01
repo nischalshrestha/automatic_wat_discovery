@@ -1,0 +1,17 @@
+{
+  "enable_internet": false,
+  "id_no": 1343466,
+  "competition_sources": [
+    "titanic"
+  ],
+  "keywords": [],
+  "id": "bigbigdog/fork-of-titanic-1-0-0",
+  "code_file": "fork-of-titanic-1-0-0.ipynb",
+  "language": "python",
+  "kernel_type": "notebook",
+  "kernel_sources": [],
+  "is_private": false,
+  "title": "Fork of Titanic 1.0.0",
+  "dataset_sources": [],
+  "enable_gpu": false
+}

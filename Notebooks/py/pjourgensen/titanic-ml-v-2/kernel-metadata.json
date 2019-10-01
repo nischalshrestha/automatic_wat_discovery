@@ -1,0 +1,17 @@
+{
+  "code_file": "titanic-ml-v-2.ipynb",
+  "id": "pjourgensen/titanic-ml-v-2",
+  "language": "python",
+  "id_no": 2010965,
+  "enable_gpu": false,
+  "kernel_sources": [],
+  "kernel_type": "notebook",
+  "keywords": [],
+  "title": "Titanic ML (v.2)",
+  "competition_sources": [
+    "titanic"
+  ],
+  "is_private": false,
+  "enable_internet": false,
+  "dataset_sources": []
+}

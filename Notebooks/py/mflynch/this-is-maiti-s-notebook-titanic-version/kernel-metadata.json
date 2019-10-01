@@ -1,0 +1,17 @@
+{
+  "kernel_type": "notebook",
+  "is_private": false,
+  "code_file": "this-is-maiti-s-notebook-titanic-version.ipynb",
+  "dataset_sources": [],
+  "keywords": [],
+  "id": "mflynch/this-is-maiti-s-notebook-titanic-version",
+  "title": "This is Maiti's  Notebook - Titanic Version",
+  "enable_internet": false,
+  "kernel_sources": [],
+  "id_no": 1894538,
+  "language": "python",
+  "enable_gpu": false,
+  "competition_sources": [
+    "titanic"
+  ]
+}

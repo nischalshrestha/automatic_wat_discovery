@@ -1,0 +1,17 @@
+{
+  "title": "My_first_data_analysis_for_titanic",
+  "keywords": [],
+  "language": "python",
+  "is_private": false,
+  "kernel_type": "notebook",
+  "competition_sources": [
+    "titanic"
+  ],
+  "code_file": "my-first-data-analysis-for-titanic.ipynb",
+  "enable_gpu": false,
+  "kernel_sources": [],
+  "enable_internet": false,
+  "id": "easter3163/my-first-data-analysis-for-titanic",
+  "dataset_sources": [],
+  "id_no": 1542968
+}

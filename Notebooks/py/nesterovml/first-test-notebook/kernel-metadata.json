@@ -1,0 +1,17 @@
+{
+  "code_file": "first-test-notebook.ipynb",
+  "enable_gpu": false,
+  "dataset_sources": [],
+  "title": "First test notebook",
+  "keywords": [],
+  "kernel_sources": [],
+  "competition_sources": [
+    "titanic"
+  ],
+  "id_no": 208892,
+  "language": "python",
+  "kernel_type": "notebook",
+  "is_private": false,
+  "enable_internet": false,
+  "id": "nesterovml/first-test-notebook"
+}

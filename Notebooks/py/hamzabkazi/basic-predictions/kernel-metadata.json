@@ -1,0 +1,17 @@
+{
+  "code_file": "basic-predictions.ipynb",
+  "id": "hamzabkazi/basic-predictions",
+  "competition_sources": [
+    "titanic"
+  ],
+  "dataset_sources": [],
+  "language": "python",
+  "enable_gpu": false,
+  "title": "Basic Predictions",
+  "kernel_sources": [],
+  "kernel_type": "notebook",
+  "keywords": [],
+  "enable_internet": false,
+  "id_no": 747140,
+  "is_private": false
+}

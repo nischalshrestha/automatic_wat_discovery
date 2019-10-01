@@ -1,0 +1,17 @@
+{
+  "id": "ghoshtumpu/just-a-rough-logistic-regression-in-r",
+  "title": "Just a rough logistic regression in R",
+  "competition_sources": [
+    "titanic"
+  ],
+  "code_file": "just-a-rough-logistic-regression-in-r.irnb",
+  "dataset_sources": [],
+  "kernel_type": "notebook",
+  "is_private": false,
+  "language": "r",
+  "id_no": 205085,
+  "enable_internet": false,
+  "enable_gpu": false,
+  "keywords": [],
+  "kernel_sources": []
+}

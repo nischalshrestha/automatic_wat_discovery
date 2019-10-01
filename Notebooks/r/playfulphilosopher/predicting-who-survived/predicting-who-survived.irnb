@@ -1,0 +1,380 @@
+{
+  "cells": [
+    {
+      "cell_type": "markdown",
+      "metadata": {
+        "_cell_guid": "0b4dc5f1-e277-3014-6daf-15643549060d"
+      },
+      "source": [
+        "Introduction\n",
+        "------------\n",
+        "\n",
+        "I want to predict which people in the test set survived the Titanic disaster by training a classifier on the training set. \n",
+        "\n",
+        "For my prediction, I will develop two models and compare them. First, I'll train a simple decision tree model. Second, I'll use a K-Nearest Neighbors algorithm. Note that my KNN model performs much worse than my decision tree.\n",
+        "\n",
+        "Let's first load all the packages we need and import the data."
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "_cell_guid": "078cc4b0-b7de-1f9b-7042-e58080a03f74"
+      },
+      "outputs": [],
+      "source": [
+        "# Loading packages\n",
+        "library(rpart) #Generate decision tree\n",
+        "library(class) #Generate K-Nearest Neighbor\n",
+        "\n",
+        "#importing the data\n",
+        "train <- read.csv(\"../input/train.csv\", stringsAsFactor = F) #importing training set\n",
+        "test <- read.csv(\"../input/test.csv\", stringsAsFactor = F) #importing test set"
+      ]
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {
+        "_cell_guid": "b0763c3e-95a8-0784-432f-c27fae323564"
+      },
+      "source": [
+        "Exploring, transforming and cleaning the data\n",
+        "-------------------------------\n",
+        "\n",
+        "Now we have imported the data, let's have a look at it. Furthermore, because we imported the factors in the data set as character strings, lets change them back into factors. Let us also do some basic data cleaning by seeing if there are any missing values in the data and, if so, deciding what to do with them. "
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "_cell_guid": "e45de9f2-e812-b190-292c-cc0692a2fb27"
+      },
+      "outputs": [],
+      "source": [
+        "head(train)\n",
+        "str(train)"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "_cell_guid": "b0077650-ef99-9a43-741c-1f6fc1206a5c"
+      },
+      "outputs": [],
+      "source": [
+        "#Calculate missing values in Pclass\n",
+        "sum(is.na(train$Pclass))\n",
+        "\n",
+        "#Calculate missing values in Age\n",
+        "sum(is.na(train$Age))\n",
+        "\n",
+        "#Calculate missing values in SibSp\n",
+        "sum(is.na(train$SibSp))\n",
+        "\n",
+        "#Calculate missing values in Parch\n",
+        "sum(is.na(train$Parch))\n",
+        "\n",
+        "#Calculate missing values in Fare\n",
+        "sum(is.na(train$Fare))\n",
+        "\n",
+        "#Calculate missing values in Embarked\n",
+        "sum(is.na(train$Embarked))"
+      ]
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {
+        "_cell_guid": "5f8169ca-350b-7912-bdd8-3ac6db1bbf70"
+      },
+      "source": [
+        "It looks like there are 177 missing values in Age. All other features that we use look complete. Let's remove them."
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "_cell_guid": "c0e1bab7-21ef-1f95-e5f9-cd574b66716e"
+      },
+      "outputs": [],
+      "source": [
+        "clean_train <- na.omit(train)"
+      ]
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {
+        "_cell_guid": "f11b6aba-655a-c2ea-50ad-536304fa8116"
+      },
+      "source": [
+        "In order to make better predictions, we turn the Age feature into a number and the Sex and Embarked features into factors in both the training set and the test set so we can use them in our decision tree."
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "_cell_guid": "311236af-aa19-a899-9936-643ac09eba55"
+      },
+      "outputs": [],
+      "source": [
+        "# Turning Age into a factor.\n",
+        "clean_train$Age <- as.numeric(clean_train$Age)\n",
+        "test$Age <- as.numeric(test$Age)\n",
+        "\n",
+        "#Turning Sex into a factor\n",
+        "clean_train$Sex <- as.factor(clean_train$Sex)\n",
+        "test$Sex <- as.factor(test$Sex)\n",
+        "\n",
+        "#Turning Embarked into a factor.\n",
+        "clean_train$Embarked <- as.factor(clean_train$Embarked)\n",
+        "test$Embarked <- as.factor(test$Embarked)\n",
+        "\n",
+        "#Check\n",
+        "str(clean_train)\n",
+        "str(test)"
+      ]
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {
+        "_cell_guid": "d665bd80-01d8-e098-adf8-0a0afba504e4"
+      },
+      "source": [
+        "Decision Tree\n",
+        "-------------\n",
+        "\n",
+        "Let's generate our first model, and make predictions for the test set. "
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "_cell_guid": "0744448c-5dd9-acbb-62fd-b60a210bfb49"
+      },
+      "outputs": [],
+      "source": [
+        "#Generating model\n",
+        "tree <- rpart(Survived ~ Sex + Pclass + Age + SibSp + Parch + Fare + Embarked, clean_train, method = \"class\")\n",
+        "\n",
+        "#Making predictions on the test data\n",
+        "pred_dt = predict(tree, test, type = \"class\")"
+      ]
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {
+        "_cell_guid": "6029debe-4073-129f-8365-9a61a469a4bf"
+      },
+      "source": [
+        "Let's see what we predicted by looking at the first 20 rows of our prediction."
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "_cell_guid": "a4a26d82-ab28-8386-1189-0e3b097641fa"
+      },
+      "outputs": [],
+      "source": [
+        "output = data.frame(PassengerId = test$PassengerId, Survived = pred_dt)\n",
+        "head(output, n = 20)"
+      ]
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {
+        "_cell_guid": "d4337735-7d01-9dcc-2daa-89b32cbc6b36"
+      },
+      "source": [
+        "We write the result of this analysis to the file *my_solutions_dt.csv*"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "_cell_guid": "8f3a5121-f2aa-6437-1d32-b6ef6a9475da"
+      },
+      "outputs": [],
+      "source": [
+        "write.csv(output, file = \"my_solution_dt.csv\", row.names=FALSE)"
+      ]
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {
+        "_cell_guid": "d5f7c277-133e-1dbf-52c3-68b71da0fc69"
+      },
+      "source": [
+        "K-Nearest Neighbor\n",
+        "------------------\n",
+        "\n",
+        "We now train our second model and make predictions on its basis. We first normalize Pclass, Age and Fare."
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "_cell_guid": "dfed3fb6-bcd9-0829-c691-b6799a2300cb"
+      },
+      "outputs": [],
+      "source": [
+        "survived <- clean_train$Survived\n",
+        "knn_train <- clean_train\n",
+        "knn_test <- test\n",
+        "\n",
+        "# Normalize Pclass\n",
+        "min_class <- min(knn_train$Pclass)\n",
+        "max_class <- max(knn_train$Pclass)\n",
+        "knn_train$Pclass <- (knn_train$Pclass - min_class) / (max_class - min_class)\n",
+        "knn_test$Pclass <- (knn_test$Pclass - min_class) / (max_class - min_class)\n",
+        "\n",
+        "# Normalize Age\n",
+        "min_age <- min(knn_train$Age)\n",
+        "max_age <- max(knn_train$Age)\n",
+        "knn_train$Age <- (knn_train$Age - min_age) / (max_age - min_age)\n",
+        "knn_test$Age <- (knn_test$Age - min_age) / (max_age - min_age)\n",
+        "\n",
+        "# Normalize Fare\n",
+        "min_fare <- min(knn_train$Fare)\n",
+        "max_fare <- max(knn_train$Fare)\n",
+        "knn_train$Fare <- (knn_train$Fare - min_fare) / (max_fare - min_fare)\n",
+        "knn_test$Fare <- (knn_test$Fare - min_fare) / (max_fare - min_fare)"
+      ]
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {
+        "_cell_guid": "85caf201-1b7a-b01e-1917-4eca78ba122f"
+      },
+      "source": [
+        "Lets create a feature set that only contains the features that we want to train on."
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "_cell_guid": "eedd4b96-19b4-f428-ace1-1b3ee947fd2c"
+      },
+      "outputs": [],
+      "source": [
+        "#Dropping tables in knn_train\n",
+        "knn_train$PassengerId = NULL\n",
+        "knn_train$Survived = NULL\n",
+        "knn_train$Name = NULL\n",
+        "knn_train$Ticket = NULL\n",
+        "knn_train$Cabin = NULL\n",
+        "knn_train$Sex = NULL\n",
+        "knn_train$Embarked = NULL\n",
+        "\n",
+        "#Dropping tables in knn_test\n",
+        "knn_test$PassengerId = NULL\n",
+        "knn_test$Name = NULL\n",
+        "knn_test$Ticket = NULL\n",
+        "knn_test$Cabin = NULL\n",
+        "knn_test$Sex = NULL\n",
+        "knn_test$Embarked = NULL\n"
+      ]
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {
+        "_cell_guid": "bb3211ee-f270-f5e9-f7f2-da43399cf46d"
+      },
+      "source": [
+        "Our data may not have any missing data. We already took care of this for our training set, but we also have missing age data and fare data in our test set. Since we must return the entire test set, we cannot drop these rows. Let us therefore set all the missing ages and fares to the mean of their normalized scales."
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "_cell_guid": "ced8b922-bc15-94bd-1d07-db4e430463f0"
+      },
+      "outputs": [],
+      "source": [
+        "for (i in seq_along(knn_test$Age)) {\n",
+        "  if (is.na(knn_test$Age[i])){\n",
+        "      knn_test$Age[i] <- mean(knn_test$Age, na.rm = TRUE)\n",
+        "      }\n",
+        "}\n",
+        "\n",
+        "for (i in seq_along(knn_test$Fare)) {\n",
+        "  if (is.na(knn_test$Fare[i])){\n",
+        "      knn_test$Fare[i] <- mean(knn_test$Fare, na.rm = TRUE)\n",
+        "      }\n",
+        "}"
+      ]
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {
+        "_cell_guid": "7322a8bd-099d-f1db-4e52-0e901ad340c9"
+      },
+      "source": [
+        "We now train our K-Nearest Neighbor model."
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "_cell_guid": "76fa4795-1147-abf2-9c24-740e1bd8728c"
+      },
+      "outputs": [],
+      "source": [
+        "pred_knn <- knn(train = knn_train, test = knn_test, cl = survived, k = 5)"
+      ]
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {
+        "_cell_guid": "200abcf5-aa36-a829-88e3-f0bb7f9f18fd"
+      },
+      "source": [
+        "We write our predictions to file."
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "_cell_guid": "6e9cb0a5-992e-77d5-f8c7-3db9a36efd37"
+      },
+      "outputs": [],
+      "source": [
+        "output_knn = data.frame(PassengerId = test$PassengerId, Survived = pred_knn)\n",
+        "head(output_knn, n = 20)\n",
+        "\n",
+        "write.csv(output_knn, file = \"my_solution_knn.csv\", row.names=FALSE)"
+      ]
+    }
+  ],
+  "metadata": {
+    "_change_revision": 0,
+    "_is_fork": false,
+    "kernelspec": {
+      "display_name": "R",
+      "language": "R",
+      "name": "ir"
+    },
+    "language_info": {
+      "codemirror_mode": "r",
+      "file_extension": ".r",
+      "mimetype": "text/x-r-source",
+      "name": "R",
+      "pygments_lexer": "r",
+      "version": "3.3.1"
+    }
+  },
+  "nbformat": 4,
+  "nbformat_minor": 0
+}

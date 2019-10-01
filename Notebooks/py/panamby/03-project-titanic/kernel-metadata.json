@@ -1,0 +1,23 @@
+{
+  "id": "panamby/03-project-titanic",
+  "dataset_sources": [],
+  "title": "#03 Project - Titanic",
+  "is_private": false,
+  "code_file": "03-project-titanic.ipynb",
+  "kernel_type": "notebook",
+  "keywords": [
+    "beginner",
+    "data visualization",
+    "classification",
+    "logistic regression",
+    "starter code"
+  ],
+  "enable_gpu": false,
+  "enable_internet": false,
+  "language": "python",
+  "id_no": 2156086,
+  "competition_sources": [
+    "titanic"
+  ],
+  "kernel_sources": []
+}

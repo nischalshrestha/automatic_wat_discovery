@@ -1,0 +1,406 @@
+{
+  "cells": [
+    {
+      "cell_type": "markdown",
+      "metadata": {
+        "_cell_guid": "12ad72cd-a917-0ef8-aa31-35aa3968f509"
+      },
+      "source": [
+        "## Introduction\n",
+        "\n",
+        "This notebook contains some exploratory data analysis and and a simple machine learning classification model for the Kaggle Titantic dataset. The goal is to predict whether a passenger survived based on several predictors."
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "_cell_guid": "c79d94a3-55e9-2cc8-f678-9972c2f41953"
+      },
+      "outputs": [],
+      "source": [
+        "# This R environment comes with all of CRAN preinstalled, as well as many other helpful packages\n",
+        "# The environment is defined by the kaggle/rstats docker image: https://github.com/kaggle/docker-rstats\n",
+        "# For example, here's several helpful packages to load in \n",
+        "\n",
+        "library(ggplot2) # Data visualization\n",
+        "library(readr) # CSV file I/O, e.g. the read_csv function\n",
+        "suppressPackageStartupMessages(library(dplyr))\n",
+        "suppressPackageStartupMessages(library(caret))\n",
+        "\n",
+        "# Input data files are available in the \"../input/\" directory.\n",
+        "# For example, running this (by clicking run or pressing Shift+Enter) will list the files in the input directory\n",
+        "\n",
+        "system(\"ls ../input\")"
+      ]
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {
+        "_cell_guid": "a8933873-1722-0113-4e3a-09fd920c7d51"
+      },
+      "source": [
+        "### First we need to load the data. I'm going to combine the training and test data for now, because i'm going to add some new features and this is easier to do on the single combined data set. Before building the model, i'll re-split into training and test sets, and build the model on the training set."
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "_cell_guid": "4de476eb-b725-6849-b786-3f1e20876cd5"
+      },
+      "outputs": [],
+      "source": [
+        "#Load the data look at it's structure:\n",
+        "train_data <- read.csv(\"../input/train.csv\",stringsAsFactors=FALSE)\n",
+        "test_data <- read.csv(\"../input/test.csv\",stringsAsFactors=FALSE)\n",
+        "#head(train_data)\n",
+        "#head(test_data)\n",
+        "full_data <- bind_rows(train_data,test_data)\n",
+        "head(full_data)\n",
+        "tail(full_data)"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "_cell_guid": "11e4d2d1-d3c9-8985-edac-3eb0a7b7ef34"
+      },
+      "outputs": [],
+      "source": [
+        "head(train_data)"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "_cell_guid": "3cb31688-2b7f-1b2c-ac23-c0074461fbcd"
+      },
+      "outputs": [],
+      "source": [
+        "head(test_data)"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "_cell_guid": "bf019fa2-0cb3-968e-c573-9ed6c76ee49a"
+      },
+      "outputs": [],
+      "source": [
+        "str(full_data)"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "_cell_guid": "c0e9e597-768a-30c0-985d-b7b97a90dcb7"
+      },
+      "outputs": [],
+      "source": [
+        "#full_data$Survived <- factor(full_data$Survived,levels=c(\"no\",\"yes\"),labels=c(0,1))\n",
+        "full_data$Survived <- as.factor(full_data$Survived)\n",
+        "levels(full_data$Survived) <- make.names(levels(factor(full_data$Survived)))\n",
+        "#full_data$Survived <- factor(full_data$Survived,levels=c('no','yes'))\n",
+        "full_data$Pclass <- as.factor(full_data$Pclass)\n",
+        "full_data$Embarked <-as.factor(full_data$Embarked)\n",
+        "str(full_data)"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "_cell_guid": "5fbf5d21-4157-43a0-1318-ee9bf394943f"
+      },
+      "outputs": [],
+      "source": [
+        "#First, let's see how many passenegers did/didn't survive:\n",
+        "table(full_data$Survived)"
+      ]
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {
+        "_cell_guid": "df031ff1-9cdd-1376-aaf5-6115ba5d8fe3"
+      },
+      "source": [
+        "We see that 549 (about 62%) passengers did not survive. So any predictive model we build needs to do better than 62%.\n",
+        "\n",
+        "Next we'll do some more exploration of the data. I don't think PassengerID will be useful. I have some guesses about what variables will be important that i'll try to test out on the data also:\n",
+        "\n",
+        "- Age: Younger passengers more likely to survive\n",
+        "- Sex: Females more likely to survive (women and children first?)\n",
+        "- Fare: Higher fare more likely to survive\n",
+        "- Passenger class:  Higher class more likely to survive (probably correlated w/ Fare)"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "_cell_guid": "57348ede-1b71-936c-060b-7ebc5125192a"
+      },
+      "outputs": [],
+      "source": [
+        "#Is the average fare different for those that survived? Yes, the average fare for those that survived is about twice as large.\n",
+        "\n",
+        "# Compare avg. fare for survived/not\n",
+        "# those who survived paid higher average fare\n",
+        "full_data %>%\n",
+        "        group_by(Survived) %>%\n",
+        "        summarize(avg_fare=mean(Fare))"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "_cell_guid": "70a667cc-dbb7-3896-0f24-3af112c8d23f"
+      },
+      "outputs": [],
+      "source": [
+        "\n",
+        "#The next plot shows that the survivors tend to have paid a higher fare:\n",
+        "ggplot(filter(full_data,!is.na(Survived)),aes(x=Survived,y=Fare))+\n",
+        "        geom_boxplot()"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "_cell_guid": "fb9fcc87-59a3-b938-d4b4-9098611c4ef0"
+      },
+      "outputs": [],
+      "source": [
+        "\n",
+        "#Look at relationship between P-class and fare\n",
+        "ggplot(full_data,aes(x=Pclass,y=Fare,group=Pclass))+\n",
+        "        geom_boxplot()"
+      ]
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {
+        "_cell_guid": "86984d24-b008-5b7f-d84a-93e97375cf93"
+      },
+      "source": [
+        "## Next we will extract the title from passenger names and create a new feature to use in our prediction. Credit for this idea goes to Megan Risdal, who has a really nice tutorial : <https://www.kaggle.com/mrisdal/titanic/exploring-survival-on-the-titanic> "
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "_cell_guid": "bb7bd9ba-4baf-1d6b-4b0e-09e7eed48bbd"
+      },
+      "outputs": [],
+      "source": [
+        "\n",
+        "#Extract title from passenger names? Idea from <https://www.kaggle.com/mrisdal/titanic/exploring-survival-on-the-titanic> \n",
+        "\n",
+        "full_data$Title <- gsub('(.*, )|(\\\\..*)', '', full_data$Name)\n",
+        "table(full_data$Title)\n",
+        "full_data$Title<-as.factor(full_data$Title)\n",
+        "\n",
+        "\n",
+        "#Make new variables for family size/number of children\n",
+        "full_data <- full_data %>%\n",
+        "mutate(FamSize = SibSp + Parch)"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "_cell_guid": "4ff14d59-afc8-092a-dba3-611a11453b8d"
+      },
+      "outputs": [],
+      "source": [
+        "# before building a model, re-split into training and test sets so we can evaluate it's performance?\n",
+        "#\n",
+        "#rm(\"train_data\")\n",
+        "#rm(\"test_data\")\n",
+        "full_data$Sex <- as.factor(full_data$Sex)\n",
+        "train_data <- full_data[1:891,]\n",
+        "test_data <- full_data[892:nrow(full_data),]"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "_cell_guid": "d95401c5-dd39-1a04-b6ea-2e41475b6ed3"
+      },
+      "outputs": [],
+      "source": [
+        "# impute missing values\n",
+        "ib <- which(is.na(train_data$Age))\n",
+        "train_data$Age[ib] <- median(train_data$Age,na.rm=TRUE)\n",
+        "ib <- which(is.na(test_data$Age))\n",
+        "test_data$Age[ib] <- median(train_data$Age,na.rm=TRUE)\n",
+        "\n",
+        "ib <- which(is.na(train_data$Fare))\n",
+        "train_data$Fare[ib] <- median(train_data$Fare,na.rm=TRUE)\n",
+        "ib <- which(is.na(test_data$Fare))\n",
+        "test_data$Fare[ib] <- median(train_data$Fare,na.rm=TRUE)\n",
+        "\n",
+        "\n",
+        "str(train_data)"
+      ]
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {
+        "_cell_guid": "c5d07da8-397c-787f-c072-3cfe314fd518"
+      },
+      "source": [
+        "## Random Forest Model"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "_cell_guid": "01b52f0f-a2de-bea1-a093-79870f077544"
+      },
+      "outputs": [],
+      "source": [
+        "\n",
+        "\n",
+        "#Let's try a simple random forest model with some of the variables that I think would be important.\n",
+        "#dat_small <- select(dat,Pclass,Sex,Age,Fare,Survived,SibSp,Parch,FamSize,Title)\n",
+        "#head(dat_small)\n",
+        "\n",
+        "# impute NAs\n",
+        "#dat_small <- preProcess(dat_small,method = \"medianImpute\")\n",
+        "#ib <- which(is.na(dat$Age))\n",
+        "#dat$Age[ib] <- median(dat$Age,na.rm=TRUE)\n",
+        "\n",
+        "#dat$Survived <- factor(dat$Survived,levels = c(0,1),labels = c(\"no\",\"yes\"))\n",
+        "\n",
+        "myFolds <- createFolds(train_data$Survived, k = 10)\n",
+        "\n",
+        "# create a control object to pass to caret::train . If we fit multiple different models, this will allow us to fit them all in the same way so we can compare them easily.\n",
+        "myControl=trainControl(classProbs = TRUE, # IMPORTANT!\n",
+        "                       verboseIter = FALSE,\n",
+        "                       savePredictions = TRUE,\n",
+        "                       index=myFolds)\n",
+        "\n",
+        "\n"
+      ]
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {
+        "_cell_guid": "c54d787a-ff44-6440-6b19-06526fd252d8"
+      },
+      "source": [
+        "## Fit the Model"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "_cell_guid": "a9d39a0a-a7fd-f53c-32cb-289ea315f5ab"
+      },
+      "outputs": [],
+      "source": [
+        "# fit the model using the caret::train function\n",
+        "mod_rf <- train( Survived~Pclass+Age+Sex+Fare+SibSp+Parch+FamSize+Title+Embarked,\n",
+        "              method=\"rf\",\n",
+        "              data=train_data,\n",
+        "              trControl=myControl\n",
+        "              )"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "_cell_guid": "d119065b-a05e-f2f4-c7c7-2c476a08f9cf"
+      },
+      "outputs": [],
+      "source": ""
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "_cell_guid": "7b3ceab4-7ce3-3e0b-03ee-a42e79c3e6fe"
+      },
+      "outputs": [],
+      "source": [
+        "print(mod_rf)"
+      ]
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {
+        "_cell_guid": "551cfc43-96aa-89fd-bb67-95be12daf5ac"
+      },
+      "source": [
+        "## Output results to csv file for submission to Kaggle"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "_cell_guid": "d55e30ff-66b5-c5b3-412c-af6230ce59a7"
+      },
+      "outputs": [],
+      "source": [
+        "\n",
+        "#Output results to csv file for submission to Kaggle:'\n",
+        "\n",
+        "\n",
+        "# Predict using the test set\n",
+        "preds <- predict(mod_rf, newdata=test_data)\n",
+        "levels(preds)<-c(0,1)\n",
+        "\n",
+        "# Save the solution to a dataframe with two columns: PassengerId and Survived (prediction)\n",
+        "solution <- data.frame(PassengerID = test_data$PassengerId, Survived = preds)\n",
+        "head(solution)\n",
+        "# Write the solution to file\n",
+        "write.csv(solution, file = 'Solution_rf.csv', row.names = F)"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "_cell_guid": "1ca7736d-b2d3-fdc9-2615-2ee289d63435"
+      },
+      "outputs": [],
+      "source": [
+        ""
+      ]
+    }
+  ],
+  "metadata": {
+    "_change_revision": 0,
+    "_is_fork": false,
+    "kernelspec": {
+      "display_name": "R",
+      "language": "R",
+      "name": "ir"
+    },
+    "language_info": {
+      "codemirror_mode": "r",
+      "file_extension": ".r",
+      "mimetype": "text/x-r-source",
+      "name": "R",
+      "pygments_lexer": "r",
+      "version": "3.3.3"
+    }
+  },
+  "nbformat": 4,
+  "nbformat_minor": 0
+}

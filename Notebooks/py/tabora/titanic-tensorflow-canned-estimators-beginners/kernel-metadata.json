@@ -1,0 +1,17 @@
+{
+  "kernel_type": "notebook",
+  "id_no": 421677,
+  "dataset_sources": [],
+  "language": "python",
+  "kernel_sources": [],
+  "enable_internet": false,
+  "id": "tabora/titanic-tensorflow-canned-estimators-beginners",
+  "keywords": [],
+  "competition_sources": [
+    "titanic"
+  ],
+  "enable_gpu": false,
+  "is_private": false,
+  "code_file": "titanic-tensorflow-canned-estimators-beginners.ipynb",
+  "title": "Titanic - TensorFlow Canned Estimators (Beginners)"
+}

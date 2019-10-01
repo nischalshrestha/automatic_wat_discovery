@@ -1,0 +1,17 @@
+{
+  "dataset_sources": [],
+  "keywords": [],
+  "enable_gpu": false,
+  "kernel_sources": [],
+  "code_file": "notebook2160884b54.ipynb",
+  "kernel_type": "notebook",
+  "id_no": 206162,
+  "competition_sources": [
+    "titanic"
+  ],
+  "is_private": false,
+  "language": "python",
+  "title": "Notebook2160884b54",
+  "enable_internet": false,
+  "id": "shinstone/notebook2160884b54"
+}

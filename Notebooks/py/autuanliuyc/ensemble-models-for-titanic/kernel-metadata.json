@@ -1,0 +1,17 @@
+{
+  "id_no": 1987365,
+  "id": "autuanliuyc/ensemble-models-for-titanic",
+  "keywords": [],
+  "enable_gpu": false,
+  "language": "python",
+  "competition_sources": [
+    "titanic"
+  ],
+  "is_private": false,
+  "kernel_type": "notebook",
+  "enable_internet": false,
+  "title": "Ensemble Models for Titanic",
+  "dataset_sources": [],
+  "kernel_sources": [],
+  "code_file": "ensemble-models-for-titanic.ipynb"
+}

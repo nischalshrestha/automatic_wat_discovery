@@ -1,0 +1,17 @@
+{
+  "enable_internet": false,
+  "kernel_sources": [],
+  "language": "python",
+  "kernel_type": "notebook",
+  "code_file": "titanic-80-accuracy-top-14-random-forest.ipynb",
+  "is_private": false,
+  "competition_sources": [
+    "titanic"
+  ],
+  "id": "arg0n007/titanic-80-accuracy-top-14-random-forest",
+  "keywords": [],
+  "title": "Titanic: 80% accuracy(top 14%) Random Forest",
+  "enable_gpu": false,
+  "id_no": 494668,
+  "dataset_sources": []
+}

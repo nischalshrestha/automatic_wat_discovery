@@ -1,0 +1,17 @@
+{
+  "language": "r",
+  "id_no": 110575,
+  "title": "Notebook86908fe37e",
+  "enable_gpu": false,
+  "is_private": false,
+  "code_file": "notebookd0aa4c56dc.irnb",
+  "dataset_sources": [],
+  "id": "tiffanyli/notebookd0aa4c56dc",
+  "keywords": [],
+  "kernel_sources": [],
+  "competition_sources": [
+    "titanic"
+  ],
+  "enable_internet": false,
+  "kernel_type": "notebook"
+}

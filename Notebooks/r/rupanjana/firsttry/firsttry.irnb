@@ -1,0 +1,310 @@
+{
+  "cells": [
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "_cell_guid": "50fd71bd-3791-8862-3d9f-5d4d265d59b6"
+      },
+      "outputs": [],
+      "source": [
+        "# This R environment comes with all of CRAN preinstalled, as well as many other helpful packages\n",
+        "# The environment is defined by the kaggle/rstats docker image: https://github.com/kaggle/docker-rstats\n",
+        "# For example, here's several helpful packages to load in \n",
+        "\n",
+        "library(ggplot2) # Data visualization\n",
+        "library(readr) # CSV file I/O, e.g. the read_csv function\n",
+        "\n",
+        "# Input data files are available in the \"../input/\" directory.\n",
+        "# For example, running this (by clicking run or pressing Shift+Enter) will list the files in the input directory\n",
+        "\n",
+        "system(\"ls ../input\")\n",
+        "\n",
+        "# Any results you write to the current directory are saved as output."
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "_cell_guid": "f54748bb-a43b-d8f6-b26e-b79ab82f0555"
+      },
+      "outputs": [],
+      "source": [
+        "train <- read.csv(\"../input/train.csv\" , stringsAsFactors = F)"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "_cell_guid": "39517708-577c-b1a7-190d-9e86d26dd410"
+      },
+      "outputs": [],
+      "source": [
+        "test <- read.csv(\"../input/test.csv\" , stringsAsFactors = F)"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "_cell_guid": "a5b443f9-c87a-c436-201d-a88bca8491c0"
+      },
+      "outputs": [],
+      "source": [
+        "table(train$Survived)"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "_cell_guid": "72eb92d0-7eae-0ed9-7d6d-d15b9db153a1"
+      },
+      "outputs": [],
+      "source": [
+        "test$Survived <- rep(0, 418)"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "_cell_guid": "9fa839bc-cc5d-b1fa-a182-7114cbac3353"
+      },
+      "outputs": [],
+      "source": [
+        "submit <- data.frame(PassengerId = test$PassengerId, Survived = test$Survived)"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "_cell_guid": "014687b4-32e6-2ae5-481e-7203153e7256"
+      },
+      "outputs": [],
+      "source": [
+        "write.csv(submit, file = \"myfisrst.csv\", row.names = FALSE)"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "_cell_guid": "f8523616-0dd0-cd3a-b2f8-2d4bcf342742"
+      },
+      "outputs": [],
+      "source": [
+        "summary(train$Sex)"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "_cell_guid": "2669ff78-cc9e-5880-5010-a4e2f6e2e729"
+      },
+      "outputs": [],
+      "source": [
+        "prop.table(table(train$Sex, train$Survived))"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "_cell_guid": "776b29b5-c288-80d1-5bd2-e0276df6db99"
+      },
+      "outputs": [],
+      "source": [
+        "prop.table(table(train$Sex, train$Survived),1)"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "_cell_guid": "5def0a62-92f9-e2fc-d83a-183e2caab613"
+      },
+      "outputs": [],
+      "source": [
+        "test$Survived <- 0"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "_cell_guid": "e3e815ec-6e2a-2398-23d5-0dbf903a3d28"
+      },
+      "outputs": [],
+      "source": [
+        "test$Survived[test$Sex == 'female'] <- 1"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "_cell_guid": "e345bb06-8ad4-008e-77df-93d31a62ead1"
+      },
+      "outputs": [],
+      "source": [
+        "summary(train$Age)"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "_cell_guid": "f917f2f9-0513-50e0-83bf-5b58c9353623"
+      },
+      "outputs": [],
+      "source": [
+        "train$Child <- 0"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "_cell_guid": "240e003d-2d90-2727-4c58-c28c9b79eff2"
+      },
+      "outputs": [],
+      "source": [
+        "train$Child[train$Age < 18] <- 1"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "_cell_guid": "8264988f-b613-8c0e-9347-aa1c599d4a2d"
+      },
+      "outputs": [],
+      "source": [
+        "aggregate(Survived ~ Child + Sex, data=train, FUN=sum)"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "_cell_guid": "9c420b28-b377-f8e2-bfbb-5ffd7a0f9dfa"
+      },
+      "outputs": [],
+      "source": [
+        "aggregate(Survived ~ Child + Sex, data=train, FUN=length)"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "_cell_guid": "326be35b-f51a-6040-595b-c572fedd161e"
+      },
+      "outputs": [],
+      "source": [
+        "aggregate(Survived ~ Child + Sex, data=train, FUN=function(x) {sum(x)/length(x)})"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "_cell_guid": "be5d800a-322c-7e64-5512-2ef341105085"
+      },
+      "outputs": [],
+      "source": [
+        "train$Fare2 <- '30+'"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "_cell_guid": "0231dd76-b2b0-bba7-a331-546156397386"
+      },
+      "outputs": [],
+      "source": [
+        "train$Fare2[train$Fare < 30 & train$Fare >= 20] <- '20-30'"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "_cell_guid": "d59b2041-81f2-c1de-fd8e-9be2a84c4403"
+      },
+      "outputs": [],
+      "source": [
+        "train$Fare2[train$Fare < 10] <- '<10'"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "_cell_guid": "bc10fe45-e225-b2ce-6add-9ad03065b57c"
+      },
+      "outputs": [],
+      "source": [
+        "aggregate(Survived ~ Fare2 + Pclass + Sex, data=train, FUN=function(x) {sum(x)/length(x)})"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "_cell_guid": "8961c960-be03-fdab-9413-c28fe821cf07"
+      },
+      "outputs": [],
+      "source": [
+        "test$Survived <- 0"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "_cell_guid": "e560dec6-4d92-72fe-6b79-78cc456b9ead"
+      },
+      "outputs": [],
+      "source": [
+        "test$Survived[test$Sex == 'female'] <- 1"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "_cell_guid": "cbecaf44-08d5-a46c-6d8f-7231dc25b462"
+      },
+      "outputs": [],
+      "source": [
+        "test$Survived[test$Sex == 'female' & test$Pclass == 3 & test$Fare >= 20] <- 0"
+      ]
+    }
+  ],
+  "metadata": {
+    "_change_revision": 0,
+    "_is_fork": false,
+    "kernelspec": {
+      "display_name": "R",
+      "language": "R",
+      "name": "ir"
+    },
+    "language_info": {
+      "codemirror_mode": "r",
+      "file_extension": ".r",
+      "mimetype": "text/x-r-source",
+      "name": "R",
+      "pygments_lexer": "r",
+      "version": "3.3.1"
+    }
+  },
+  "nbformat": 4,
+  "nbformat_minor": 0
+}

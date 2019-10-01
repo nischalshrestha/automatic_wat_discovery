@@ -1,0 +1,329 @@
+{
+  "cells": [
+    {
+      "cell_type": "markdown",
+      "metadata": {
+        "_cell_guid": "3568c46a-c3c3-f0cc-db9c-8a09789dbeee"
+      },
+      "source": [
+        ""
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "_cell_guid": "90096f94-57b0-f78d-13a6-69e78e999528"
+      },
+      "outputs": [],
+      "source": [
+        "# This R environment comes with all of CRAN preinstalled, as well as many other helpful packages\n",
+        "# The environment is defined by the kaggle/rstats docker image: https://github.com/kaggle/docker-rstats\n",
+        "# For example, here's several helpful packages to load in \n",
+        "\n",
+        "library(ggplot2) # Data visualization\n",
+        "library(readr) # CSV file I/O, e.g. the read_csv function\n",
+        "\n",
+        "# Input data files are available in the \"../input/\" directory.\n",
+        "# For example, running this (by clicking run or pressing Shift+Enter) will list the files in the input directory\n",
+        "\n",
+        "system(\"ls ../input\")\n",
+        "\n",
+        "# Any results you write to the current directory are saved as output."
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "_cell_guid": "821739d4-dd55-e68a-9415-413581b6edad"
+      },
+      "outputs": [],
+      "source": [
+        "setwd(\"../input\")\n",
+        "train <- read.csv(\"train.csv\", na.strings = \"\")\n",
+        "test <- read.csv(\"test.csv\")\n"
+      ]
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {
+        "_cell_guid": "12dd0aec-3235-4be5-013f-fc44dc80316a"
+      },
+      "source": [
+        ""
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "_cell_guid": "d46dd725-b163-24dd-4ad5-7df01b931a9f"
+      },
+      "outputs": [],
+      "source": [
+        "str(train)\n",
+        "train$Survived <- as.factor(train$Survived)\n",
+        "train$Pclass <-  as.factor(train$Pclass)"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "_cell_guid": "eaddd9d6-0c0d-0c8a-c1b0-abc386dd6f4d"
+      },
+      "outputs": [],
+      "source": [
+        "#missing values\n",
+        "library(Amelia)\n",
+        "missmap(train)"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "_cell_guid": "f247cfb9-3149-f62e-275b-163fa21b870a"
+      },
+      "outputs": [],
+      "source": [
+        "sum(is.na(train$Age) == TRUE ) / length(train$Age)"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "_cell_guid": "4b55b9a7-eece-5713-7312-df2c6bac2003"
+      },
+      "outputs": [],
+      "source": [
+        "#all the attributes in % of missing\n",
+        "sapply(train, function(df) {\n",
+        "  sum(is.na(df) == TRUE) / length(df);\n",
+        "})"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "_cell_guid": "27a98a5f-d2a9-e98a-df32-7fe003e24e5a"
+      },
+      "outputs": [],
+      "source": [
+        "#Input missing values\n",
+        "\n",
+        "table(train$Embarked, useNA = \"always\")\n",
+        "#function (..., exclude = if (useNA == \"no\") c(NA, NaN), \n",
+        "#useNA = c(\"no\", \"ifany\", \"always\"), \n",
+        "#dnn = list.names(...), deparse.level = 1)\n",
+        "\n",
+        "#For Embarkmed we will assign the most probable port \"S\"\n",
+        "\n",
+        "train$Embarked[which(is.na(train$Embarked))] = \"S\"\n",
+        "table(train$Embarked, useNA = \"always\")#done!\n",
+        "\n",
+        "#Names....first we will see what kind of words are in \"name\"\n",
+        "\n",
+        "train$Name = as.character(train$Name)\n",
+        "table_words = table(unlist(strsplit(train$Name, \"\\\\s+\"))) #separar por blanks\n",
+        "sort(table_words [grep(\"\\\\.\", names(table_words))], \n",
+        "     decreasing = TRUE) #lista por el tratamiento (que acaba en punto)\n",
+        "\n",
+        "table_words\n",
+        "\n",
+        "#obtain which titles contain missing values\n",
+        "\n",
+        "library(stringr)\n",
+        "tb = cbind(train$Age, str_match(train$Name, \"[a-zA-Z]+\\\\.\"))\n",
+        "table(tb[is.na(tb[,1]),2])\n",
+        "\n",
+        "#we will assign the mean of the age for the title examples \n",
+        "#with no missing data\n",
+        "\n",
+        "mean.mr <- mean(train$Age[grepl(\"Mr\\\\.\", train$Name) & \n",
+        "                            !is.na(train$Age)])\n",
+        "mean.mrs <- mean(train$Age[grepl(\"Mrs\\\\.\", train$Name) & \n",
+        "                            !is.na(train$Age)] )\n",
+        "mean.dr <- mean(train$Age[grepl(\"Dr\\\\.\", train$Name) & \n",
+        "                             !is.na(train$Age)] )\n",
+        "mean.miss <- mean(train$Age[grepl(\"Miss\\\\.\", train$Name) & \n",
+        "                            !is.na(train$Age)] )\n",
+        "mean.master <- mean(train$Age[grepl(\"Master\\\\.\", train$Name) & \n",
+        "                            !is.na(train$Age)] )\n",
+        "\n",
+        "#assign\n",
+        "#\n",
+        "train$Age[grepl(\"Mr\\\\.\", train$Name) & is.na(train$Age)] = mean.mr\n",
+        "train$Age[grepl(\"Mrs\\\\.\", train$Name) & is.na(train$Age)] = mean.mrs\n",
+        "train$Age[grepl(\"Dr\\\\.\", train$Name) & is.na(train$Age)] = mean.dr\n",
+        "train$Age[grepl(\"Master\\\\.\", train$Name) & is.na(train$Age)] = mean.master\n",
+        "train$Age[grepl(\"Miss\\\\.\", train$Name) & is.na(train$Age)] = mean.miss\n",
+        "\n",
+        "missmap(train)"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "_cell_guid": "08a01dcd-fe43-cd60-1c33-2f8b8ffb356d"
+      },
+      "outputs": [],
+      "source": [
+        "#Exploring and visualizing data\n",
+        "\n",
+        "barplot(table(train$Survived), main = \"Passenger survival\", \n",
+        "        names = c(\"Perished\", \"Survived\"))\n",
+        "barplot(table(train$Pclass), main = \"Passenger Class\", \n",
+        "        names = c(\"First\", \"Second\", \"Third\"))\n",
+        "barplot(table(train$Sex), main = \"Passenger Gender\")\n",
+        "hist(train$Age, main = \"Passenger age\", xlab = \"Age\")\n",
+        "barplot(table(train$SibSp), main = \"Passenger Siblings\")\n",
+        "barplot(table(train$Parch), main = \"Passenger Parch\")\n",
+        "hist(train$Fare, main = \"Passenger Fare\", xlab = \"Fare\")\n",
+        "barplot(table(train$Embarked), main = \"Passenger Embarkation\")\n",
+        "\n",
+        "counts <- table(train$Survived, train$Sex)\n",
+        "counts\n",
+        "col <- c(\"darkblue\", \"red\")"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "_cell_guid": "418496c2-de97-88eb-3d24-ff480bc33a7b"
+      },
+      "outputs": [],
+      "source": [
+        "boxplot(train$Age~train$Survived, main = \"Passenger survival by Age\")"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "_cell_guid": "eafaf042-ef4a-296b-1c8a-1af8f82f08a9"
+      },
+      "outputs": [],
+      "source": [
+        "#separate passengers by bin age\n",
+        "#subsets\n",
+        "#\n",
+        "train_child <- train$Survived[train$Age < 13]\n",
+        "length(train_child[which(train_child == 1)])/length(train_child)\n",
+        "\n",
+        "train_youth <- train$Survived[train$Age >= 13 & train$Age < 25]\n",
+        "length(train_youth[which(train_youth == 1)])/length(train_youth)\n",
+        "\n",
+        "train_adult <- train$Survived[train$Age >= 25 & train$Age < 65]\n",
+        "length(train_youth[which(train_adult == 1)])/length(train_adult)\n",
+        "\n",
+        "train_senior<- train$Survived[train$Age >= 65]\n",
+        "length(train_youth[which(train_senior == 1)])/length(train_senior)\n"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "_cell_guid": "b35753bf-67f9-317d-7fa4-b6fe0ee339f0"
+      },
+      "outputs": [],
+      "source": [
+        "#mosaic plot\n",
+        "\n",
+        "mosaicplot(train$Pclass ~ train$Survived, \n",
+        "           main = \"Pass. survival Class\", color = TRUE,\n",
+        "           xlab = \"Pclass\", ylab = \"Survived\")"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "_cell_guid": "60c258c8-c94b-ed4b-422c-aa68fb5ef72d"
+      },
+      "outputs": [],
+      "source": [
+        "#PREDICTION\n",
+        "#DECISION TREE\n",
+        "\n",
+        "set.seed(666)\n",
+        "trainSize <- round(nrow(train)*0.70)\n",
+        "testSize <- nrow(train) - trainSize\n",
+        "index <- sample(seq_len(nrow(train)), size = trainSize)\n",
+        "train1 <- train[index,]\n",
+        "test1 <-  train[-index,] \n",
+        "\n",
+        "library(party)\n",
+        "#condition tree\n",
+        "\n",
+        "train_ctree <- ctree(Survived ~ Pclass + Sex + Age + \n",
+        "                        SibSp + Fare + Parch + Embarked,\n",
+        "                      data = train1)\n",
+        "plot(train_ctree)\n",
+        "\n",
+        "train_ctree\n",
+        "\n",
+        "#svm\n",
+        "library(e1071)\n",
+        "svm_model <- svm(Survived ~ Pclass + Sex + Age + \n",
+        "  SibSp + Fare + Parch + Embarked,\n",
+        "data = train1, probability = TRUE)"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "_cell_guid": "4e897a23-1ab2-75d8-c35f-c055955de531"
+      },
+      "outputs": [],
+      "source": [
+        "#validation\n",
+        "\n",
+        "ctree_prediction <- predict(train_ctree, test1)\n",
+        "ctree_prediction\n",
+        "\n",
+        "plot(ctree_prediction, col= \"blue\")+  \n",
+        "plot(test1$Survived, col= \"red\", add = T) \n",
+        "\n",
+        "library(caret)\n",
+        "#confusion matrix\n",
+        "confusionMatrix(ctree_prediction, test1$Survived)\n",
+        "\n",
+        "#probability matrix\n",
+        "train_ctree_pred <- predict(train_ctree, test1)\n",
+        "train_ctree_prob <- 1-unlist(treeresponse(train_ctree, test1,\n",
+        "                                          use.names = T)[seq(1,\n",
+        "                                                             nrow(test1)*2,2)])\n",
+        "library(ROCR)\n",
+        "train_ctree_prob_rocr <- prediction(train_ctree_prob, \n",
+        "                                    test1$Survived)"
+      ]
+    }
+  ],
+  "metadata": {
+    "_change_revision": 0,
+    "_is_fork": false,
+    "kernelspec": {
+      "display_name": "R",
+      "language": "R",
+      "name": "ir"
+    },
+    "language_info": {
+      "codemirror_mode": "r",
+      "file_extension": ".r",
+      "mimetype": "text/x-r-source",
+      "name": "R",
+      "pygments_lexer": "r",
+      "version": "3.3.3"
+    }
+  },
+  "nbformat": 4,
+  "nbformat_minor": 0
+}

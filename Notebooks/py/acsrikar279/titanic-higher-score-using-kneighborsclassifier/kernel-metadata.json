@@ -1,0 +1,17 @@
+{
+  "is_private": false,
+  "kernel_sources": [],
+  "title": "Titanic higher score using KNeighborsClassifier",
+  "language": "python",
+  "enable_internet": false,
+  "dataset_sources": [],
+  "code_file": "titanic-higher-score-using-kneighborsclassifier.ipynb",
+  "keywords": [],
+  "kernel_type": "notebook",
+  "id_no": 1331989,
+  "enable_gpu": true,
+  "id": "acsrikar279/titanic-higher-score-using-kneighborsclassifier",
+  "competition_sources": [
+    "titanic"
+  ]
+}

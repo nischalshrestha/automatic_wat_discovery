@@ -1,0 +1,17 @@
+{
+  "id": "marc000/copy-of-titanic-0-79-score-for-learning",
+  "kernel_sources": [],
+  "enable_internet": false,
+  "dataset_sources": [],
+  "id_no": 110229,
+  "code_file": "copy-of-titanic-0-79-score-for-learning.ipynb",
+  "kernel_type": "notebook",
+  "keywords": [],
+  "language": "python",
+  "is_private": false,
+  "enable_gpu": false,
+  "competition_sources": [
+    "titanic"
+  ],
+  "title": "Copy of 'Titanic. ~0.79 score' for learning"
+}

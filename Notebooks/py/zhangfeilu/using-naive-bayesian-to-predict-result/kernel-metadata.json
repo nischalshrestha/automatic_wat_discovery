@@ -1,0 +1,19 @@
+{
+  "competition_sources": [
+    "titanic"
+  ],
+  "enable_gpu": false,
+  "language": "python",
+  "code_file": "using-naive-bayesian-to-predict-result.ipynb",
+  "kernel_type": "notebook",
+  "id": "zhangfeilu/using-naive-bayesian-to-predict-result",
+  "is_private": false,
+  "id_no": 518094,
+  "dataset_sources": [],
+  "title": "Using Naive Bayesian to Predict Result",
+  "keywords": [
+    "naive bayes"
+  ],
+  "kernel_sources": [],
+  "enable_internet": false
+}

@@ -1,0 +1,17 @@
+{
+  "enable_gpu": false,
+  "keywords": [],
+  "kernel_sources": [],
+  "is_private": false,
+  "id": "aniirudh/titanic-survival-prediction-top-20",
+  "language": "python",
+  "title": "Titanic Survival Prediction (Top 20%)",
+  "enable_internet": false,
+  "competition_sources": [
+    "titanic"
+  ],
+  "id_no": 1063584,
+  "code_file": "titanic-survival-prediction-top-20.ipynb",
+  "dataset_sources": [],
+  "kernel_type": "notebook"
+}

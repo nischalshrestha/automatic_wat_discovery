@@ -1,0 +1,17 @@
+{
+  "dataset_sources": [],
+  "title": "Titanic The Machine Learning Version (noob)",
+  "enable_internet": false,
+  "keywords": [],
+  "kernel_sources": [],
+  "enable_gpu": false,
+  "is_private": false,
+  "code_file": "titanic-the-machine-learning-version-noob.irnb",
+  "competition_sources": [
+    "titanic"
+  ],
+  "language": "r",
+  "id": "blastchar/titanic-the-machine-learning-version-noob",
+  "kernel_type": "notebook",
+  "id_no": 562625
+}

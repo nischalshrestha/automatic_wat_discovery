@@ -1,0 +1,20 @@
+{
+  "id": "stostain/chronicle-of-a-tragedy",
+  "code_file": "chronicle-of-a-tragedy.ipynb",
+  "language": "python",
+  "id_no": 464031,
+  "dataset_sources": [],
+  "competition_sources": [
+    "titanic"
+  ],
+  "title": "Chronicle of a tragedy",
+  "enable_gpu": false,
+  "is_private": false,
+  "enable_internet": false,
+  "kernel_type": "notebook",
+  "kernel_sources": [],
+  "keywords": [
+    "tutorial",
+    "beginner"
+  ]
+}

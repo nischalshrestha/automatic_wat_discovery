@@ -1,0 +1,17 @@
+{
+  "language": "r",
+  "is_private": false,
+  "enable_internet": false,
+  "title": "Basic Titanic Caret",
+  "id": "thoolihan/basic-titanic-caret",
+  "dataset_sources": [],
+  "kernel_sources": [],
+  "kernel_type": "notebook",
+  "keywords": [],
+  "enable_gpu": false,
+  "code_file": "basic-titanic-caret.irnb",
+  "id_no": 525518,
+  "competition_sources": [
+    "titanic"
+  ]
+}

@@ -1,0 +1,17 @@
+{
+  "enable_gpu": false,
+  "keywords": [],
+  "id_no": 593505,
+  "kernel_type": "notebook",
+  "code_file": "kernelb95579a76a.irnb",
+  "language": "r",
+  "competition_sources": [
+    "titanic"
+  ],
+  "is_private": false,
+  "enable_internet": false,
+  "title": "Kernelb95579a76a",
+  "dataset_sources": [],
+  "id": "praveen96/kernelb95579a76a",
+  "kernel_sources": []
+}

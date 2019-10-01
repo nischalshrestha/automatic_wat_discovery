@@ -1,0 +1,17 @@
+{
+  "kernel_sources": [],
+  "is_private": false,
+  "language": "python",
+  "title": "python notebook for Titanic competition",
+  "enable_gpu": false,
+  "enable_internet": false,
+  "dataset_sources": [],
+  "competition_sources": [
+    "titanic"
+  ],
+  "code_file": "python-notebook-for-titanic-competition.ipynb",
+  "id": "mayosuke/python-notebook-for-titanic-competition",
+  "id_no": 281939,
+  "keywords": [],
+  "kernel_type": "notebook"
+}

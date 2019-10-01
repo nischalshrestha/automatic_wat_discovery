@@ -1,0 +1,17 @@
+{
+  "language": "python",
+  "title": "titanic3",
+  "kernel_sources": [],
+  "enable_internet": false,
+  "enable_gpu": false,
+  "id": "madshutt/titanic3",
+  "is_private": false,
+  "keywords": [],
+  "kernel_type": "notebook",
+  "competition_sources": [
+    "titanic"
+  ],
+  "code_file": "titanic3.ipynb",
+  "id_no": 2127342,
+  "dataset_sources": []
+}

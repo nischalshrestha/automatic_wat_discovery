@@ -1,0 +1,17 @@
+{
+  "language": "r",
+  "is_private": false,
+  "code_file": "basic-data-analysis.irnb",
+  "dataset_sources": [],
+  "kernel_sources": [],
+  "id": "igormaslenikov/basic-data-analysis",
+  "title": "Basic data analysis",
+  "kernel_type": "notebook",
+  "enable_gpu": false,
+  "enable_internet": false,
+  "id_no": 333439,
+  "competition_sources": [
+    "titanic"
+  ],
+  "keywords": []
+}

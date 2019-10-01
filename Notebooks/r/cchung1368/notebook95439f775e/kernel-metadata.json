@@ -1,0 +1,17 @@
+{
+  "id": "cchung1368/notebook95439f775e",
+  "enable_gpu": false,
+  "kernel_type": "notebook",
+  "title": "Notebook95439f775e",
+  "dataset_sources": [],
+  "keywords": [],
+  "competition_sources": [
+    "titanic"
+  ],
+  "language": "r",
+  "enable_internet": false,
+  "kernel_sources": [],
+  "code_file": "notebook95439f775e.irnb",
+  "is_private": false,
+  "id_no": 149087
+}

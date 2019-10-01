@@ -1,0 +1,17 @@
+{
+  "language": "r",
+  "competition_sources": [
+    "titanic"
+  ],
+  "kernel_type": "notebook",
+  "id_no": 192840,
+  "dataset_sources": [],
+  "is_private": false,
+  "id": "hemantkhurana/random-forest-on-titanic-data",
+  "kernel_sources": [],
+  "title": "Random Forest on Titanic data  ",
+  "enable_gpu": false,
+  "code_file": "random-forest-on-titanic-data.irnb",
+  "keywords": [],
+  "enable_internet": false
+}

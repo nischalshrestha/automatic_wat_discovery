@@ -1,0 +1,17 @@
+{
+  "is_private": false,
+  "code_file": "predict-survived-machine-learning-logistic-reg.ipynb",
+  "dataset_sources": [],
+  "id_no": 2187052,
+  "competition_sources": [
+    "titanic"
+  ],
+  "kernel_sources": [],
+  "keywords": [],
+  "kernel_type": "notebook",
+  "language": "python",
+  "enable_internet": false,
+  "enable_gpu": false,
+  "title": "Predict survived- machine learning (logistic reg.)",
+  "id": "nadirtari/predict-survived-machine-learning-logistic-reg"
+}

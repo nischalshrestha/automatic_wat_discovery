@@ -1,0 +1,17 @@
+{
+  "is_private": false,
+  "title": "EDA and Prediction on Titanic dataset",
+  "competition_sources": [
+    "titanic"
+  ],
+  "id": "fpsawicki/eda-and-prediction-on-titanic-dataset",
+  "dataset_sources": [],
+  "keywords": [],
+  "id_no": 216507,
+  "enable_internet": false,
+  "code_file": "eda-and-prediction-on-titanic-dataset.irnb",
+  "language": "r",
+  "enable_gpu": false,
+  "kernel_sources": [],
+  "kernel_type": "notebook"
+}

@@ -1,0 +1,23 @@
+{
+  "id": "rajan0921/titanic-solution",
+  "kernel_type": "notebook",
+  "title": "Titanic Solution",
+  "kernel_sources": [],
+  "is_private": false,
+  "competition_sources": [
+    "titanic"
+  ],
+  "dataset_sources": [],
+  "id_no": 423724,
+  "keywords": [
+    "beginner",
+    "data cleaning",
+    "data visualization",
+    "classification",
+    "feature engineering"
+  ],
+  "enable_internet": false,
+  "language": "python",
+  "enable_gpu": false,
+  "code_file": "titanic-solution.ipynb"
+}

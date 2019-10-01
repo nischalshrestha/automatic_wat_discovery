@@ -1,0 +1,17 @@
+{
+  "kernel_sources": [],
+  "title": "Titanic-beginner",
+  "kernel_type": "notebook",
+  "id_no": 97006,
+  "keywords": [],
+  "language": "r",
+  "code_file": "notebook692568707d.irnb",
+  "competition_sources": [
+    "titanic"
+  ],
+  "id": "pkamath/notebook692568707d",
+  "enable_gpu": false,
+  "enable_internet": false,
+  "dataset_sources": [],
+  "is_private": false
+}

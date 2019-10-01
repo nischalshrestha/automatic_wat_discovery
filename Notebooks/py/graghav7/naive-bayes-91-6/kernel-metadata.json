@@ -1,0 +1,17 @@
+{
+  "kernel_type": "notebook",
+  "code_file": "naive-bayes-91-6.ipynb",
+  "id": "graghav7/naive-bayes-91-6",
+  "kernel_sources": [],
+  "keywords": [],
+  "title": "Naive Bayes(91.6)",
+  "dataset_sources": [],
+  "id_no": 1203045,
+  "language": "python",
+  "is_private": false,
+  "enable_gpu": false,
+  "enable_internet": false,
+  "competition_sources": [
+    "titanic"
+  ]
+}

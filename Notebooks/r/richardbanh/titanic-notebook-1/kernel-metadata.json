@@ -1,0 +1,17 @@
+{
+  "kernel_sources": [],
+  "dataset_sources": [],
+  "competition_sources": [
+    "titanic"
+  ],
+  "id_no": 111274,
+  "enable_internet": false,
+  "kernel_type": "notebook",
+  "language": "r",
+  "title": "Notebook4f5fcabb71",
+  "is_private": false,
+  "code_file": "titanic-notebook-1.irnb",
+  "enable_gpu": false,
+  "id": "richardbanh/titanic-notebook-1",
+  "keywords": []
+}

@@ -1,0 +1,19 @@
+{
+  "title": "Experimenting with Classification Stacking",
+  "language": "python",
+  "keywords": [],
+  "enable_internet": false,
+  "enable_gpu": false,
+  "id_no": 663848,
+  "id": "nicapotato/experimenting-with-classification-stacking",
+  "is_private": false,
+  "kernel_type": "notebook",
+  "competition_sources": [
+    "titanic"
+  ],
+  "code_file": "experimenting-with-classification-stacking.ipynb",
+  "dataset_sources": [],
+  "kernel_sources": [
+    "nicapotato/titanic-voting-pipeline-stack-and-guide"
+  ]
+}

@@ -1,0 +1,17 @@
+{
+  "dataset_sources": [],
+  "language": "python",
+  "competition_sources": [
+    "titanic"
+  ],
+  "keywords": [],
+  "id": "rahamoon/titanic",
+  "code_file": "titanic.ipynb",
+  "is_private": false,
+  "title": "titanic ",
+  "id_no": 69226,
+  "enable_internet": false,
+  "kernel_sources": [],
+  "enable_gpu": false,
+  "kernel_type": "notebook"
+}

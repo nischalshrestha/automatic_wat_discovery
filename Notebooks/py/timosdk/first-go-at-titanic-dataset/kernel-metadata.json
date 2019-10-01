@@ -1,0 +1,17 @@
+{
+  "dataset_sources": [],
+  "competition_sources": [
+    "titanic"
+  ],
+  "kernel_sources": [],
+  "title": "First go at titanic dataset",
+  "is_private": false,
+  "enable_gpu": false,
+  "kernel_type": "notebook",
+  "code_file": "first-go-at-titanic-dataset.ipynb",
+  "language": "python",
+  "enable_internet": false,
+  "id_no": 645173,
+  "keywords": [],
+  "id": "timosdk/first-go-at-titanic-dataset"
+}

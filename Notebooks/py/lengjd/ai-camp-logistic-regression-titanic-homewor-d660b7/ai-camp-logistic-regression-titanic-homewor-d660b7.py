@@ -1,0 +1,201 @@
+#!/usr/bin/env python
+# coding: utf-8
+
+# 预测Titanic乘客逃生
+
+# In[ ]:
+
+
+import numpy as np # 数组常用库
+import pandas as pd # 读入csv常用库
+from patsy import dmatrices # 可根据离散变量自动生成哑变量
+from sklearn.linear_model import LogisticRegression # sk-learn库Logistic Regression模型
+from sklearn.model_selection import train_test_split, cross_val_score # sk-learn库训练与测试
+from sklearn import metrics # 生成各项测试指标库
+import matplotlib.pyplot as plt # 画图常用库
+
+
+# 从../input/train.csv读入数据
+
+# In[ ]:
+
+
+data = pd.read_csv("../input/train.csv")
+data.head()
+
+
+# 删除不需要的列以及含有NA值的行
+
+# In[ ]:
+
+
+data = data.drop(['Name', 'Ticket', 'Cabin'], axis = 1)
+data = data.dropna() 
+data.head()
+
+
+# In[ ]:
+
+
+len(data.index)
+
+
+# 观察逃生人数与未逃生人数
+
+# In[ ]:
+
+
+data['Survived'].value_counts().plot(kind='bar')
+plt.xlabel('Survived')
+plt.show()
+
+
+# 观察女性逃生人数
+
+# In[ ]:
+
+
+female = data['Survived'][data['Sex'] == 'female'].value_counts().sort_index() #sort_index()--Sort object by labels
+female.plot(kind = 'barh', color = 'blue', title = 'Female')
+plt.xlabel('Survived')
+plt.show()
+
+
+# 观察男性逃生人数
+
+# In[ ]:
+
+
+male = data['Survived'][data['Sex'] == 'male'].value_counts().sort_index() 
+male.plot(kind = 'barh', color = 'red', title = 'Male')
+plt.xlabel('Survived')
+plt.show()
+
+
+# 练习用饼状图观测数据
+
+# In[ ]:
+
+
+male = data['Survived'][data['Sex'] == 'male'].value_counts().sort_index() 
+male.plot(kind = 'pie', title = 'Male')
+plt.show()
+
+
+# 观察非低等舱逃生情况
+
+# In[ ]:
+
+
+highclass = data['Survived'][data.Pclass != 3].value_counts().sort_index() 
+highclass.plot(kind = 'bar', color = 'blue', title = 'HighClass', alpha = 0.6)
+plt.xlabel('Survived')
+plt.show()
+
+
+# 观察低等舱逃生情况
+
+# In[ ]:
+
+
+lowclass = data['Survived'][data.Pclass == 3].value_counts().sort_index() 
+lowclass.plot(kind = 'bar', color = 'red', title = 'LowClass', alpha = 0.6)
+plt.xlabel('Survived')
+plt.show()
+
+
+# dmatrices 将数据中的离散变量变成哑变量，并指明用Pclass, Sex, Embarked来预测Survived
+
+# In[ ]:
+
+
+y, X = dmatrices('Survived~C(Pclass) + C(Sex) + Age + C(Embarked)', data = data, return_type='dataframe')
+X.head()
+
+
+# In[ ]:
+
+
+y = np.ravel(y)
+y
+
+
+# In[ ]:
+
+
+model = LogisticRegression()
+
+
+# In[ ]:
+
+
+model.fit(X, y)
+
+
+# 输出训练准确率
+
+# In[ ]:
+
+
+model.score(X, y)
+
+
+# 输出空模型的正确率：空模型预测所有人都未逃生
+
+# In[ ]:
+
+
+1 - y.mean()
+
+
+# 观察模型系数，即每种因素对于预测逃生的重要性
+
+# In[ ]:
+
+
+pd.DataFrame(list(zip(X.columns, np.transpose(model.coef_))))
+
+
+# 对测试数据../input/test.csv生成预测，将结果写入./my_prediction.csv
+
+# In[ ]:
+
+
+test_data = pd.read_csv("../input/test.csv")
+test_data.head()
+
+
+# In[ ]:
+
+
+test_data['Survived'] = 1 #也可以写成test_data.Survived = 1
+test_data.head()
+
+
+# In[ ]:
+
+
+test_data.loc[np.isnan(test_data.Age), 'Age'] = np.mean(data['Age'])
+test_data.Age.isnull().values.any() #检测是否全部补齐数据
+
+
+# In[ ]:
+
+
+ytest, Xtest = dmatrices('Survived~C(Pclass) + C(Sex) + Age + C(Embarked)', data = data, return_type='dataframe')
+Xtest.head()
+
+
+# In[ ]:
+
+
+pred = model.predict(Xtest).astype(int)
+result = pd.DataFrame(list(zip(test_data['PassengerId'], pred)), columns = ['PassengerID', 'Survived'])
+result.to_csv('./my_prediction.csv', index = False)
+
+
+# In[ ]:
+
+
+
+

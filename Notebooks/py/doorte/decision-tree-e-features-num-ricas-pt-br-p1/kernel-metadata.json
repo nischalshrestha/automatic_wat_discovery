@@ -1,0 +1,17 @@
+{
+  "id": "doorte/decision-tree-e-features-num-ricas-pt-br-p1",
+  "id_no": 457888,
+  "title": "Decision Tree e Features Num\u00e9ricas [pt-BR] - P1",
+  "code_file": "decision-tree-e-features-num-ricas-pt-br-p1.ipynb",
+  "language": "python",
+  "kernel_type": "notebook",
+  "is_private": false,
+  "enable_gpu": false,
+  "enable_internet": false,
+  "keywords": [],
+  "dataset_sources": [],
+  "kernel_sources": [],
+  "competition_sources": [
+    "titanic"
+  ]
+}

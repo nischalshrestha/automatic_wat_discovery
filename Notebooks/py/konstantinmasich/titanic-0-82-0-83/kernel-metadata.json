@@ -1,0 +1,17 @@
+{
+  "competition_sources": [
+    "titanic"
+  ],
+  "id_no": 556065,
+  "kernel_type": "notebook",
+  "enable_internet": false,
+  "keywords": [],
+  "id": "konstantinmasich/titanic-0-82-0-83",
+  "code_file": "titanic-0-82-0-83.ipynb",
+  "kernel_sources": [],
+  "is_private": false,
+  "enable_gpu": false,
+  "language": "python",
+  "dataset_sources": [],
+  "title": "Titanic [0.82] - [0.83]"
+}

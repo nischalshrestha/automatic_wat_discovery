@@ -1,0 +1,17 @@
+{
+  "competition_sources": [
+    "titanic"
+  ],
+  "enable_gpu": false,
+  "title": "Script 201",
+  "id": "prudhviraj12/script-201",
+  "kernel_sources": [],
+  "keywords": [],
+  "is_private": false,
+  "dataset_sources": [],
+  "code_file": "script-201.py",
+  "kernel_type": "script",
+  "enable_internet": false,
+  "language": "python",
+  "id_no": 72804
+}

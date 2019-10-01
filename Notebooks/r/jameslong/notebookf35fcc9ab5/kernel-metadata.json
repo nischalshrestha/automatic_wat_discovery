@@ -1,0 +1,17 @@
+{
+  "dataset_sources": [],
+  "code_file": "notebookf35fcc9ab5.irnb",
+  "id_no": 214914,
+  "kernel_sources": [],
+  "enable_gpu": false,
+  "language": "r",
+  "title": "Notebookf35fcc9ab5",
+  "keywords": [],
+  "is_private": false,
+  "id": "jameslong/notebookf35fcc9ab5",
+  "competition_sources": [
+    "titanic"
+  ],
+  "kernel_type": "notebook",
+  "enable_internet": false
+}

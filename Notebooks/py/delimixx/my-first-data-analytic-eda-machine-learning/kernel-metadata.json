@@ -1,0 +1,21 @@
+{
+  "kernel_sources": [],
+  "enable_gpu": false,
+  "enable_internet": false,
+  "id_no": 765212,
+  "title": "My First Data Analytic ( EDA + Machine Learning)",
+  "competition_sources": [
+    "titanic"
+  ],
+  "language": "python",
+  "keywords": [
+    "beginner",
+    "data visualization",
+    "classification"
+  ],
+  "is_private": false,
+  "code_file": "my-first-data-analytic-eda-machine-learning.ipynb",
+  "dataset_sources": [],
+  "kernel_type": "notebook",
+  "id": "delimixx/my-first-data-analytic-eda-machine-learning"
+}

@@ -1,0 +1,21 @@
+{
+  "id": "abhinav9384/titanic-solution-baseline-model",
+  "id_no": 1431200,
+  "keywords": [
+    "beginner",
+    "classification",
+    "starter code"
+  ],
+  "dataset_sources": [],
+  "kernel_type": "notebook",
+  "code_file": "titanic-solution-baseline-model.ipynb",
+  "enable_gpu": false,
+  "kernel_sources": [],
+  "language": "python",
+  "is_private": false,
+  "competition_sources": [
+    "titanic"
+  ],
+  "enable_internet": false,
+  "title": "Titanic Solution -  Baseline Model"
+}

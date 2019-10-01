@@ -1,0 +1,17 @@
+{
+  "competition_sources": [
+    "titanic"
+  ],
+  "keywords": [],
+  "is_private": false,
+  "enable_gpu": false,
+  "language": "python",
+  "code_file": "titanic-data.ipynb",
+  "id": "lucky1995/titanic-data",
+  "dataset_sources": [],
+  "kernel_type": "notebook",
+  "title": "Titanic data",
+  "kernel_sources": [],
+  "id_no": 267238,
+  "enable_internet": false
+}

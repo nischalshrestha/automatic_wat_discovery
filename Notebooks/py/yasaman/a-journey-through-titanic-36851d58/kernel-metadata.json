@@ -1,0 +1,17 @@
+{
+  "id": "yasaman/a-journey-through-titanic-36851d58",
+  "id_no": 140889,
+  "title": "A Journey through Titanic 36851d58",
+  "code_file": "a-journey-through-titanic-36851d58.ipynb",
+  "language": "python",
+  "kernel_type": "notebook",
+  "is_private": false,
+  "enable_gpu": false,
+  "enable_internet": false,
+  "keywords": [],
+  "dataset_sources": [],
+  "kernel_sources": [],
+  "competition_sources": [
+    "titanic"
+  ]
+}

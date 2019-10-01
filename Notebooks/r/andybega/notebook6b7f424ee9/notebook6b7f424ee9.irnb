@@ -1,0 +1,59 @@
+{
+  "cells": [
+    {
+      "cell_type": "markdown",
+      "metadata": {
+        "_cell_guid": "72f0430d-2520-17ae-0665-4ba40c13ff74"
+      },
+      "source": ""
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "_cell_guid": "8d6e5c7c-9d80-8bbc-165d-97d96b5d5f72"
+      },
+      "outputs": [],
+      "source": [
+        "library(\"rio\")\n",
+        "library(\"ggplot2\")\n",
+        "library(\"randomForest\")\n",
+        "\n",
+        "train <- import(\"../input/train.csv\")\n",
+        "test  <- import(\"../input/test.csv\")\n",
+        "\n",
+        "str(train)"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "_cell_guid": "050ab5f0-2e3a-611f-beb7-c21b0e53e6d8"
+      },
+      "outputs": [],
+      "source": [
+        "list.files(\"../input\")"
+      ]
+    }
+  ],
+  "metadata": {
+    "_change_revision": 0,
+    "_is_fork": false,
+    "kernelspec": {
+      "display_name": "R",
+      "language": "R",
+      "name": "ir"
+    },
+    "language_info": {
+      "codemirror_mode": "r",
+      "file_extension": ".r",
+      "mimetype": "text/x-r-source",
+      "name": "R",
+      "pygments_lexer": "r",
+      "version": "3.3.1"
+    }
+  },
+  "nbformat": 4,
+  "nbformat_minor": 0
+}

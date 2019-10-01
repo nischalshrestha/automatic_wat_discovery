@@ -1,0 +1,17 @@
+{
+  "enable_internet": false,
+  "id_no": 2123262,
+  "id": "lieblos/kernel219d11dacb",
+  "title": "kernel219d11dacb",
+  "enable_gpu": false,
+  "dataset_sources": [],
+  "kernel_sources": [],
+  "competition_sources": [
+    "titanic"
+  ],
+  "is_private": false,
+  "keywords": [],
+  "language": "python",
+  "kernel_type": "notebook",
+  "code_file": "kernel219d11dacb.ipynb"
+}

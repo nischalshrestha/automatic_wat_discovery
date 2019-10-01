@@ -1,0 +1,17 @@
+{
+  "dataset_sources": [],
+  "competition_sources": [
+    "titanic"
+  ],
+  "id_no": 205570,
+  "title": "Notebooka7922d219f",
+  "keywords": [],
+  "is_private": false,
+  "enable_internet": false,
+  "language": "python",
+  "kernel_type": "notebook",
+  "id": "doneleone/notebooka7922d219f",
+  "enable_gpu": false,
+  "code_file": "notebooka7922d219f.ipynb",
+  "kernel_sources": []
+}

@@ -1,0 +1,17 @@
+{
+  "is_private": false,
+  "id_no": 337281,
+  "enable_internet": false,
+  "code_file": "titanic-with-logistics.ipynb",
+  "dataset_sources": [],
+  "kernel_sources": [],
+  "title": "Titanic with Logistics",
+  "keywords": [],
+  "kernel_type": "notebook",
+  "id": "ankit20071991/titanic-with-logistics",
+  "competition_sources": [
+    "titanic"
+  ],
+  "language": "python",
+  "enable_gpu": false
+}

@@ -1,0 +1,17 @@
+{
+  "competition_sources": [
+    "titanic"
+  ],
+  "id_no": 1087944,
+  "title": "Titanic!",
+  "enable_gpu": false,
+  "keywords": [],
+  "id": "benbrooks/titanic",
+  "code_file": "titanic.ipynb",
+  "is_private": false,
+  "dataset_sources": [],
+  "enable_internet": false,
+  "language": "python",
+  "kernel_sources": [],
+  "kernel_type": "notebook"
+}

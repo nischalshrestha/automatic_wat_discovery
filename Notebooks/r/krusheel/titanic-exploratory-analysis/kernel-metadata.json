@@ -1,0 +1,17 @@
+{
+  "dataset_sources": [],
+  "keywords": [],
+  "competition_sources": [
+    "titanic"
+  ],
+  "language": "r",
+  "code_file": "titanic-exploratory-analysis.irnb",
+  "enable_internet": false,
+  "kernel_type": "notebook",
+  "id_no": 829306,
+  "id": "krusheel/titanic-exploratory-analysis",
+  "kernel_sources": [],
+  "title": "Titanic Exploratory Analysis",
+  "is_private": false,
+  "enable_gpu": false
+}

@@ -1,0 +1,17 @@
+{
+  "kernel_type": "notebook",
+  "code_file": "notebook65ef1e0817.ipynb",
+  "enable_gpu": false,
+  "enable_internet": false,
+  "dataset_sources": [],
+  "competition_sources": [
+    "titanic"
+  ],
+  "keywords": [],
+  "title": "Notebook65ef1e0817",
+  "id_no": 264278,
+  "is_private": false,
+  "id": "effy94/notebook65ef1e0817",
+  "language": "python",
+  "kernel_sources": []
+}

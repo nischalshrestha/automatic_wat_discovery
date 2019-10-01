@@ -1,0 +1,17 @@
+{
+  "keywords": [],
+  "enable_gpu": false,
+  "id_no": 498656,
+  "competition_sources": [
+    "titanic"
+  ],
+  "id": "amannlo/the-t-ree-itanic-venture",
+  "kernel_sources": [],
+  "dataset_sources": [],
+  "enable_internet": false,
+  "title": "The T(ree)itanic Venture",
+  "language": "r",
+  "is_private": false,
+  "kernel_type": "notebook",
+  "code_file": "the-t-ree-itanic-venture.irnb"
+}

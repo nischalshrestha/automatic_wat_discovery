@@ -1,0 +1,17 @@
+{
+  "title": "Logistic regression model for Titanic ",
+  "kernel_type": "notebook",
+  "keywords": [],
+  "is_private": false,
+  "code_file": "logistic-regression-model-for-titanic.ipynb",
+  "id": "yangfantrinity/logistic-regression-model-for-titanic",
+  "enable_gpu": false,
+  "language": "python",
+  "competition_sources": [
+    "titanic"
+  ],
+  "id_no": 201537,
+  "dataset_sources": [],
+  "enable_internet": false,
+  "kernel_sources": []
+}

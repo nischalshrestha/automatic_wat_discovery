@@ -1,0 +1,144 @@
+{
+  "cells": [
+    {
+      "cell_type": "markdown",
+      "metadata": {
+        "_cell_guid": "c223161e-383f-6aa8-13d4-795b45b3f587"
+      },
+      "source": [
+        ""
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "_cell_guid": "eb919f39-d27e-5f42-de7e-d85e75c9d86f"
+      },
+      "outputs": [],
+      "source": [
+        "# This R environment comes with all of CRAN preinstalled, as well as many other helpful packages\n",
+        "# The environment is defined by the kaggle/rstats docker image: https://github.com/kaggle/docker-rstats\n",
+        "# For example, here's several helpful packages to load in \n",
+        "\n",
+        "library(ggplot2) # Data visualization\n",
+        "library(readr) # CSV file I/O, e.g. the read_csv function\n",
+        "\n",
+        "# Input data files are available in the \"../input/\" directory.\n",
+        "# For example, running this (by clicking run or pressing Shift+Enter) will list the files in the input directory\n",
+        "\n",
+        "system(\"ls ../input\")\n",
+        "\n",
+        "# Any results you write to the current directory are saved as output."
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "_cell_guid": "72e3b02f-e2e5-299f-78a8-7b3427c5266f"
+      },
+      "outputs": [],
+      "source": [
+        "#Load train data\n",
+        "train=read.csv('../input/train.csv')\n",
+        "\n",
+        "\n",
+        "train=train[,-c(1,4,9,11)]\n",
+        "\n",
+        "#Fill the empty values\n",
+        "set.seed(1)\n",
+        "train$Age[is.na(train$Age)]=sample(train$Age[!is.na(train$Age)],177)\n",
+        "\n",
+        "set.seed(2)\n",
+        "train$Embarked[train$Embarked=='']=sample(train$Embarked[train$Embarked!=''],2)\n",
+        "train$Embarked=as.character(train$Embarked)\n",
+        "train$Embarked=as.factor(train$Embarked)\n",
+        "\n",
+        "train$Survived=as.factor(train$Survived)\n",
+        "\n",
+        "summary(train)\n",
+        "\n",
+        "# Modeling\n",
+        "library(randomForest)\n",
+        "set.seed(3)\n",
+        "rf.fit=randomForest(Survived~., data=train)\n",
+        "rf.pred=predict(rf.fit, newdata = train)\n",
+        "\n",
+        "# Train error\n",
+        "table(true=train$Survived, pred=rf.pred)\n",
+        "mean(train$Survived==rf.pred)\n"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "_cell_guid": "d148a845-60cf-82c3-4dde-29ca8aa9877f"
+      },
+      "outputs": [],
+      "source": [
+        "# Load test sample\n",
+        "test_original=read.csv('../input/test.csv')\n",
+        "\n",
+        "test=test_original\n",
+        "\n",
+        "test=test[,-c(1,3,8,10)]\n",
+        "#summary(test)\n",
+        "\n",
+        "# Initiate the survived factor and fill in the NAs\n",
+        "test=data.frame(Survived=as.factor(rep(0,418)), test)\n",
+        "set.seed(1)\n",
+        "test$Age[is.na(test$Age)]=sample(test$Age[!is.na(test$Age)],86)\n",
+        "\n",
+        "set.seed(2)\n",
+        "test$Fare[is.na(test$Fare)]=sample(test$Fare[!is.na(test$Fare)],1)\n",
+        "\n",
+        "# Making levels between training and testing data set is the same\n",
+        "names(test)\n",
+        "levels(test$Survived)=levels(train$Survived)\n",
+        "levels(test$Embarked)=levels(train$Embarked)\n",
+        "\n",
+        "# Make prediction\n",
+        "test$Survived=predict(rf.fit, test)"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "_cell_guid": "a15f7e66-ea78-9ace-d249-d094a3a26204"
+      },
+      "outputs": [],
+      "source": [
+        "# Export files\n",
+        "prediction=data.frame(PassengerId=test_original$PassengerId, Survived=test$Survived)\n",
+        "\n",
+        "\n",
+        "summary(prediction)\n",
+        "head(prediction)\n",
+        "# Output excel\n",
+        "write.csv(prediction,'gender_submission.csv')"
+      ]
+    }
+  ],
+  "metadata": {
+    "_change_revision": 0,
+    "_is_fork": false,
+    "kernelspec": {
+      "display_name": "R",
+      "language": "R",
+      "name": "ir"
+    },
+    "language_info": {
+      "codemirror_mode": "r",
+      "file_extension": ".r",
+      "mimetype": "text/x-r-source",
+      "name": "R",
+      "pygments_lexer": "r",
+      "version": "3.4.0"
+    }
+  },
+  "nbformat": 4,
+  "nbformat_minor": 0
+}

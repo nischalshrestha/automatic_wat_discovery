@@ -1,0 +1,17 @@
+{
+  "competition_sources": [
+    "titanic"
+  ],
+  "keywords": [],
+  "id": "abhigarhia/learning-curve-for-titanic-survival-problem",
+  "language": "python",
+  "dataset_sources": [],
+  "kernel_sources": [],
+  "code_file": "learning-curve-for-titanic-survival-problem.ipynb",
+  "is_private": false,
+  "id_no": 1523042,
+  "kernel_type": "notebook",
+  "enable_internet": false,
+  "enable_gpu": false,
+  "title": "Learning curve for Titanic survival problem. "
+}

@@ -1,0 +1,20 @@
+{
+  "id": "limjingyu/who-survived-the-titanic",
+  "id_no": 460768,
+  "title": "Who survived the Titanic?",
+  "code_file": "who-survived-the-titanic.ipynb",
+  "language": "python",
+  "kernel_type": "notebook",
+  "is_private": false,
+  "enable_gpu": false,
+  "enable_internet": false,
+  "keywords": [
+    "beginner",
+    "logistic regression"
+  ],
+  "dataset_sources": [],
+  "kernel_sources": [],
+  "competition_sources": [
+    "titanic"
+  ]
+}

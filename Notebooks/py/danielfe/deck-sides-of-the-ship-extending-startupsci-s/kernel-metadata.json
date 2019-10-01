@@ -1,0 +1,17 @@
+{
+  "competition_sources": [
+    "titanic"
+  ],
+  "keywords": [],
+  "is_private": false,
+  "kernel_sources": [],
+  "enable_internet": false,
+  "id_no": 685487,
+  "code_file": "deck-sides-of-the-ship-extending-startupsci-s.ipynb",
+  "id": "danielfe/deck-sides-of-the-ship-extending-startupsci-s",
+  "enable_gpu": false,
+  "kernel_type": "notebook",
+  "language": "python",
+  "title": "deck + sides of the ship (extending startupsci's)",
+  "dataset_sources": []
+}

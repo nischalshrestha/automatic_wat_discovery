@@ -1,0 +1,17 @@
+{
+  "keywords": [],
+  "kernel_sources": [],
+  "title": "Titanic Survival Problem Solution",
+  "is_private": false,
+  "competition_sources": [
+    "titanic"
+  ],
+  "code_file": "titanic-survival-problem-solution.ipynb",
+  "kernel_type": "notebook",
+  "dataset_sources": [],
+  "id_no": 2194186,
+  "language": "python",
+  "enable_internet": false,
+  "id": "nitinkumar21/titanic-survival-problem-solution",
+  "enable_gpu": false
+}

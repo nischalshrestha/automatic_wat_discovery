@@ -1,0 +1,23 @@
+{
+  "is_private": false,
+  "id": "sidjhanji/learn-solving-kaggle-problems-with-titanic",
+  "kernel_sources": [],
+  "title": "Learn solving Kaggle problems with Titanic",
+  "kernel_type": "notebook",
+  "enable_internet": false,
+  "keywords": [
+    "tutorial",
+    "beginner",
+    "data cleaning",
+    "data visualization",
+    "starter code"
+  ],
+  "code_file": "learn-solving-kaggle-problems-with-titanic.ipynb",
+  "language": "python",
+  "competition_sources": [
+    "titanic"
+  ],
+  "dataset_sources": [],
+  "enable_gpu": false,
+  "id_no": 1727523
+}

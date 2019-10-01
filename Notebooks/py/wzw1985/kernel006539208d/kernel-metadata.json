@@ -1,0 +1,17 @@
+{
+  "keywords": [],
+  "enable_gpu": false,
+  "title": "Kernel006539208d",
+  "code_file": "kernel006539208d.ipynb",
+  "kernel_sources": [],
+  "dataset_sources": [],
+  "language": "python",
+  "id": "wzw1985/kernel006539208d",
+  "id_no": 960804,
+  "enable_internet": false,
+  "is_private": false,
+  "competition_sources": [
+    "titanic"
+  ],
+  "kernel_type": "notebook"
+}

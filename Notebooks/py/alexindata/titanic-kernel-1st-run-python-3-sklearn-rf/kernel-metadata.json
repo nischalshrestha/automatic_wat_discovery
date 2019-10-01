@@ -1,0 +1,17 @@
+{
+  "keywords": [],
+  "id": "alexindata/titanic-kernel-1st-run-python-3-sklearn-rf",
+  "dataset_sources": [],
+  "code_file": "titanic-kernel-1st-run-python-3-sklearn-rf.ipynb",
+  "language": "python",
+  "kernel_sources": [],
+  "enable_gpu": false,
+  "enable_internet": false,
+  "is_private": false,
+  "kernel_type": "notebook",
+  "competition_sources": [
+    "titanic"
+  ],
+  "id_no": 175489,
+  "title": "Titanic Kernel 1st run (Python 3 sklearn rf)"
+}

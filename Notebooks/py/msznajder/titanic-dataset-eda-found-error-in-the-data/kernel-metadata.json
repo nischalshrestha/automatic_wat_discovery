@@ -1,0 +1,20 @@
+{
+  "language": "python",
+  "kernel_type": "notebook",
+  "keywords": [
+    "eda",
+    "data visualization"
+  ],
+  "dataset_sources": [],
+  "is_private": false,
+  "kernel_sources": [],
+  "id": "msznajder/titanic-dataset-eda-found-error-in-the-data",
+  "id_no": 532474,
+  "title": "Titanic dataset EDA and found error in the data",
+  "competition_sources": [
+    "titanic"
+  ],
+  "enable_gpu": false,
+  "enable_internet": false,
+  "code_file": "titanic-dataset-eda-found-error-in-the-data.ipynb"
+}

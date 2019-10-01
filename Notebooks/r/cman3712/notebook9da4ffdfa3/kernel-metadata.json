@@ -1,0 +1,17 @@
+{
+  "keywords": [],
+  "id_no": 244854,
+  "dataset_sources": [],
+  "code_file": "notebook9da4ffdfa3.irnb",
+  "is_private": false,
+  "enable_gpu": false,
+  "title": "Notebook9da4ffdfa3",
+  "kernel_sources": [],
+  "enable_internet": false,
+  "competition_sources": [
+    "titanic"
+  ],
+  "id": "cman3712/notebook9da4ffdfa3",
+  "kernel_type": "notebook",
+  "language": "r"
+}

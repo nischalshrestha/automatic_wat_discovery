@@ -1,0 +1,17 @@
+{
+  "language": "python",
+  "title": "First Experience - Titanic",
+  "is_private": false,
+  "id_no": 1624636,
+  "id": "lauragr/first-experience-titanic",
+  "competition_sources": [
+    "titanic"
+  ],
+  "keywords": [],
+  "code_file": "first-experience-titanic.ipynb",
+  "kernel_sources": [],
+  "enable_gpu": false,
+  "kernel_type": "notebook",
+  "dataset_sources": [],
+  "enable_internet": false
+}

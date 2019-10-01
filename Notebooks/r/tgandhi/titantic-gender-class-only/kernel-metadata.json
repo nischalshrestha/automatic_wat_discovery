@@ -1,0 +1,17 @@
+{
+  "competition_sources": [
+    "titanic"
+  ],
+  "enable_gpu": false,
+  "kernel_sources": [],
+  "keywords": [],
+  "dataset_sources": [],
+  "language": "r",
+  "kernel_type": "notebook",
+  "id_no": 170748,
+  "title": "Titantic- Gender Class Only",
+  "code_file": "titantic-gender-class-only.irnb",
+  "is_private": false,
+  "id": "tgandhi/titantic-gender-class-only",
+  "enable_internet": false
+}

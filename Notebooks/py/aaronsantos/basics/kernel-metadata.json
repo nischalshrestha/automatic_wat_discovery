@@ -1,0 +1,17 @@
+{
+  "is_private": false,
+  "competition_sources": [
+    "titanic"
+  ],
+  "id": "aaronsantos/basics",
+  "title": "Basics",
+  "id_no": 738851,
+  "kernel_type": "notebook",
+  "dataset_sources": [],
+  "language": "python",
+  "keywords": [],
+  "kernel_sources": [],
+  "code_file": "basics.ipynb",
+  "enable_internet": false,
+  "enable_gpu": false
+}

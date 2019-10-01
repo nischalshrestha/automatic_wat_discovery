@@ -1,0 +1,17 @@
+{
+  "keywords": [],
+  "title": "Notebookae2009e4dd",
+  "kernel_sources": [],
+  "dataset_sources": [],
+  "id_no": 214483,
+  "kernel_type": "notebook",
+  "is_private": false,
+  "code_file": "notebookae2009e4dd.ipynb",
+  "enable_gpu": false,
+  "competition_sources": [
+    "titanic"
+  ],
+  "language": "python",
+  "id": "carlpch/notebookae2009e4dd",
+  "enable_internet": false
+}

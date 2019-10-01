@@ -1,0 +1,11 @@
+{"cells":[
+ {
+  "cell_type": "code",
+  "execution_count": null,
+  "metadata": {
+   "collapsed": false
+  },
+  "outputs": [],
+  "source": "library(\"dplyr\")\r\n\r\noptions(stringsAsFactors=FALSE)\r\n\r\ntrain <- read.csv(\"../input/train.csv\")\r\ntest  <- read.csv(\"../input/test.csv\")\r\n\r\ntrain$Age[is.na(train$Age)]<-mean(na.omit(train$Age))\r\ntrain$Fare[is.na(train$Fare)]<-mean(na.omit(train$Fare))\r\ntrain$Embarked[is.na(train$Embarked)]<-\"S\"\r\ntrain$SibSp[is.na(train$SibSp)]<-0\r\ntrain$Parch[is.na(train$Parch)]<-0\r\n\r\ntest$Age[is.na(test$Age)]<-mean(na.omit(test$Age))\r\ntest$Fare[is.na(test$Fare)]<-mean(na.omit(test$Fare))\r\ntest$Embarked[is.na(test$Embarked)]<-\"S\"\r\ntest$SibSp[is.na(test$SibSp)]<-0\r\ntest$Parch[is.na(test$Parch)]<-0\r\n\r\ntrain$Age<-(train$Age-mean(train$Age))/sd(train$Age)\r\ntest$Age<-(test$Age-mean(test$Age))/sd(test$Age)\r\n\r\ntrain<-mutate(train,Sex=as.factor(Sex),Pclass=as.factor(Pclass),Survived=as.factor(Survived),Embarked=as.factor(Embarked),Family=SibSp+Parch)\r\ntest<-mutate(test,Sex=as.factor(Sex),Pclass=as.factor(Pclass),Embarked=as.factor(Embarked),Family=SibSp+Parch)\r\n\r\nm_logit <- glm(data=train, Survived ~ Pclass*Fare+Sex*Age*Family+Sex*I(Age^2)+I(Family^2),\r\n               family=binomial(link=\"logit\"),x=TRUE)\r\nsummary(m_logit)\r\n\r\npr_logit <- predict(m_logit,test)\r\n\r\npr_test<-pr_logit\r\n\r\nsigmoid <- function(x){\r\n  result <- 1.0 / (1.0 + exp(-x))\r\n  return(result)\r\n}\r\n\r\npr_test[sigmoid(pr_test)>=0.6]=1\r\npr_test[sigmoid(pr_test)<0.6]=0\r\n\r\nmy_logit <- data.frame(PassengerId=test$PassengerId, Survived=pr_test)\r\n\r\n\r\nwrite.csv(my_logit, file = \"FM020051.csv\", row.names = FALSE) "
+ }
+],"metadata":{"kernelspec":{"display_name":"R","language":"R","name":"ir"}}, "nbformat": 4, "nbformat_minor": 0}

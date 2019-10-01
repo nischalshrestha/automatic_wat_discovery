@@ -1,0 +1,158 @@
+{
+  "cells": [
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "_cell_guid": "ff1c016f-068e-c012-9cd5-8c9877aded32"
+      },
+      "outputs": [],
+      "source": [
+        "# This R environment comes with all of CRAN preinstalled, as well as many other helpful packages\n",
+        "# The environment is defined by the kaggle/rstats docker image: https://github.com/kaggle/docker-rstats\n",
+        "# For example, here's several helpful packages to load in \n",
+        "\n",
+        "library('ggplot2') # Data visualization\n",
+        "library('ggthemes')\n",
+        "library('scales')\n",
+        "\n",
+        "library('dplyr') #data manipulation\n",
+        "library('mice') #imputation\n",
+        "library('randomForest') #classification algo\n",
+        "library('readr') # CSV file I/O, e.g. the read_csv function\n",
+        "\n",
+        "# Input data files are available in the \"../input/\" directory.\n",
+        "# For example, running this (by clicking run or pressing Shift+Enter) will list the files in the input directory\n",
+        "\n",
+        "system(\"ls ../input\")\n",
+        "\n",
+        "# Any results you write to the current directory are saved as output."
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "_cell_guid": "69b37591-776e-a215-d21c-aaf76bde34ae"
+      },
+      "outputs": [],
+      "source": [
+        "train <- read.csv('../input/train.csv', stringsAsFactors = F)\n",
+        "test <- read.csv('../input/test.csv', stringsAsFactors = F)\n",
+        "\n",
+        "full <- bind_rows(train, test) #bind training and test data\n",
+        "\n",
+        "str(full)"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "_cell_guid": "0c8705e8-f391-21e6-3d57-ded4bc761dcc"
+      },
+      "outputs": [],
+      "source": [
+        "full$Title <- gsub('(.*, )|(\\\\..*)', '', full$Name)\n",
+        "\n",
+        "table(full$Sex, full$Title)"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "_cell_guid": "9435ae58-9579-41c8-502d-1e9ec8e12f5b"
+      },
+      "outputs": [],
+      "source": [
+        "rare_title <- c('Capt', 'Col', 'Don', 'Dona', 'Dr', 'the Countess', 'Jonkheer', 'Lady', 'Major', 'Rev', 'Sir')\n",
+        "full$Title[full$Title == 'Mlle'] <- 'Miss'\n",
+        "full$Title[full$Title == 'Ms'] <- 'Miss'\n",
+        "full$Title[full$Title == 'Mme'] <- 'Mrs'\n",
+        "full$Title[full$Title %in% rare_title] <- 'Rare Title'\n",
+        "table(full$Sex, full$Title)"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "_cell_guid": "510a833d-0b2f-a582-b870-e9facbc946fd"
+      },
+      "outputs": [],
+      "source": [
+        "full$Surname <- sapply(full$Name, \n",
+        "                      function(x) strsplit(x, split = '[,.]')[[1]][1]);\n",
+        "cat(paste('We have <b>', nlevels(factor(full$Surname)), '</b> unique surnames. I would be interested to infer ethnicity based on surname --- another time.'))\n",
+        "                          \n",
+        "                       \n",
+        "                         "
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "_cell_guid": "cf9b76cf-ad80-9634-6fc8-954d5bd90ce9"
+      },
+      "outputs": [],
+      "source": [
+        "#family size variable: # of siblings/spouses + # of parents/children + themselves\n",
+        "full$Fsize <- full$SibSp + full$Parch + 1\n",
+        "\n",
+        "#family variable\n",
+        "full$Family <- paste(full$Surname, full$Fsize, sep='_')"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "_cell_guid": "632fed1d-ac57-cf9c-8adf-657b7e855fdb"
+      },
+      "outputs": [],
+      "source": [
+        "ggplot(full[1:891,], aes(x = Fsize, fill = factor(Survived))) +\n",
+        "  geom_bar(stat='Count', position='dodge') +\n",
+        "  scale_x_continuous(breaks=c(1:11)) +\n",
+        "  labs(x = 'Fam Size') +\n",
+        "  theme_few()"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "_cell_guid": "cbff6226-e46b-50f9-8bea-5dca477d6dd8"
+      },
+      "outputs": [],
+      "source": [
+        "full$FsizeD[full$Fsize == 1] <- 'singleton'\n",
+        "full$FsizeD[full$Fsize < 5 & full$Fsize > 1] <- 'small'\n",
+        "full$FsizeD[full$Fsize > 4] <- 'large'\n",
+        "\n",
+        "mosaicplot(table(full$FsizeD, full$Survived), main='Family Size by Survival', shade=TRUE)"
+      ]
+    }
+  ],
+  "metadata": {
+    "_change_revision": 0,
+    "_is_fork": false,
+    "kernelspec": {
+      "display_name": "R",
+      "language": "R",
+      "name": "ir"
+    },
+    "language_info": {
+      "codemirror_mode": "r",
+      "file_extension": ".r",
+      "mimetype": "text/x-r-source",
+      "name": "R",
+      "pygments_lexer": "r",
+      "version": "3.3.1"
+    }
+  },
+  "nbformat": 4,
+  "nbformat_minor": 0
+}

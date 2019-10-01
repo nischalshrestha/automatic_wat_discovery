@@ -1,0 +1,17 @@
+{
+  "is_private": false,
+  "kernel_type": "notebook",
+  "language": "r",
+  "code_file": "notebook073fb026d4.irnb",
+  "id_no": 95934,
+  "enable_gpu": false,
+  "keywords": [],
+  "title": "Notebook073fb026d4",
+  "kernel_sources": [],
+  "id": "abheet22/notebook073fb026d4",
+  "enable_internet": false,
+  "dataset_sources": [],
+  "competition_sources": [
+    "titanic"
+  ]
+}

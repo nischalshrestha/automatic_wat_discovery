@@ -1,0 +1,17 @@
+{
+  "code_file": "titanic-framework-5afa14.ipynb",
+  "enable_internet": false,
+  "id": "astonmartin/titanic-framework-5afa14",
+  "dataset_sources": [],
+  "is_private": false,
+  "kernel_type": "notebook",
+  "id_no": 1639130,
+  "title": " Titanic Framework 5afa14",
+  "kernel_sources": [],
+  "language": "python",
+  "keywords": [],
+  "competition_sources": [
+    "titanic"
+  ],
+  "enable_gpu": false
+}

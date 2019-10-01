@@ -1,0 +1,17 @@
+{
+  "competition_sources": [
+    "titanic"
+  ],
+  "enable_gpu": false,
+  "id_no": 1237532,
+  "dataset_sources": [],
+  "id": "christophed/titanic-plotting-features-and-prediction-v2",
+  "keywords": [],
+  "kernel_sources": [],
+  "kernel_type": "notebook",
+  "language": "python",
+  "title": "Titanic: Plotting, Features and Prediction_v2",
+  "code_file": "titanic-plotting-features-and-prediction-v2.ipynb",
+  "enable_internet": false,
+  "is_private": false
+}

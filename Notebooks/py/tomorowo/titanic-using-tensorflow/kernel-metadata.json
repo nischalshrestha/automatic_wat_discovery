@@ -1,0 +1,17 @@
+{
+  "kernel_type": "notebook",
+  "enable_internet": false,
+  "is_private": false,
+  "language": "python",
+  "competition_sources": [
+    "titanic"
+  ],
+  "kernel_sources": [],
+  "id": "tomorowo/titanic-using-tensorflow",
+  "code_file": "titanic-using-tensorflow.ipynb",
+  "keywords": [],
+  "enable_gpu": false,
+  "id_no": 828246,
+  "title": "Titanic using Tensorflow",
+  "dataset_sources": []
+}

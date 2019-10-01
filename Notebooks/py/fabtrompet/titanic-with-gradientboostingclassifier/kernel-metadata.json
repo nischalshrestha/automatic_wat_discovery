@@ -1,0 +1,17 @@
+{
+  "id_no": 255742,
+  "title": "Titanic with GradientBoostingClassifier",
+  "dataset_sources": [],
+  "language": "python",
+  "kernel_sources": [],
+  "code_file": "titanic-with-gradientboostingclassifier.ipynb",
+  "kernel_type": "notebook",
+  "id": "fabtrompet/titanic-with-gradientboostingclassifier",
+  "is_private": false,
+  "enable_gpu": false,
+  "keywords": [],
+  "enable_internet": false,
+  "competition_sources": [
+    "titanic"
+  ]
+}

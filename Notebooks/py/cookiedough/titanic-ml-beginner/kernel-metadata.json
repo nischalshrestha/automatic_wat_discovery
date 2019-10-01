@@ -1,0 +1,21 @@
+{
+  "is_private": false,
+  "enable_internet": false,
+  "keywords": [
+    "beginner",
+    "gradient boosting",
+    "random forest"
+  ],
+  "kernel_type": "notebook",
+  "competition_sources": [
+    "titanic"
+  ],
+  "id_no": 968832,
+  "language": "python",
+  "enable_gpu": false,
+  "title": "Titanic \u2013 ML Beginner",
+  "id": "cookiedough/titanic-ml-beginner",
+  "dataset_sources": [],
+  "kernel_sources": [],
+  "code_file": "titanic-ml-beginner.ipynb"
+}

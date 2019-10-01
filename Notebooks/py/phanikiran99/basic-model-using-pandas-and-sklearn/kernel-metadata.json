@@ -1,0 +1,17 @@
+{
+  "enable_gpu": false,
+  "is_private": false,
+  "kernel_sources": [],
+  "keywords": [],
+  "language": "python",
+  "dataset_sources": [],
+  "id_no": 98450,
+  "code_file": "basic-model-using-pandas-and-sklearn.ipynb",
+  "id": "phanikiran99/basic-model-using-pandas-and-sklearn",
+  "enable_internet": false,
+  "title": "Basic Model Using Pandas and sklearn",
+  "competition_sources": [
+    "titanic"
+  ],
+  "kernel_type": "notebook"
+}

@@ -1,0 +1,17 @@
+{
+  "id_no": 257955,
+  "is_private": false,
+  "kernel_type": "notebook",
+  "enable_internet": false,
+  "id": "kidman007/notebook5eacb8d02c",
+  "enable_gpu": false,
+  "keywords": [],
+  "kernel_sources": [],
+  "code_file": "notebook5eacb8d02c.ipynb",
+  "language": "python",
+  "title": "Notebook5eacb8d02c",
+  "competition_sources": [
+    "titanic"
+  ],
+  "dataset_sources": []
+}

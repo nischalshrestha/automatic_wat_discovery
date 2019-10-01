@@ -1,0 +1,17 @@
+{
+  "kernel_sources": [],
+  "language": "python",
+  "id": "rdcsung/an-interactive-data-science-tutorial",
+  "dataset_sources": [],
+  "code_file": "an-interactive-data-science-tutorial.ipynb",
+  "enable_internet": false,
+  "competition_sources": [
+    "titanic"
+  ],
+  "title": "An Interactive Data Science Tutorial",
+  "id_no": 172658,
+  "is_private": false,
+  "enable_gpu": false,
+  "kernel_type": "notebook",
+  "keywords": []
+}

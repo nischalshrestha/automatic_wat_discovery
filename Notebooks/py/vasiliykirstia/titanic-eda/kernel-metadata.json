@@ -1,0 +1,20 @@
+{
+  "title": "Titanic: EDA",
+  "enable_gpu": false,
+  "id_no": 1890900,
+  "kernel_sources": [],
+  "competition_sources": [
+    "titanic"
+  ],
+  "language": "python",
+  "keywords": [
+    "eda",
+    "feature engineering"
+  ],
+  "kernel_type": "notebook",
+  "is_private": false,
+  "enable_internet": false,
+  "dataset_sources": [],
+  "code_file": "titanic-eda.ipynb",
+  "id": "vasiliykirstia/titanic-eda"
+}

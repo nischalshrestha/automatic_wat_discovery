@@ -1,0 +1,17 @@
+{
+  "competition_sources": [
+    "titanic"
+  ],
+  "id_no": 227825,
+  "enable_internet": false,
+  "dataset_sources": [],
+  "is_private": false,
+  "code_file": "titanic-datasaster-analysis.ipynb",
+  "kernel_sources": [],
+  "id": "oswinrh/titanic-datasaster-analysis",
+  "keywords": [],
+  "kernel_type": "notebook",
+  "title": "Titanic Datasaster Analysis",
+  "language": "python",
+  "enable_gpu": false
+}

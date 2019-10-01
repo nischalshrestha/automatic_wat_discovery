@@ -1,0 +1,17 @@
+{
+  "code_file": "titanic-kernel.ipynb",
+  "dataset_sources": [],
+  "kernel_sources": [],
+  "id_no": 936173,
+  "keywords": [],
+  "enable_internet": false,
+  "language": "python",
+  "id": "anshuljdhingra/titanic-kernel",
+  "competition_sources": [
+    "titanic"
+  ],
+  "title": "Titanic Kernel ",
+  "enable_gpu": false,
+  "kernel_type": "notebook",
+  "is_private": false
+}

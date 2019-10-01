@@ -1,0 +1,17 @@
+{
+  "dataset_sources": [],
+  "is_private": false,
+  "enable_internet": false,
+  "kernel_type": "notebook",
+  "keywords": [],
+  "id_no": 1902321,
+  "language": "python",
+  "competition_sources": [
+    "titanic"
+  ],
+  "id": "jcleme/my-titanic-kernel",
+  "kernel_sources": [],
+  "code_file": "my-titanic-kernel.ipynb",
+  "title": "my_titanic_kernel",
+  "enable_gpu": false
+}

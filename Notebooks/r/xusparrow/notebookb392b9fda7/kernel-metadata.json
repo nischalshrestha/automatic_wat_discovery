@@ -1,0 +1,17 @@
+{
+  "kernel_type": "notebook",
+  "kernel_sources": [],
+  "dataset_sources": [],
+  "language": "r",
+  "enable_gpu": false,
+  "enable_internet": false,
+  "is_private": false,
+  "title": "Notebookb392b9fda7",
+  "id": "xusparrow/notebookb392b9fda7",
+  "keywords": [],
+  "competition_sources": [
+    "titanic"
+  ],
+  "id_no": 121571,
+  "code_file": "notebookb392b9fda7.irnb"
+}

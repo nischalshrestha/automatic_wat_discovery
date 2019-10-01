@@ -1,0 +1,17 @@
+{
+  "enable_internet": false,
+  "id_no": 165631,
+  "kernel_type": "notebook",
+  "id": "stavinsky/simple-keras-model",
+  "enable_gpu": false,
+  "language": "python",
+  "competition_sources": [
+    "titanic"
+  ],
+  "is_private": false,
+  "dataset_sources": [],
+  "kernel_sources": [],
+  "title": "Simple Keras model",
+  "code_file": "simple-keras-model.ipynb",
+  "keywords": []
+}

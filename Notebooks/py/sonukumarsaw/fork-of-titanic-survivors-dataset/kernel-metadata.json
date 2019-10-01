@@ -1,0 +1,17 @@
+{
+  "dataset_sources": [],
+  "enable_gpu": false,
+  "enable_internet": false,
+  "language": "python",
+  "title": "Fork of Titanic: Survivors dataset",
+  "keywords": [],
+  "competition_sources": [
+    "titanic"
+  ],
+  "kernel_sources": [],
+  "is_private": false,
+  "id": "sonukumarsaw/fork-of-titanic-survivors-dataset",
+  "id_no": 1784175,
+  "code_file": "fork-of-titanic-survivors-dataset.ipynb",
+  "kernel_type": "notebook"
+}

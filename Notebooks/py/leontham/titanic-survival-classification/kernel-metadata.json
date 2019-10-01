@@ -1,0 +1,17 @@
+{
+  "enable_gpu": false,
+  "kernel_type": "notebook",
+  "competition_sources": [
+    "titanic"
+  ],
+  "id_no": 1692026,
+  "title": "Titanic survival classification",
+  "dataset_sources": [],
+  "code_file": "titanic-survival-classification.ipynb",
+  "kernel_sources": [],
+  "keywords": [],
+  "enable_internet": false,
+  "is_private": false,
+  "language": "python",
+  "id": "leontham/titanic-survival-classification"
+}

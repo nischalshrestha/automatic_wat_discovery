@@ -1,0 +1,17 @@
+{
+  "enable_internet": false,
+  "enable_gpu": false,
+  "id": "akshaykapoor347/simple-titanic-prediction",
+  "title": "Simple Titanic prediction",
+  "kernel_sources": [],
+  "code_file": "simple-titanic-prediction.ipynb",
+  "competition_sources": [
+    "titanic"
+  ],
+  "language": "python",
+  "is_private": false,
+  "kernel_type": "notebook",
+  "dataset_sources": [],
+  "keywords": [],
+  "id_no": 1730089
+}

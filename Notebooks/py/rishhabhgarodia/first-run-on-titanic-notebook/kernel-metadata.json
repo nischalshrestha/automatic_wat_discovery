@@ -1,0 +1,17 @@
+{
+  "enable_internet": false,
+  "language": "python",
+  "code_file": "first-run-on-titanic-notebook.ipynb",
+  "title": "First run on Titanic notebook",
+  "competition_sources": [
+    "titanic"
+  ],
+  "kernel_sources": [],
+  "id": "rishhabhgarodia/first-run-on-titanic-notebook",
+  "id_no": 219795,
+  "is_private": false,
+  "dataset_sources": [],
+  "keywords": [],
+  "enable_gpu": false,
+  "kernel_type": "notebook"
+}

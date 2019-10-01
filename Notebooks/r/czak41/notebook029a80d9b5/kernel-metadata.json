@@ -1,0 +1,17 @@
+{
+  "id_no": 211656,
+  "code_file": "notebook029a80d9b5.irnb",
+  "id": "czak41/notebook029a80d9b5",
+  "enable_gpu": false,
+  "kernel_sources": [],
+  "dataset_sources": [],
+  "language": "r",
+  "competition_sources": [
+    "titanic"
+  ],
+  "is_private": false,
+  "title": "Notebook029a80d9b5",
+  "kernel_type": "notebook",
+  "enable_internet": false,
+  "keywords": []
+}

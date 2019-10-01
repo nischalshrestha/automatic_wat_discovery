@@ -1,0 +1,17 @@
+{
+  "id": "jmbull/titanic-notebook",
+  "keywords": [],
+  "enable_internet": false,
+  "enable_gpu": false,
+  "id_no": 142500,
+  "kernel_sources": [],
+  "language": "r",
+  "code_file": "titanic-notebook.irnb",
+  "is_private": false,
+  "dataset_sources": [],
+  "competition_sources": [
+    "titanic"
+  ],
+  "title": "Titanic Notebook",
+  "kernel_type": "notebook"
+}

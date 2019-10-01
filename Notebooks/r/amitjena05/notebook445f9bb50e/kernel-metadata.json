@@ -1,0 +1,17 @@
+{
+  "keywords": [],
+  "kernel_type": "notebook",
+  "title": "Notebook445f9bb50e",
+  "language": "python",
+  "competition_sources": [
+    "titanic"
+  ],
+  "code_file": "notebook445f9bb50e.ipynb",
+  "kernel_sources": [],
+  "dataset_sources": [],
+  "id": "amitjena05/notebook445f9bb50e",
+  "enable_internet": false,
+  "id_no": 202798,
+  "enable_gpu": false,
+  "is_private": false
+}

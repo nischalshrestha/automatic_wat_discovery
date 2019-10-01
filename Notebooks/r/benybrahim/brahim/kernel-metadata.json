@@ -1,0 +1,17 @@
+{
+  "kernel_type": "notebook",
+  "language": "r",
+  "dataset_sources": [],
+  "id_no": 104881,
+  "kernel_sources": [],
+  "title": "Notebook6459d4391f",
+  "enable_internet": false,
+  "competition_sources": [
+    "titanic"
+  ],
+  "code_file": "brahim.irnb",
+  "id": "benybrahim/brahim",
+  "is_private": false,
+  "keywords": [],
+  "enable_gpu": false
+}

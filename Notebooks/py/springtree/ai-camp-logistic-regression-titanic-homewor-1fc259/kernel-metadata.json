@@ -1,0 +1,17 @@
+{
+  "title": "AI Camp Logistic Regression Titanic Homewor 1fc259",
+  "is_private": false,
+  "id": "springtree/ai-camp-logistic-regression-titanic-homewor-1fc259",
+  "id_no": 1632143,
+  "enable_gpu": false,
+  "dataset_sources": [],
+  "enable_internet": false,
+  "keywords": [],
+  "competition_sources": [
+    "titanic"
+  ],
+  "language": "python",
+  "code_file": "ai-camp-logistic-regression-titanic-homewor-1fc259.ipynb",
+  "kernel_sources": [],
+  "kernel_type": "notebook"
+}

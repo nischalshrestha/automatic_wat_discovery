@@ -1,0 +1,31 @@
+{
+  "competition_sources": [
+    "titanic"
+  ],
+  "language": "r",
+  "id_no": 1824460,
+  "enable_internet": true,
+  "is_private": false,
+  "kernel_type": "notebook",
+  "id": "adrian1acoran/pi3-14159265",
+  "code_file": "pi3-14159265.irnb",
+  "title": "Pi3.14159265...",
+  "enable_gpu": true,
+  "dataset_sources": [
+    "pytorch/vgg13bn",
+    "ramamet4/app-store-apple-data-set-10k-apps",
+    "lava18/google-play-store-apps",
+    "crawford/boston-public-schools",
+    "bigquery/patents",
+    "theworldbank/education-statistics",
+    "san-francisco/sf-police-calls-for-service-and-incidents",
+    "census/total-business-inventories-and-sales-data"
+  ],
+  "keywords": [
+    "beginner",
+    "data visualization",
+    "deep learning",
+    "starter code"
+  ],
+  "kernel_sources": []
+}

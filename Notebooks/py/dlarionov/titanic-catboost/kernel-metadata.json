@@ -1,0 +1,21 @@
+{
+  "is_private": false,
+  "title": "Titanic catboost",
+  "kernel_type": "notebook",
+  "kernel_sources": [],
+  "enable_gpu": false,
+  "id": "dlarionov/titanic-catboost",
+  "competition_sources": [
+    "titanic"
+  ],
+  "language": "python",
+  "id_no": 965330,
+  "keywords": [
+    "beginner",
+    "classification",
+    "feature engineering"
+  ],
+  "enable_internet": false,
+  "dataset_sources": [],
+  "code_file": "titanic-catboost.ipynb"
+}

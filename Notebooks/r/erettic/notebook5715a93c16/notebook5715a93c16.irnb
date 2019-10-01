@@ -1,0 +1,277 @@
+{
+  "cells": [
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "_cell_guid": "e784131b-f9a3-ea4e-fda1-737fecb242d4"
+      },
+      "outputs": [],
+      "source": [
+        "# This R environment comes with all of CRAN preinstalled, as well as many other helpful packages\n",
+        "# The environment is defined by the kaggle/rstats docker image: https://github.com/kaggle/docker-rstats\n",
+        "# For example, here's several helpful packages to load in \n",
+        "\n",
+        "library(ggplot2) # Data visualization\n",
+        "library(readr) # CSV file I/O, e.g. the read_csv function\n",
+        "\n",
+        "# Input data files are available in the \"../input/\" directory.\n",
+        "# For example, running this (by clicking run or pressing Shift+Enter) will list the files in the input directory\n",
+        "\n",
+        "system(\"ls ../input\")\n",
+        "\n",
+        "# Any results you write to the current directory are saved as output."
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "_cell_guid": "9c630eb6-11fa-a468-5462-24f1a5106cb7"
+      },
+      "outputs": [],
+      "source": [
+        "list.files(\"../input\")"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "_cell_guid": "c89caf8e-ab59-2f48-d76b-47fe03ab73a0"
+      },
+      "outputs": [],
+      "source": [
+        "train <- read_csv(\"../input/train.csv\")"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "_cell_guid": "9bd61ffa-70d7-6aea-4bbf-bcc8845c304b"
+      },
+      "outputs": [],
+      "source": [
+        "head(train)"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "_cell_guid": "f8edc17a-9a46-fa46-5853-f67dd3331d14"
+      },
+      "outputs": [],
+      "source": [
+        "summary(train)"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "_cell_guid": "c354a3ac-3bb7-4f4d-ded6-4d8d76ae4a25"
+      },
+      "outputs": [],
+      "source": [
+        "hist(train$Age, breaks = length(unique(train$Age)))"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "_cell_guid": "de3b0681-030b-7873-afa5-fa4eac8098e8"
+      },
+      "outputs": [],
+      "source": [
+        "hist(train$Age[train$Survived == 0], breaks = length(unique(train$Age)))"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "_cell_guid": "b2b3c564-386a-f353-ac41-0574ea0f0d78"
+      },
+      "outputs": [],
+      "source": [
+        "hist(train$Age[train$Pclass == 1 & train$Survived == 0], breaks = length(unique(train$Age)))"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "_cell_guid": "5d0984ac-c147-e93c-6eac-4445520315c7"
+      },
+      "outputs": [],
+      "source": [
+        "hist(train$Age[train$Pclass == 2], breaks = length(unique(train$Age)))"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "_cell_guid": "4f1200d2-31eb-c328-d5bf-bb2ddfde6966"
+      },
+      "outputs": [],
+      "source": [
+        "hist(train$Age[train$Pclass == 3], breaks = length(unique(train$Age)))"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "_cell_guid": "3c778a4d-46aa-34ea-65cf-6b6b88d1d5d4"
+      },
+      "outputs": [],
+      "source": [
+        "train$Sex[\"Sex\" == \"male\"] <- 1"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "_cell_guid": "eb434252-fac2-0336-bfaa-091bb4f51eaa"
+      },
+      "outputs": [],
+      "source": [
+        "train$Sex[\"Sex\" == \"female\"] <- 0"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "_cell_guid": "1e116b1e-85db-706f-5730-1d5b472f6bbf"
+      },
+      "outputs": [],
+      "source": [
+        "summary(train)"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "_cell_guid": "1f3b4811-8441-0a94-be44-f1b388c1300a"
+      },
+      "outputs": [],
+      "source": [
+        "head(train)"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "_cell_guid": "df464728-24cf-7466-b9ec-4709af1494e0"
+      },
+      "outputs": [],
+      "source": [
+        "summary(as.factor(train$Sex))"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "_cell_guid": "b78e3577-b396-1118-b2a2-0163595a9b68"
+      },
+      "outputs": [],
+      "source": [
+        "female <- which(train$Sex == \"female\")"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "_cell_guid": "2d81d1d1-a225-1186-73e8-1d766c492a01"
+      },
+      "outputs": [],
+      "source": [
+        "male <- which(train$Sex == \"male\")"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "_cell_guid": "44feadf6-ad3d-d0a9-4889-565969013338"
+      },
+      "outputs": [],
+      "source": [
+        "head(female)"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "_cell_guid": "1f37b5cf-aee2-29b2-a139-23d50a884177"
+      },
+      "outputs": [],
+      "source": [
+        "train$Sex[female] <- 0"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "_cell_guid": "882a3630-5986-9959-f9e8-cccd5de46ca6"
+      },
+      "outputs": [],
+      "source": [
+        "train$Sex[male] <- 1"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "_cell_guid": "cc00c00d-170d-f9a6-6daf-814637f457b0"
+      },
+      "outputs": [],
+      "source": [
+        "head(train)"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "_cell_guid": "8c944018-b54d-5857-2261-b0a8ef5e02a1"
+      },
+      "outputs": [],
+      "source": [
+        ""
+      ]
+    }
+  ],
+  "metadata": {
+    "_change_revision": 0,
+    "_is_fork": false,
+    "kernelspec": {
+      "display_name": "R",
+      "language": "R",
+      "name": "ir"
+    },
+    "language_info": {
+      "codemirror_mode": "r",
+      "file_extension": ".r",
+      "mimetype": "text/x-r-source",
+      "name": "R",
+      "pygments_lexer": "r",
+      "version": "3.3.2"
+    }
+  },
+  "nbformat": 4,
+  "nbformat_minor": 0
+}

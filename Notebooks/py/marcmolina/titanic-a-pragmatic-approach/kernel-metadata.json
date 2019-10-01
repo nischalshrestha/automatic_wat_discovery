@@ -1,0 +1,22 @@
+{
+  "enable_internet": false,
+  "kernel_sources": [],
+  "dataset_sources": [],
+  "keywords": [
+    "ensembling",
+    "feature engineering",
+    "xgboost",
+    "binary classification"
+  ],
+  "enable_gpu": false,
+  "id_no": 2154428,
+  "kernel_type": "notebook",
+  "language": "python",
+  "code_file": "titanic-a-pragmatic-approach.ipynb",
+  "is_private": false,
+  "competition_sources": [
+    "titanic"
+  ],
+  "id": "marcmolina/titanic-a-pragmatic-approach",
+  "title": "Titanic: A Pragmatic Approach"
+}

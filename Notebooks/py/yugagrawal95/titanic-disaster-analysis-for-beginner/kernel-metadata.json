@@ -1,0 +1,23 @@
+{
+  "id": "yugagrawal95/titanic-disaster-analysis-for-beginner",
+  "competition_sources": [
+    "titanic"
+  ],
+  "dataset_sources": [],
+  "code_file": "titanic-disaster-analysis-for-beginner.ipynb",
+  "id_no": 1496791,
+  "is_private": false,
+  "language": "python",
+  "kernel_sources": [],
+  "title": "Titanic Disaster analysis for beginner",
+  "kernel_type": "notebook",
+  "keywords": [
+    "beginner",
+    "data cleaning",
+    "data visualization",
+    "classification",
+    "feature engineering"
+  ],
+  "enable_internet": false,
+  "enable_gpu": false
+}

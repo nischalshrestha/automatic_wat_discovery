@@ -1,0 +1,17 @@
+{
+  "keywords": [],
+  "id_no": 199127,
+  "competition_sources": [
+    "titanic"
+  ],
+  "language": "python",
+  "is_private": false,
+  "enable_gpu": false,
+  "id": "mix060514/notebookd342a7bcb2",
+  "kernel_type": "notebook",
+  "code_file": "notebookd342a7bcb2.ipynb",
+  "enable_internet": false,
+  "dataset_sources": [],
+  "kernel_sources": [],
+  "title": "Notebookd342a7bcb2"
+}

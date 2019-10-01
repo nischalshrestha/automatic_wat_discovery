@@ -1,0 +1,22 @@
+{
+  "dataset_sources": [],
+  "language": "python",
+  "id_no": 1041334,
+  "code_file": "titanic-how-i-scored-above-80-vis-feature-engg.ipynb",
+  "kernel_sources": [],
+  "competition_sources": [
+    "titanic"
+  ],
+  "enable_gpu": false,
+  "title": "Titanic-How I scored above .80(Vis + Feature Engg)",
+  "is_private": false,
+  "id": "tushar786/titanic-how-i-scored-above-80-vis-feature-engg",
+  "enable_internet": false,
+  "keywords": [
+    "beginner",
+    "data cleaning",
+    "data visualization",
+    "feature engineering"
+  ],
+  "kernel_type": "notebook"
+}

@@ -1,0 +1,17 @@
+{
+  "is_private": false,
+  "dataset_sources": [],
+  "title": "Titanic",
+  "id_no": 1914443,
+  "code_file": "titanic.ipynb",
+  "id": "kartikay5/titanic",
+  "enable_internet": false,
+  "enable_gpu": false,
+  "competition_sources": [
+    "titanic"
+  ],
+  "keywords": [],
+  "kernel_sources": [],
+  "language": "python",
+  "kernel_type": "notebook"
+}

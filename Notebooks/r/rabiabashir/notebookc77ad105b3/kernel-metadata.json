@@ -1,0 +1,17 @@
+{
+  "id_no": 270296,
+  "keywords": [],
+  "kernel_type": "notebook",
+  "kernel_sources": [],
+  "title": "Notebookc77ad105b3",
+  "id": "rabiabashir/notebookc77ad105b3",
+  "language": "python",
+  "code_file": "notebookc77ad105b3.ipynb",
+  "is_private": false,
+  "competition_sources": [
+    "titanic"
+  ],
+  "enable_internet": false,
+  "enable_gpu": false,
+  "dataset_sources": []
+}

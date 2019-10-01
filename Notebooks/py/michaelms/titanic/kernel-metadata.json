@@ -1,0 +1,17 @@
+{
+  "kernel_type": "notebook",
+  "id": "michaelms/titanic",
+  "is_private": false,
+  "enable_internet": false,
+  "dataset_sources": [],
+  "id_no": 32265,
+  "language": "python",
+  "enable_gpu": false,
+  "kernel_sources": [],
+  "competition_sources": [
+    "titanic"
+  ],
+  "code_file": "titanic.ipynb",
+  "keywords": [],
+  "title": "Titanic "
+}

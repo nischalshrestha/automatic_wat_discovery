@@ -1,0 +1,17 @@
+{
+  "competition_sources": [
+    "titanic"
+  ],
+  "id": "alucard1177/titanic-machine-learning",
+  "is_private": false,
+  "enable_internet": false,
+  "code_file": "titanic-machine-learning.ipynb",
+  "language": "python",
+  "keywords": [],
+  "kernel_type": "notebook",
+  "dataset_sources": [],
+  "title": "Titanic Machine Learning",
+  "enable_gpu": false,
+  "kernel_sources": [],
+  "id_no": 1842284
+}

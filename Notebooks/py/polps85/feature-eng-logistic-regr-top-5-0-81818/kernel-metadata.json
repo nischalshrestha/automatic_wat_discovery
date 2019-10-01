@@ -1,0 +1,17 @@
+{
+  "enable_gpu": false,
+  "language": "python",
+  "code_file": "feature-eng-logistic-regr-top-5-0-81818.ipynb",
+  "kernel_sources": [],
+  "is_private": false,
+  "id_no": 1408797,
+  "title": "Feature Eng. + Logistic Regr: Top 5% (0.81818)",
+  "dataset_sources": [],
+  "kernel_type": "notebook",
+  "id": "polps85/feature-eng-logistic-regr-top-5-0-81818",
+  "keywords": [],
+  "enable_internet": false,
+  "competition_sources": [
+    "titanic"
+  ]
+}

@@ -1,0 +1,17 @@
+{
+  "competition_sources": [
+    "titanic"
+  ],
+  "keywords": [],
+  "enable_gpu": false,
+  "enable_internet": false,
+  "language": "python",
+  "kernel_type": "notebook",
+  "kernel_sources": [],
+  "dataset_sources": [],
+  "code_file": "titanic-rev7.ipynb",
+  "title": "Titanic rev7",
+  "id": "exatasmente/titanic-rev7",
+  "is_private": false,
+  "id_no": 194827
+}

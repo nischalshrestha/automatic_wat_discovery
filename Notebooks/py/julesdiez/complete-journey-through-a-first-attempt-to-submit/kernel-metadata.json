@@ -1,0 +1,17 @@
+{
+  "keywords": [],
+  "enable_gpu": false,
+  "kernel_sources": [],
+  "id": "julesdiez/complete-journey-through-a-first-attempt-to-submit",
+  "kernel_type": "notebook",
+  "dataset_sources": [],
+  "id_no": 223179,
+  "language": "python",
+  "competition_sources": [
+    "titanic"
+  ],
+  "enable_internet": false,
+  "is_private": false,
+  "title": "Complete Journey Through A First Attempt To Submit",
+  "code_file": "complete-journey-through-a-first-attempt-to-submit.ipynb"
+}

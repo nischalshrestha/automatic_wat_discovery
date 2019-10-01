@@ -1,0 +1,17 @@
+{
+  "competition_sources": [
+    "titanic"
+  ],
+  "language": "python",
+  "enable_internet": false,
+  "dataset_sources": [],
+  "id": "luyujia/a-journey-through-titanic",
+  "id_no": 166999,
+  "keywords": [],
+  "is_private": false,
+  "kernel_type": "notebook",
+  "enable_gpu": false,
+  "kernel_sources": [],
+  "code_file": "a-journey-through-titanic.ipynb",
+  "title": "A Journey through Titanic"
+}

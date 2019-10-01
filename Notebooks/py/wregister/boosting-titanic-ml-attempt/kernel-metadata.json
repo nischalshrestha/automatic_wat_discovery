@@ -1,0 +1,17 @@
+{
+  "language": "python",
+  "kernel_sources": [],
+  "enable_internet": false,
+  "code_file": "boosting-titanic-ml-attempt.ipynb",
+  "dataset_sources": [],
+  "is_private": false,
+  "id_no": 1945720,
+  "title": "Boosting Titanic ML Attempt",
+  "enable_gpu": false,
+  "keywords": [],
+  "competition_sources": [
+    "titanic"
+  ],
+  "kernel_type": "notebook",
+  "id": "wregister/boosting-titanic-ml-attempt"
+}

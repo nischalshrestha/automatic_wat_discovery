@@ -1,0 +1,23 @@
+{
+  "language": "python",
+  "dataset_sources": [],
+  "id": "nikkisharma536/titanic-exploration-and-visualisation",
+  "kernel_sources": [],
+  "id_no": 1853145,
+  "enable_internet": false,
+  "is_private": false,
+  "kernel_type": "notebook",
+  "keywords": [
+    "beginner",
+    "eda",
+    "data cleaning",
+    "data visualization",
+    "starter code"
+  ],
+  "enable_gpu": false,
+  "code_file": "titanic-exploration-and-visualisation.ipynb",
+  "competition_sources": [
+    "titanic"
+  ],
+  "title": "Titanic - Exploration and Visualisation"
+}

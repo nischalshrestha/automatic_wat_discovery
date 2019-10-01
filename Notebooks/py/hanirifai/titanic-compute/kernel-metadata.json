@@ -1,0 +1,17 @@
+{
+  "id_no": 1905023,
+  "enable_internet": false,
+  "keywords": [],
+  "kernel_sources": [],
+  "code_file": "titanic-compute.ipynb",
+  "id": "hanirifai/titanic-compute",
+  "language": "python",
+  "competition_sources": [
+    "titanic"
+  ],
+  "is_private": false,
+  "kernel_type": "notebook",
+  "title": "Titanic Compute",
+  "enable_gpu": false,
+  "dataset_sources": []
+}

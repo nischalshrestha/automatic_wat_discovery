@@ -1,0 +1,17 @@
+{
+  "title": "Titanic & ML: A Story of Survival (Top 17%)",
+  "dataset_sources": [],
+  "keywords": [],
+  "enable_gpu": false,
+  "kernel_type": "notebook",
+  "is_private": false,
+  "language": "python",
+  "kernel_sources": [],
+  "id": "shamoool/titanic-ml-a-story-of-survival-top-17",
+  "code_file": "titanic-ml-a-story-of-survival-top-17.ipynb",
+  "enable_internet": false,
+  "competition_sources": [
+    "titanic"
+  ],
+  "id_no": 2018633
+}

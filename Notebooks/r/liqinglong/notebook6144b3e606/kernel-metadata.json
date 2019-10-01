@@ -1,0 +1,17 @@
+{
+  "competition_sources": [
+    "titanic"
+  ],
+  "title": "Notebook8baa7d9278",
+  "is_private": false,
+  "kernel_sources": [],
+  "dataset_sources": [],
+  "code_file": "notebook6144b3e606.irnb",
+  "id": "liqinglong/notebook6144b3e606",
+  "kernel_type": "notebook",
+  "enable_gpu": false,
+  "keywords": [],
+  "language": "r",
+  "id_no": 130777,
+  "enable_internet": false
+}

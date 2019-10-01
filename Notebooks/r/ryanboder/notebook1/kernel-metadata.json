@@ -1,0 +1,17 @@
+{
+  "code_file": "notebook1.irnb",
+  "id": "ryanboder/notebook1",
+  "language": "r",
+  "kernel_type": "notebook",
+  "title": "Notebooke6524ff2cb",
+  "is_private": false,
+  "id_no": 104100,
+  "competition_sources": [
+    "titanic"
+  ],
+  "enable_gpu": false,
+  "dataset_sources": [],
+  "kernel_sources": [],
+  "enable_internet": false,
+  "keywords": []
+}

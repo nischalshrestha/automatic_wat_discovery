@@ -1,0 +1,17 @@
+{
+  "id": "parasmani/data-driven-exploration-of-survival-on-titanic",
+  "enable_gpu": false,
+  "language": "python",
+  "kernel_sources": [],
+  "competition_sources": [
+    "titanic"
+  ],
+  "is_private": false,
+  "code_file": "data-driven-exploration-of-survival-on-titanic.ipynb",
+  "dataset_sources": [],
+  "keywords": [],
+  "kernel_type": "notebook",
+  "id_no": 175280,
+  "title": "Data Driven Exploration Of Survival On Titanic ",
+  "enable_internet": false
+}

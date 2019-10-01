@@ -1,0 +1,17 @@
+{
+  "is_private": false,
+  "enable_gpu": false,
+  "title": "S-Titanic",
+  "id": "sumitmudkondwar/s-titanic",
+  "enable_internet": false,
+  "competition_sources": [
+    "titanic"
+  ],
+  "keywords": [],
+  "code_file": "s-titanic.ipynb",
+  "kernel_type": "notebook",
+  "kernel_sources": [],
+  "language": "python",
+  "id_no": 2008156,
+  "dataset_sources": []
+}

@@ -1,0 +1,17 @@
+{
+  "language": "python",
+  "dataset_sources": [],
+  "id": "vaibhavlaturkar/notebooka14c3ecf75",
+  "is_private": false,
+  "enable_internet": false,
+  "title": "Notebooka14c3ecf75",
+  "keywords": [],
+  "kernel_type": "notebook",
+  "competition_sources": [
+    "titanic"
+  ],
+  "id_no": 252389,
+  "kernel_sources": [],
+  "enable_gpu": false,
+  "code_file": "notebooka14c3ecf75.ipynb"
+}

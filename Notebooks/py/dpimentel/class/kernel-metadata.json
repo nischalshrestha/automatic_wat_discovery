@@ -1,0 +1,17 @@
+{
+  "is_private": false,
+  "id": "dpimentel/class",
+  "competition_sources": [
+    "titanic"
+  ],
+  "kernel_sources": [],
+  "language": "python",
+  "code_file": "class.ipynb",
+  "enable_internet": false,
+  "dataset_sources": [],
+  "title": "Class",
+  "kernel_type": "notebook",
+  "enable_gpu": false,
+  "keywords": [],
+  "id_no": 1921603
+}

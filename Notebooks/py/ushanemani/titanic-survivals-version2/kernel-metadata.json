@@ -1,0 +1,17 @@
+{
+  "competition_sources": [
+    "titanic"
+  ],
+  "title": "Titanic-Survivals-Version2",
+  "id": "ushanemani/titanic-survivals-version2",
+  "code_file": "titanic-survivals-version2.ipynb",
+  "kernel_type": "notebook",
+  "enable_internet": false,
+  "keywords": [],
+  "is_private": false,
+  "id_no": 1644744,
+  "enable_gpu": false,
+  "language": "python",
+  "dataset_sources": [],
+  "kernel_sources": []
+}

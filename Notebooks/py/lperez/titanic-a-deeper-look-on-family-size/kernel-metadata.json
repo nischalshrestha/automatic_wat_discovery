@@ -1,0 +1,17 @@
+{
+  "title": "Titanic: a deeper look on family size",
+  "id_no": 266407,
+  "kernel_sources": [],
+  "language": "python",
+  "competition_sources": [
+    "titanic"
+  ],
+  "enable_internet": false,
+  "kernel_type": "notebook",
+  "keywords": [],
+  "dataset_sources": [],
+  "id": "lperez/titanic-a-deeper-look-on-family-size",
+  "enable_gpu": false,
+  "code_file": "titanic-a-deeper-look-on-family-size.ipynb",
+  "is_private": false
+}

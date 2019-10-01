@@ -1,0 +1,22 @@
+{
+  "enable_gpu": false,
+  "id": "angps95/basic-classification-methods-for-titanic",
+  "title": "Basic Classification methods for Titanic",
+  "enable_internet": false,
+  "competition_sources": [
+    "titanic"
+  ],
+  "code_file": "basic-classification-methods-for-titanic.ipynb",
+  "dataset_sources": [],
+  "kernel_type": "notebook",
+  "language": "python",
+  "kernel_sources": [],
+  "is_private": false,
+  "id_no": 506073,
+  "keywords": [
+    "beginner",
+    "data visualization",
+    "classification",
+    "feature engineering"
+  ]
+}

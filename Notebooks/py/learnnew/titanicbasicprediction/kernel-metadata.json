@@ -1,0 +1,17 @@
+{
+  "enable_gpu": false,
+  "competition_sources": [
+    "titanic"
+  ],
+  "kernel_sources": [],
+  "id_no": 1628084,
+  "id": "learnnew/titanicbasicprediction",
+  "code_file": "titanicbasicprediction.ipynb",
+  "kernel_type": "notebook",
+  "enable_internet": false,
+  "dataset_sources": [],
+  "title": "TitanicBasicPrediction",
+  "language": "python",
+  "is_private": false,
+  "keywords": []
+}

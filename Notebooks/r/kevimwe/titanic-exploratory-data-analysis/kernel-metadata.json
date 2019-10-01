@@ -1,0 +1,23 @@
+{
+  "is_private": false,
+  "language": "r",
+  "enable_internet": false,
+  "kernel_type": "notebook",
+  "title": "Titanic Exploratory Data Analysis",
+  "dataset_sources": [],
+  "competition_sources": [
+    "titanic"
+  ],
+  "id_no": 890082,
+  "kernel_sources": [],
+  "id": "kevimwe/titanic-exploratory-data-analysis",
+  "keywords": [
+    "beginner",
+    "eda",
+    "data cleaning",
+    "data visualization",
+    "feature engineering"
+  ],
+  "code_file": "titanic-exploratory-data-analysis.irnb",
+  "enable_gpu": false
+}

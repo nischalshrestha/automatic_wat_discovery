@@ -1,0 +1,17 @@
+{
+  "enable_internet": false,
+  "id": "simn128968/getting-started-titanic-data",
+  "kernel_sources": [],
+  "competition_sources": [
+    "titanic"
+  ],
+  "is_private": false,
+  "code_file": "getting-started-titanic-data.ipynb",
+  "enable_gpu": false,
+  "id_no": 1252985,
+  "keywords": [],
+  "language": "python",
+  "dataset_sources": [],
+  "title": "Getting Started - Titanic data",
+  "kernel_type": "notebook"
+}

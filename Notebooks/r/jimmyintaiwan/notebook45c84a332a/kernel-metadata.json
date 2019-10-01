@@ -1,0 +1,17 @@
+{
+  "enable_gpu": false,
+  "dataset_sources": [],
+  "competition_sources": [
+    "titanic"
+  ],
+  "kernel_type": "notebook",
+  "code_file": "notebook45c84a332a.ipynb",
+  "is_private": false,
+  "id": "jimmyintaiwan/notebook45c84a332a",
+  "title": "Notebook45c84a332a",
+  "id_no": 208064,
+  "keywords": [],
+  "kernel_sources": [],
+  "language": "python",
+  "enable_internet": false
+}

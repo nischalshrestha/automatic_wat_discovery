@@ -1,0 +1,390 @@
+{
+  "cells": [
+    {
+      "cell_type": "markdown",
+      "metadata": {
+        "_cell_guid": "3771a619-ca34-1544-70a8-5fb8b2647f3a"
+      },
+      "source": [
+        "I have great satisfaction in presenting this first data analysis.\n",
+        "I hope this analysis will be a source of inspiration to Kagglers beginners like me, and that everyone will have great enthusiasm to learn about this fascinating world of data science.\n"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "_cell_guid": "8e9ed124-65ea-0532-0531-41c9c69dcc8f"
+      },
+      "outputs": [],
+      "source": [
+        "#step 1 - Load de Packages \n",
+        "\n",
+        "library('ggplot2') # visualization\n",
+        "library('ggthemes') # visualization\n",
+        "library('scales') # visualization\n",
+        "library('dplyr') # data manipulation\n",
+        "library('VIM') # missing data\n",
+        "library('mice') # imputation\n",
+        "library('randomForest') # classification algorithm\n"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "_cell_guid": "2a2f00ff-f698-a3a4-6e1e-85493836beb1"
+      },
+      "outputs": [],
+      "source": [
+        "#Step 2 : Load the files\n",
+        "train <- read.csv('../input/train.csv', stringsAsFactors = F)\n",
+        "test <- read.csv('../input/test.csv', stringsAsFactors = F)\n"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "_cell_guid": "64ea998f-4853-4771-e7bd-a968912d1d48"
+      },
+      "outputs": [],
+      "source": [
+        "# Create \"full\" dataframe \n",
+        "full  <- bind_rows(train, test)\n",
+        "str(full)"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "_cell_guid": "2480f338-7b53-156d-f774-d144d925e762"
+      },
+      "outputs": [],
+      "source": [
+        "# Detailed Variables \n",
+        "\n",
+        "#PassengerId   => Ordinal Passanger Id number \n",
+        "#Survived      => Survived (0) and Died (1) \n",
+        "#Pclass        => Passenger's class\n",
+        "#Name          => Passenger's name \n",
+        "#Sex           => Passenger's gender \n",
+        "#Age           => Passenger's age \n",
+        "#Sibsp         => Number of siblings/spouses aboard\n",
+        "#Parch         => Number of parents/children aboard\n",
+        "#Ticket        => Passenger's ticket number \n",
+        "#Fare          => Fare paid \n",
+        "#Cabin         => Cabin\n",
+        "#Embarked      => Port of embarkation (Q)ueenstown, (S)outhampton and (C)hebourg\n"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "_cell_guid": "769936a0-4a77-451f-9c08-eb550ec1b1ba"
+      },
+      "outputs": [],
+      "source": [
+        "#Step 3: Missing Data (NA)\n",
+        "#To identify missing data from full dataset we will use a smart function with \"is.na\" test .\n",
+        "MData <- sapply(full, function(x) sum(is.na(x))); MData[MData>0]\n",
+        "MData"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "_cell_guid": "7836e848-a250-678e-a050-aaec49820ae0"
+      },
+      "outputs": [],
+      "source": [
+        "#Now let's show a interesting plot about missing data with VIM package. We will check that :\n",
+        "# => 30% of Survived information is NA \n",
+        "# => 20% of Age information is NA \n",
+        "# => 0,07% of Fare information is NA  \n",
+        "#Our task will be completing missing data of Age and Fare. Survived information will be part of predictive analysis.\n",
+        "\n",
+        "aggr_plot <- aggr(full, col=c('navyblue','red'), numbers=TRUE, sortVars=TRUE, labels=names(full), cex.axis=.7, gap=3, ylab=c(\"Histogram of missing data\",\"Pattern\"))\n"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "_cell_guid": "9d4659f4-9b0c-6e9e-395a-c315edd426b0"
+      },
+      "outputs": [],
+      "source": [
+        "#Let's input data to Age column with mice package .\n",
+        "#Create TMPfull dataset and complete mice imputation .\n",
+        "TMPfull <- mice(full,m=5,maxit=50,meth='pmm',seed=500)\n",
+        "TMPComplete <- complete(TMPfull)"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "_cell_guid": "eec08f28-11b7-a393-61c4-d366ff107911"
+      },
+      "outputs": [],
+      "source": [
+        "#Below we can see an example of the first 30 rows of Age column.  \n",
+        "#Attention to rows 06, 18, 20, 27, 29, 30. \n",
+        "full$Age[1:30]\n",
+        "TMPComplete$Age[1:30]\n",
+        "\n",
+        "#Update Age column with new Age result .  \n",
+        "full$Age <- TMPComplete$Age\n",
+        "\n",
+        "#Check missing data again. Notice that the column Age is not listed anymore .  \n",
+        "NData <- sapply(full, function(x) sum(is.na(x))); NData[NData>0]\n",
+        "                \n",
+        "# Missing Fare Information \n",
+        "FareM <- full[is.na(full$Fare),]\n",
+        "FareM\n",
+        "\n",
+        "#The passenger is #1044 . We will use sample median to generate a compatible Fare value .\n",
+        "full$Fare[1044] <- median(full[full$Pclass == '3' & full$Embarked == 'S', ]$Fare, na.rm = TRUE)\n",
+        "\n",
+        "                \n",
+        "                "
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "_cell_guid": "57787368-2c16-275b-620d-d53055bc3cee"
+      },
+      "outputs": [],
+      "source": [
+        "#Step 4: Titles and Surname\n",
+        "#Thought the surname we can identify some families : \n",
+        "full$Title <- gsub('(.*, )|(\\\\..*)', '', full$Name)\n",
+        "table(full$Sex, full$Title)\n",
+        "\n",
+        "#Titles with less frequency : \n",
+        "Rare <- c('Dona', 'Lady', 'the Countess','Capt', 'Col', 'Don', \n",
+        "                'Dr', 'Major', 'Rev', 'Sir', 'Jonkheer')\n",
+        "\n",
+        "#Organizing titles :\n",
+        "full$Title[full$Title == 'Mlle']        <- 'Miss' \n",
+        "full$Title[full$Title == 'Ms']          <- 'Miss'\n",
+        "full$Title[full$Title == 'Mme']         <- 'Mrs' \n",
+        "full$Title[full$Title %in% Rare]  <- 'Rare'\n",
+        "table(full$Sex, full$Title)\n",
+        "\n",
+        "#Show titles by Gender : \n",
+        "table(full$Sex, full$Title)\n",
+        "\n",
+        "#Grab surname from passenger's name . We will discovered 875 probable families .\n",
+        "full$Surname <- sapply(full$Name,  \n",
+        "                      function(x) strsplit(x, split = '[,.]')[[1]][1])\n",
+        "nr_surname <- nlevels(factor(full$Surname));\n",
+        "nr_surname\n",
+        "                       \n",
+        "# Step 5: Family Sizes \n",
+        "full$Fsize <- full$SibSp + full$Parch + 1\n",
+        "full$Family <- paste(full$Surname, full$Fsize, sep='_')\n",
+        "                       \n",
+        "#Improving graph presentation on Survived variable\n",
+        "full$Survived [full$Survived == '0'] <- 'Died'\n",
+        "full$Survived [full$Survived == '1'] <- 'Survived'\n",
+        "                       \n",
+        "ggplot(full[1:891,], aes(x = Fsize, fill = factor(Survived))) +\n",
+        "  geom_bar(stat='count', position='dodge') +\n",
+        "  scale_x_continuous(breaks=c(1:11)) +\n",
+        "  labs(x = 'Family Size') +\n",
+        "  theme_few()\n",
+        "                       \n",
+        "full$FsizeD[full$Fsize == 1] <- 'singleton'\n",
+        "full$FsizeD[full$Fsize < 5 & full$Fsize > 1] <- 'small'\n",
+        "full$FsizeD[full$Fsize > 4] <- 'large'\n",
+        "mosaicplot(table(full$FsizeD, full$Survived), main='Family Size by Survival', shade=TRUE)\n",
+        "                       \n",
+        "#Step 6 : Port of Embarked\n",
+        "#We will check if any passenger has incorrect information about port abord.\n",
+        "                       \n",
+        "full[full$Embarked != 'C' &  full$Embarked != 'Q' & full$Embarked != 'S',]\n",
+        "                       \n",
+        "#As we could check, passengers 62 and 830 don't have valid information about embarked .\n",
+        "#Let's identify the apropriate port based in the column Fare . \n",
+        "#According Megan Risdal https://www.kaggle.com/mrisdal/titanic/exploring-survival-on-the-titanic report,\n",
+        "#the median fare for a first class passenger departing from Charbourg (\u2018C\u2019) coincides \n",
+        "#nicely with the $80 paid by our embarkment-deficient passengers\n",
+        " \n",
+        "embark_fare <- full %>%\n",
+        "  filter(PassengerId != 62 & PassengerId != 830)\n",
+        "ggplot(embark_fare, aes(x = Embarked, y = Fare, fill = factor(Pclass))) +\n",
+        "  geom_boxplot() +\n",
+        "  geom_hline(aes(yintercept=80), \n",
+        "    colour='red', linetype='dashed', lwd=2) +\n",
+        "  scale_y_continuous(labels=dollar_format()) +\n",
+        "  theme_few()\n",
+        "full$Embarked[c(62, 830)] <- 'C'\n",
+        "                       \n",
+        "                       \n",
+        "                       \n",
+        "                       \n",
+        "                       \n",
+        "                       \n",
+        "                       \n",
+        "                       \n",
+        "\n",
+        "\n",
+        "\n",
+        "\n"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "_cell_guid": "3308cfb4-8bde-4fe3-395a-b145c4317392"
+      },
+      "outputs": [],
+      "source": [
+        "#Step 7 : Age and Gender   \n",
+        "ggplot(full[1:891,], aes(Age, fill = factor(Survived))) + \n",
+        "  geom_histogram() + \n",
+        "  # I include Sex since we know (a priori) it's a significant predictor\n",
+        "  facet_grid(.~Sex) + \n",
+        "  theme_few()\n"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "_cell_guid": "1536b2a3-c1e8-07e6-4660-28b7dbeb3acb"
+      },
+      "outputs": [],
+      "source": [
+        "#Step 8 : Class Survival\n",
+        "ggplot(full[1:891,], aes(x = Pclass, fill = factor(Survived), label = Pclass)) +\n",
+        "  geom_bar(stat='count', position='dodge') +\n",
+        "  scale_x_continuous(breaks=c(1:11)) +\n",
+        "  labs(x = 'Survival by Class') +\n",
+        "  theme_few()\n",
+        "\n"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "_cell_guid": "439411f2-3fc5-5b98-df16-cf04efb6790b"
+      },
+      "outputs": [],
+      "source": [
+        "#Step 9 : train and test recovery\n",
+        "md.pattern(full)\n",
+        "\n",
+        "train <- full[1:891,]\n",
+        "test <- full[892:1309,]\n",
+        "\n",
+        "# Back Survived to 0 and 1 \n",
+        "\n",
+        "train$Survived [train$Survived == 'Died'] <- 0\n",
+        "train$Survived [train$Survived == 'Survived'] <- 1\n",
+        "\n",
+        "# Create factors to prediction\n",
+        "\n",
+        "factor_vars <- c('PassengerId','Pclass','Sex','Embarked','Age','SibSp','Parch','Fare',\n",
+        "                 'Title','Surname','Family','FsizeD')\n",
+        "\n",
+        "full[factor_vars] <- lapply(full[factor_vars], function(x) as.factor(x))\n",
+        "\n",
+        "set.seed(754)\n",
+        "    \n",
+        "    \n",
+        "\n"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "_cell_guid": "57a1e787-fb34-d7dc-74cc-0a86c17b5d9c"
+      },
+      "outputs": [],
+      "source": [
+        "#Step 10 : Random Forest\n",
+        "\n",
+        "rf_model <- randomForest(factor(Survived) ~ Pclass + Age + SibSp + Parch + \n",
+        "                                           Fare + Fsize , data = train,\n",
+        "                                           importance=TRUE)\n",
+        "\n",
+        "# Show model error\n",
+        "\n",
+        "plot(rf_model, ylim=c(0,0.36))\n",
+        "legend('topright', colnames(rf_model$err.rate), col=1:3, fill=1:3)\n",
+        "\n"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "_cell_guid": "5ac3e27d-f2fc-d0ea-b5fc-fbb41ec20251"
+      },
+      "outputs": [],
+      "source": [
+        "#Step 11: Predict (test)\n",
+        "prediction <- predict(rf_model, test)\n",
+        "\n",
+        "# Save the solution to a dataframe with two columns: PassengerId and Survived (prediction)\n",
+        "\n",
+        "solution <- data.frame(PassengerID = test$PassengerId, Survived = prediction)\n",
+        "\n",
+        "# Write the solution to file\n",
+        "\n",
+        "write.csv(solution, file = 'rf_mod_Solution.csv', row.names = F)\n",
+        "\n",
+        "\n",
+        "\n",
+        "\n"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "_cell_guid": "2d14e04d-7470-dc89-74e3-49ea7341c26a"
+      },
+      "outputs": [],
+      "source": [
+        "#Acknowledgements\n",
+        "\n",
+        "#Thanks to Kaggle by the opportunity and learning [https://www.kaggle.com/]\n",
+        "#Thanks to Megan Risdal [https://www.kaggle.com/mrisdal/titanic/exploring-survival-on-the-titanic] \n",
+        "#by the inspiration and code. \n",
+        "\n",
+        "\n"
+      ]
+    }
+  ],
+  "metadata": {
+    "_change_revision": 0,
+    "_is_fork": false,
+    "kernelspec": {
+      "display_name": "R",
+      "language": "R",
+      "name": "ir"
+    },
+    "language_info": {
+      "codemirror_mode": "r",
+      "file_extension": ".r",
+      "mimetype": "text/x-r-source",
+      "name": "R",
+      "pygments_lexer": "r",
+      "version": "3.3.2"
+    }
+  },
+  "nbformat": 4,
+  "nbformat_minor": 0
+}

@@ -1,0 +1,17 @@
+{
+  "language": "python",
+  "enable_internet": false,
+  "is_private": false,
+  "id": "hudanivy/titanic-ninechapter",
+  "code_file": "titanic-ninechapter.ipynb",
+  "id_no": 1522193,
+  "kernel_sources": [],
+  "enable_gpu": false,
+  "keywords": [],
+  "kernel_type": "notebook",
+  "dataset_sources": [],
+  "title": "Titanic Ninechapter",
+  "competition_sources": [
+    "titanic"
+  ]
+}

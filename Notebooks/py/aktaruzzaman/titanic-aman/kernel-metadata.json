@@ -1,0 +1,17 @@
+{
+  "dataset_sources": [],
+  "keywords": [],
+  "is_private": false,
+  "language": "python",
+  "title": "Titanic_Aman",
+  "code_file": "titanic-aman.ipynb",
+  "kernel_sources": [],
+  "enable_internet": false,
+  "id": "aktaruzzaman/titanic-aman",
+  "enable_gpu": false,
+  "id_no": 1952458,
+  "competition_sources": [
+    "titanic"
+  ],
+  "kernel_type": "notebook"
+}

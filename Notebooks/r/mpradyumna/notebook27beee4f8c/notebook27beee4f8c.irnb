@@ -1,0 +1,808 @@
+{
+  "cells": [
+    {
+      "cell_type": "markdown",
+      "metadata": {
+        "_cell_guid": "e0ae0a21-bd12-5822-40a8-25de07904a54"
+      },
+      "source": [
+        "Feature Engineering And Random Forest"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "_cell_guid": "864d2a16-23c7-bb4f-bdea-0874e071a025"
+      },
+      "outputs": [],
+      "source": [
+        "#Libraries that are used for model and analysis\n",
+        "library(pROC) # For ROC Curve\n",
+        "library(plyr)\n",
+        "library(dplyr)\n",
+        "library(rpart)  # Decision Tree for Imputing Age\n",
+        "library(randomForest)\n",
+        "library(e1071)\n",
+        "library(ggplot2) # For ploting"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "_cell_guid": "73b17c21-83c9-7f89-789a-563da23f362a"
+      },
+      "outputs": [],
+      "source": [
+        "train <- read.csv(\"../input/train.csv\", stringsAsFactors=FALSE)\n",
+        "test <- read.csv(\"../input/test.csv\", stringsAsFactors=FALSE)\n",
+        "\n",
+        "# lets understand the data\n",
+        "str(train)"
+      ]
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {
+        "_cell_guid": "98a1f6a7-8f96-7310-d5db-bfb847e42bd5"
+      },
+      "source": [
+        "Let\u2019s run this in order to get the number of passengers that survived and then number of passengers that died."
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "_cell_guid": "cb676bf6-196d-a1fb-d4fc-150cd6ff2884"
+      },
+      "outputs": [],
+      "source": [
+        "table(train$Survived)"
+      ]
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {
+        "_cell_guid": "88aabf14-8eba-83ba-5137-b643e306717c"
+      },
+      "source": [
+        "We can see that 342 passengers survived and 549 died. If instead you want to get the proportion, we can use the function prop.table"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "_cell_guid": "8c07554a-c60c-f2c5-63bb-51af3167861f"
+      },
+      "outputs": [],
+      "source": [
+        "prop.table(table(train$Survived))"
+      ]
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {
+        "_cell_guid": "fac80bcf-49f5-a52b-880c-b5653a84ffb0"
+      },
+      "source": [
+        "We infer that only 38% passengers survived."
+      ]
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {
+        "_cell_guid": "43c88563-66b0-e817-3f62-8544fff50714"
+      },
+      "source": [
+        "Lets check for missing data and blanks that we have to work on"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "_cell_guid": "21b06449-6dc0-f30e-4c7f-16e2ddf854e3"
+      },
+      "outputs": [],
+      "source": [
+        "# Check for missing data\n",
+        "check.missing <- function(x) return(length(which(is.na(x))))\n",
+        "data.frame(sapply(train,check.missing))\n",
+        "data.frame(sapply(test,check.missing))\n",
+        "\n",
+        " # Check blanks\n",
+        "check.blank <- function(x) return(length(which(x == \"\")))\n",
+        "data.frame(sapply(train, check.blank))\n",
+        "data.frame(sapply(test, check.blank)) "
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "_cell_guid": "451413d9-dd2f-8853-abc1-2b52476af473"
+      },
+      "outputs": [],
+      "source": [
+        "# Lets add Survived Column to the test data set\n",
+        "test$Survived <- NA\n",
+        "\n",
+        "# Combine the test and train\n",
+        "combi <- rbind(train, test)"
+      ]
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {
+        "_cell_guid": "9967dc51-ade6-fd18-3453-799276f8062d"
+      },
+      "source": [
+        "**Passenger Class**"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "_cell_guid": "28f1c44d-f3c9-6f76-60d6-cd82d796fc36"
+      },
+      "outputs": [],
+      "source": [
+        "train$Pclass <- as.factor(train$Pclass)\n",
+        "d <- data.frame(\n",
+        "    class = factor(c('1st class', '2nd class', '3rd class')),\n",
+        "    passengers = c(count(train[train$Pclass == 1,])$n,\n",
+        "          count(train[train$Pclass == 2,])$n,\n",
+        "          count(train[train$Pclass == 3,])$n)\n",
+        ")\n",
+        "d\n",
+        "g <- ggplot(d, aes(x=class, y=passengers))\n",
+        "g <- g + geom_bar(stat='identity', aes(fill=class))\n",
+        "g <- g + labs(title=\"Passenger class population\", x='', y='')\n",
+        "g"
+      ]
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {
+        "_cell_guid": "7ec10233-1650-3c22-da3e-437f522dae0e"
+      },
+      "source": [
+        "Its very clear majority of then were 3rd class passengers. Let see the against Survival"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "_cell_guid": "610693ac-a327-add3-e42f-1d4ee7c7b91e"
+      },
+      "outputs": [],
+      "source": [
+        "train$Survived <- as.factor(train$Survived)\n",
+        "d <- train %>% select(Survived, Pclass)\n",
+        "g <- ggplot(data = d, aes(x=Pclass, fill=Survived))\n",
+        "g <- g + geom_bar() \n",
+        "g <- g + labs(title=\"Survivors by passenger class\", x=\"Passenger class\", y=\"Number of passengers\") \n",
+        "g <- g + scale_fill_discrete(name=\"Survived\", labels=c(\"no\", \"yes\"))\n",
+        "g"
+      ]
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {
+        "_cell_guid": "b3411a35-7073-5a74-2439-25db026a3bf6"
+      },
+      "source": [
+        "Clearly we can see that First Class passengers survived as compared to 3rd class."
+      ]
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {
+        "_cell_guid": "e3144757-c839-4e14-02b2-8daa8b607dd6"
+      },
+      "source": [
+        "Lets analyze Passenger Names"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "_cell_guid": "aee1ebd6-b41a-e196-efad-4d8e5454d822"
+      },
+      "outputs": [],
+      "source": [
+        "train <- tbl_df(train)\n",
+        "train$Name[c(1:5)]"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "_cell_guid": "71791e8b-0526-8605-a6f4-381985780b39"
+      },
+      "outputs": [],
+      "source": [
+        "d <- train %>% mutate(AdditionalName = grepl('\\\\(', Name)) %>% select(Survived, AdditionalName) \n",
+        "g <- ggplot(data = d, aes(x=AdditionalName, fill=Survived))\n",
+        "g <- g + geom_bar() \n",
+        "g <- g + labs(title=\"Survivors with brackets in their names\", x=\"Brackets in name\", y=\"Number of passengers\") \n",
+        "g <- g + scale_fill_discrete(name=\"Survived\", labels=c(\"no\", \"yes\"))\n",
+        "g"
+      ]
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {
+        "_cell_guid": "d391c106-53c4-fa1a-8e95-fb169c83bf74"
+      },
+      "source": [
+        "Passenger Names with brackets seem to have survived as compared to others. So we consider it to be a \n",
+        "feature to include for prediction."
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "_cell_guid": "8d52129e-adf4-af19-98b6-5ce9eae99bab"
+      },
+      "outputs": [],
+      "source": [
+        "combi <- mutate(combi,AdditionalName = grepl('\\\\(', Name))\n",
+        "combi$AdditionalName <- as.factor(combi$AdditionalName)\n",
+        "glimpse(combi)"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "_cell_guid": "b7757469-6cac-1a51-3954-00192684c226"
+      },
+      "outputs": [],
+      "source": [
+        "d <- train %>% mutate(QuotedName = grepl('\\\\\"', Name)) %>% select(Survived, QuotedName) \n",
+        "g <- ggplot(data = d, aes(x=QuotedName, fill=Survived))\n",
+        "g <- g + geom_bar() \n",
+        "g <- g + labs(title=\"Survivors with quotes in their names\", x=\"Quotes in name\", y=\"Number of passengers\") \n",
+        "g <- g + scale_fill_discrete(name=\"Survived\", labels=c(\"no\", \"yes\"))\n",
+        "g"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "_cell_guid": "85985a0e-7e24-69c1-1391-a848b7b8efc8"
+      },
+      "outputs": [],
+      "source": [
+        "combi <- mutate(combi,QuotedName = grepl('\\\\(', Name))\n",
+        "combi$QuotedName <- as.factor(combi$QuotedName)\n",
+        "glimpse(combi)"
+      ]
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {
+        "_cell_guid": "64f2b122-aa43-4275-3cc9-f36d17ad1367"
+      },
+      "source": [
+        "Passenger having quotes in their name seems to have survived. This would be a nice feature to consider"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "_cell_guid": "2d88fdc9-a8b4-1385-c6f4-a5b5251d08de"
+      },
+      "outputs": [],
+      "source": [
+        "#Convert names column to characters\n",
+        "train$Name <- as.character(train$Name)\n",
+        "\n",
+        "train$Title <- sapply(train$Name, FUN=function(x) {strsplit(x, split='[,.]')[[1]][2]})\n",
+        "\n",
+        "# Title has space so lets remove it\n",
+        "train$Title <- sub(' ', '', train$Title)\n",
+        "\n",
+        "#Lets understand the title\n",
+        "table(train$Title)"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "_cell_guid": "618f7410-66c2-c361-709d-3958202c9345"
+      },
+      "outputs": [],
+      "source": [
+        "train$Title[train$Title %in% c('Capt', 'Don', 'Major', 'Sir')] <- 'Sir'\n",
+        "train$Title[train$Title %in% c('Dona', 'Lady', 'the Countess', 'Jonkheer')] <- 'Lady'\n",
+        "train$Title[train$Title %in% c('Mlle', 'Ms')] = 'Miss'\n",
+        "train$Title[train$Title == 'Mme'] = 'Mrs'\n",
+        "train$Title <- as.factor(train$Title)"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "_cell_guid": "4f76b531-31a6-3c1c-b6df-879ba3349fc7"
+      },
+      "outputs": [],
+      "source": [
+        "d <- train %>%\n",
+        "    select(Survived, Title) %>%\n",
+        "    group_by(Title, Survived) %>% \n",
+        "    summarise(n = n()) %>% \n",
+        "    mutate(rate = n/sum(n) * 100) %>% \n",
+        "    filter(Survived == 1)\n",
+        "g <- ggplot(data = d, aes(x=Title, y=rate))\n",
+        "g <- g + geom_bar(stat='identity') \n",
+        "g <- g + labs(title=\"Survival rate by title\", x=\"Title\", y=\"Survival rate in %\") \n",
+        "g"
+      ]
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {
+        "_cell_guid": "7cfc7082-00c2-a147-db41-7f79f2dae5d1"
+      },
+      "source": [
+        "Chances of Passenger with Title Mr.  is very low. This is a nice indicator to capture."
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "_cell_guid": "96ed6d51-9c3d-0158-250f-b4cfc986c231"
+      },
+      "outputs": [],
+      "source": [
+        "combi$Name <- as.character(combi$Name)\n",
+        "combi$Title <- sapply(combi$Name, FUN=function(x) {strsplit(x, split='[,.]')[[1]][2]})\n",
+        "# Title has space so lets remove it\n",
+        "combi$Title <- sub(' ', '', combi$Title)\n",
+        "combi$Title[combi$Title %in% c('Capt', 'Don', 'Major', 'Sir','Col','Dr')] <- 'Sir'\n",
+        "combi$Title[combi$Title %in% c('Dona', 'Lady', 'the Countess', 'Jonkheer')] <- 'Lady'\n",
+        "combi$Title[combi$Title %in% c('Mlle', 'Ms')] = 'Miss'\n",
+        "combi$Title[combi$Title == 'Mme'] = 'Mrs'\n",
+        "combi$Title <- as.factor(combi$Title)\n",
+        "\n",
+        "table(combi$Title)"
+      ]
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {
+        "_cell_guid": "4a4711e9-15c8-53e3-be94-e4f1cbb163f9"
+      },
+      "source": [
+        "Cabin information may be useful.  Extract first letter from Cabin, convert to integer type.  "
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "_cell_guid": "f88f8587-f320-5998-cef0-621ccc3991ce"
+      },
+      "outputs": [],
+      "source": [
+        "(train %>% filter(Cabin == \"\") %>% count)$n"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "_cell_guid": "433d7bdf-af0d-6fb1-5331-71af2e6f5cbe"
+      },
+      "outputs": [],
+      "source": [
+        "d <- train %>%\n",
+        "    filter(Cabin != \"\") %>%\n",
+        "    mutate(Cabin = gsub(\"^(\\\\w).*$\", \"\\\\1\", Cabin)) %>%\n",
+        "    select(Cabin, Survived)\n",
+        "\n",
+        "g <- ggplot(data = d, aes(x=Cabin, fill=Survived))\n",
+        "g <- g + geom_bar(width=0.5) \n",
+        "g <- g + labs(title=\"Survivors by Cabin\", x=\"Cabin floor\", y=\"Number of passengers\") \n",
+        "g <- g + scale_fill_discrete(name=\"Survived\", labels=c(\"no\", \"yes\"))\n",
+        "g"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "_cell_guid": "92c131d5-51da-1ae7-1a60-7e93ba030ea5"
+      },
+      "outputs": [],
+      "source": [
+        "library(tidyr)\n",
+        "dd <- train %>% \n",
+        "    group_by(Cabin, Survived) %>% \n",
+        "    summarise(n = n()) %>%\n",
+        "    mutate(survivalrate = n / sum(n)) %>%\n",
+        "    select(Survived, Cabin, survivalrate) %>%\n",
+        "    spread(Survived, survivalrate)\n",
+        "colnames(dd) <-  c('floor', 'died', 'survived')\n",
+        "dd"
+      ]
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {
+        "_cell_guid": "f30421b4-c7b0-8dc7-277a-7d57a269aa88"
+      },
+      "source": [
+        "If the letter indicates the floor or deck, maybe the number indicates the position of the cabin."
+      ]
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {
+        "_cell_guid": "3cc51f54-c693-6d02-1137-9b74b9c5e86a"
+      },
+      "source": [
+        "Number of Siblings/Spouses Aboard"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "_cell_guid": "99071145-7e5b-074e-a3b6-bc3cb78b85df"
+      },
+      "outputs": [],
+      "source": [
+        "d <- train %>% select(Survived, SibSp)\n",
+        "g <- ggplot(data = d, aes(x=SibSp, fill=Survived))\n",
+        "g <- g + geom_bar() \n",
+        "g <- g + labs(title=\"Survivors with siblings\", x=\"Number of siblings\", y=\"Number of passengers\") \n",
+        "g <- g + scale_fill_discrete(name=\"Survived\", labels=c(\"no\", \"yes\"))\n",
+        "g"
+      ]
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {
+        "_cell_guid": "7815bfa9-2aed-a096-9589-775361eadfd9"
+      },
+      "source": [
+        " more siblings on board, the less likely the passenger will survive."
+      ]
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {
+        "_cell_guid": "4764d4b4-63a8-ce91-a442-49e9cd77c523"
+      },
+      "source": [
+        "Number of Parents/Children Aboard"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "_cell_guid": "1bf9d269-291c-fd91-7639-4f99f3122db2"
+      },
+      "outputs": [],
+      "source": [
+        "d <- train %>% select(Survived, Parch)\n",
+        "g <- ggplot(data = d, aes(x=Parch, fill=Survived))\n",
+        "g <- g + geom_bar() \n",
+        "g <- g + labs(title=\"Survivors with Parents/Children\", x=\"Number of relation\", y=\"Number of passengers\") \n",
+        "g <- g + scale_fill_discrete(name=\"Survived\", labels=c(\"no\", \"yes\"))\n",
+        "g"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "_cell_guid": "7fcbafbc-50b9-a120-eb1a-94c05a11e8cb"
+      },
+      "outputs": [],
+      "source": [
+        "d <- train %>% \n",
+        "    select(Sex, Survived, Parch) %>% \n",
+        "    filter(Sex == 'male') %>% \n",
+        "    select(Survived, Parch) %>% \n",
+        "    group_by(Parch, Survived) %>% \n",
+        "    summarise(n=n()) %>% \n",
+        "    mutate(rate=n/sum(n) * 100)\n",
+        "d"
+      ]
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {
+        "_cell_guid": "118f512e-c49b-b867-bb0d-937cab365884"
+      },
+      "source": [
+        "Males with more than 2 relationships on board die for sure. Lets capture this"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "_cell_guid": "146e4ff7-30ef-9b97-7aee-aff5d041c2d3"
+      },
+      "outputs": [],
+      "source": [
+        "d <- combi %>% \n",
+        "    select(Sex, Survived, Parch) %>% \n",
+        "    filter(Sex == 'male') %>% \n",
+        "    select(Survived, Parch) %>% \n",
+        "    group_by(Parch, Survived) %>% \n",
+        "    summarise(n=n()) %>% \n",
+        "    mutate(rate=n/sum(n) * 100)\n",
+        "\n",
+        "combi$MenWithMoreRel <- 0\n",
+        "combi$MenWithMoreRel[combi$Parch>2 & combi$Sex=='Male'] <- 1\n",
+        "glimpse(combi)"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "_cell_guid": "b3eca61b-1c68-009f-d845-2f615de20d12"
+      },
+      "outputs": [],
+      "source": [
+        "# Family size column\n",
+        "combi$FamilySize <- 0 \n",
+        "combi$FamilySize <- combi$SibSp + combi$Parch + 1"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "_cell_guid": "1eb6e17a-8a63-3bd7-27b2-8162d5776b9d"
+      },
+      "outputs": [],
+      "source": [
+        "d <- train %>% select(Age, Survived) %>% filter(!is.na(Age))\n",
+        "g <- ggplot(data = d, aes(x=Age, fill=Survived))\n",
+        "g <- g + geom_bar() \n",
+        "g <- g + labs(title=\"Age of Survivors\", x=\"Age\", y=\"Number of passengers\") \n",
+        "g <- g + scale_fill_discrete(name=\"Survived\", labels=c(\"no\", \"yes\"))\n",
+        "g"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "_cell_guid": "25728d34-cd38-6341-c550-25972ad4376d"
+      },
+      "outputs": [],
+      "source": [
+        "(train %>% filter(is.na(Age)) %>% count)$n"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "_cell_guid": "cb320f83-287a-d329-e81f-b3ca7898313c"
+      },
+      "outputs": [],
+      "source": [
+        "glimpse(combi)\n",
+        "check.missing <- function(x) return(length(which(is.na(x))))\n",
+        "data.frame(sapply(combi,check.missing))"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "_cell_guid": "b815caf9-bae8-b50a-72a2-c6319dfb4056"
+      },
+      "outputs": [],
+      "source": [
+        "combi$Fare[1044] <- median(combi[combi$Pclass == '3' & combi$Embarked == 'S', ]$Fare, na.rm = TRUE)\n",
+        "combi$Embarked <- as.factor(combi$Embarked)\n",
+        "combi$FamilySize <- as.factor(combi$FamilySize)\n",
+        "\n",
+        "table(combi[is.na(combi$Age) | combi$Age == 0,\"Pclass\"]) # Lots of class 3 missing compared to the rest\n",
+        "boxplot(Age ~ Pclass, data=combi, main=\"Age vs Class\", xlab=\"Class\", ylab=\"Fare\") # Looks like ages are are somewhat indicative of class so use this to impute\n"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "_cell_guid": "88785202-86a0-b0e5-6dd9-7ba25be8662d"
+      },
+      "outputs": [],
+      "source": [
+        "library(mice)\n",
+        "glimpse(train)\n",
+        "mice_mod <- mice(train[, !names(train) %in% c('PassengerId','Name',\n",
+        "                                              'AdditionalName','QuotedName','MenWithMoreRel',\n",
+        "                                              'Ticket','Cabin','Survived')], method='rf') \n",
+        "\n",
+        "# Save the complete output \n",
+        "mice_output <- complete(mice_mod)\n",
+        "train$Age2 <- mice_output$Age\n",
+        "train$Age2 <- as.integer(train$Age2)"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "_cell_guid": "6c1e6930-2eac-f68b-1ae3-e1dfab375093"
+      },
+      "outputs": [],
+      "source": [
+        "d <- train %>% select (PassengerId,Parch,Name) %>% filter(Parch>2) %>% \n",
+        "mutate('familyname' = gsub(\"^([^,]*),.*\", \"\\\\1\", Name, perl=TRUE))\n",
+        "train <- left_join(train,d)\n",
+        "\n",
+        "train$Mother <- 'Not Mother'\n",
+        "train$Mother[train$Sex == 'female' & train$Parch > 0 & train$Age > 18 & train$Title != 'Miss'] <- 'Mother'\n",
+        "train$Mother <- as.factor(train$Mother)\n",
+        "\n",
+        " train %>% \n",
+        " select(Fare, FamilySize) %>% \n",
+        " group_by(FamilySize) %>%\n",
+        " summarise(n=sum(Fare)) %>% \n",
+        " mutate(rate=n/FamilySize)\n"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "_cell_guid": "a41139d3-1454-7c71-2ac4-5a3ec178e753"
+      },
+      "outputs": [],
+      "source": [
+        "combi$Sex <- as.factor(combi$Sex)\n",
+        "\n",
+        "#train <- combi[1:891,]\n",
+        "k = 5 #Folds\n",
+        "train$Title <- as.factor(train$Title)\n",
+        "\n",
+        "train$Cabin2 <-substr(train$Cabin, 0, 1)\n",
+        "train$Cabin2 <- as.factor(train$Cabin2)\n",
+        "train$id <- sample(1:k, nrow(train), replace = TRUE)\n",
+        "list <- 1:k\n",
+        "\n",
+        "\n",
+        "\n",
+        "# prediction and testset data frames that we add to with each iteration over\n",
+        "# the folds\n",
+        "\n",
+        "prediction <- data.frame()\n",
+        "testsetCopy <- data.frame()\n",
+        "\n",
+        "#Creating a progress bar to know the status of CV\n",
+        "progress.bar <- create_progress_bar(\"text\")\n",
+        "progress.bar$init(k)\n",
+        "\n",
+        "for (i in 1:k){\n",
+        "  # remove rows with id i from dataframe to create training set\n",
+        "  # select rows with id i to create test set\n",
+        "  trainingset <- subset(train, id %in% list[-i])\n",
+        "  testset <- subset(train, id %in% c(i))\n",
+        "  # run a random forest model\n",
+        "  mymodel <- randomForest(\n",
+        "      as.factor(Survived) ~ Pclass  + Age2 + Fare + \n",
+        "                                   Embarked + Title + FamilySize + Sex + Cabin2 + Mother ,\n",
+        "                                   data=trainingset,\n",
+        "                                   importance=T,\n",
+        "                                   ntrees=100)\n",
+        "                                                     \n",
+        "  # remove response column 1, Sepal.Length\n",
+        "  temp <- as.data.frame(predict(mymodel, testset[,-1]))\n",
+        "  # append this iteration's predictions to the end of the prediction data frame\n",
+        "  prediction <- rbind(prediction, temp)\n",
+        "  \n",
+        "  # append this iteration's test set to the test set copy data frame\n",
+        "  # keep only the Sepal Length Column\n",
+        "  testsetCopy <- rbind(testsetCopy, as.data.frame(testset[c('Survived')]))\n",
+        "  \n",
+        "  progress.bar$step()\n",
+        "}\n",
+        "\n",
+        "# add predictions and actual Sepal Length values\n",
+        "result <- cbind(prediction, testsetCopy)\n",
+        "names(result) <- c(\"Predicted\", \"Actual\")\n",
+        "table(result)\n",
+        "\n",
+        "#confusionMatrix(result$Survived, result$Predicted)\n",
+        "# As an example use Mean Absolute Error as Evalution \n",
+        "#summary(result$Difference)"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "_cell_guid": "f5fa10cc-cdc3-cbcb-d79a-1690b4a55eab"
+      },
+      "outputs": [],
+      "source": [
+        "\n",
+        "combi$Sex <- as.factor(combi$Sex)\n",
+        "train <- combi[1:891,]\n",
+        "test <- combi[892:1309,]"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "_cell_guid": "54ad14ce-75ff-0242-51d9-e7967caafe5a"
+      },
+      "outputs": [],
+      "source": [
+        "\n",
+        "glimpse(train)\n",
+        "set.seed(415)\n",
+        "randomForest_model <- randomForest(as.factor(Survived) ~ Pclass + AdditionalName + \n",
+        "                                   MenWithMoreRel + QuotedName + Age + SibSp + Parch + Fare + \n",
+        "                                   Embarked + Title + FamilySize + Sex,\n",
+        "                                   data=train,\n",
+        "                                   importance=T,\n",
+        "                                   ntrees=250)\n",
+        "varImpPlot(randomForest_model)\n",
+        "getTree(randomForest_model, 1)"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "_cell_guid": "99388cf1-8b3b-5172-d3a7-f4ec4baeba7c"
+      },
+      "outputs": [],
+      "source": [
+        "predictedY <- predict(randomForest_model, test,type=\"class\")\n",
+        "submit <- data.frame(PassengerId = test$PassengerId, Survived = predictedY)\n",
+        "submit\n",
+        "write.csv(submit, file = \"svmTree.csv\", row.names = FALSE)"
+      ]
+    }
+  ],
+  "metadata": {
+    "_change_revision": 0,
+    "_is_fork": false,
+    "kernelspec": {
+      "display_name": "R",
+      "language": "R",
+      "name": "ir"
+    },
+    "language_info": {
+      "codemirror_mode": "r",
+      "file_extension": ".r",
+      "mimetype": "text/x-r-source",
+      "name": "R",
+      "pygments_lexer": "r",
+      "version": "3.3.1"
+    }
+  },
+  "nbformat": 4,
+  "nbformat_minor": 0
+}

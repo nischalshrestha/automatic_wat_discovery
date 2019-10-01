@@ -1,0 +1,17 @@
+{
+  "title": "Notebookc0c9ee7acd",
+  "language": "python",
+  "enable_gpu": false,
+  "enable_internet": false,
+  "competition_sources": [
+    "titanic"
+  ],
+  "code_file": "notebookc0c9ee7acd.ipynb",
+  "id_no": 219236,
+  "id": "satadience/notebookc0c9ee7acd",
+  "kernel_sources": [],
+  "is_private": false,
+  "kernel_type": "notebook",
+  "dataset_sources": [],
+  "keywords": []
+}

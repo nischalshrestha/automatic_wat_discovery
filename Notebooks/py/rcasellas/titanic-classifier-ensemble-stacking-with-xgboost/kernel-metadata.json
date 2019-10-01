@@ -1,0 +1,17 @@
+{
+  "is_private": false,
+  "title": "Titanic Classifier Ensemble Stacking with XGBoost",
+  "enable_internet": false,
+  "id": "rcasellas/titanic-classifier-ensemble-stacking-with-xgboost",
+  "id_no": 230440,
+  "dataset_sources": [],
+  "competition_sources": [
+    "titanic"
+  ],
+  "keywords": [],
+  "kernel_sources": [],
+  "kernel_type": "notebook",
+  "code_file": "titanic-classifier-ensemble-stacking-with-xgboost.ipynb",
+  "language": "python",
+  "enable_gpu": false
+}

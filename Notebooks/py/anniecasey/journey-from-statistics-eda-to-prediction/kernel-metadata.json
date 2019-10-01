@@ -1,0 +1,17 @@
+{
+  "id_no": 544747,
+  "kernel_type": "notebook",
+  "is_private": false,
+  "enable_internet": false,
+  "kernel_sources": [],
+  "keywords": [],
+  "competition_sources": [
+    "titanic"
+  ],
+  "dataset_sources": [],
+  "code_file": "journey-from-statistics-eda-to-prediction.ipynb",
+  "language": "python",
+  "id": "anniecasey/journey-from-statistics-eda-to-prediction",
+  "title": "Journey from Statistics, EDA, to Prediction",
+  "enable_gpu": false
+}

@@ -1,0 +1,17 @@
+{
+  "id": "ken8aisa/titanic",
+  "kernel_type": "notebook",
+  "keywords": [],
+  "competition_sources": [
+    "titanic"
+  ],
+  "title": "titanic",
+  "id_no": 2160457,
+  "is_private": false,
+  "enable_gpu": false,
+  "kernel_sources": [],
+  "dataset_sources": [],
+  "enable_internet": false,
+  "code_file": "titanic.ipynb",
+  "language": "python"
+}

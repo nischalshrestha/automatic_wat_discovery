@@ -1,0 +1,17 @@
+{
+  "language": "python",
+  "kernel_sources": [],
+  "id_no": 1912816,
+  "enable_gpu": false,
+  "keywords": [],
+  "is_private": false,
+  "id": "ksdangwal/titanic-survivor-predction",
+  "enable_internet": false,
+  "dataset_sources": [],
+  "title": "Titanic - Survivor Predction",
+  "code_file": "titanic-survivor-predction.ipynb",
+  "competition_sources": [
+    "titanic"
+  ],
+  "kernel_type": "notebook"
+}

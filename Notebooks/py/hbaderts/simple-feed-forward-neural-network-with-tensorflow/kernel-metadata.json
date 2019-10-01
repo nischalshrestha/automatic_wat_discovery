@@ -1,0 +1,17 @@
+{
+  "language": "python",
+  "is_private": false,
+  "dataset_sources": [],
+  "id_no": 216700,
+  "enable_internet": false,
+  "keywords": [],
+  "title": "Simple feed-forward neural network with TensorFlow",
+  "code_file": "simple-feed-forward-neural-network-with-tensorflow.ipynb",
+  "enable_gpu": false,
+  "competition_sources": [
+    "titanic"
+  ],
+  "kernel_type": "notebook",
+  "kernel_sources": [],
+  "id": "hbaderts/simple-feed-forward-neural-network-with-tensorflow"
+}

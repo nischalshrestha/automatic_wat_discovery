@@ -1,0 +1,17 @@
+{
+  "keywords": [],
+  "language": "python",
+  "id_no": 237118,
+  "enable_internet": false,
+  "enable_gpu": false,
+  "code_file": "titanic-predictions.ipynb",
+  "title": "Titanic Predictions",
+  "is_private": false,
+  "kernel_type": "notebook",
+  "dataset_sources": [],
+  "id": "atlee731/titanic-predictions",
+  "kernel_sources": [],
+  "competition_sources": [
+    "titanic"
+  ]
+}

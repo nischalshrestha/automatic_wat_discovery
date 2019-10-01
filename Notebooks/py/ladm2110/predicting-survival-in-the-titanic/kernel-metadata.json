@@ -1,0 +1,17 @@
+{
+  "kernel_type": "notebook",
+  "competition_sources": [
+    "titanic"
+  ],
+  "keywords": [],
+  "id_no": 342164,
+  "dataset_sources": [],
+  "code_file": "predicting-survival-in-the-titanic.ipynb",
+  "is_private": false,
+  "title": "Predicting survival in the Titanic",
+  "language": "python",
+  "enable_internet": false,
+  "kernel_sources": [],
+  "id": "ladm2110/predicting-survival-in-the-titanic",
+  "enable_gpu": false
+}

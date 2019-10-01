@@ -1,0 +1,17 @@
+{
+  "language": "python",
+  "title": "Notebookab044343d4",
+  "competition_sources": [
+    "titanic"
+  ],
+  "enable_gpu": false,
+  "keywords": [],
+  "dataset_sources": [],
+  "id_no": 278432,
+  "id": "sidd14gos/notebookab044343d4",
+  "code_file": "notebookab044343d4.ipynb",
+  "kernel_type": "notebook",
+  "kernel_sources": [],
+  "is_private": false,
+  "enable_internet": false
+}

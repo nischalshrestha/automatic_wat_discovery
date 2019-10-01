@@ -1,0 +1,17 @@
+{
+  "enable_internet": false,
+  "title": "Titanic",
+  "kernel_sources": [],
+  "id": "whomer/titanic",
+  "id_no": 1667275,
+  "competition_sources": [
+    "titanic"
+  ],
+  "code_file": "titanic.ipynb",
+  "enable_gpu": true,
+  "dataset_sources": [],
+  "keywords": [],
+  "is_private": false,
+  "kernel_type": "notebook",
+  "language": "python"
+}

@@ -1,0 +1,17 @@
+{
+  "dataset_sources": [],
+  "enable_gpu": false,
+  "keywords": [],
+  "enable_internet": false,
+  "kernel_type": "notebook",
+  "title": "Notebookc925880a0a",
+  "kernel_sources": [],
+  "language": "r",
+  "competition_sources": [
+    "titanic"
+  ],
+  "id_no": 127083,
+  "code_file": "notebookc925880a0a.irnb",
+  "is_private": false,
+  "id": "edmwanza1/notebookc925880a0a"
+}

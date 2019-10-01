@@ -1,0 +1,17 @@
+{
+  "keywords": [],
+  "kernel_type": "notebook",
+  "dataset_sources": [],
+  "is_private": false,
+  "kernel_sources": [],
+  "enable_internet": false,
+  "enable_gpu": false,
+  "id_no": 155725,
+  "language": "python",
+  "competition_sources": [
+    "titanic"
+  ],
+  "id": "mwitebsky/titanic-random-forrest-pipeline",
+  "code_file": "titanic-random-forrest-pipeline.ipynb",
+  "title": "Titanic - Random Forrest Pipeline"
+}

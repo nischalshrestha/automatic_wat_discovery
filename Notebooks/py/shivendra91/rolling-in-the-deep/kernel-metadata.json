@@ -1,0 +1,17 @@
+{
+  "is_private": false,
+  "language": "python",
+  "keywords": [],
+  "dataset_sources": [],
+  "title": "Rolling in the Deep! ",
+  "code_file": "rolling-in-the-deep.ipynb",
+  "kernel_type": "notebook",
+  "id_no": 207850,
+  "enable_gpu": false,
+  "kernel_sources": [],
+  "competition_sources": [
+    "titanic"
+  ],
+  "enable_internet": false,
+  "id": "shivendra91/rolling-in-the-deep"
+}

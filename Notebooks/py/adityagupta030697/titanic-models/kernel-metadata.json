@@ -1,0 +1,19 @@
+{
+  "kernel_sources": [
+    "adityagupta030697/titanic-vz-fe"
+  ],
+  "enable_gpu": false,
+  "language": "python",
+  "keywords": [],
+  "competition_sources": [
+    "titanic"
+  ],
+  "is_private": false,
+  "id": "adityagupta030697/titanic-models",
+  "dataset_sources": [],
+  "kernel_type": "notebook",
+  "title": "Titanic_Models",
+  "id_no": 1515937,
+  "code_file": "titanic-models.ipynb",
+  "enable_internet": false
+}

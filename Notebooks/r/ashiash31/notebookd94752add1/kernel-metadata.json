@@ -1,0 +1,17 @@
+{
+  "enable_gpu": false,
+  "enable_internet": false,
+  "dataset_sources": [],
+  "language": "python",
+  "kernel_sources": [],
+  "title": "Notebookd94752add1",
+  "competition_sources": [
+    "titanic"
+  ],
+  "keywords": [],
+  "code_file": "notebookd94752add1.ipynb",
+  "id": "ashiash31/notebookd94752add1",
+  "kernel_type": "notebook",
+  "id_no": 276417,
+  "is_private": false
+}

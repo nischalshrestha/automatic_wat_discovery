@@ -1,0 +1,17 @@
+{
+  "enable_internet": false,
+  "keywords": [],
+  "language": "python",
+  "dataset_sources": [],
+  "id": "grajasekar/titanic-kernel",
+  "id_no": 614284,
+  "kernel_sources": [],
+  "enable_gpu": false,
+  "competition_sources": [
+    "titanic"
+  ],
+  "title": "Titanic Kernel",
+  "code_file": "titanic-kernel.ipynb",
+  "is_private": false,
+  "kernel_type": "notebook"
+}

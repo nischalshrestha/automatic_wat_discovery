@@ -1,0 +1,17 @@
+{
+  "competition_sources": [
+    "titanic"
+  ],
+  "language": "python",
+  "enable_internet": false,
+  "enable_gpu": false,
+  "kernel_type": "notebook",
+  "keywords": [],
+  "id": "christophriley/text-features",
+  "code_file": "text-features.ipynb",
+  "dataset_sources": [],
+  "title": "Text Features",
+  "id_no": 467239,
+  "is_private": false,
+  "kernel_sources": []
+}

@@ -1,0 +1,17 @@
+{
+  "keywords": [],
+  "kernel_sources": [],
+  "id": "krenholm/playing-with-ships",
+  "code_file": "playing-with-ships.ipynb",
+  "dataset_sources": [],
+  "enable_gpu": false,
+  "is_private": false,
+  "title": "Playing with ships",
+  "competition_sources": [
+    "titanic"
+  ],
+  "enable_internet": false,
+  "kernel_type": "notebook",
+  "id_no": 169561,
+  "language": "python"
+}

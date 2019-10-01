@@ -1,0 +1,17 @@
+{
+  "enable_internet": false,
+  "language": "r",
+  "is_private": false,
+  "title": "Notebookdac3e08882",
+  "kernel_type": "notebook",
+  "id": "nuri66/notebookdac3e08882",
+  "dataset_sources": [],
+  "id_no": 223977,
+  "code_file": "notebookdac3e08882.irnb",
+  "enable_gpu": false,
+  "competition_sources": [
+    "titanic"
+  ],
+  "keywords": [],
+  "kernel_sources": []
+}

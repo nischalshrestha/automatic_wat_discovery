@@ -1,0 +1,166 @@
+{
+  "cells": [
+    {
+      "cell_type": "markdown",
+      "metadata": {
+        "_cell_guid": "f3aca083-8007-63dc-1e11-13439b47fa14"
+      },
+      "source": [
+        "just a rough logistic regression in R"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "_cell_guid": "b582a55a-6076-aa53-3bb1-c7b73aea019c"
+      },
+      "outputs": [],
+      "source": [
+        "# This R environment comes with all of CRAN preinstalled, as well as many other helpful packages\n",
+        "# The environment is defined by the kaggle/rstats docker image: https://github.com/kaggle/docker-rstats\n",
+        "# For example, here's several helpful packages to load in \n",
+        "\n",
+        "library(ggplot2) # Data visualization\n",
+        "library(readr) # CSV file I/O, e.g. the read_csv function\n",
+        "\n",
+        "# Input data files are available in the \"../input/\" directory.\n",
+        "# For example, running this (by clicking run or pressing Shift+Enter) will list the files in the input directory\n",
+        "\n",
+        "system(\"ls ../input\")\n",
+        "\n",
+        "# Any results you write to the current directory are saved as output."
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "_cell_guid": "2996a491-96fd-8b0c-17f6-834786c46603"
+      },
+      "outputs": [],
+      "source": [
+        "library(\"stats\")\n",
+        "library(\"base\")"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "_cell_guid": "11da83b4-c214-827a-234c-02611e041b14"
+      },
+      "outputs": [],
+      "source": [
+        "train = read.csv('../input/train.csv')\n",
+        "test = read.csv('../input/test.csv')\n",
+        "test$Survived <- NA "
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "_cell_guid": "9d7006b1-4941-4f25-c0dd-ed47bf6745cf"
+      },
+      "outputs": [],
+      "source": [
+        "combined <- rbind.data.frame(train,data=test) \n",
+        "nrow(train)\n",
+        "nrow(test)\n",
+        "nrow(combined)"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "_cell_guid": "500b77c7-4c13-0d2f-29fb-200fd0075e37"
+      },
+      "outputs": [],
+      "source": [
+        "str(combined, give.attr = FALSE)\n",
+        "colSums(is.na(combined))\n",
+        "colnames(combined)\n",
+        "combined=combined[,-c(11,12,4,9)]"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "_cell_guid": "58ff8220-76c7-2a02-a53f-c6db411743c7"
+      },
+      "outputs": [],
+      "source": [
+        "str(combined)\n",
+        "combined$Survived <- factor(combined$Survived)\n",
+        "combined$Pclass <- factor(combined$Pclass)\n",
+        "combined$Age=ifelse(is.na(combined$Age),median(na.omit(combined$Age)),combined$Age)\n",
+        "combined$Fare=ifelse(is.na(combined$Fare),median(na.omit(combined$Fare)),combined$Fare)"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "_cell_guid": "0dccb3ae-6bea-e402-58fb-e2628acf42bb"
+      },
+      "outputs": [],
+      "source": [
+        "chiSqStat=NULL\n",
+        "for (i in 2:(ncol(combined))) \n",
+        "{ if(is.factor(combined[,i]))\n",
+        "{\n",
+        "  ChiSqTest=chisq.test(x=combined$Survived,\n",
+        "                       y=combined[,i])\n",
+        "  chiSqStat=rbind.data.frame(chiSqStat,\n",
+        "                             cbind.data.frame(\n",
+        "                               variable.names=colnames(combined)[i],\n",
+        "                               chi_sq_value=ChiSqTest$statistic,\n",
+        "                               p_value=ChiSqTest$p.value))\n",
+        "  cat(\"\\n\",colnames(combined)[i],\"\\n\",\"chi-sq value:\",\n",
+        "      ChiSqTest$statistic,\"pvalue:\",ChiSqTest$p.value,\"\\n\")\n",
+        "  cat(\"*************************\")\n",
+        "}\n",
+        "}"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "_cell_guid": "60b70140-b311-d21c-4f90-e84e1d9a23fa"
+      },
+      "outputs": [],
+      "source": [
+        "train<-combined[1:891,]\n",
+        "test<-combined[892:1309,]\n",
+        "Logistic_Model_1=glm(Survived~.,family = binomial,data=train,maxit=100)\n",
+        "predict_Probs=predict(Logistic_Model_1,test)\n",
+        "Predict_Class = ifelse(predict_Probs >= 0.5,1,0)\n",
+        "submission = rbind(\"PassengerId\"= test$PassengerId,\"Survived\"=Predict_Class)\n",
+        "write.csv(submission, \"titanictestfinaldeb output1.csv\", row.names = FALSE)"
+      ]
+    }
+  ],
+  "metadata": {
+    "_change_revision": 0,
+    "_is_fork": false,
+    "kernelspec": {
+      "display_name": "R",
+      "language": "R",
+      "name": "ir"
+    },
+    "language_info": {
+      "codemirror_mode": "r",
+      "file_extension": ".r",
+      "mimetype": "text/x-r-source",
+      "name": "R",
+      "pygments_lexer": "r",
+      "version": "3.3.2"
+    }
+  },
+  "nbformat": 4,
+  "nbformat_minor": 0
+}

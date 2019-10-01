@@ -1,0 +1,17 @@
+{
+  "title": "Titanic Survivors_v3.1",
+  "enable_internet": false,
+  "kernel_type": "notebook",
+  "language": "python",
+  "code_file": "titanic-survivors-v3-1.ipynb",
+  "keywords": [],
+  "enable_gpu": false,
+  "is_private": false,
+  "dataset_sources": [],
+  "competition_sources": [
+    "titanic"
+  ],
+  "id": "kkremski/titanic-survivors-v3-1",
+  "kernel_sources": [],
+  "id_no": 114557
+}

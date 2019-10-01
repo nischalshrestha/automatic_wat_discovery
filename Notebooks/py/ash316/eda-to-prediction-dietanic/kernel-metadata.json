@@ -1,0 +1,23 @@
+{
+  "code_file": "eda-to-prediction-dietanic.ipynb",
+  "title": "EDA To Prediction(DieTanic)",
+  "id": "ash316/eda-to-prediction-dietanic",
+  "kernel_type": "notebook",
+  "competition_sources": [
+    "titanic"
+  ],
+  "enable_internet": false,
+  "enable_gpu": false,
+  "keywords": [
+    "eda",
+    "data visualization",
+    "classification",
+    "ensembling",
+    "model comparison"
+  ],
+  "language": "python",
+  "dataset_sources": [],
+  "id_no": 375087,
+  "kernel_sources": [],
+  "is_private": false
+}

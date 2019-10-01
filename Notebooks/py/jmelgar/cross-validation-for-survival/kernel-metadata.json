@@ -1,0 +1,17 @@
+{
+  "title": "cross validation for survival",
+  "id_no": 1372802,
+  "competition_sources": [
+    "titanic"
+  ],
+  "is_private": false,
+  "kernel_type": "notebook",
+  "code_file": "cross-validation-for-survival.ipynb",
+  "id": "jmelgar/cross-validation-for-survival",
+  "keywords": [],
+  "dataset_sources": [],
+  "enable_gpu": true,
+  "enable_internet": false,
+  "language": "python",
+  "kernel_sources": []
+}

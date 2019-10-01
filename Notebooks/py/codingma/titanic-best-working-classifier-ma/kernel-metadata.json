@@ -1,0 +1,17 @@
+{
+  "code_file": "titanic-best-working-classifier-ma.ipynb",
+  "id": "codingma/titanic-best-working-classifier-ma",
+  "enable_gpu": false,
+  "competition_sources": [
+    "titanic"
+  ],
+  "enable_internet": false,
+  "kernel_type": "notebook",
+  "kernel_sources": [],
+  "is_private": false,
+  "language": "python",
+  "dataset_sources": [],
+  "keywords": [],
+  "title": "Titanic best working Classifier(ma)",
+  "id_no": 177782
+}

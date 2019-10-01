@@ -1,0 +1,17 @@
+{
+  "is_private": false,
+  "enable_internet": false,
+  "enable_gpu": false,
+  "title": "Titanic Practice by XGBoost",
+  "dataset_sources": [],
+  "keywords": [],
+  "id_no": 1631394,
+  "kernel_sources": [],
+  "language": "python",
+  "code_file": "titanic-practice-by-xgboost.ipynb",
+  "competition_sources": [
+    "titanic"
+  ],
+  "id": "teddyzhang001/titanic-practice-by-xgboost",
+  "kernel_type": "notebook"
+}

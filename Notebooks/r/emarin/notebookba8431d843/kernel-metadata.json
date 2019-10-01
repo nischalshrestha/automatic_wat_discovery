@@ -1,0 +1,17 @@
+{
+  "kernel_type": "notebook",
+  "keywords": [],
+  "id": "emarin/notebookba8431d843",
+  "competition_sources": [
+    "titanic"
+  ],
+  "kernel_sources": [],
+  "enable_internet": false,
+  "code_file": "notebookba8431d843.ipynb",
+  "enable_gpu": false,
+  "title": "Notebookba8431d843",
+  "dataset_sources": [],
+  "id_no": 245731,
+  "language": "python",
+  "is_private": false
+}

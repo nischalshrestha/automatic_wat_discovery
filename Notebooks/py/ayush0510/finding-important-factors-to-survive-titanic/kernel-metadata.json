@@ -1,0 +1,17 @@
+{
+  "id": "ayush0510/finding-important-factors-to-survive-titanic",
+  "is_private": false,
+  "competition_sources": [
+    "titanic"
+  ],
+  "enable_gpu": false,
+  "title": "Finding Important Factors To Survive Titanic",
+  "kernel_type": "notebook",
+  "id_no": 917393,
+  "language": "python",
+  "kernel_sources": [],
+  "code_file": "finding-important-factors-to-survive-titanic.ipynb",
+  "dataset_sources": [],
+  "keywords": [],
+  "enable_internet": false
+}

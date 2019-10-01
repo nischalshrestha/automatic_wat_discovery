@@ -1,0 +1,17 @@
+{
+  "code_file": "titanic-comparison-visualisation-selection.ipynb",
+  "competition_sources": [
+    "titanic"
+  ],
+  "dataset_sources": [],
+  "keywords": [],
+  "kernel_sources": [],
+  "id_no": 428278,
+  "is_private": false,
+  "enable_gpu": false,
+  "language": "python",
+  "enable_internet": false,
+  "id": "philipphuhn/titanic-comparison-visualisation-selection",
+  "kernel_type": "notebook",
+  "title": "Titanic - Comparison, visualisation, selection"
+}

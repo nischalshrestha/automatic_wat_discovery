@@ -1,0 +1,17 @@
+{
+  "language": "python",
+  "is_private": false,
+  "code_file": "titanic-dataset-random-forest.ipynb",
+  "dataset_sources": [],
+  "kernel_sources": [],
+  "enable_gpu": false,
+  "keywords": [],
+  "id": "thedataspartan/titanic-dataset-random-forest",
+  "id_no": 1611088,
+  "kernel_type": "notebook",
+  "competition_sources": [
+    "titanic"
+  ],
+  "enable_internet": false,
+  "title": "Titanic dataset - Random Forest"
+}

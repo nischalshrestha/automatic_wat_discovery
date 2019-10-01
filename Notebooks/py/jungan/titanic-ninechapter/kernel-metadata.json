@@ -1,0 +1,17 @@
+{
+  "competition_sources": [
+    "titanic"
+  ],
+  "id": "jungan/titanic-ninechapter",
+  "id_no": 1667692,
+  "title": "Titanic Ninechapter",
+  "dataset_sources": [],
+  "code_file": "titanic-ninechapter.ipynb",
+  "kernel_type": "notebook",
+  "kernel_sources": [],
+  "keywords": [],
+  "language": "python",
+  "enable_gpu": false,
+  "is_private": false,
+  "enable_internet": false
+}

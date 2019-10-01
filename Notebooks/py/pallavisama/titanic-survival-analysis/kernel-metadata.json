@@ -1,0 +1,21 @@
+{
+  "competition_sources": [
+    "titanic"
+  ],
+  "code_file": "titanic-survival-analysis.ipynb",
+  "enable_gpu": false,
+  "is_private": false,
+  "keywords": [
+    "beginner",
+    "eda",
+    "data visualization"
+  ],
+  "id_no": 535001,
+  "enable_internet": false,
+  "title": "Titanic Survival Analysis",
+  "id": "pallavisama/titanic-survival-analysis",
+  "kernel_type": "notebook",
+  "language": "python",
+  "dataset_sources": [],
+  "kernel_sources": []
+}

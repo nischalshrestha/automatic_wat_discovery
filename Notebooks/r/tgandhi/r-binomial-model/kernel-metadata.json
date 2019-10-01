@@ -1,0 +1,17 @@
+{
+  "dataset_sources": [],
+  "enable_gpu": false,
+  "kernel_sources": [],
+  "title": "R Binomial Model",
+  "language": "r",
+  "kernel_type": "notebook",
+  "competition_sources": [
+    "titanic"
+  ],
+  "is_private": false,
+  "code_file": "r-binomial-model.irnb",
+  "enable_internet": false,
+  "id": "tgandhi/r-binomial-model",
+  "keywords": [],
+  "id_no": 177464
+}

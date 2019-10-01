@@ -1,0 +1,17 @@
+{
+  "id_no": 1567443,
+  "competition_sources": [
+    "titanic"
+  ],
+  "is_private": false,
+  "dataset_sources": [],
+  "keywords": [],
+  "language": "python",
+  "kernel_sources": [],
+  "title": "Titanic Competition Dataset Prediction",
+  "enable_gpu": false,
+  "id": "shindeshubham85/titanic-competition-dataset-prediction",
+  "kernel_type": "notebook",
+  "code_file": "titanic-competition-dataset-prediction.ipynb",
+  "enable_internet": false
+}

@@ -1,0 +1,17 @@
+{
+  "competition_sources": [
+    "titanic"
+  ],
+  "enable_internet": false,
+  "kernel_type": "notebook",
+  "kernel_sources": [],
+  "keywords": [],
+  "enable_gpu": false,
+  "dataset_sources": [],
+  "title": "Notebookccd271447f",
+  "id_no": 237295,
+  "code_file": "notebookccd271447f.irnb",
+  "id": "sirjackshen/notebookccd271447f",
+  "is_private": false,
+  "language": "r"
+}

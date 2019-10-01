@@ -1,0 +1,17 @@
+{
+  "is_private": false,
+  "enable_internet": false,
+  "kernel_sources": [],
+  "title": "Random Forest from grid search to hyperopt",
+  "language": "python",
+  "competition_sources": [
+    "titanic"
+  ],
+  "kernel_type": "notebook",
+  "dataset_sources": [],
+  "id_no": 172883,
+  "code_file": "random-forest-from-grid-search-to-hyperopt.ipynb",
+  "enable_gpu": false,
+  "keywords": [],
+  "id": "rpygamer/random-forest-from-grid-search-to-hyperopt"
+}

@@ -1,0 +1,17 @@
+{
+  "keywords": [],
+  "is_private": false,
+  "dataset_sources": [],
+  "enable_internet": false,
+  "competition_sources": [
+    "titanic"
+  ],
+  "kernel_type": "notebook",
+  "id_no": 204318,
+  "title": "Notebook0111933960",
+  "id": "ghoshtumpu/notebook0111933960",
+  "enable_gpu": false,
+  "kernel_sources": [],
+  "language": "r",
+  "code_file": "notebook0111933960.irnb"
+}

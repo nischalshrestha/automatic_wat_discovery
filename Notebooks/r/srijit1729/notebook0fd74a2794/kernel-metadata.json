@@ -1,0 +1,17 @@
+{
+  "id_no": 205489,
+  "enable_gpu": false,
+  "is_private": false,
+  "dataset_sources": [],
+  "kernel_type": "notebook",
+  "keywords": [],
+  "enable_internet": false,
+  "code_file": "notebook0fd74a2794.ipynb",
+  "title": "Notebook0fd74a2794",
+  "id": "srijit1729/notebook0fd74a2794",
+  "language": "python",
+  "kernel_sources": [],
+  "competition_sources": [
+    "titanic"
+  ]
+}

@@ -1,0 +1,17 @@
+{
+  "competition_sources": [
+    "titanic"
+  ],
+  "language": "python",
+  "enable_gpu": false,
+  "kernel_sources": [],
+  "kernel_type": "notebook",
+  "id_no": 185648,
+  "title": "Titanic with Keras",
+  "id": "cstahl12/titanic-with-keras",
+  "enable_internet": false,
+  "code_file": "titanic-with-keras.ipynb",
+  "keywords": [],
+  "is_private": false,
+  "dataset_sources": []
+}

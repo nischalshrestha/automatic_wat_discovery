@@ -1,0 +1,17 @@
+{
+  "code_file": "titanic-starting-with-ml-and-eda.ipynb",
+  "id_no": 248407,
+  "is_private": false,
+  "enable_internet": false,
+  "id": "germainb/titanic-starting-with-ml-and-eda",
+  "title": "Titanic - Starting with ML and EDA",
+  "enable_gpu": false,
+  "kernel_type": "notebook",
+  "keywords": [],
+  "language": "python",
+  "competition_sources": [
+    "titanic"
+  ],
+  "kernel_sources": [],
+  "dataset_sources": []
+}

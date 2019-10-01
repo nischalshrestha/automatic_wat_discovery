@@ -1,0 +1,17 @@
+{
+  "id": "justinians/titanic",
+  "enable_internet": false,
+  "dataset_sources": [],
+  "is_private": false,
+  "kernel_type": "notebook",
+  "keywords": [],
+  "enable_gpu": false,
+  "competition_sources": [
+    "titanic"
+  ],
+  "kernel_sources": [],
+  "id_no": 708330,
+  "code_file": "titanic.ipynb",
+  "language": "python",
+  "title": "Titanic"
+}

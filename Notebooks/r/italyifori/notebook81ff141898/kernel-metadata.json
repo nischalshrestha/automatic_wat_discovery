@@ -1,0 +1,17 @@
+{
+  "competition_sources": [
+    "titanic"
+  ],
+  "kernel_type": "notebook",
+  "enable_gpu": false,
+  "kernel_sources": [],
+  "id": "italyifori/notebook81ff141898",
+  "keywords": [],
+  "id_no": 167568,
+  "enable_internet": false,
+  "code_file": "notebook81ff141898.irnb",
+  "language": "r",
+  "is_private": false,
+  "title": "Notebookf59058a7af",
+  "dataset_sources": []
+}

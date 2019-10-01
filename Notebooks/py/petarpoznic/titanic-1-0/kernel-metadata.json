@@ -1,0 +1,17 @@
+{
+  "enable_internet": false,
+  "kernel_type": "notebook",
+  "kernel_sources": [],
+  "competition_sources": [
+    "titanic"
+  ],
+  "dataset_sources": [],
+  "id_no": 244047,
+  "enable_gpu": false,
+  "language": "python",
+  "keywords": [],
+  "id": "petarpoznic/titanic-1-0",
+  "is_private": false,
+  "title": "Titanic 1.0",
+  "code_file": "titanic-1-0.ipynb"
+}

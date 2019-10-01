@@ -1,0 +1,17 @@
+{
+  "id": "akspan12/titanic-problem-final",
+  "is_private": false,
+  "enable_internet": false,
+  "dataset_sources": [],
+  "id_no": 1180729,
+  "competition_sources": [
+    "titanic"
+  ],
+  "kernel_sources": [],
+  "code_file": "titanic-problem-final.ipynb",
+  "title": "Titanic problem final",
+  "keywords": [],
+  "enable_gpu": false,
+  "language": "python",
+  "kernel_type": "notebook"
+}

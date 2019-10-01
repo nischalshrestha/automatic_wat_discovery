@@ -1,0 +1,17 @@
+{
+  "id_no": 227127,
+  "code_file": "titanic-survival-prediction.irnb",
+  "kernel_sources": [],
+  "competition_sources": [
+    "titanic"
+  ],
+  "keywords": [],
+  "title": "Titanic Survival Prediction",
+  "id": "aschakra/titanic-survival-prediction",
+  "language": "r",
+  "kernel_type": "notebook",
+  "enable_gpu": false,
+  "dataset_sources": [],
+  "is_private": false,
+  "enable_internet": false
+}

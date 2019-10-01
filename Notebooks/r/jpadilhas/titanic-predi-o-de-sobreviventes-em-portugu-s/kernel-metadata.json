@@ -1,0 +1,17 @@
+{
+  "kernel_sources": [],
+  "kernel_type": "notebook",
+  "language": "r",
+  "title": "Titanic: Predi\u00e7\u00e3o de sobreviventes em Portugu\u00eas",
+  "code_file": "titanic-predi-o-de-sobreviventes-em-portugu-s.irnb",
+  "is_private": false,
+  "id": "jpadilhas/titanic-predi-o-de-sobreviventes-em-portugu-s",
+  "keywords": [],
+  "competition_sources": [
+    "titanic"
+  ],
+  "id_no": 502272,
+  "dataset_sources": [],
+  "enable_gpu": false,
+  "enable_internet": false
+}

@@ -1,0 +1,17 @@
+{
+  "keywords": [],
+  "is_private": false,
+  "id": "littlebuzzybee/notebook7879b75e06",
+  "language": "r",
+  "kernel_sources": [],
+  "enable_internet": false,
+  "kernel_type": "notebook",
+  "id_no": 191074,
+  "title": "Notebook7879b75e06",
+  "dataset_sources": [],
+  "code_file": "notebook7879b75e06.irnb",
+  "enable_gpu": false,
+  "competition_sources": [
+    "titanic"
+  ]
+}

@@ -1,0 +1,17 @@
+{
+  "id": "mrmquirk/a-journey-through-titanic",
+  "title": "A Journey through Titanic",
+  "language": "python",
+  "kernel_type": "notebook",
+  "kernel_sources": [],
+  "competition_sources": [
+    "titanic"
+  ],
+  "enable_gpu": false,
+  "enable_internet": false,
+  "code_file": "a-journey-through-titanic.ipynb",
+  "dataset_sources": [],
+  "is_private": false,
+  "keywords": [],
+  "id_no": 183178
+}

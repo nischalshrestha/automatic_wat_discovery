@@ -1,0 +1,17 @@
+{
+  "id": "dsamariya/titanic-survivors-what-can-we-learn-from-history",
+  "id_no": 363285,
+  "title": "Titanic Survivors: What Can We Learn from History?",
+  "code_file": "titanic-survivors-what-can-we-learn-from-history.ipynb",
+  "language": "python",
+  "kernel_type": "notebook",
+  "is_private": false,
+  "enable_gpu": false,
+  "enable_internet": false,
+  "keywords": [],
+  "dataset_sources": [],
+  "kernel_sources": [],
+  "competition_sources": [
+    "titanic"
+  ]
+}

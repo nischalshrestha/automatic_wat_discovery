@@ -1,0 +1,17 @@
+{
+  "id": "zacsims/notebook5b9581ef18",
+  "id_no": 210315,
+  "enable_gpu": false,
+  "is_private": false,
+  "code_file": "notebook5b9581ef18.irnb",
+  "keywords": [],
+  "competition_sources": [
+    "titanic"
+  ],
+  "language": "r",
+  "kernel_sources": [],
+  "dataset_sources": [],
+  "kernel_type": "notebook",
+  "title": "Notebook5b9581ef18",
+  "enable_internet": false
+}

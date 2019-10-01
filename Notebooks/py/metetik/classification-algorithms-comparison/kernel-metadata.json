@@ -1,0 +1,22 @@
+{
+  "language": "python",
+  "code_file": "classification-algorithms-comparison.ipynb",
+  "id": "metetik/classification-algorithms-comparison",
+  "keywords": [
+    "beginner",
+    "classification",
+    "model comparison",
+    "binary classification"
+  ],
+  "dataset_sources": [],
+  "id_no": 1503912,
+  "title": "Classification Algorithms Comparison",
+  "is_private": false,
+  "enable_gpu": false,
+  "kernel_sources": [],
+  "enable_internet": false,
+  "kernel_type": "notebook",
+  "competition_sources": [
+    "titanic"
+  ]
+}

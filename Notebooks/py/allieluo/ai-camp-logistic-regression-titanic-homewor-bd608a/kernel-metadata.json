@@ -1,0 +1,17 @@
+{
+  "enable_gpu": false,
+  "competition_sources": [
+    "titanic"
+  ],
+  "language": "python",
+  "id": "allieluo/ai-camp-logistic-regression-titanic-homewor-bd608a",
+  "kernel_type": "notebook",
+  "id_no": 1667831,
+  "keywords": [],
+  "enable_internet": false,
+  "dataset_sources": [],
+  "code_file": "ai-camp-logistic-regression-titanic-homewor-bd608a.ipynb",
+  "is_private": false,
+  "kernel_sources": [],
+  "title": "AI Camp Logistic Regression Titanic Homewor bd608a"
+}

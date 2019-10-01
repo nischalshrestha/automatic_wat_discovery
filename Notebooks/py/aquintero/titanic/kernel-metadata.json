@@ -1,0 +1,17 @@
+{
+  "dataset_sources": [],
+  "enable_internet": false,
+  "kernel_type": "notebook",
+  "language": "python",
+  "is_private": false,
+  "id": "aquintero/titanic",
+  "id_no": 93761,
+  "keywords": [],
+  "competition_sources": [
+    "titanic"
+  ],
+  "enable_gpu": false,
+  "title": "Titanic",
+  "code_file": "titanic.ipynb",
+  "kernel_sources": []
+}

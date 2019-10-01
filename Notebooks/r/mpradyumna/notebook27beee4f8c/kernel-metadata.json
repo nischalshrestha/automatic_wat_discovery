@@ -1,0 +1,17 @@
+{
+  "enable_internet": false,
+  "keywords": [],
+  "enable_gpu": false,
+  "title": "Notebook27beee4f8c",
+  "kernel_type": "notebook",
+  "language": "r",
+  "id_no": 96283,
+  "dataset_sources": [],
+  "id": "mpradyumna/notebook27beee4f8c",
+  "competition_sources": [
+    "titanic"
+  ],
+  "code_file": "notebook27beee4f8c.irnb",
+  "is_private": false,
+  "kernel_sources": []
+}

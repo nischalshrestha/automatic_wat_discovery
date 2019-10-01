@@ -1,0 +1,17 @@
+{
+  "id": "twilightblue/notebook82cd246904",
+  "title": "Notebook82cd246904",
+  "dataset_sources": [],
+  "code_file": "notebook82cd246904.ipynb",
+  "keywords": [],
+  "kernel_sources": [],
+  "enable_gpu": false,
+  "enable_internet": false,
+  "language": "python",
+  "kernel_type": "notebook",
+  "competition_sources": [
+    "titanic"
+  ],
+  "id_no": 217422,
+  "is_private": false
+}

@@ -1,0 +1,17 @@
+{
+  "kernel_type": "notebook",
+  "dataset_sources": [],
+  "title": "Titanic: Learning from a disaster ",
+  "is_private": false,
+  "competition_sources": [
+    "titanic"
+  ],
+  "kernel_sources": [],
+  "enable_internet": false,
+  "id": "eliekawerk/titanic-learning-from-a-disaster",
+  "language": "python",
+  "id_no": 179299,
+  "code_file": "titanic-learning-from-a-disaster.ipynb",
+  "enable_gpu": false,
+  "keywords": []
+}

@@ -1,0 +1,17 @@
+{
+  "code_file": "titanic-random-forest-python.ipynb",
+  "enable_internet": false,
+  "language": "python",
+  "enable_gpu": false,
+  "keywords": [],
+  "title": "Titanic - Random Forest (Python)",
+  "kernel_sources": [],
+  "id_no": 106997,
+  "competition_sources": [
+    "titanic"
+  ],
+  "is_private": false,
+  "kernel_type": "notebook",
+  "dataset_sources": [],
+  "id": "totalrecall/titanic-random-forest-python"
+}

@@ -1,0 +1,23 @@
+{
+  "enable_gpu": true,
+  "title": "Titanic keras DNN",
+  "code_file": "titanic-keras-dnn.ipynb",
+  "keywords": [
+    "tutorial",
+    "beginner",
+    "classification",
+    "deep learning",
+    "starter code"
+  ],
+  "enable_internet": false,
+  "language": "python",
+  "competition_sources": [
+    "titanic"
+  ],
+  "kernel_type": "notebook",
+  "id_no": 1897004,
+  "is_private": false,
+  "dataset_sources": [],
+  "kernel_sources": [],
+  "id": "amneves/titanic-keras-dnn"
+}

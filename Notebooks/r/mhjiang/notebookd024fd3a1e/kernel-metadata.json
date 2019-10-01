@@ -1,0 +1,17 @@
+{
+  "enable_internet": false,
+  "title": "Notebookf5b0efb891",
+  "kernel_sources": [],
+  "dataset_sources": [],
+  "competition_sources": [
+    "titanic"
+  ],
+  "code_file": "notebookd024fd3a1e.irnb",
+  "kernel_type": "notebook",
+  "id_no": 177279,
+  "id": "mhjiang/notebookd024fd3a1e",
+  "language": "r",
+  "is_private": false,
+  "enable_gpu": false,
+  "keywords": []
+}

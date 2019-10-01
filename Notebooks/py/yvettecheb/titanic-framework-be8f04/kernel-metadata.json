@@ -1,0 +1,17 @@
+{
+  "kernel_type": "notebook",
+  "keywords": [],
+  "dataset_sources": [],
+  "id": "yvettecheb/titanic-framework-be8f04",
+  "language": "python",
+  "is_private": false,
+  "kernel_sources": [],
+  "competition_sources": [
+    "titanic"
+  ],
+  "enable_internet": false,
+  "title": " Titanic Framework be8f04",
+  "enable_gpu": false,
+  "id_no": 1549414,
+  "code_file": "titanic-framework-be8f04.ipynb"
+}

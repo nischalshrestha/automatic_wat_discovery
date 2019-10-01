@@ -1,0 +1,19 @@
+{
+  "kernel_type": "notebook",
+  "id_no": 264388,
+  "id": "rajatshah/scikit-learn-ml-from-start-to-finish",
+  "enable_internet": false,
+  "keywords": [
+    "tutorial"
+  ],
+  "dataset_sources": [],
+  "enable_gpu": false,
+  "kernel_sources": [],
+  "language": "python",
+  "is_private": false,
+  "competition_sources": [
+    "titanic"
+  ],
+  "title": "Scikit-Learn ML from Start to Finish",
+  "code_file": "scikit-learn-ml-from-start-to-finish.ipynb"
+}

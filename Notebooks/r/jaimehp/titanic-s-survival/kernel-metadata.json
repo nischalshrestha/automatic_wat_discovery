@@ -1,0 +1,17 @@
+{
+  "id": "jaimehp/titanic-s-survival",
+  "language": "r",
+  "code_file": "titanic-s-survival.irnb",
+  "is_private": false,
+  "id_no": 86450,
+  "title": "Titanic's Survival",
+  "competition_sources": [
+    "titanic"
+  ],
+  "enable_gpu": false,
+  "kernel_sources": [],
+  "enable_internet": false,
+  "kernel_type": "notebook",
+  "keywords": [],
+  "dataset_sources": []
+}

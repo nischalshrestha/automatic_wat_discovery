@@ -1,0 +1,17 @@
+{
+  "code_file": "titanic-data-exploration.ipynb",
+  "enable_gpu": false,
+  "competition_sources": [
+    "titanic"
+  ],
+  "enable_internet": false,
+  "title": "Titanic data exploration",
+  "kernel_type": "notebook",
+  "language": "python",
+  "kernel_sources": [],
+  "id_no": 2125252,
+  "dataset_sources": [],
+  "id": "mirikwa/titanic-data-exploration",
+  "is_private": false,
+  "keywords": []
+}

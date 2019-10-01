@@ -1,0 +1,20 @@
+{
+  "is_private": false,
+  "dataset_sources": [],
+  "id_no": 1083209,
+  "code_file": "titanic.ipynb",
+  "language": "python",
+  "id": "dominikstraessle/titanic",
+  "enable_internet": false,
+  "title": "titanic",
+  "kernel_type": "notebook",
+  "kernel_sources": [],
+  "keywords": [
+    "beginner",
+    "classification"
+  ],
+  "enable_gpu": false,
+  "competition_sources": [
+    "titanic"
+  ]
+}

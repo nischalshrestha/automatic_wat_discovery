@@ -1,0 +1,17 @@
+{
+  "id": "maximmazurok/titanic-random-forest-79",
+  "is_private": false,
+  "enable_gpu": false,
+  "code_file": "titanic-random-forest-79.ipynb",
+  "competition_sources": [
+    "titanic"
+  ],
+  "kernel_type": "notebook",
+  "title": "Titanic: Random Forest ~79%",
+  "language": "python",
+  "id_no": 181115,
+  "dataset_sources": [],
+  "keywords": [],
+  "enable_internet": false,
+  "kernel_sources": []
+}

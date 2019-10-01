@@ -1,0 +1,20 @@
+{
+  "code_file": "titanic-deepanjal-gupta.ipynb",
+  "kernel_type": "notebook",
+  "language": "python",
+  "is_private": false,
+  "dataset_sources": [],
+  "enable_internet": false,
+  "id_no": 730589,
+  "kernel_sources": [],
+  "keywords": [
+    "beginner",
+    "classification"
+  ],
+  "title": "titanic_deepanjal_gupta",
+  "id": "deepanjalgupta/titanic-deepanjal-gupta",
+  "enable_gpu": false,
+  "competition_sources": [
+    "titanic"
+  ]
+}

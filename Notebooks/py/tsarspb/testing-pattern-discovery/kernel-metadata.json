@@ -1,0 +1,17 @@
+{
+  "competition_sources": [
+    "titanic"
+  ],
+  "id": "tsarspb/testing-pattern-discovery",
+  "id_no": 2032014,
+  "title": "Testing pattern discovery",
+  "language": "python",
+  "is_private": false,
+  "keywords": [],
+  "code_file": "testing-pattern-discovery.ipynb",
+  "kernel_type": "notebook",
+  "enable_internet": false,
+  "enable_gpu": false,
+  "dataset_sources": [],
+  "kernel_sources": []
+}

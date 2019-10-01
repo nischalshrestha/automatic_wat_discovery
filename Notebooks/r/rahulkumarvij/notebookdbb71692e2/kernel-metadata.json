@@ -1,0 +1,17 @@
+{
+  "enable_internet": false,
+  "language": "python",
+  "code_file": "notebookdbb71692e2.ipynb",
+  "keywords": [],
+  "dataset_sources": [],
+  "kernel_sources": [],
+  "title": "Notebookdbb71692e2",
+  "kernel_type": "notebook",
+  "id_no": 249233,
+  "id": "rahulkumarvij/notebookdbb71692e2",
+  "is_private": false,
+  "enable_gpu": false,
+  "competition_sources": [
+    "titanic"
+  ]
+}

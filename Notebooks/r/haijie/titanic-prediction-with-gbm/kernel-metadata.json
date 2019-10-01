@@ -1,0 +1,17 @@
+{
+  "kernel_type": "notebook",
+  "enable_internet": false,
+  "id": "haijie/titanic-prediction-with-gbm",
+  "enable_gpu": false,
+  "code_file": "titanic-prediction-with-gbm.irnb",
+  "dataset_sources": [],
+  "is_private": false,
+  "kernel_sources": [],
+  "competition_sources": [
+    "titanic"
+  ],
+  "keywords": [],
+  "language": "r",
+  "id_no": 262932,
+  "title": "Titanic Prediction with GBM"
+}

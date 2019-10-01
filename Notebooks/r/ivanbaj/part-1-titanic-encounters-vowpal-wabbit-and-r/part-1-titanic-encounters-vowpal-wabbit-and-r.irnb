@@ -1,0 +1,513 @@
+{
+  "cells": [
+    {
+      "cell_type": "markdown",
+      "metadata": {
+        "_cell_guid": "2c13d255-ca8f-2e1d-9ce9-42d13ed1cebb"
+      },
+      "source": [
+        "Play  with R and dplyr to see what is in the data."
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "_cell_guid": "da8883f9-2a0a-719f-b486-1ac4400c996c"
+      },
+      "outputs": [],
+      "source": [
+        "# Load the libraries\n",
+        "library(ggplot2) # Data visualization\n",
+        "library(dplyr, warn.conflicts = FALSE)\n",
+        "\n",
+        "# Load the data\n",
+        "train_tbl <- tbl_df(read.csv('../input/train.csv', stringsAsFactors = FALSE))\n",
+        "test_tbl <- tbl_df(read.csv('../input/test.csv', stringsAsFactors = FALSE))\n",
+        "\n",
+        "# What's in the files?\n",
+        "head(train_tbl)\n",
+        "head(test_tbl)"
+      ]
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {
+        "_cell_guid": "e19547d2-ea5b-4933-2d68-b417d118839f"
+      },
+      "source": [
+        "Who survived?"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "_cell_guid": "51a3f7bf-61af-fd6c-ee82-7fac306a5504"
+      },
+      "outputs": [],
+      "source": [
+        "survived_all <- filter(train_tbl, Survived == 1)\n",
+        "head(survived_all)"
+      ]
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {
+        "_cell_guid": "489b8f88-15cc-ddda-49e6-5439f95a370a"
+      },
+      "source": [
+        "Geee... Any dudes that survived?"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "_cell_guid": "539cfddf-801f-a5d8-e8c3-256e366a2f3f"
+      },
+      "outputs": [],
+      "source": [
+        "survived_dudes <- filter(survived_all, Sex == 'male')\n",
+        "head(survived_dudes)"
+      ]
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {
+        "_cell_guid": "f7233498-01d3-ecef-c63e-3a7f618564c7"
+      },
+      "source": [
+        "Hold on... How many female/male?"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "_cell_guid": "e245d1c2-9d44-8a5f-1aed-0e9898dbe927"
+      },
+      "outputs": [],
+      "source": [
+        "train_tbl %>% group_by(Sex) %>% summarise(n = n())"
+      ]
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {
+        "_cell_guid": "c506667a-3316-b1a5-e51e-becfceb651c8"
+      },
+      "source": [
+        "How many female/male total, survived or perished in this file?"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "_cell_guid": "e03b7495-1fe0-f889-097f-1f6edccc98c3"
+      },
+      "outputs": [],
+      "source": [
+        "total <- train_tbl %>% group_by(Sex) %>% summarise(Total = n())\n",
+        "survived <- train_tbl %>% filter(Survived == 1) %>% group_by(Sex) %>% summarise(Survived = n())\n",
+        "perished <- train_tbl %>% filter(Survived == 0) %>% group_by(Sex) %>% summarise(Perished  = n())"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "_cell_guid": "bf8b98f4-1a24-cf8c-5524-7429e3ffa370"
+      },
+      "outputs": [],
+      "source": [
+        "survival_tbl <- inner_join(total,survived) %>% inner_join(perished)\n",
+        "survival_tbl"
+      ]
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {
+        "_cell_guid": "cd1f35a4-91fe-dedb-806a-2230143d632b"
+      },
+      "source": [
+        "So the chances of survival given sex?"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "_cell_guid": "8eddb4dc-3fa8-c2a3-1d41-b5e475e8aad5"
+      },
+      "outputs": [],
+      "source": [
+        "options(digits = 3)\n",
+        "survival_tbl <- mutate(survival_tbl, Survival_Chance = (Survived/Total)*100)\n",
+        "survival_tbl"
+      ]
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {
+        "_cell_guid": "b42fc9ce-dc54-c3f8-a1e1-2111451450db"
+      },
+      "source": [
+        "What about age? Let's get rid of the NA in age"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "_cell_guid": "5a393666-aae5-b935-e5db-f444b1e99dd3"
+      },
+      "outputs": [],
+      "source": [
+        "train_tbl_with_age <- filter(train_tbl, !is.na(Age))\n",
+        "train_tbl_wo_age <- filter(train_tbl, is.na(Age))\n",
+        "total_with_age <- summarise(train_tbl_with_age, Total_With_Age = n())\n",
+        "train_tbl_wo_age <- summarise(train_tbl_wo_age, Total_Without_Age = n())\n",
+        "total_with_age\n",
+        "train_tbl_wo_age"
+      ]
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {
+        "_cell_guid": "d396e1e5-f7ee-794b-a19f-0599c519d256"
+      },
+      "source": [
+        "So... we lost 177 samples. So what?\n",
+        "\n",
+        "Lets bin the good samples by Age. \n",
+        "\n",
+        "Bins: \n",
+        "\n",
+        "Infant (0 \u2013 2),\n",
+        "\n",
+        "Child (3 -12), \n",
+        "\n",
+        "Teenager (13-18), \n",
+        "\n",
+        "Young_Adult (19-25),\n",
+        "\n",
+        "Adult (26-40),\n",
+        "\n",
+        "Middle_Age (41-60),\n",
+        "\n",
+        "Old_Age (> 60)\n"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "_cell_guid": "1087ffe9-7d9d-568c-0f38-dbdac27a8fb3"
+      },
+      "outputs": [],
+      "source": [
+        "train_tbl_with_age <- mutate(train_tbl_with_age, Age_Bin = ifelse(Age < 3, 'Infant', ifelse(Age < 13, 'Child', ifelse(Age < 19, 'Teenager',ifelse(Age < 26,'Young_Adult', ifelse(Age < 41,'Adult',ifelse(Age < 60,'Middle_Age','Old_Age')))))))\n",
+        "train_tbl_with_age <- mutate(train_tbl_with_age, Age_Bin_Order = ifelse(Age < 3, 1, ifelse(Age < 13, 2, ifelse(Age < 19, 3, ifelse(Age < 26, 4, ifelse(Age < 41, 5, ifelse(Age < 60, 6, 7)))))))\n",
+        "head(train_tbl_with_age)"
+      ]
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {
+        "_cell_guid": "c8bef6c9-5e90-b4fa-2240-3009141ae940"
+      },
+      "source": [
+        "Lets see total, survived or perished given age bin."
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "_cell_guid": "4476f015-2e1e-96f5-972b-44f41de11bb3"
+      },
+      "outputs": [],
+      "source": [
+        "total_age <- train_tbl_with_age %>% group_by(Age_Bin,Age_Bin_Order) %>% summarise(Total = n())\n",
+        "survived_age <- train_tbl_with_age %>% filter(Survived == 1) %>% group_by(Age_Bin,Age_Bin_Order) %>% summarise(Survived = n())\n",
+        "perished_age <- train_tbl_with_age %>% filter(Survived == 0) %>% group_by(Age_Bin,Age_Bin_Order) %>% summarise(Perished  = n())\n",
+        "\n",
+        "survival_age_tbl <- inner_join(total_age,survived_age) %>% inner_join(perished_age)\n",
+        "survival_age_tbl <- mutate(survival_age_tbl, Survival_Chance = (Survived/Total)*100)\n",
+        "\n",
+        "\n",
+        "select(arrange(survival_age_tbl, Age_Bin_Order), -Age_Bin_Order)"
+      ]
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {
+        "_cell_guid": "2628152f-94cf-bb3f-3786-d8845b7c33d5"
+      },
+      "source": [
+        "If you are old, you will be sleeping with the fish.\n",
+        "\n",
+        "But how do we show grouping per age and per sex?"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "_cell_guid": "874ec888-79cc-e0e3-2450-711b33c7cee2"
+      },
+      "outputs": [],
+      "source": [
+        "train_tbl_with_age <- select(train_tbl_with_age,PassengerId, Survived, Age_Bin, Sex, Age,  Age_Bin_Order)\n",
+        "#train_tbl_with_age <- tbl_df(train_tbl_with_age)\n",
+        "train_tbl_with_age_by_Sex_Age_Total <- group_by(train_tbl_with_age, Sex, Age_Bin, Age_Bin_Order)\n",
+        "train_tbl_with_age_by_Sex_Age_Survived <- group_by(filter(train_tbl_with_age, Survived ==1), Sex, Age_Bin, Age_Bin_Order)\n",
+        "\n",
+        "by_Sex_Age_Total <- summarise(train_tbl_with_age_by_Sex_Age_Total, Total = n())\n",
+        "by_Sex_Age_Survived <- summarise(train_tbl_with_age_by_Sex_Age_Survived, Total = n())\n",
+        "\n",
+        "by_Sex_Age <- inner_join(by_Sex_Age_Total,by_Sex_Age_Survived, by = c(\"Sex\", \"Age_Bin\"))\n",
+        "by_Sex_Age <- mutate(by_Sex_Age, Chance = (Total.y/Total.x)*100)\n",
+        "select(arrange(by_Sex_Age, Age_Bin_Order.y),Age_Bin,Sex, Chance, -Age_Bin_Order.y, -Age_Bin_Order.x, -Total.x, -Total.y)"
+      ]
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {
+        "_cell_guid": "b5e5bc0e-ed12-93fc-ef25-4cd01083fa1d"
+      },
+      "source": [
+        "Notice how the survival chances per age group is misleading unless we introduce the sex.\n",
+        "\n",
+        "As a whole the Teenager group has 42.9% chance, however when we bring the sex, we see that a female  Teenager has 75% chance of surviving and the male Teenager only 8.82%. A male Teenager is as good as dead.\n",
+        "\n",
+        "The same is true for the Young_Adult bin and the Old_Age bin.\n",
+        "\n",
+        "So far we can make this guess:\n",
+        "\n",
+        "Female: 1 (regardless of age)\n",
+        "\n",
+        "Male:\n",
+        "Infant: 1\n",
+        "\n",
+        "Child: 1\n",
+        "\n",
+        "Teenager: 0\n",
+        "\n",
+        "Young_Adult: 0\n",
+        "\n",
+        "Adult: 0\n",
+        "\n",
+        "Middle_Age: 0\n",
+        "\n",
+        "Old_Age: 0\n",
+        "\n",
+        "\n",
+        "Lets make our first submission:\n"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "_cell_guid": "0725b5ec-e281-5750-64b3-0f1088411a82"
+      },
+      "outputs": [],
+      "source": [
+        "summarise(filter(test_tbl, is.na(Age)), bad_age = n())"
+      ]
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {
+        "_cell_guid": "5dc314ad-edd8-5180-f0ac-d97814e0c56c"
+      },
+      "source": [
+        "Shitzu! We have 86 test samples with bad age.\n",
+        "\n",
+        "But we only need the age for males. \n"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "_cell_guid": "97624946-2e47-a1c1-0dac-045f05c2acaf"
+      },
+      "outputs": [],
+      "source": [
+        "summarise(filter(test_tbl, is.na(Age), Sex == \"male\" ), bad_age = n())"
+      ]
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {
+        "_cell_guid": "8f258dd2-fda6-2b57-6f77-a4554a3994b7"
+      },
+      "source": [
+        "Hmm still 61 bad samples out of?"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "_cell_guid": "b8929fdf-524f-9d15-620b-fd68b3243b24"
+      },
+      "outputs": [],
+      "source": [
+        "summarise(filter(test_tbl), Total = n())"
+      ]
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {
+        "_cell_guid": "b312a5d6-0e61-a61f-ae28-e4786a9eba1a"
+      },
+      "source": [
+        "We can use Parch. The only chance for a male to survive in our model is to be an infant or a child. So these passengers must have parents on board.\n"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "_cell_guid": "8763c897-d13b-b9de-024f-a5993deec7a0"
+      },
+      "outputs": [],
+      "source": [
+        "summarise(filter(test_tbl, is.na(Age), Sex == \"male\", Parch == 0), bad_age = n())"
+      ]
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {
+        "_cell_guid": "a5be0bda-8aa7-096a-3cb6-dbecc4034816"
+      },
+      "source": [
+        "We must make a wild guess for 57 male passengers.\n",
+        "\n",
+        "So... let me guess... they all die.\n",
+        "\n",
+        "OK let's do it:"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "_cell_guid": "11f75af4-11a3-4772-68a6-c47b85e79dc7"
+      },
+      "outputs": [],
+      "source": [
+        "submit <- tbl_df(select(test_tbl,PassengerId, Sex, Age))\n",
+        "\n",
+        "submit <- mutate(submit, Survived = ifelse(Sex == \"female\", 1, ifelse(Age < 13, 1,0)))\n",
+        "submit$Survived[is.na(submit$Survived)] <- 0\n",
+        "submit <- select(submit,PassengerId,Survived )\n",
+        "head(submit)\n",
+        "#write.csv(submit,file = \"submit.csv\", row.names = F)"
+      ]
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {
+        "_cell_guid": "1b3acbc5-a395-3e04-2b80-523250c8fd8a"
+      },
+      "source": [
+        "I got:\n",
+        "\n",
+        "Your submission scored 0.77033, which is not an improvement of your best score. Keep trying!\n",
+        "\n",
+        "and trying... (One day I will get 0.82+ or die trying)\n",
+        "\n",
+        "Soon we will switch gears and involve the big guns, like Vowpal Wabbit.\n",
+        "\n",
+        "But before that we will need to do feature selection and feature engineering with R.\n",
+        "\n"
+      ]
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {
+        "_cell_guid": "e658d2ef-fa20-7dbd-ed28-f49fa09ad4d8"
+      },
+      "source": [
+        "I was reading this notebook and realized that guessing 0 for all 57 male passenger with NA for age might be wrong. \n"
+      ]
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {
+        "_cell_guid": "82b00cc1-cb9c-f3c7-35f0-38c3f29e7d9e"
+      },
+      "source": [
+        "How many male with Age = NA survived?"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "_cell_guid": "2f6dc9ad-aece-2856-4735-87cc67f60674"
+      },
+      "outputs": [],
+      "source": [
+        "summarise(filter(train_tbl, is.na(Age), Survived == 1, Sex == 'male'), male_age_NA_Survived = n())\n",
+        "summarise(filter(train_tbl, is.na(Age), Sex == 'male'), male_age_NA_Total = n())"
+      ]
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {
+        "_cell_guid": "b6eb3db9-c06f-56f2-2e6c-1ec9acfcdd09"
+      },
+      "source": [
+        "Chance for survival for male given Age = NA"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "_cell_guid": "4632a0e5-3336-eab3-9b1a-ab0e6c9bf5c1"
+      },
+      "outputs": [],
+      "source": [
+        "(16/124)*100"
+      ]
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {
+        "_cell_guid": "f4127278-2679-5adc-7d9b-c1a3ec628489"
+      },
+      "source": [
+        "Very low rate. The original decision to set the Survival <- 0 for all male give Age = NA was the correct one.\n",
+        "\n",
+        "This notebook got a bit long. I will start part 2. In Part 2 I will step back and contemplate what are we trying to accomplish with the data. What is our  goal?"
+      ]
+    }
+  ],
+  "metadata": {
+    "_change_revision": 0,
+    "_is_fork": false,
+    "kernelspec": {
+      "display_name": "R",
+      "language": "R",
+      "name": "ir"
+    },
+    "language_info": {
+      "codemirror_mode": "r",
+      "file_extension": ".r",
+      "mimetype": "text/x-r-source",
+      "name": "R",
+      "pygments_lexer": "r",
+      "version": "3.3.2"
+    }
+  },
+  "nbformat": 4,
+  "nbformat_minor": 0
+}

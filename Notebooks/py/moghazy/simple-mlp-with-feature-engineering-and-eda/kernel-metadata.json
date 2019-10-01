@@ -1,0 +1,23 @@
+{
+  "is_private": false,
+  "kernel_type": "notebook",
+  "language": "python",
+  "code_file": "simple-mlp-with-feature-engineering-and-eda.ipynb",
+  "dataset_sources": [],
+  "keywords": [
+    "tutorial",
+    "beginner",
+    "classification",
+    "feature engineering",
+    "deep learning"
+  ],
+  "title": "Simple MLP with Feature Engineering and EDA",
+  "competition_sources": [
+    "titanic"
+  ],
+  "id_no": 1256598,
+  "enable_gpu": true,
+  "kernel_sources": [],
+  "enable_internet": false,
+  "id": "moghazy/simple-mlp-with-feature-engineering-and-eda"
+}

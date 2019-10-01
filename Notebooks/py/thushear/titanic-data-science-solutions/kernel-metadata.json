@@ -1,0 +1,17 @@
+{
+  "keywords": [],
+  "id": "thushear/titanic-data-science-solutions",
+  "kernel_sources": [],
+  "kernel_type": "notebook",
+  "enable_internet": false,
+  "dataset_sources": [],
+  "is_private": false,
+  "enable_gpu": false,
+  "code_file": "titanic-data-science-solutions.ipynb",
+  "title": "Titanic Data Science Solutions",
+  "id_no": 322832,
+  "language": "python",
+  "competition_sources": [
+    "titanic"
+  ]
+}

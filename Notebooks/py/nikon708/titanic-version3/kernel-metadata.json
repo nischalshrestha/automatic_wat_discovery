@@ -1,0 +1,17 @@
+{
+  "title": "titanic_version3",
+  "is_private": false,
+  "dataset_sources": [],
+  "id": "nikon708/titanic-version3",
+  "kernel_sources": [],
+  "enable_internet": false,
+  "competition_sources": [
+    "titanic"
+  ],
+  "id_no": 1343834,
+  "kernel_type": "notebook",
+  "code_file": "titanic-version3.ipynb",
+  "keywords": [],
+  "enable_gpu": false,
+  "language": "python"
+}

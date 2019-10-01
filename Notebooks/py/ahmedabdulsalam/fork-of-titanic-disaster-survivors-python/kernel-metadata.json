@@ -1,0 +1,17 @@
+{
+  "kernel_type": "notebook",
+  "is_private": false,
+  "title": "Fork of Titanic Disaster Survivors..? [Python]",
+  "enable_gpu": false,
+  "dataset_sources": [],
+  "competition_sources": [
+    "titanic"
+  ],
+  "enable_internet": false,
+  "code_file": "fork-of-titanic-disaster-survivors-python.ipynb",
+  "kernel_sources": [],
+  "id_no": 437696,
+  "language": "python",
+  "keywords": [],
+  "id": "ahmedabdulsalam/fork-of-titanic-disaster-survivors-python"
+}

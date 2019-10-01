@@ -1,0 +1,17 @@
+{
+  "dataset_sources": [],
+  "keywords": [],
+  "language": "r",
+  "code_file": "notebook-748c0377bc5677796ce4.irnb",
+  "id_no": 72321,
+  "is_private": false,
+  "enable_internet": false,
+  "title": "Cabin can save your life",
+  "competition_sources": [
+    "titanic"
+  ],
+  "kernel_sources": [],
+  "id": "humogrammer/notebook-748c0377bc5677796ce4",
+  "kernel_type": "notebook",
+  "enable_gpu": false
+}

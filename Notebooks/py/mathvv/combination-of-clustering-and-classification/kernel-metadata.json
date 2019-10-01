@@ -1,0 +1,21 @@
+{
+  "competition_sources": [
+    "titanic"
+  ],
+  "keywords": [
+    "beginner",
+    "classification",
+    "feature engineering"
+  ],
+  "enable_gpu": true,
+  "title": "Combination of Clustering and Classification",
+  "kernel_sources": [],
+  "is_private": false,
+  "id_no": 1521955,
+  "dataset_sources": [],
+  "enable_internet": false,
+  "language": "python",
+  "kernel_type": "notebook",
+  "code_file": "combination-of-clustering-and-classification.ipynb",
+  "id": "mathvv/combination-of-clustering-and-classification"
+}

@@ -1,0 +1,17 @@
+{
+  "is_private": false,
+  "code_file": "notebookb285c8323a.ipynb",
+  "enable_internet": false,
+  "keywords": [],
+  "language": "python",
+  "kernel_sources": [],
+  "dataset_sources": [],
+  "id_no": 240837,
+  "title": "Notebookb285c8323a",
+  "id": "zhejiayuma/notebookb285c8323a",
+  "enable_gpu": false,
+  "competition_sources": [
+    "titanic"
+  ],
+  "kernel_type": "notebook"
+}

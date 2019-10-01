@@ -1,0 +1,17 @@
+{
+  "kernel_sources": [],
+  "enable_gpu": false,
+  "id": "raffeyhassan/titanic-data-test",
+  "enable_internet": false,
+  "kernel_type": "notebook",
+  "title": "Titanic_Data_Test",
+  "competition_sources": [
+    "titanic"
+  ],
+  "is_private": false,
+  "code_file": "titanic-data-test.irnb",
+  "language": "r",
+  "dataset_sources": [],
+  "keywords": [],
+  "id_no": 1670318
+}

@@ -1,0 +1,17 @@
+{
+  "enable_gpu": false,
+  "kernel_sources": [],
+  "competition_sources": [
+    "titanic"
+  ],
+  "id_no": 114154,
+  "dataset_sources": [],
+  "is_private": false,
+  "kernel_type": "notebook",
+  "enable_internet": false,
+  "language": "python",
+  "id": "docktorrr/exploring-titanic-data",
+  "title": "Exploring Titanic data",
+  "code_file": "exploring-titanic-data.ipynb",
+  "keywords": []
+}

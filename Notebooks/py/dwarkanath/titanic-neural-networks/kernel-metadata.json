@@ -1,0 +1,21 @@
+{
+  "keywords": [
+    "beginner",
+    "data visualization",
+    "neural networks"
+  ],
+  "kernel_sources": [],
+  "dataset_sources": [],
+  "competition_sources": [
+    "titanic"
+  ],
+  "enable_internet": false,
+  "is_private": false,
+  "id": "dwarkanath/titanic-neural-networks",
+  "enable_gpu": false,
+  "id_no": 1528783,
+  "code_file": "titanic-neural-networks.ipynb",
+  "title": "Titanic Neural Networks",
+  "kernel_type": "notebook",
+  "language": "python"
+}

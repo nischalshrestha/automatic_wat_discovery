@@ -1,0 +1,17 @@
+{
+  "language": "python",
+  "enable_internet": false,
+  "id": "wwblovesvg/knn-2-titanic-w2l4-hw-wenbo-wang",
+  "code_file": "knn-2-titanic-w2l4-hw-wenbo-wang.ipynb",
+  "kernel_type": "notebook",
+  "id_no": 1624930,
+  "is_private": false,
+  "keywords": [],
+  "kernel_sources": [],
+  "title": "KNN_2_Titanic_W2L4_HW_Wenbo_Wang",
+  "dataset_sources": [],
+  "enable_gpu": false,
+  "competition_sources": [
+    "titanic"
+  ]
+}

@@ -1,0 +1,17 @@
+{
+  "enable_gpu": false,
+  "competition_sources": [
+    "titanic"
+  ],
+  "id": "ishizaka/kernel32be1075a5",
+  "language": "python",
+  "title": "kernel32be1075a5",
+  "kernel_type": "notebook",
+  "keywords": [],
+  "is_private": false,
+  "code_file": "kernel32be1075a5.ipynb",
+  "kernel_sources": [],
+  "dataset_sources": [],
+  "id_no": 1971462,
+  "enable_internet": false
+}

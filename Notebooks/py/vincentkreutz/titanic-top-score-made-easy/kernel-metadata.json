@@ -1,0 +1,20 @@
+{
+  "dataset_sources": [],
+  "language": "python",
+  "keywords": [
+    "tutorial",
+    "feature engineering"
+  ],
+  "competition_sources": [
+    "titanic"
+  ],
+  "title": "Titanic : Top score made easy",
+  "code_file": "titanic-top-score-made-easy.ipynb",
+  "id": "vincentkreutz/titanic-top-score-made-easy",
+  "id_no": 2128304,
+  "is_private": false,
+  "enable_internet": false,
+  "kernel_sources": [],
+  "kernel_type": "notebook",
+  "enable_gpu": false
+}

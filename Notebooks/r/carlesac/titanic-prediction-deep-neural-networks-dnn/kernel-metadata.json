@@ -1,0 +1,17 @@
+{
+  "code_file": "titanic-prediction-deep-neural-networks-dnn.irnb",
+  "keywords": [],
+  "competition_sources": [
+    "titanic"
+  ],
+  "kernel_type": "notebook",
+  "kernel_sources": [],
+  "language": "r",
+  "is_private": false,
+  "dataset_sources": [],
+  "enable_gpu": false,
+  "title": "Titanic Prediction - Deep Neural Networks DNN",
+  "enable_internet": false,
+  "id_no": 994464,
+  "id": "carlesac/titanic-prediction-deep-neural-networks-dnn"
+}

@@ -1,0 +1,20 @@
+{
+  "language": "python",
+  "kernel_sources": [],
+  "code_file": "titanicselflearning.ipynb",
+  "kernel_type": "notebook",
+  "title": "TitanicSelfLearning",
+  "id": "glunokruo/titanicselflearning",
+  "competition_sources": [
+    "titanic"
+  ],
+  "is_private": false,
+  "dataset_sources": [],
+  "keywords": [
+    "beginner",
+    "linear regression"
+  ],
+  "enable_gpu": false,
+  "enable_internet": false,
+  "id_no": 1559317
+}

@@ -1,0 +1,17 @@
+{
+  "id": "abahl88/titanic-survival-analysis",
+  "keywords": [],
+  "title": "Titanic Survival Analysis",
+  "dataset_sources": [],
+  "enable_internet": false,
+  "enable_gpu": false,
+  "id_no": 268629,
+  "code_file": "titanic-survival-analysis.ipynb",
+  "language": "python",
+  "kernel_sources": [],
+  "competition_sources": [
+    "titanic"
+  ],
+  "is_private": false,
+  "kernel_type": "notebook"
+}

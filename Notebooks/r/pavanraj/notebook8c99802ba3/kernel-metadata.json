@@ -1,0 +1,17 @@
+{
+  "title": "Notebook8c99802ba3",
+  "code_file": "notebook8c99802ba3.irnb",
+  "id": "pavanraj/notebook8c99802ba3",
+  "dataset_sources": [],
+  "enable_gpu": false,
+  "kernel_sources": [],
+  "is_private": false,
+  "kernel_type": "notebook",
+  "id_no": 209695,
+  "enable_internet": false,
+  "language": "r",
+  "competition_sources": [
+    "titanic"
+  ],
+  "keywords": []
+}

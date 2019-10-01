@@ -1,0 +1,17 @@
+{
+  "language": "python",
+  "kernel_type": "notebook",
+  "keywords": [],
+  "is_private": false,
+  "id_no": 203053,
+  "code_file": "titanic-ship-dataset-analysis.ipynb",
+  "kernel_sources": [],
+  "dataset_sources": [],
+  "enable_gpu": false,
+  "enable_internet": false,
+  "title": "Titanic ship dataset analysis",
+  "id": "shubhz007/titanic-ship-dataset-analysis",
+  "competition_sources": [
+    "titanic"
+  ]
+}

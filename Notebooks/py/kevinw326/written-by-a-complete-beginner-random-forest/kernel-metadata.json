@@ -1,0 +1,20 @@
+{
+  "enable_internet": false,
+  "id": "kevinw326/written-by-a-complete-beginner-random-forest",
+  "title": "Written by a complete beginner (Random Forest)",
+  "competition_sources": [
+    "titanic"
+  ],
+  "dataset_sources": [],
+  "id_no": 1505879,
+  "code_file": "written-by-a-complete-beginner-random-forest.ipynb",
+  "language": "python",
+  "enable_gpu": false,
+  "kernel_type": "notebook",
+  "keywords": [
+    "beginner",
+    "classification"
+  ],
+  "is_private": false,
+  "kernel_sources": []
+}

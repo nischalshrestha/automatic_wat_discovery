@@ -1,0 +1,17 @@
+{
+  "title": "ROC the Boat: Investigating ROC/AUC",
+  "enable_gpu": false,
+  "enable_internet": false,
+  "kernel_type": "notebook",
+  "language": "python",
+  "code_file": "roc-the-boat-investigating-roc-auc.ipynb",
+  "id_no": 1691577,
+  "is_private": false,
+  "competition_sources": [
+    "titanic"
+  ],
+  "keywords": [],
+  "id": "donkeys/roc-the-boat-investigating-roc-auc",
+  "dataset_sources": [],
+  "kernel_sources": []
+}

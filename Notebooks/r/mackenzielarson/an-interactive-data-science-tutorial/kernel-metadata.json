@@ -1,0 +1,17 @@
+{
+  "dataset_sources": [],
+  "keywords": [],
+  "is_private": false,
+  "enable_internet": false,
+  "kernel_sources": [],
+  "kernel_type": "notebook",
+  "id": "mackenzielarson/an-interactive-data-science-tutorial",
+  "code_file": "an-interactive-data-science-tutorial.irnb",
+  "title": "An Interactive Data Science Tutorial",
+  "id_no": 173780,
+  "enable_gpu": false,
+  "language": "r",
+  "competition_sources": [
+    "titanic"
+  ]
+}

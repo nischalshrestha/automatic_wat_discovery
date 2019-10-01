@@ -1,0 +1,17 @@
+{
+  "title": "Notebookf1a1c84513",
+  "kernel_sources": [],
+  "enable_gpu": false,
+  "dataset_sources": [],
+  "id": "parvindersingh/notebook8251024fb0",
+  "is_private": false,
+  "kernel_type": "notebook",
+  "keywords": [],
+  "code_file": "notebook8251024fb0.irnb",
+  "competition_sources": [
+    "titanic"
+  ],
+  "language": "r",
+  "enable_internet": false,
+  "id_no": 190886
+}

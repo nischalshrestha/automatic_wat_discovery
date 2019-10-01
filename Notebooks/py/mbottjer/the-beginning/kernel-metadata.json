@@ -1,0 +1,17 @@
+{
+  "kernel_sources": [],
+  "keywords": [],
+  "enable_internet": false,
+  "language": "python",
+  "code_file": "the-beginning.ipynb",
+  "dataset_sources": [],
+  "id": "mbottjer/the-beginning",
+  "is_private": false,
+  "enable_gpu": false,
+  "competition_sources": [
+    "titanic"
+  ],
+  "title": "The Beginning",
+  "kernel_type": "notebook",
+  "id_no": 194964
+}

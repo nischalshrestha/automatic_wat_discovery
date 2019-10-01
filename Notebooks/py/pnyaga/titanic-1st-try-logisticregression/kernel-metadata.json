@@ -1,0 +1,17 @@
+{
+  "language": "python",
+  "kernel_sources": [],
+  "title": "titanic_1st_try_LogisticRegression",
+  "dataset_sources": [],
+  "is_private": false,
+  "competition_sources": [
+    "titanic"
+  ],
+  "id": "pnyaga/titanic-1st-try-logisticregression",
+  "enable_internet": false,
+  "keywords": [],
+  "code_file": "titanic-1st-try-logisticregression.ipynb",
+  "id_no": 1339951,
+  "enable_gpu": false,
+  "kernel_type": "notebook"
+}

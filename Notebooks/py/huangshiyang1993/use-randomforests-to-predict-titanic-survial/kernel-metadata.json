@@ -1,0 +1,17 @@
+{
+  "kernel_type": "notebook",
+  "keywords": [],
+  "title": "Use  RandomForests  to Predict Titanic survial",
+  "language": "python",
+  "id": "huangshiyang1993/use-randomforests-to-predict-titanic-survial",
+  "is_private": false,
+  "code_file": "use-randomforests-to-predict-titanic-survial.ipynb",
+  "enable_internet": false,
+  "id_no": 1090963,
+  "enable_gpu": false,
+  "competition_sources": [
+    "titanic"
+  ],
+  "kernel_sources": [],
+  "dataset_sources": []
+}

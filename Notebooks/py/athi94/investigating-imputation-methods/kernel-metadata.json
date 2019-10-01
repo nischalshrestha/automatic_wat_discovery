@@ -1,0 +1,17 @@
+{
+  "code_file": "investigating-imputation-methods.ipynb",
+  "competition_sources": [
+    "titanic"
+  ],
+  "title": "Investigating Imputation Methods",
+  "id": "athi94/investigating-imputation-methods",
+  "kernel_sources": [],
+  "language": "python",
+  "dataset_sources": [],
+  "kernel_type": "notebook",
+  "is_private": false,
+  "enable_gpu": false,
+  "keywords": [],
+  "id_no": 332363,
+  "enable_internet": false
+}

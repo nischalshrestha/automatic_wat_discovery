@@ -1,0 +1,21 @@
+{
+  "id_no": 446701,
+  "competition_sources": [
+    "titanic"
+  ],
+  "enable_internet": false,
+  "id": "abdzrahim/analysis-on-survival-on-the-titanic",
+  "kernel_type": "notebook",
+  "dataset_sources": [],
+  "is_private": false,
+  "keywords": [
+    "linguistics",
+    "beginner",
+    "data visualization"
+  ],
+  "code_file": "analysis-on-survival-on-the-titanic.ipynb",
+  "title": "Analysis on Survival on the Titanic",
+  "kernel_sources": [],
+  "language": "python",
+  "enable_gpu": false
+}

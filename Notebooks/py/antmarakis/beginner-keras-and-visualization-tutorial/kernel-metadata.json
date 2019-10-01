@@ -1,0 +1,23 @@
+{
+  "language": "python",
+  "kernel_type": "notebook",
+  "enable_internet": false,
+  "keywords": [
+    "tutorial",
+    "beginner",
+    "data visualization",
+    "classification",
+    "feature engineering"
+  ],
+  "enable_gpu": false,
+  "id": "antmarakis/beginner-keras-and-visualization-tutorial",
+  "kernel_sources": [],
+  "code_file": "beginner-keras-and-visualization-tutorial.ipynb",
+  "competition_sources": [
+    "titanic"
+  ],
+  "title": "Beginner Keras and Visualization Tutorial",
+  "dataset_sources": [],
+  "id_no": 663373,
+  "is_private": false
+}

@@ -1,0 +1,17 @@
+{
+  "kernel_sources": [],
+  "enable_gpu": false,
+  "id_no": 1854622,
+  "code_file": "scikit-basic.ipynb",
+  "is_private": false,
+  "competition_sources": [
+    "titanic"
+  ],
+  "keywords": [],
+  "kernel_type": "notebook",
+  "dataset_sources": [],
+  "id": "weitbelou/scikit-basic",
+  "language": "python",
+  "enable_internet": false,
+  "title": "SciKit basic"
+}

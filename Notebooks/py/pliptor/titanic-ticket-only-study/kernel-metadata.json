@@ -1,0 +1,20 @@
+{
+  "keywords": [
+    "advanced",
+    "feature engineering"
+  ],
+  "language": "python",
+  "enable_gpu": false,
+  "enable_internet": false,
+  "id": "pliptor/titanic-ticket-only-study",
+  "dataset_sources": [],
+  "code_file": "titanic-ticket-only-study.ipynb",
+  "competition_sources": [
+    "titanic"
+  ],
+  "is_private": false,
+  "title": "Titanic Ticket-only study",
+  "id_no": 748999,
+  "kernel_type": "notebook",
+  "kernel_sources": []
+}

@@ -1,0 +1,17 @@
+{
+  "id": "rounakbanik/the-titanic-problem",
+  "kernel_sources": [],
+  "keywords": [],
+  "is_private": false,
+  "enable_gpu": false,
+  "code_file": "the-titanic-problem.ipynb",
+  "title": "The Titanic Problem",
+  "enable_internet": false,
+  "kernel_type": "notebook",
+  "competition_sources": [
+    "titanic"
+  ],
+  "id_no": 359728,
+  "language": "python",
+  "dataset_sources": []
+}

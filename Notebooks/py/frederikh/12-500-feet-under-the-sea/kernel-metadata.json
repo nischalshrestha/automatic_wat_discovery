@@ -1,0 +1,17 @@
+{
+  "is_private": false,
+  "kernel_sources": [],
+  "code_file": "12-500-feet-under-the-sea.ipynb",
+  "title": " 12,500 Feet Under the Sea",
+  "dataset_sources": [],
+  "competition_sources": [
+    "titanic"
+  ],
+  "id": "frederikh/12-500-feet-under-the-sea",
+  "kernel_type": "notebook",
+  "language": "python",
+  "id_no": 382616,
+  "enable_internet": false,
+  "enable_gpu": false,
+  "keywords": []
+}

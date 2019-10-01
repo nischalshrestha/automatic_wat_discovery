@@ -1,0 +1,17 @@
+{
+  "competition_sources": [
+    "titanic"
+  ],
+  "kernel_sources": [],
+  "code_file": "titanic-data-science-solutions.ipynb",
+  "keywords": [],
+  "id": "wagamama/titanic-data-science-solutions",
+  "is_private": false,
+  "language": "python",
+  "dataset_sources": [],
+  "id_no": 248411,
+  "enable_internet": false,
+  "kernel_type": "notebook",
+  "title": "Titanic Data Science Solutions ",
+  "enable_gpu": false
+}

@@ -1,0 +1,75 @@
+{
+  "cells": [
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "_cell_guid": "047398ee-3237-daf8-5c8c-cadab13dcd1a"
+      },
+      "outputs": [],
+      "source": [
+        "library('ggplot2') # visualization\n",
+        "library('ggthemes') # visualization\n",
+        "library('scales') # visualization\n",
+        "library('dplyr') # data manipulation\n",
+        "library('mice') # imputation\n",
+        "library('randomForest') # classification algorithm\n",
+        "\n",
+        "train <- read.csv('../input/train.csv', stringsAsFactors = F)\n",
+        "test  <- read.csv('../input/test.csv', stringsAsFactors = F)\n",
+        "\n",
+        "full  <- bind_rows(train, test) # bind training & test data\n",
+        "\n",
+        "# check data\n",
+        "str(full)\n",
+        "# Grab title from passenger names\n",
+        "full$Title <- gsub('(.*, )|(\\\\..*)', '', full$Name)\n",
+        "\n",
+        "# Show title counts by sex\n",
+        "table(full$Sex, full$Title)\n",
+        "\n",
+        "# Titles with very low cell counts to be combined to \"rare\" level\n",
+        "rare_title <- c('Dona', 'Lady', 'the Countess','Capt', 'Col', 'Don', \n",
+        "                'Dr', 'Major', 'Rev', 'Sir', 'Jonkheer')\n",
+        "# Also reassign mlle, ms, and mme accordingly\n",
+        "full$Title[full$Title == 'Mlle']        <- 'Miss' \n",
+        "full$Title[full$Title == 'Ms']          <- 'Miss'\n",
+        "full$Title[full$Title == 'Mme']         <- 'Mrs' \n",
+        "full$Title[full$Title %in% rare_title]  <- 'Rare'\n",
+        "\n",
+        "# Show title counts by sex again\n",
+        "table(full$Sex, full$Title)"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "_cell_guid": "59f8960e-fd59-c3b7-8ad0-caa10ff223e0"
+      },
+      "outputs": [],
+      "source": [
+        ""
+      ]
+    }
+  ],
+  "metadata": {
+    "_change_revision": 0,
+    "_is_fork": false,
+    "kernelspec": {
+      "display_name": "R",
+      "language": "R",
+      "name": "ir"
+    },
+    "language_info": {
+      "codemirror_mode": "r",
+      "file_extension": ".r",
+      "mimetype": "text/x-r-source",
+      "name": "R",
+      "pygments_lexer": "r",
+      "version": "3.3.2"
+    }
+  },
+  "nbformat": 4,
+  "nbformat_minor": 0
+}

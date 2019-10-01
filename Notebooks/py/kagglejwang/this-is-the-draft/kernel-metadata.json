@@ -1,0 +1,17 @@
+{
+  "language": "python",
+  "competition_sources": [
+    "titanic"
+  ],
+  "is_private": false,
+  "enable_gpu": false,
+  "kernel_type": "notebook",
+  "keywords": [],
+  "title": "this is the draft  ",
+  "code_file": "this-is-the-draft.ipynb",
+  "kernel_sources": [],
+  "enable_internet": false,
+  "id": "kagglejwang/this-is-the-draft",
+  "id_no": 1534538,
+  "dataset_sources": []
+}

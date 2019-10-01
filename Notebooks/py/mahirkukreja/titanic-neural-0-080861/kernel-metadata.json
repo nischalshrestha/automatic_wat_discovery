@@ -1,0 +1,17 @@
+{
+  "keywords": [],
+  "language": "python",
+  "dataset_sources": [],
+  "id": "mahirkukreja/titanic-neural-0-080861",
+  "competition_sources": [
+    "titanic"
+  ],
+  "enable_gpu": false,
+  "kernel_sources": [],
+  "code_file": "titanic-neural-0-080861.ipynb",
+  "title": "titanic_neural_0.080861",
+  "id_no": 118539,
+  "enable_internet": false,
+  "is_private": false,
+  "kernel_type": "notebook"
+}

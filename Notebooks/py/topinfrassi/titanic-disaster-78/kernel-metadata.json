@@ -1,0 +1,17 @@
+{
+  "kernel_type": "notebook",
+  "competition_sources": [
+    "titanic"
+  ],
+  "enable_gpu": false,
+  "id": "topinfrassi/titanic-disaster-78",
+  "kernel_sources": [],
+  "code_file": "titanic-disaster-78.ipynb",
+  "is_private": false,
+  "keywords": [],
+  "title": "Titanic Disaster ~ 78%",
+  "language": "python",
+  "enable_internet": false,
+  "dataset_sources": [],
+  "id_no": 566138
+}

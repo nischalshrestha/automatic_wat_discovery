@@ -1,0 +1,17 @@
+{
+  "id_no": 1297890,
+  "dataset_sources": [],
+  "code_file": "titanic-competition.irnb",
+  "is_private": false,
+  "id": "albyedw/titanic-competition",
+  "title": "Titanic Competition",
+  "kernel_sources": [],
+  "keywords": [],
+  "enable_internet": false,
+  "kernel_type": "notebook",
+  "enable_gpu": false,
+  "language": "r",
+  "competition_sources": [
+    "titanic"
+  ]
+}

@@ -1,0 +1,17 @@
+{
+  "dataset_sources": [],
+  "enable_gpu": false,
+  "kernel_type": "notebook",
+  "kernel_sources": [],
+  "language": "python",
+  "keywords": [],
+  "enable_internet": false,
+  "competition_sources": [
+    "titanic"
+  ],
+  "title": "An Interactive Data Science Tutorial",
+  "code_file": "an-interactive-data-science-tutorial.ipynb",
+  "is_private": false,
+  "id": "jakeylee/an-interactive-data-science-tutorial",
+  "id_no": 325495
+}

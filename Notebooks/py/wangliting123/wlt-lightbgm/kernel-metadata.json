@@ -1,0 +1,17 @@
+{
+  "competition_sources": [
+    "titanic"
+  ],
+  "id_no": 2178434,
+  "kernel_type": "notebook",
+  "kernel_sources": [],
+  "id": "wangliting123/wlt-lightbgm",
+  "keywords": [],
+  "dataset_sources": [],
+  "language": "python",
+  "code_file": "wlt-lightbgm.ipynb",
+  "enable_internet": false,
+  "enable_gpu": false,
+  "is_private": false,
+  "title": "wlt LightBGM"
+}

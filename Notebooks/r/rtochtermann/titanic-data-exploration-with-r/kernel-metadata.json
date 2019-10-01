@@ -1,0 +1,17 @@
+{
+  "id_no": 234617,
+  "is_private": false,
+  "enable_gpu": false,
+  "kernel_type": "notebook",
+  "id": "rtochtermann/titanic-data-exploration-with-r",
+  "kernel_sources": [],
+  "language": "python",
+  "keywords": [],
+  "competition_sources": [
+    "titanic"
+  ],
+  "title": "Titanic data exploration with R",
+  "enable_internet": false,
+  "dataset_sources": [],
+  "code_file": "titanic-data-exploration-with-r.ipynb"
+}

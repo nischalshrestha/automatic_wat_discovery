@@ -1,0 +1,17 @@
+{
+  "keywords": [],
+  "enable_internet": false,
+  "title": "titanic - A beginner's simple implementation",
+  "kernel_type": "notebook",
+  "kernel_sources": [],
+  "id": "tonypythoneer/titanic-a-beginner-s-simple-implementation",
+  "dataset_sources": [],
+  "code_file": "titanic-a-beginner-s-simple-implementation.ipynb",
+  "id_no": 1127826,
+  "language": "python",
+  "enable_gpu": false,
+  "competition_sources": [
+    "titanic"
+  ],
+  "is_private": false
+}

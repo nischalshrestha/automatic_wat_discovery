@@ -1,0 +1,17 @@
+{
+  "id": "kangresv96/survival-prediction",
+  "id_no": 1155855,
+  "title": "Survival_Prediction",
+  "code_file": "survival-prediction.ipynb",
+  "language": "python",
+  "kernel_type": "notebook",
+  "is_private": false,
+  "enable_gpu": false,
+  "enable_internet": false,
+  "keywords": [],
+  "dataset_sources": [],
+  "kernel_sources": [],
+  "competition_sources": [
+    "titanic"
+  ]
+}

@@ -1,0 +1,17 @@
+{
+  "title": "Titanic Notebook",
+  "keywords": [],
+  "enable_internet": false,
+  "id_no": 208405,
+  "is_private": false,
+  "competition_sources": [
+    "titanic"
+  ],
+  "enable_gpu": false,
+  "id": "ntguardian/titanic-notebook",
+  "dataset_sources": [],
+  "kernel_type": "notebook",
+  "language": "python",
+  "code_file": "titanic-notebook.ipynb",
+  "kernel_sources": []
+}

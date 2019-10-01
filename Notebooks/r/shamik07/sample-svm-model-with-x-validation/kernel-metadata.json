@@ -1,0 +1,17 @@
+{
+  "dataset_sources": [],
+  "language": "r",
+  "kernel_sources": [],
+  "title": "Sample SVM model with X-Validation",
+  "id_no": 180072,
+  "enable_internet": false,
+  "enable_gpu": false,
+  "keywords": [],
+  "kernel_type": "notebook",
+  "is_private": false,
+  "code_file": "sample-svm-model-with-x-validation.irnb",
+  "competition_sources": [
+    "titanic"
+  ],
+  "id": "shamik07/sample-svm-model-with-x-validation"
+}

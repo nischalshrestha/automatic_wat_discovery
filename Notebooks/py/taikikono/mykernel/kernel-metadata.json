@@ -1,0 +1,17 @@
+{
+  "is_private": false,
+  "dataset_sources": [],
+  "enable_gpu": true,
+  "code_file": "mykernel.ipynb",
+  "enable_internet": false,
+  "competition_sources": [
+    "titanic"
+  ],
+  "id": "taikikono/mykernel",
+  "title": "MyKernel",
+  "kernel_type": "notebook",
+  "kernel_sources": [],
+  "id_no": 1911382,
+  "language": "python",
+  "keywords": []
+}

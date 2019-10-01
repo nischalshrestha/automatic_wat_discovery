@@ -1,0 +1,106 @@
+{"cells":[
+ {
+  "cell_type": "code",
+  "execution_count": null,
+  "metadata": {
+   "collapsed": false
+  },
+  "outputs": [],
+  "source": "# This R environment comes with all of CRAN preinstalled, as well as many other helpful packages\n# The environment is defined by the kaggle/rstats docker image: https://github.com/kaggle/docker-rstats\n# For example, here's several helpful packages to load in \n\nlibrary(ggplot2) # Data visualization\nlibrary(readr) # CSV file I/O, e.g. the read_csv function\n\n# Input data files are available in the \"../input/\" directory.\n# For example, running this (by clicking run or pressing Shift+Enter) will list the files in the input directory\n\ndir(\"../input\")\n\n# Any results you write to the current directory are saved as output."
+ },
+ {
+  "cell_type": "code",
+  "execution_count": null,
+  "metadata": {
+   "collapsed": false
+  },
+  "outputs": [],
+  "source": "train <- read_csv(\"../input/train.csv\")\ntest <- read_csv(\"../input/test.csv\")"
+ },
+ {
+  "cell_type": "code",
+  "execution_count": null,
+  "metadata": {
+   "collapsed": false
+  },
+  "outputs": [],
+  "source": "str(train)"
+ },
+ {
+  "cell_type": "code",
+  "execution_count": null,
+  "metadata": {
+   "collapsed": false
+  },
+  "outputs": [],
+  "source": "str(test)"
+ },
+ {
+  "cell_type": "code",
+  "execution_count": null,
+  "metadata": {
+   "collapsed": false
+  },
+  "outputs": [],
+  "source": "table(train$Survived)"
+ },
+ {
+  "cell_type": "code",
+  "execution_count": null,
+  "metadata": {
+   "collapsed": false
+  },
+  "outputs": [],
+  "source": "prop.table(table(train$Survived))"
+ },
+ {
+  "cell_type": "code",
+  "execution_count": null,
+  "metadata": {
+   "collapsed": false
+  },
+  "outputs": [],
+  "source": "table(train$Sex, train$Survived)"
+ },
+ {
+  "cell_type": "code",
+  "execution_count": null,
+  "metadata": {
+   "collapsed": false
+  },
+  "outputs": [],
+  "source": "prop.table(table(train$Sex, train$Survived), 1)"
+ },
+ {
+  "cell_type": "markdown",
+  "metadata": {},
+  "source": "All female survived, all male died"
+ },
+ {
+  "cell_type": "code",
+  "execution_count": null,
+  "metadata": {
+   "collapsed": false
+  },
+  "outputs": [],
+  "source": "test_one <- test\ntest_one$Survived <- 0\ntest_one$Survived[test_one$Sex == \"female\"] <- 1\nprop.table(table(test_one$Sex, test_one$Survived), 1)"
+ },
+ {
+  "cell_type": "code",
+  "execution_count": null,
+  "metadata": {
+   "collapsed": false
+  },
+  "outputs": [],
+  "source": "write.csv(test_one[c(\"PassengerId\", \"Survived\")], file = \"test_one.csv\", row.names=FALSE)"
+ },
+ {
+  "cell_type": "code",
+  "execution_count": null,
+  "metadata": {
+   "collapsed": false
+  },
+  "outputs": [],
+  "source": ""
+ }
+],"metadata":{"kernelspec":{"display_name":"R","language":"R","name":"ir"}}, "nbformat": 4, "nbformat_minor": 0}

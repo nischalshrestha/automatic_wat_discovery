@@ -1,0 +1,29 @@
+{
+  "code_file": "titanic-desastre-43370d.ipynb",
+  "language": "python",
+  "dataset_sources": [
+    "github/github-repos",
+    "pytorch/vgg13bn",
+    "bigquery/patents",
+    "adrian1acoran/pi-31415"
+  ],
+  "kernel_sources": [
+    "mrisdal/quick-dirty-randomforest",
+    "ldfreeman3/a-data-science-framework-to-achieve-99-accuracy",
+    "kanncaa1/data-sciencetutorial-for-beginners",
+    "sudalairajkumar/simple-exploration-baseline-ga-customer-revenue"
+  ],
+  "title": "Titanic. desastre  43370d",
+  "keywords": [],
+  "enable_internet": false,
+  "id": "adrian1acoran/titanic-desastre-43370d",
+  "kernel_type": "notebook",
+  "enable_gpu": true,
+  "id_no": 1909687,
+  "competition_sources": [
+    "titanic",
+    "house-prices-advanced-regression-techniques",
+    "two-sigma-financial-news"
+  ],
+  "is_private": false
+}

@@ -1,0 +1,17 @@
+{
+  "kernel_sources": [],
+  "enable_internet": false,
+  "kernel_type": "notebook",
+  "is_private": false,
+  "title": "Introduction to Naive Bayesian Classifier",
+  "code_file": "introduction-to-naive-bayesian-classifier.ipynb",
+  "language": "python",
+  "enable_gpu": false,
+  "competition_sources": [
+    "titanic"
+  ],
+  "keywords": [],
+  "id": "cshields/introduction-to-naive-bayesian-classifier",
+  "dataset_sources": [],
+  "id_no": 794134
+}

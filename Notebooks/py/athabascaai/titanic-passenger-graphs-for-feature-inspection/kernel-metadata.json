@@ -1,0 +1,17 @@
+{
+  "kernel_type": "notebook",
+  "is_private": false,
+  "enable_internet": false,
+  "kernel_sources": [],
+  "id": "athabascaai/titanic-passenger-graphs-for-feature-inspection",
+  "title": "Titanic Passenger Graphs for Feature Inspection",
+  "dataset_sources": [],
+  "id_no": 217523,
+  "competition_sources": [
+    "titanic"
+  ],
+  "language": "python",
+  "keywords": [],
+  "enable_gpu": false,
+  "code_file": "titanic-passenger-graphs-for-feature-inspection.ipynb"
+}

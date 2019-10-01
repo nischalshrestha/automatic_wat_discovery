@@ -1,0 +1,17 @@
+{
+  "dataset_sources": [],
+  "competition_sources": [
+    "titanic"
+  ],
+  "is_private": false,
+  "code_file": "titanic-101-stacking-ensemble.ipynb",
+  "id_no": 698685,
+  "keywords": [],
+  "enable_internet": false,
+  "enable_gpu": false,
+  "language": "python",
+  "kernel_sources": [],
+  "id": "hirenmayani/titanic-101-stacking-ensemble",
+  "kernel_type": "notebook",
+  "title": "titanic_101_stacking_ensemble"
+}

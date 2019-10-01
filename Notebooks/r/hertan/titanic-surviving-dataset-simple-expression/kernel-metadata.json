@@ -1,0 +1,17 @@
+{
+  "enable_gpu": false,
+  "is_private": false,
+  "code_file": "titanic-surviving-dataset-simple-expression.irnb",
+  "id_no": 202783,
+  "keywords": [],
+  "enable_internet": false,
+  "id": "hertan/titanic-surviving-dataset-simple-expression",
+  "competition_sources": [
+    "titanic"
+  ],
+  "dataset_sources": [],
+  "language": "r",
+  "kernel_sources": [],
+  "kernel_type": "notebook",
+  "title": "TITANIC SURVIVING DATASET SIMPLE EXPRESSION"
+}

@@ -1,0 +1,17 @@
+{
+  "id": "flyingollie/flyingollie-meets-kaggle-s-titanic",
+  "competition_sources": [
+    "titanic"
+  ],
+  "kernel_type": "notebook",
+  "is_private": false,
+  "id_no": 91890,
+  "kernel_sources": [],
+  "enable_gpu": false,
+  "title": "flyingOllie meets Kaggle's Titanic",
+  "code_file": "flyingollie-meets-kaggle-s-titanic.ipynb",
+  "dataset_sources": [],
+  "language": "python",
+  "keywords": [],
+  "enable_internet": false
+}

@@ -1,0 +1,17 @@
+{
+  "enable_gpu": false,
+  "language": "python",
+  "title": "House Price Prediction",
+  "enable_internet": false,
+  "keywords": [],
+  "id": "alikhanphysics/house-price-prediction",
+  "is_private": false,
+  "competition_sources": [
+    "titanic"
+  ],
+  "kernel_sources": [],
+  "dataset_sources": [],
+  "id_no": 2152647,
+  "code_file": "house-price-prediction.ipynb",
+  "kernel_type": "notebook"
+}

@@ -1,0 +1,99 @@
+{
+  "cells": [
+    {
+      "cell_type": "markdown",
+      "metadata": {
+        "_cell_guid": "f741be73-f72c-c51f-17a7-e33cb618623b"
+      },
+      "source": [
+        "This is an early, simple solution for logistic regression. I am fairly new to data science and R. Any feedback, suggestions, or advice on my code/technique/solution would be most welcome. I hope this can be of use to any one else or can be helpful to any one who may be looking to start working with R!"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "_cell_guid": "a6e1d801-667e-3212-8647-e89c7c369034"
+      },
+      "outputs": [],
+      "source": [
+        "# This R script will run on our backend. You can write arbitrary code here!\n",
+        "\n",
+        "#Import data\n",
+        "train_data<-read.csv(\"train.csv\", header=T, na.strings=c(\"\",\"NA\"))\n",
+        "test_data<-read.csv(\"test.csv\", header=T, na.strings=c(\"\",\"NA\"))\n",
+        "\n",
+        "#Get mean age of data, exclude NAs.\n",
+        "mean(train_data$Age, na.rm=TRUE)\n",
+        "\n",
+        "#Find missing data so we know what needs to get replaced\n",
+        "missing_train<-t(data.frame(sapply(train_data, function(x) sum(is.na(x)))))\n",
+        "missing_test<-t(data.frame(sapply(test_data, function(x) sum(is.na(x)))))\n",
+        "\n",
+        "missing_train_plot<-missing_train[apply(missing_train, 1, function(row) {any(row > 10)}),]\n",
+        "\n",
+        "barplot(missing_train_plot)\n",
+        "\n",
+        "\n",
+        "\n",
+        "#find mean age of female and male. There is almost certainly a better way of replacing these NAs but I chose this simple method.\n",
+        "train_female<-subset(train_data,train_data$Sex==\"female\")\n",
+        "mean_female<-mean(train_female$Age, na.rm=TRUE)\n",
+        "train_male<-subset(train_data,train_data$Sex==\"male\")\n",
+        "mean_male<-mean(train_male$Age, na.rm=TRUE)\n",
+        "\n",
+        "table(balanced_train$Sex)\n",
+        "\n",
+        "#Replace age NAs with mean of ages.\n",
+        "train_data$Age[is.na(train_data$Age)&train_data$Sex==\"female\"]<-mean_female\n",
+        "train_data$Age[is.na(train_data$Age)&train_data$Sex==\"male\"]<-mean_male\n",
+        "\n",
+        "test_data$Age[is.na(test_data$Age)&test_data$Sex==\"female\"]<-mean_female\n",
+        "test_data$Age[is.na(test_data$Age)&test_data$Sex==\"male\"]<-mean_male\n",
+        "\n",
+        "#I found that the split between male and female was uneven. I decided to create a more evenly distrubted model by randomly subsetting the male portion.\n",
+        "set.seed(123)\n",
+        "split <- sample.split(train_male$Survived, SplitRatio = 0.54)\n",
+        "subm_train <- subset(train_male, split == T)\n",
+        "\n",
+        "balanced_train<-rbind(train_female,subm_train)\n",
+        "\n",
+        "#I randomly chose these variables. I should find a more substantial way of picking predictor variables. Use a decision tree. I did not scale any variables.\n",
+        "train_model<- glm(balanced_train$Survived~Sex+Pclass+SibSp,data = balanced_train, family = \"binomial\")\n",
+        "summary(balanced_train)\n",
+        "\n",
+        "test_model<- predict(train_model, newdata = test_data, type = \"response\")\n",
+        "\n",
+        "submission<-cbind(test_data$PassengerId,test_model)\n",
+        "submission<-data.frame(submission)\n",
+        "submission$test_model[submission$test_model<.5]<- 0\n",
+        "submission$test_model[submission$test_model>.5]<- 1\n",
+        "\n",
+        "\n",
+        "nms <- c(\"PassengerID\", \"Survived\")\n",
+        "setnames(submission, nms)\n",
+        "\n",
+        "write.csv(submission,\"submission.csv\")"
+      ]
+    }
+  ],
+  "metadata": {
+    "_change_revision": 0,
+    "_is_fork": false,
+    "kernelspec": {
+      "display_name": "R",
+      "language": "R",
+      "name": "ir"
+    },
+    "language_info": {
+      "codemirror_mode": "r",
+      "file_extension": ".r",
+      "mimetype": "text/x-r-source",
+      "name": "R",
+      "pygments_lexer": "r",
+      "version": "3.3.2"
+    }
+  },
+  "nbformat": 4,
+  "nbformat_minor": 0
+}

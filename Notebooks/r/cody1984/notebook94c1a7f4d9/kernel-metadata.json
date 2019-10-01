@@ -1,0 +1,17 @@
+{
+  "is_private": false,
+  "title": "Notebook94c1a7f4d9",
+  "id_no": 246628,
+  "kernel_type": "notebook",
+  "dataset_sources": [],
+  "kernel_sources": [],
+  "id": "cody1984/notebook94c1a7f4d9",
+  "enable_internet": false,
+  "enable_gpu": false,
+  "code_file": "notebook94c1a7f4d9.irnb",
+  "competition_sources": [
+    "titanic"
+  ],
+  "keywords": [],
+  "language": "r"
+}

@@ -1,0 +1,17 @@
+{
+  "code_file": "titanic-survivors-top-8-score-0-80861.ipynb",
+  "title": "Titanic Survivors _Top 8%_Score: 0.80861",
+  "kernel_type": "notebook",
+  "kernel_sources": [],
+  "competition_sources": [
+    "titanic"
+  ],
+  "id": "hianjana/titanic-survivors-top-8-score-0-80861",
+  "dataset_sources": [],
+  "enable_internet": false,
+  "enable_gpu": false,
+  "language": "python",
+  "id_no": 1582025,
+  "keywords": [],
+  "is_private": false
+}

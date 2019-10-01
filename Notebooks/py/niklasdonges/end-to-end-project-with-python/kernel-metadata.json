@@ -1,0 +1,23 @@
+{
+  "id": "niklasdonges/end-to-end-project-with-python",
+  "dataset_sources": [],
+  "language": "python",
+  "competition_sources": [
+    "titanic"
+  ],
+  "kernel_sources": [],
+  "is_private": false,
+  "code_file": "end-to-end-project-with-python.ipynb",
+  "title": "End to End Project with Python",
+  "id_no": 570499,
+  "kernel_type": "notebook",
+  "enable_gpu": false,
+  "enable_internet": false,
+  "keywords": [
+    "beginner",
+    "data visualization",
+    "classification",
+    "feature engineering",
+    "random forest"
+  ]
+}

@@ -1,0 +1,17 @@
+{
+  "id_no": 407578,
+  "id": "surasakcho/ginjo-s-prediction-thai",
+  "competition_sources": [
+    "titanic"
+  ],
+  "keywords": [],
+  "is_private": false,
+  "dataset_sources": [],
+  "language": "python",
+  "kernel_type": "notebook",
+  "enable_gpu": false,
+  "title": "Ginjo's prediction (Thai)",
+  "kernel_sources": [],
+  "code_file": "ginjo-s-prediction-thai.ipynb",
+  "enable_internet": false
+}

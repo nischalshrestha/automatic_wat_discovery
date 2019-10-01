@@ -1,0 +1,22 @@
+{
+  "keywords": [
+    "tutorial",
+    "beginner",
+    "random forest",
+    "decision tree"
+  ],
+  "title": "Titanic Competition Notebook (0.80+) - Top 10%",
+  "language": "python",
+  "kernel_sources": [],
+  "enable_gpu": false,
+  "competition_sources": [
+    "titanic"
+  ],
+  "is_private": false,
+  "enable_internet": false,
+  "id": "leonardolima/titanic-competition-notebook-0-80-top-10",
+  "code_file": "titanic-competition-notebook-0-80-top-10.ipynb",
+  "id_no": 336253,
+  "kernel_type": "notebook",
+  "dataset_sources": []
+}

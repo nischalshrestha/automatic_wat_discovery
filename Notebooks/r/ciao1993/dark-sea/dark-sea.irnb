@@ -1,0 +1,76 @@
+{
+  "cells": [
+    {
+      "cell_type": "markdown",
+      "metadata": {
+        "_cell_guid": "16decb3d-97d4-2f00-0bec-1a5e1e9d8227"
+      },
+      "source": [
+        "### Reading and Cleaning Data"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "_cell_guid": "04fb7620-c82e-3c51-293e-1f6a4627cdc1"
+      },
+      "outputs": [],
+      "source": [
+        "library(readr)\n",
+        "library(magrittr)\n",
+        "\n",
+        "Train <- read_csv(\"../input/train.csv\")\n",
+        "Test <- read_csv(\"../input/test.csv\")\n",
+        "Train$Pclass %<>% as.character()\n",
+        "Test$Pclass %<>% as.character()"
+      ]
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {
+        "_cell_guid": "0ed42f34-1066-f205-953c-1d696493fdab"
+      },
+      "source": [
+        "### Modeling"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "_cell_guid": "5dd79ef5-42b3-795e-7a8c-eeea780a39c0"
+      },
+      "outputs": [],
+      "source": [
+        "library(aod)\n",
+        "\n",
+        "mylogit <- glm(Survived ~ Pclass + Sex + Fare + SibSp + Parch,\n",
+        "               family = binomial(\"logit\"), data = Train)\n",
+        "Survived <- predict(mylogit, Test[, c(2,4,9,6,7)])\n",
+        "Survived <- ifelse(Survived >= 0, 1, 0)\n",
+        "Res <- data.frame(Test[,1], Survived)\n",
+        "write.csv(Res, 'titanic_pred.csv', row.names = F)"
+      ]
+    }
+  ],
+  "metadata": {
+    "_change_revision": 0,
+    "_is_fork": false,
+    "kernelspec": {
+      "display_name": "R",
+      "language": "R",
+      "name": "ir"
+    },
+    "language_info": {
+      "codemirror_mode": "r",
+      "file_extension": ".r",
+      "mimetype": "text/x-r-source",
+      "name": "R",
+      "pygments_lexer": "r",
+      "version": "3.3.3"
+    }
+  },
+  "nbformat": 4,
+  "nbformat_minor": 0
+}

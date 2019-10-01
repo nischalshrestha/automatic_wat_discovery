@@ -1,6 +1,4 @@
 __pycache__/
 .vscode/
 .DS_Store
-Notebooks/
-*.csv
 *.pkl

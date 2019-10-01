@@ -1,0 +1,23 @@
+{
+  "competition_sources": [
+    "titanic"
+  ],
+  "language": "python",
+  "dataset_sources": [],
+  "id": "mjbahmani/a-comprehensive-ml-workflow-with-python",
+  "kernel_type": "notebook",
+  "code_file": "a-comprehensive-ml-workflow-with-python.ipynb",
+  "keywords": [
+    "eda",
+    "data cleaning",
+    "data visualization",
+    "feature engineering",
+    "multiclass classification"
+  ],
+  "enable_gpu": true,
+  "title": "A Comprehensive ML Workflow with Python",
+  "is_private": false,
+  "kernel_sources": [],
+  "id_no": 1594170,
+  "enable_internet": true
+}

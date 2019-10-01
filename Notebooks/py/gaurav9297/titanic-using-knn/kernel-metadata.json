@@ -1,0 +1,17 @@
+{
+  "dataset_sources": [],
+  "id_no": 280881,
+  "language": "python",
+  "enable_internet": false,
+  "competition_sources": [
+    "titanic"
+  ],
+  "kernel_sources": [],
+  "keywords": [],
+  "kernel_type": "notebook",
+  "is_private": false,
+  "id": "gaurav9297/titanic-using-knn",
+  "title": "Titanic : using KNN",
+  "code_file": "titanic-using-knn.ipynb",
+  "enable_gpu": false
+}

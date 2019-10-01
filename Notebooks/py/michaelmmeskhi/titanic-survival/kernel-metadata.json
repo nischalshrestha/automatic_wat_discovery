@@ -1,0 +1,20 @@
+{
+  "title": "Titanic Survival",
+  "is_private": false,
+  "kernel_type": "notebook",
+  "kernel_sources": [],
+  "code_file": "titanic-survival.ipynb",
+  "enable_gpu": false,
+  "language": "python",
+  "enable_internet": false,
+  "competition_sources": [
+    "titanic"
+  ],
+  "id_no": 283076,
+  "dataset_sources": [],
+  "id": "michaelmmeskhi/titanic-survival",
+  "keywords": [
+    "preprocessing",
+    "random forest"
+  ]
+}

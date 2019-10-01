@@ -1,0 +1,85 @@
+{
+  "cells": [
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "_cell_guid": "97fb0e32-b258-9bb2-f9e7-8fab406cf3b8"
+      },
+      "outputs": [],
+      "source": [
+        "\n",
+        "# This script trains a Random Forest model based on the data,\n",
+        "# saves a sample submission, and plots the relative importance\n",
+        "# of the variables in making predictions\n",
+        "\n",
+        "# Download 1_random_forest_r_submission.csv from the output below\n",
+        "# and submit it through https://www.kaggle.com/c/titanic-gettingStarted/submissions/attach\n",
+        "# to enter this getting started competition!\n",
+        "\n",
+        "#library(ggplot2)\n",
+        "library(randomForest)\n",
+        "\n",
+        "set.seed(1)\n",
+        "train <- read.csv(\"../input/train.csv\", stringsAsFactors=FALSE)\n",
+        "test  <- read.csv(\"../input/test.csv\",  stringsAsFactors=FALSE)\n",
+        "\n",
+        "extractFeatures <- function(data) {\n",
+        "  features <- c(\"Pclass\",\n",
+        "                \"Age\",\n",
+        "                \"Sex\",\n",
+        "                \"Parch\",\n",
+        "                \"SibSp\",\n",
+        "                \"Fare\",\n",
+        "                \"Embarked\")\n",
+        "  fea <- data[,features]\n",
+        "  fea$Age[is.na(fea$Age)] <- -1\n",
+        "  fea$Fare[is.na(fea$Fare)] <- median(fea$Fare, na.rm=TRUE)\n",
+        "  fea$Embarked[fea$Embarked==\"\"] = \"S\"\n",
+        "  fea$Sex      <- as.factor(fea$Sex)\n",
+        "  fea$Embarked <- as.factor(fea$Embarked)\n",
+        "  return(fea)\n",
+        "}\n",
+        "\n",
+        "rf <- randomForest(extractFeatures(train), as.factor(train$Survived), ntree=100, importance=TRUE)\n",
+        "\n",
+        "submission <- data.frame(PassengerId = test$PassengerId)\n",
+        "submission$Survived <- predict(rf, extractFeatures(test))\n",
+        "write.csv(submission, file = \"1_random_forest_r_submission.csv\", row.names=FALSE)\n",
+        "\n",
+        "#imp <- importance(rf, type=1)\n",
+        "#featureImportance <- data.frame(Feature=row.names(imp), Importance=imp[,1])\n",
+        "\n",
+        "#p <- ggplot(featureImportance, aes(x=reorder(Feature, Importance), y=Importance)) +\n",
+        "#     geom_bar(stat=\"identity\", fill=\"#53cfff\") +\n",
+        " #    coord_flip() + \n",
+        "  #   theme_light(base_size=20) +\n",
+        "   #  xlab(\"\") +\n",
+        "    # ylab(\"Importance\") + \n",
+        "     #ggtitle(\"Random Forest Feature Importance\\n\") +\n",
+        "     #theme(plot.title=element_text(size=18))\n",
+        "\n",
+        "#ggsave(\"2_feature_importance.png\", p)"
+      ]
+    }
+  ],
+  "metadata": {
+    "_change_revision": 0,
+    "_is_fork": false,
+    "kernelspec": {
+      "display_name": "R",
+      "language": "R",
+      "name": "ir"
+    },
+    "language_info": {
+      "codemirror_mode": "r",
+      "file_extension": ".r",
+      "mimetype": "text/x-r-source",
+      "name": "R",
+      "pygments_lexer": "r",
+      "version": "3.3.2"
+    }
+  },
+  "nbformat": 4,
+  "nbformat_minor": 0
+}

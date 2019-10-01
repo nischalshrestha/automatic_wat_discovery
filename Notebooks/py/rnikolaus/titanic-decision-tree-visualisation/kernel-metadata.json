@@ -1,0 +1,17 @@
+{
+  "kernel_type": "notebook",
+  "kernel_sources": [],
+  "code_file": "titanic-decision-tree-visualisation.ipynb",
+  "enable_gpu": false,
+  "enable_internet": false,
+  "keywords": [],
+  "id_no": 1914197,
+  "dataset_sources": [],
+  "is_private": false,
+  "language": "python",
+  "competition_sources": [
+    "titanic"
+  ],
+  "title": "Titanic decision tree visualisation",
+  "id": "rnikolaus/titanic-decision-tree-visualisation"
+}

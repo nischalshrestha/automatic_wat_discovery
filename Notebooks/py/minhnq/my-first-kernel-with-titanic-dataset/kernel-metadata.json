@@ -1,0 +1,17 @@
+{
+  "is_private": false,
+  "kernel_sources": [],
+  "kernel_type": "notebook",
+  "enable_gpu": false,
+  "title": "My first kernel with Titanic dataset",
+  "dataset_sources": [],
+  "id_no": 1494606,
+  "id": "minhnq/my-first-kernel-with-titanic-dataset",
+  "code_file": "my-first-kernel-with-titanic-dataset.ipynb",
+  "keywords": [],
+  "language": "python",
+  "competition_sources": [
+    "titanic"
+  ],
+  "enable_internet": false
+}

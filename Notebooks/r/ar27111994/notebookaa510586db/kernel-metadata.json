@@ -1,0 +1,17 @@
+{
+  "kernel_sources": [],
+  "is_private": false,
+  "kernel_type": "notebook",
+  "dataset_sources": [],
+  "language": "python",
+  "code_file": "notebookaa510586db.ipynb",
+  "keywords": [],
+  "title": "Notebookaa510586db",
+  "enable_gpu": false,
+  "competition_sources": [
+    "titanic"
+  ],
+  "enable_internet": false,
+  "id": "ar27111994/notebookaa510586db",
+  "id_no": 237292
+}

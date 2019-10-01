@@ -1,0 +1,17 @@
+{
+  "keywords": [],
+  "kernel_sources": [],
+  "title": "Titanic Disaster Python",
+  "enable_internet": false,
+  "dataset_sources": [],
+  "id": "pip33eeed/titanic-disaster-python",
+  "code_file": "titanic-disaster-python.ipynb",
+  "language": "python",
+  "is_private": false,
+  "competition_sources": [
+    "titanic"
+  ],
+  "enable_gpu": false,
+  "kernel_type": "notebook",
+  "id_no": 2062843
+}

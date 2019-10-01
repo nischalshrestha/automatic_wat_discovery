@@ -1,0 +1,20 @@
+{
+  "enable_internet": false,
+  "title": "Mathematics of Decision Tree \u2797",
+  "kernel_sources": [],
+  "code_file": "mathematics-of-decision-tree.ipynb",
+  "competition_sources": [
+    "titanic"
+  ],
+  "language": "python",
+  "enable_gpu": false,
+  "id_no": 1989074,
+  "dataset_sources": [],
+  "kernel_type": "notebook",
+  "keywords": [
+    "mathematics",
+    "decision tree"
+  ],
+  "id": "nathanlauga/mathematics-of-decision-tree",
+  "is_private": false
+}

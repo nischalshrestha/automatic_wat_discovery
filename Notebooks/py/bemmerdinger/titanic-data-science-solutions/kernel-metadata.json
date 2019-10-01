@@ -1,0 +1,17 @@
+{
+  "keywords": [],
+  "kernel_sources": [],
+  "language": "python",
+  "id_no": 203921,
+  "dataset_sources": [],
+  "competition_sources": [
+    "titanic"
+  ],
+  "id": "bemmerdinger/titanic-data-science-solutions",
+  "kernel_type": "notebook",
+  "code_file": "titanic-data-science-solutions.ipynb",
+  "enable_internet": false,
+  "title": "Titanic Data Science Solutions",
+  "enable_gpu": false,
+  "is_private": false
+}

@@ -1,0 +1,22 @@
+{
+  "code_file": "the-complete-idiot-s-guide-to-machine-learning.ipynb",
+  "language": "python",
+  "keywords": [
+    "tutorial",
+    "beginner",
+    "eda",
+    "data visualization"
+  ],
+  "enable_gpu": false,
+  "competition_sources": [
+    "titanic"
+  ],
+  "title": "The Complete Idiot's Guide to Machine Learning",
+  "id_no": 443984,
+  "enable_internet": false,
+  "kernel_sources": [],
+  "is_private": false,
+  "kernel_type": "notebook",
+  "dataset_sources": [],
+  "id": "mikobautista/the-complete-idiot-s-guide-to-machine-learning"
+}

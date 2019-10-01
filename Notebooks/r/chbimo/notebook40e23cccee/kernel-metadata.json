@@ -1,0 +1,17 @@
+{
+  "competition_sources": [
+    "titanic"
+  ],
+  "enable_gpu": false,
+  "dataset_sources": [],
+  "title": "Notebook59814174c4",
+  "kernel_type": "notebook",
+  "code_file": "notebook40e23cccee.irnb",
+  "keywords": [],
+  "kernel_sources": [],
+  "id": "chbimo/notebook40e23cccee",
+  "id_no": 110673,
+  "is_private": false,
+  "language": "r",
+  "enable_internet": false
+}

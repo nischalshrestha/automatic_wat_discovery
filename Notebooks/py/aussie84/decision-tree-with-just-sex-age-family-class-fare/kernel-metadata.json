@@ -1,0 +1,17 @@
+{
+  "enable_internet": false,
+  "kernel_type": "notebook",
+  "id": "aussie84/decision-tree-with-just-sex-age-family-class-fare",
+  "is_private": false,
+  "competition_sources": [
+    "titanic"
+  ],
+  "enable_gpu": false,
+  "id_no": 380656,
+  "keywords": [],
+  "language": "python",
+  "code_file": "decision-tree-with-just-sex-age-family-class-fare.ipynb",
+  "kernel_sources": [],
+  "title": "Decision Tree with just sex,age,family,class,fare",
+  "dataset_sources": []
+}

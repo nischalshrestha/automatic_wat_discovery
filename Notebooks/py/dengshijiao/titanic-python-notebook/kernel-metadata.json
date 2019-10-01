@@ -1,0 +1,17 @@
+{
+  "competition_sources": [
+    "titanic"
+  ],
+  "enable_gpu": false,
+  "title": "Titanic_Python_notebook",
+  "language": "python",
+  "kernel_type": "notebook",
+  "code_file": "titanic-python-notebook.ipynb",
+  "is_private": false,
+  "dataset_sources": [],
+  "kernel_sources": [],
+  "keywords": [],
+  "enable_internet": false,
+  "id_no": 816442,
+  "id": "dengshijiao/titanic-python-notebook"
+}

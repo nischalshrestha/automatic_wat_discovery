@@ -1,0 +1,17 @@
+{
+  "title": "Titanic",
+  "keywords": [],
+  "id": "shdebbarma/titanic",
+  "competition_sources": [
+    "titanic"
+  ],
+  "id_no": 1258113,
+  "is_private": false,
+  "enable_internet": false,
+  "kernel_sources": [],
+  "dataset_sources": [],
+  "language": "python",
+  "code_file": "titanic.ipynb",
+  "enable_gpu": false,
+  "kernel_type": "notebook"
+}

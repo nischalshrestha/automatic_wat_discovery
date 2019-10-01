@@ -1,0 +1,17 @@
+{
+  "code_file": "binary-classification-on-titanic-data.ipynb",
+  "enable_gpu": false,
+  "language": "python",
+  "enable_internet": false,
+  "kernel_type": "notebook",
+  "kernel_sources": [],
+  "title": "Binary classification on Titanic Data",
+  "competition_sources": [
+    "titanic"
+  ],
+  "id": "hdnguyenfl/binary-classification-on-titanic-data",
+  "dataset_sources": [],
+  "keywords": [],
+  "id_no": 486823,
+  "is_private": false
+}

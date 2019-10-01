@@ -1,0 +1,21 @@
+{
+  "code_file": "titantic-mega-model-0-84210.irnb",
+  "title": "Titantic Mega Model - [0.84210]",
+  "language": "r",
+  "id": "cdeotte/titantic-mega-model-0-84210",
+  "is_private": false,
+  "enable_gpu": false,
+  "competition_sources": [
+    "titanic"
+  ],
+  "keywords": [
+    "tutorial",
+    "data visualization",
+    "feature engineering"
+  ],
+  "dataset_sources": [],
+  "kernel_sources": [],
+  "kernel_type": "notebook",
+  "id_no": 1067891,
+  "enable_internet": false
+}

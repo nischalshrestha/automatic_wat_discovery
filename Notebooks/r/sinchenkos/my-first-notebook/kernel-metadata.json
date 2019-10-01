@@ -1,0 +1,17 @@
+{
+  "id_no": 379468,
+  "keywords": [],
+  "enable_internet": false,
+  "dataset_sources": [],
+  "code_file": "my-first-notebook.irnb",
+  "competition_sources": [
+    "titanic"
+  ],
+  "is_private": false,
+  "title": "My_first_notebook",
+  "kernel_sources": [],
+  "kernel_type": "notebook",
+  "enable_gpu": false,
+  "id": "sinchenkos/my-first-notebook",
+  "language": "r"
+}

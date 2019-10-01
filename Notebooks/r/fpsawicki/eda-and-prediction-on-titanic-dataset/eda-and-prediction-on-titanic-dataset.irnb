@@ -1,0 +1,464 @@
+{
+  "cells": [
+    {
+      "cell_type": "markdown",
+      "metadata": {
+        "_cell_guid": "92b4854a-e397-b1fc-f2c9-3f6f005ee827"
+      },
+      "source": [
+        "Exploratory Data Analysis and Prediction on Titanic dataset\n",
+        "=====================================\n",
+        "Filip Sawicki"
+      ]
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {
+        "_cell_guid": "70f3dabe-52f4-26cc-53f8-c88bf414afbe"
+      },
+      "source": [
+        "Importing data and libraries\n",
+        "----------------------------"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "_cell_guid": "7d2fd21f-ef29-6879-d3bf-bfad50c42657"
+      },
+      "outputs": [],
+      "source": [
+        "#loading libraries\n",
+        "library(mice)\n",
+        "library(ggplot2)\n",
+        "library(dplyr)\n",
+        "library(purrr)\n",
+        "library(randomForest)\n",
+        "\n",
+        "#importing data\n",
+        "train <- read.csv(\"../input/train.csv\", stringsAsFactors=FALSE)\n",
+        "test <- read.csv(\"../input/test.csv\", stringsAsFactors=FALSE)\n",
+        "\n",
+        "#combining data for full analysis\n",
+        "data <- bind_rows(train, test)"
+      ]
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {
+        "_cell_guid": "344842a0-262b-42e3-7883-f2889e471e2e"
+      },
+      "source": [
+        "Checking data content\n",
+        "---------------------"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "_cell_guid": "affaed77-7c16-33db-c5e3-2f49bd7acf68"
+      },
+      "outputs": [],
+      "source": [
+        "glimpse(data)"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "_cell_guid": "f462ae74-947a-fb5a-c85e-d02a9e4440f0"
+      },
+      "outputs": [],
+      "source": [
+        "missing <- sapply(data, function(x) sum(is.na(x)))\n",
+        "print(missing)"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "_cell_guid": "e451d2e5-ceb2-8ab2-1358-a5b43e5be075"
+      },
+      "outputs": [],
+      "source": [
+        "#modifying categorical variables to factors\n",
+        "data$Pclass <- as.factor(data$Pclass)\n",
+        "levels(data$Pclass) <- c(\"Upper\", \"Middle\", \"Lower\")\n",
+        "\n",
+        "data$Embarked <- as.factor(data$Embarked)\n",
+        "\n",
+        "data$Sex <- as.factor(data$Sex)\n",
+        "levels(data$Sex) <- c(\"Female\", \"Male\")"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "_cell_guid": "cd151f1a-05d8-9c83-009b-313f34b87b0a"
+      },
+      "outputs": [],
+      "source": [
+        "head(data)"
+      ]
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {
+        "_cell_guid": "e61cfaea-501f-24e9-c1a0-103587c589cf"
+      },
+      "source": [
+        "Imputing data\n",
+        "-------------"
+      ]
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {
+        "_cell_guid": "4a11cea9-6844-90d7-201e-d54c639d6715"
+      },
+      "source": [
+        "Age\n",
+        "---"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "_cell_guid": "013ced67-3656-d698-bd23-c1f59ca69348"
+      },
+      "outputs": [],
+      "source": [
+        "set.seed(765)\n",
+        "data_to_mice <- data %>% select(Pclass, Sex, Age, SibSp, Parch, Fare)\n",
+        "m_model <- mice(data_to_mice, method='rf')\n",
+        "\n",
+        "imputes <- complete(m_model)\n",
+        "\n",
+        "ggplot() +\n",
+        "    geom_density(data = data, aes(x=Age), fill='blue', alpha=0.5) +\n",
+        "    geom_density(data = imputes, aes(x=Age), fill='red', alpha=0.5)\n",
+        "\n",
+        "data$Age <- imputes$Age"
+      ]
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {
+        "_cell_guid": "c5837b9f-8420-3ca8-8184-d091b88e910a"
+      },
+      "source": [
+        "Fare\n",
+        "----"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "_cell_guid": "72299dde-e0cf-7f47-f9ef-fac7986e1ad2"
+      },
+      "outputs": [],
+      "source": [
+        "data %>% filter(Pclass=='Lower', Embarked=='S') %>% \n",
+        "  ggplot(aes(Fare)) +\n",
+        "  geom_histogram(binwidth=1.2, fill='blue3', alpha=0.5) +\n",
+        "  geom_vline(aes(xintercept=mean(Fare, na.rm = TRUE)), col=\"red\") +\n",
+        "  geom_vline(aes(xintercept=median(Fare, na.rm = TRUE)), col=\"green\")"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "_cell_guid": "50b66ae3-cab7-edbc-71dd-22fba72c844d"
+      },
+      "outputs": [],
+      "source": [
+        "data$Fare[is.na(data$Fare)] <- median(data[data$Pclass == 'Lower' & data$Embarked=='S', ]$Fare, na.rm = TRUE)"
+      ]
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {
+        "_cell_guid": "2ee92666-3d65-b33c-b8c2-ef830731bdf6"
+      },
+      "source": [
+        "Feature Engineering\n",
+        "-------------------"
+      ]
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {
+        "_cell_guid": "8f738f22-98c5-3375-5937-a4e3c4ab5f00"
+      },
+      "source": [
+        "Family Size\n",
+        "-----------"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "_cell_guid": "d9b003b4-a154-b15b-6b04-00601366aeba"
+      },
+      "outputs": [],
+      "source": [
+        "data$FamilySize <- ifelse(data$SibSp + data$Parch + 1 == 1, \"single\", ifelse(data$SibSp + data$Parch + 1 < 4, \"small\", \"large\"))"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "_cell_guid": "85ed1277-9169-15c0-dd02-b039245eea4f"
+      },
+      "outputs": [],
+      "source": [
+        "ggplot(data, aes(FamilySize)) +\n",
+        "  geom_bar(position=\"dodge\") + \n",
+        "  scale_x_discrete(limits=c(\"single\", \"small\", \"large\"))"
+      ]
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {
+        "_cell_guid": "65d49313-20de-6489-f5e5-458faf541ddd"
+      },
+      "source": [
+        "Title\n",
+        "-----"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "_cell_guid": "a01054d7-524f-634f-b743-416d8e6e33c3"
+      },
+      "outputs": [],
+      "source": [
+        "data$Title <- gsub('(.*, )|(\\\\..*)', '', data$Name)\n",
+        "print(unique(data$Title))"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "_cell_guid": "c76db1e5-19f2-2c65-15f8-d9ab48b70bc4"
+      },
+      "outputs": [],
+      "source": [
+        "#reassigning bizzare titles\n",
+        "data$Title[data$Title == 'Mlle']<- 'Miss' \n",
+        "data$Title[data$Title == 'Ms']  <- 'Miss'\n",
+        "data$Title[data$Title == 'Mme'] <- 'Mrs' \n",
+        "data$Title[data$Title == 'Dona']<- 'Mrs'\n",
+        "data$Title[data$Title == 'Don'] <- 'Mr'\n",
+        "\n",
+        "#I will add VIP, Crew and Ohter for convinieance\n",
+        "vip <- c('Lady', 'the Countess', 'Sir', 'Jonkheer')\n",
+        "crew <- c('Capt', 'Col', 'Major')\n",
+        "other <- c('Dr', 'Rev')\n",
+        "\n",
+        "data$Title[data$Title %in% vip] <- 'VIP'\n",
+        "data$Title[data$Title %in% crew] <- 'CREW'\n",
+        "data$Title[data$Title %in% other] <- 'OTHER'"
+      ]
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {
+        "_cell_guid": "b99fffef-6840-84d5-8864-03cb8c49ffe3"
+      },
+      "source": [
+        "Family Name\n",
+        "-----------"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "_cell_guid": "60d2ee69-6bf8-38bb-1c29-234f3760aaa9"
+      },
+      "outputs": [],
+      "source": [
+        "data$FamilyName <- gsub(\",.*\",\"\",data$Name)"
+      ]
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {
+        "_cell_guid": "2bd0f734-ccbe-dfd6-e6fd-45ce82bfd2aa"
+      },
+      "source": [
+        "Sector\n",
+        "--------------"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "_cell_guid": "e479d1df-fde2-e959-048d-69265312610a"
+      },
+      "outputs": [],
+      "source": [
+        "data$Sector <- sapply(data$Cabin, substr, 1, 1)\n",
+        "data$Sector[data$Sector==\"\"] <- NA\n",
+        "Family.Sector <- data %>% select(FamilyName, Sector) %>% filter(!is.na(Sector)) %>% unique()\n",
+        "\n",
+        "data$Sector <- apply(data[, c(\"FamilyName\", \"Sector\")], 1, function(x) {\n",
+        "  if(x[\"FamilyName\"] %in% Family.Sector$FamilyName & is.na(x[\"Sector\"])) {\n",
+        "    return(Family.Sector$Sector[Family.Sector$FamilyName == x[\"FamilyName\"]][1])\n",
+        "  } else if(!is.na(x[\"Sector\"])){\n",
+        "    return(x[\"Sector\"])\n",
+        "  } else {\n",
+        "    return(\"M\")\n",
+        "  }\n",
+        "})"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "_cell_guid": "4c5d9976-0238-7e85-b74a-ca570a11a744"
+      },
+      "outputs": [],
+      "source": [
+        "head(data[c(\"FamilyName\", \"Sector\")])"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "_cell_guid": "a48a5cc6-acb8-524f-8612-73dfb9ed462c"
+      },
+      "outputs": [],
+      "source": [
+        "table(data$Sector)"
+      ]
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {
+        "_cell_guid": "2effe0b1-d99a-ce66-d335-937e05c2df3e"
+      },
+      "source": [
+        "Predicting using Random Forest\n",
+        "=============================="
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "_cell_guid": "01d751c1-6758-dae6-9bc4-2d8b059bad28"
+      },
+      "outputs": [],
+      "source": [
+        "data$FamilySize <- as.factor(data$FamilySize)\n",
+        "data$Title <- as.factor(data$Title)\n",
+        "data$Sector <- as.factor(data$Sector)"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "_cell_guid": "b74c0947-c2ed-3281-7f36-c1c84f79deca"
+      },
+      "outputs": [],
+      "source": [
+        "train <- data[1:891,]\n",
+        "test <- data[892:1309,]\n",
+        "\n",
+        "titanic_model <- randomForest(factor(Survived) ~ Pclass + Sex + Age + SibSp + Parch + \n",
+        "                                            Fare + Embarked + FamilySize + \n",
+        "                                            Title + Sector,\n",
+        "                                            data = train)"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "_cell_guid": "9483982b-af42-5032-e024-433534b81e99"
+      },
+      "outputs": [],
+      "source": [
+        "plot(titanic_model)"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "_cell_guid": "a623fff8-40d8-ec5e-08fb-d48d50f0eae2"
+      },
+      "outputs": [],
+      "source": [
+        "#BY Megan L. Risdal\n",
+        "importance    <- importance(titanic_model)\n",
+        "varImportance <- data.frame(Variables = row.names(importance), \n",
+        "                            Importance = round(importance[ ,'MeanDecreaseGini'],2))\n",
+        "\n",
+        "# Create a rank variable based on importance\n",
+        "rankImportance <- varImportance %>%\n",
+        "  mutate(Rank = paste0('#',dense_rank(desc(Importance))))\n",
+        "\n",
+        "# Use ggplot2 to visualize the relative importance of variables\n",
+        "ggplot(rankImportance, aes(x = reorder(Variables, Importance), \n",
+        "    y = Importance, fill = Importance)) +\n",
+        "  geom_bar(stat='identity') + \n",
+        "  geom_text(aes(x = Variables, y = 0.5, label = Rank),\n",
+        "    hjust=0, vjust=0.55, size = 4, colour = 'red') +\n",
+        "  labs(x = 'Variables') +\n",
+        "  coord_flip()"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "_cell_guid": "b337d962-131d-ec71-6862-55b27add1177"
+      },
+      "outputs": [],
+      "source": [
+        "prediction <- predict(titanic_model, test)\n",
+        "solution <- data.frame(PassengerId = test$PassengerId, Survived = prediction)\n",
+        "write.csv(solution, file = 'rf_mod_Solution.csv', row.names = F)"
+      ]
+    }
+  ],
+  "metadata": {
+    "_change_revision": 0,
+    "_is_fork": false,
+    "kernelspec": {
+      "display_name": "R",
+      "language": "R",
+      "name": "ir"
+    },
+    "language_info": {
+      "codemirror_mode": "r",
+      "file_extension": ".r",
+      "mimetype": "text/x-r-source",
+      "name": "R",
+      "pygments_lexer": "r",
+      "version": "3.3.3"
+    }
+  },
+  "nbformat": 4,
+  "nbformat_minor": 0
+}

@@ -1,0 +1,17 @@
+{
+  "kernel_sources": [],
+  "is_private": false,
+  "enable_gpu": false,
+  "title": "Notebook0efdb35c5e",
+  "enable_internet": false,
+  "competition_sources": [
+    "titanic"
+  ],
+  "keywords": [],
+  "code_file": "notebook0efdb35c5e.irnb",
+  "id_no": 208816,
+  "id": "alangner/notebook0efdb35c5e",
+  "language": "r",
+  "dataset_sources": [],
+  "kernel_type": "notebook"
+}

@@ -1,0 +1,17 @@
+{
+  "id": "henriqueyamahata/titanic-problem-begginer",
+  "id_no": 1023382,
+  "title": "Titanic Problem, Begginer ",
+  "code_file": "titanic-problem-begginer.ipynb",
+  "dataset_sources": [],
+  "enable_internet": false,
+  "kernel_type": "notebook",
+  "is_private": false,
+  "competition_sources": [
+    "titanic"
+  ],
+  "enable_gpu": false,
+  "keywords": [],
+  "language": "python",
+  "kernel_sources": []
+}

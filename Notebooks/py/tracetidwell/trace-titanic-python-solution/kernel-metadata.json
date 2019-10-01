@@ -1,0 +1,17 @@
+{
+  "enable_gpu": false,
+  "id": "tracetidwell/trace-titanic-python-solution",
+  "id_no": 88084,
+  "enable_internet": false,
+  "code_file": "trace-titanic-python-solution.ipynb",
+  "kernel_sources": [],
+  "competition_sources": [
+    "titanic"
+  ],
+  "keywords": [],
+  "title": "Trace Titanic Python Solution",
+  "is_private": false,
+  "dataset_sources": [],
+  "kernel_type": "notebook",
+  "language": "python"
+}

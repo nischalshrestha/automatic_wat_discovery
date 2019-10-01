@@ -1,0 +1,26 @@
+{
+  "enable_internet": true,
+  "dataset_sources": [
+    "pytorch/vgg13bn",
+    "ramamet4/app-store-apple-data-set-10k-apps",
+    "lava18/google-play-store-apps",
+    "crawford/boston-public-schools",
+    "bigquery/patents",
+    "theworldbank/education-statistics",
+    "census/total-business-inventories-and-sales-data",
+    "san-francisco/sf-police-calls-for-service-and-incidents"
+  ],
+  "language": "r",
+  "kernel_sources": [],
+  "code_file": "fork-of-fork-of-fork-of-pi3-1415926535-2-534641.irnb",
+  "keywords": [],
+  "id": "adrian1acoran/fork-of-fork-of-fork-of-pi3-1415926535-2-534641",
+  "title": "Fork of Fork of Fork of Pi3.1415926535... 2 534641",
+  "enable_gpu": true,
+  "is_private": false,
+  "competition_sources": [
+    "titanic"
+  ],
+  "id_no": 1850851,
+  "kernel_type": "notebook"
+}

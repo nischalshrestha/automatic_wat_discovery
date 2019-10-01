@@ -1,0 +1,17 @@
+{
+  "dataset_sources": [],
+  "title": "Notebook5e59c6ed9e",
+  "kernel_type": "notebook",
+  "enable_internet": false,
+  "code_file": "notebook5e59c6ed9e.ipynb",
+  "id": "thanushkodi/notebook5e59c6ed9e",
+  "keywords": [],
+  "enable_gpu": false,
+  "kernel_sources": [],
+  "is_private": false,
+  "competition_sources": [
+    "titanic"
+  ],
+  "id_no": 202461,
+  "language": "python"
+}

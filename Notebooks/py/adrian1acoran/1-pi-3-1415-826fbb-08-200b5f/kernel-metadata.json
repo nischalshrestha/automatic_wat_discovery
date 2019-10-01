@@ -1,0 +1,20 @@
+{
+  "title": "1 pi 3,1415 826fbb 08 200b5f",
+  "keywords": [],
+  "language": "python",
+  "id_no": 1888328,
+  "enable_internet": false,
+  "code_file": "1-pi-3-1415-826fbb-08-200b5f.ipynb",
+  "dataset_sources": [
+    "adrian1acoran/pi-31415"
+  ],
+  "is_private": false,
+  "enable_gpu": true,
+  "kernel_sources": [],
+  "competition_sources": [
+    "titanic",
+    "human-protein-atlas-image-classification"
+  ],
+  "kernel_type": "notebook",
+  "id": "adrian1acoran/1-pi-3-1415-826fbb-08-200b5f"
+}

@@ -1,0 +1,19 @@
+{
+  "kernel_type": "notebook",
+  "id_no": 444556,
+  "enable_gpu": false,
+  "keywords": [
+    "pipeline code"
+  ],
+  "language": "python",
+  "is_private": false,
+  "dataset_sources": [],
+  "code_file": "pipelines-in-scikit-learn.ipynb",
+  "kernel_sources": [],
+  "enable_internet": false,
+  "title": "Pipelines in scikit-learn",
+  "id": "znoland1/pipelines-in-scikit-learn",
+  "competition_sources": [
+    "titanic"
+  ]
+}

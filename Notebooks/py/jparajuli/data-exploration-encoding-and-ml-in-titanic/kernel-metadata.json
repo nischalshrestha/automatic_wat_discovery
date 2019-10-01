@@ -1,0 +1,17 @@
+{
+  "enable_internet": false,
+  "kernel_type": "notebook",
+  "language": "python",
+  "id_no": 177277,
+  "kernel_sources": [],
+  "competition_sources": [
+    "titanic"
+  ],
+  "enable_gpu": false,
+  "is_private": false,
+  "title": "Data Exploration, Encoding and ML in Titanic ",
+  "dataset_sources": [],
+  "keywords": [],
+  "id": "jparajuli/data-exploration-encoding-and-ml-in-titanic",
+  "code_file": "data-exploration-encoding-and-ml-in-titanic.ipynb"
+}

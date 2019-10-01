@@ -1,0 +1,17 @@
+{
+  "is_private": false,
+  "title": "Titanic - Random Forest",
+  "dataset_sources": [],
+  "competition_sources": [
+    "titanic"
+  ],
+  "id_no": 1400201,
+  "kernel_type": "notebook",
+  "language": "python",
+  "id": "tcvieira/titanic-random-forest",
+  "enable_internet": false,
+  "enable_gpu": false,
+  "keywords": [],
+  "kernel_sources": [],
+  "code_file": "titanic-random-forest.ipynb"
+}

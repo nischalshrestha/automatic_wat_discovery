@@ -1,0 +1,20 @@
+{
+  "competition_sources": [
+    "titanic"
+  ],
+  "code_file": "titanic-machine-learning-from-disaster.irnb",
+  "language": "r",
+  "id": "asterias99/titanic-machine-learning-from-disaster",
+  "title": "Titanic: Machine Learning from Disaster",
+  "kernel_sources": [],
+  "id_no": 761710,
+  "is_private": false,
+  "keywords": [
+    "classification",
+    "logistic regression"
+  ],
+  "enable_internet": false,
+  "dataset_sources": [],
+  "kernel_type": "notebook",
+  "enable_gpu": false
+}

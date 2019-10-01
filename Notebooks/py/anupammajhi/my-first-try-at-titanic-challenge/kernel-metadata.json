@@ -1,0 +1,17 @@
+{
+  "competition_sources": [
+    "titanic"
+  ],
+  "enable_internet": false,
+  "id_no": 2179869,
+  "title": "My First Try at Titanic Challenge",
+  "keywords": [],
+  "kernel_type": "notebook",
+  "is_private": false,
+  "language": "python",
+  "dataset_sources": [],
+  "kernel_sources": [],
+  "code_file": "my-first-try-at-titanic-challenge.ipynb",
+  "id": "anupammajhi/my-first-try-at-titanic-challenge",
+  "enable_gpu": false
+}

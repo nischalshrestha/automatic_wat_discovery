@@ -1,0 +1,101 @@
+{
+  "cells": [
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "_cell_guid": "2dc2bacc-9a1c-d5bd-4136-ae707bf66ecd"
+      },
+      "outputs": [],
+      "source": [
+        "# This R environment comes with all of CRAN preinstalled, as well as many other helpful packages\n",
+        "# The environment is defined by the kaggle/rstats docker image: https://github.com/kaggle/docker-rstats\n",
+        "# For example, here's several helpful packages to load in \n",
+        "\n",
+        "library(ggplot2) # Data visualization\n",
+        "library(readr) # CSV file I/O, e.g. the read_csv function\n",
+        "\n",
+        "# Input data files are available in the \"../input/\" directory.\n",
+        "# For example, running this (by clicking run or pressing Shift+Enter) will list the files in the input directory\n",
+        "\n",
+        "system(\"ls ../input\")\n",
+        "\n",
+        "# Any results you write to the current directory are saved as output."
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "_cell_guid": "f9ad3354-688b-0ecc-520e-9cef16c53478"
+      },
+      "outputs": [],
+      "source": [
+        "# Imports\n",
+        "\n",
+        "# pandas\n",
+        "import pandas as pd\n",
+        "from pandas import Series,DataFrame\n",
+        "\n",
+        "# numpy, matplotlib, seaborn\n",
+        "import numpy as np\n",
+        "import matplotlib.pyplot as plt\n",
+        "import seaborn as sns\n",
+        "sns.set_style('whitegrid')\n",
+        "%matplotlib inline\n",
+        "\n",
+        "# machine learning\n",
+        "from sklearn.linear_model import LogisticRegression\n",
+        "from sklearn.svm import SVC, LinearSVC\n",
+        "from sklearn.ensemble import RandomForestClassifier\n",
+        "from sklearn.neighbors import KNeighborsClassifier\n",
+        "from sklearn.naive_bayes import GaussianNB"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "_cell_guid": "12565312-821f-681a-5be0-326fac8fdbdc"
+      },
+      "outputs": [],
+      "source": [
+        "# get titanic & test csv files as a DataFrame\n",
+        "titanic_df = pd.read_csv(\"../input/train.csv\")\n",
+        "test_df    = pd.read_csv(\"../input/test.csv\")\n",
+        "\n",
+        "titanic_df.head()"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "_cell_guid": "ee6ed980-15c3-020e-ed49-8345ec6e7a34"
+      },
+      "outputs": [],
+      "source": [
+        ""
+      ]
+    }
+  ],
+  "metadata": {
+    "_change_revision": 0,
+    "_is_fork": false,
+    "kernelspec": {
+      "display_name": "R",
+      "language": "R",
+      "name": "ir"
+    },
+    "language_info": {
+      "codemirror_mode": "r",
+      "file_extension": ".r",
+      "mimetype": "text/x-r-source",
+      "name": "R",
+      "pygments_lexer": "r",
+      "version": "3.3.2"
+    }
+  },
+  "nbformat": 4,
+  "nbformat_minor": 0
+}

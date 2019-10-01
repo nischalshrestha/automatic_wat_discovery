@@ -1,0 +1,21 @@
+{
+  "enable_internet": false,
+  "competition_sources": [
+    "titanic"
+  ],
+  "is_private": false,
+  "id": "rtatman/mixed-models-logistic-regression",
+  "kernel_sources": [],
+  "code_file": "mixed-models-logistic-regression.irnb",
+  "keywords": [
+    "statistics",
+    "tutorial",
+    "logistic regression"
+  ],
+  "id_no": 1737309,
+  "dataset_sources": [],
+  "title": "Mixed models: Logistic regression",
+  "enable_gpu": true,
+  "kernel_type": "notebook",
+  "language": "r"
+}

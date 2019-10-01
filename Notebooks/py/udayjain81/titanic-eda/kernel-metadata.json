@@ -1,0 +1,17 @@
+{
+  "id": "udayjain81/titanic-eda",
+  "enable_internet": false,
+  "dataset_sources": [],
+  "id_no": 1531309,
+  "enable_gpu": false,
+  "language": "python",
+  "kernel_sources": [],
+  "code_file": "titanic-eda.ipynb",
+  "competition_sources": [
+    "titanic"
+  ],
+  "keywords": [],
+  "kernel_type": "notebook",
+  "is_private": false,
+  "title": "Titanic EDA"
+}

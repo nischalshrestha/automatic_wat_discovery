@@ -1,0 +1,21 @@
+{
+  "enable_gpu": false,
+  "dataset_sources": [],
+  "is_private": false,
+  "title": "3-steps ML for the unsinkable ship! (Beginner)",
+  "keywords": [
+    "beginner",
+    "random forest",
+    "logistic regression"
+  ],
+  "code_file": "3-steps-ml-for-the-unsinkable-ship-beginner.ipynb",
+  "id": "mnoori/3-steps-ml-for-the-unsinkable-ship-beginner",
+  "enable_internet": false,
+  "kernel_sources": [],
+  "kernel_type": "notebook",
+  "competition_sources": [
+    "titanic"
+  ],
+  "language": "python",
+  "id_no": 534212
+}

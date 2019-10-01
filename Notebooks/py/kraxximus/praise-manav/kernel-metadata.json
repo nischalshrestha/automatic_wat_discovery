@@ -1,0 +1,17 @@
+{
+  "id_no": 814477,
+  "kernel_type": "notebook",
+  "enable_gpu": false,
+  "language": "python",
+  "code_file": "praise-manav.ipynb",
+  "keywords": [],
+  "competition_sources": [
+    "titanic"
+  ],
+  "id": "kraxximus/praise-manav",
+  "title": "PRAISE MANAV",
+  "enable_internet": false,
+  "dataset_sources": [],
+  "is_private": false,
+  "kernel_sources": []
+}

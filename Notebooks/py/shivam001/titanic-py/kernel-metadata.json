@@ -1,0 +1,23 @@
+{
+  "language": "python",
+  "is_private": false,
+  "enable_internet": true,
+  "title": "titanic.py",
+  "enable_gpu": true,
+  "code_file": "titanic-py.ipynb",
+  "id": "shivam001/titanic-py",
+  "id_no": 1616633,
+  "kernel_type": "notebook",
+  "competition_sources": [
+    "titanic"
+  ],
+  "kernel_sources": [],
+  "keywords": [
+    "beginner",
+    "data visualization",
+    "classification",
+    "feature engineering",
+    "deep learning"
+  ],
+  "dataset_sources": []
+}

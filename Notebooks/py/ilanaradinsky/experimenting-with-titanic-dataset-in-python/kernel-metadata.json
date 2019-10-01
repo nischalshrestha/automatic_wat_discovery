@@ -1,0 +1,17 @@
+{
+  "dataset_sources": [],
+  "kernel_sources": [],
+  "keywords": [],
+  "id": "ilanaradinsky/experimenting-with-titanic-dataset-in-python",
+  "enable_internet": false,
+  "title": "Experimenting with Titanic Dataset in Python",
+  "id_no": 215013,
+  "language": "python",
+  "enable_gpu": false,
+  "competition_sources": [
+    "titanic"
+  ],
+  "is_private": false,
+  "kernel_type": "notebook",
+  "code_file": "experimenting-with-titanic-dataset-in-python.ipynb"
+}

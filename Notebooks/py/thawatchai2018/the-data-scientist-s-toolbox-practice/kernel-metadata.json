@@ -1,0 +1,17 @@
+{
+  "keywords": [],
+  "enable_internet": false,
+  "code_file": "the-data-scientist-s-toolbox-practice.ipynb",
+  "title": "The Data Scientist\u2019s Toolbox - Practice",
+  "kernel_type": "notebook",
+  "language": "python",
+  "is_private": false,
+  "id": "thawatchai2018/the-data-scientist-s-toolbox-practice",
+  "competition_sources": [
+    "titanic"
+  ],
+  "kernel_sources": [],
+  "dataset_sources": [],
+  "id_no": 1976817,
+  "enable_gpu": true
+}

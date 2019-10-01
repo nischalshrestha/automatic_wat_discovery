@@ -1,0 +1,25 @@
+{
+  "id": "adrian1acoran/fork-of-fork-of-fork-of-fork-of-fork-of-for-a65775",
+  "id_no": 1812849,
+  "enable_gpu": true,
+  "dataset_sources": [
+    "ramamet4/app-store-apple-data-set-10k-apps",
+    "bigquery/patentsview",
+    "lava18/google-play-store-apps",
+    "bigquery/patents",
+    "theworldbank/education-statistics",
+    "census/total-business-inventories-and-sales-data",
+    "san-francisco/sf-police-calls-for-service-and-incidents"
+  ],
+  "kernel_sources": [],
+  "is_private": false,
+  "language": "r",
+  "keywords": [],
+  "code_file": "fork-of-fork-of-fork-of-fork-of-fork-of-for-a65775.irnb",
+  "kernel_type": "notebook",
+  "enable_internet": true,
+  "competition_sources": [
+    "titanic"
+  ],
+  "title": "Fork of Fork of Fork of Fork of Fork of For a65775"
+}

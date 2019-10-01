@@ -1,0 +1,23 @@
+{
+  "dataset_sources": [],
+  "id_no": 1769363,
+  "code_file": "learning-basic-ml-by-titanic-survival-prediction.ipynb",
+  "kernel_type": "notebook",
+  "competition_sources": [
+    "titanic"
+  ],
+  "language": "python",
+  "keywords": [
+    "tutorial",
+    "beginner",
+    "eda",
+    "data visualization",
+    "classification"
+  ],
+  "id": "harunshimanto/learning-basic-ml-by-titanic-survival-prediction",
+  "enable_internet": false,
+  "kernel_sources": [],
+  "enable_gpu": true,
+  "is_private": false,
+  "title": "Learning basic ML by Titanic Survival Prediction "
+}

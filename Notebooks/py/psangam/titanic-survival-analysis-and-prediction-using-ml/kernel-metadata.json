@@ -1,0 +1,22 @@
+{
+  "id_no": 555983,
+  "code_file": "titanic-survival-analysis-and-prediction-using-ml.ipynb",
+  "competition_sources": [
+    "titanic"
+  ],
+  "title": "Titanic Survival: Analysis and Prediction using ML",
+  "keywords": [
+    "tutorial",
+    "beginner",
+    "data cleaning",
+    "feature engineering"
+  ],
+  "kernel_type": "notebook",
+  "kernel_sources": [],
+  "enable_gpu": false,
+  "language": "python",
+  "dataset_sources": [],
+  "is_private": false,
+  "id": "psangam/titanic-survival-analysis-and-prediction-using-ml",
+  "enable_internet": false
+}

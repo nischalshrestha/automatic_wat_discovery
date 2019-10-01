@@ -1,0 +1,17 @@
+{
+  "enable_gpu": false,
+  "id": "dharmeshdev/machine-learning-approach-with-python",
+  "enable_internet": false,
+  "code_file": "machine-learning-approach-with-python.ipynb",
+  "is_private": false,
+  "competition_sources": [
+    "titanic"
+  ],
+  "id_no": 1544460,
+  "kernel_sources": [],
+  "keywords": [],
+  "kernel_type": "notebook",
+  "title": "Machine Learning Approach with Python",
+  "dataset_sources": [],
+  "language": "python"
+}

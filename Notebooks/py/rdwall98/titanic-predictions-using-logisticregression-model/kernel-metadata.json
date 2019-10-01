@@ -1,0 +1,17 @@
+{
+  "id": "rdwall98/titanic-predictions-using-logisticregression-model",
+  "id_no": 1145133,
+  "title": "Titanic Predictions using LogisticRegression Model",
+  "code_file": "titanic-predictions-using-logisticregression-model.ipynb",
+  "language": "python",
+  "kernel_type": "notebook",
+  "is_private": false,
+  "enable_gpu": false,
+  "enable_internet": false,
+  "keywords": [],
+  "dataset_sources": [],
+  "kernel_sources": [],
+  "competition_sources": [
+    "titanic"
+  ]
+}

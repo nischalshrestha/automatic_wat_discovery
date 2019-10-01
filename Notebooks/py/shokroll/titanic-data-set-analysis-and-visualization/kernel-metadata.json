@@ -1,0 +1,17 @@
+{
+  "code_file": "titanic-data-set-analysis-and-visualization.ipynb",
+  "enable_internet": false,
+  "kernel_type": "notebook",
+  "is_private": false,
+  "enable_gpu": false,
+  "language": "python",
+  "kernel_sources": [],
+  "keywords": [],
+  "id_no": 1879727,
+  "id": "shokroll/titanic-data-set-analysis-and-visualization",
+  "dataset_sources": [],
+  "competition_sources": [
+    "titanic"
+  ],
+  "title": "Titanic data set, analysis and visualization"
+}

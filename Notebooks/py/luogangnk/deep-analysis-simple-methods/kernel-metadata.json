@@ -1,0 +1,17 @@
+{
+  "id": "luogangnk/deep-analysis-simple-methods",
+  "id_no": 352928,
+  "title": "Deep Analysis - Simple Methods",
+  "code_file": "deep-analysis-simple-methods.ipynb",
+  "language": "python",
+  "kernel_type": "notebook",
+  "is_private": false,
+  "enable_gpu": false,
+  "enable_internet": false,
+  "keywords": [],
+  "dataset_sources": [],
+  "kernel_sources": [],
+  "competition_sources": [
+    "titanic"
+  ]
+}

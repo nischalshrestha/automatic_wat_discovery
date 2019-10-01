@@ -1,0 +1,17 @@
+{
+  "code_file": "my-titanic-data-set-practice.ipynb",
+  "enable_gpu": false,
+  "kernel_sources": [],
+  "id": "rifatjahanazad/my-titanic-data-set-practice",
+  "id_no": 1328006,
+  "competition_sources": [
+    "titanic"
+  ],
+  "language": "python",
+  "title": "My titanic data set practice",
+  "is_private": false,
+  "kernel_type": "notebook",
+  "dataset_sources": [],
+  "keywords": [],
+  "enable_internet": false
+}

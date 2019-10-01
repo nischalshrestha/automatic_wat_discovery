@@ -1,0 +1,17 @@
+{
+  "enable_internet": false,
+  "id": "smit072/titanic-initial-test",
+  "is_private": false,
+  "kernel_sources": [],
+  "language": "r",
+  "keywords": [],
+  "dataset_sources": [],
+  "competition_sources": [
+    "titanic"
+  ],
+  "code_file": "titanic-initial-test.irnb",
+  "enable_gpu": false,
+  "kernel_type": "notebook",
+  "id_no": 196372,
+  "title": "Titanic Initial Test"
+}

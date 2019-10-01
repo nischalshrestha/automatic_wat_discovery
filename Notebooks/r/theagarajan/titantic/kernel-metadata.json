@@ -1,0 +1,17 @@
+{
+  "id": "theagarajan/titantic",
+  "is_private": false,
+  "id_no": 479948,
+  "enable_internet": false,
+  "dataset_sources": [],
+  "code_file": "titantic.irnb",
+  "enable_gpu": false,
+  "keywords": [],
+  "competition_sources": [
+    "titanic"
+  ],
+  "title": "Titantic",
+  "kernel_sources": [],
+  "kernel_type": "notebook",
+  "language": "r"
+}

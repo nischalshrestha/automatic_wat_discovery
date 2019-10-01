@@ -1,0 +1,17 @@
+{
+  "kernel_type": "notebook",
+  "id_no": 143047,
+  "code_file": "a-journey-through-titanic-03686b52.ipynb",
+  "enable_gpu": false,
+  "dataset_sources": [],
+  "title": "A Journey through Titanic 03686b52",
+  "language": "python",
+  "is_private": false,
+  "enable_internet": false,
+  "kernel_sources": [],
+  "competition_sources": [
+    "titanic"
+  ],
+  "keywords": [],
+  "id": "abhishekaarush/a-journey-through-titanic-03686b52"
+}

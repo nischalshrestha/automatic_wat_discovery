@@ -1,0 +1,17 @@
+{
+  "enable_gpu": false,
+  "is_private": false,
+  "dataset_sources": [],
+  "kernel_sources": [],
+  "language": "python",
+  "id_no": 335951,
+  "competition_sources": [
+    "titanic"
+  ],
+  "title": "Titanic: Machine Learning from Disaster ~ 0.842",
+  "kernel_type": "notebook",
+  "keywords": [],
+  "code_file": "titanic-machine-learning-from-disaster-0-842.ipynb",
+  "enable_internet": false,
+  "id": "longyin2/titanic-machine-learning-from-disaster-0-842"
+}

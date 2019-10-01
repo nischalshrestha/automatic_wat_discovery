@@ -1,0 +1,17 @@
+{
+  "competition_sources": [
+    "titanic"
+  ],
+  "code_file": "0-7945-using-rf-svm-gba-and-their-ensembles.ipynb",
+  "title": "0.7945 using RF, SVM, GBA and their ensembles ",
+  "id": "kallolsamanta/0-7945-using-rf-svm-gba-and-their-ensembles",
+  "is_private": false,
+  "keywords": [],
+  "language": "python",
+  "enable_gpu": false,
+  "id_no": 542243,
+  "enable_internet": false,
+  "kernel_type": "notebook",
+  "kernel_sources": [],
+  "dataset_sources": []
+}

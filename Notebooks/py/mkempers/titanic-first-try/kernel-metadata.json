@@ -1,0 +1,17 @@
+{
+  "dataset_sources": [],
+  "id": "mkempers/titanic-first-try",
+  "enable_gpu": false,
+  "competition_sources": [
+    "titanic"
+  ],
+  "enable_internet": false,
+  "is_private": false,
+  "id_no": 365874,
+  "kernel_sources": [],
+  "kernel_type": "notebook",
+  "language": "python",
+  "code_file": "titanic-first-try.ipynb",
+  "title": "Titanic first try",
+  "keywords": []
+}

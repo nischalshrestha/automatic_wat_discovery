@@ -1,0 +1,23 @@
+{
+  "code_file": "the-home-for-future-data-scientists.ipynb",
+  "title": "The home for future data scientists",
+  "id": "omarayman/the-home-for-future-data-scientists",
+  "id_no": 1600908,
+  "kernel_sources": [],
+  "is_private": false,
+  "kernel_type": "notebook",
+  "competition_sources": [
+    "titanic"
+  ],
+  "keywords": [
+    "beginner",
+    "data cleaning",
+    "data visualization",
+    "feature engineering",
+    "deep learning"
+  ],
+  "enable_gpu": true,
+  "enable_internet": false,
+  "dataset_sources": [],
+  "language": "python"
+}

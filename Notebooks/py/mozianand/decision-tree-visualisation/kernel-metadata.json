@@ -1,0 +1,17 @@
+{
+  "title": "Decision_Tree_Visualisation",
+  "competition_sources": [
+    "titanic"
+  ],
+  "enable_gpu": false,
+  "id_no": 566696,
+  "dataset_sources": [],
+  "kernel_type": "notebook",
+  "keywords": [],
+  "is_private": false,
+  "kernel_sources": [],
+  "language": "python",
+  "enable_internet": false,
+  "id": "mozianand/decision-tree-visualisation",
+  "code_file": "decision-tree-visualisation.ipynb"
+}

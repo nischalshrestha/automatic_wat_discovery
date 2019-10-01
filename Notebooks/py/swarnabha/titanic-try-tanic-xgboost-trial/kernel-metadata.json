@@ -1,0 +1,21 @@
+{
+  "id_no": 1190291,
+  "language": "python",
+  "kernel_sources": [],
+  "is_private": false,
+  "competition_sources": [
+    "titanic"
+  ],
+  "enable_gpu": false,
+  "id": "swarnabha/titanic-try-tanic-xgboost-trial",
+  "enable_internet": false,
+  "dataset_sources": [],
+  "title": "TITANIC TRY-TANIC (XGBoost trial)",
+  "kernel_type": "notebook",
+  "keywords": [
+    "classification",
+    "xgboost",
+    "starter code"
+  ],
+  "code_file": "titanic-try-tanic-xgboost-trial.ipynb"
+}

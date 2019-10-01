@@ -1,0 +1,17 @@
+{
+  "kernel_sources": [],
+  "kernel_type": "notebook",
+  "is_private": false,
+  "id": "vikumsw/titanic-problem-vikum",
+  "dataset_sources": [],
+  "id_no": 1319164,
+  "competition_sources": [
+    "titanic"
+  ],
+  "language": "python",
+  "title": "Titanic Problem : Vikum",
+  "code_file": "titanic-problem-vikum.ipynb",
+  "enable_internet": false,
+  "keywords": [],
+  "enable_gpu": false
+}

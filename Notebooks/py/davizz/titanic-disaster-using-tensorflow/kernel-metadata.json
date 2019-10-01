@@ -1,0 +1,17 @@
+{
+  "keywords": [],
+  "is_private": false,
+  "id": "davizz/titanic-disaster-using-tensorflow",
+  "dataset_sources": [],
+  "kernel_type": "notebook",
+  "code_file": "titanic-disaster-using-tensorflow.ipynb",
+  "enable_internet": false,
+  "enable_gpu": false,
+  "competition_sources": [
+    "titanic"
+  ],
+  "title": "Titanic disaster using TensorFlow",
+  "kernel_sources": [],
+  "language": "python",
+  "id_no": 1463213
+}

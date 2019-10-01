@@ -1,0 +1,17 @@
+{
+  "competition_sources": [
+    "titanic"
+  ],
+  "dataset_sources": [],
+  "kernel_type": "notebook",
+  "code_file": "python-walk-through.ipynb",
+  "enable_gpu": false,
+  "kernel_sources": [],
+  "enable_internet": false,
+  "is_private": false,
+  "keywords": [],
+  "id": "arunkumarramanan/python-walk-through",
+  "title": "Python walk-through",
+  "language": "python",
+  "id_no": 1329919
+}

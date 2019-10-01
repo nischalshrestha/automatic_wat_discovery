@@ -1,0 +1,17 @@
+{
+  "dataset_sources": [],
+  "code_file": "a-journey-through-titanic.ipynb",
+  "is_private": false,
+  "id_no": 136241,
+  "kernel_type": "notebook",
+  "enable_internet": false,
+  "kernel_sources": [],
+  "keywords": [],
+  "competition_sources": [
+    "titanic"
+  ],
+  "language": "python",
+  "title": "A Journey through Titanic",
+  "id": "delange/a-journey-through-titanic",
+  "enable_gpu": false
+}

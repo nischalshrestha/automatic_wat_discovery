@@ -1,0 +1,21 @@
+{
+  "keywords": [
+    "random forest",
+    "svm",
+    "decision tree"
+  ],
+  "is_private": false,
+  "code_file": "svm-knn-rf-and-dt-implementation-titanic.ipynb",
+  "enable_internet": false,
+  "kernel_sources": [],
+  "kernel_type": "notebook",
+  "id": "omkarsabnis/svm-knn-rf-and-dt-implementation-titanic",
+  "title": "SVM, KNN, RF and DT Implementation - Titanic",
+  "language": "python",
+  "dataset_sources": [],
+  "id_no": 964094,
+  "competition_sources": [
+    "titanic"
+  ],
+  "enable_gpu": false
+}

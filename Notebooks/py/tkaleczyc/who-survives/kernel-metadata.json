@@ -1,0 +1,17 @@
+{
+  "title": "Who survives?",
+  "enable_internet": false,
+  "keywords": [],
+  "code_file": "who-survives.ipynb",
+  "competition_sources": [
+    "titanic"
+  ],
+  "dataset_sources": [],
+  "enable_gpu": false,
+  "id": "tkaleczyc/who-survives",
+  "id_no": 1233828,
+  "kernel_type": "notebook",
+  "language": "python",
+  "is_private": false,
+  "kernel_sources": []
+}

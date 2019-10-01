@@ -1,0 +1,17 @@
+{
+  "title": "Notebook523a475d05",
+  "enable_internet": false,
+  "dataset_sources": [],
+  "is_private": false,
+  "kernel_sources": [],
+  "code_file": "notebook523a475d05.ipynb",
+  "id": "zhengzhishui/notebook523a475d05",
+  "id_no": 225552,
+  "language": "python",
+  "competition_sources": [
+    "titanic"
+  ],
+  "keywords": [],
+  "enable_gpu": false,
+  "kernel_type": "notebook"
+}

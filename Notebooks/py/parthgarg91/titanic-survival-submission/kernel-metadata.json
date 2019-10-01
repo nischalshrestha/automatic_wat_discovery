@@ -1,0 +1,20 @@
+{
+  "title": "Titanic Survival Submission",
+  "kernel_type": "notebook",
+  "dataset_sources": [],
+  "kernel_sources": [],
+  "is_private": false,
+  "id": "parthgarg91/titanic-survival-submission",
+  "keywords": [
+    "beginner",
+    "classification"
+  ],
+  "competition_sources": [
+    "titanic"
+  ],
+  "enable_gpu": false,
+  "language": "python",
+  "code_file": "titanic-survival-submission.ipynb",
+  "id_no": 763247,
+  "enable_internet": false
+}

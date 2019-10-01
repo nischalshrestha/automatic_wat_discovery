@@ -1,0 +1,17 @@
+{
+  "enable_gpu": false,
+  "kernel_sources": [],
+  "id_no": 1630297,
+  "keywords": [],
+  "kernel_type": "notebook",
+  "id": "londonnd/titanic-practice",
+  "competition_sources": [
+    "titanic"
+  ],
+  "language": "python",
+  "title": "Titanic Practice",
+  "code_file": "titanic-practice.ipynb",
+  "enable_internet": false,
+  "dataset_sources": [],
+  "is_private": false
+}

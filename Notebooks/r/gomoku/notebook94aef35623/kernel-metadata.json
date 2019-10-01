@@ -1,0 +1,17 @@
+{
+  "dataset_sources": [],
+  "competition_sources": [
+    "titanic"
+  ],
+  "title": "Notebook94aef35623",
+  "kernel_sources": [],
+  "id": "gomoku/notebook94aef35623",
+  "enable_gpu": false,
+  "language": "python",
+  "kernel_type": "notebook",
+  "keywords": [],
+  "id_no": 246600,
+  "enable_internet": false,
+  "code_file": "notebook94aef35623.ipynb",
+  "is_private": false
+}

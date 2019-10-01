@@ -1,0 +1,17 @@
+{
+  "competition_sources": [
+    "titanic"
+  ],
+  "enable_gpu": false,
+  "kernel_sources": [],
+  "id": "asharamu/predicting-titanic-survivors",
+  "is_private": false,
+  "enable_internet": false,
+  "language": "r",
+  "dataset_sources": [],
+  "keywords": [],
+  "code_file": "predicting-titanic-survivors.irnb",
+  "kernel_type": "notebook",
+  "id_no": 209999,
+  "title": "Predicting Titanic survivors"
+}

@@ -1,0 +1,20 @@
+{
+  "kernel_sources": [],
+  "dataset_sources": [],
+  "title": "Modified Titanic best working Classifier",
+  "code_file": "modified-titanic-best-working-classifier.ipynb",
+  "is_private": false,
+  "id_no": 816910,
+  "enable_gpu": true,
+  "keywords": [
+    "tutorial",
+    "beginner"
+  ],
+  "id": "wenjiebai/modified-titanic-best-working-classifier",
+  "competition_sources": [
+    "titanic"
+  ],
+  "kernel_type": "notebook",
+  "language": "python",
+  "enable_internet": false
+}

@@ -1,0 +1,17 @@
+{
+  "enable_internet": false,
+  "is_private": false,
+  "id_no": 265111,
+  "dataset_sources": [],
+  "title": "Titanic top 10% - My first competition",
+  "id": "benteo/titanic-top-10-my-first-competition",
+  "kernel_type": "notebook",
+  "language": "python",
+  "competition_sources": [
+    "titanic"
+  ],
+  "code_file": "titanic-top-10-my-first-competition.ipynb",
+  "enable_gpu": false,
+  "kernel_sources": [],
+  "keywords": []
+}

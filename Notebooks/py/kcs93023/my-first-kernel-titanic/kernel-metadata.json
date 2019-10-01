@@ -1,0 +1,17 @@
+{
+  "is_private": false,
+  "kernel_sources": [],
+  "id": "kcs93023/my-first-kernel-titanic",
+  "language": "python",
+  "enable_internet": false,
+  "competition_sources": [
+    "titanic"
+  ],
+  "id_no": 1619354,
+  "keywords": [],
+  "enable_gpu": false,
+  "code_file": "my-first-kernel-titanic.ipynb",
+  "dataset_sources": [],
+  "kernel_type": "notebook",
+  "title": "My first Kernel Titanic"
+}

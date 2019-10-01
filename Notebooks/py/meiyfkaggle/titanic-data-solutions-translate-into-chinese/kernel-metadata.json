@@ -1,0 +1,17 @@
+{
+  "enable_gpu": false,
+  "id": "meiyfkaggle/titanic-data-solutions-translate-into-chinese",
+  "enable_internet": false,
+  "id_no": 243749,
+  "code_file": "titanic-data-solutions-translate-into-chinese.ipynb",
+  "keywords": [],
+  "kernel_sources": [],
+  "kernel_type": "notebook",
+  "dataset_sources": [],
+  "language": "python",
+  "competition_sources": [
+    "titanic"
+  ],
+  "is_private": false,
+  "title": "Titanic Data Solutions(Translate into chinese)"
+}

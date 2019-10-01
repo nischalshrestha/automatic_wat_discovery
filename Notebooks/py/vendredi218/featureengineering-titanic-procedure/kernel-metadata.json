@@ -1,0 +1,17 @@
+{
+  "title": "FeatureEngineering Titanic_procedure",
+  "keywords": [],
+  "enable_internet": false,
+  "language": "python",
+  "code_file": "featureengineering-titanic-procedure.ipynb",
+  "competition_sources": [
+    "titanic"
+  ],
+  "id_no": 727209,
+  "id": "vendredi218/featureengineering-titanic-procedure",
+  "kernel_sources": [],
+  "kernel_type": "notebook",
+  "enable_gpu": false,
+  "is_private": false,
+  "dataset_sources": []
+}

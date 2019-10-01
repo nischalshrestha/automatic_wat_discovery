@@ -1,0 +1,17 @@
+{
+  "dataset_sources": [],
+  "enable_internet": false,
+  "kernel_sources": [],
+  "is_private": false,
+  "id": "yshweta/notebook52e9e9a306",
+  "kernel_type": "notebook",
+  "code_file": "notebook52e9e9a306.ipynb",
+  "id_no": 203316,
+  "keywords": [],
+  "enable_gpu": false,
+  "competition_sources": [
+    "titanic"
+  ],
+  "title": "Notebook52e9e9a306",
+  "language": "python"
+}

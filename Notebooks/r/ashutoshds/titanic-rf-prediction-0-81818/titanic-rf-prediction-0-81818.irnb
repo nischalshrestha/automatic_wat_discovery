@@ -1,0 +1,804 @@
+{
+  "cells": [
+    {
+      "cell_type": "markdown",
+      "metadata": {
+        "_cell_guid": "4e1a76af-93db-f2b8-b0e7-17b6cc8a9613"
+      },
+      "source": [
+        "----------\n",
+        "\n",
+        "\n",
+        "Titanic - RF Prediction 0.81818\n",
+        "===============================\n",
+        "***Vincent Lugat***\n",
+        "\n",
+        "*27 avril 2017*\n",
+        "\n",
+        "\n",
+        "----------\n",
+        "\n",
+        "\n",
+        "1. Package, Loading and Check Data\n",
+        "----------------------------------\n",
+        "2. Exploratory Analysis\n",
+        "-----------------------\n",
+        "**2.1. Age**\n",
+        "\n",
+        "**2.2. Sex**\n",
+        "\n",
+        "**2.3. Age vs Sex**\n",
+        "\n",
+        "**2.4. Pclass vs Sex**\n",
+        "\n",
+        "**2.5. Pclass vs Sex vs Age**\n",
+        "\n",
+        "**2.6. Fare vs Pclass**\n",
+        "3. Data Processing and Exploratory Analysis 2\n",
+        "---------------------------------------------\n",
+        "**3.1. New Variable : Title** (From Name)\n",
+        "\n",
+        "**3.2. New Variable : Family Size** (From Name, SibSp and Parch)\n",
+        "\n",
+        "**3.3. Processing Embarked** (Replace missing values by most common value = S)\n",
+        "\n",
+        "**3.4. Processing Fare** (Replace missing value by Pclass = 3 's median)\n",
+        "\n",
+        "**3.5. Processing Age** (Replace missing values by Title's median)\n",
+        "\n",
+        "**3.6. New Variable : Child** (From Age)\n",
+        "4. Modeling with Random Forest\n",
+        "------------------------------\n",
+        "**4.1. Modeling**\n",
+        "\n",
+        "**4.2. OOB and Confusion Matrix**\n",
+        "5. Prediction\n",
+        "-------------\n",
+        "**5.1. Write Prediction**\n",
+        "\n",
+        "**5.2. Error and Gini**\n",
+        "\n",
+        "\n",
+        "----------"
+      ]
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {
+        "_cell_guid": "59980b77-0bcf-4d90-c64a-663ef7cd2e10"
+      },
+      "source": [
+        "1. Package, Loading and Check Data\n",
+        "----------------------------------"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "_cell_guid": "a2e54742-595c-2a08-bb91-e6b3ab329023"
+      },
+      "outputs": [],
+      "source": [
+        "#_____________________________Package + Data___________________________________\n",
+        "#______________________________________________________________________________\n",
+        "\n",
+        "# Package\n",
+        "suppressMessages(library('ggplot2'))\n",
+        "suppressMessages(library('ggthemes')) \n",
+        "suppressMessages(library('scales')) \n",
+        "suppressMessages(library('dplyr'))\n",
+        "suppressMessages(library('randomForest'))\n",
+        "\n",
+        "#Loading Data\n",
+        "\n",
+        "train <- read.csv('../input/train.csv', stringsAsFactors = F)\n",
+        "test  <- read.csv('../input/test.csv', stringsAsFactors = F)\n",
+        "\n",
+        "full  <- bind_rows(train, test) # test + train"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "_cell_guid": "b4077252-0676-e598-4098-bfcf7173693b"
+      },
+      "outputs": [],
+      "source": [
+        "str(full)"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "_cell_guid": "2282251e-02ef-e616-7721-51518a07883c"
+      },
+      "outputs": [],
+      "source": [
+        "summary(full)"
+      ]
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {
+        "_cell_guid": "49875882-2351-a3ee-b105-57f9d44c035a"
+      },
+      "source": [
+        "2. Exploratory Analysis\n",
+        "-----------------------"
+      ]
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {
+        "_cell_guid": "c49caec0-e66c-96bf-691e-9be4caa04f87"
+      },
+      "source": [
+        " - Missing value : (part 3)\n",
+        "   - Age : 263 \n",
+        "   - Fare : 1  \n",
+        "   - Embarked : 2\n",
+        "   - Cabin : too many"
+      ]
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {
+        "_cell_guid": "d0676ce8-c7b8-9f04-138d-e0c546323953"
+      },
+      "source": [
+        "**2.1. Age**"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "_cell_guid": "280455a5-ad1f-5eab-9582-867c45e5bbbb"
+      },
+      "outputs": [],
+      "source": [
+        "#______________________________________________________________________________\n",
+        "#_____________________________Exploratory Analysis_____________________________\n",
+        "#______________________________________________________________________________\n",
+        "\n",
+        "# Age vs Survived\n",
+        "ggplot(full[1:891,], aes(Age, fill = factor(Survived))) + \n",
+        "  geom_histogram(bins=30) + \n",
+        "  theme_few() +\n",
+        "  xlab(\"Age\") +\n",
+        "  scale_fill_discrete(name = \"Survived\") + \n",
+        "  ggtitle(\"Age vs Survived\")"
+      ]
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {
+        "_cell_guid": "2e6585e6-913e-0fca-9449-d71a98b0c1f9"
+      },
+      "source": [
+        "**2.2. Sex**"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "_cell_guid": "271c4ee3-199d-7982-1a21-d190f9f2ead7"
+      },
+      "outputs": [],
+      "source": [
+        "# Sex vs Survived\n",
+        "ggplot(full[1:891,], aes(Sex, fill = factor(Survived))) + \n",
+        "  geom_bar(stat = \"count\", position = 'dodge')+\n",
+        "  theme_few() +\n",
+        "  xlab(\"Sexe\") +\n",
+        "  ylab(\"Count\") +\n",
+        "  scale_fill_discrete(name = \"Survived\") + \n",
+        "  ggtitle(\"Sex vs Survived\")\n",
+        "\n",
+        "tapply(full[1:891,]$Survived,full[1:891,]$Sex,mean)"
+      ]
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {
+        "_cell_guid": "e89930ae-76fa-148c-9d5a-dfcfc77b45f7"
+      },
+      "source": [
+        "**2.3. Age vs Sex**"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "_cell_guid": "fe138cd2-ab4b-3329-f597-8931f9f181cd"
+      },
+      "outputs": [],
+      "source": [
+        "#Sex vs Survived vs Age \n",
+        "ggplot(full[1:891,], aes(Age, fill = factor(Survived))) + \n",
+        "  geom_histogram(bins=30) + \n",
+        "  theme_few() +\n",
+        "  xlab(\"Age\") +\n",
+        "  ylab(\"Count\") +\n",
+        "  facet_grid(.~Sex)+\n",
+        "  scale_fill_discrete(name = \"Survived\") + \n",
+        "  theme_few()+\n",
+        "  ggtitle(\"Age vs Sex vs Survived\")"
+      ]
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {
+        "_cell_guid": "d4ef6267-5003-55dd-b32d-acfea2172727"
+      },
+      "source": [
+        "**2.4. Pclass vs Sex**"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "_cell_guid": "95d21867-7cde-008f-b57e-e235d40c200c"
+      },
+      "outputs": [],
+      "source": [
+        "# Pclass vs Survived\n",
+        "\n",
+        "tapply(full[1:891,]$Survived,full[1:891,]$Pclass,mean)\n",
+        "\n",
+        "ggplot(full[1:891,], aes(Pclass, fill = factor(Survived))) + \n",
+        "  geom_bar(stat = \"count\")+\n",
+        "  theme_few() +\n",
+        "  xlab(\"Pclass\") +\n",
+        "  facet_grid(.~Sex)+\n",
+        "  ylab(\"Count\") +\n",
+        "  scale_fill_discrete(name = \"Survived\") + \n",
+        "  ggtitle(\"Pclass vs Sexe vs Survived\")"
+      ]
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {
+        "_cell_guid": "f559a751-f378-d33d-e8b4-49d1191b0d59"
+      },
+      "source": [
+        "**2.5. Pclass vs Sex vs Age**"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "_cell_guid": "d465f30c-5115-a081-d973-1dd804f4dcc8"
+      },
+      "outputs": [],
+      "source": [
+        "ggplot(full[1:891,], aes(x = Age, y = Sex)) + \n",
+        "  geom_jitter(aes(colour = factor(Survived))) + \n",
+        "  theme_few()+\n",
+        "  theme(legend.title = element_blank())+\n",
+        "  facet_wrap(~Pclass) + \n",
+        "  labs(x = \"Age\", y = \"Sex\", title = \"Pclass vs Sex vs Age vs Survived\")+\n",
+        "  scale_fill_discrete(name = \"Survived\") + \n",
+        "  scale_x_continuous(name=\"Age\",limits=c(0, 81))"
+      ]
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {
+        "_cell_guid": "747102fd-4eac-b3fe-9832-bf5a78d77b09"
+      },
+      "source": [
+        "**2.6. Fare vs Pclass**"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "_cell_guid": "d97dbca3-81b3-1a8b-8b93-93ca7046e75c"
+      },
+      "outputs": [],
+      "source": [
+        "#Fare\n",
+        "ggplot(full[1:891,], aes(x = Fare, y = Pclass)) + \n",
+        "  geom_jitter(aes(colour = factor(Survived))) + \n",
+        "  theme_few()+\n",
+        "  theme(legend.title = element_blank())+\n",
+        "  labs(x = \"Age\", y = \"Pclass\", title = \"Fare vs Pclass\")+\n",
+        "  scale_fill_discrete(name = \"Survived\") + \n",
+        "  scale_x_continuous(name=\"Fare\", limits=c(0, 270), breaks=c(0, 40, 80, 120, 160, 200, 240, 280))"
+      ]
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {
+        "_cell_guid": "0fc7972a-e2b3-46d4-55e9-e19a6445cff8"
+      },
+      "source": [
+        "3. Data Processing and Exploratory Analysis 2\n",
+        "---------------------------------------------"
+      ]
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {
+        "_cell_guid": "f7b2df21-b53a-64f9-efe9-02f657c1c6ba"
+      },
+      "source": [
+        "**3.1. New Variable : Title** (From Name)"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "_cell_guid": "203d4a08-545a-4954-d0f1-cad1e5cb573a"
+      },
+      "outputs": [],
+      "source": [
+        "#______________________________________________________________________________\n",
+        "#______________________Data processing and ___________________________________\n",
+        "#_________________________exploratory analysis 2______________________________\n",
+        "\n",
+        "#__________________________________Title_______________________________________\n",
+        "# Extract titles\n",
+        "full$Title <- gsub('(.*, )|(\\\\..*)', '', full$Name)\n",
+        "\n",
+        "# Titles by Sex\n",
+        "table(full$Sex, full$Title)"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "_cell_guid": "a784a2b1-c31e-6652-dcbb-289f0d73ac4a"
+      },
+      "outputs": [],
+      "source": [
+        "# Reassign rare titles\n",
+        "officer <- c('Capt', 'Col', 'Don', 'Dr', 'Major', 'Rev')\n",
+        "royalty <- c('Dona', 'Lady', 'the Countess','Sir', 'Jonkheer')\n",
+        "\n",
+        "# Reassign mlle, ms, and mme, and rare\n",
+        "full$Title[full$Title == 'Mlle']        <- 'Miss' \n",
+        "full$Title[full$Title == 'Ms']          <- 'Miss'\n",
+        "full$Title[full$Title == 'Mme']         <- 'Mrs' \n",
+        "full$Title[full$Title %in% royalty]  <- 'Royalty'\n",
+        "full$Title[full$Title %in% officer]  <- 'Officer'\n",
+        "\n",
+        "full$Surname <- sapply(full$Name,  \n",
+        "                       function(x) strsplit(x, split = '[,.]')[[1]][1])"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "_cell_guid": "c4006ad9-43ce-d630-d5ce-ebe28bc0bb79"
+      },
+      "outputs": [],
+      "source": [
+        "#graph title\n",
+        "ggplot(full[1:891,], aes(Title,fill = factor(Survived))) +\n",
+        "  geom_bar(stat = \"count\")+\n",
+        "  xlab('Title') +\n",
+        "  ylab(\"Count\") +\n",
+        "  scale_fill_discrete(name = \" Survived\") + \n",
+        "  ggtitle(\"Title vs Survived\")+\n",
+        "  theme_few()\n",
+        "\n",
+        "tapply(full[1:891,]$Survived,full[1:891,]$Title,mean)"
+      ]
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {
+        "_cell_guid": "0ae188a3-af51-c964-db5c-a4e842ecfd15"
+      },
+      "source": [
+        "**3.2. New Variable : Family Size** (From Name, SibSp and Parch)"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "_cell_guid": "918e229e-3e5d-0116-5399-c5fbe306748b"
+      },
+      "outputs": [],
+      "source": [
+        "#____________________________Family Size________________________________\n",
+        "\n",
+        "#Family\n",
+        "# Family Size\n",
+        "full$Fsize <- full$SibSp + full$Parch + 1\n",
+        "\n",
+        "ggplot(full[1:891,], aes(x = Fsize, fill = factor(Survived))) +\n",
+        "  geom_bar(stat='count', position='dodge') +\n",
+        "  scale_x_continuous(breaks=c(1:11)) +\n",
+        "  xlab('Family Size') +\n",
+        "  ylab(\"Count\") +\n",
+        "  theme_few()+\n",
+        "  scale_fill_discrete(name = \"Survived\") + \n",
+        "  ggtitle(\"Family Size vs Survived\")\n",
+        "\n",
+        "tapply(full[1:891,]$Survived,full[1:891,]$Fsize,mean)"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "_cell_guid": "ca0a9ac2-71e1-119e-9205-f63415503231"
+      },
+      "outputs": [],
+      "source": [
+        "# FsizeD\n",
+        "full$FsizeD[full$Fsize == 1] <- 'Alone'\n",
+        "full$FsizeD[full$Fsize < 5 & full$Fsize > 1] <- 'Small'\n",
+        "full$FsizeD[full$Fsize > 4] <- 'Big'\n",
+        "\n",
+        "tapply(full[1:891,]$Survived,full[1:891,]$FsizeD,mean)\n",
+        "\n",
+        "mosaicplot(table(full$FsizeD, full$Survived), main='Family Size vs Survived', ylab=\"Survived\",xlab=\"Family Size\",col = hcl(c(50, 120)),)"
+      ]
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {
+        "_cell_guid": "74f3059d-e6c8-2325-e0da-e72068e6e903"
+      },
+      "source": [
+        "**3.3. Processing Embarked** (Replace missing values by most common value = S)"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "_cell_guid": "d91bd53c-2cf4-cbb7-bf74-fb13d3ab996a"
+      },
+      "outputs": [],
+      "source": [
+        "#________________________________Embarked______________________________________\n",
+        "# 2 missing datas : input median\n",
+        "\n",
+        "tapply(full$Embarked, full$Pclass,median, na.rm=TRUE)\n",
+        "full[c(62, 830), 'Embarked']\n",
+        "\n",
+        "full$Embarked[c(62, 830)] <- 'S'\n",
+        "\n",
+        "ggplot(full[1:891,], aes(Pclass, fill = factor(Survived))) + \n",
+        "  geom_bar(stat = \"count\")+\n",
+        "  theme_few() +\n",
+        "  xlab(\"Pclasse\") +\n",
+        "  ylab(\"Count\") +\n",
+        "  facet_wrap(~Embarked) + \n",
+        "  scale_fill_discrete(name = \"Survived\") + \n",
+        "  ggtitle(\"Embarked vs Pclass vs Survived\")"
+      ]
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {
+        "_cell_guid": "8faf987d-f4b5-9e00-5f96-c658c6f3f4b7"
+      },
+      "source": [
+        "**3.4. Processing Fare** (Replace missing value by Pclass = 3 's median)"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "_cell_guid": "9154c821-42c9-345f-cf6c-60a9306b2f8f"
+      },
+      "outputs": [],
+      "source": [
+        "#_________________________________Fare_________________________________________ \n",
+        "\n",
+        "full[1044, ]\n",
+        "\n",
+        "ggplot(full[full$Pclass == '3', ], \n",
+        "       aes(x = Fare)) +\n",
+        "  geom_density(fill = 'lightgrey', alpha=0.4) + \n",
+        "  geom_vline(aes(xintercept=median(Fare, na.rm=T)),\n",
+        "             colour='darkred', linetype='dashed', lwd=1) +\n",
+        "  xlab('Fare') +\n",
+        "  ggtitle(\"Pclass = 3\")+\n",
+        "  ylab(\"Density\") +\n",
+        "  scale_x_continuous(labels=dollar_format()) +\n",
+        "  theme_few()\n",
+        "\n",
+        "tapply(full$Fare, full$Pclass,median, na.rm=TRUE)\n",
+        "\n",
+        "full$Fare[1044] <- median(full[full$Pclass == '3', ]$Fare, na.rm = TRUE)"
+      ]
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {
+        "_cell_guid": "b41d5322-c0b8-acc3-4a2f-8fec83a2a57e"
+      },
+      "source": [
+        "**3.5. Processing Age** (Replace missing values by Title's median)"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "_cell_guid": "c89495ca-1844-6b8f-e4b6-339defa98a90"
+      },
+      "outputs": [],
+      "source": [
+        "#__________________________________Age__________________________________________\n",
+        "\n",
+        "tapply(full$Age, full$Pclass,median, na.rm=TRUE)\n",
+        "tapply(full$Age, full$Title,median, na.rm=TRUE)"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "_cell_guid": "6d790d52-d523-7d99-bbf9-f7bcea2d122e"
+      },
+      "outputs": [],
+      "source": [
+        "title.age <- aggregate(full$Age,by = list(full$Title), FUN = function(x) median(x, na.rm = T))\n",
+        "\n",
+        "full[is.na(full$Age), \"Age\"] <- apply(full[is.na(full$Age), ] , 1, function(x) title.age[title.age[, 1]==x[\"Title\"], 2])\n",
+        "\n",
+        "#Na value count\n",
+        "sum(is.na(full$Age))"
+      ]
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {
+        "_cell_guid": "f4442d68-b899-f1f3-cd2a-c9a1a75939e3"
+      },
+      "source": [
+        "**3.6. New Variable : Child** (From Name)"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "_cell_guid": "cf4e203b-cd2a-a4d3-fd2b-9e0a4ecadfd7"
+      },
+      "outputs": [],
+      "source": [
+        "#__________________________________Child__________________________________________\n",
+        "\n",
+        "full$Child[full$Age < 18] <- 'Child'\n",
+        "full$Child[full$Age >= 18] <- 'Adult'\n",
+        "\n",
+        "ggplot(full[1:891,][full[1:891,]$Child == 'Child', ], aes(Sex, fill = factor(Survived))) + \n",
+        "  geom_bar(stat = \"count\") + \n",
+        "  xlab(\"Sex\") +\n",
+        "  ylab(\"Count\") +\n",
+        "  facet_wrap(~Pclass)+\n",
+        "  scale_fill_discrete(name = \"Survie\") +\n",
+        "  ggtitle(\"Child vs Sex vs Pclass vs Survived\")+\n",
+        "  theme_few()\n",
+        "\n",
+        "tapply(full[1:891,]$Survived,full[1:891,]$Child, mean)\n",
+        "table(full$Child, full$Survived)"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "_cell_guid": "9732ec56-3dbd-b666-7284-2883bd31feb7"
+      },
+      "outputs": [],
+      "source": [
+        "#_________________________________Factor__________________________________________\n",
+        "\n",
+        "full$Child  <- factor(full$Child)\n",
+        "full$Sex  <- factor(full$Sex)\n",
+        "full$Embarked  <- factor(full$Embarked)\n",
+        "full$Title  <- factor(full$Title)\n",
+        "full$Pclass  <- factor(full$Pclass)\n",
+        "full$FsizeD  <- factor(full$FsizeD)\n",
+        "\n",
+        "#___________________________Data without Cabin & Ticket __________________________\n",
+        "\n",
+        "full1 <- full[,-9]\n",
+        "full_mod <- full1[,-10]\n"
+      ]
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {
+        "_cell_guid": "c8e3e641-6c22-22cd-4523-e01db86b375d"
+      },
+      "source": [
+        "4. Modeling with Random Forest\n",
+        "------------------------------"
+      ]
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {
+        "_cell_guid": "8d0d1950-5f7d-1386-53f8-4aac913ddd02"
+      },
+      "source": [
+        "**4.1. Modeling**"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "_cell_guid": "9d9d67a5-44d6-571e-809b-46675b592631"
+      },
+      "outputs": [],
+      "source": [
+        "#______________________________________________________________________________\n",
+        "#_____________________________Modeling + predict_______________________________\n",
+        "#______________________________________________________________________________\n",
+        "\n",
+        "# Split full_mod\n",
+        "train <- full_mod[1:891,]\n",
+        "test <- full_mod[892:1309,]\n",
+        "\n",
+        "# random forest\n",
+        "library('randomForest')\n",
+        "\n",
+        "set.seed(123)\n",
+        "rf_model <- randomForest(factor(Survived) ~ Pclass + Sex + Fare + Embarked + Title + \n",
+        "                           FsizeD + Child, data = train)"
+      ]
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {
+        "_cell_guid": "8cf1ce83-5a09-13d5-9d92-607a229d0222"
+      },
+      "source": [
+        "**4.2. OOB and Confusion Matrix**"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "_cell_guid": "726501b0-7fab-9b11-87b6-a5b2bd8a3638"
+      },
+      "outputs": [],
+      "source": [
+        "# prediction\n",
+        "rf.fitted = predict(rf_model)\n",
+        "ans_rf = rep(NA,891)\n",
+        "for(i in 1:891){\n",
+        "  ans_rf[i] = as.integer(rf.fitted[[i]]) - 1\n",
+        "}\n",
+        "# R\u00e9sultat\n",
+        "mean(ans_rf == train$Survived)\n",
+        "table(ans_rf)\n",
+        "\n",
+        "print(rf_model)\n",
+        "mean(ans_rf == train$Survived)\n",
+        "varImpPlot(rf_model)"
+      ]
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {
+        "_cell_guid": "4481347c-60e5-279b-5e2c-c935d7d9f38b"
+      },
+      "source": [
+        "5. Prediction\n",
+        "-------------"
+      ]
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {
+        "_cell_guid": "dcae3068-c723-5ac4-1152-8e43efe80207"
+      },
+      "source": [
+        "**5.1. Write Prediction**"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "_cell_guid": "992fbc57-761a-c5a6-3e3a-0463086e2bba"
+      },
+      "outputs": [],
+      "source": [
+        "prediction <- predict(rf_model, test)\n",
+        "\n",
+        "# Solution 2 columns (prediction)\n",
+        "solution <- data.frame(Survived = prediction, PassengerID = test$PassengerId)\n",
+        "\n",
+        "# .csv\n",
+        "write.csv(solution, file = 'rf_model_sol.csv', row.names = F)"
+      ]
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {
+        "_cell_guid": "0bc61ea8-6799-d80c-afca-bc0de06b5eb7"
+      },
+      "source": [
+        "**5.2. Error and Gini**"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "_cell_guid": "232a3eb3-d39c-0417-f941-99b4fa3f0168"
+      },
+      "outputs": [],
+      "source": [
+        "# Error\n",
+        "plot(rf_model, ylim=c(0,0.36))\n",
+        "legend('topright', colnames(rf_model$err.rate), col=1:3, fill=1:3)"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "_cell_guid": "c64e1985-3927-4b56-9764-704d2e5bf683"
+      },
+      "outputs": [],
+      "source": [
+        "# Var importantes\n",
+        "importance    <- importance(rf_model)\n",
+        "varImportance <- data.frame(Variables = row.names(importance), \n",
+        "                            Importance = round(importance[ ,'MeanDecreaseGini'],2))\n",
+        "\n",
+        "# var imp\n",
+        "rankImportance <- varImportance %>%\n",
+        "  mutate(Rank = paste0('#',dense_rank(desc(Importance))))\n",
+        "\n",
+        "# Graph var importantes\n",
+        "ggplot(rankImportance, aes(x = reorder(Variables, Importance), \n",
+        "                           y = Importance, fill = Importance)) +\n",
+        "  geom_bar(stat='identity') + \n",
+        "  geom_text(aes(x = Variables, y = 0.5, label = Rank),\n",
+        "            hjust=0, vjust=0.55, size = 4, colour = 'red') +\n",
+        "  labs(x = 'Variables') +\n",
+        "  coord_flip() + \n",
+        "  theme_few()"
+      ]
+    }
+  ],
+  "metadata": {
+    "_change_revision": 0,
+    "_is_fork": false,
+    "kernelspec": {
+      "display_name": "R",
+      "language": "R",
+      "name": "ir"
+    },
+    "language_info": {
+      "codemirror_mode": "r",
+      "file_extension": ".r",
+      "mimetype": "text/x-r-source",
+      "name": "R",
+      "pygments_lexer": "r",
+      "version": "3.3.3"
+    }
+  },
+  "nbformat": 4,
+  "nbformat_minor": 0
+}

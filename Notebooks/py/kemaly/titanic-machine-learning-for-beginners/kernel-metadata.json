@@ -1,0 +1,17 @@
+{
+  "kernel_type": "notebook",
+  "language": "python",
+  "kernel_sources": [],
+  "id_no": 534556,
+  "enable_internet": false,
+  "title": "Titanic Machine Learning For Beginners",
+  "competition_sources": [
+    "titanic"
+  ],
+  "enable_gpu": false,
+  "is_private": false,
+  "dataset_sources": [],
+  "keywords": [],
+  "code_file": "titanic-machine-learning-for-beginners.ipynb",
+  "id": "kemaly/titanic-machine-learning-for-beginners"
+}

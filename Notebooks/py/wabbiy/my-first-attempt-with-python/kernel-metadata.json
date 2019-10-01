@@ -1,0 +1,17 @@
+{
+  "id": "wabbiy/my-first-attempt-with-python",
+  "id_no": 739086,
+  "title": "My First Attempt With Python",
+  "code_file": "my-first-attempt-with-python.ipynb",
+  "language": "python",
+  "kernel_type": "notebook",
+  "is_private": false,
+  "enable_gpu": false,
+  "enable_internet": false,
+  "keywords": [],
+  "dataset_sources": [],
+  "kernel_sources": [],
+  "competition_sources": [
+    "titanic"
+  ]
+}

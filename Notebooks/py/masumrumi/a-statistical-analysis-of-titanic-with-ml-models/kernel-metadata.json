@@ -1,0 +1,23 @@
+{
+  "language": "python",
+  "kernel_type": "notebook",
+  "enable_gpu": false,
+  "keywords": [
+    "statistics",
+    "beginner",
+    "eda",
+    "data visualization",
+    "machine learning"
+  ],
+  "kernel_sources": [],
+  "code_file": "a-statistical-analysis-of-titanic-with-ml-models.ipynb",
+  "id_no": 467142,
+  "is_private": false,
+  "enable_internet": false,
+  "dataset_sources": [],
+  "id": "masumrumi/a-statistical-analysis-of-titanic-with-ml-models",
+  "title": "A Statistical Analysis of Titanic with ML Models",
+  "competition_sources": [
+    "titanic"
+  ]
+}

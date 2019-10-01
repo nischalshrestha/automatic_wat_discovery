@@ -1,0 +1,17 @@
+{
+  "id": "litvinov/notebook1586007f7d",
+  "code_file": "notebook1586007f7d.ipynb",
+  "enable_gpu": false,
+  "keywords": [],
+  "language": "python",
+  "enable_internet": false,
+  "title": "Notebook1586007f7d",
+  "kernel_sources": [],
+  "is_private": false,
+  "dataset_sources": [],
+  "id_no": 219339,
+  "kernel_type": "notebook",
+  "competition_sources": [
+    "titanic"
+  ]
+}

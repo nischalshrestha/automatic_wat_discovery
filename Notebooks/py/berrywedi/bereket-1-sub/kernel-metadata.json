@@ -1,0 +1,17 @@
+{
+  "keywords": [],
+  "enable_internet": false,
+  "enable_gpu": false,
+  "title": "Bereket_1_sub",
+  "competition_sources": [
+    "titanic"
+  ],
+  "dataset_sources": [],
+  "id_no": 240067,
+  "kernel_type": "notebook",
+  "id": "berrywedi/bereket-1-sub",
+  "language": "python",
+  "code_file": "bereket-1-sub.ipynb",
+  "kernel_sources": [],
+  "is_private": false
+}

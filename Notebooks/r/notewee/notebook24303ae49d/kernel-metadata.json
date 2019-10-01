@@ -1,0 +1,17 @@
+{
+  "kernel_type": "notebook",
+  "competition_sources": [
+    "titanic"
+  ],
+  "kernel_sources": [],
+  "code_file": "notebook24303ae49d.ipynb",
+  "id": "notewee/notebook24303ae49d",
+  "id_no": 243824,
+  "title": "Notebook24303ae49d",
+  "language": "python",
+  "keywords": [],
+  "is_private": false,
+  "enable_gpu": false,
+  "enable_internet": false,
+  "dataset_sources": []
+}

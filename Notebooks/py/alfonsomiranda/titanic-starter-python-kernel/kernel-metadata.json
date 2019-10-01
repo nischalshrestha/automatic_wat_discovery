@@ -1,0 +1,23 @@
+{
+  "competition_sources": [
+    "titanic"
+  ],
+  "keywords": [
+    "tutorial",
+    "beginner",
+    "data visualization",
+    "feature engineering",
+    "starter code"
+  ],
+  "id_no": 1753085,
+  "dataset_sources": [],
+  "language": "python",
+  "is_private": false,
+  "id": "alfonsomiranda/titanic-starter-python-kernel",
+  "enable_gpu": false,
+  "kernel_sources": [],
+  "enable_internet": false,
+  "code_file": "titanic-starter-python-kernel.ipynb",
+  "title": "Titanic starter python kernel",
+  "kernel_type": "notebook"
+}

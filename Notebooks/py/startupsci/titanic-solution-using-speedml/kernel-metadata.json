@@ -1,0 +1,17 @@
+{
+  "id_no": 255280,
+  "enable_internet": false,
+  "competition_sources": [
+    "titanic"
+  ],
+  "dataset_sources": [],
+  "code_file": "titanic-solution-using-speedml.ipynb",
+  "keywords": [],
+  "id": "startupsci/titanic-solution-using-speedml",
+  "title": "Titanic Solution Using Speedml",
+  "kernel_sources": [],
+  "language": "python",
+  "is_private": false,
+  "enable_gpu": false,
+  "kernel_type": "notebook"
+}

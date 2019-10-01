@@ -1,0 +1,17 @@
+{
+  "enable_gpu": false,
+  "kernel_type": "notebook",
+  "code_file": "notebook9b710abdd5.irnb",
+  "competition_sources": [
+    "titanic"
+  ],
+  "keywords": [],
+  "language": "r",
+  "dataset_sources": [],
+  "enable_internet": false,
+  "id_no": 241306,
+  "title": "Notebook9b710abdd5",
+  "id": "inoobie/notebook9b710abdd5",
+  "is_private": false,
+  "kernel_sources": []
+}

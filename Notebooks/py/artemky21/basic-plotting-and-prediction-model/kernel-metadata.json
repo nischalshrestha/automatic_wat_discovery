@@ -1,0 +1,22 @@
+{
+  "kernel_sources": [],
+  "enable_gpu": false,
+  "id_no": 1447946,
+  "keywords": [
+    "beginner",
+    "data visualization",
+    "classification",
+    "starter code"
+  ],
+  "title": "Basic plotting and prediction model",
+  "dataset_sources": [],
+  "is_private": false,
+  "kernel_type": "notebook",
+  "competition_sources": [
+    "titanic"
+  ],
+  "code_file": "basic-plotting-and-prediction-model.ipynb",
+  "language": "python",
+  "enable_internet": false,
+  "id": "artemky21/basic-plotting-and-prediction-model"
+}

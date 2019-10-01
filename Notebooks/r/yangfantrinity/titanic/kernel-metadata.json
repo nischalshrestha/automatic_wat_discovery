@@ -1,0 +1,17 @@
+{
+  "competition_sources": [
+    "titanic"
+  ],
+  "id_no": 201008,
+  "is_private": false,
+  "enable_gpu": false,
+  "enable_internet": false,
+  "title": "Titanic ",
+  "language": "r",
+  "id": "yangfantrinity/titanic",
+  "code_file": "titanic.irnb",
+  "dataset_sources": [],
+  "kernel_sources": [],
+  "keywords": [],
+  "kernel_type": "notebook"
+}

@@ -1,0 +1,84 @@
+{
+  "cells": [
+    {
+      "cell_type": "markdown",
+      "metadata": {
+        "_cell_guid": "a74918f1-9ece-9c2a-e826-393310b31c76"
+      },
+      "source": [
+        "Loading the files:"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "_cell_guid": "cbcff6a9-02c2-44d6-da8d-8908cd69d34b"
+      },
+      "outputs": [],
+      "source": [
+        "library(ggplot2) # Data visualization\n",
+        "library(readr) # CSV file I/O, e.g. the read_csv function\n",
+        "library(AUC)\n",
+        "\n",
+        "train = read.csv(\"../input/train.csv\")\n",
+        "test = read.csv(\"../input/test.csv\")\n",
+        "\n",
+        "\n",
+        "attach(train)\n",
+        "train$Age[is.na(Age)] = mean(train$Age, na.rm = T)\n",
+        "test$Age[is.na(test$Age)] = mean(test$Age, na.rm = T)\n",
+        "\n",
+        "mod <- glm(Survived ~ Pclass + Sex + Age + SibSp,\n",
+        "           data=train,\n",
+        "           family=\"binomial\")\n",
+        "\n",
+        "fits = fitted(mod)\n",
+        "rr = roc(fits, factor(train$Survived))\n",
+        "auc(rr)\n",
+        "plot(rr)\n",
+        "\n",
+        "predicted = predict(mod, test, type = \"response\")\n",
+        "\n",
+        "test$p[predicted >= 0.53] = 1\n",
+        "test$p[predicted < 0.53] = 0\n",
+        "\n",
+        "# Save the solution to a dataframe with two columns: PassengerId and Survived (prediction)\n",
+        "solution <- data.frame(PassengerId = test$PassengerId, Survived = test$p)\n",
+        "\n",
+        "# Write the solution to file\n",
+        "write.csv(solution, file = 'logistic_regression.csv', row.names = F)"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "_cell_guid": "9bf1cd26-407f-b2bb-469a-a4d065942c07"
+      },
+      "outputs": [],
+      "source": [
+        ""
+      ]
+    }
+  ],
+  "metadata": {
+    "_change_revision": 0,
+    "_is_fork": false,
+    "kernelspec": {
+      "display_name": "R",
+      "language": "R",
+      "name": "ir"
+    },
+    "language_info": {
+      "codemirror_mode": "r",
+      "file_extension": ".r",
+      "mimetype": "text/x-r-source",
+      "name": "R",
+      "pygments_lexer": "r",
+      "version": "3.3.2"
+    }
+  },
+  "nbformat": 4,
+  "nbformat_minor": 0
+}

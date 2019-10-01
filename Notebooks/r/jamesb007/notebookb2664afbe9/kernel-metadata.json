@@ -1,0 +1,17 @@
+{
+  "id": "jamesb007/notebookb2664afbe9",
+  "enable_gpu": false,
+  "language": "python",
+  "keywords": [],
+  "kernel_type": "notebook",
+  "enable_internet": false,
+  "dataset_sources": [],
+  "kernel_sources": [],
+  "id_no": 239393,
+  "competition_sources": [
+    "titanic"
+  ],
+  "title": "Notebookb2664afbe9",
+  "is_private": false,
+  "code_file": "notebookb2664afbe9.ipynb"
+}

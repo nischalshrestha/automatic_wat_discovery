@@ -1,0 +1,19 @@
+{
+  "keywords": [],
+  "language": "python",
+  "title": "Baseline Titanic_procedure",
+  "id": "vendredi218/baseline-titanic-procedure",
+  "competition_sources": [
+    "titanic"
+  ],
+  "dataset_sources": [],
+  "enable_internet": false,
+  "is_private": false,
+  "enable_gpu": false,
+  "id_no": 756417,
+  "kernel_sources": [
+    "vendredi218/featureengineering-titanic-procedure"
+  ],
+  "code_file": "baseline-titanic-procedure.ipynb",
+  "kernel_type": "notebook"
+}

@@ -1,0 +1,17 @@
+{
+  "id": "thepandas/scikit-learn-ml-from-start-to-finish",
+  "id_no": 663371,
+  "title": "Scikit-Learn ML from Start to Finish",
+  "code_file": "scikit-learn-ml-from-start-to-finish.ipynb",
+  "language": "python",
+  "kernel_type": "notebook",
+  "is_private": false,
+  "enable_gpu": false,
+  "enable_internet": false,
+  "keywords": [],
+  "dataset_sources": [],
+  "kernel_sources": [],
+  "competition_sources": [
+    "titanic"
+  ]
+}

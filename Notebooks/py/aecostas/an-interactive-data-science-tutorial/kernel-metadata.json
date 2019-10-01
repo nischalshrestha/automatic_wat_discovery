@@ -1,0 +1,17 @@
+{
+  "keywords": [],
+  "code_file": "an-interactive-data-science-tutorial.ipynb",
+  "is_private": false,
+  "title": "An Interactive Data Science Tutorial",
+  "enable_internet": false,
+  "language": "python",
+  "dataset_sources": [],
+  "kernel_sources": [],
+  "id_no": 397500,
+  "id": "aecostas/an-interactive-data-science-tutorial",
+  "competition_sources": [
+    "titanic"
+  ],
+  "enable_gpu": false,
+  "kernel_type": "notebook"
+}

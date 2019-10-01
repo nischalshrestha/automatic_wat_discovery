@@ -1,0 +1,17 @@
+{
+  "id": "bcrad22/notebook7245e2cb48",
+  "id_no": 144018,
+  "kernel_sources": [],
+  "is_private": false,
+  "enable_gpu": false,
+  "enable_internet": false,
+  "kernel_type": "notebook",
+  "competition_sources": [
+    "titanic"
+  ],
+  "language": "python",
+  "keywords": [],
+  "code_file": "notebook7245e2cb48.ipynb",
+  "title": "Notebook7245e2cb48",
+  "dataset_sources": []
+}

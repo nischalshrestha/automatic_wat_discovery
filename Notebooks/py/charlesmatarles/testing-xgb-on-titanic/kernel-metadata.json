@@ -1,0 +1,17 @@
+{
+  "id": "charlesmatarles/testing-xgb-on-titanic",
+  "title": "Testing XGB on Titanic",
+  "code_file": "testing-xgb-on-titanic.ipynb",
+  "kernel_type": "notebook",
+  "enable_gpu": false,
+  "enable_internet": false,
+  "dataset_sources": [],
+  "id_no": 498813,
+  "competition_sources": [
+    "titanic"
+  ],
+  "kernel_sources": [],
+  "language": "python",
+  "is_private": false,
+  "keywords": []
+}

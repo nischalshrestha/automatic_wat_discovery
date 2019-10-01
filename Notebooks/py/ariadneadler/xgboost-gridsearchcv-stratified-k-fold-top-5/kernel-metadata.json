@@ -1,0 +1,22 @@
+{
+  "title": "XGBoost+GridSearchCV+ Stratified K-Fold [top 5%]",
+  "id": "ariadneadler/xgboost-gridsearchcv-stratified-k-fold-top-5",
+  "dataset_sources": [],
+  "keywords": [
+    "tutorial",
+    "beginner",
+    "data cleaning",
+    "feature engineering"
+  ],
+  "enable_internet": false,
+  "competition_sources": [
+    "titanic"
+  ],
+  "is_private": false,
+  "enable_gpu": false,
+  "id_no": 1168613,
+  "kernel_sources": [],
+  "language": "python",
+  "code_file": "xgboost-gridsearchcv-stratified-k-fold-top-5.ipynb",
+  "kernel_type": "notebook"
+}

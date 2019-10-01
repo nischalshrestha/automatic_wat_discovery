@@ -1,0 +1,17 @@
+{
+  "language": "python",
+  "title": "RMS Titanic",
+  "kernel_type": "notebook",
+  "id": "dhr999/rms-titanic",
+  "competition_sources": [
+    "titanic"
+  ],
+  "is_private": false,
+  "code_file": "rms-titanic.ipynb",
+  "enable_gpu": false,
+  "dataset_sources": [],
+  "kernel_sources": [],
+  "enable_internet": false,
+  "keywords": [],
+  "id_no": 1231284
+}

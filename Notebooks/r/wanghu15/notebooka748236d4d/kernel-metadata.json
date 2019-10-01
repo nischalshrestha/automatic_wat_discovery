@@ -1,0 +1,17 @@
+{
+  "enable_internet": false,
+  "dataset_sources": [],
+  "language": "python",
+  "competition_sources": [
+    "titanic"
+  ],
+  "kernel_type": "notebook",
+  "kernel_sources": [],
+  "id_no": 233652,
+  "title": "Notebooka748236d4d",
+  "id": "wanghu15/notebooka748236d4d",
+  "code_file": "notebooka748236d4d.ipynb",
+  "keywords": [],
+  "is_private": false,
+  "enable_gpu": false
+}

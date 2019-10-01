@@ -1,0 +1,17 @@
+{
+  "id_no": 280474,
+  "enable_internet": false,
+  "keywords": [],
+  "dataset_sources": [],
+  "is_private": false,
+  "id": "traumong/fork-of-notebook66c25ab4d8",
+  "competition_sources": [
+    "titanic"
+  ],
+  "enable_gpu": false,
+  "code_file": "fork-of-notebook66c25ab4d8.irnb",
+  "kernel_sources": [],
+  "title": "Fork of Notebook66c25ab4d8",
+  "language": "r",
+  "kernel_type": "notebook"
+}

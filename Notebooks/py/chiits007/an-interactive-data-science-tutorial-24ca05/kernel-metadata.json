@@ -1,0 +1,17 @@
+{
+  "id": "chiits007/an-interactive-data-science-tutorial-24ca05",
+  "id_no": 351175,
+  "title": "An Interactive Data Science Tutorial 24ca05",
+  "code_file": "an-interactive-data-science-tutorial-24ca05.ipynb",
+  "language": "python",
+  "kernel_type": "notebook",
+  "is_private": false,
+  "enable_gpu": false,
+  "enable_internet": false,
+  "keywords": [],
+  "dataset_sources": [],
+  "kernel_sources": [],
+  "competition_sources": [
+    "titanic"
+  ]
+}

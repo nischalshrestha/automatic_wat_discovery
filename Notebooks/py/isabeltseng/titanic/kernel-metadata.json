@@ -1,0 +1,17 @@
+{
+  "is_private": false,
+  "id": "isabeltseng/titanic",
+  "kernel_sources": [],
+  "dataset_sources": [],
+  "competition_sources": [
+    "titanic"
+  ],
+  "code_file": "titanic.ipynb",
+  "keywords": [],
+  "enable_internet": false,
+  "title": "titanic",
+  "enable_gpu": false,
+  "language": "python",
+  "kernel_type": "notebook",
+  "id_no": 1770860
+}

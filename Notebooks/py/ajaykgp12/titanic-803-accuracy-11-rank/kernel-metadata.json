@@ -1,0 +1,17 @@
+{
+  "title": "Titanic .803 accuracy 11% rank",
+  "id_no": 860699,
+  "kernel_sources": [],
+  "enable_gpu": false,
+  "kernel_type": "notebook",
+  "dataset_sources": [],
+  "enable_internet": false,
+  "id": "ajaykgp12/titanic-803-accuracy-11-rank",
+  "keywords": [],
+  "language": "python",
+  "is_private": false,
+  "code_file": "titanic-803-accuracy-11-rank.ipynb",
+  "competition_sources": [
+    "titanic"
+  ]
+}

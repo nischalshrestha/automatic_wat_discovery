@@ -1,0 +1,17 @@
+{
+  "enable_gpu": false,
+  "kernel_sources": [],
+  "is_private": false,
+  "code_file": "titanic-survival-exploration.ipynb",
+  "id_no": 293765,
+  "dataset_sources": [],
+  "language": "python",
+  "title": "titanic_survival_exploration",
+  "kernel_type": "notebook",
+  "enable_internet": false,
+  "keywords": [],
+  "competition_sources": [
+    "titanic"
+  ],
+  "id": "tonyuan/titanic-survival-exploration"
+}

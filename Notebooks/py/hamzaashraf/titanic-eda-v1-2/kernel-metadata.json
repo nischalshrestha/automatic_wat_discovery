@@ -1,0 +1,17 @@
+{
+  "is_private": false,
+  "id_no": 345395,
+  "dataset_sources": [],
+  "title": "Titanic EDA V1.2 ",
+  "language": "python",
+  "enable_gpu": false,
+  "code_file": "titanic-eda-v1-2.ipynb",
+  "kernel_type": "notebook",
+  "competition_sources": [
+    "titanic"
+  ],
+  "keywords": [],
+  "id": "hamzaashraf/titanic-eda-v1-2",
+  "enable_internet": false,
+  "kernel_sources": []
+}

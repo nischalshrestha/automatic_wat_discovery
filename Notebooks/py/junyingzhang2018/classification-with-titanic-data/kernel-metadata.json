@@ -1,0 +1,17 @@
+{
+  "keywords": [],
+  "enable_gpu": false,
+  "id_no": 1284170,
+  "id": "junyingzhang2018/classification-with-titanic-data",
+  "competition_sources": [
+    "titanic"
+  ],
+  "kernel_sources": [],
+  "is_private": false,
+  "kernel_type": "notebook",
+  "enable_internet": false,
+  "dataset_sources": [],
+  "language": "python",
+  "title": "Classification with Titanic Data",
+  "code_file": "classification-with-titanic-data.ipynb"
+}

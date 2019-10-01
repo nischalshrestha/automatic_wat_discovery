@@ -1,0 +1,17 @@
+{
+  "code_file": "titanic-ensemble-voting-lambda-expressions.ipynb",
+  "id": "ddtt4u/titanic-ensemble-voting-lambda-expressions",
+  "kernel_type": "notebook",
+  "title": "Titanic Ensemble Voting + Lambda Expressions",
+  "competition_sources": [
+    "titanic"
+  ],
+  "dataset_sources": [],
+  "is_private": false,
+  "enable_gpu": false,
+  "keywords": [],
+  "id_no": 156205,
+  "enable_internet": false,
+  "language": "python",
+  "kernel_sources": []
+}

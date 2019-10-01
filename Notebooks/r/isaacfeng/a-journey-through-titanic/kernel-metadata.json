@@ -1,0 +1,17 @@
+{
+  "title": "A Journey through Titanic",
+  "is_private": false,
+  "enable_gpu": false,
+  "kernel_sources": [],
+  "enable_internet": false,
+  "keywords": [],
+  "dataset_sources": [],
+  "competition_sources": [
+    "titanic"
+  ],
+  "id": "isaacfeng/a-journey-through-titanic",
+  "language": "r",
+  "code_file": "a-journey-through-titanic.irnb",
+  "id_no": 94961,
+  "kernel_type": "notebook"
+}

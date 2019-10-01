@@ -1,0 +1,17 @@
+{
+  "kernel_sources": [],
+  "kernel_type": "notebook",
+  "is_private": false,
+  "id": "izaxon/a-journey-through-titanic",
+  "code_file": "a-journey-through-titanic.ipynb",
+  "enable_internet": false,
+  "dataset_sources": [],
+  "title": "A Journey through Titanic",
+  "language": "python",
+  "enable_gpu": false,
+  "id_no": 204528,
+  "keywords": [],
+  "competition_sources": [
+    "titanic"
+  ]
+}

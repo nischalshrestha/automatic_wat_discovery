@@ -1,0 +1,17 @@
+{
+  "title": "Titanic - Data Analysis + RF Prediction 0.81818 ",
+  "id": "jenioai/titanic-data-analysis-rf-prediction-0-81818",
+  "kernel_sources": [],
+  "kernel_type": "notebook",
+  "enable_internet": false,
+  "language": "r",
+  "competition_sources": [
+    "titanic"
+  ],
+  "enable_gpu": false,
+  "code_file": "titanic-data-analysis-rf-prediction-0-81818.irnb",
+  "is_private": false,
+  "keywords": [],
+  "id_no": 375266,
+  "dataset_sources": []
+}

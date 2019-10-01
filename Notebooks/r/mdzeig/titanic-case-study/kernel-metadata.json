@@ -1,0 +1,17 @@
+{
+  "enable_internet": false,
+  "id_no": 217961,
+  "keywords": [],
+  "code_file": "titanic-case-study.irnb",
+  "enable_gpu": false,
+  "kernel_type": "notebook",
+  "kernel_sources": [],
+  "dataset_sources": [],
+  "id": "mdzeig/titanic-case-study",
+  "title": "Titanic Case Study",
+  "is_private": false,
+  "competition_sources": [
+    "titanic"
+  ],
+  "language": "r"
+}

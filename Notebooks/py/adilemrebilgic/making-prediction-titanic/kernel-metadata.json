@@ -1,0 +1,17 @@
+{
+  "competition_sources": [
+    "titanic"
+  ],
+  "id": "adilemrebilgic/making-prediction-titanic",
+  "enable_gpu": false,
+  "is_private": false,
+  "enable_internet": false,
+  "id_no": 657643,
+  "kernel_type": "notebook",
+  "language": "python",
+  "dataset_sources": [],
+  "kernel_sources": [],
+  "title": "Making Prediction-Titanic",
+  "keywords": [],
+  "code_file": "making-prediction-titanic.ipynb"
+}

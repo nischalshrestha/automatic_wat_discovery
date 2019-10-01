@@ -1,0 +1,17 @@
+{
+  "dataset_sources": [],
+  "id_no": 1754851,
+  "id": "bigalon1990/data-analysis-and-prediction",
+  "keywords": [],
+  "is_private": false,
+  "language": "python",
+  "competition_sources": [
+    "titanic"
+  ],
+  "kernel_type": "notebook",
+  "enable_gpu": false,
+  "title": "Data analysis and prediction",
+  "enable_internet": false,
+  "kernel_sources": [],
+  "code_file": "data-analysis-and-prediction.ipynb"
+}

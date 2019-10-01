@@ -1,0 +1,17 @@
+{
+  "title": "my_attempts",
+  "keywords": [],
+  "id_no": 34558,
+  "is_private": false,
+  "kernel_type": "notebook",
+  "code_file": "my-attempts.irnb",
+  "language": "r",
+  "competition_sources": [
+    "titanic"
+  ],
+  "id": "yamolekula/my-attempts",
+  "kernel_sources": [],
+  "dataset_sources": [],
+  "enable_gpu": false,
+  "enable_internet": false
+}

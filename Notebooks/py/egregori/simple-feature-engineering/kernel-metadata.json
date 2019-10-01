@@ -1,0 +1,17 @@
+{
+  "competition_sources": [
+    "titanic"
+  ],
+  "is_private": false,
+  "id_no": 2138505,
+  "language": "python",
+  "kernel_type": "notebook",
+  "kernel_sources": [],
+  "title": "Simple feature engineering",
+  "enable_gpu": false,
+  "keywords": [],
+  "enable_internet": false,
+  "code_file": "simple-feature-engineering.ipynb",
+  "id": "egregori/simple-feature-engineering",
+  "dataset_sources": []
+}

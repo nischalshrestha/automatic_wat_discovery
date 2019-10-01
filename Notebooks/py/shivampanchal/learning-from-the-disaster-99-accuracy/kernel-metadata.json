@@ -1,0 +1,17 @@
+{
+  "code_file": "learning-from-the-disaster-99-accuracy.ipynb",
+  "language": "python",
+  "kernel_sources": [],
+  "enable_gpu": false,
+  "kernel_type": "notebook",
+  "id_no": 690972,
+  "id": "shivampanchal/learning-from-the-disaster-99-accuracy",
+  "is_private": false,
+  "keywords": [],
+  "enable_internet": false,
+  "title": "Learning from the disaster: 99% Accuracy",
+  "competition_sources": [
+    "titanic"
+  ],
+  "dataset_sources": []
+}

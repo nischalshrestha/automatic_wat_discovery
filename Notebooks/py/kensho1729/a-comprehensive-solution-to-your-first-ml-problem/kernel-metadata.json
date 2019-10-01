@@ -1,0 +1,17 @@
+{
+  "id": "kensho1729/a-comprehensive-solution-to-your-first-ml-problem",
+  "competition_sources": [
+    "titanic"
+  ],
+  "keywords": [],
+  "code_file": "a-comprehensive-solution-to-your-first-ml-problem.ipynb",
+  "id_no": 1475694,
+  "is_private": false,
+  "dataset_sources": [],
+  "enable_internet": false,
+  "title": "A comprehensive solution to your first ML problem",
+  "enable_gpu": false,
+  "kernel_type": "notebook",
+  "kernel_sources": [],
+  "language": "python"
+}

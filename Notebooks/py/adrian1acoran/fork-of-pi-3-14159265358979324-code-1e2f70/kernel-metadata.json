@@ -1,0 +1,38 @@
+{
+  "id": "adrian1acoran/fork-of-pi-3-14159265358979324-code-1e2f70",
+  "id_no": 1942212,
+  "dataset_sources": [
+    "github/github-repos",
+    "pytorch/vgg13bn",
+    "kiva/data-science-for-good-kiva-crowdfunding",
+    "lava18/google-play-store-apps",
+    "bigquery/patents",
+    "adrian1acoran/pi-31415"
+  ],
+  "kernel_sources": [
+    "mrisdal/quick-dirty-randomforest",
+    "ldfreeman3/a-data-science-framework-to-achieve-99-accuracy",
+    "kanncaa1/data-sciencetutorial-for-beginners",
+    "sudalairajkumar/simple-exploration-baseline-ga-customer-revenue",
+    "adrian1acoran/simple-exploration-baseline-ga-customer-revenue",
+    "adrian1acoran/sql-scavenger-hunt-handbook-98967c",
+    "adrian1acoran/fork-of-fork-of-simple-exploration-baseline-ga-c",
+    "adrian1acoran/fork-of-fork-of-sql-scavenger-hunt-handbook-98967c",
+    "allunia/hidden-treasures-in-our-groceries",
+    "mjbahmani/machine-learning-workflow-for-house-prices"
+  ],
+  "keywords": [],
+  "code_file": "fork-of-pi-3-14159265358979324-code-1e2f70.ipynb",
+  "language": "python",
+  "enable_gpu": true,
+  "is_private": false,
+  "enable_internet": false,
+  "competition_sources": [
+    "titanic",
+    "house-prices-advanced-regression-techniques",
+    "two-sigma-financial-news",
+    "human-protein-atlas-image-classification"
+  ],
+  "title": "Fork of pi 3.14159265358979324 code 1e2f70",
+  "kernel_type": "notebook"
+}

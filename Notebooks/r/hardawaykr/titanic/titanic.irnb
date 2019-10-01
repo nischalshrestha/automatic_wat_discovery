@@ -1,0 +1,43 @@
+{
+  "cells": [
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "_cell_guid": "73815ba5-fcca-4fdc-daee-be67da19e7a5"
+      },
+      "outputs": [],
+      "source": [
+        "import numpy as np                                                                 \n",
+        "import pandas as pd                                                                \n",
+        "import pylab as P                                                                  \n",
+        "                                                                                   \n",
+        "train = pd.read_csv(\"../input/train.csv\", )                                               \n",
+        "test = pd.read_csv(\"../input/test.csv\", dtype={\"Age\": np.float64, \"Fare\": np.float64}) \n",
+        "                                                                                   \n",
+        "print(train[train['Age'] > 60][train['Survived'] == 1][['Sex', 'Pclass', 'Age']])\n",
+        "train['Age'].hist()                                                                \n",
+        "P.show()   "
+      ]
+    }
+  ],
+  "metadata": {
+    "_change_revision": 0,
+    "_is_fork": false,
+    "kernelspec": {
+      "display_name": "R",
+      "language": "R",
+      "name": "ir"
+    },
+    "language_info": {
+      "codemirror_mode": "r",
+      "file_extension": ".r",
+      "mimetype": "text/x-r-source",
+      "name": "R",
+      "pygments_lexer": "r",
+      "version": "3.3.1"
+    }
+  },
+  "nbformat": 4,
+  "nbformat_minor": 0
+}

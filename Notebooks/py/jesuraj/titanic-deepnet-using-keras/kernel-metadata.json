@@ -1,0 +1,17 @@
+{
+  "keywords": [],
+  "kernel_sources": [],
+  "code_file": "titanic-deepnet-using-keras.ipynb",
+  "enable_gpu": false,
+  "is_private": false,
+  "kernel_type": "notebook",
+  "competition_sources": [
+    "titanic"
+  ],
+  "language": "python",
+  "enable_internet": false,
+  "dataset_sources": [],
+  "id": "jesuraj/titanic-deepnet-using-keras",
+  "id_no": 327508,
+  "title": "Titanic-deepnet using keras"
+}

@@ -1,0 +1,17 @@
+{
+  "id": "ninglee/an-interactive-data-science-tutorial",
+  "dataset_sources": [],
+  "enable_internet": false,
+  "kernel_type": "notebook",
+  "id_no": 314783,
+  "title": "An Interactive Data Science Tutorial",
+  "is_private": false,
+  "competition_sources": [
+    "titanic"
+  ],
+  "code_file": "an-interactive-data-science-tutorial.ipynb",
+  "language": "python",
+  "kernel_sources": [],
+  "keywords": [],
+  "enable_gpu": false
+}

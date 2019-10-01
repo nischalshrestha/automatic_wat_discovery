@@ -1,0 +1,17 @@
+{
+  "title": "xgboost--\u8c03\u53c2",
+  "kernel_sources": [],
+  "competition_sources": [
+    "titanic"
+  ],
+  "id_no": 1015131,
+  "enable_internet": false,
+  "id": "shijianliang/lightgbm",
+  "kernel_type": "notebook",
+  "dataset_sources": [],
+  "enable_gpu": true,
+  "language": "python",
+  "keywords": [],
+  "is_private": false,
+  "code_file": "lightgbm.ipynb"
+}

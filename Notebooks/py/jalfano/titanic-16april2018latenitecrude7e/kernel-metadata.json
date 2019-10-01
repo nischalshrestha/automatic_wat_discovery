@@ -1,0 +1,17 @@
+{
+  "id": "jalfano/titanic-16april2018latenitecrude7e",
+  "id_no": 871222,
+  "title": "Titanic_16April2018lateniteCRUDE7e",
+  "code_file": "titanic-16april2018latenitecrude7e.ipynb",
+  "language": "python",
+  "kernel_type": "notebook",
+  "is_private": false,
+  "enable_gpu": false,
+  "enable_internet": false,
+  "keywords": [],
+  "dataset_sources": [],
+  "kernel_sources": [],
+  "competition_sources": [
+    "titanic"
+  ]
+}

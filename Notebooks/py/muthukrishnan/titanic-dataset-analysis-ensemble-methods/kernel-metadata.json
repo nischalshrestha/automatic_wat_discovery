@@ -1,0 +1,17 @@
+{
+  "keywords": [],
+  "language": "python",
+  "competition_sources": [
+    "titanic"
+  ],
+  "id": "muthukrishnan/titanic-dataset-analysis-ensemble-methods",
+  "dataset_sources": [],
+  "enable_gpu": false,
+  "kernel_type": "notebook",
+  "enable_internet": false,
+  "id_no": 1648876,
+  "kernel_sources": [],
+  "code_file": "titanic-dataset-analysis-ensemble-methods.ipynb",
+  "is_private": false,
+  "title": "Titanic dataset analysis - Ensemble methods"
+}

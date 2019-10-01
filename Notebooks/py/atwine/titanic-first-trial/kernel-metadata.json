@@ -1,0 +1,17 @@
+{
+  "is_private": false,
+  "kernel_type": "notebook",
+  "kernel_sources": [],
+  "enable_internet": false,
+  "language": "python",
+  "code_file": "titanic-first-trial.ipynb",
+  "id_no": 1508353,
+  "id": "atwine/titanic-first-trial",
+  "title": "Titanic First Trial",
+  "keywords": [],
+  "dataset_sources": [],
+  "competition_sources": [
+    "titanic"
+  ],
+  "enable_gpu": false
+}

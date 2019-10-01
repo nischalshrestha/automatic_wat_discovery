@@ -1,0 +1,17 @@
+{
+  "dataset_sources": [],
+  "enable_gpu": false,
+  "title": " 2nd degree pred try to get .8 score final",
+  "id_no": 922128,
+  "competition_sources": [
+    "titanic"
+  ],
+  "language": "python",
+  "is_private": false,
+  "keywords": [],
+  "kernel_sources": [],
+  "code_file": "2nd-degree-pred-try-to-get-8-score-final.ipynb",
+  "id": "padyue/2nd-degree-pred-try-to-get-8-score-final",
+  "kernel_type": "notebook",
+  "enable_internet": false
+}

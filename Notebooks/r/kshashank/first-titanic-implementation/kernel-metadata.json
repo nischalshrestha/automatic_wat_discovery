@@ -1,0 +1,17 @@
+{
+  "keywords": [],
+  "enable_gpu": false,
+  "enable_internet": false,
+  "kernel_sources": [],
+  "id_no": 84796,
+  "id": "kshashank/first-titanic-implementation",
+  "kernel_type": "notebook",
+  "code_file": "first-titanic-implementation.irnb",
+  "dataset_sources": [],
+  "competition_sources": [
+    "titanic"
+  ],
+  "is_private": false,
+  "title": "First Titanic Implementation",
+  "language": "r"
+}

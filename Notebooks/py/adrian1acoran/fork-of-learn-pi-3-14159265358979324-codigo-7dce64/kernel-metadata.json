@@ -1,0 +1,38 @@
+{
+  "enable_gpu": true,
+  "id": "adrian1acoran/fork-of-learn-pi-3-14159265358979324-codigo-7dce64",
+  "code_file": "fork-of-learn-pi-3-14159265358979324-codigo-7dce64.ipynb",
+  "kernel_type": "notebook",
+  "kernel_sources": [
+    "mrisdal/quick-dirty-randomforest",
+    "ldfreeman3/a-data-science-framework-to-achieve-99-accuracy",
+    "kanncaa1/data-sciencetutorial-for-beginners",
+    "sudalairajkumar/simple-exploration-baseline-ga-customer-revenue",
+    "adrian1acoran/simple-exploration-baseline-ga-customer-revenue",
+    "adrian1acoran/sql-scavenger-hunt-handbook-98967c",
+    "allunia/hidden-treasures-in-our-groceries",
+    "mjbahmani/machine-learning-workflow-for-house-prices"
+  ],
+  "dataset_sources": [
+    "salvadordali/racingkings",
+    "allenai/ai2-science-questions",
+    "datasnaek/chess",
+    "pytorch/vgg13bn",
+    "kiva/data-science-for-good-kiva-crowdfunding",
+    "bigquery/patents",
+    "adrian1acoran/pi-31415"
+  ],
+  "keywords": [],
+  "competition_sources": [
+    "titanic",
+    "the-allen-ai-science-challenge",
+    "house-prices-advanced-regression-techniques",
+    "two-sigma-financial-news",
+    "human-protein-atlas-image-classification"
+  ],
+  "title": "Fork of Learn pi 3.14159265358979324 codigo 7dce64",
+  "id_no": 1980669,
+  "language": "python",
+  "enable_internet": false,
+  "is_private": false
+}

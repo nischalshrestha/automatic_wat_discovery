@@ -1,0 +1,17 @@
+{
+  "kernel_type": "notebook",
+  "id_no": 247008,
+  "kernel_sources": [],
+  "enable_gpu": false,
+  "competition_sources": [
+    "titanic"
+  ],
+  "enable_internet": false,
+  "id": "visignibraem/an-interactive-data-science-tutorial",
+  "language": "python",
+  "dataset_sources": [],
+  "title": "An Interactive Data Science Tutorial",
+  "keywords": [],
+  "is_private": false,
+  "code_file": "an-interactive-data-science-tutorial.ipynb"
+}

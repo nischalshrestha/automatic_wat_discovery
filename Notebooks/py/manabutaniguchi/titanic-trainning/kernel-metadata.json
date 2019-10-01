@@ -1,0 +1,17 @@
+{
+  "dataset_sources": [],
+  "enable_gpu": false,
+  "title": "Titanic Trainning",
+  "id_no": 227558,
+  "language": "python",
+  "enable_internet": false,
+  "code_file": "titanic-trainning.ipynb",
+  "kernel_sources": [],
+  "kernel_type": "notebook",
+  "id": "manabutaniguchi/titanic-trainning",
+  "is_private": false,
+  "keywords": [],
+  "competition_sources": [
+    "titanic"
+  ]
+}

@@ -1,0 +1,17 @@
+{
+  "id": "rihadv/a-comprehensive-ml-workflow-with-python",
+  "kernel_type": "notebook",
+  "competition_sources": [
+    "titanic"
+  ],
+  "title": "A Comprehensive ML Workflow with Python",
+  "keywords": [],
+  "dataset_sources": [],
+  "kernel_sources": [],
+  "id_no": 2050104,
+  "is_private": false,
+  "enable_internet": true,
+  "language": "python",
+  "enable_gpu": true,
+  "code_file": "a-comprehensive-ml-workflow-with-python.ipynb"
+}

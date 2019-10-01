@@ -1,0 +1,17 @@
+{
+  "kernel_type": "notebook",
+  "code_file": "notebook6880267ac7.irnb",
+  "is_private": false,
+  "keywords": [],
+  "kernel_sources": [],
+  "id_no": 205151,
+  "language": "r",
+  "enable_internet": false,
+  "title": "Notebook6880267ac7",
+  "enable_gpu": false,
+  "id": "jemxgw/notebook6880267ac7",
+  "competition_sources": [
+    "titanic"
+  ],
+  "dataset_sources": []
+}

@@ -1,0 +1,17 @@
+{
+  "enable_gpu": false,
+  "code_file": "an-interactive-data-science-tutorial.ipynb",
+  "is_private": false,
+  "language": "python",
+  "kernel_sources": [],
+  "id_no": 181724,
+  "id": "oscarjcristobal/an-interactive-data-science-tutorial",
+  "kernel_type": "notebook",
+  "enable_internet": false,
+  "title": "An Interactive Data Science Tutorial",
+  "competition_sources": [
+    "titanic"
+  ],
+  "dataset_sources": [],
+  "keywords": []
+}

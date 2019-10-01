@@ -1,0 +1,17 @@
+{
+  "kernel_sources": [],
+  "enable_gpu": false,
+  "language": "r",
+  "is_private": false,
+  "keywords": [],
+  "enable_internet": false,
+  "code_file": "notebook7bc1ea3a07.irnb",
+  "title": "Notebook7bc1ea3a07",
+  "id_no": 237454,
+  "id": "bennji/notebook7bc1ea3a07",
+  "kernel_type": "notebook",
+  "competition_sources": [
+    "titanic"
+  ],
+  "dataset_sources": []
+}

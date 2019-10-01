@@ -1,0 +1,213 @@
+{
+  "cells": [
+    {
+      "cell_type": "markdown",
+      "metadata": {
+        "_cell_guid": "6da89a07-91a9-348a-fdea-8254a0f237ed"
+      },
+      "source": [
+        "*INTRODUCTION*"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "_cell_guid": "7473511a-a2c6-3cfb-1050-1241a54a8d5c"
+      },
+      "outputs": [],
+      "source": [
+        "# This R environment comes with all of CRAN preinstalled, as well as many other helpful packages\n",
+        "# The environment is defined by the kaggle/rstats docker image: https://github.com/kaggle/docker-rstats\n",
+        "# For example, here's several helpful packages to load in \n",
+        "\n",
+        "library(ggplot2) # Data visualization\n",
+        "library(readr) # CSV file I/O, e.g. the read_csv function\n",
+        "\n",
+        "# Input data files are available in the \"../input/\" directory.\n",
+        "# For example, running this (by clicking run or pressing Shift+Enter) will list the files in the input directory\n",
+        "\n",
+        "system(\"ls ../input\")\n",
+        "\n",
+        "# Any results you write to the current directory are saved as output."
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "_cell_guid": "f87e09c6-58e1-f9c4-4899-1b6275b82d28"
+      },
+      "outputs": [],
+      "source": [
+        "## This is my first stab at a kaggle script. I have choosen to work with the Titanic Dataset afetr spending some time \n",
+        "## poking around on the site and looking at other scripts made by other kagglers for inspiration. i will also focus \n",
+        "## on doinfg some illustrative data visualizations along the way. I will then use Random Forest to create a model predicting\n",
+        "## Survival on the Titanic \n",
+        "##There are three parts to my scripts as follows:\n",
+        "##  1. Feature Engineering \n",
+        " ## 2. Missing Value imoutation \n",
+        "## 3. Prediction\n",
+        "## Load and check the Data\n",
+        "library(ggplot2)# visualization\n",
+        "library(ggthemes)# visualization\n",
+        "library(scales)# visualization\n",
+        "library(dplyr)# data manipulation\n",
+        "library(mice)# imputation\n",
+        "library(randomForest)# classification algorith"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "_cell_guid": "201fb723-5ee5-c7e2-088f-a797874461b6"
+      },
+      "outputs": [],
+      "source": [
+        "train <- read.csv('../input/train.csv',stringsAsFactors = FALSE)\n",
+        "test <- read.csv('../input/test.csv',stringsAsFactors = FALSE)\n",
+        "DataBind <- bind_rows(train,test)"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "_cell_guid": "825cc616-74ad-531c-294b-b02489ba7af8"
+      },
+      "outputs": [],
+      "source": [
+        "## Check Data\n",
+        "str(DataBind)\n"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "_cell_guid": "9f1bbf71-c65d-9faa-0047-46b620d0d8f5"
+      },
+      "outputs": [],
+      "source": [
+        "summary(DataBind)\n"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "_cell_guid": "6415b975-6606-75cf-37f5-e0f79f2332e1"
+      },
+      "outputs": [],
+      "source": [
+        "## WE have got a sense of our variables, their class type, and the first few observations of each. We know we are working with 1309 observation of 12 variables to make things a bit more explicit since a couple of the variable names aren't 100% illuminating here is what we have got to deal with.\n"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "_cell_guid": "91eeff14-938a-1a9e-c499-08ec0197c9e9"
+      },
+      "outputs": [],
+      "source": [
+        "## Variable Name                           Description\n",
+        "## Survived                               Survived(1) or died(0)\n",
+        "##Pclass                                  Passenger's class\n",
+        "##Name                                    Passenger's Name\n",
+        "## Sex                                    Passenger's Sex\n",
+        "##Age                                     Passenger's Age\n",
+        "##SibSp                                   Number of siblings/spouses abroad\n",
+        "## Parch                                  Number of Parents/ children abroad\n",
+        "##Tickets                                 Tickets Number\n",
+        "##Fare                                    Fare\n",
+        "## Cabin                                  Cabin\n",
+        "## Embarked                               Port of embarkation"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "_cell_guid": "9b89c421-4563-b976-c6cd-72c327b63b35"
+      },
+      "outputs": [],
+      "source": [
+        "## Feature Engineering\n",
+        "## Grab Title from Passenger Names\n",
+        "DataBind$Title <- gsub('(.*, )|(\\\\..*)','',DataBind$Name)"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "_cell_guid": "782ee946-3640-7ced-56cb-8ce64ddd08d4"
+      },
+      "outputs": [],
+      "source": [
+        "## Show Title Count By Sex\n",
+        "table(DataBind$Sex,DataBind$Title)"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "_cell_guid": "c41bcdcb-8bf4-d96e-d49a-998d31e7038a"
+      },
+      "outputs": [],
+      "source": [
+        "##Title with very low cell counts to be combined to \"rare\" level\n",
+        "rare_title <- c('Dona','Lady','The Countess','Capt','Col','Don','Dr','Major','Rev','Sir','Jonkheer')"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "_cell_guid": "d2ed48a3-5d0a-1723-e9f8-4c778c12f6b3"
+      },
+      "outputs": [],
+      "source": [
+        "## Also reassign mlle ,ms and mme accordingly\n",
+        "DataBind$Title[DataBind$Title == 'Mlle']  <-'Miss'\n",
+        "DataBind$Title[DataBind$Title == 'Ms']  <-'Miss'\n",
+        "DataBind$Title[DataBind$Title == 'Mme']  <-'Mrs'\n",
+        "DataBind$Title[DataBind$Title %in%  rare_title]  <-'Rare Title'"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "_cell_guid": "56a15f28-ef95-1977-716f-972467abd4d4"
+      },
+      "outputs": [],
+      "source": [
+        "##Show title counts by sex again\n",
+        "table(DataBind$Sex,DataBind$Title)"
+      ]
+    }
+  ],
+  "metadata": {
+    "_change_revision": 0,
+    "_is_fork": false,
+    "kernelspec": {
+      "display_name": "R",
+      "language": "R",
+      "name": "ir"
+    },
+    "language_info": {
+      "codemirror_mode": "r",
+      "file_extension": ".r",
+      "mimetype": "text/x-r-source",
+      "name": "R",
+      "pygments_lexer": "r",
+      "version": "3.3.2"
+    }
+  },
+  "nbformat": 4,
+  "nbformat_minor": 0
+}

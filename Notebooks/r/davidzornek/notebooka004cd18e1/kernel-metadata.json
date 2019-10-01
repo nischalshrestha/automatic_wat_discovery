@@ -1,0 +1,17 @@
+{
+  "language": "r",
+  "is_private": false,
+  "id": "davidzornek/notebooka004cd18e1",
+  "kernel_type": "notebook",
+  "code_file": "notebooka004cd18e1.irnb",
+  "dataset_sources": [],
+  "kernel_sources": [],
+  "competition_sources": [
+    "titanic"
+  ],
+  "title": "Notebookd3028c8f64",
+  "id_no": 178724,
+  "enable_internet": false,
+  "enable_gpu": false,
+  "keywords": []
+}

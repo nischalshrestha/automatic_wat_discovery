@@ -1,0 +1,17 @@
+{
+  "kernel_type": "notebook",
+  "id_no": 1418443,
+  "kernel_sources": [],
+  "enable_gpu": false,
+  "is_private": false,
+  "id": "sharmila94/titanic-eda-for-beginner",
+  "code_file": "titanic-eda-for-beginner.ipynb",
+  "language": "python",
+  "competition_sources": [
+    "titanic"
+  ],
+  "dataset_sources": [],
+  "keywords": [],
+  "title": "Titanic - EDA  For Beginner",
+  "enable_internet": false
+}

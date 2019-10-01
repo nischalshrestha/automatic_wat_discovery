@@ -1,0 +1,17 @@
+{
+  "id_no": 1410815,
+  "id": "mvrkkk/first-mltask-voting-classifier-feedback-pls",
+  "dataset_sources": [],
+  "kernel_sources": [],
+  "kernel_type": "notebook",
+  "enable_gpu": false,
+  "title": "First mltask - Voting Classifier - feedback pls",
+  "is_private": false,
+  "enable_internet": false,
+  "language": "python",
+  "code_file": "first-mltask-voting-classifier-feedback-pls.ipynb",
+  "competition_sources": [
+    "titanic"
+  ],
+  "keywords": []
+}

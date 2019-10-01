@@ -1,0 +1,17 @@
+{
+  "id": "sazack/titanic-survivor-prediction",
+  "code_file": "titanic-survivor-prediction.ipynb",
+  "dataset_sources": [],
+  "is_private": false,
+  "kernel_sources": [],
+  "id_no": 1681896,
+  "competition_sources": [
+    "titanic"
+  ],
+  "enable_internet": false,
+  "kernel_type": "notebook",
+  "title": "Titanic Survivor Prediction",
+  "language": "python",
+  "keywords": [],
+  "enable_gpu": true
+}

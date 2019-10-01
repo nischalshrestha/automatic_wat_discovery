@@ -1,0 +1,21 @@
+{
+  "dataset_sources": [],
+  "kernel_sources": [],
+  "id_no": 737908,
+  "language": "python",
+  "competition_sources": [
+    "titanic"
+  ],
+  "keywords": [
+    "beginner",
+    "data visualization",
+    "binary classification"
+  ],
+  "enable_gpu": false,
+  "kernel_type": "notebook",
+  "id": "azriobr/titanic-dataset-my-first-basic-approach",
+  "enable_internet": false,
+  "title": "Titanic Dataset - My First Basic Approach",
+  "code_file": "titanic-dataset-my-first-basic-approach.ipynb",
+  "is_private": false
+}

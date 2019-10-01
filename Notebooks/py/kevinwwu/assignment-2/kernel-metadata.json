@@ -1,0 +1,17 @@
+{
+  "code_file": "assignment-2.ipynb",
+  "enable_gpu": false,
+  "title": "Assignment-2",
+  "dataset_sources": [],
+  "id": "kevinwwu/assignment-2",
+  "language": "python",
+  "keywords": [],
+  "kernel_type": "notebook",
+  "competition_sources": [
+    "titanic"
+  ],
+  "enable_internet": false,
+  "id_no": 1392338,
+  "kernel_sources": [],
+  "is_private": false
+}

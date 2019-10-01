@@ -1,0 +1,17 @@
+{
+  "is_private": false,
+  "dataset_sources": [],
+  "kernel_type": "notebook",
+  "competition_sources": [
+    "titanic"
+  ],
+  "kernel_sources": [],
+  "enable_gpu": false,
+  "title": "Predictive Analysis of Survival Rate on Titanic",
+  "id_no": 226033,
+  "keywords": [],
+  "enable_internet": false,
+  "id": "zrafiws/predictive-analysis-of-survival-rate-on-titanic",
+  "language": "r",
+  "code_file": "predictive-analysis-of-survival-rate-on-titanic.irnb"
+}

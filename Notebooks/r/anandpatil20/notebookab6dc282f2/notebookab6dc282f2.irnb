@@ -1,0 +1,116 @@
+{
+  "cells": [
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "_cell_guid": "29be491c-0e9f-7b82-b665-00220b9a661f"
+      },
+      "outputs": [],
+      "source": [
+        "# This R environment comes with all of CRAN preinstalled, as well as many other helpful packages\n",
+        "# The environment is defined by the kaggle/rstats docker image: https://github.com/kaggle/docker-rstats\n",
+        "# For example, here's several helpful packages to load in \n",
+        "\n",
+        "library('ggplot2') # visualization\n",
+        "library('ggthemes') # visualization\n",
+        "library('scales') # visualization\n",
+        "library('dplyr') # data manipulation\n",
+        "library('mice') # imputation\n",
+        "library('randomForest') # classification algorithm\n",
+        "\n",
+        "# Input data files are available in the \"../input/\" directory.\n",
+        "# For example, running this (by clicking run or pressing Shift+Enter) will list the files in the input directory\n",
+        "\n",
+        "list.files(\"../input\")\n",
+        "\n",
+        "# Any results you write to the current directory are saved as output."
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "_cell_guid": "1687ee55-ea25-1ae0-2b4f-9a75b98305db"
+      },
+      "outputs": [],
+      "source": [
+        "\n",
+        "train <- read.csv('../input/train.csv', stringsAsFactors = F)\n",
+        "test  <- read.csv('../input/test.csv', stringsAsFactors = F)"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "_cell_guid": "86943cea-22ce-b25e-6fc4-d90525c540b5"
+      },
+      "outputs": [],
+      "source": [
+        "str(train)"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "_cell_guid": "08bd1acf-c615-0c82-f86c-eacfa9cd8678"
+      },
+      "outputs": [],
+      "source": [
+        "full  <- bind_rows(train, test) # bind training & test data\n",
+        "full$Title <- gsub('(.*, )|(\\\\..*)', '', full$Name)\n",
+        "table(full$Sex, full$Title)\n",
+        "rare_title <- c('Dona', 'Lady', 'the Countess','Capt', 'Col', 'Don', \n",
+        "                'Dr', 'Major', 'Rev', 'Sir', 'Jonkheer')\n",
+        "full$Title[full$Title == 'Mlle']        <- 'Miss' \n",
+        "full$Title[full$Title == 'Ms']          <- 'Miss'\n",
+        "full$Title[full$Title == 'Mme']         <- 'Mrs' \n",
+        "full$Title[full$Title %in% rare_title]  <- 'Rare Title'\n",
+        "table(full$Sex, full$Title)\n",
+        "full$Fsize <- full$SibSp + full$Parch + 1\n",
+        "summary(full$Fsize)"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "_cell_guid": "19630209-5589-74bc-e1a0-ace6537920a4"
+      },
+      "outputs": [],
+      "source": [
+        "summary(full$Fsize)"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "_cell_guid": "2ac16fd7-44cf-b125-87b9-ca79a54dc64b"
+      },
+      "outputs": [],
+      "source": ""
+    }
+  ],
+  "metadata": {
+    "_change_revision": 0,
+    "_is_fork": false,
+    "kernelspec": {
+      "display_name": "R",
+      "language": "R",
+      "name": "ir"
+    },
+    "language_info": {
+      "codemirror_mode": "r",
+      "file_extension": ".r",
+      "mimetype": "text/x-r-source",
+      "name": "R",
+      "pygments_lexer": "r",
+      "version": "3.4.0"
+    }
+  },
+  "nbformat": 4,
+  "nbformat_minor": 0
+}

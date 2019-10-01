@@ -1,0 +1,17 @@
+{
+  "enable_internet": false,
+  "keywords": [],
+  "competition_sources": [
+    "titanic"
+  ],
+  "code_file": "hypothesis-based-approach-to-surviving-icebergs.ipynb",
+  "language": "python",
+  "title": "Hypothesis-based approach to surviving Icebergs",
+  "is_private": false,
+  "kernel_type": "notebook",
+  "id_no": 372747,
+  "dataset_sources": [],
+  "kernel_sources": [],
+  "id": "dougdaly/hypothesis-based-approach-to-surviving-icebergs",
+  "enable_gpu": false
+}

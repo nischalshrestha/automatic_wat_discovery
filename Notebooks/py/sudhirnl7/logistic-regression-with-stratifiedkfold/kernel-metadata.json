@@ -1,0 +1,21 @@
+{
+  "code_file": "logistic-regression-with-stratifiedkfold.ipynb",
+  "title": "Logistic Regression with StratifiedKfold",
+  "is_private": false,
+  "kernel_type": "notebook",
+  "enable_gpu": false,
+  "kernel_sources": [],
+  "competition_sources": [
+    "titanic"
+  ],
+  "id_no": 232413,
+  "language": "python",
+  "dataset_sources": [],
+  "id": "sudhirnl7/logistic-regression-with-stratifiedkfold",
+  "keywords": [
+    "eda",
+    "preprocessing",
+    "logistic regression"
+  ],
+  "enable_internet": false
+}

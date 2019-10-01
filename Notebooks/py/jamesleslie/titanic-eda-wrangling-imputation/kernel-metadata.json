@@ -1,0 +1,17 @@
+{
+  "kernel_sources": [],
+  "enable_gpu": false,
+  "title": "Titanic: EDA, wrangling & imputation",
+  "language": "python",
+  "id_no": 2161599,
+  "competition_sources": [
+    "titanic"
+  ],
+  "id": "jamesleslie/titanic-eda-wrangling-imputation",
+  "keywords": [],
+  "dataset_sources": [],
+  "kernel_type": "notebook",
+  "is_private": false,
+  "code_file": "titanic-eda-wrangling-imputation.ipynb",
+  "enable_internet": false
+}

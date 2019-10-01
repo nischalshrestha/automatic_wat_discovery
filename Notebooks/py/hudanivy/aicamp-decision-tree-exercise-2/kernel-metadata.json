@@ -1,0 +1,19 @@
+{
+  "enable_gpu": false,
+  "code_file": "aicamp-decision-tree-exercise-2.ipynb",
+  "is_private": false,
+  "language": "python",
+  "dataset_sources": [
+    "jiuzhang/titanic-subset"
+  ],
+  "keywords": [],
+  "enable_internet": false,
+  "title": "AICamp Decision Tree Exercise 2",
+  "kernel_type": "notebook",
+  "kernel_sources": [],
+  "competition_sources": [
+    "titanic"
+  ],
+  "id": "hudanivy/aicamp-decision-tree-exercise-2",
+  "id_no": 1632298
+}

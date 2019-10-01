@@ -1,0 +1,17 @@
+{
+  "id_no": 699691,
+  "code_file": "my-first-kaggle-workbook-titanic.ipynb",
+  "is_private": false,
+  "keywords": [],
+  "enable_gpu": false,
+  "competition_sources": [
+    "titanic"
+  ],
+  "title": "My First Kaggle Workbook - Titanic ",
+  "id": "josephstalinpeter/my-first-kaggle-workbook-titanic",
+  "enable_internet": false,
+  "kernel_sources": [],
+  "language": "python",
+  "kernel_type": "notebook",
+  "dataset_sources": []
+}

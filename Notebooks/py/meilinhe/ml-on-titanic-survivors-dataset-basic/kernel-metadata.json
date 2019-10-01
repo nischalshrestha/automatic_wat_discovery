@@ -1,0 +1,17 @@
+{
+  "id": "meilinhe/ml-on-titanic-survivors-dataset-basic",
+  "id_no": 368488,
+  "title": "ML on Titanic Survivors Dataset (Basic)",
+  "code_file": "ml-on-titanic-survivors-dataset-basic.ipynb",
+  "language": "python",
+  "kernel_type": "notebook",
+  "is_private": false,
+  "enable_gpu": false,
+  "enable_internet": false,
+  "keywords": [],
+  "dataset_sources": [],
+  "kernel_sources": [],
+  "competition_sources": [
+    "titanic"
+  ]
+}

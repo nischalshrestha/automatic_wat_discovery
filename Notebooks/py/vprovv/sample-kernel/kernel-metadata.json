@@ -1,0 +1,17 @@
+{
+  "id": "vprovv/sample-kernel",
+  "is_private": false,
+  "dataset_sources": [],
+  "enable_internet": false,
+  "language": "python",
+  "title": "sample_kernel",
+  "competition_sources": [
+    "titanic"
+  ],
+  "code_file": "sample-kernel.ipynb",
+  "enable_gpu": false,
+  "id_no": 2102409,
+  "kernel_type": "notebook",
+  "keywords": [],
+  "kernel_sources": []
+}

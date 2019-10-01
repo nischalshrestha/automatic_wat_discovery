@@ -1,0 +1,17 @@
+{
+  "enable_gpu": false,
+  "is_private": false,
+  "enable_internet": false,
+  "id": "qbarbato/first-competition-in-kaggle-testing-a-knn-model",
+  "competition_sources": [
+    "titanic"
+  ],
+  "id_no": 1381035,
+  "code_file": "first-competition-in-kaggle-testing-a-knn-model.irnb",
+  "kernel_type": "notebook",
+  "kernel_sources": [],
+  "language": "r",
+  "dataset_sources": [],
+  "title": "First competition in Kaggle (testing a knn model)",
+  "keywords": []
+}

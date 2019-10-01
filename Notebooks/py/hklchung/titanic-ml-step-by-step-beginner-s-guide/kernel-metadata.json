@@ -1,0 +1,17 @@
+{
+  "id": "hklchung/titanic-ml-step-by-step-beginner-s-guide",
+  "dataset_sources": [],
+  "competition_sources": [
+    "titanic"
+  ],
+  "language": "python",
+  "id_no": 394595,
+  "kernel_type": "notebook",
+  "code_file": "titanic-ml-step-by-step-beginner-s-guide.ipynb",
+  "enable_internet": false,
+  "keywords": [],
+  "is_private": false,
+  "kernel_sources": [],
+  "enable_gpu": false,
+  "title": "Titanic ML step-by-step beginner's guide"
+}

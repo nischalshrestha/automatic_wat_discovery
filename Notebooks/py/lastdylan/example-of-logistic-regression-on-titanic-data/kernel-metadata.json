@@ -1,0 +1,17 @@
+{
+  "id_no": 238459,
+  "keywords": [],
+  "competition_sources": [
+    "titanic"
+  ],
+  "language": "python",
+  "kernel_type": "notebook",
+  "dataset_sources": [],
+  "enable_gpu": false,
+  "kernel_sources": [],
+  "is_private": false,
+  "code_file": "example-of-logistic-regression-on-titanic-data.ipynb",
+  "enable_internet": false,
+  "id": "lastdylan/example-of-logistic-regression-on-titanic-data",
+  "title": "Example of Logistic Regression on Titanic data"
+}

@@ -1,0 +1,17 @@
+{
+  "enable_internet": false,
+  "title": "hello",
+  "kernel_type": "notebook",
+  "is_private": false,
+  "id_no": 927255,
+  "dataset_sources": [],
+  "keywords": [],
+  "code_file": "hello.ipynb",
+  "language": "python",
+  "kernel_sources": [],
+  "enable_gpu": false,
+  "id": "hihelloo/hello",
+  "competition_sources": [
+    "titanic"
+  ]
+}

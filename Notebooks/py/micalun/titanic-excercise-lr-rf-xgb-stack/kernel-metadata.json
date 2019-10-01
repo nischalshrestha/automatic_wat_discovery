@@ -1,0 +1,17 @@
+{
+  "id_no": 1402818,
+  "is_private": false,
+  "enable_internet": false,
+  "language": "python",
+  "kernel_type": "notebook",
+  "keywords": [],
+  "dataset_sources": [],
+  "title": "titanic_excercise_LR_RF_XGB_stack",
+  "competition_sources": [
+    "titanic"
+  ],
+  "kernel_sources": [],
+  "enable_gpu": false,
+  "code_file": "titanic-excercise-lr-rf-xgb-stack.ipynb",
+  "id": "micalun/titanic-excercise-lr-rf-xgb-stack"
+}

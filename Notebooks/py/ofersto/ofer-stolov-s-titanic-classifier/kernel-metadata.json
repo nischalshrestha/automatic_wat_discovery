@@ -1,0 +1,17 @@
+{
+  "enable_internet": false,
+  "enable_gpu": false,
+  "kernel_sources": [],
+  "id": "ofersto/ofer-stolov-s-titanic-classifier",
+  "title": "Ofer Stolov's Titanic Classifier",
+  "is_private": false,
+  "competition_sources": [
+    "titanic"
+  ],
+  "keywords": [],
+  "dataset_sources": [],
+  "kernel_type": "notebook",
+  "language": "python",
+  "code_file": "ofer-stolov-s-titanic-classifier.ipynb",
+  "id_no": 120236
+}

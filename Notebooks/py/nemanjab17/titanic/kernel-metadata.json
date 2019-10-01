@@ -1,0 +1,23 @@
+{
+  "is_private": false,
+  "enable_gpu": false,
+  "kernel_type": "notebook",
+  "id_no": 1643378,
+  "code_file": "titanic.ipynb",
+  "dataset_sources": [],
+  "enable_internet": false,
+  "competition_sources": [
+    "titanic"
+  ],
+  "kernel_sources": [],
+  "language": "python",
+  "keywords": [
+    "beginner",
+    "eda",
+    "random forest",
+    "logistic regression",
+    "starter code"
+  ],
+  "id": "nemanjab17/titanic",
+  "title": "Titanic"
+}

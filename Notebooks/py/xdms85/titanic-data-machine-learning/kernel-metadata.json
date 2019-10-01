@@ -1,0 +1,22 @@
+{
+  "language": "python",
+  "enable_internet": false,
+  "kernel_sources": [],
+  "keywords": [
+    "beginner",
+    "data cleaning",
+    "data visualization",
+    "classification"
+  ],
+  "code_file": "titanic-data-machine-learning.ipynb",
+  "kernel_type": "notebook",
+  "dataset_sources": [],
+  "id": "xdms85/titanic-data-machine-learning",
+  "title": "Titanic Data Machine Learning",
+  "is_private": false,
+  "competition_sources": [
+    "titanic"
+  ],
+  "id_no": 1933249,
+  "enable_gpu": false
+}

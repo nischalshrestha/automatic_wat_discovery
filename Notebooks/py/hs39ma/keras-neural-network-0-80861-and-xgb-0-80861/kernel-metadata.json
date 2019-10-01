@@ -1,0 +1,17 @@
+{
+  "is_private": false,
+  "kernel_sources": [],
+  "id": "hs39ma/keras-neural-network-0-80861-and-xgb-0-80861",
+  "code_file": "keras-neural-network-0-80861-and-xgb-0-80861.ipynb",
+  "enable_gpu": true,
+  "language": "python",
+  "title": "keras neural network 0.80861 and xgb 0.80861",
+  "enable_internet": false,
+  "id_no": 2187982,
+  "keywords": [],
+  "competition_sources": [
+    "titanic"
+  ],
+  "dataset_sources": [],
+  "kernel_type": "notebook"
+}

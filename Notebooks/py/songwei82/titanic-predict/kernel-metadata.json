@@ -1,0 +1,17 @@
+{
+  "is_private": false,
+  "enable_internet": false,
+  "code_file": "titanic-predict.ipynb",
+  "dataset_sources": [],
+  "competition_sources": [
+    "titanic"
+  ],
+  "title": "titanic-predict",
+  "keywords": [],
+  "kernel_type": "notebook",
+  "language": "python",
+  "id": "songwei82/titanic-predict",
+  "enable_gpu": false,
+  "id_no": 539278,
+  "kernel_sources": []
+}

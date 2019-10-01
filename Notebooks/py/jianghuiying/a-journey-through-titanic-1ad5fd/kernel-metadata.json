@@ -1,0 +1,17 @@
+{
+  "id_no": 229592,
+  "competition_sources": [
+    "titanic"
+  ],
+  "keywords": [],
+  "title": "A Journey through Titanic 1ad5fd",
+  "is_private": false,
+  "id": "jianghuiying/a-journey-through-titanic-1ad5fd",
+  "kernel_type": "notebook",
+  "enable_internet": false,
+  "enable_gpu": false,
+  "dataset_sources": [],
+  "code_file": "a-journey-through-titanic-1ad5fd.ipynb",
+  "language": "python",
+  "kernel_sources": []
+}

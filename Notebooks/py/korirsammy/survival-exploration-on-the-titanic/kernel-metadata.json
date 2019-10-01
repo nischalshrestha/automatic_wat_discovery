@@ -1,0 +1,17 @@
+{
+  "title": "Survival Exploration on the Titanic",
+  "id": "korirsammy/survival-exploration-on-the-titanic",
+  "competition_sources": [
+    "titanic"
+  ],
+  "id_no": 179731,
+  "kernel_type": "notebook",
+  "enable_internet": false,
+  "keywords": [],
+  "code_file": "survival-exploration-on-the-titanic.ipynb",
+  "is_private": false,
+  "dataset_sources": [],
+  "kernel_sources": [],
+  "language": "python",
+  "enable_gpu": false
+}

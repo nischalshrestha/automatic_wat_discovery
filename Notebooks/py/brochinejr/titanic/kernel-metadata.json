@@ -1,0 +1,17 @@
+{
+  "language": "python",
+  "title": "Titanic",
+  "id": "brochinejr/titanic",
+  "dataset_sources": [],
+  "id_no": 1678455,
+  "kernel_sources": [],
+  "enable_gpu": false,
+  "kernel_type": "notebook",
+  "code_file": "titanic.ipynb",
+  "keywords": [],
+  "enable_internet": false,
+  "is_private": false,
+  "competition_sources": [
+    "titanic"
+  ]
+}

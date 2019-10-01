@@ -1,0 +1,17 @@
+{
+  "id": "lisastuart/titanic-python-decision-trees",
+  "dataset_sources": [],
+  "id_no": 514248,
+  "competition_sources": [
+    "titanic"
+  ],
+  "title": "Titanic Python Decision Trees",
+  "language": "python",
+  "kernel_sources": [],
+  "code_file": "titanic-python-decision-trees.ipynb",
+  "enable_internet": false,
+  "enable_gpu": false,
+  "kernel_type": "notebook",
+  "is_private": false,
+  "keywords": []
+}

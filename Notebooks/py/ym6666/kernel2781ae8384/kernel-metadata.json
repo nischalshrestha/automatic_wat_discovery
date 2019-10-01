@@ -1,0 +1,17 @@
+{
+  "id_no": 1838148,
+  "competition_sources": [
+    "titanic"
+  ],
+  "id": "ym6666/kernel2781ae8384",
+  "keywords": [],
+  "kernel_type": "notebook",
+  "title": "kernel2781ae8384",
+  "code_file": "kernel2781ae8384.ipynb",
+  "enable_internet": false,
+  "kernel_sources": [],
+  "enable_gpu": false,
+  "is_private": false,
+  "language": "python",
+  "dataset_sources": []
+}

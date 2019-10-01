@@ -1,0 +1,17 @@
+{
+  "id_no": 1654977,
+  "kernel_type": "notebook",
+  "code_file": "ed3s2018-day3-nn-svm.ipynb",
+  "keywords": [],
+  "is_private": false,
+  "enable_gpu": false,
+  "enable_internet": false,
+  "title": "ED3S2018_Day3_NN_SVM",
+  "kernel_sources": [],
+  "id": "iaroslavai/ed3s2018-day3-nn-svm",
+  "language": "python",
+  "dataset_sources": [],
+  "competition_sources": [
+    "titanic"
+  ]
+}

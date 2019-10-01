@@ -1,0 +1,17 @@
+{
+  "id_no": 175795,
+  "title": "Titanic Dataset Competition",
+  "code_file": "titanic-dataset-competition.ipynb",
+  "language": "python",
+  "is_private": false,
+  "keywords": [],
+  "enable_internet": false,
+  "competition_sources": [
+    "titanic"
+  ],
+  "id": "sahilrggupta/titanic-dataset-competition",
+  "kernel_sources": [],
+  "kernel_type": "notebook",
+  "dataset_sources": [],
+  "enable_gpu": false
+}

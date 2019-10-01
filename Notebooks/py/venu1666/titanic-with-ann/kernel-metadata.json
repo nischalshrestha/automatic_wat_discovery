@@ -1,0 +1,17 @@
+{
+  "kernel_type": "notebook",
+  "kernel_sources": [],
+  "competition_sources": [
+    "titanic"
+  ],
+  "keywords": [],
+  "code_file": "titanic-with-ann.ipynb",
+  "language": "python",
+  "enable_internet": true,
+  "title": "Titanic_with_ANN",
+  "id_no": 1261284,
+  "id": "venu1666/titanic-with-ann",
+  "is_private": false,
+  "enable_gpu": true,
+  "dataset_sources": []
+}

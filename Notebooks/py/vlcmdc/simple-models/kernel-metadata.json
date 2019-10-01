@@ -1,0 +1,17 @@
+{
+  "keywords": [],
+  "kernel_sources": [],
+  "code_file": "simple-models.ipynb",
+  "is_private": false,
+  "enable_gpu": false,
+  "competition_sources": [
+    "titanic"
+  ],
+  "dataset_sources": [],
+  "id_no": 172039,
+  "kernel_type": "notebook",
+  "title": "Simple models ",
+  "enable_internet": false,
+  "language": "python",
+  "id": "vlcmdc/simple-models"
+}

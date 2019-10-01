@@ -1,0 +1,17 @@
+{
+  "id": "tanakataro73/titanic-practice-sumire4ever",
+  "dataset_sources": [],
+  "enable_internet": false,
+  "code_file": "titanic-practice-sumire4ever.ipynb",
+  "keywords": [],
+  "title": "titanic_practice_sumire4ever",
+  "competition_sources": [
+    "titanic"
+  ],
+  "language": "python",
+  "id_no": 1358301,
+  "is_private": false,
+  "enable_gpu": false,
+  "kernel_type": "notebook",
+  "kernel_sources": []
+}

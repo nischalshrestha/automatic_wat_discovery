@@ -1,0 +1,17 @@
+{
+  "dataset_sources": [],
+  "competition_sources": [
+    "titanic"
+  ],
+  "id": "condereis/exploratory-data-analysis-1",
+  "id_no": 71711,
+  "keywords": [],
+  "language": "python",
+  "title": "Exploratory Data Analysis",
+  "kernel_type": "notebook",
+  "is_private": false,
+  "code_file": "exploratory-data-analysis-1.ipynb",
+  "kernel_sources": [],
+  "enable_internet": false,
+  "enable_gpu": false
+}

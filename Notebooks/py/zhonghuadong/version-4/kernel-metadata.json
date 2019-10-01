@@ -1,0 +1,17 @@
+{
+  "kernel_sources": [],
+  "is_private": false,
+  "kernel_type": "notebook",
+  "dataset_sources": [],
+  "title": "version-4",
+  "enable_gpu": false,
+  "language": "python",
+  "competition_sources": [
+    "titanic"
+  ],
+  "id_no": 1460843,
+  "keywords": [],
+  "id": "zhonghuadong/version-4",
+  "code_file": "version-4.ipynb",
+  "enable_internet": false
+}

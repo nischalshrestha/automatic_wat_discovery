@@ -1,0 +1,17 @@
+{
+  "title": "Titanic Data Science Japanese Tutorial",
+  "is_private": false,
+  "kernel_sources": [],
+  "language": "python",
+  "id": "narumin/titanic-data-science-japanese-tutorial",
+  "code_file": "titanic-data-science-japanese-tutorial.ipynb",
+  "keywords": [],
+  "dataset_sources": [],
+  "kernel_type": "notebook",
+  "id_no": 779028,
+  "enable_internet": false,
+  "enable_gpu": false,
+  "competition_sources": [
+    "titanic"
+  ]
+}

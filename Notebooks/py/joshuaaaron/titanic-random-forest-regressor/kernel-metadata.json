@@ -1,0 +1,17 @@
+{
+  "id": "joshuaaaron/titanic-random-forest-regressor",
+  "language": "python",
+  "kernel_sources": [],
+  "id_no": 1358230,
+  "kernel_type": "notebook",
+  "competition_sources": [
+    "titanic"
+  ],
+  "dataset_sources": [],
+  "is_private": false,
+  "keywords": [],
+  "code_file": "titanic-random-forest-regressor.ipynb",
+  "enable_gpu": false,
+  "enable_internet": false,
+  "title": "Titanic: Random Forest Regressor"
+}

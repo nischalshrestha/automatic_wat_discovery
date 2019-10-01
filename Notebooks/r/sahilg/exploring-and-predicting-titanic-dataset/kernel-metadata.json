@@ -1,0 +1,17 @@
+{
+  "enable_internet": false,
+  "id_no": 177966,
+  "kernel_sources": [],
+  "title": "Exploring and Predicting - Titanic Dataset",
+  "kernel_type": "notebook",
+  "competition_sources": [
+    "titanic"
+  ],
+  "keywords": [],
+  "is_private": false,
+  "code_file": "exploring-and-predicting-titanic-dataset.irnb",
+  "language": "r",
+  "id": "sahilg/exploring-and-predicting-titanic-dataset",
+  "dataset_sources": [],
+  "enable_gpu": false
+}

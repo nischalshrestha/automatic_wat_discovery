@@ -1,0 +1,17 @@
+{
+  "kernel_type": "notebook",
+  "language": "python",
+  "enable_gpu": false,
+  "dataset_sources": [],
+  "code_file": "keras.ipynb",
+  "kernel_sources": [],
+  "is_private": false,
+  "competition_sources": [
+    "titanic"
+  ],
+  "id": "wzimmz/keras",
+  "enable_internet": false,
+  "id_no": 151122,
+  "keywords": [],
+  "title": "keras"
+}

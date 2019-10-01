@@ -1,0 +1,17 @@
+{
+  "keywords": [],
+  "kernel_sources": [],
+  "dataset_sources": [],
+  "title": "Notebookd207de4f1f",
+  "language": "python",
+  "id_no": 202011,
+  "enable_internet": false,
+  "code_file": "notebookd207de4f1f.ipynb",
+  "competition_sources": [
+    "titanic"
+  ],
+  "is_private": false,
+  "kernel_type": "notebook",
+  "enable_gpu": false,
+  "id": "mohankri/notebookd207de4f1f"
+}

@@ -1,0 +1,17 @@
+{
+  "code_file": "titanic-survival-analysis.ipynb",
+  "kernel_type": "notebook",
+  "keywords": [],
+  "title": "Titanic Survival Analysis",
+  "language": "python",
+  "is_private": false,
+  "id_no": 89271,
+  "enable_gpu": false,
+  "id": "breana/titanic-survival-analysis",
+  "competition_sources": [
+    "titanic"
+  ],
+  "enable_internet": false,
+  "kernel_sources": [],
+  "dataset_sources": []
+}

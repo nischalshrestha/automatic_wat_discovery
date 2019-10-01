@@ -1,0 +1,83 @@
+{
+  "cells": [
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "_cell_guid": "b7e02b64-de0e-6c82-9639-71189751569c"
+      },
+      "outputs": [],
+      "source": [
+        "# Load packages\n",
+        "library('ggplot2') # visualization\n",
+        "library('ggthemes') # visualization\n",
+        "library('scales') # visualization\n",
+        "library('dplyr') # data manipulation\n",
+        "library('mice') # imputation\n",
+        "library('randomForest') # classification algorith\n",
+        "\n",
+        "train <- read.csv('../input/train.csv', stringsAsFactors = F)\n",
+        "test  <- read.csv('../input/test.csv', stringsAsFactors = F)\n",
+        "\n",
+        "full  <- bind_rows(test, train) # bind training & test data\n",
+        "\n",
+        "full\n",
+        "str(full)\n",
+        "\n",
+        "# Grab title from passenger names\n",
+        "full$Title <- gsub('(.*, )|(\\\\..*)', '', full$Name)\n",
+        "\n",
+        "# Show title counts by sex\n",
+        "table(full$Sex, full$Title)\n",
+        "# Titles with very low cell counts to be combined to \"rare\" level\n",
+        "rare_title <- c('Dona', 'Lady', 'the Countess','Capt', 'Col', 'Don', \n",
+        "                'Dr', 'Major', 'Rev', 'Sir', 'Jonkheer')\n",
+        "\n",
+        "# Also reassign mlle, ms, and mme accordingly\n",
+        "full$Title[full$Title == 'Mlle']        <- 'Miss' \n",
+        "full$Title[full$Title == 'Ms']          <- 'Miss'\n",
+        "full$Title[full$Title == 'Mme']         <- 'Mrs' \n",
+        "full$Title[full$Title %in% rare_title]  <- 'Rare Title'\n",
+        "\n",
+        "# Show title counts by sex again\n",
+        "table(full$Sex, full$Title)\n",
+        "\n",
+        "# Finally, grab surname from passenger name\n",
+        "full$Surname <- sapply(full$Name,  \n",
+        "                      function(x) strsplit(x, split = '[,.]')[[1]][1])\n",
+        "                       \n",
+        "                          cat(paste('We have <b>', nlevels(factor(full$Surname)), '</b> unique surnames. I would be interested to infer ethnicity based on surname --- another time.'))"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "_cell_guid": "16aacef9-2fa8-7e97-0ef1-082abf76d52f"
+      },
+      "outputs": [],
+      "source": [
+        "full$Title <- gsub('(.*, )|(\\\\..*)', '', full$Name)"
+      ]
+    }
+  ],
+  "metadata": {
+    "_change_revision": 0,
+    "_is_fork": false,
+    "kernelspec": {
+      "display_name": "R",
+      "language": "R",
+      "name": "ir"
+    },
+    "language_info": {
+      "codemirror_mode": "r",
+      "file_extension": ".r",
+      "mimetype": "text/x-r-source",
+      "name": "R",
+      "pygments_lexer": "r",
+      "version": "3.3.2"
+    }
+  },
+  "nbformat": 4,
+  "nbformat_minor": 0
+}

@@ -1,0 +1,442 @@
+{
+  "cells": [
+    {
+      "cell_type": "markdown",
+      "metadata": {
+        "_cell_guid": "e3fad94b-18ab-4c4d-d90c-30ec55018eec"
+      },
+      "source": [
+        "Code is inspired by Megan Risdal's R Script . This notebook - is totally Work in Progress as of now - kindly come back soon , hope to get it in some shape by then ..."
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "_cell_guid": "9d608f84-2412-394e-1776-b0f2ad6da563"
+      },
+      "outputs": [],
+      "source": [
+        "  \n",
+        "# Load packages\n",
+        "suppressMessages(library('ggplot2')) # visualization\n",
+        "suppressMessages(library('ggthemes')) # visualization\n",
+        "suppressMessages(library('scales')) # visualization\n",
+        "suppressMessages(library('dplyr')) # data manipulation\n",
+        "suppressMessages(library('mice')) # imputation\n",
+        "suppressMessages(library('randomForest')) # classification algorithm\n",
+        "\n",
+        "train <- read.csv('../input/train.csv', stringsAsFactors = F)\n",
+        "test  <- read.csv('../input/test.csv', stringsAsFactors = F)\n",
+        "\n",
+        "full  <- bind_rows(train, test) # bind training & test data\n",
+        "\n",
+        "# check data\n",
+        "str(full)\n",
+        "\n",
+        "summary(train)\n"
+      ]
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {
+        "_cell_guid": "d45efe17-e21f-62d3-2f62-0e6a01315ec7"
+      },
+      "source": [
+        "<font size=\"2\" color=\"black\">\n",
+        "Stumped - Why dont we see CABIN NA's or Missing Values in SUMMARY above , when the  DF is displayed in R Studio Values are missing and we have NA's <br>\n",
+        "We can see the same in Python code. In the original code from Megan Risdal on Kaggle - she has identified NA's in CABIN , not sure how ?  <br>\n",
+        "In Python we get it from Code - <br>\n",
+        "Own iPython Workbook CABIN NA's seen through the Python Code - Code Cell [4] - <https://github.com/RohitDhankar/KAGGLE_Titanic_initial/blob/master/Titanic_2_OwnCode.ipynb>\n",
+        "<font>\n"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "_cell_guid": "0907a1ec-cf95-4435-3460-9a3495154188"
+      },
+      "outputs": [],
+      "source": [
+        "str(full)\n",
+        "\n",
+        "#\n",
+        "# Grab title from passenger names\n",
+        "full$Title <- gsub('(.*, )|(\\\\..*)', '', full$Name)\n",
+        "\n",
+        "# Show title counts by sex\n",
+        "table(full$Sex, full$Title)\n"
+      ]
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {
+        "_cell_guid": "dc5876d4-5abf-8c74-c38f-d28e379d5da1"
+      },
+      "source": [
+        "<font size=\"2\" color=\"black\">\n",
+        " Dhankar -- No Merging of Titles Done - Holding  on to RARE Title creation for now  <br>\n",
+        "\n",
+        "Code Source -- R Script of Megan Risdal on Kaggle - <https://www.kaggle.com/mrisdal/titanic/exploring-survival-on-the-titanic#> <br>\n",
+        "<font> \n"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "_cell_guid": "42b2f3bf-db56-969b-e903-e40be7ba159c"
+      },
+      "outputs": [],
+      "source": [
+        "# Show title counts by sex again\n",
+        "table(full$Sex, full$Title)\n",
+        "\n",
+        "#\n",
+        "# Finally, grab surname from passenger name\n",
+        "full$Surname <- sapply(full$Name,  \n",
+        "                      function(x) strsplit(x, split = '[,.]')[[1]][1])\n",
+        "\n",
+        "#table(full$Surname, full$Sex)\n",
+        "# 875 Unique Surnames \n",
+        "nlevels(factor(full$Surname))\n",
+        "\n",
+        "#\n",
+        "# Create a family size variable including the passenger themselves\n",
+        "full$Fsize <- full$SibSp + full$Parch + 1\n",
+        "\n",
+        "# Create a family variable \n",
+        "full$Family <- paste(full$Surname, full$Fsize, sep='_')\n",
+        "\n",
+        "# Use ggplot2 to visualize the relationship between family size & survival\n",
+        "ggplot(full[1:891,], aes(x = Fsize, fill = factor(Survived))) +\n",
+        "  geom_bar(stat='count', position='dodge') +\n",
+        "  scale_x_continuous(breaks=c(1:11)) +\n",
+        "  labs(x = 'Family Size') +\n",
+        "  theme_few()\n",
+        "\n",
+        "#\n",
+        "# Discretize family size\n",
+        "full$FsizeD[full$Fsize == 1] <- 'singleton'\n",
+        "full$FsizeD[full$Fsize < 5 & full$Fsize > 1] <- 'small'\n",
+        "full$FsizeD[full$Fsize > 4] <- 'large'\n",
+        "\n",
+        "# Show family size by survival using a mosaic plot\n",
+        "mosaicplot(table(full$FsizeD, full$Survived), main='Family Size by Survival', shade=TRUE)\n",
+        "\n",
+        "# This CABIN variable appears to have a lot of missing values\n",
+        "full$Cabin[1:28]\n",
+        "\n",
+        "# The first character is the deck. For example:\n",
+        "strsplit(full$Cabin[2], NULL)[[1]]\n",
+        "\n",
+        "# Create a Deck variable. Get passenger deck A - F:\n",
+        "full$Deck<-factor(sapply(full$Cabin, function(x) strsplit(x, NULL)[[1]][1]))\n",
+        "\n",
+        "full$Deck[1:10]\n",
+        "# 1 to 10 Values of full$Deck with various Levels \n",
+        "\n",
+        "\n",
+        "#full[!complete.cases(full),]\n",
+        "# !complete.cases -- will give all the CASES or Observations with Data Titanic which have missing values in any Feature \n",
+        "# Too much dump \n"
+      ]
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {
+        "_cell_guid": "f50edf0c-47b4-62da-512a-ab00cff9d785"
+      },
+      "source": [
+        "<font size=\"2\" color=\"black\">\n",
+        "Package MICE - Multiple Imputation with MCA <br>\n",
+        "Source URL's <http://juliejosse.com/wp-content/uploads/2016/06/user2016.pdf> <br>\n",
+        "<https://arxiv.org/pdf/1606.05333v2.pdf> <br>\n",
+        "<http://www.ats.ucla.edu/stat/r/faq/R_pmm_mi.htm><br>\n",
+        "\n",
+        "</font>\n"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "_cell_guid": "8d01d237-5a2d-c7c0-e662-f2477716bc27"
+      },
+      "outputs": [],
+      "source": [
+        "suppressMessages(library(mice))\n",
+        "suppressMessages(library(VIM))\n",
+        "suppressMessages(library(dplyr))\n",
+        "\n",
+        "\n",
+        "#Checking the missing values in Data \n",
+        "#md.pattern(full)                                                 ### DHANKAR - OK Not Required \n",
+        "#options(warnings=-1)                                             ### DHANKAR - OK Not Required \n",
+        "suppressMessages(md.pattern(train))\n",
+        "## Number of observations per patterns for all pairs of variables\n",
+        "#p<-md.pairs(train)                                                ### DHANKAR - OK Not Required \n",
+        "#p                                                                 ### DHANKAR - OK Not Required \n",
+        "#suppressMessages(md.pattern(test))\n",
+        "#pp<-md.pairs(test)\n",
+        "#pp                                                                ### DHANKAR - OK Not Required \n",
+        "#Missing value plot - NAPlot - library(VIM)\n",
+        "NAPlot <- aggr(train, col=c('navyblue','red'), numbers=TRUE, sortVars=TRUE, labels=names(train), cex.axis=.7, gap=3, ylab=c(\"Histogram of missing data\",\"Pattern\"))\n"
+      ]
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {
+        "_cell_guid": "d9e4a779-46bf-cd32-85df-70201e03d150"
+      },
+      "source": [
+        "<font size=\"2\" color=\"black\">\n",
+        "Margin plot - # PassengerID and AGE - 177 NA's in Vector AGE - bottom Left we see figure 177 in RED Text <br>\n",
+        "#\n",
+        "On the X Axis is plotted the Passenfer ID - the RED DOTS seen along the X Axis correspond to the Passenger ID values for which the AGE value is missing <br>\n",
+        "#\n",
+        "On the Y Axis - there are NO Red dots as no NA's exist in Passenger ID corresponding to AGE. <br>\n",
+        "#\n",
+        "<font>\n"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "_cell_guid": "3ab0704f-1153-0ae4-a7d0-88996cbf51d7"
+      },
+      "outputs": [],
+      "source": [
+        "marginplot(train[c(1,6)], col=c(\"blue\", \"red\", \"orange\")) "
+      ]
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {
+        "_cell_guid": "4673f718-c780-753b-3435-35b8e6cbd2c9"
+      },
+      "source": [
+        "<font size=\"2\" color=\"black\">\n",
+        "<br>\n",
+        "<br>\n",
+        "Under the Missing Completely at Random (MCAR) assumption - red and blue box plots should be identical. <br>\n",
+        "Thus for TITANIC we can assume that Values of AGE are not missing at Random . <br>\n",
+        "At the Bottom Left - there is a Square formed by interaction of Plot Boundaries - we would have a NUMERIC Value here in ORANGE - if there were any Observations or ROWS in which both AGE and PASSENGER ID were missing . <br>\n",
+        "\n",
+        "\n",
+        "[Source - UCLA.edu - Multiple Imputation using Predictive Mean Matching](http://www.ats.ucla.edu/stat/r/faq/R_pmm_mi.htm)\n"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "_cell_guid": "e26afb90-7e0f-63d5-23f6-e234c1ad4ff4"
+      },
+      "outputs": [],
+      "source": [
+        "### Margin plot - PassengerID and AGE - SWAPPED - Nothing much to see ...\n",
+        "#marginplot(train[c(6,1)], col=c(\"blue\", \"red\", \"orange\")) \n",
+        "# The NA's in the CABIN Feature dont seem to Show Up here ...\n",
+        "# marginplot(train[c(1,11)], col=c(\"blue\", \"red\", \"orange\")) # CABIN blanks - Still Nothing ??  \n",
+        "#\n",
+        "pbox(train, pos=1) # pos == Position 1 == Feature = PassengerId \n",
+        "## lib(mice) The Function - mice - by default - creates 5 sets of imputation values for each Missing Observation / Value\n",
+        "imp1 <-mice(train, m=5)\n",
+        "imp1\n"
+      ]
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {
+        "_cell_guid": "566be45e-b97c-9d82-b2f1-f1a951c033ea"
+      },
+      "source": [
+        "<font size=\"2\" color=\"black\">\n",
+        "The predictor matrix tells us which variables in the dataset were used to produce predicted values for matching <br>\n",
+        "The - \"Imputation methods:\" -- which have \"_\" value for all and \"pmm\"\" for AGE is the MICE Package Imputation Method used for Imputations <br>\n",
+        "For Titanic AGE its - \"pmm\" Predictive Mean Matching. <br>\n",
+        "<font>\n",
+        "\n",
+        "<font size=\"3\" color=\"blue\">\n",
+        "DHANKAR - Pending Question -- How to change these VARIABLES and use another set to Predict Missing values <br>\n",
+        "<font>\n"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "_cell_guid": "9df3539b-fe20-075b-0357-00139070eb84"
+      },
+      "outputs": [],
+      "source": [
+        "imp1$imp$Age\n",
+        "#\n",
+        "imp1$imp\n",
+        "# Whats TYPE of - typeof(imp1$imp) \n",
+        "typeof(imp1$imp)\n",
+        "# Whats TYPE of - typeof(imp1$imp$Age)\n",
+        "typeof(imp1$imp$Age)\n"
+      ]
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {
+        "_cell_guid": "7a852803-1b67-f641-e40f-5b3489325f05"
+      },
+      "source": [
+        "<font size=\"2\" color=\"blue\">\n",
+        " DHANKAR -- Random description below - needs more work ...<br>\n",
+        " <font>\n",
+        " \n",
+        " <font size=\"2\" color=\"black\">\n",
+        " We see a TABLE - lets call it the \"pmm\" table <br>\n",
+        " Col -1 has values 6,18,20 etc ...these are the INDEX VAlues or Serial Numbers of the OBS or ROWS <br>\n",
+        " ROWS have Missing Values Imputed  for AGE - the NA's or BLANKS have been Filled-In for or Imputed with - FIVE sets of Values <br>\n",
+        " Col-2,3,4,5,6 of Table \"pmm\" - are the Sets of values generated for Multiple Imputation . ....<br>\n",
+        " <font>\n",
+        " \n",
+        "<font size=\"2\" color=\"black\">\n",
+        "Source Page- 13 \"Multivariate Imputation by Chained Equations in R\" jstatsoft---<http://www.stefvanbuuren.nl/publications/MICE%20in%20R%20-%20Draft.pdf>  <br> \n",
+        "complete(imp) AND complete(imp,2) etc . <br> \n",
+        "complete(imp) - is Original Data imputed with the 1st Set of Multiple Imputation values . <br>\n",
+        "complete(imp,2) - is Original Data imputed with the 2nd Set of Multiple Imputation values . <br>\n",
+        "<font>\n"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "_cell_guid": "c68acca0-269a-9f7f-9fdc-eb035bedab56"
+      },
+      "outputs": [],
+      "source": [
+        "# Data changed to Long Format - List of Lists created - concat of Original Data and 1st Set of Imputed Values\n",
+        "# Whats imp1 ? == Its an object of class \"mids\" as created by the function mice()\n",
+        "\n",
+        "#list_comp <- complete(imp, 'long', inc=TRUE)\n",
+        "\n",
+        "list_comp <- complete(imp1) # 1 is by Default \n",
+        "typeof(list_comp)\n",
+        "\n",
+        "list_comp2 <- complete(imp1,action=2)\n",
+        "typeof(list_comp2)\n",
+        "\n",
+        "list_comp3 <- complete(imp1,action=3)\n",
+        "typeof(list_comp3)\n",
+        "\n",
+        "list_comp4 <- complete(imp1,action=4)\n",
+        "typeof(list_comp4)\n",
+        "\n",
+        "list_comp <- complete(imp1,action=5)\n",
+        "typeof(list_comp5)\n",
+        "\n",
+        "\n",
+        "# Lattice Plots --- Not very Informative \n",
+        "suppressMessages(library(lattice))\n",
+        "library(\"lattice\", lib.loc=\"/usr/lib/R/library\")\n",
+        "##labels observed data in blue and imputed data in red for Age\n",
+        "col_imp<-rep(c(\"blue\", \"red\")[1+as.numeric(is.na(imp1$imp$Age))],6)  # The Numeric 6 signifies 6 sets of Values - 5 Imputed and 1 Original. \n",
+        "##plots data for AGE by imputation\n",
+        "\n",
+        "#Plot1<-stripplot(Age~.imp, data=list_comp, jit=TRUE,col=col_imp, xlab=\"Imputation Number\")\n",
+        "#Plot1\n",
+        "\n",
+        "# Errors needs a Re-Check \n",
+        "#Plot2<-stripplot(Age~.imp2, data=list_comp2, jit=TRUE,col=col_imp, xlab=\"Imputation Number\")\n",
+        "#Plot2\n",
+        "\n",
+        "# AGE --- Feature whose Missing Values we are Imputing and Plotting \n",
+        "# .imp --- is MOST PROBABLY --- All Features from within - LIST \"imp1$imp\" \n",
+        "# data=imp_tot2 is LONG format LIST created above \n",
+        "# jit=TRUE -- Jitter TRUE \n",
+        "# col=col_imp -- Color Scheme for Values \n"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "_cell_guid": "f0e67880-13d9-10f9-eb86-cb6740b1a626"
+      },
+      "outputs": [],
+      "source": [
+        "# Converting this LIST - imp1$imp$Age -- to transfer the Multiple Imputed Values to Python # DHANKAR --- absolutely arbitary process as of now Work in Progress...\n",
+        "\n",
+        "LAge<-imp1$imp$Age\n",
+        "typeof(LAge)\n",
+        "\n",
+        "LAge1<-list_comp\n",
+        "typeof(LAge1)\n",
+        "\n",
+        "LAge2<-list_comp2\n",
+        "typeof(LAge2)\n",
+        "\n"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "_cell_guid": "86e7894e-63ab-a9b8-8437-296b891ceec9"
+      },
+      "outputs": [],
+      "source": [
+        "List to DF Source -SO- <http://stackoverflow.com/questions/4227223/r-list-to-data-frame>"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "_cell_guid": "13b20432-dc15-e727-cc89-79c15c5f89ac"
+      },
+      "outputs": [],
+      "source": [
+        "dfL <- data.frame(matrix(unlist(LAge), nrow=177, byrow=F),stringsAsFactors=FALSE)\n",
+        "dfL\n",
+        "write.csv(file=\"Age_IMP.csv\", x=dfL)\n",
+        "# Got to Python with CSV - fill in the Blanks for AGE \n",
+        "dfL1 <- data.frame(matrix(unlist(LAge1), nrow=891, byrow=F),stringsAsFactors=FALSE)\n",
+        "dfL1\n",
+        "write.csv(file=\"Age_IMP1.csv\", x=dfL1)\n",
+        "#\n",
+        "dfL2 <- data.frame(matrix(unlist(LAge2), nrow=891, byrow=F),stringsAsFactors=FALSE)\n",
+        "dfL2\n",
+        "write.csv(file=\"Age_IMP2.csv\", x=dfL2)\n",
+        "\n",
+        "# Tangential Analysis -- Inspecting the Titanic Data Present in R \n",
+        "#\n",
+        "#dftt<-as.data.frame(Titanic)\n",
+        "#summary(dftt)\n",
+        "#write.csv(file=\"Titanic_IMP.csv\", x=dftt)\n",
+        "\n",
+        "\n",
+        "## Work In Progress .... "
+      ]
+    }
+  ],
+  "metadata": {
+    "_change_revision": 0,
+    "_is_fork": false,
+    "kernelspec": {
+      "display_name": "R",
+      "language": "R",
+      "name": "ir"
+    },
+    "language_info": {
+      "codemirror_mode": "r",
+      "file_extension": ".r",
+      "mimetype": "text/x-r-source",
+      "name": "R",
+      "pygments_lexer": "r",
+      "version": "3.3.2"
+    }
+  },
+  "nbformat": 4,
+  "nbformat_minor": 0
+}

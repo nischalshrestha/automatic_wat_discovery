@@ -1,0 +1,17 @@
+{
+  "title": "Titanic - 183 DADM Topic 8",
+  "kernel_type": "notebook",
+  "competition_sources": [
+    "titanic"
+  ],
+  "enable_gpu": false,
+  "id_no": 1829160,
+  "code_file": "titanic-183-dadm-topic-8.ipynb",
+  "id": "hmiyamoto/titanic-183-dadm-topic-8",
+  "enable_internet": false,
+  "keywords": [],
+  "dataset_sources": [],
+  "is_private": false,
+  "language": "python",
+  "kernel_sources": []
+}

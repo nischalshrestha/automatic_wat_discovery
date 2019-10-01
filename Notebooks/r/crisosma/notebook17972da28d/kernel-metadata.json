@@ -1,0 +1,17 @@
+{
+  "dataset_sources": [],
+  "id": "crisosma/notebook17972da28d",
+  "enable_internet": false,
+  "enable_gpu": false,
+  "language": "r",
+  "keywords": [],
+  "is_private": false,
+  "kernel_sources": [],
+  "competition_sources": [
+    "titanic"
+  ],
+  "code_file": "notebook17972da28d.irnb",
+  "title": "Notebook8bd3290ea4",
+  "kernel_type": "notebook",
+  "id_no": 179224
+}

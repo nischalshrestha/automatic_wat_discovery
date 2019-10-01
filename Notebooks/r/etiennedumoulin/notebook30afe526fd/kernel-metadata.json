@@ -1,0 +1,17 @@
+{
+  "is_private": false,
+  "dataset_sources": [],
+  "title": "Notebook30afe526fd",
+  "id_no": 260785,
+  "kernel_sources": [],
+  "keywords": [],
+  "enable_gpu": false,
+  "kernel_type": "notebook",
+  "id": "etiennedumoulin/notebook30afe526fd",
+  "enable_internet": false,
+  "language": "python",
+  "competition_sources": [
+    "titanic"
+  ],
+  "code_file": "notebook30afe526fd.ipynb"
+}

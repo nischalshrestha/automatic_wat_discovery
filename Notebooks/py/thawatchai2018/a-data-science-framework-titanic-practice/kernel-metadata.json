@@ -1,0 +1,17 @@
+{
+  "enable_gpu": true,
+  "id_no": 1977429,
+  "dataset_sources": [],
+  "title": "A Data Science Framework - Titanic Practice",
+  "is_private": false,
+  "competition_sources": [
+    "titanic"
+  ],
+  "language": "python",
+  "enable_internet": false,
+  "kernel_sources": [],
+  "keywords": [],
+  "kernel_type": "notebook",
+  "id": "thawatchai2018/a-data-science-framework-titanic-practice",
+  "code_file": "a-data-science-framework-titanic-practice.ipynb"
+}

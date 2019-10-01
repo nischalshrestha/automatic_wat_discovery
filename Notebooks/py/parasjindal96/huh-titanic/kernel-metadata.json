@@ -1,0 +1,17 @@
+{
+  "title": "HUH Titanic",
+  "keywords": [],
+  "id": "parasjindal96/huh-titanic",
+  "dataset_sources": [],
+  "competition_sources": [
+    "titanic"
+  ],
+  "kernel_type": "notebook",
+  "code_file": "huh-titanic.ipynb",
+  "enable_gpu": false,
+  "language": "python",
+  "is_private": false,
+  "enable_internet": false,
+  "kernel_sources": [],
+  "id_no": 419910
+}

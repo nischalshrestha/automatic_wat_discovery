@@ -1,0 +1,17 @@
+{
+  "language": "python",
+  "competition_sources": [
+    "titanic"
+  ],
+  "id_no": 2111906,
+  "code_file": "kernelfc42e462c6.ipynb",
+  "enable_internet": false,
+  "keywords": [],
+  "dataset_sources": [],
+  "is_private": false,
+  "kernel_type": "notebook",
+  "id": "srishti125/kernelfc42e462c6",
+  "enable_gpu": false,
+  "kernel_sources": [],
+  "title": "kernelfc42e462c6"
+}

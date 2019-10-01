@@ -1,0 +1,17 @@
+{
+  "kernel_type": "notebook",
+  "enable_gpu": false,
+  "keywords": [],
+  "kernel_sources": [],
+  "id": "abhishekd7/complete-data-analysis-manav-sehgal-s-notebook",
+  "title": "Complete Data Analysis - Manav Sehgal's Notebook ",
+  "is_private": false,
+  "competition_sources": [
+    "titanic"
+  ],
+  "id_no": 279564,
+  "code_file": "complete-data-analysis-manav-sehgal-s-notebook.ipynb",
+  "language": "python",
+  "dataset_sources": [],
+  "enable_internet": false
+}

@@ -1,0 +1,17 @@
+{
+  "dataset_sources": [],
+  "id": "karakos/fork-introduction-to-ensembling-stacking",
+  "language": "python",
+  "competition_sources": [
+    "titanic"
+  ],
+  "id_no": 201845,
+  "enable_internet": false,
+  "is_private": false,
+  "code_file": "fork-introduction-to-ensembling-stacking.ipynb",
+  "kernel_sources": [],
+  "keywords": [],
+  "kernel_type": "notebook",
+  "title": "(Fork) Introduction to Ensembling/Stacking",
+  "enable_gpu": false
+}

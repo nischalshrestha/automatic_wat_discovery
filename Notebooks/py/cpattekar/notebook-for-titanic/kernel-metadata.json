@@ -1,0 +1,17 @@
+{
+  "is_private": false,
+  "id_no": 232922,
+  "competition_sources": [
+    "titanic"
+  ],
+  "enable_gpu": false,
+  "language": "python",
+  "keywords": [],
+  "enable_internet": false,
+  "title": "Notebook for Titanic",
+  "id": "cpattekar/notebook-for-titanic",
+  "dataset_sources": [],
+  "kernel_sources": [],
+  "kernel_type": "notebook",
+  "code_file": "notebook-for-titanic.ipynb"
+}

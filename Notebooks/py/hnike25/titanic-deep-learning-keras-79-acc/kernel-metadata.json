@@ -1,0 +1,21 @@
+{
+  "title": "Titanic + Deep Learning (KERAS) =  79% acc",
+  "id": "hnike25/titanic-deep-learning-keras-79-acc",
+  "kernel_sources": [],
+  "code_file": "titanic-deep-learning-keras-79-acc.ipynb",
+  "kernel_type": "notebook",
+  "is_private": false,
+  "dataset_sources": [],
+  "competition_sources": [
+    "titanic"
+  ],
+  "id_no": 929171,
+  "keywords": [
+    "data cleaning",
+    "classification",
+    "deep learning"
+  ],
+  "enable_internet": false,
+  "language": "python",
+  "enable_gpu": true
+}

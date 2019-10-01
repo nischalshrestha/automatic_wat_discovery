@@ -1,0 +1,17 @@
+{
+  "dataset_sources": [],
+  "competition_sources": [
+    "titanic"
+  ],
+  "kernel_sources": [],
+  "language": "python",
+  "id_no": 209717,
+  "code_file": "training-different-models.ipynb",
+  "enable_gpu": false,
+  "keywords": [],
+  "kernel_type": "notebook",
+  "title": "Training different models",
+  "id": "mariammohamed/training-different-models",
+  "is_private": false,
+  "enable_internet": false
+}

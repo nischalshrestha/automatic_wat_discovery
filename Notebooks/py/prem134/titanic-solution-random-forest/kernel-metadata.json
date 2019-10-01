@@ -1,0 +1,17 @@
+{
+  "kernel_type": "notebook",
+  "id_no": 1437429,
+  "id": "prem134/titanic-solution-random-forest",
+  "keywords": [],
+  "language": "python",
+  "code_file": "titanic-solution-random-forest.ipynb",
+  "dataset_sources": [],
+  "title": "Titanic - solution (Random Forest)",
+  "is_private": false,
+  "enable_gpu": false,
+  "enable_internet": false,
+  "competition_sources": [
+    "titanic"
+  ],
+  "kernel_sources": []
+}

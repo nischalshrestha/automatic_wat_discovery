@@ -1,0 +1,230 @@
+{
+  "cells": [
+    {
+      "cell_type": "markdown",
+      "metadata": {
+        "_cell_guid": "455f7f2c-b98c-569a-d14b-0669c7c856ce"
+      },
+      "source": [
+        "This is my submission for the Titanic: Machine Learning from Disaster dataset. I used random forest technique to do my analysis and receive a score of 0.81340. I received great insight about this dataset from Trevor Stephens blog and used some of his concepts. The link to his blog: http://trevorstephens.com/kaggle-titanic-tutorial/getting-started-with-r/"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "_cell_guid": "4955587a-506a-12a1-9642-7eef329e1ce6"
+      },
+      "outputs": [],
+      "source": [
+        "# This R environment comes with all of CRAN preinstalled, as well as many other helpful packages\n",
+        "# The environment is defined by the kaggle/rstats docker image: https://github.com/kaggle/docker-rstats\n",
+        "# For example, here's several helpful packages to load in \n",
+        "\n",
+        "library('ggplot2') # Data visualization\n",
+        "library('readr') # CSV file I/O, e.g. the read_csv function\n",
+        "library('scales') # visualization\n",
+        "library('dplyr') # data manipulation\n",
+        "library('randomForest') # classification algorithm\n",
+        "library('rattle') # visualization\n",
+        "library('rpart.plot') # visualization\n",
+        "library('RColorBrewer') # visualization\n",
+        "library('party') # classification algorithm"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "_cell_guid": "6fd878b7-9966-9c28-4243-66cc404d7841"
+      },
+      "outputs": [],
+      "source": [
+        "# Input data files are available in the \"../input/\" directory.\n",
+        "# For example, running this (by clicking run or pressing Shift+Enter) will list the files in the input directory\n",
+        "\n",
+        "system(\"ls ../input\")\n",
+        "train = read_csv('../input/train.csv')\n",
+        "test = read_csv('../input/test.csv')\n",
+        "missing.types <- c(\"NA\", \"\")\n",
+        "train.column.types <- c('integer',   # PassengerId\n",
+        "                        'factor',    # Survived \n",
+        "                        'factor',    # Pclass\n",
+        "                        'character', # Name\n",
+        "                        'factor',    # Sex\n",
+        "                        'numeric',   # Age\n",
+        "                        'integer',   # SibSp\n",
+        "                        'integer',   # Parch\n",
+        "                        'character', # Ticket\n",
+        "                        'numeric',   # Fare\n",
+        "                        'character', # Cabin\n",
+        "                        'factor'     # Embarked\n",
+        ")\n",
+        "test.column.types <- train.column.types[-2]\n",
+        "# Any results you write to the current directory are saved as output."
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "_cell_guid": "d12b21a4-2fef-24bb-c4d0-272b02014cdc"
+      },
+      "outputs": [],
+      "source": [
+        "#CLEANING THE DATASET\n",
+        "\n",
+        "#Combining both datasets for ease of cleaning the data\n",
+        "test$Survived<- NA \n",
+        "combi<-rbind(train,test)\n",
+        "\n",
+        "#Lastnames : I found quit a few differnt last name which would have made our decision trees much\n",
+        "#more complex. One important thing to consider for name that certain titles can be associated to\n",
+        "#higher class passengers\n",
+        "\n",
+        "#converting name to character\n",
+        "combi$Name <- as.character(combi$Name)\n",
+        "\n",
+        "#seprating the title from rest of the name\n",
+        "combi$Title <- sapply(combi$Name, FUN=function(x) {strsplit(x, split='[,.]')[[1]][2]})\n",
+        "combi$Title <- sub(' ', '', combi$Title)\n",
+        "#table(combi$Title)\n",
+        "\n",
+        "#combining similar titles\n",
+        "combi$Title[combi$Title %in% c('Mlle','Mme')]<-'Mlle'\n",
+        "combi$Title[combi$Title %in% c('Capt', 'Don', 'Major', 'Sir')] <- 'Sir'\n",
+        "combi$Title[combi$Title %in% c('Dona', 'Lady', 'the Countess', 'Jonkheer')] <- 'Lady'\n",
+        "\n",
+        "#converting title back to factor\n",
+        "combi$Title <- factor(combi$Title)\n",
+        "\n",
+        "#Familysize : Family size could be one of the factor which affect the survival rate. If the family\n",
+        "#size is considerably large the chances of leaving some of the family member behind increased.\n",
+        "\n",
+        "#calculating family size by adding number of sibling/spouse and number of parent/child with 1 for self\n",
+        "combi$FamilySize <- combi$SibSp+combi$Parch+1\n",
+        "\n",
+        "#a better picture can be drwan if we have the family surname with the family size\n",
+        "combi$Surname <- sapply(combi$Name, FUN=function(x){strsplit(x, split='[,.]')[[1]][1]})\n",
+        "\n",
+        "#creating a new column FamilyId to associate family surname with number of members\n",
+        "combi$FamilyID <- paste(as.character(combi$FamilySize), combi$Surname, sep=\"\")\n",
+        "\n",
+        "#Family ID have lot of different entries. So to bring down the variable we converted all the value\n",
+        "#with family size less then 2 to small\n",
+        "combi$FamilyID[combi$FamilySize <= 2] <- 'Small'\n",
+        "\n",
+        "#but we still notice some of the FamilyID escape our branding\n",
+        "#table(combi$FamilyID)\n",
+        "famIDS <- data.frame(table(combi$FamilyID))\n",
+        "famIDS <- famIDS[famIDS$Freq <= 2,]\n",
+        "combi$FamilyID[combi$FamilyID %in% famIDS$Var1] <- 'Small'\n",
+        "combi$FamilyID <- factor(combi$FamilyID)\n",
+        "\n",
+        "#for applying random forest there are few constraints. one of the first thing is random forest do not\n",
+        "#process n/a values so we have to convert all n/a values\n",
+        "\n",
+        "#the age variable has close to 20% of the entries as n/a so we predict age based on other variables\n",
+        "#we use the \"anova\" method because the value is continues\n",
+        "Agefit <- rpart(Age ~ Pclass + Sex + SibSp + Parch + Fare + Embarked + Title + FamilySize,\n",
+        "                data=combi[!is.na(combi$Age),], \n",
+        "                method=\"anova\")\n",
+        "combi$Age[is.na(combi$Age)] <- predict(Agefit, combi[is.na(combi$Age),])\n",
+        "\n",
+        "#similarly we find missing values in embark and replace it \n",
+        "#summary(combi)\n",
+        "#summary(combi$Embarked)\n",
+        "which(combi$Embarked == '')\n",
+        "combi$Embarked[c(62,830)] = \"S\"\n",
+        "combi$Embarked <- factor(combi$Embarked)\n",
+        "\n",
+        "#replace the missing value in Fare\n",
+        "#summary(combi$Fare)\n",
+        "which(is.na(combi$Fare))\n",
+        "combi$Fare[1044] <- median(combi$Fare, na.rm=TRUE)\n",
+        "\n",
+        "#after going through the dataset I still found quite many different familyID so to reduce the number\n",
+        "#all family with less than or equal to 3 member would be categorized as \"Small\" family\n",
+        "combi$FamilyID2 <- combi$FamilyID\n",
+        "#summary(combi$FamilyID2)\n",
+        "combi$FamilyID2 <- as.character(combi$FamilyID2)\n",
+        "combi$FamilyID2[combi$FamilySize <= 3] <- 'Small'\n",
+        "combi$FamilyID2 <- factor(combi$FamilyID2)\n",
+        "\n",
+        "#seprating train and test data to run random forest\n",
+        "train <- combi[1:891,]\n",
+        "test <- combi[892:1309,]"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "_cell_guid": "ecec070c-a740-8f7d-3d15-a869c241d2c0"
+      },
+      "outputs": [],
+      "source": [
+        "#applying random forest technique\n",
+        "\n",
+        "set.seed(415)#set the seed to avoid future confusion\n",
+        "\n",
+        "fit <- randomForest(as.factor(Survived) ~ Pclass + Sex + Age + SibSp + Parch + Fare +\n",
+        "                    Embarked + Title + FamilySize + FamilyID2,\n",
+        "                    data=train, \n",
+        "                    importance=TRUE, \n",
+        "                    ntree=2000)\n",
+        "varImpPlot(fit)\n",
+        "\n",
+        "Prediction <- predict(fit, test)\n",
+        "random <- data.frame(PassengerId = test$PassengerId, Survived = Prediction)\n",
+        "random"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "_cell_guid": "52141b77-9ba2-ef22-70bc-2d271a623196"
+      },
+      "outputs": [],
+      "source": [
+        "set.seed(415)\n",
+        "fit <- cforest(as.factor(Survived) ~ Pclass + Sex + Age + SibSp + Parch + Fare +\n",
+        "                Embarked + Title + FamilySize + FamilyID,\n",
+        "                data = train, \n",
+        "                controls=cforest_unbiased(ntree=2000, mtry=3))\n",
+        "Prediction <- predict(fit, test, OOB=TRUE, type = \"response\")\n",
+        "submit <- data.frame(PassengerId = test$PassengerId, Survived = Prediction)\n",
+        "submit"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "_cell_guid": "18cafb01-18fb-39fd-7c29-20d5916f7f05"
+      },
+      "outputs": [],
+      "source": ""
+    }
+  ],
+  "metadata": {
+    "_change_revision": 0,
+    "_is_fork": false,
+    "kernelspec": {
+      "display_name": "R",
+      "language": "R",
+      "name": "ir"
+    },
+    "language_info": {
+      "codemirror_mode": "r",
+      "file_extension": ".r",
+      "mimetype": "text/x-r-source",
+      "name": "R",
+      "pygments_lexer": "r",
+      "version": "3.3.2"
+    }
+  },
+  "nbformat": 4,
+  "nbformat_minor": 0
+}

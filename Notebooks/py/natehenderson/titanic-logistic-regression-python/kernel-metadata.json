@@ -1,0 +1,17 @@
+{
+  "enable_gpu": false,
+  "kernel_sources": [],
+  "dataset_sources": [],
+  "enable_internet": false,
+  "kernel_type": "notebook",
+  "language": "python",
+  "id_no": 446890,
+  "keywords": [],
+  "is_private": false,
+  "code_file": "titanic-logistic-regression-python.ipynb",
+  "id": "natehenderson/titanic-logistic-regression-python",
+  "competition_sources": [
+    "titanic"
+  ],
+  "title": "Titanic Logistic Regression Python"
+}

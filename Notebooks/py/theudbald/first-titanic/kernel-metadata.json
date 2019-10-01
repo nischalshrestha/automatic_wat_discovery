@@ -1,0 +1,17 @@
+{
+  "id": "theudbald/first-titanic",
+  "competition_sources": [
+    "titanic"
+  ],
+  "enable_gpu": false,
+  "kernel_sources": [],
+  "dataset_sources": [],
+  "kernel_type": "notebook",
+  "is_private": false,
+  "code_file": "first-titanic.ipynb",
+  "language": "python",
+  "enable_internet": false,
+  "keywords": [],
+  "title": "First Titanic",
+  "id_no": 113300
+}

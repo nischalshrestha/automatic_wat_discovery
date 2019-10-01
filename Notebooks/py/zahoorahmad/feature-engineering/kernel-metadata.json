@@ -1,0 +1,17 @@
+{
+  "language": "python",
+  "id_no": 1604959,
+  "competition_sources": [
+    "titanic"
+  ],
+  "enable_internet": false,
+  "code_file": "feature-engineering.ipynb",
+  "dataset_sources": [],
+  "is_private": false,
+  "id": "zahoorahmad/feature-engineering",
+  "kernel_sources": [],
+  "enable_gpu": false,
+  "kernel_type": "notebook",
+  "keywords": [],
+  "title": "feature engineering"
+}

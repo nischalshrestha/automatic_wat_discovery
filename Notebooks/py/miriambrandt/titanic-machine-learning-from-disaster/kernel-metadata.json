@@ -1,0 +1,21 @@
+{
+  "id": "miriambrandt/titanic-machine-learning-from-disaster",
+  "id_no": 572705,
+  "title": "Titanic - Machine Learning from Disaster",
+  "code_file": "titanic-machine-learning-from-disaster.ipynb",
+  "language": "python",
+  "kernel_type": "notebook",
+  "is_private": false,
+  "enable_gpu": false,
+  "enable_internet": false,
+  "keywords": [
+    "classification",
+    "feature engineering",
+    "random forest"
+  ],
+  "dataset_sources": [],
+  "kernel_sources": [],
+  "competition_sources": [
+    "titanic"
+  ]
+}

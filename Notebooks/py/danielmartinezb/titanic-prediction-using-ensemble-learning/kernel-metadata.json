@@ -1,0 +1,22 @@
+{
+  "id": "danielmartinezb/titanic-prediction-using-ensemble-learning",
+  "is_private": false,
+  "keywords": [
+    "beginner",
+    "data visualization",
+    "classification",
+    "feature engineering"
+  ],
+  "competition_sources": [
+    "titanic"
+  ],
+  "title": "Titanic Prediction Using Ensemble Learning ",
+  "code_file": "titanic-prediction-using-ensemble-learning.ipynb",
+  "kernel_sources": [],
+  "id_no": 1266101,
+  "enable_gpu": false,
+  "enable_internet": false,
+  "kernel_type": "notebook",
+  "language": "python",
+  "dataset_sources": []
+}

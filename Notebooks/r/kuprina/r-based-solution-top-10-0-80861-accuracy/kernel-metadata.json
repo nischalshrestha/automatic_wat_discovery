@@ -1,0 +1,17 @@
+{
+  "kernel_type": "notebook",
+  "keywords": [],
+  "title": "R-based solution (top 10%, 0.80861 accuracy)",
+  "language": "r",
+  "is_private": false,
+  "competition_sources": [
+    "titanic"
+  ],
+  "id_no": 358226,
+  "enable_internet": false,
+  "dataset_sources": [],
+  "kernel_sources": [],
+  "code_file": "r-based-solution-top-10-0-80861-accuracy.irnb",
+  "id": "kuprina/r-based-solution-top-10-0-80861-accuracy",
+  "enable_gpu": false
+}

@@ -1,0 +1,17 @@
+{
+  "keywords": [],
+  "kernel_type": "notebook",
+  "code_file": "notebook39646ca010.irnb",
+  "id": "needonature/notebook39646ca010",
+  "enable_internet": false,
+  "language": "r",
+  "title": "Notebook7ee6bf0a5e",
+  "id_no": 196479,
+  "enable_gpu": false,
+  "is_private": false,
+  "competition_sources": [
+    "titanic"
+  ],
+  "dataset_sources": [],
+  "kernel_sources": []
+}

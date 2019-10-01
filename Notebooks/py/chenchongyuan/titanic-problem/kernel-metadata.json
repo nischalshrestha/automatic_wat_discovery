@@ -1,0 +1,17 @@
+{
+  "code_file": "titanic-problem.ipynb",
+  "enable_internet": false,
+  "dataset_sources": [],
+  "id": "chenchongyuan/titanic-problem",
+  "kernel_type": "notebook",
+  "is_private": false,
+  "title": "Titanic Problem",
+  "enable_gpu": false,
+  "keywords": [],
+  "id_no": 633084,
+  "kernel_sources": [],
+  "competition_sources": [
+    "titanic"
+  ],
+  "language": "python"
+}

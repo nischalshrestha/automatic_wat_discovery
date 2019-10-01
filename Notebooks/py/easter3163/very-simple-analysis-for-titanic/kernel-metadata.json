@@ -1,0 +1,23 @@
+{
+  "kernel_sources": [],
+  "enable_gpu": false,
+  "id": "easter3163/very-simple-analysis-for-titanic",
+  "title": "Very Simple Analysis for Titanic",
+  "enable_internet": false,
+  "keywords": [
+    "tutorial",
+    "beginner",
+    "classification",
+    "feature engineering",
+    "starter code"
+  ],
+  "language": "python",
+  "id_no": 1694754,
+  "competition_sources": [
+    "titanic"
+  ],
+  "is_private": false,
+  "code_file": "very-simple-analysis-for-titanic.ipynb",
+  "kernel_type": "notebook",
+  "dataset_sources": []
+}

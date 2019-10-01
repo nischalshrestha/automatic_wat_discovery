@@ -1,0 +1,17 @@
+{
+  "id": "kendhcz/titanic-ashwini-swain-eda-to-prediction",
+  "kernel_type": "notebook",
+  "dataset_sources": [],
+  "enable_gpu": false,
+  "is_private": false,
+  "kernel_sources": [],
+  "code_file": "titanic-ashwini-swain-eda-to-prediction.ipynb",
+  "language": "python",
+  "title": "titanic_Ashwini Swain_EDA To Prediction",
+  "enable_internet": false,
+  "competition_sources": [
+    "titanic"
+  ],
+  "id_no": 1966935,
+  "keywords": []
+}

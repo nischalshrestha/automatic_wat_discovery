@@ -1,0 +1,17 @@
+{
+  "competition_sources": [
+    "titanic"
+  ],
+  "id": "bubblride/titanic-random-forest-more-variables",
+  "enable_internet": false,
+  "dataset_sources": [],
+  "keywords": [],
+  "kernel_sources": [],
+  "kernel_type": "notebook",
+  "is_private": false,
+  "id_no": 1901655,
+  "code_file": "titanic-random-forest-more-variables.ipynb",
+  "title": "titanic, random forest, more variables",
+  "enable_gpu": false,
+  "language": "python"
+}

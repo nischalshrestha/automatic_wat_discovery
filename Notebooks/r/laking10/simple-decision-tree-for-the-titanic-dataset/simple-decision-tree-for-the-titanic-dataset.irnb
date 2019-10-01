@@ -1,0 +1,451 @@
+{
+  "cells": [
+    {
+      "cell_type": "markdown",
+      "metadata": {
+        "_cell_guid": "09d128bb-4feb-3438-c125-869839bb0c16"
+      },
+      "source": [
+        "Just looking to give Kaggle a try!  Simple decision tree with included visualtization and cross validation."
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "_cell_guid": "912a152c-0445-981b-c528-89199aa2377d"
+      },
+      "outputs": [],
+      "source": [
+        "import numpy as np\n",
+        "import pandas as pd\n",
+        "import re\n",
+        "import xgboost as xgb\n",
+        "import seaborn as sns\n",
+        "import matplotlib.pyplot as plt\n",
+        "%matplotlib inline\n",
+        "\n",
+        "import plotly.offline as py\n",
+        "py.init_notebook_mode(connected=True)\n",
+        "import plotly.graph_objs as go\n",
+        "import plotly.tools as tls\n",
+        "\n",
+        "from sklearn import tree\n",
+        "from sklearn.metrics import accuracy_score\n",
+        "from sklearn.cross_validation import KFold\n",
+        "from sklearn.cross_validation import cross_val_score\n",
+        "from IPython.display import Image as PImage\n",
+        "from subprocess import check_call\n",
+        "from PIL import Image, ImageDraw, ImageFont"
+      ]
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {
+        "_cell_guid": "af6bb647-50c9-cb5e-5b00-ea49474ff254"
+      },
+      "source": [
+        "## Data exploration ##"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "_cell_guid": "d66580d1-f255-86b9-e5c0-f012342ab8d8"
+      },
+      "outputs": [],
+      "source": [
+        "train = pd.read_csv('../input/train.csv')\n",
+        "test = pd.read_csv('../input/test.csv')\n",
+        "\n",
+        "# Store our test passenger IDs for easy access\n",
+        "PassengerId = test['PassengerId']\n",
+        "\n",
+        "test.head(3)"
+      ]
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {
+        "_cell_guid": "9c395abd-2eca-0067-23a3-4356a25703ea"
+      },
+      "source": [
+        "Data is now loaded, what kind of people had the best chance to survive? Before being able to answer this question, we must prepare the data for the task at hand. First we're going to transform existing data and create some new features, taking inspiration from the approaches of [Sina][1] and [Anisotropic][2].\n",
+        "\n",
+        "\n",
+        "  [1]: https://www.kaggle.com/sinakhorami/titanic/titanic-best-working-classifier\n",
+        "  [2]: https://www.kaggle.com/arthurtok/titanic/introduction-to-ensembling-stacking-in-python"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "_cell_guid": "72063fe1-8b92-850b-3ede-5e030c7429ae"
+      },
+      "outputs": [],
+      "source": [
+        "full_data = [train, test]\n",
+        "\n",
+        "# Feature that tells whether a passenger had a cabin on the Titanic\n",
+        "train['Has_Cabin'] = train[\"Cabin\"].apply(lambda x: 0 if type(x) == float else 1)\n",
+        "test['Has_Cabin'] = test[\"Cabin\"].apply(lambda x: 0 if type(x) == float else 1)\n",
+        "\n",
+        "# Feature engineering steps taken from Sina and Anisotropic\n",
+        "# Create new feature FamilySize as a combination of SibSp and Parch\n",
+        "for dataset in full_data:\n",
+        "    dataset['FamilySize'] = dataset['SibSp'] + dataset['Parch'] + 1\n",
+        "# Create new feature IsAlone from FamilySize\n",
+        "for dataset in full_data:\n",
+        "    dataset['IsAlone'] = 0\n",
+        "    dataset.loc[dataset['FamilySize'] == 1, 'IsAlone'] = 1\n",
+        "# Remove all NULLS in the Embarked column\n",
+        "for dataset in full_data:\n",
+        "    dataset['Embarked'] = dataset['Embarked'].fillna('S')\n",
+        "# Remove all NULLS in the Fare column\n",
+        "for dataset in full_data:\n",
+        "    dataset['Fare'] = dataset['Fare'].fillna(train['Fare'].median())\n",
+        "\n",
+        "# Remove all NULLS in the Age column\n",
+        "for dataset in full_data:\n",
+        "    age_avg = dataset['Age'].mean()\n",
+        "    age_std = dataset['Age'].std()\n",
+        "    age_null_count = dataset['Age'].isnull().sum()\n",
+        "    age_null_random_list = np.random.randint(age_avg - age_std, age_avg + age_std, size=age_null_count)\n",
+        "    dataset['Age'][np.isnan(dataset['Age'])] = age_null_random_list\n",
+        "    dataset['Age'] = dataset['Age'].astype(int)\n",
+        "\n",
+        "# Define function to extract titles from passenger names\n",
+        "def get_title(name):\n",
+        "    title_search = re.search(' ([A-Za-z]+)\\.', name)\n",
+        "    # If the title exists, extract and return it.\n",
+        "    if title_search:\n",
+        "        return title_search.group(1)\n",
+        "    return \"\"\n",
+        "\n",
+        "for dataset in full_data:\n",
+        "    dataset['Title'] = dataset['Name'].apply(get_title)\n",
+        "# Group all non-common titles into one single grouping \"Rare\"\n",
+        "for dataset in full_data:\n",
+        "    dataset['Title'] = dataset['Title'].replace(['Lady', 'Countess','Capt', 'Col','Don', 'Dr', 'Major', 'Rev', 'Sir', 'Jonkheer', 'Dona'], 'Rare')\n",
+        "\n",
+        "    dataset['Title'] = dataset['Title'].replace('Mlle', 'Miss')\n",
+        "    dataset['Title'] = dataset['Title'].replace('Ms', 'Miss')\n",
+        "    dataset['Title'] = dataset['Title'].replace('Mme', 'Mrs')\n",
+        "\n",
+        "for dataset in full_data:\n",
+        "    # Mapping Sex\n",
+        "    dataset['Sex'] = dataset['Sex'].map( {'female': 0, 'male': 1} ).astype(int)\n",
+        "    \n",
+        "    # Mapping titles\n",
+        "    title_mapping = {\"Mr\": 1, \"Master\": 2, \"Mrs\": 3, \"Miss\": 4, \"Rare\": 5}\n",
+        "    dataset['Title'] = dataset['Title'].map(title_mapping)\n",
+        "    dataset['Title'] = dataset['Title'].fillna(0)\n",
+        "\n",
+        "    # Mapping Embarked\n",
+        "    dataset['Embarked'] = dataset['Embarked'].map( {'S': 0, 'C': 1, 'Q': 2} ).astype(int)\n",
+        "    \n",
+        "    # Mapping Fare\n",
+        "    dataset.loc[ dataset['Fare'] <= 7.91, 'Fare'] \t\t\t\t\t\t        = 0\n",
+        "    dataset.loc[(dataset['Fare'] > 7.91) & (dataset['Fare'] <= 14.454), 'Fare'] = 1\n",
+        "    dataset.loc[(dataset['Fare'] > 14.454) & (dataset['Fare'] <= 31), 'Fare']   = 2\n",
+        "    dataset.loc[ dataset['Fare'] > 31, 'Fare'] \t\t\t\t\t\t\t        = 3\n",
+        "    dataset['Fare'] = dataset['Fare'].astype(int)\n",
+        "    \n",
+        "    # Mapping Age\n",
+        "    dataset.loc[ dataset['Age'] <= 16, 'Age'] \t\t\t\t\t       = 0\n",
+        "    dataset.loc[(dataset['Age'] > 16) & (dataset['Age'] <= 32), 'Age'] = 1\n",
+        "    dataset.loc[(dataset['Age'] > 32) & (dataset['Age'] <= 48), 'Age'] = 2\n",
+        "    dataset.loc[(dataset['Age'] > 48) & (dataset['Age'] <= 64), 'Age'] = 3\n",
+        "    dataset.loc[ dataset['Age'] > 64, 'Age'] ;"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "_cell_guid": "0486bde8-a09f-93c6-832d-c5c9760e2f6e"
+      },
+      "outputs": [],
+      "source": [
+        "# Feature selection: remove variables no longer containing relevant information\n",
+        "drop_elements = ['PassengerId', 'Name', 'Ticket', 'Cabin', 'SibSp']\n",
+        "train = train.drop(drop_elements, axis = 1)\n",
+        "test  = test.drop(drop_elements, axis = 1)"
+      ]
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {
+        "_cell_guid": "abef639b-2b31-4209-20ef-d8ba15c4de74"
+      },
+      "source": [
+        "## Visualisation of processed data ##"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "_cell_guid": "b587a7d3-36be-408e-0dee-6fd292e9621b"
+      },
+      "outputs": [],
+      "source": [
+        "train.head(3)"
+      ]
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {
+        "_cell_guid": "cc298a8b-1fb3-21f9-6437-1fd6cd93d35e"
+      },
+      "source": [
+        "Pearson Correlation taken from [Anisotropic][1]\n",
+        "\n",
+        "\n",
+        "  [1]: https://www.kaggle.com/arthurtok/titanic/introduction-to-ensembling-stacking-in-python"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "_cell_guid": "d289fd14-d3a9-6131-3b3a-058edced24f1"
+      },
+      "outputs": [],
+      "source": [
+        "colormap = plt.cm.viridis\n",
+        "plt.figure(figsize=(12,12))\n",
+        "plt.title('Pearson Correlation of Features', y=1.05, size=15)\n",
+        "sns.heatmap(train.astype(float).corr(),linewidths=0.1,vmax=1.0, square=True, cmap=colormap, linecolor='white', annot=True)"
+      ]
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {
+        "_cell_guid": "28861e40-1c0b-d4f7-312b-e7f64cb3e5ae"
+      },
+      "source": [
+        "Title VS Sex\n",
+        "-------"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "_cell_guid": "ce843f51-6f28-ef63-5f21-5f6bf8802e7f"
+      },
+      "outputs": [],
+      "source": [
+        "train[['Title', 'Survived']].groupby(['Title'], as_index=False).agg(['mean', 'count', 'sum'])\n",
+        "# Since Survived is a binary feature, this metrics grouped by the Title feature represent:\n",
+        "    # MEAN: survival rate\n",
+        "    # COUNT: total observations\n",
+        "    # SUM: people survived\n",
+        "\n",
+        "# Just as a reminder\n",
+        "# title_mapping = {\"Mr\": 1, \"Miss\": 2, \"Mrs\": 3, \"Master\": 4, \"Rare\": 5} "
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "_cell_guid": "05abd10a-b698-dc8a-f745-59436608e38c"
+      },
+      "outputs": [],
+      "source": [
+        "train[['Sex', 'Survived']].groupby(['Sex'], as_index=False).agg(['mean', 'count', 'sum'])\n",
+        "# Since Survived is a binary feature, this metrics grouped by the Sex feature represent:\n",
+        "    # MEAN: survival rate\n",
+        "    # COUNT: total observations\n",
+        "    # SUM: people survived\n",
+        "#  \n",
+        "# title_mapping = {\"Mr\": 1, \"Miss\": 2, \"Mrs\": 3, \"Master\": 4, \"Rare\": 5} "
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "_cell_guid": "9f8d8720-5f0f-4edf-384c-775c933d707e"
+      },
+      "outputs": [],
+      "source": [
+        "train['Sex'].describe()"
+      ]
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {
+        "_cell_guid": "05cb2f35-88cd-35ed-3110-370eb5fa6188"
+      },
+      "source": [
+        "Title seems to be more useful than Sex for predicting non survival (less 'Mr' survived than men in general). This is because Title implicitely includes information about Sex in most cases, and therefore "
+      ]
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {
+        "_cell_guid": "a9323d91-0b96-4811-5783-bfe85116a907"
+      },
+      "source": [
+        "## Finding best tree depth with Cross Validation ##"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "_cell_guid": "47c72580-95fc-4b07-55bf-75ceeed0b75b"
+      },
+      "outputs": [],
+      "source": [
+        "# Create Numpy arrays of train, test and target ( Survived) dataframes to feed into our models\n",
+        "y_train = train['Survived'].ravel()\n",
+        "#train = train.drop(['Survived'], axis=1)\n",
+        "x_train = train.drop(['Survived'], axis=1).values # Creates an array of the train data\n",
+        "x_test = test.values # Creats an array of the test data"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "_cell_guid": "f75cae8a-2005-3909-93ba-79752263af76"
+      },
+      "outputs": [],
+      "source": [
+        "cv = KFold(n=len(train),  # Number of elements\n",
+        "           n_folds=10,            # Desired number of cv folds\n",
+        "           random_state=12)       # Set a random seed"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "_cell_guid": "33f3999e-e0da-0e2e-dfa1-7be4824c6a36"
+      },
+      "outputs": [],
+      "source": [
+        "for depth in range(1, len(list(test)) + 1): #testing max_depths from 1 to len(list(test)) (max attributes)\n",
+        "    fold_accuracy = []\n",
+        "    tree_model = tree.DecisionTreeClassifier(max_depth = depth)\n",
+        "    print(\"Current max depth: \", depth, \"\\n\")\n",
+        "    for train_fold, valid_fold in cv:\n",
+        "        f_train = train.loc[train_fold] # Extract train data with cv indices\n",
+        "        f_valid = train.loc[valid_fold] # Extract valid data with cv indices\n",
+        "\n",
+        "        model = tree_model.fit(X = f_train.drop(['Survived'], axis=1), \n",
+        "                               y = f_train[\"Survived\"]) # We fit the model with the fold train data\n",
+        "        valid_acc = model.score(X = f_valid.drop(['Survived'], axis=1), \n",
+        "                                y = f_valid[\"Survived\"])# We calculate accurary with the fold validation data\n",
+        "        fold_accuracy.append(valid_acc)    \n",
+        "\n",
+        "    print(\"Accuracy per fold: \", fold_accuracy, \"\\n\")\n",
+        "    print(\"Average accuracy: \", sum(fold_accuracy)/len(fold_accuracy))\n",
+        "    print(\"\\n\")"
+      ]
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {
+        "_cell_guid": "035b62df-00f6-ab53-7082-227051ff974e"
+      },
+      "source": [
+        "## Final Tree ##"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "_cell_guid": "168d3b9e-01fd-1cc3-661a-614561f70c83"
+      },
+      "outputs": [],
+      "source": [
+        "decision_tree = tree.DecisionTreeClassifier(max_depth = 3)\n",
+        "decision_tree.fit(x_train, y_train)\n",
+        "y_pred = decision_tree.predict(x_test)"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "_cell_guid": "012339ff-5353-268f-a97b-752aa4aa3602"
+      },
+      "outputs": [],
+      "source": [
+        "with open(\"tree1.dot\", 'w') as f:\n",
+        "     f = tree.export_graphviz(decision_tree,\n",
+        "                              out_file=f,\n",
+        "                              max_depth = 3,\n",
+        "                              impurity = False,\n",
+        "                              feature_names = list(train.drop(['Survived'], axis=1)),\n",
+        "                              class_names = ['Died', 'Survived'],\n",
+        "                              rounded = True,\n",
+        "                              filled= True )\n",
+        "check_call(['dot','-Tpng','tree1.dot','-o','tree1.png']) #Convert .dot to .png allow display\n",
+        "\n",
+        "# Adding legend to chart with PIL\n",
+        "img = Image.open(\"tree1.png\")\n",
+        "draw = ImageDraw.Draw(img)\n",
+        "font = ImageFont.truetype('/usr/share/fonts/truetype/liberation/LiberationSerif-Bold.ttf', 17)\n",
+        "draw.text((10, 0), # Drawing offset (position)\n",
+        "          '\"Tile <= 1.5\" corresponds to \"Mr.\" Title', # Text to draw\n",
+        "          (0,0,255), # RGB desired color\n",
+        "          font=font) # ImageFont object with desired font\n",
+        "img.save('sample-out.png')\n",
+        "PImage(\"sample-out.png\")\n",
+        "\n",
+        "# Code to check available fonts and respective paths\n",
+        "# import matplotlib.font_manager\n",
+        "# matplotlib.font_manager.findSystemFonts(fontpaths=None, fontext='ttf')"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "_cell_guid": "da2fb75f-cd2c-f3ac-5f83-a0f1ff989080"
+      },
+      "outputs": [],
+      "source": [
+        "acc_decision_tree = round(decision_tree.score(x_train, y_train) * 100, 2)\n",
+        "acc_decision_tree"
+      ]
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {
+        "_cell_guid": "dbd41693-028b-7cd1-3337-66de8fd85d08"
+      },
+      "source": [
+        "TO DO - Explain results"
+      ]
+    }
+  ],
+  "metadata": {
+    "_change_revision": 0,
+    "_is_fork": false,
+    "kernelspec": {
+      "display_name": "R",
+      "language": "R",
+      "name": "ir"
+    },
+    "language_info": {
+      "codemirror_mode": "r",
+      "file_extension": ".r",
+      "mimetype": "text/x-r-source",
+      "name": "R",
+      "pygments_lexer": "r",
+      "version": "3.3.2"
+    }
+  },
+  "nbformat": 4,
+  "nbformat_minor": 0
+}

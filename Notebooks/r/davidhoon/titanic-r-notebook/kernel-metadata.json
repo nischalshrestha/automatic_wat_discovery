@@ -1,0 +1,17 @@
+{
+  "enable_internet": false,
+  "id": "davidhoon/titanic-r-notebook",
+  "kernel_sources": [],
+  "title": "Titanic R Notebook",
+  "language": "r",
+  "dataset_sources": [],
+  "is_private": false,
+  "competition_sources": [
+    "titanic"
+  ],
+  "enable_gpu": false,
+  "kernel_type": "notebook",
+  "keywords": [],
+  "id_no": 216089,
+  "code_file": "titanic-r-notebook.irnb"
+}

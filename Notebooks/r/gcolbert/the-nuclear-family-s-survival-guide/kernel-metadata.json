@@ -1,0 +1,23 @@
+{
+  "enable_gpu": false,
+  "title": "The Nuclear Family's Survival Guide",
+  "id": "gcolbert/the-nuclear-family-s-survival-guide",
+  "dataset_sources": [],
+  "kernel_type": "notebook",
+  "competition_sources": [
+    "titanic"
+  ],
+  "language": "r",
+  "code_file": "the-nuclear-family-s-survival-guide.irnb",
+  "is_private": false,
+  "keywords": [
+    "tutorial",
+    "beginner",
+    "eda",
+    "feature engineering",
+    "decision tree"
+  ],
+  "id_no": 777197,
+  "enable_internet": false,
+  "kernel_sources": []
+}

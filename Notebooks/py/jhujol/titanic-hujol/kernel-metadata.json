@@ -1,0 +1,17 @@
+{
+  "title": "Titanic Hujol",
+  "enable_internet": false,
+  "code_file": "titanic-hujol.ipynb",
+  "is_private": false,
+  "dataset_sources": [],
+  "enable_gpu": false,
+  "id": "jhujol/titanic-hujol",
+  "id_no": 2093565,
+  "language": "python",
+  "kernel_sources": [],
+  "keywords": [],
+  "kernel_type": "notebook",
+  "competition_sources": [
+    "titanic"
+  ]
+}

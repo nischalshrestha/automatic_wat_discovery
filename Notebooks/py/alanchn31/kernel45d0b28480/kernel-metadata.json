@@ -1,0 +1,17 @@
+{
+  "kernel_sources": [],
+  "competition_sources": [
+    "titanic"
+  ],
+  "code_file": "kernel45d0b28480.ipynb",
+  "title": "kernel45d0b28480",
+  "dataset_sources": [],
+  "language": "python",
+  "enable_gpu": true,
+  "enable_internet": false,
+  "id_no": 1303667,
+  "kernel_type": "notebook",
+  "keywords": [],
+  "id": "alanchn31/kernel45d0b28480",
+  "is_private": false
+}

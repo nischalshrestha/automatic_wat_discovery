@@ -1,0 +1,22 @@
+{
+  "kernel_type": "notebook",
+  "is_private": false,
+  "dataset_sources": [],
+  "id_no": 1935822,
+  "title": "Titanic: Good Way To Get Started",
+  "language": "python",
+  "kernel_sources": [],
+  "enable_gpu": false,
+  "id": "imaxons/titanic-good-way-to-get-started",
+  "competition_sources": [
+    "titanic"
+  ],
+  "enable_internet": false,
+  "code_file": "titanic-good-way-to-get-started.ipynb",
+  "keywords": [
+    "tutorial",
+    "beginner",
+    "data visualization",
+    "feature engineering"
+  ]
+}

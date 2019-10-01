@@ -1,0 +1,17 @@
+{
+  "language": "python",
+  "id": "cpamieta/notebook89c0cb623e",
+  "id_no": 218537,
+  "kernel_type": "notebook",
+  "dataset_sources": [],
+  "code_file": "notebook89c0cb623e.ipynb",
+  "kernel_sources": [],
+  "title": "Notebook89c0cb623e",
+  "enable_gpu": false,
+  "is_private": false,
+  "competition_sources": [
+    "titanic"
+  ],
+  "keywords": [],
+  "enable_internet": false
+}

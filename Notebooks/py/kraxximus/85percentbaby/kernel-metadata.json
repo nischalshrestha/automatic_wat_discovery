@@ -1,0 +1,17 @@
+{
+  "enable_gpu": false,
+  "kernel_sources": [],
+  "enable_internet": false,
+  "id_no": 806800,
+  "language": "python",
+  "dataset_sources": [],
+  "code_file": "85percentbaby.ipynb",
+  "competition_sources": [
+    "titanic"
+  ],
+  "is_private": false,
+  "kernel_type": "notebook",
+  "keywords": [],
+  "id": "kraxximus/85percentbaby",
+  "title": "85PERCENTBABY"
+}

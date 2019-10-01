@@ -1,0 +1,17 @@
+{
+  "enable_gpu": false,
+  "dataset_sources": [],
+  "competition_sources": [
+    "titanic"
+  ],
+  "enable_internet": false,
+  "id_no": 1161610,
+  "keywords": [],
+  "is_private": false,
+  "id": "shivam1600/getting-started-on-kaggle",
+  "code_file": "getting-started-on-kaggle.ipynb",
+  "kernel_sources": [],
+  "kernel_type": "notebook",
+  "title": "Getting Started on Kaggle",
+  "language": "python"
+}

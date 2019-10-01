@@ -1,0 +1,21 @@
+{
+  "title": "Titanic Competition - Python",
+  "is_private": false,
+  "kernel_sources": [],
+  "dataset_sources": [],
+  "kernel_type": "notebook",
+  "keywords": [
+    "tutorial",
+    "beginner",
+    "feature engineering"
+  ],
+  "competition_sources": [
+    "titanic"
+  ],
+  "id_no": 681565,
+  "language": "python",
+  "enable_internet": false,
+  "code_file": "titanic-competition-python.ipynb",
+  "id": "diogo22santos/titanic-competition-python",
+  "enable_gpu": false
+}

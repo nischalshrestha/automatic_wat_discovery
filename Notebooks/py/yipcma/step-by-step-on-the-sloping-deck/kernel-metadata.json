@@ -1,0 +1,23 @@
+{
+  "keywords": [
+    "tutorial",
+    "beginner",
+    "eda",
+    "data visualization",
+    "classification"
+  ],
+  "enable_gpu": false,
+  "enable_internet": false,
+  "title": "Step-by-step on the Sloping Deck",
+  "kernel_sources": [],
+  "is_private": false,
+  "language": "python",
+  "kernel_type": "notebook",
+  "competition_sources": [
+    "titanic"
+  ],
+  "dataset_sources": [],
+  "id": "yipcma/step-by-step-on-the-sloping-deck",
+  "code_file": "step-by-step-on-the-sloping-deck.ipynb",
+  "id_no": 634130
+}

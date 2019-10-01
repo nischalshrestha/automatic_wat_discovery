@@ -1,0 +1,17 @@
+{
+  "id": "lakshyauttrani/titanic-xgboost",
+  "kernel_type": "notebook",
+  "dataset_sources": [],
+  "code_file": "titanic-xgboost.ipynb",
+  "keywords": [],
+  "language": "python",
+  "competition_sources": [
+    "titanic"
+  ],
+  "enable_internet": false,
+  "id_no": 1668424,
+  "title": "Titanic_XGBoost",
+  "enable_gpu": false,
+  "kernel_sources": [],
+  "is_private": false
+}

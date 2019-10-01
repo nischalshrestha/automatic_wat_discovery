@@ -1,0 +1,17 @@
+{
+  "dataset_sources": [],
+  "enable_internet": false,
+  "kernel_sources": [],
+  "code_file": "titanic-survival-prediction-using-logit.irnb",
+  "kernel_type": "notebook",
+  "competition_sources": [
+    "titanic"
+  ],
+  "is_private": false,
+  "title": "Titanic Survival Prediction using logit",
+  "id": "karthikraghuveer/titanic-survival-prediction-using-logit",
+  "enable_gpu": false,
+  "keywords": [],
+  "language": "r",
+  "id_no": 1646295
+}

@@ -1,0 +1,17 @@
+{
+  "competition_sources": [
+    "titanic"
+  ],
+  "keywords": [],
+  "language": "r",
+  "kernel_type": "notebook",
+  "code_file": "notebook4833ccf404.irnb",
+  "dataset_sources": [],
+  "enable_internet": false,
+  "id_no": 123154,
+  "is_private": false,
+  "kernel_sources": [],
+  "enable_gpu": false,
+  "id": "peopleanalytics/notebook4833ccf404",
+  "title": "Notebook2c3f0da9f4"
+}

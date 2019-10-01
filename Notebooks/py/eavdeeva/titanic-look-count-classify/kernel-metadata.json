@@ -1,0 +1,17 @@
+{
+  "is_private": false,
+  "competition_sources": [
+    "titanic"
+  ],
+  "kernel_type": "notebook",
+  "id": "eavdeeva/titanic-look-count-classify",
+  "code_file": "titanic-look-count-classify.ipynb",
+  "title": "Titanic. Look, count, classify",
+  "kernel_sources": [],
+  "id_no": 340331,
+  "enable_gpu": false,
+  "language": "python",
+  "keywords": [],
+  "dataset_sources": [],
+  "enable_internet": false
+}

@@ -1,0 +1,19 @@
+{
+  "language": "python",
+  "kernel_sources": [],
+  "enable_gpu": false,
+  "competition_sources": [
+    "titanic"
+  ],
+  "enable_internet": false,
+  "code_file": "titanic-problem.ipynb",
+  "dataset_sources": [],
+  "keywords": [
+    "beginner"
+  ],
+  "id_no": 414929,
+  "title": "Titanic Problem",
+  "kernel_type": "notebook",
+  "is_private": false,
+  "id": "natsuki1996/titanic-problem"
+}

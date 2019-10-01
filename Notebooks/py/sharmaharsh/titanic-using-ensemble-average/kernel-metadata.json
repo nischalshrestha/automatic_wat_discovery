@@ -1,0 +1,17 @@
+{
+  "enable_internet": false,
+  "dataset_sources": [],
+  "id": "sharmaharsh/titanic-using-ensemble-average",
+  "kernel_sources": [],
+  "language": "python",
+  "code_file": "titanic-using-ensemble-average.ipynb",
+  "id_no": 851408,
+  "kernel_type": "notebook",
+  "title": "Titanic using ensemble average",
+  "is_private": false,
+  "enable_gpu": false,
+  "competition_sources": [
+    "titanic"
+  ],
+  "keywords": []
+}

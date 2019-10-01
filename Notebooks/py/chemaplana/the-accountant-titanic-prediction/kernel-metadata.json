@@ -1,0 +1,19 @@
+{
+  "enable_internet": false,
+  "language": "python",
+  "title": "The Accountant - Titanic prediction",
+  "enable_gpu": false,
+  "dataset_sources": [],
+  "kernel_sources": [],
+  "code_file": "the-accountant-titanic-prediction.ipynb",
+  "id_no": 501278,
+  "id": "chemaplana/the-accountant-titanic-prediction",
+  "is_private": false,
+  "competition_sources": [
+    "titanic"
+  ],
+  "kernel_type": "notebook",
+  "keywords": [
+    "beginner"
+  ]
+}

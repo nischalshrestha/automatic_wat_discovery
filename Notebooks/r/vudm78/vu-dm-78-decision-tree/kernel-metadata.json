@@ -1,0 +1,17 @@
+{
+  "kernel_sources": [],
+  "enable_gpu": false,
+  "keywords": [],
+  "enable_internet": false,
+  "title": "VU-DM-78 Decision Tree",
+  "code_file": "vu-dm-78-decision-tree.irnb",
+  "is_private": false,
+  "competition_sources": [
+    "titanic"
+  ],
+  "dataset_sources": [],
+  "language": "r",
+  "id_no": 892530,
+  "kernel_type": "notebook",
+  "id": "vudm78/vu-dm-78-decision-tree"
+}

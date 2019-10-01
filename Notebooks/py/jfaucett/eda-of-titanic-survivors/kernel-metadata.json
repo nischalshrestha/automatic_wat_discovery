@@ -1,0 +1,17 @@
+{
+  "kernel_sources": [],
+  "is_private": false,
+  "id": "jfaucett/eda-of-titanic-survivors",
+  "id_no": 1642391,
+  "enable_internet": false,
+  "keywords": [],
+  "language": "python",
+  "code_file": "eda-of-titanic-survivors.ipynb",
+  "kernel_type": "notebook",
+  "dataset_sources": [],
+  "title": "EDA of Titanic Survivors",
+  "enable_gpu": false,
+  "competition_sources": [
+    "titanic"
+  ]
+}

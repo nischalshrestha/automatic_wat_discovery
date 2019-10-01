@@ -1,0 +1,17 @@
+{
+  "is_private": false,
+  "code_file": "newbie.ipynb",
+  "language": "python",
+  "kernel_sources": [],
+  "enable_gpu": false,
+  "dataset_sources": [],
+  "enable_internet": false,
+  "keywords": [],
+  "title": "Notebookdb371e90d4",
+  "id_no": 204341,
+  "id": "funnylegs/newbie",
+  "competition_sources": [
+    "titanic"
+  ],
+  "kernel_type": "notebook"
+}

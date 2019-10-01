@@ -1,0 +1,17 @@
+{
+  "kernel_type": "notebook",
+  "language": "python",
+  "competition_sources": [
+    "titanic"
+  ],
+  "id_no": 342524,
+  "enable_gpu": false,
+  "enable_internet": false,
+  "id": "squarewei/titanic-first-try",
+  "dataset_sources": [],
+  "title": "Titanic(first try)",
+  "kernel_sources": [],
+  "is_private": false,
+  "code_file": "titanic-first-try.ipynb",
+  "keywords": []
+}

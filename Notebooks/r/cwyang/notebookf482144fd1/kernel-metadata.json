@@ -1,0 +1,17 @@
+{
+  "title": "Notebookf482144fd1",
+  "enable_gpu": false,
+  "keywords": [],
+  "code_file": "notebookf482144fd1.ipynb",
+  "id_no": 203481,
+  "is_private": false,
+  "id": "cwyang/notebookf482144fd1",
+  "kernel_sources": [],
+  "enable_internet": false,
+  "competition_sources": [
+    "titanic"
+  ],
+  "dataset_sources": [],
+  "language": "python",
+  "kernel_type": "notebook"
+}

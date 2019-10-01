@@ -1,0 +1,17 @@
+{
+  "code_file": "exploring-titanic-survival-rates.irnb",
+  "enable_gpu": false,
+  "enable_internet": false,
+  "id": "nkummer/exploring-titanic-survival-rates",
+  "is_private": false,
+  "id_no": 174553,
+  "kernel_sources": [],
+  "kernel_type": "notebook",
+  "dataset_sources": [],
+  "title": "Exploring Titanic Survival Rates",
+  "keywords": [],
+  "competition_sources": [
+    "titanic"
+  ],
+  "language": "r"
+}

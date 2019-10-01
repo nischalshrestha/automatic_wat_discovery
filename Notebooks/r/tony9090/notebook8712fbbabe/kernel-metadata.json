@@ -1,0 +1,17 @@
+{
+  "kernel_sources": [],
+  "code_file": "notebook8712fbbabe.ipynb",
+  "id_no": 149520,
+  "kernel_type": "notebook",
+  "dataset_sources": [],
+  "competition_sources": [
+    "titanic"
+  ],
+  "enable_gpu": false,
+  "is_private": false,
+  "title": "Notebook8712fbbabe",
+  "id": "tony9090/notebook8712fbbabe",
+  "language": "python",
+  "keywords": [],
+  "enable_internet": false
+}

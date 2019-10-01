@@ -1,0 +1,21 @@
+{
+  "language": "python",
+  "title": "Titanic with Tensorflow",
+  "keywords": [
+    "beginner",
+    "regression analysis",
+    "logistic regression"
+  ],
+  "kernel_sources": [],
+  "is_private": false,
+  "id_no": 431226,
+  "kernel_type": "notebook",
+  "enable_gpu": false,
+  "id": "abevallerian/titanic-with-tensorflow",
+  "enable_internet": false,
+  "competition_sources": [
+    "titanic"
+  ],
+  "dataset_sources": [],
+  "code_file": "titanic-with-tensorflow.ipynb"
+}

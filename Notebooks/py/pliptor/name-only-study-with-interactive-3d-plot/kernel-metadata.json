@@ -1,0 +1,23 @@
+{
+  "kernel_type": "notebook",
+  "id": "pliptor/name-only-study-with-interactive-3d-plot",
+  "enable_gpu": false,
+  "is_private": false,
+  "kernel_sources": [],
+  "dataset_sources": [],
+  "language": "python",
+  "id_no": 627439,
+  "enable_internet": false,
+  "keywords": [
+    "advanced",
+    "data visualization",
+    "classification",
+    "pca",
+    "text data"
+  ],
+  "title": "Name-only study with interactive 3D plot",
+  "code_file": "name-only-study-with-interactive-3d-plot.ipynb",
+  "competition_sources": [
+    "titanic"
+  ]
+}

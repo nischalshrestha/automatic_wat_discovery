@@ -1,0 +1,17 @@
+{
+  "title": "Titanic_challenge_R",
+  "id_no": 1535514,
+  "enable_internet": false,
+  "is_private": false,
+  "enable_gpu": false,
+  "language": "r",
+  "competition_sources": [
+    "titanic"
+  ],
+  "keywords": [],
+  "kernel_sources": [],
+  "dataset_sources": [],
+  "id": "patkakou/titanic-challenge-r",
+  "code_file": "titanic-challenge-r.irnb",
+  "kernel_type": "notebook"
+}

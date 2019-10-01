@@ -1,0 +1,17 @@
+{
+  "is_private": false,
+  "kernel_type": "notebook",
+  "code_file": "titanic-as-the-first-analyze.ipynb",
+  "kernel_sources": [],
+  "keywords": [],
+  "id": "hughguo/titanic-as-the-first-analyze",
+  "dataset_sources": [],
+  "id_no": 1116787,
+  "language": "python",
+  "competition_sources": [
+    "titanic"
+  ],
+  "title": "Titanic as The First Analyze",
+  "enable_internet": false,
+  "enable_gpu": false
+}

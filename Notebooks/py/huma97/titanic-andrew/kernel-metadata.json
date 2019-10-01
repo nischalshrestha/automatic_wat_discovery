@@ -1,0 +1,17 @@
+{
+  "competition_sources": [
+    "titanic"
+  ],
+  "code_file": "titanic-andrew.ipynb",
+  "title": "Titanic(Andrew)",
+  "enable_gpu": false,
+  "keywords": [],
+  "dataset_sources": [],
+  "kernel_sources": [],
+  "language": "python",
+  "id_no": 1842184,
+  "is_private": false,
+  "kernel_type": "notebook",
+  "id": "huma97/titanic-andrew",
+  "enable_internet": false
+}

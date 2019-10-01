@@ -1,0 +1,114 @@
+{
+  "cells": [
+    {
+      "cell_type": "markdown",
+      "metadata": {
+        "_cell_guid": "2450531c-2fed-dab1-8ff9-6ea1b331aab0"
+      },
+      "source": [
+        ""
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "_cell_guid": "2b0fd207-0015-a315-3013-4756d2a1ccc5"
+      },
+      "outputs": [],
+      "source": [
+        "# This R environment comes with all of CRAN preinstalled, as well as many other helpful packages\n",
+        "# The environment is defined by the kaggle/rstats docker image: https://github.com/kaggle/docker-rstats\n",
+        "# For example, here's several helpful packages to load in \n",
+        "\n",
+        "library(ggplot2) # Data visualization\n",
+        "library(readr) # CSV file I/O, e.g. the read_csv function\n",
+        "\n",
+        "# Input data files are available in the \"../input/\" directory.\n",
+        "# For example, running this (by clicking run or pressing Shift+Enter) will list the files in the input directory\n",
+        "\n",
+        "system(\"ls ../input\")\n",
+        "\n",
+        "# Any results you write to the current directory are saved as output.\n",
+        "\n",
+        "library(caret)\n",
+        "library(rpart.plot)"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "_cell_guid": "4ec251d4-8a85-8b5f-0b98-38de82a7fd52"
+      },
+      "outputs": [],
+      "source": [
+        "train <- read.csv('../input/train.csv', stringsAsFactors = F)\n",
+        "test  <- read.csv('../input/test.csv', stringsAsFactors = F)\n",
+        "\n",
+        "head(train)\n",
+        "\n",
+        "#data preparation\n",
+        "train$Survived <- as.factor(train$Survived)\n",
+        "train$Pclass <- as.factor(train$Pclass)\n",
+        "train$Sex <- as.factor(train$Sex)\n",
+        "train$Embarked <- as.factor(train$Embarked)\n",
+        "\n",
+        "#train only on complete cases\n",
+        "trainCompleteCases <- train[complete.cases(train),]\n",
+        "\n",
+        "inTrain <- createDataPartition(y = trainCompleteCases$Survived, p = .85, list = FALSE)\n",
+        "training <- trainCompleteCases[ inTrain,]\n",
+        "testing <- trainCompleteCases[-inTrain,]\n",
+        "\n",
+        "model <- train(\n",
+        "  Survived ~ Pclass + Sex + Age + Fare + SibSp + Parch + Embarked, \n",
+        "  training,\n",
+        "  method=\"rpart2\",\n",
+        "  na.action = na.pass)\n",
+        "\n",
+        "testPred <- predict(model, testing, na.action = na.pass)\n",
+        "postResample(testPred, testing$Survived) \n",
+        "\n",
+        "rpart.plot(model$finalModel)\n",
+        "\n"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "_cell_guid": "f7da78bb-ade6-7477-d78a-db397ab45d7c"
+      },
+      "outputs": [],
+      "source": [
+        "test$Pclass <- as.factor(test$Pclass)\n",
+        "test$Sex <- as.factor(test$Sex)\n",
+        "test$Embarked <- as.factor(test$Embarked)\n",
+        "\n",
+        "test$Survived <- predict(model, test, na.action = na.pass)\n",
+        "\n",
+        "write.csv(test[,c(\"PassengerId\",\"Survived\")], file = 'submission.csv', row.names = F)"
+      ]
+    }
+  ],
+  "metadata": {
+    "_change_revision": 0,
+    "_is_fork": false,
+    "kernelspec": {
+      "display_name": "R",
+      "language": "R",
+      "name": "ir"
+    },
+    "language_info": {
+      "codemirror_mode": "r",
+      "file_extension": ".r",
+      "mimetype": "text/x-r-source",
+      "name": "R",
+      "pygments_lexer": "r",
+      "version": "3.4.0"
+    }
+  },
+  "nbformat": 4,
+  "nbformat_minor": 0
+}

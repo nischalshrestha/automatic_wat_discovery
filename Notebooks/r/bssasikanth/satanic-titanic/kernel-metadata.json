@@ -1,0 +1,17 @@
+{
+  "kernel_type": "notebook",
+  "title": "Satanic Titanic",
+  "dataset_sources": [],
+  "keywords": [],
+  "enable_gpu": false,
+  "competition_sources": [
+    "titanic"
+  ],
+  "code_file": "satanic-titanic.irnb",
+  "enable_internet": false,
+  "kernel_sources": [],
+  "language": "r",
+  "id_no": 216753,
+  "id": "bssasikanth/satanic-titanic",
+  "is_private": false
+}

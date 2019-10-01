@@ -1,0 +1,17 @@
+{
+  "competition_sources": [
+    "titanic"
+  ],
+  "id_no": 445071,
+  "title": " Titanic: Logistic Biner Regression",
+  "kernel_type": "notebook",
+  "enable_gpu": false,
+  "dataset_sources": [],
+  "is_private": false,
+  "code_file": "titanic-logistic-biner-regression.irnb",
+  "id": "easbiikhsan/titanic-logistic-biner-regression",
+  "keywords": [],
+  "language": "r",
+  "kernel_sources": [],
+  "enable_internet": false
+}

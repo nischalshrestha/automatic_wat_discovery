@@ -1,0 +1,17 @@
+{
+  "code_file": "titanic-script.ipynb",
+  "enable_internet": false,
+  "id": "noogakl81/titanic-script",
+  "dataset_sources": [],
+  "kernel_type": "notebook",
+  "keywords": [],
+  "enable_gpu": false,
+  "title": "Titanic Script",
+  "competition_sources": [
+    "titanic"
+  ],
+  "id_no": 96638,
+  "language": "python",
+  "is_private": false,
+  "kernel_sources": []
+}

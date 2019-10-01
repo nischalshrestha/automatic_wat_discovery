@@ -1,0 +1,17 @@
+{
+  "id": "vnn255/notebookd025ac4a88",
+  "kernel_sources": [],
+  "title": "Notebookd025ac4a88",
+  "language": "python",
+  "code_file": "notebookd025ac4a88.ipynb",
+  "is_private": false,
+  "enable_internet": false,
+  "kernel_type": "notebook",
+  "competition_sources": [
+    "titanic"
+  ],
+  "enable_gpu": false,
+  "keywords": [],
+  "id_no": 207985,
+  "dataset_sources": []
+}

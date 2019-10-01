@@ -1,0 +1,17 @@
+{
+  "id_no": 1820653,
+  "competition_sources": [
+    "titanic"
+  ],
+  "id": "sungdoo/ensemble",
+  "dataset_sources": [],
+  "kernel_type": "notebook",
+  "enable_gpu": false,
+  "enable_internet": false,
+  "language": "python",
+  "keywords": [],
+  "kernel_sources": [],
+  "title": "ensemble",
+  "code_file": "ensemble.ipynb",
+  "is_private": false
+}

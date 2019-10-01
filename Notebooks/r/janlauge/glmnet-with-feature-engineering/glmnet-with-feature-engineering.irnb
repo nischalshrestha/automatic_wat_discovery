@@ -1,0 +1,211 @@
+{
+  "cells": [
+    {
+      "cell_type": "markdown",
+      "metadata": {
+        "_cell_guid": "8341af11-4887-427d-9aaf-7e5645b0af1d"
+      },
+      "source": [
+        "In this approach I applied some basic data cleaning, munging, and feature engineering. The resulting data set was used in a glmnet model fine-tuned using caret. \n",
+        "\n",
+        "The result performed well on the leader board, scoring 157th place and an AUC of 0.81818, on par with other entries up to place 81.\n",
+        "\n",
+        "I would appreciate any comments on the approach in general and the code in particular. Other than that: Bring on a real challenge now :)"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "_cell_guid": "c8464d9c-3181-4e4f-ae4d-085f5fc09cb4"
+      },
+      "outputs": [],
+      "source": [
+        "library(plyr, quietly=TRUE)\n",
+        "library(dplyr, quietly=TRUE)\n",
+        "library(forcats, quietly=TRUE)\n",
+        "library(caret, quietly=TRUE)\n",
+        "library(glmnet, quietly=TRUE)\n",
+        "library(pROC, quietly=TRUE)\n",
+        "set.seed(1717)\n",
+        "\n",
+        "d.init.model <- read.csv(\"../input/train.csv\", \n",
+        "                         colClasses = c(\"integer\",\"factor\",\"factor\",\"character\",\"factor\",\"numeric\",\"integer\",\"integer\",\"character\",\"numeric\",\"character\",\"factor\"),\n",
+        "                         na.strings = c(\"NA\", \"\"))\n",
+        "d.init.predict <- read.csv(\"../input/test.csv\", \n",
+        "                           colClasses = c(\"integer\",\"factor\",\"character\",\"factor\",\"numeric\",\"integer\",\"integer\",\"character\",\"numeric\",\"character\",\"factor\"),\n",
+        "                           na.strings = c(\"NA\", \"\"))"
+      ]
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {
+        "_cell_guid": "42aece16-568e-43e7-8f35-73cd452596f8"
+      },
+      "source": [
+        "I combined the two datasets into one to apply all changes to both sets. With the function GetNames I split the name strings into title, first name, and last name. Titles were used to infer missing age values, Last names were used to group families together, assuming that families are likely to live or die together. From the cabin number I extracted a deck where available. Finally, I added life boat priority for women and children first."
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "_cell_guid": "d5b43901-2809-499d-ad3e-b51e52e9dcb9"
+      },
+      "outputs": [],
+      "source": [
+        "# DATA MUNGING ----\n",
+        "# bind two datasets together to format them the same way\n",
+        "d.all <- cbind(d.init.predict, \"Survived\" = factor(NA, levels = c(0,1))) %>% rbind(d.init.model)\n",
+        "\n",
+        "# Re-format data\n",
+        "GetNames <- function(full.names){\n",
+        "  names.split <- strsplit(full.names, split = \", \")\n",
+        "  names.last <- lapply(names.split, FUN = function(x) {x[[1]]}) %>% unlist()\n",
+        "  names.rest <- lapply(names.split, FUN = function(x) {x[[2]]}) %>% unlist()\n",
+        "  names.split2 <- strsplit(names.rest, split = \"\\\\.\")\n",
+        "  names.title <- lapply(names.split2, FUN = function(x) {x[[1]]}) %>% unlist()\n",
+        "  names.title <- revalue(as.factor(names.title), \n",
+        "                            replace = c(\"the Countess\"=\"Posh\", \"Sir\"=\"Posh\", \"Lady\"=\"Posh\",\n",
+        "                                        \"Capt\"=\"Posh\", \"Col\"=\"Posh\", \"Major\"=\"Posh\",\n",
+        "                                        \"Jonkheer\"=\"Posh\", \"Don\"=\"Posh\",\"Dona\"=\"Posh\",\n",
+        "                                        \"Dr\"=\"Posh\", \"Rev\"=\"Posh\",\n",
+        "                                        \"Ms\"=\"Mrs\", \"Mlle\"=\"Miss\", \"Mme\"=\"Mrs\"))\n",
+        "  names.first <- lapply(names.split2, FUN = function(x) {ifelse(length(x) > 2, paste(x[[2]], x[[3]]), x[[2]])}) %>% unlist()\n",
+        "  split.names <- data.frame(\"Title\" = names.title, \"First\" = names.first, \"Last\" = names.last)\n",
+        "  return(split.names)\n",
+        "}\n",
+        "d.all <- cbind(d.all, GetNames(d.all$Name))\n",
+        "attach(d.all)\n",
+        "\n",
+        "# fill missing age values with inferred information\n",
+        "d.all[is.na(Embarked),\"Embarked\"] <- \"S\"\n",
+        "d.all$Age <- ifelse(!is.na(Age), Age,\n",
+        "       ifelse(is.na(Age) & Title == \"Posh\", mean(Age[Title==\"Posh\"], na.rm = T),\n",
+        "              ifelse(is.na(Age) & Title == \"Mr\", mean(Age[Title==\"Mr\"], na.rm = T),\n",
+        "                     ifelse(is.na(Age) & Title == \"Mrs\", mean(Age[Title==\"Mrs\"], na.rm = T),\n",
+        "                            ifelse(is.na(Age) & Title == \"Miss\", mean(Age[Title==\"Miss\"], na.rm = T),\n",
+        "                                   ifelse(is.na(Age) & Title == \"Master\", mean(Age[Title==\"Master\"], na.rm = T), NA))))))\n",
+        "\n",
+        "# get deck where available\n",
+        "GetDeck <- function(cabin){\n",
+        "  deck <- rep(NA, length(cabin))\n",
+        "  for(letter in c(\"A\",\"B\",\"C\",\"D\",\"E\",\"F\",\"G\")){\n",
+        "    this.deck <- llply(.data = cabin, .fun = function(x) {grep(pattern = letter, x = x)})\n",
+        "    this.deck[is.na(this.deck==0)] <- 0\n",
+        "    deck[this.deck != 0] <- letter\n",
+        "  }\n",
+        "  deck[is.na(deck)] <- \"Unknown\"\n",
+        "  return(deck)\n",
+        "}\n",
+        "d.all$Deck <- as.factor(GetDeck(as.character(Cabin)))\n",
+        "\n",
+        "# convert next of kin info into binary variable\n",
+        "d.all$Family <- as.factor(ifelse(SibSp > 0 | Parch > 0, 'yes', 'no'))\n",
+        "\n",
+        "# convert ticket classes into ordered factor\n",
+        "Pclass <- ordered(Pclass)\n",
+        "\n",
+        "# add life boat priority\n",
+        "d.all$boatfirst <- ifelse(Sex == 'female' | Age < 18, 1, 0)\n",
+        "\n",
+        "# drop unneccessary columns and split back into model and predict set\n",
+        "d.all <- d.all[,c(\"Survived\",\"Title\",\"Last\",\"Sex\",\"Age\",\"Family\",\"SibSp\",\"Parch\",\"Pclass\",\"Embarked\")]\n",
+        "d.model <- d.all[!is.na(Survived),c(\"Survived\",\"Title\",\"Last\",\"Sex\",\"Age\",\"Family\",\"SibSp\",\"Parch\",\"Pclass\",\"Embarked\")]\n",
+        "d.predict <- d.all[is.na(Survived),c(\"Title\",\"Last\",\"Sex\",\"Age\",\"Family\",\"SibSp\",\"Parch\",\"Pclass\",\"Embarked\")]\n",
+        "detach(d.all)\n",
+        "\n",
+        "head(d.all)\n",
+        "summary(d.all)"
+      ]
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {
+        "_cell_guid": "f016660f-513e-40b5-8399-6d990e494c32"
+      },
+      "source": [
+        "I ran a basic glmnet with regularisation. Alpha and lambda were optimised using the caret package. I evaluated the performance with each tuning parameter using three-fold crossvalidation."
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "_cell_guid": "4c0d5d69-15a8-4478-ac38-9a01fb78469a"
+      },
+      "outputs": [],
+      "source": [
+        "# MODELLING ----\n",
+        "# create training and test data partition\n",
+        "data <- d.model %>%\n",
+        "    mutate(Survived = as.factor(Survived)) %>%\n",
+        "    mutate(Survived = fct_recode(Survived, 'survived' = '0', 'died' = '1'))\n",
+        "    \n",
+        "# build a glmnet model\n",
+        "car.train.grid <- expand.grid(\n",
+        "    alpha = c(0.1, 0.2, 0.3, 0.5, 0.7, 1), \n",
+        "    lambda = c(0.00003, 0.0001, 0.0003, 0.001, 0.003, 0.01, 0.03, 0.1))\n",
+        "car.train.control <- trainControl(\n",
+        "    method = \"repeatedcv\",\n",
+        "    number = 10,\n",
+        "    repeats = 3,\n",
+        "    classProbs = TRUE,\n",
+        "    summaryFunction = twoClassSummary)\n",
+        "car.train <- train(\n",
+        "    Survived ~ 1 + .,\n",
+        "    data = data,\n",
+        "    method = \"glmnet\",\n",
+        "    family = \"binomial\",\n",
+        "    metric = \"ROC\",\n",
+        "    tuneGrid = car.train.grid,\n",
+        "    trControl = car.train.control)\n",
+        "\n",
+        "car.train\n",
+        "plot(car.train)"
+      ]
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {
+        "_cell_guid": "3106e1a7-d39d-4d51-8ecf-64d967e4f697"
+      },
+      "source": [
+        "Finally, I used the best fitted model for a prediction on the test dataset."
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "_cell_guid": "4eccab92-a37c-42e7-84ce-4691fa99e23b"
+      },
+      "outputs": [],
+      "source": [
+        "# PREDICTION ----\n",
+        "out <- predict(car.train, d.predict)\n",
+        "out <- cbind(\"PassengerId\" = d.init.predict$PassengerId, \"Survived\" = as.numeric(out)-1)\n",
+        "write.csv(out, file = \"predict.csv\", row.names=F, quote=FALSE)"
+      ]
+    }
+  ],
+  "metadata": {
+    "_change_revision": 0,
+    "_is_fork": false,
+    "kernelspec": {
+      "display_name": "R",
+      "language": "R",
+      "name": "ir"
+    },
+    "language_info": {
+      "codemirror_mode": "r",
+      "file_extension": ".r",
+      "mimetype": "text/x-r-source",
+      "name": "R",
+      "pygments_lexer": "r",
+      "version": "3.3.2"
+    }
+  },
+  "nbformat": 4,
+  "nbformat_minor": 0
+}

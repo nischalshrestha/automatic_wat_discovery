@@ -1,0 +1,17 @@
+{
+  "competition_sources": [
+    "titanic"
+  ],
+  "code_file": "notebook08199e2221.ipynb",
+  "title": "Notebook08199e2221",
+  "dataset_sources": [],
+  "enable_gpu": false,
+  "id_no": 204633,
+  "is_private": false,
+  "keywords": [],
+  "language": "python",
+  "id": "sjbdata/notebook08199e2221",
+  "enable_internet": false,
+  "kernel_type": "notebook",
+  "kernel_sources": []
+}

@@ -1,0 +1,17 @@
+{
+  "code_file": "a-journey-through-titanic.ipynb",
+  "dataset_sources": [],
+  "is_private": false,
+  "enable_internet": false,
+  "id_no": 117671,
+  "language": "python",
+  "id": "abinghu/a-journey-through-titanic",
+  "keywords": [],
+  "competition_sources": [
+    "titanic"
+  ],
+  "kernel_sources": [],
+  "title": "A Journey through Titanic",
+  "kernel_type": "notebook",
+  "enable_gpu": false
+}

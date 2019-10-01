@@ -1,0 +1,17 @@
+{
+  "enable_gpu": false,
+  "enable_internet": false,
+  "competition_sources": [
+    "titanic"
+  ],
+  "is_private": false,
+  "kernel_type": "notebook",
+  "kernel_sources": [],
+  "dataset_sources": [],
+  "code_file": "titanic-data-r.irnb",
+  "id": "joelweiss/titanic-data-r",
+  "keywords": [],
+  "title": "Titanic Data R",
+  "language": "r",
+  "id_no": 392510
+}

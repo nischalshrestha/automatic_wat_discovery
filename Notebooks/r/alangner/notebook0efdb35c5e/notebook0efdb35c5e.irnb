@@ -1,0 +1,272 @@
+{
+  "metadata": {
+    "kernelspec": {
+      "display_name": "R",
+      "language": "R",
+      "name": "ir"
+    },
+    "language_info": {
+      "codemirror_mode": "r",
+      "file_extension": ".r",
+      "mimetype": "text/x-r-source",
+      "name": "R",
+      "pygments_lexer": "r",
+      "version": "3.3.3"
+    }
+  },
+  "nbformat": 4,
+  "nbformat_minor": 0,
+  "cells": [
+    {
+      "metadata": {
+        "_cell_guid": "4be91e31-4b05-13b7-42fe-a98204bafcc2",
+        "_active": false,
+        "collapsed": false
+      },
+      "source": "# This R environment comes with all of CRAN preinstalled, as well as many other helpful packages\n# The environment is defined by the kaggle/rstats docker image: https://github.com/kaggle/docker-rstats\n# For example, here's several helpful packages to load in \n\nlibrary(ggplot2) # Data visualization\nlibrary(readr) # CSV file I/O, e.g. the read_csv function\n\n# Input data files are available in the \"../input/\" directory.\n# For example, running this (by clicking run or pressing Shift+Enter) will list the files in the input directory\n\nsystem(\"ls ../input\")\n\n# Any results you write to the current directory are saved as output.",
+      "execution_count": 1,
+      "cell_type": "code",
+      "outputs": [],
+      "execution_state": "idle"
+    },
+    {
+      "metadata": {
+        "_cell_guid": "fbf1d15e-303f-20d0-92be-13867af3d776",
+        "_active": false,
+        "collapsed": false
+      },
+      "source": "train <- read.csv('../input/train.csv', stringsAsFactors = F)\ntest  <- read.csv('../input/test.csv', stringsAsFactors = F)",
+      "execution_count": 2,
+      "cell_type": "code",
+      "outputs": [],
+      "execution_state": "idle"
+    },
+    {
+      "metadata": {
+        "_cell_guid": "e821e51f-ab19-4575-e685-7d12c1089859",
+        "_active": false,
+        "collapsed": false
+      },
+      "source": "train$Title <- gsub('(.*, )|(\\\\..*)', '', train$Name)",
+      "execution_count": 3,
+      "cell_type": "code",
+      "outputs": [],
+      "execution_state": "idle"
+    },
+    {
+      "metadata": {
+        "_cell_guid": "81eba605-3b3a-018d-5a51-1e603adc6e01",
+        "_active": false,
+        "collapsed": false
+      },
+      "source": "str(train)",
+      "execution_count": 4,
+      "cell_type": "code",
+      "outputs": [],
+      "execution_state": "idle"
+    },
+    {
+      "metadata": {
+        "_cell_guid": "e3885577-1503-2838-e365-23a15a747c53",
+        "_active": false,
+        "collapsed": false
+      },
+      "source": "table(train$Parch, train$Title)",
+      "execution_count": 5,
+      "cell_type": "code",
+      "outputs": [],
+      "execution_state": "idle"
+    },
+    {
+      "metadata": {
+        "_cell_guid": "64b6cff8-9c7c-760b-6bde-43962413b881",
+        "_active": false,
+        "collapsed": false
+      },
+      "source": "train$Fsize <- train$SibSp + train$Parch + 1\ntrain$Surname <- sapply(train$Name, function(x) strsplit(x, split = '[,.]')[[1]][1])\ntrain$Family <- paste(train$Surname, train$Fsize, sep='_')",
+      "execution_count": 6,
+      "cell_type": "code",
+      "outputs": [],
+      "execution_state": "idle"
+    },
+    {
+      "metadata": {
+        "_cell_guid": "09ba4f05-ec84-ce3e-fdb2-a15a51601fc9",
+        "_active": false,
+        "collapsed": false
+      },
+      "source": "length(train$Family)",
+      "execution_count": 7,
+      "cell_type": "code",
+      "outputs": [],
+      "execution_state": "idle"
+    },
+    {
+      "metadata": {
+        "_cell_guid": "a7eca60a-6c2a-8d8a-22d0-76e277e70901",
+        "_active": false,
+        "collapsed": false
+      },
+      "source": "ggplot(train, aes(x = Fsize, fill = factor(Survived))) +\n  geom_bar(stat='count', position='dodge') +\n  scale_x_continuous(breaks=c(1:11)) +\n  labs(x = 'Family Size')",
+      "execution_count": 8,
+      "cell_type": "code",
+      "outputs": [],
+      "execution_state": "idle"
+    },
+    {
+      "metadata": {
+        "_cell_guid": "3f835bf3-d737-ed96-07f3-f33208e26e60",
+        "_active": false,
+        "collapsed": false
+      },
+      "source": "train$FsizeD[train$Fsize == 1] <- 'single'\ntrain$FsizeD[train$Fsize > 1 & train$Fsize < 5] <- 'small'\ntrain$FsizeD[train$Fsize > 4] <- 'large'",
+      "execution_count": 9,
+      "cell_type": "code",
+      "outputs": [],
+      "execution_state": "idle"
+    },
+    {
+      "metadata": {
+        "_cell_guid": "3e7c0dea-3c62-9ad1-228a-d277eed4a6d4",
+        "_active": false,
+        "collapsed": false
+      },
+      "source": "mosaicplot(table(train$FsizeD, train$Survived), main='Family Size by Survival', shade=TRUE)",
+      "execution_count": 10,
+      "cell_type": "code",
+      "outputs": [],
+      "execution_state": "idle"
+    },
+    {
+      "metadata": {
+        "_cell_guid": "84ff4777-f47e-bc4a-1c93-319d1858b727",
+        "_active": false,
+        "collapsed": false
+      },
+      "source": "strsplit(train$Cabin[2], NULL)[[1]][1]",
+      "execution_count": 12,
+      "cell_type": "code",
+      "outputs": [],
+      "execution_state": "idle"
+    },
+    {
+      "metadata": {
+        "_cell_guid": "06446978-5230-988b-6b41-ef2ba9f7c3a5",
+        "_active": false,
+        "collapsed": false
+      },
+      "source": "train$Deck <- factor(sapply(train$Cabin, function(x) strsplit(x, NULL)[[1]][1]))",
+      "execution_count": 11,
+      "cell_type": "code",
+      "outputs": [],
+      "execution_state": "idle"
+    },
+    {
+      "metadata": {
+        "_cell_guid": "6a1c8772-4d53-155d-35a1-bbd360741e17",
+        "_active": false,
+        "collapsed": false
+      },
+      "source": "mosaicplot(table(train$Title, train$Survived), main='Deck by Survival', shade=TRUE)",
+      "execution_count": 13,
+      "cell_type": "code",
+      "outputs": [],
+      "execution_state": "idle"
+    },
+    {
+      "metadata": {
+        "_cell_guid": "88df9c21-7b4b-0a6c-dc50-051f342e7ae3",
+        "_active": false,
+        "collapsed": false
+      },
+      "source": "train$AgeD[train$Age < 12] <- 'young'\ntrain$AgeD[train$Age >= 12 & train$Fsize <= 29] <- 'mid1'\ntrain$AgeD[train$Age >= 30 & train$Fsize <= 49] <- 'mid2'\ntrain$AgeD[train$Age >= 50 & train$Fsize <= 69] <- 'mid3'\ntrain$AgeD[train$Age > 69] <- 'old'",
+      "execution_count": 21,
+      "cell_type": "code",
+      "outputs": [],
+      "execution_state": "idle"
+    },
+    {
+      "metadata": {
+        "_cell_guid": "a76f2582-c8e5-b7ba-1dfe-08f113874a12",
+        "_active": true,
+        "collapsed": false
+      },
+      "source": "mosaicplot(table(train$AgeD, train$Survived), main='Age by Survival', shade=TRUE)",
+      "execution_count": 22,
+      "cell_type": "code",
+      "outputs": [],
+      "execution_state": "idle"
+    },
+    {
+      "metadata": {
+        "_cell_guid": "f9e9e6c9-1a96-0bfe-7696-632d80a81a48",
+        "_active": false,
+        "collapsed": false
+      },
+      "source": "which(is.na(train$FsizeD))\nfactor_vars <- c('PassengerId','Pclass','Sex')\n\ntrain[factor_vars] <- lapply(train[factor_vars], function(x) as.factor(x))",
+      "execution_count": 113,
+      "cell_type": "code",
+      "outputs": [],
+      "execution_state": "idle"
+    },
+    {
+      "metadata": {
+        "_cell_guid": "32d17df7-cd95-f578-2b5d-ed2b07b025ee",
+        "_active": false,
+        "collapsed": false
+      },
+      "source": "library(randomForest)\n# Set a random seed\nset.seed(754)\n\n# Build the model (note: not all possible variables are used)\nrf_model <- randomForest(factor(Survived) ~ Pclass + SibSp + Parch +\n                                            Fare  + Sex,\n                                            data = train)\n",
+      "execution_count": 104,
+      "cell_type": "code",
+      "outputs": [],
+      "execution_state": "idle"
+    },
+    {
+      "metadata": {
+        "_cell_guid": "8d568e29-4545-8c2b-e18d-29c0ec959325",
+        "_active": false,
+        "collapsed": false
+      },
+      "source": "\n# Show model error\nplot(rf_model, ylim=c(0,0.5))\nlegend('topright', colnames(rf_model$err.rate), col=1:3, fill=1:3)",
+      "execution_count": 105,
+      "cell_type": "code",
+      "outputs": [],
+      "execution_state": "idle"
+    },
+    {
+      "metadata": {
+        "_cell_guid": "7a5dc95d-631d-53ca-8843-4db62bf1628c",
+        "_active": false,
+        "collapsed": false
+      },
+      "source": "library('dplyr') # data manipulation\n# Get importance\nimportance    <- importance(rf_model)\nvarImportance <- data.frame(Variables = row.names(importance), \n                            Importance = round(importance[ ,'MeanDecreaseGini'],2))\n\n# Create a rank variable based on importance\nrankImportance <- varImportance %>%\n  mutate(Rank = paste0('#',dense_rank(desc(Importance))))\n\n# Use ggplot2 to visualize the relative importance of variables\nggplot(rankImportance, aes(x = reorder(Variables, Importance), \n    y = Importance, fill = Importance)) +\n  geom_bar(stat='identity') + \n  geom_text(aes(x = Variables, y = 0.5, label = Rank),\n    hjust=0, vjust=0.55, size = 4, colour = 'red') +\n  labs(x = 'Variables') +\n  coord_flip()",
+      "execution_count": 102,
+      "cell_type": "code",
+      "outputs": [],
+      "execution_state": "idle"
+    },
+    {
+      "metadata": {
+        "_cell_guid": "055ac825-fe33-c1df-e073-29e7c8788243",
+        "_active": false,
+        "collapsed": false
+      },
+      "source": "# Predict using the test set\ntest[factor_vars] <- lapply(test[factor_vars], function(x) as.factor(x))\nprediction <- predict(rf_model, test)\n\n# Save the solution to a dataframe with two columns: PassengerId and Survived (prediction)\nsolution <- data.frame(PassengerID = test$PassengerId, Survived = prediction)\n\n# Write the solution to file\nwrite.csv(solution, file = 'rf_mod_Solution.csv', row.names = F)",
+      "execution_count": 114,
+      "cell_type": "code",
+      "outputs": [],
+      "execution_state": "idle"
+    },
+    {
+      "metadata": {
+        "_cell_guid": "24fa9bbc-cd7c-a1c6-3c3c-13fdaad5e7ec",
+        "_active": false,
+        "collapsed": false
+      },
+      "source": null,
+      "execution_count": null,
+      "cell_type": "code",
+      "outputs": []
+    }
+  ]
+}

@@ -1,0 +1,23 @@
+{
+  "kernel_type": "notebook",
+  "language": "python",
+  "kernel_sources": [],
+  "title": "Titanic: Cleaning, Feature Engineering, Modeling ",
+  "code_file": "titanic-cleaning-feature-engineering-modeling.ipynb",
+  "id_no": 1067710,
+  "competition_sources": [
+    "titanic"
+  ],
+  "enable_gpu": false,
+  "enable_internet": false,
+  "id": "marklvl/titanic-cleaning-feature-engineering-modeling",
+  "keywords": [
+    "beginner",
+    "eda",
+    "data cleaning",
+    "feature engineering",
+    "model comparison"
+  ],
+  "is_private": false,
+  "dataset_sources": []
+}

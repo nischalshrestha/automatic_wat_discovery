@@ -1,0 +1,22 @@
+{
+  "kernel_type": "notebook",
+  "id": "erikebrown/titanic-dataframe-learning-from-disaster",
+  "id_no": 1635607,
+  "competition_sources": [
+    "titanic"
+  ],
+  "kernel_sources": [],
+  "dataset_sources": [],
+  "keywords": [
+    "learning",
+    "tutorial",
+    "beginner",
+    "eda"
+  ],
+  "enable_internet": false,
+  "language": "python",
+  "title": "Titanic: DataFrame Learning from Disaster",
+  "is_private": false,
+  "code_file": "titanic-dataframe-learning-from-disaster.ipynb",
+  "enable_gpu": false
+}

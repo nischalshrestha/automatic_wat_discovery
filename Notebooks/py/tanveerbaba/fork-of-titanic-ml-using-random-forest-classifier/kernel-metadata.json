@@ -1,0 +1,19 @@
+{
+  "kernel_type": "notebook",
+  "code_file": "fork-of-titanic-ml-using-random-forest-classifier.ipynb",
+  "title": "Fork of Titanic ML using Random Forest Classifier ",
+  "id_no": 709374,
+  "id": "tanveerbaba/fork-of-titanic-ml-using-random-forest-classifier",
+  "keywords": [
+    "random forest"
+  ],
+  "dataset_sources": [],
+  "is_private": false,
+  "enable_gpu": false,
+  "enable_internet": false,
+  "language": "python",
+  "kernel_sources": [],
+  "competition_sources": [
+    "titanic"
+  ]
+}

@@ -1,0 +1,17 @@
+{
+  "is_private": false,
+  "keywords": [],
+  "id": "bubblride/titanic-xgboost-without-name",
+  "title": "titanic, xgboost, without name",
+  "dataset_sources": [],
+  "competition_sources": [
+    "titanic"
+  ],
+  "id_no": 1908446,
+  "code_file": "titanic-xgboost-without-name.ipynb",
+  "kernel_sources": [],
+  "enable_internet": false,
+  "kernel_type": "notebook",
+  "enable_gpu": true,
+  "language": "python"
+}

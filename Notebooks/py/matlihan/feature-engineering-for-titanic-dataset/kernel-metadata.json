@@ -1,0 +1,19 @@
+{
+  "enable_gpu": false,
+  "id": "matlihan/feature-engineering-for-titanic-dataset",
+  "keywords": [
+    "beginner"
+  ],
+  "language": "python",
+  "kernel_type": "notebook",
+  "title": "Feature Engineering for Titanic Dataset",
+  "id_no": 472086,
+  "code_file": "feature-engineering-for-titanic-dataset.ipynb",
+  "kernel_sources": [],
+  "competition_sources": [
+    "titanic"
+  ],
+  "dataset_sources": [],
+  "is_private": false,
+  "enable_internet": false
+}

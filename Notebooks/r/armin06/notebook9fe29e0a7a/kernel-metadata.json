@@ -1,0 +1,17 @@
+{
+  "code_file": "notebook9fe29e0a7a.irnb",
+  "language": "r",
+  "id_no": 209608,
+  "dataset_sources": [],
+  "competition_sources": [
+    "titanic"
+  ],
+  "enable_gpu": false,
+  "is_private": false,
+  "keywords": [],
+  "id": "armin06/notebook9fe29e0a7a",
+  "enable_internet": false,
+  "kernel_sources": [],
+  "title": "Notebook9fe29e0a7a",
+  "kernel_type": "notebook"
+}

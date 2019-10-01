@@ -1,0 +1,17 @@
+{
+  "is_private": false,
+  "enable_internet": false,
+  "kernel_sources": [],
+  "keywords": [],
+  "enable_gpu": false,
+  "competition_sources": [
+    "titanic"
+  ],
+  "code_file": "fork-of-titanic-survival-prediction.irnb",
+  "kernel_type": "notebook",
+  "dataset_sources": [],
+  "id": "aschakra/fork-of-titanic-survival-prediction",
+  "language": "r",
+  "title": "Fork of Titanic Survival Prediction",
+  "id_no": 227192
+}

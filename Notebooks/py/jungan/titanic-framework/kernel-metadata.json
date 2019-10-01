@@ -1,0 +1,17 @@
+{
+  "is_private": false,
+  "dataset_sources": [],
+  "keywords": [],
+  "language": "python",
+  "enable_internet": false,
+  "code_file": "titanic-framework.ipynb",
+  "id_no": 1649790,
+  "kernel_sources": [],
+  "competition_sources": [
+    "titanic"
+  ],
+  "id": "jungan/titanic-framework",
+  "title": " Titanic Framework",
+  "enable_gpu": false,
+  "kernel_type": "notebook"
+}

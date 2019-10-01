@@ -1,0 +1,17 @@
+{
+  "title": "Titanic competition 1st attempt",
+  "kernel_type": "notebook",
+  "dataset_sources": [],
+  "code_file": "titanic-competition-1st-attempt.ipynb",
+  "is_private": false,
+  "enable_gpu": false,
+  "kernel_sources": [],
+  "competition_sources": [
+    "titanic"
+  ],
+  "id_no": 803167,
+  "language": "python",
+  "enable_internet": false,
+  "id": "samjrrr/titanic-competition-1st-attempt",
+  "keywords": []
+}

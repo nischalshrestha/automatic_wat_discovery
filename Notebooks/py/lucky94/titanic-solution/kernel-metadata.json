@@ -1,0 +1,17 @@
+{
+  "kernel_type": "notebook",
+  "language": "python",
+  "id_no": 2013984,
+  "is_private": false,
+  "dataset_sources": [],
+  "code_file": "titanic-solution.ipynb",
+  "id": "lucky94/titanic-solution",
+  "enable_gpu": false,
+  "title": "Titanic_solution",
+  "competition_sources": [
+    "titanic"
+  ],
+  "keywords": [],
+  "enable_internet": false,
+  "kernel_sources": []
+}

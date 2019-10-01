@@ -1,0 +1,17 @@
+{
+  "id": "mdsibghatullah/notebook369ba0e3ac",
+  "is_private": false,
+  "kernel_sources": [],
+  "kernel_type": "notebook",
+  "enable_gpu": false,
+  "competition_sources": [
+    "titanic"
+  ],
+  "keywords": [],
+  "dataset_sources": [],
+  "title": "Notebook369ba0e3ac",
+  "language": "python",
+  "code_file": "notebook369ba0e3ac.ipynb",
+  "id_no": 202906,
+  "enable_internet": false
+}

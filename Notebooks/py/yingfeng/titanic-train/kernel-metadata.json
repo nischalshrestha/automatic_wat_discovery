@@ -1,0 +1,17 @@
+{
+  "is_private": false,
+  "id": "yingfeng/titanic-train",
+  "dataset_sources": [],
+  "keywords": [],
+  "title": "Titanic train",
+  "id_no": 292586,
+  "code_file": "titanic-train.ipynb",
+  "competition_sources": [
+    "titanic"
+  ],
+  "kernel_sources": [],
+  "language": "python",
+  "enable_gpu": false,
+  "kernel_type": "notebook",
+  "enable_internet": false
+}

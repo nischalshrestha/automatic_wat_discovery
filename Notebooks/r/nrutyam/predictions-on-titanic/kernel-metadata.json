@@ -1,0 +1,22 @@
+{
+  "code_file": "predictions-on-titanic.irnb",
+  "keywords": [
+    "tutorial",
+    "beginner",
+    "data cleaning",
+    "data visualization"
+  ],
+  "kernel_type": "notebook",
+  "enable_internet": false,
+  "enable_gpu": false,
+  "kernel_sources": [],
+  "title": "Predictions on titanic",
+  "is_private": false,
+  "dataset_sources": [],
+  "id_no": 593474,
+  "competition_sources": [
+    "titanic"
+  ],
+  "language": "r",
+  "id": "nrutyam/predictions-on-titanic"
+}

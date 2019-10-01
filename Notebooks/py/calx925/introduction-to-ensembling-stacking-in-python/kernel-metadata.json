@@ -1,0 +1,17 @@
+{
+  "title": "Introduction to Ensembling/Stacking in Python",
+  "enable_internet": false,
+  "is_private": false,
+  "dataset_sources": [],
+  "keywords": [],
+  "id": "calx925/introduction-to-ensembling-stacking-in-python",
+  "code_file": "introduction-to-ensembling-stacking-in-python.ipynb",
+  "enable_gpu": false,
+  "kernel_sources": [],
+  "kernel_type": "notebook",
+  "competition_sources": [
+    "titanic"
+  ],
+  "language": "python",
+  "id_no": 212100
+}

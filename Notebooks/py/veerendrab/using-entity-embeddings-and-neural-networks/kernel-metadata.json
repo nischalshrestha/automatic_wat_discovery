@@ -1,0 +1,17 @@
+{
+  "enable_gpu": true,
+  "enable_internet": false,
+  "language": "python",
+  "kernel_type": "notebook",
+  "competition_sources": [
+    "titanic"
+  ],
+  "dataset_sources": [],
+  "title": "Using  Entity Embeddings and Neural Networks",
+  "id_no": 856676,
+  "keywords": [],
+  "is_private": false,
+  "kernel_sources": [],
+  "code_file": "using-entity-embeddings-and-neural-networks.ipynb",
+  "id": "veerendrab/using-entity-embeddings-and-neural-networks"
+}

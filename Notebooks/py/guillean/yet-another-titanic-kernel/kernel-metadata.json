@@ -1,0 +1,17 @@
+{
+  "code_file": "yet-another-titanic-kernel.ipynb",
+  "id_no": 330891,
+  "enable_internet": false,
+  "keywords": [],
+  "title": "Yet another Titanic Kernel",
+  "is_private": false,
+  "kernel_sources": [],
+  "competition_sources": [
+    "titanic"
+  ],
+  "kernel_type": "notebook",
+  "dataset_sources": [],
+  "id": "guillean/yet-another-titanic-kernel",
+  "enable_gpu": false,
+  "language": "python"
+}

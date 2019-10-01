@@ -1,0 +1,17 @@
+{
+  "code_file": "simple-neural-network-with-1-hidden-layer.ipynb",
+  "is_private": false,
+  "id": "iabocar/simple-neural-network-with-1-hidden-layer",
+  "enable_internet": false,
+  "competition_sources": [
+    "titanic"
+  ],
+  "dataset_sources": [],
+  "id_no": 172253,
+  "title": "Simple neural network with 1 hidden layer",
+  "kernel_sources": [],
+  "kernel_type": "notebook",
+  "language": "python",
+  "enable_gpu": false,
+  "keywords": []
+}

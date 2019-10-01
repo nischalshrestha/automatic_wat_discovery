@@ -1,0 +1,17 @@
+{
+  "id": "corvuslee/titanic-random-forest-practice",
+  "kernel_sources": [],
+  "kernel_type": "notebook",
+  "dataset_sources": [],
+  "keywords": [],
+  "is_private": false,
+  "language": "python",
+  "competition_sources": [
+    "titanic"
+  ],
+  "id_no": 1906708,
+  "enable_internet": false,
+  "code_file": "titanic-random-forest-practice.ipynb",
+  "title": "Titanic - random forest practice",
+  "enable_gpu": false
+}

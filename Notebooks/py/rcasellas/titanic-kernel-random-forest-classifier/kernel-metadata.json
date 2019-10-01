@@ -1,0 +1,17 @@
+{
+  "competition_sources": [
+    "titanic"
+  ],
+  "dataset_sources": [],
+  "kernel_type": "notebook",
+  "kernel_sources": [],
+  "id_no": 204860,
+  "code_file": "titanic-kernel-random-forest-classifier.ipynb",
+  "enable_gpu": false,
+  "id": "rcasellas/titanic-kernel-random-forest-classifier",
+  "keywords": [],
+  "enable_internet": false,
+  "title": "Titanic Kernel Random Forest Classifier",
+  "language": "python",
+  "is_private": false
+}

@@ -1,0 +1,17 @@
+{
+  "id_no": 350870,
+  "code_file": "titanic-solution-a-beginner-s-guide.ipynb",
+  "language": "python",
+  "keywords": [],
+  "id": "chapagain/titanic-solution-a-beginner-s-guide",
+  "dataset_sources": [],
+  "enable_gpu": false,
+  "kernel_sources": [],
+  "competition_sources": [
+    "titanic"
+  ],
+  "kernel_type": "notebook",
+  "title": "Titanic Solution: A Beginner's Guide",
+  "is_private": false,
+  "enable_internet": false
+}

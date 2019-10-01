@@ -1,0 +1,17 @@
+{
+  "kernel_type": "notebook",
+  "code_file": "ml-titanic.ipynb",
+  "language": "python",
+  "is_private": false,
+  "kernel_sources": [],
+  "keywords": [],
+  "title": "ML Titanic",
+  "id_no": 687504,
+  "id": "ktelegenov/ml-titanic",
+  "dataset_sources": [],
+  "enable_internet": false,
+  "competition_sources": [
+    "titanic"
+  ],
+  "enable_gpu": false
+}

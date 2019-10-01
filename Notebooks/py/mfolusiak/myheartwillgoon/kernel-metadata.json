@@ -1,0 +1,17 @@
+{
+  "competition_sources": [
+    "titanic"
+  ],
+  "title": "MyHeartWillGoOn",
+  "language": "python",
+  "enable_internet": false,
+  "id": "mfolusiak/myheartwillgoon",
+  "code_file": "myheartwillgoon.ipynb",
+  "kernel_type": "notebook",
+  "is_private": false,
+  "kernel_sources": [],
+  "enable_gpu": false,
+  "dataset_sources": [],
+  "keywords": [],
+  "id_no": 261780
+}

@@ -1,0 +1,17 @@
+{
+  "code_file": "tutorial-predicting-survival-on-titanic.ipynb",
+  "enable_gpu": false,
+  "kernel_sources": [],
+  "enable_internet": false,
+  "title": "Tutorial - Predicting Survival on Titanic",
+  "is_private": false,
+  "dataset_sources": [],
+  "id": "xirlomachine/tutorial-predicting-survival-on-titanic",
+  "language": "python",
+  "keywords": [],
+  "competition_sources": [
+    "titanic"
+  ],
+  "kernel_type": "notebook",
+  "id_no": 299830
+}

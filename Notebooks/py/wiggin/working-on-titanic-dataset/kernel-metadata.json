@@ -1,0 +1,17 @@
+{
+  "dataset_sources": [],
+  "kernel_type": "notebook",
+  "competition_sources": [
+    "titanic"
+  ],
+  "id_no": 211690,
+  "title": "working on titanic dataset",
+  "enable_gpu": false,
+  "is_private": false,
+  "kernel_sources": [],
+  "language": "python",
+  "code_file": "working-on-titanic-dataset.ipynb",
+  "id": "wiggin/working-on-titanic-dataset",
+  "keywords": [],
+  "enable_internet": false
+}

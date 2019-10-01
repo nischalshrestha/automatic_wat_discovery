@@ -1,0 +1,17 @@
+{
+  "enable_gpu": false,
+  "dataset_sources": [],
+  "id_no": 322235,
+  "enable_internet": false,
+  "language": "python",
+  "keywords": [],
+  "title": "First Try",
+  "kernel_sources": [],
+  "kernel_type": "notebook",
+  "id": "swapkh91/first-try",
+  "competition_sources": [
+    "titanic"
+  ],
+  "code_file": "first-try.ipynb",
+  "is_private": false
+}

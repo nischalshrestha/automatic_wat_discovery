@@ -1,0 +1,17 @@
+{
+  "id_no": 216387,
+  "enable_internet": false,
+  "kernel_sources": [],
+  "code_file": "titanic-best-working-classifier-6927cd.ipynb",
+  "dataset_sources": [],
+  "language": "python",
+  "enable_gpu": false,
+  "title": "Titanic best working Classifier 6927cd",
+  "competition_sources": [
+    "titanic"
+  ],
+  "keywords": [],
+  "kernel_type": "notebook",
+  "id": "nickzheng/titanic-best-working-classifier-6927cd",
+  "is_private": false
+}

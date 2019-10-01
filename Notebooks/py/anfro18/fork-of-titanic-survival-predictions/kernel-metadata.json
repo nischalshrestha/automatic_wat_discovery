@@ -1,0 +1,17 @@
+{
+  "title": "Fork of Titanic Survival Predictions",
+  "language": "python",
+  "id_no": 243949,
+  "enable_internet": false,
+  "competition_sources": [
+    "titanic"
+  ],
+  "enable_gpu": false,
+  "code_file": "fork-of-titanic-survival-predictions.ipynb",
+  "kernel_sources": [],
+  "is_private": false,
+  "id": "anfro18/fork-of-titanic-survival-predictions",
+  "keywords": [],
+  "kernel_type": "notebook",
+  "dataset_sources": []
+}

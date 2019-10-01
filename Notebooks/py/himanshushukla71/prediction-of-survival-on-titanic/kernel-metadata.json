@@ -1,0 +1,17 @@
+{
+  "id": "himanshushukla71/prediction-of-survival-on-titanic",
+  "enable_gpu": false,
+  "id_no": 1266898,
+  "keywords": [],
+  "competition_sources": [
+    "titanic"
+  ],
+  "dataset_sources": [],
+  "title": "Prediction of survival on Titanic",
+  "language": "python",
+  "enable_internet": false,
+  "kernel_type": "notebook",
+  "code_file": "prediction-of-survival-on-titanic.ipynb",
+  "kernel_sources": [],
+  "is_private": false
+}

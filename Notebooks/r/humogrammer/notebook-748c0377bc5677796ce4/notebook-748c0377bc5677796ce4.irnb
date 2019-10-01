@@ -1,0 +1,11 @@
+{"cells":[
+ {
+  "cell_type": "code",
+  "execution_count": null,
+  "metadata": {
+   "collapsed": false
+  },
+  "outputs": [],
+  "source": "---\ntitle: \"script2\"\nauthor: \"shin\"\ndate: \"2016年6月19日\"\noutput: html_document\n---\n## 1. check the data\n```{r}\nlibrary(\"dplyr\")\nlibrary(\"ggplot2\")\nlibrary(\"car\")\nlibrary(\"rpart\")\nlibrary(\"rpart.plot\")\t\n\nrm(train,test,tt)\ntrain <- read.csv('../input/train.csv', stringsAsFactors = F)\ntest  <- read.csv('../input/test.csv', stringsAsFactors = F)\ntt = dplyr::bind_rows(train,test) #bind two datas\n\n# Find Cabin Class \ntt$floor[tt$Cabin == \"\"] <- \"H\"\ntt$floor <- substr(tt$Cabin,1,1)\ntt$roomnumber <- substr(tt$Cabin,2,3)\ntt$Cabin <- factor(tt$Cabin)\n\npredicted_age <- rpart(Age ~ Pclass + SibSp + Parch + Fare + Title, data=tt[!is.na(tt$Age),], method=\"anova\")\nprp(predicted_age, type = 1, extra = 101)\ntt$Age[is.na(tt$Age)] <- predict(predicted_age, tt[is.na(tt$Age),])\n\ntt$Fare[is.na(tt$Fare)]\ntt$Fare[1044] <- mean(combi[combi$Embarked=='S'&combi$Pclass==3,]$Fare, na.rm=TRUE)\ntrain_new <- tt[1:891,]\ntest_new <- tt[892:1309,]\n\n#predict_model\napply(train_new,MARGIN = 2, FUN=class)\nmy_tree <- rpart(Survived ~ Age +  Sex + Pclass  +Fare + Cabin, data = train_new, method = \"class\", control=rpart.control(cp=0.0001))\nprp(my_tree, type = 1, extra = 101)\n\n#prediction \nmy_prediction <- predict(my_tree, test_new, type = \"class\")\nmy_solution <- data.frame(PassengerId = test_new$PassengerId, Survived = my_prediction)\n\n#quick check with test data\nmy_test_prediction <- predict(my_tree, train_new, type = \"class\")\nprop.table(table(my_test_prediction==train_new$Survived))\n\n# Write your solution to a csv file with the name my_solution.csv\nwrite.csv(my_solution, file = \"output/my_solution.csv\",row.names=FALSE)"
+ }
+],"metadata":{"kernelspec":{"display_name":"R","language":"R","name":"ir"}}, "nbformat": 4, "nbformat_minor": 0}

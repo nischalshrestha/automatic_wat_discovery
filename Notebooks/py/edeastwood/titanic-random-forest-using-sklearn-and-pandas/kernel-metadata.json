@@ -1,0 +1,17 @@
+{
+  "code_file": "titanic-random-forest-using-sklearn-and-pandas.ipynb",
+  "kernel_type": "notebook",
+  "enable_gpu": false,
+  "id_no": 210888,
+  "kernel_sources": [],
+  "title": "Titanic: random forest using sklearn and pandas",
+  "keywords": [],
+  "is_private": false,
+  "id": "edeastwood/titanic-random-forest-using-sklearn-and-pandas",
+  "language": "python",
+  "enable_internet": false,
+  "dataset_sources": [],
+  "competition_sources": [
+    "titanic"
+  ]
+}

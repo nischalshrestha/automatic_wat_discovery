@@ -1,0 +1,17 @@
+{
+  "language": "python",
+  "kernel_type": "notebook",
+  "code_file": "titanic-tutorial.ipynb",
+  "id_no": 113853,
+  "kernel_sources": [],
+  "competition_sources": [
+    "titanic"
+  ],
+  "enable_gpu": false,
+  "title": "Titanic Tutorial",
+  "id": "mangomoon/titanic-tutorial",
+  "is_private": false,
+  "keywords": [],
+  "dataset_sources": [],
+  "enable_internet": false
+}

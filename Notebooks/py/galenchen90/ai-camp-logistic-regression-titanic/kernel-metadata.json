@@ -1,0 +1,17 @@
+{
+  "id_no": 1681615,
+  "enable_internet": false,
+  "id": "galenchen90/ai-camp-logistic-regression-titanic",
+  "enable_gpu": false,
+  "competition_sources": [
+    "titanic"
+  ],
+  "language": "python",
+  "title": "AI Camp Logistic Regression\u9884\u6d4bTitanic\u4e58\u5ba2\u9003\u751f",
+  "keywords": [],
+  "is_private": false,
+  "dataset_sources": [],
+  "kernel_sources": [],
+  "code_file": "ai-camp-logistic-regression-titanic.ipynb",
+  "kernel_type": "notebook"
+}

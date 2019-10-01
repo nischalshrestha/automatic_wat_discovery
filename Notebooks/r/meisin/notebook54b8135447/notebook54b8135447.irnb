@@ -1,0 +1,552 @@
+{
+  "cells": [
+    {
+      "cell_type": "markdown",
+      "metadata": {
+        "_cell_guid": "fddef205-1e1f-f319-0118-7df3882a5477"
+      },
+      "source": [
+        "The purpose of this notebook is for me to try out the various Machine Learning algorithms on Titanic dataset and at the same time, document the performance of all algorithms used.\n",
+        "\n",
+        "Nature of problem: **Binary classification**\n",
+        "Machine Algorithm to be considered:\n",
+        "\n",
+        " - Decision Tree\n",
+        " - Random Forest\n",
+        " - Support Vector Machines (SVM)\n",
+        " - Logistic Regression\n",
+        " - K-nearest neighbour (KNN)"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "_cell_guid": "fab83cfa-7846-64b2-986f-4992cf9333fb"
+      },
+      "outputs": [],
+      "source": [
+        "# This R environment comes with all of CRAN preinstalled, as well as many other helpful packages\n",
+        "# The environment is defined by the kaggle/rstats docker image: https://github.com/kaggle/docker-rstats\n",
+        "# For example, here's several helpful packages to load in \n",
+        "\n",
+        "library(ggplot2) # Data visualization\n",
+        "library(ggthemes) # visualization\n",
+        "library(readr) # CSV file I/O, e.g. the read_csv function\n",
+        "library(Amelia) # for visualizing missing data\n",
+        "library(caret) # for using confusion matrix\n",
+        "library(ROCR) # for generating ROC curves\n",
+        "library(randomForest) # for generating Random Forest\n",
+        "library(stringr) # for manipulating string columns\n",
+        "library(rpart) # for generating Decision Trees\n",
+        "library(rpart.plot) # for visualizing Decision Trees\n",
+        "library(e1071) # for generating Support Vector Machines"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "_cell_guid": "c0476dcb-c768-751d-3c1c-dddfb5e28945"
+      },
+      "outputs": [],
+      "source": [
+        "# Input data files are available in the \"../input/\" directory.\n",
+        "# For example, running this (by clicking run or pressing Shift+Enter) will list the files in the input directory\n",
+        "\n",
+        "### READING DATA ###\n",
+        "train <- read.csv(\"../input/train.csv\", na.strings=c(\"NA\", \"\")) ##important code to treat blank string as NA \n",
+        "test <- read.csv(\"../input/test.csv\", na.strings=c(\"NA\", \"\"))\n",
+        "\n",
+        "# Any results you write to the current directory are saved as output."
+      ]
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {
+        "_cell_guid": "95255e09-6d74-1a55-ce8e-a7a2d9f8f783"
+      },
+      "source": [
+        "# Data Preparation\n",
+        "\n",
+        "Before applying descriptive and inferential analytics on the data, we need to perform a type conversion to convert nominal variable from characters to factors."
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "_cell_guid": "adedf8e4-6695-e1f2-ea42-b72267c2d860"
+      },
+      "outputs": [],
+      "source": [
+        "train$Survived = factor(train$Survived)\n",
+        "train$Pclass = factor(train$Pclass)\n",
+        "test$Pclass = factor(test$Pclass)\n",
+        "str(train)"
+      ]
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {
+        "_cell_guid": "102f1c18-7255-fc53-d548-49207f8ee401"
+      },
+      "source": [
+        "# Missing data"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "_cell_guid": "49dacd4d-8c85-037d-05ef-8630b1cf65d4"
+      },
+      "outputs": [],
+      "source": [
+        "percentage_missing_data <- sapply(train, function(df) {sum(is.na(df)==TRUE)/ length(df);})\n",
+        "percentage_missing_data\n",
+        "# results : return a percentage of missing value"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "_cell_guid": "ad7bde5f-45e2-470a-3f8b-32ba140db9f7"
+      },
+      "outputs": [],
+      "source": [
+        "missmap(train, main=\"Missing Map\")"
+      ]
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {
+        "_cell_guid": "7fee7c11-2c7a-4349-c5a6-8850d30bf70d"
+      },
+      "source": [
+        "## Imputing Missing Values\n",
+        "1. Port of Embarkation"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "_cell_guid": "abd171e3-1590-5b4a-ad77-fc911546f6d1"
+      },
+      "outputs": [],
+      "source": [
+        "table(train$Embarked, useNA = \"always\")"
+      ]
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {
+        "_cell_guid": "a631baa7-c454-a4f0-ec2f-df3d21e3ecab"
+      },
+      "source": [
+        "There are only 2 missing values in **Port of Embarkation**. Assign the most probable value - S (Southampton) "
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "_cell_guid": "5cba7789-bafe-9d8e-926b-a9aab28c39c4"
+      },
+      "outputs": [],
+      "source": [
+        "train$Embarked[which(is.na(train$Embarked))] = 'S'"
+      ]
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {
+        "_cell_guid": "39cb0b99-331a-27e7-4227-18475e774dd4"
+      },
+      "source": [
+        "2. Age :\n",
+        "Impute missing values by using using the mean age by **Title**.\n",
+        "In order to discover the types of titles contained in the names of train.data, we first tokenize train.data$Name by blank (a regular expression pattern as \"\\\\s+\"), and then count the frequency of occurrence with the table function. After this, since the name title often ends with a period, we use the regular expression to grep the word containing the period. In the end, sort the table in decreasing order:"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "_cell_guid": "ee4ec91d-3e57-c810-07ce-a6fa4f1833bf"
+      },
+      "outputs": [],
+      "source": [
+        "train$Name = as.character(train$Name)\n",
+        "table_words = table(unlist(strsplit(train$Name, \"\\\\s+\")))\n",
+        "sort(table_words [grep('\\\\.',names(table_words))], decreasing=TRUE)"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "_cell_guid": "d08c04ca-4825-f6ae-0abd-112296f2c856"
+      },
+      "outputs": [],
+      "source": [
+        "train$Title <- str_match(train$Name, \"[a-zA-Z]+\\\\.\")\n",
+        "table(train$Title[which(is.na(train$Age))])"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "_cell_guid": "ed113c4d-d97e-cce1-9e0e-6b070794dc5e"
+      },
+      "outputs": [],
+      "source": [
+        "mean.mr <- mean(train$Age[train$Title == \"Mr.\" & !is.na(train$Age)])\n",
+        "mean.dr <- mean(train$Age[train$Title == \"Dr.\" & !is.na(train$Age)])\n",
+        "mean.miss <- mean(train$Age[train$Title == \"Miss.\" & !is.na(train$Age)])\n",
+        "mean.master <- mean(train$Age[train$Title == \"Master.\" & !is.na(train$Age)])\n",
+        "mean.mrs <- mean(train$Age[train$Title == \"Mrs.\" & !is.na(train$Age)])\n",
+        "\n",
+        "# assigning mean to rows missing Age value\n",
+        "train$Age[train$Title == \"Mr.\" & is.na(train$Age)] <- mean.mr\n",
+        "train$Age[train$Title == \"Dr.\" & is.na(train$Age)] <- mean.dr\n",
+        "train$Age[train$Title == \"Miss.\" & is.na(train$Age)] <- mean.miss\n",
+        "train$Age[train$Title == \"Master.\" & is.na(train$Age)] <- mean.master\n",
+        "train$Age[train$Title == \"Mrs.\" & is.na(train$Age)] <- mean.mrs"
+      ]
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {
+        "_cell_guid": "63f37a21-2015-7ec3-e1ab-93e0b04b12b7"
+      },
+      "source": [
+        "Creating Validation Dataset"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "_cell_guid": "22eee540-4e81-b475-9153-ff572492143f"
+      },
+      "outputs": [],
+      "source": [
+        "## Training set has 891 rows, split by the following:\n",
+        "## New_Train = 623\n",
+        "## Validation = 268\n",
+        "new_train <- train[1:623,]\n",
+        "validation <- train[624:nrow(train),]"
+      ]
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {
+        "_cell_guid": "45207e7c-8bde-ab75-3d5a-2a1806416429"
+      },
+      "source": [
+        "# Training and Prediction\n",
+        "### [1] Decision Tree"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "_cell_guid": "29e0ca64-1d28-42b0-9915-f6f074645709"
+      },
+      "outputs": [],
+      "source": [
+        "my_decision_tree <- rpart(Survived ~ Age + Sex + Pclass  + \n",
+        "                          SibSp + Fare + Parch + Embarked, \n",
+        "                          data = new_train, method = \"class\", control=rpart.control(cp=0.0001))\n",
+        "summary(my_decision_tree)\n",
+        "prp(my_decision_tree, type = 4, extra = 106)"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "_cell_guid": "94b1a159-427e-b5e6-9b2a-a330f256edaf"
+      },
+      "outputs": [],
+      "source": [
+        "my_dt_prediction <- predict(my_decision_tree, validation, type = \"class\")\n",
+        "\n",
+        "# Save the solution to a dataframe with two columns: PassengerId and Survived (prediction)\n",
+        "dt_solution <- data.frame(PassengerID = validation$PassengerId, Survived = my_dt_prediction)\n",
+        "\n",
+        "#Show model error\n",
+        "##!!plot(my_decision_tree, ylim=c(0,0.36))\n",
+        "##!!legend('topright', colnames(my_decision_tree$err.rate), col=1:3, fill=1:3)"
+      ]
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {
+        "_cell_guid": "1c554dea-d6d1-edc5-cb8b-7857f58bd280"
+      },
+      "source": [
+        "### [2] Support Vector Machine (SVM)"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "_cell_guid": "9b163236-2471-6c2b-18b2-641ff4d9efd7"
+      },
+      "outputs": [],
+      "source": [
+        "my_svm = svm(Survived ~ Pclass + Sex + Age + SibSp + Fare + Parch + Embarked,\n",
+        "             data = train, probability = TRUE)\n",
+        "my_svm_prediction <- predict(my_svm, validation)"
+      ]
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {
+        "_cell_guid": "e9aee8bd-0478-d99a-81e0-c8a2826fd3d9"
+      },
+      "source": [
+        "### [3] Random Forest"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "_cell_guid": "d05e8c81-99f7-898a-63e9-f7f293bd85e1"
+      },
+      "outputs": [],
+      "source": [
+        "# Set a random seed\n",
+        "set.seed(754)\n",
+        "\n",
+        "# Build the model (note: not all possible variables are used)\n",
+        "my_rf <- randomForest(Survived ~ Pclass + Sex + Age + SibSp + Fare + Parch + Embarked,\n",
+        "                                            data = train)\n",
+        "# Predict using the test set\n",
+        "my_rf_prediction <- predict(my_rf, validation)"
+      ]
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {
+        "_cell_guid": "c3498326-70a8-352e-04d1-c2a4e14b442e"
+      },
+      "source": [
+        "## Variable Importance"
+      ]
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {
+        "_cell_guid": "0aaac148-3c37-bd42-cf04-fcd12bb5ad08"
+      },
+      "source": [
+        "## Assessing Model Performance & Prediction Accuracy\n",
+        "### [1] Decision Tree"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "_cell_guid": "d6413204-b048-43c0-99d0-26afb00eb876"
+      },
+      "outputs": [],
+      "source": [
+        "class(my_dt_prediction)"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "_cell_guid": "2baa54e9-5c4c-74ac-85dd-49b3017baeb3"
+      },
+      "outputs": [],
+      "source": [
+        "confusionMatrix(my_dt_prediction, validation$Survived)\n",
+        "##Generating ROC curve \n",
+        "my_dt.prob <- predict(my_decision_tree, validation, type = \"prob\")\n",
+        "#assessing performance with the use of ROC Curve\n",
+        "my_dt.scores <- prediction(my_dt.prob[,2], validation$Survived)\n",
+        "my_dt.perf <- performance(my_dt.scores, measure=\"tpr\", x.measure=\"fpr\")"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "_cell_guid": "02c37c7f-f114-d896-4d93-ec9621ea0670"
+      },
+      "outputs": [],
+      "source": [
+        "confusionMatrix(my_rf_prediction, validation$Survived)\n",
+        "\n",
+        "my_rf.prob <- predict(my_rf, validation, type = \"prob\")\n",
+        "#assessing performance with the use of ROC Curve\n",
+        "my_rf.scores <- prediction(my_rf.prob[,2], validation$Survived)\n",
+        "my_rf.perf <- performance(my_rf.scores, measure=\"tpr\", x.measure=\"fpr\")"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "_cell_guid": "2e4cc090-8d94-5076-ec38-05ef1b2a27d4"
+      },
+      "outputs": [],
+      "source": [
+        "confusionMatrix(my_svm_prediction, validation$Survived)\n",
+        "\n",
+        "my_svm.prob <- predict(my_svm, validation, type = \"prob\")\n",
+        "#assessing performance with the use of ROC Curve\n",
+        "#my_svm.scores <- prediction(my_svm.prob[,2], validation$Survived)\n",
+        "#my_svm.perf <- performance(my_svm.scores, measure=\"tpr\", x.measure=\"fpr\")"
+      ]
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {
+        "_cell_guid": "2553138b-63e7-897e-73fa-686d7ab2ff84"
+      },
+      "source": [
+        "## Performance comparison across models"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "_cell_guid": "e5c1d185-b769-45eb-b3e4-1fa329c76f6c"
+      },
+      "outputs": [],
+      "source": [
+        "# Plot the ROC curve\n",
+        "plot(my_dt.perf, col = \"green\", lwd = 1.5)\n",
+        "# Add the ROC curve of the logistic model and the diagonal line\n",
+        "plot(my_rf.perf, col = \"red\", lwd = 1, add = TRUE)\n",
+        "abline(0, 1, lty = 8, col = \"grey\")\n",
+        "legend(\"bottomright\", legend = c(\"tree\", \"forest\"), col = c(\"green\", \"red\"), lwd = c(1.5,1))"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "_cell_guid": "ea680eee-eaa8-fcae-579c-6c2925412d07"
+      },
+      "outputs": [],
+      "source": [
+        "#### more performance comparison codes\n",
+        "# AUC for the Decision Tree\n",
+        "my_dt.auc <- performance(my_dt.scores, \"auc\")      # AUC for the decision tree\n",
+        "my_rf.auc <- performance(my_rf.scores, \"auc\")\n",
+        "\n",
+        "my_dt.auc@y.values\n",
+        "my_rf.auc@y.values"
+      ]
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {
+        "_cell_guid": "d3deeeb4-30b5-7b16-0193-10153f39791c"
+      },
+      "source": [
+        "### Variable importance\n",
+        "\n",
+        "Method 1 - using *importance* function from randomForest package to rank variable importance"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "_cell_guid": "246fee68-3866-87ca-622f-f54174954ece"
+      },
+      "outputs": [],
+      "source": [
+        "importance    <- importance(my_rf)"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "_cell_guid": "5c685058-245e-f6d8-460c-61c4f62eba2e"
+      },
+      "outputs": [],
+      "source": [
+        "varImportance <- data.frame(Variables = row.names(importance), Importance = round(importance[ ,'MeanDecreaseGini'],2))\n",
+        "\n",
+        "## sort by Importance\n",
+        "new_varImportance <- varImportance[order(-Importance),]\n",
+        "\n",
+        "# Use ggplot2 to visualize the relative importance of variables\n",
+        "ggplot(new_varImportance, aes(x = reorder(Variables, Importance), \n",
+        "    y = Importance, fill = Importance)) +\n",
+        "  geom_bar(stat='identity') + \n",
+        "  labs(x = 'Variables') +\n",
+        "  coord_flip() + \n",
+        "  theme_few()"
+      ]
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {
+        "_cell_guid": "e44374b8-77a4-6600-feff-0b2c23bed56b"
+      },
+      "source": [
+        "## Method 2 - using varImp from Caret package to rank variable importance"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "_cell_guid": "cb159f02-acbb-a70b-98b0-ecaf7f58c2f4"
+      },
+      "outputs": [],
+      "source": [
+        "importance = varImp(my_decision_tree, scale=FALSE)\n",
+        "importance\n",
+        "plot(importance)"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "_cell_guid": "a5e95e2a-0a3c-5c2a-ca74-c435b0f5fce1"
+      },
+      "outputs": [],
+      "source": ""
+    }
+  ],
+  "metadata": {
+    "_change_revision": 0,
+    "_is_fork": false,
+    "kernelspec": {
+      "display_name": "R",
+      "language": "R",
+      "name": "ir"
+    },
+    "language_info": {
+      "codemirror_mode": "r",
+      "file_extension": ".r",
+      "mimetype": "text/x-r-source",
+      "name": "R",
+      "pygments_lexer": "r",
+      "version": "3.3.1"
+    }
+  },
+  "nbformat": 4,
+  "nbformat_minor": 0
+}

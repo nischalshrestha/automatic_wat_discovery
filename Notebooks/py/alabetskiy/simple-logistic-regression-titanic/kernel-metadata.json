@@ -1,0 +1,17 @@
+{
+  "enable_internet": false,
+  "is_private": false,
+  "language": "python",
+  "code_file": "simple-logistic-regression-titanic.ipynb",
+  "id_no": 919703,
+  "kernel_sources": [],
+  "dataset_sources": [],
+  "competition_sources": [
+    "titanic"
+  ],
+  "title": "Simple Logistic Regression ",
+  "keywords": [],
+  "enable_gpu": false,
+  "id": "alabetskiy/simple-logistic-regression-titanic",
+  "kernel_type": "notebook"
+}

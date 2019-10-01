@@ -1,0 +1,17 @@
+{
+  "dataset_sources": [],
+  "id": "atalanteonthefly/logistic-regression-from-scratch",
+  "enable_gpu": false,
+  "title": "Logistic regression from scratch",
+  "competition_sources": [
+    "titanic"
+  ],
+  "code_file": "logistic-regression-from-scratch.ipynb",
+  "keywords": [],
+  "kernel_sources": [],
+  "language": "python",
+  "id_no": 338374,
+  "enable_internet": false,
+  "kernel_type": "notebook",
+  "is_private": false
+}

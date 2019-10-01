@@ -1,0 +1,17 @@
+{
+  "dataset_sources": [],
+  "title": "Titanic_SS_1",
+  "kernel_type": "notebook",
+  "keywords": [],
+  "competition_sources": [
+    "titanic"
+  ],
+  "id_no": 2154706,
+  "code_file": "titanic-ss-1.ipynb",
+  "enable_gpu": false,
+  "id": "sumitsaxena23/titanic-ss-1",
+  "language": "python",
+  "enable_internet": false,
+  "kernel_sources": [],
+  "is_private": false
+}

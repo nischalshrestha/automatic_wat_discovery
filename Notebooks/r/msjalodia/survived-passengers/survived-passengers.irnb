@@ -1,0 +1,56 @@
+{
+  "cells": [
+    {
+      "cell_type": "markdown",
+      "metadata": {
+        "_cell_guid": "f4119e96-dd5c-239d-a6d6-57a3b3db352d"
+      },
+      "source": ""
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "_cell_guid": "53aa5f35-9667-8517-eca2-5601027e3b25"
+      },
+      "outputs": [],
+      "source": [
+        "train<- read.csv(\"https://github.com/EasyD/IntroToDataScience/blob/master/train.csv\")\n",
+        "str(train)\n",
+        "test<- read.csv(\"https://github.com/EasyD/IntroToDataScience/blob/master/test.csv\")\n",
+        "\n",
+        "test.survived <- data.frame(survived = rep(\"None\", nrow(test)), test[,])\n",
+        "data.combined<- rbind.data.frame(train,test.survived)\n",
+        "                                \n",
+        "table(data.combined$Survived)\n",
+        "table(data.combined$Pclass)\n",
+        " library(ggplot2)\n",
+        "train$Pclass<- as.factor(train$Pclass)\n",
+        "ggplot(train,aes(x=Pclass, fill=factor(survived)))+\n",
+        "  geom_histogram(width=0.5)+\n",
+        "  xlab(\"pclass\")+\n",
+        "  ylab(\"total count\")+\n",
+        "labs(fill=\"survived\")\n"
+      ]
+    }
+  ],
+  "metadata": {
+    "_change_revision": 0,
+    "_is_fork": false,
+    "kernelspec": {
+      "display_name": "R",
+      "language": "R",
+      "name": "ir"
+    },
+    "language_info": {
+      "codemirror_mode": "r",
+      "file_extension": ".r",
+      "mimetype": "text/x-r-source",
+      "name": "R",
+      "pygments_lexer": "r",
+      "version": "3.3.3"
+    }
+  },
+  "nbformat": 4,
+  "nbformat_minor": 0
+}

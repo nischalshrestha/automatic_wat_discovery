@@ -1,0 +1,17 @@
+{
+  "enable_gpu": false,
+  "language": "python",
+  "is_private": false,
+  "competition_sources": [
+    "titanic"
+  ],
+  "kernel_type": "notebook",
+  "dataset_sources": [],
+  "title": "Titanic is sinking...",
+  "enable_internet": false,
+  "code_file": "titanic-is-sinking.ipynb",
+  "id": "cesaaar/titanic-is-sinking",
+  "keywords": [],
+  "kernel_sources": [],
+  "id_no": 253295
+}

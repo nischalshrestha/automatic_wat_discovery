@@ -1,0 +1,23 @@
+{
+  "is_private": false,
+  "kernel_type": "notebook",
+  "competition_sources": [
+    "titanic"
+  ],
+  "language": "python",
+  "id_no": 1741469,
+  "enable_gpu": false,
+  "enable_internet": false,
+  "code_file": "titanic-by-a-beginner.ipynb",
+  "id": "vaibhavsagar/titanic-by-a-beginner",
+  "dataset_sources": [],
+  "title": "Titanic by a beginner",
+  "kernel_sources": [],
+  "keywords": [
+    "tutorial",
+    "beginner",
+    "eda",
+    "classification",
+    "starter code"
+  ]
+}

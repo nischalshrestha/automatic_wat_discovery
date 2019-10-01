@@ -1,0 +1,17 @@
+{
+  "is_private": false,
+  "code_file": "notebooka4d9fe91a1.ipynb",
+  "kernel_sources": [],
+  "enable_gpu": false,
+  "id": "amitchauhan/notebooka4d9fe91a1",
+  "id_no": 230304,
+  "title": "Notebooka4d9fe91a1",
+  "keywords": [],
+  "kernel_type": "notebook",
+  "language": "python",
+  "competition_sources": [
+    "titanic"
+  ],
+  "dataset_sources": [],
+  "enable_internet": false
+}

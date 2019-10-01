@@ -1,0 +1,17 @@
+{
+  "language": "python",
+  "id_no": 213713,
+  "kernel_sources": [],
+  "keywords": [],
+  "code_file": "notebooke11af7a306.ipynb",
+  "id": "azou415/notebooke11af7a306",
+  "is_private": false,
+  "title": "Notebooke11af7a306",
+  "dataset_sources": [],
+  "enable_gpu": false,
+  "kernel_type": "notebook",
+  "enable_internet": false,
+  "competition_sources": [
+    "titanic"
+  ]
+}

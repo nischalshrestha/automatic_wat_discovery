@@ -1,0 +1,17 @@
+{
+  "code_file": "simple-nn-with-keras.ipynb",
+  "competition_sources": [
+    "titanic"
+  ],
+  "dataset_sources": [],
+  "enable_gpu": false,
+  "id": "thealexmeza/simple-nn-with-keras",
+  "id_no": 1404205,
+  "language": "python",
+  "is_private": false,
+  "kernel_sources": [],
+  "title": "Simple NN with Keras",
+  "enable_internet": false,
+  "kernel_type": "notebook",
+  "keywords": []
+}

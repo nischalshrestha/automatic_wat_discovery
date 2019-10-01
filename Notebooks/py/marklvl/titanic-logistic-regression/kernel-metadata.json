@@ -1,0 +1,23 @@
+{
+  "id": "marklvl/titanic-logistic-regression",
+  "id_no": 1051704,
+  "title": "Titanic Logistic Regression",
+  "code_file": "titanic-logistic-regression.ipynb",
+  "language": "python",
+  "kernel_type": "notebook",
+  "is_private": false,
+  "enable_gpu": false,
+  "enable_internet": false,
+  "keywords": [
+    "tutorial",
+    "beginner",
+    "data cleaning",
+    "feature engineering",
+    "logistic regression"
+  ],
+  "dataset_sources": [],
+  "kernel_sources": [],
+  "competition_sources": [
+    "titanic"
+  ]
+}

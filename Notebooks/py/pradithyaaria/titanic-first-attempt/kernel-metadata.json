@@ -1,0 +1,17 @@
+{
+  "code_file": "titanic-first-attempt.ipynb",
+  "title": "Titanic First Attempt ",
+  "keywords": [],
+  "id_no": 547047,
+  "enable_internet": false,
+  "is_private": false,
+  "kernel_sources": [],
+  "competition_sources": [
+    "titanic"
+  ],
+  "id": "pradithyaaria/titanic-first-attempt",
+  "kernel_type": "notebook",
+  "language": "python",
+  "enable_gpu": false,
+  "dataset_sources": []
+}

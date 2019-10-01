@@ -1,0 +1,19 @@
+{
+  "kernel_type": "notebook",
+  "enable_gpu": false,
+  "code_file": "proper-cv-techniques.ipynb",
+  "title": "Proper CV techniques",
+  "kernel_sources": [],
+  "dataset_sources": [],
+  "is_private": false,
+  "id": "neuroguy/proper-cv-techniques",
+  "language": "python",
+  "competition_sources": [
+    "titanic"
+  ],
+  "enable_internet": false,
+  "keywords": [
+    "beginner"
+  ],
+  "id_no": 492093
+}

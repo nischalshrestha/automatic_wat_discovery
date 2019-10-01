@@ -1,0 +1,17 @@
+{
+  "title": "Titanic",
+  "enable_internet": false,
+  "competition_sources": [
+    "titanic"
+  ],
+  "keywords": [],
+  "id_no": 1945874,
+  "id": "rogercomins/titanic",
+  "kernel_sources": [],
+  "code_file": "titanic.ipynb",
+  "dataset_sources": [],
+  "kernel_type": "notebook",
+  "is_private": false,
+  "enable_gpu": false,
+  "language": "python"
+}

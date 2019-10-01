@@ -1,0 +1,17 @@
+{
+  "kernel_sources": [],
+  "code_file": "predicting-who-survived.irnb",
+  "kernel_type": "notebook",
+  "enable_gpu": false,
+  "keywords": [],
+  "language": "r",
+  "id_no": 115571,
+  "is_private": false,
+  "dataset_sources": [],
+  "enable_internet": false,
+  "title": "Predicting who survived",
+  "id": "playfulphilosopher/predicting-who-survived",
+  "competition_sources": [
+    "titanic"
+  ]
+}

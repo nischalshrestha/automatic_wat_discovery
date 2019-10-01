@@ -1,0 +1,17 @@
+{
+  "kernel_type": "notebook",
+  "is_private": false,
+  "kernel_sources": [],
+  "enable_internet": false,
+  "enable_gpu": false,
+  "id": "jingshan1989/notebook8aec9235d6",
+  "title": "Notebook8aec9235d6",
+  "language": "python",
+  "dataset_sources": [],
+  "id_no": 231134,
+  "keywords": [],
+  "competition_sources": [
+    "titanic"
+  ],
+  "code_file": "notebook8aec9235d6.ipynb"
+}

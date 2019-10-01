@@ -1,0 +1,17 @@
+{
+  "kernel_sources": [],
+  "language": "python",
+  "competition_sources": [
+    "titanic"
+  ],
+  "is_private": false,
+  "kernel_type": "notebook",
+  "dataset_sources": [],
+  "id_no": 435179,
+  "keywords": [],
+  "title": "[Top 5%] XGBoost tunning - first competition",
+  "code_file": "top-5-xgboost-tunning-first-competition.ipynb",
+  "id": "raphaelsourty/top-5-xgboost-tunning-first-competition",
+  "enable_internet": false,
+  "enable_gpu": false
+}

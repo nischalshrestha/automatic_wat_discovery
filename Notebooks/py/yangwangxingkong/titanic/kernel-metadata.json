@@ -1,0 +1,17 @@
+{
+  "language": "python",
+  "enable_gpu": false,
+  "keywords": [],
+  "dataset_sources": [],
+  "kernel_sources": [],
+  "id_no": 495549,
+  "enable_internet": false,
+  "code_file": "titanic.ipynb",
+  "title": "Titanic\u7b80\u5355\u7684\u6570\u636e\u5904\u7406\u4e0e\u5206\u6790\u5b9e\u6218",
+  "kernel_type": "notebook",
+  "competition_sources": [
+    "titanic"
+  ],
+  "is_private": false,
+  "id": "yangwangxingkong/titanic"
+}

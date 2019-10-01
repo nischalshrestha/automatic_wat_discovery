@@ -1,0 +1,17 @@
+{
+  "is_private": false,
+  "enable_internet": false,
+  "keywords": [],
+  "title": "First Notebook - Titanic",
+  "dataset_sources": [],
+  "enable_gpu": false,
+  "id": "joaoweissmann/first-notebook-titanic",
+  "id_no": 578228,
+  "competition_sources": [
+    "titanic"
+  ],
+  "kernel_sources": [],
+  "language": "python",
+  "kernel_type": "notebook",
+  "code_file": "first-notebook-titanic.ipynb"
+}

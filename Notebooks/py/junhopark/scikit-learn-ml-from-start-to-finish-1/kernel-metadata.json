@@ -1,0 +1,17 @@
+{
+  "dataset_sources": [],
+  "competition_sources": [
+    "titanic"
+  ],
+  "code_file": "scikit-learn-ml-from-start-to-finish-1.ipynb",
+  "enable_gpu": false,
+  "id": "junhopark/scikit-learn-ml-from-start-to-finish-1",
+  "keywords": [],
+  "title": "Scikit-Learn ML from Start to Finish 1",
+  "enable_internet": false,
+  "language": "python",
+  "id_no": 414562,
+  "kernel_sources": [],
+  "is_private": false,
+  "kernel_type": "notebook"
+}

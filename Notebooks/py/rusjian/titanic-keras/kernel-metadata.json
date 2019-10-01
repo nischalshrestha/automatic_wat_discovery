@@ -1,0 +1,17 @@
+{
+  "competition_sources": [
+    "titanic"
+  ],
+  "is_private": false,
+  "id_no": 445024,
+  "title": "Titanic(Keras)",
+  "dataset_sources": [],
+  "enable_internet": false,
+  "code_file": "titanic-keras.ipynb",
+  "kernel_type": "notebook",
+  "keywords": [],
+  "language": "python",
+  "id": "rusjian/titanic-keras",
+  "kernel_sources": [],
+  "enable_gpu": false
+}

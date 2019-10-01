@@ -1,0 +1,17 @@
+{
+  "is_private": false,
+  "competition_sources": [
+    "titanic"
+  ],
+  "id": "ashirahama/simple-logistic-regression",
+  "kernel_type": "notebook",
+  "id_no": 1968668,
+  "enable_internet": false,
+  "enable_gpu": false,
+  "kernel_sources": [],
+  "dataset_sources": [],
+  "title": "Simple Logistic Regression",
+  "keywords": [],
+  "code_file": "simple-logistic-regression.ipynb",
+  "language": "python"
+}

@@ -1,0 +1,17 @@
+{
+  "language": "python",
+  "enable_gpu": false,
+  "id": "souvikb07/titanic-machine-learning-from-disaster",
+  "competition_sources": [
+    "titanic"
+  ],
+  "is_private": false,
+  "kernel_type": "notebook",
+  "id_no": 1265064,
+  "title": "Titanic: Machine Learning from Disaster",
+  "enable_internet": false,
+  "dataset_sources": [],
+  "code_file": "titanic-machine-learning-from-disaster.ipynb",
+  "kernel_sources": [],
+  "keywords": []
+}

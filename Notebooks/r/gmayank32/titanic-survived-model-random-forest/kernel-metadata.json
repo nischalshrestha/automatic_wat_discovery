@@ -1,0 +1,17 @@
+{
+  "competition_sources": [
+    "titanic"
+  ],
+  "enable_gpu": false,
+  "keywords": [],
+  "kernel_type": "notebook",
+  "language": "r",
+  "enable_internet": false,
+  "code_file": "titanic-survived-model-random-forest.irnb",
+  "id_no": 227834,
+  "is_private": false,
+  "kernel_sources": [],
+  "id": "gmayank32/titanic-survived-model-random-forest",
+  "title": "Titanic Survived Model : Random Forest",
+  "dataset_sources": []
+}

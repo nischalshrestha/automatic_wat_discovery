@@ -1,0 +1,17 @@
+{
+  "id": "rzetto/cs-100-ml-with-the-titanic-dataset",
+  "title": "CS 100: ML with the Titanic Dataset",
+  "language": "python",
+  "keywords": [],
+  "id_no": 1701286,
+  "enable_internet": false,
+  "enable_gpu": false,
+  "kernel_type": "notebook",
+  "code_file": "cs-100-ml-with-the-titanic-dataset.ipynb",
+  "competition_sources": [
+    "titanic"
+  ],
+  "kernel_sources": [],
+  "dataset_sources": [],
+  "is_private": false
+}

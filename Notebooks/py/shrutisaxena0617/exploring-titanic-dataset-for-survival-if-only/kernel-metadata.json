@@ -1,0 +1,21 @@
+{
+  "is_private": false,
+  "code_file": "exploring-titanic-dataset-for-survival-if-only.ipynb",
+  "enable_gpu": false,
+  "kernel_sources": [],
+  "id_no": 533257,
+  "id": "shrutisaxena0617/exploring-titanic-dataset-for-survival-if-only",
+  "dataset_sources": [],
+  "enable_internet": false,
+  "title": "Exploring Titanic dataset for survival. If only!",
+  "language": "python",
+  "competition_sources": [
+    "titanic"
+  ],
+  "kernel_type": "notebook",
+  "keywords": [
+    "eda",
+    "machine learning",
+    "classification"
+  ]
+}

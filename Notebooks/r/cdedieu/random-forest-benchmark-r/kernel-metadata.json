@@ -1,0 +1,17 @@
+{
+  "enable_gpu": false,
+  "language": "r",
+  "kernel_sources": [],
+  "keywords": [],
+  "code_file": "random-forest-benchmark-r.R",
+  "is_private": false,
+  "dataset_sources": [],
+  "enable_internet": false,
+  "title": "Random Forest Benchmark (R)",
+  "competition_sources": [
+    "titanic"
+  ],
+  "id_no": 66285,
+  "kernel_type": "script",
+  "id": "cdedieu/random-forest-benchmark-r"
+}

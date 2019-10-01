@@ -1,0 +1,23 @@
+{
+  "enable_internet": false,
+  "competition_sources": [
+    "titanic"
+  ],
+  "enable_gpu": false,
+  "keywords": [
+    "beginner",
+    "eda",
+    "data visualization",
+    "feature engineering",
+    "starter code"
+  ],
+  "kernel_type": "notebook",
+  "is_private": false,
+  "dataset_sources": [],
+  "kernel_sources": [],
+  "id": "sid321axn/titanic-survival-eda-feature-engineering",
+  "id_no": 1716596,
+  "title": "Titanic Survival : EDA + Feature Engineering",
+  "language": "python",
+  "code_file": "titanic-survival-eda-feature-engineering.ipynb"
+}

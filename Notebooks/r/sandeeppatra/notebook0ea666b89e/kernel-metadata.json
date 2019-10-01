@@ -1,0 +1,17 @@
+{
+  "kernel_sources": [],
+  "kernel_type": "notebook",
+  "code_file": "notebook0ea666b89e.irnb",
+  "keywords": [],
+  "title": "Notebook0ea666b89e",
+  "enable_gpu": false,
+  "is_private": false,
+  "enable_internet": false,
+  "language": "r",
+  "id_no": 112706,
+  "dataset_sources": [],
+  "id": "sandeeppatra/notebook0ea666b89e",
+  "competition_sources": [
+    "titanic"
+  ]
+}

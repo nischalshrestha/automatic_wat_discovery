@@ -1,0 +1,17 @@
+{
+  "id": "lissetteg/notebook935e5fb60d",
+  "keywords": [],
+  "id_no": 240048,
+  "kernel_sources": [],
+  "code_file": "notebook935e5fb60d.ipynb",
+  "kernel_type": "notebook",
+  "dataset_sources": [],
+  "enable_internet": false,
+  "title": "Notebook935e5fb60d",
+  "enable_gpu": false,
+  "language": "python",
+  "is_private": false,
+  "competition_sources": [
+    "titanic"
+  ]
+}

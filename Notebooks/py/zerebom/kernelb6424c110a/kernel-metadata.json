@@ -1,0 +1,19 @@
+{
+  "id": "zerebom/kernelb6424c110a",
+  "dataset_sources": [],
+  "keywords": [
+    "beginner"
+  ],
+  "enable_gpu": false,
+  "title": "kernelb6424c110a",
+  "kernel_type": "notebook",
+  "id_no": 1575291,
+  "code_file": "kernelb6424c110a.ipynb",
+  "is_private": false,
+  "language": "python",
+  "enable_internet": false,
+  "competition_sources": [
+    "titanic"
+  ],
+  "kernel_sources": []
+}

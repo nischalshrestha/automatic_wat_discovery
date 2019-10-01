@@ -1,0 +1,17 @@
+{
+  "enable_gpu": false,
+  "competition_sources": [
+    "titanic"
+  ],
+  "id_no": 321355,
+  "enable_internet": false,
+  "id": "woliveira/hello-titanic",
+  "dataset_sources": [],
+  "code_file": "hello-titanic.irnb",
+  "title": "Hello Titanic",
+  "kernel_type": "notebook",
+  "kernel_sources": [],
+  "is_private": false,
+  "language": "r",
+  "keywords": []
+}

@@ -1,0 +1,17 @@
+{
+  "competition_sources": [
+    "titanic"
+  ],
+  "is_private": false,
+  "code_file": "a-journey-through-titanic.ipynb",
+  "kernel_type": "notebook",
+  "id": "loller/a-journey-through-titanic",
+  "id_no": 169231,
+  "enable_internet": false,
+  "dataset_sources": [],
+  "title": "A Journey through Titanic",
+  "language": "python",
+  "enable_gpu": false,
+  "kernel_sources": [],
+  "keywords": []
+}

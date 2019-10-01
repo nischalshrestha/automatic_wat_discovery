@@ -1,0 +1,17 @@
+{
+  "competition_sources": [
+    "titanic"
+  ],
+  "dataset_sources": [],
+  "enable_gpu": false,
+  "enable_internet": false,
+  "is_private": false,
+  "kernel_sources": [],
+  "kernel_type": "notebook",
+  "title": "Titanic Predictions",
+  "keywords": [],
+  "code_file": "titanic-predictions.irnb",
+  "id_no": 128605,
+  "id": "achristopherson/titanic-predictions",
+  "language": "r"
+}

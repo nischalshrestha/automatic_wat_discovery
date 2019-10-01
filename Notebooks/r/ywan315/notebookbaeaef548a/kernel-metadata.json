@@ -1,0 +1,17 @@
+{
+  "id": "ywan315/notebookbaeaef548a",
+  "title": "Notebookbaeaef548a",
+  "enable_gpu": false,
+  "language": "r",
+  "enable_internet": false,
+  "competition_sources": [
+    "titanic"
+  ],
+  "is_private": false,
+  "kernel_sources": [],
+  "kernel_type": "notebook",
+  "dataset_sources": [],
+  "code_file": "notebookbaeaef548a.irnb",
+  "keywords": [],
+  "id_no": 203807
+}

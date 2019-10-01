@@ -1,0 +1,17 @@
+{
+  "is_private": false,
+  "dataset_sources": [],
+  "kernel_type": "notebook",
+  "enable_gpu": false,
+  "title": "The Titanic problem from a noob perspective",
+  "keywords": [],
+  "code_file": "the-titanic-problem-from-a-noob-perspective.ipynb",
+  "id": "aolmoher/the-titanic-problem-from-a-noob-perspective",
+  "kernel_sources": [],
+  "enable_internet": false,
+  "id_no": 344020,
+  "competition_sources": [
+    "titanic"
+  ],
+  "language": "python"
+}

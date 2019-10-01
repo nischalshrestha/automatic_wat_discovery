@@ -1,0 +1,17 @@
+{
+  "enable_internet": false,
+  "kernel_type": "notebook",
+  "id": "ciortanmadalina/notebookaf79a56613",
+  "keywords": [],
+  "language": "r",
+  "competition_sources": [
+    "titanic"
+  ],
+  "is_private": false,
+  "enable_gpu": false,
+  "title": "Notebookaf79a56613",
+  "code_file": "notebookaf79a56613.irnb",
+  "id_no": 189120,
+  "kernel_sources": [],
+  "dataset_sources": []
+}

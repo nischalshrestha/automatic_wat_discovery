@@ -1,0 +1,23 @@
+{
+  "competition_sources": [
+    "titanic"
+  ],
+  "id": "gonnel/titanic-random-forest-top-22-approach",
+  "kernel_sources": [],
+  "code_file": "titanic-random-forest-top-22-approach.irnb",
+  "dataset_sources": [],
+  "id_no": 1833249,
+  "enable_gpu": false,
+  "is_private": false,
+  "kernel_type": "notebook",
+  "title": "Titanic: Random Forest top 22% approach.",
+  "keywords": [
+    "tutorial",
+    "beginner",
+    "data visualization",
+    "classification",
+    "starter code"
+  ],
+  "language": "r",
+  "enable_internet": false
+}

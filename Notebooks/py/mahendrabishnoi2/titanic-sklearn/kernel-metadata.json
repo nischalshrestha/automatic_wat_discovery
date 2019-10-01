@@ -1,0 +1,17 @@
+{
+  "id": "mahendrabishnoi2/titanic-sklearn",
+  "id_no": 1053435,
+  "title": "titanic: sklearn",
+  "code_file": "titanic-sklearn.ipynb",
+  "language": "python",
+  "kernel_type": "notebook",
+  "is_private": false,
+  "enable_gpu": false,
+  "enable_internet": false,
+  "keywords": [],
+  "dataset_sources": [],
+  "kernel_sources": [],
+  "competition_sources": [
+    "titanic"
+  ]
+}

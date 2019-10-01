@@ -1,0 +1,17 @@
+{
+  "title": "Titanic - EDA+ CV + XGB ",
+  "kernel_sources": [],
+  "is_private": false,
+  "kernel_type": "notebook",
+  "id_no": 1759840,
+  "enable_internet": false,
+  "language": "python",
+  "dataset_sources": [],
+  "enable_gpu": false,
+  "keywords": [],
+  "code_file": "titanic-eda-cv-xgb.ipynb",
+  "id": "nhlr21/titanic-eda-cv-xgb",
+  "competition_sources": [
+    "titanic"
+  ]
+}

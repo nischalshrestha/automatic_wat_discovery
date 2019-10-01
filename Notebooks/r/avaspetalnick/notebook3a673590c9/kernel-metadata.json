@@ -1,0 +1,17 @@
+{
+  "language": "python",
+  "competition_sources": [
+    "titanic"
+  ],
+  "id": "avaspetalnick/notebook3a673590c9",
+  "kernel_sources": [],
+  "id_no": 209941,
+  "enable_internet": false,
+  "enable_gpu": false,
+  "kernel_type": "notebook",
+  "title": "Notebook3a673590c9",
+  "is_private": false,
+  "dataset_sources": [],
+  "code_file": "notebook3a673590c9.ipynb",
+  "keywords": []
+}

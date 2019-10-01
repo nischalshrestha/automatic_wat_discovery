@@ -1,0 +1,17 @@
+{
+  "language": "r",
+  "enable_gpu": false,
+  "title": "Myfirstnotebook",
+  "keywords": [],
+  "is_private": false,
+  "code_file": "myfirstnotebook.irnb",
+  "competition_sources": [
+    "titanic"
+  ],
+  "kernel_sources": [],
+  "dataset_sources": [],
+  "kernel_type": "notebook",
+  "id": "kaider0/myfirstnotebook",
+  "enable_internet": false,
+  "id_no": 207586
+}

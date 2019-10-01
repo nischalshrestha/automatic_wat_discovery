@@ -1,0 +1,17 @@
+{
+  "enable_gpu": false,
+  "keywords": [],
+  "dataset_sources": [],
+  "title": "Random forest with clustering to interpret data",
+  "id_no": 103384,
+  "enable_internet": false,
+  "competition_sources": [
+    "titanic"
+  ],
+  "is_private": false,
+  "kernel_type": "notebook",
+  "kernel_sources": [],
+  "language": "r",
+  "code_file": "random-forest-with-clustering-to-interpret-data.irnb",
+  "id": "hcmarchezi/random-forest-with-clustering-to-interpret-data"
+}

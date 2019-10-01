@@ -1,0 +1,22 @@
+{
+  "kernel_sources": [],
+  "keywords": [
+    "beginner",
+    "eda",
+    "data visualization",
+    "classification"
+  ],
+  "id": "dprater513/classifying-titanic-survivors-svm-logreg-knn",
+  "title": "Classifying Titanic Survivors (SVM, LogReg, KNN)",
+  "kernel_type": "notebook",
+  "is_private": false,
+  "id_no": 484210,
+  "code_file": "classifying-titanic-survivors-svm-logreg-knn.ipynb",
+  "competition_sources": [
+    "titanic"
+  ],
+  "dataset_sources": [],
+  "language": "python",
+  "enable_internet": false,
+  "enable_gpu": false
+}

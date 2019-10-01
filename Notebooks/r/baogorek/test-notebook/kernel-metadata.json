@@ -1,0 +1,17 @@
+{
+  "is_private": false,
+  "kernel_sources": [],
+  "competition_sources": [
+    "titanic"
+  ],
+  "dataset_sources": [],
+  "keywords": [],
+  "title": "Test notebook",
+  "code_file": "test-notebook.irnb",
+  "enable_internet": false,
+  "language": "r",
+  "id": "baogorek/test-notebook",
+  "id_no": 164402,
+  "kernel_type": "notebook",
+  "enable_gpu": false
+}

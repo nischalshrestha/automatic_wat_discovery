@@ -1,0 +1,17 @@
+{
+  "enable_internet": false,
+  "id": "brianaround/working-with-the-ticket",
+  "id_no": 85322,
+  "enable_gpu": false,
+  "is_private": false,
+  "competition_sources": [
+    "titanic"
+  ],
+  "code_file": "working-with-the-ticket.irnb",
+  "kernel_type": "notebook",
+  "kernel_sources": [],
+  "language": "r",
+  "dataset_sources": [],
+  "title": "Working with the Ticket",
+  "keywords": []
+}

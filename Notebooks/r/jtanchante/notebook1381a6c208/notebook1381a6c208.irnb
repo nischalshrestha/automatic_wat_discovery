@@ -1,0 +1,102 @@
+{
+  "cells": [
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "_cell_guid": "e62fe10d-bb41-b410-2f29-6cb74e8b72a9"
+      },
+      "outputs": [],
+      "source": [
+        "#Library:\n",
+        "library(randomForest)"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "_cell_guid": "f09a1acd-10c4-7214-1262-2b619ef465b7"
+      },
+      "outputs": [],
+      "source": [
+        "#Data importing:\n",
+        "train<-read.csv('../input/train.csv')\n",
+        "test<-read.csv('../input/test.csv')"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "_cell_guid": "a8d55b0d-3762-a081-7e31-5a6381281c50"
+      },
+      "outputs": [],
+      "source": [
+        "#Appending the datasets:\n",
+        "test$Survived<-NA\n",
+        "train$istest<-FALSE\n",
+        "test$istest<-TRUE\n",
+        "data<-rbind(train,test)"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "_cell_guid": "a72cfa49-9ba4-8227-5d8a-8a7388edac96"
+      },
+      "outputs": [],
+      "source": [
+        "# Data structure:\n",
+        "# Variable | Definition\n",
+        "# survival |\tSurvival \t0 = No, 1 = Yes\n",
+        "# pclass |\tTicket class \t1 = 1st, 2 = 2nd, 3 = 3rd\n",
+        "# sex |\tSex \t\n",
+        "# Age |\tAge in years \t\n",
+        "# sibsp \t# of siblings / spouses aboard the Titanic \t\n",
+        "# parch  # of parents / children aboard the Titanic \t\n",
+        "# ticket |\tTicket number \t\n",
+        "# fare |\tPassenger fare \t\n",
+        "# cabin |\tCabin number \t\n",
+        "# embarked |\tPort of Embarkation\n",
+        "\n",
+        "#Summary and visualization:\n",
+        "str(data) #NAs: Age (263), Fare (1) and Embarked has an empty cell\n",
+        "\n",
+        "sapply(data, function(y) sum(length(which(is.na(y)))))\n",
+        "#Source:http://stackoverflow.com/questions/24027605/determine-the-number-of-na-values-in-a-column\n",
+        "\n",
+        "unique(data$Embarked)"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "_cell_guid": "1275ad1e-f4f9-672a-e149-3d99ed880c52"
+      },
+      "outputs": [],
+      "source": ""
+    }
+  ],
+  "metadata": {
+    "_change_revision": 0,
+    "_is_fork": false,
+    "kernelspec": {
+      "display_name": "R",
+      "language": "R",
+      "name": "ir"
+    },
+    "language_info": {
+      "codemirror_mode": "r",
+      "file_extension": ".r",
+      "mimetype": "text/x-r-source",
+      "name": "R",
+      "pygments_lexer": "r",
+      "version": "3.3.3"
+    }
+  },
+  "nbformat": 4,
+  "nbformat_minor": 0
+}

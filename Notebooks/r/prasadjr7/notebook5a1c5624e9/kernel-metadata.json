@@ -1,0 +1,17 @@
+{
+  "code_file": "notebook5a1c5624e9.irnb",
+  "keywords": [],
+  "dataset_sources": [],
+  "id_no": 209343,
+  "kernel_type": "notebook",
+  "title": "Notebook5a1c5624e9",
+  "is_private": false,
+  "language": "r",
+  "enable_gpu": false,
+  "competition_sources": [
+    "titanic"
+  ],
+  "id": "prasadjr7/notebook5a1c5624e9",
+  "enable_internet": false,
+  "kernel_sources": []
+}

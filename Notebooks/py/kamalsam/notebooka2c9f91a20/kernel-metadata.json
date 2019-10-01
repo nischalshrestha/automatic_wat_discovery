@@ -1,0 +1,17 @@
+{
+  "dataset_sources": [],
+  "id": "kamalsam/notebooka2c9f91a20",
+  "competition_sources": [
+    "titanic"
+  ],
+  "language": "python",
+  "is_private": false,
+  "title": "Notebooka2c9f91a20",
+  "code_file": "notebooka2c9f91a20.ipynb",
+  "kernel_sources": [],
+  "kernel_type": "notebook",
+  "enable_internet": false,
+  "enable_gpu": false,
+  "keywords": [],
+  "id_no": 223622
+}

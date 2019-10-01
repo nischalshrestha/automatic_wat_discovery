@@ -1,0 +1,17 @@
+{
+  "id": "axaimdc/04-titanic-step-by-step",
+  "competition_sources": [
+    "titanic"
+  ],
+  "keywords": [],
+  "is_private": false,
+  "dataset_sources": [],
+  "kernel_sources": [],
+  "title": "04 Titanic Step By Step",
+  "language": "r",
+  "code_file": "04-titanic-step-by-step.irnb",
+  "enable_internet": false,
+  "enable_gpu": false,
+  "id_no": 329335,
+  "kernel_type": "notebook"
+}

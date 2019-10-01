@@ -1,0 +1,17 @@
+{
+  "title": "Titanic: Model Training and Validation",
+  "enable_internet": false,
+  "kernel_type": "notebook",
+  "competition_sources": [
+    "titanic"
+  ],
+  "keywords": [],
+  "language": "r",
+  "is_private": false,
+  "code_file": "titanic-model-training-and-validation.irnb",
+  "kernel_sources": [],
+  "dataset_sources": [],
+  "enable_gpu": false,
+  "id": "meggles/titanic-model-training-and-validation",
+  "id_no": 305589
+}

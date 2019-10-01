@@ -1,0 +1,17 @@
+{
+  "is_private": false,
+  "id_no": 1432996,
+  "language": "python",
+  "keywords": [],
+  "enable_gpu": false,
+  "dataset_sources": [],
+  "kernel_type": "notebook",
+  "id": "pgajdaczova/titanic-survival-prediction",
+  "title": "Titanic survival prediction",
+  "kernel_sources": [],
+  "enable_internet": false,
+  "code_file": "titanic-survival-prediction.ipynb",
+  "competition_sources": [
+    "titanic"
+  ]
+}

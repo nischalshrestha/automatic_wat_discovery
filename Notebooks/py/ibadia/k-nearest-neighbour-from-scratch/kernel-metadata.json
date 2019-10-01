@@ -1,0 +1,20 @@
+{
+  "id": "ibadia/k-nearest-neighbour-from-scratch",
+  "language": "python",
+  "keywords": [
+    "tutorial",
+    "beginner"
+  ],
+  "is_private": false,
+  "kernel_type": "notebook",
+  "code_file": "k-nearest-neighbour-from-scratch.ipynb",
+  "id_no": 685568,
+  "dataset_sources": [],
+  "title": "K Nearest Neighbour from Scratch",
+  "kernel_sources": [],
+  "competition_sources": [
+    "titanic"
+  ],
+  "enable_gpu": false,
+  "enable_internet": false
+}

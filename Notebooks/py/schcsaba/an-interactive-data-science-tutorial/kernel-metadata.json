@@ -1,0 +1,19 @@
+{
+  "id": "schcsaba/an-interactive-data-science-tutorial",
+  "id_no": 422562,
+  "title": "An Interactive Data Science Tutorial",
+  "code_file": "an-interactive-data-science-tutorial.ipynb",
+  "language": "python",
+  "kernel_type": "notebook",
+  "is_private": false,
+  "enable_gpu": false,
+  "enable_internet": false,
+  "keywords": [],
+  "dataset_sources": [
+    "shuofxz/titanic-machine-learning-from-disaster"
+  ],
+  "kernel_sources": [],
+  "competition_sources": [
+    "titanic"
+  ]
+}

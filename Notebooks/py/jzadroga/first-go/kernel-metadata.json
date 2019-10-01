@@ -1,0 +1,17 @@
+{
+  "kernel_sources": [],
+  "title": "First Go",
+  "id": "jzadroga/first-go",
+  "id_no": 852685,
+  "kernel_type": "notebook",
+  "enable_gpu": false,
+  "is_private": false,
+  "enable_internet": false,
+  "language": "python",
+  "dataset_sources": [],
+  "code_file": "first-go.ipynb",
+  "competition_sources": [
+    "titanic"
+  ],
+  "keywords": []
+}

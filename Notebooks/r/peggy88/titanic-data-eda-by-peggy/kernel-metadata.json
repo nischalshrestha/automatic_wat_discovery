@@ -1,0 +1,17 @@
+{
+  "dataset_sources": [],
+  "id_no": 271708,
+  "kernel_type": "notebook",
+  "title": "Titanic data EDA by Peggy",
+  "kernel_sources": [],
+  "is_private": false,
+  "enable_internet": false,
+  "keywords": [],
+  "enable_gpu": false,
+  "language": "r",
+  "id": "peggy88/titanic-data-eda-by-peggy",
+  "competition_sources": [
+    "titanic"
+  ],
+  "code_file": "titanic-data-eda-by-peggy.irnb"
+}

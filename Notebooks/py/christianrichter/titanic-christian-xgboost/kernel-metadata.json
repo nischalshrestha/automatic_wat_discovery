@@ -1,0 +1,17 @@
+{
+  "id_no": 1268995,
+  "code_file": "titanic-christian-xgboost.ipynb",
+  "competition_sources": [
+    "titanic"
+  ],
+  "enable_internet": false,
+  "keywords": [],
+  "kernel_type": "notebook",
+  "title": "Titanic_Christian_XGBOOST",
+  "language": "python",
+  "id": "christianrichter/titanic-christian-xgboost",
+  "enable_gpu": false,
+  "dataset_sources": [],
+  "kernel_sources": [],
+  "is_private": false
+}

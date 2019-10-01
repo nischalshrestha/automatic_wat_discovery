@@ -1,0 +1,21 @@
+{
+  "id_no": 1268290,
+  "code_file": "titanic-survival-prediction.ipynb",
+  "title": "Titanic : Survival prediction",
+  "dataset_sources": [],
+  "kernel_type": "notebook",
+  "is_private": false,
+  "kernel_sources": [],
+  "enable_gpu": false,
+  "id": "ashwiniprakash/titanic-survival-prediction",
+  "language": "python",
+  "keywords": [
+    "beginner",
+    "data cleaning",
+    "classification"
+  ],
+  "enable_internet": false,
+  "competition_sources": [
+    "titanic"
+  ]
+}

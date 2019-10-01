@@ -1,0 +1,17 @@
+{
+  "competition_sources": [
+    "titanic"
+  ],
+  "title": "Titanic Data Science Solutions",
+  "is_private": false,
+  "keywords": [],
+  "kernel_sources": [],
+  "kernel_type": "notebook",
+  "dataset_sources": [],
+  "enable_internet": false,
+  "enable_gpu": false,
+  "language": "r",
+  "id_no": 171725,
+  "id": "animatorumor/titanic-data-science-solutions",
+  "code_file": "titanic-data-science-solutions.irnb"
+}

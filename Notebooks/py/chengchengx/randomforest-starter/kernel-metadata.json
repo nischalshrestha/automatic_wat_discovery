@@ -1,0 +1,17 @@
+{
+  "language": "python",
+  "is_private": false,
+  "competition_sources": [
+    "titanic"
+  ],
+  "id_no": 443017,
+  "dataset_sources": [],
+  "enable_gpu": false,
+  "title": "RandomForest starter",
+  "kernel_type": "notebook",
+  "kernel_sources": [],
+  "code_file": "randomforest-starter.ipynb",
+  "enable_internet": false,
+  "id": "chengchengx/randomforest-starter",
+  "keywords": []
+}

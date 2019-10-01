@@ -1,0 +1,17 @@
+{
+  "title": "DJG12",
+  "is_private": false,
+  "id_no": 31159,
+  "id": "dgamelin/djg12",
+  "code_file": "djg12.irnb",
+  "competition_sources": [
+    "titanic"
+  ],
+  "kernel_sources": [],
+  "language": "r",
+  "keywords": [],
+  "kernel_type": "notebook",
+  "dataset_sources": [],
+  "enable_gpu": false,
+  "enable_internet": false
+}

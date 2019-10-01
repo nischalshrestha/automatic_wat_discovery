@@ -1,0 +1,259 @@
+{
+  "cells": [
+    {
+      "cell_type": "markdown",
+      "metadata": {
+        "_cell_guid": "2abf8746-7a77-b2f5-fe0e-84d5b6b92c3c"
+      },
+      "source": [
+        "## Introduction\n",
+        "\n",
+        "As a first attempt at a Kaggle machine learning problem, I thought I'd start out with the Titanic dataset.\n",
+        "\n",
+        "## Loading the data\n",
+        "\n",
+        "First, let us load in the data and the required libraries."
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "_cell_guid": "c72aeeea-daaa-2153-e7d5-f9a2934744be"
+      },
+      "outputs": [],
+      "source": [
+        "library(ggplot2) # Data visualization\n",
+        "library(readr) # CSV file I/O, e.g. the read_csv function\n",
+        "library(caret)\n",
+        "library(dplyr)\n",
+        "\n",
+        "training <- read.csv(\"../input/train.csv\", stringsAsFactors = F)\n",
+        "testing <- read.csv(\"../input/test.csv\", stringsAsFactors = F)\n",
+        "allData <- bind_rows(training, testing)\n",
+        "\n",
+        "str(allData)"
+      ]
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {
+        "_cell_guid": "5258251a-f0f6-80c5-6295-ace35c8341a0"
+      },
+      "source": [
+        "We first need to understand what the different variables mean:\n",
+        "\n",
+        "* Survived | Survival  (0 = No; 1 = Yes)\n",
+        "* Pclass | Passenger Class (1 = 1st; 2 = 2nd; 3 = 3rd)\n",
+        "* Name | Name (includes title)\n",
+        "* Sex | Sex\n",
+        "* Age | Age\n",
+        "* SibSp | Number of Siblings/Spouses Aboard\n",
+        "* Parch | Number of Parents/Children Aboard\n",
+        "* Ticket | Ticket Number\n",
+        "* Fare | Passenger Fare\n",
+        "* Cabin | Cabin\n",
+        "* Embarked | Port of Embarkation (C = Cherbourg; Q = Queenstown; S = Southampton)\n",
+        "\n",
+        "Clearly, then, the variables survival, class, sex, age, sibs, parch, cabin, and embarked should be factor variables, so let's correct this."
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "_cell_guid": "143c0b89-3f83-8af0-9eb1-f0aa9367fcb0"
+      },
+      "outputs": [],
+      "source": [
+        "allData$Survived <- as.factor(allData$Survived)\n",
+        "allData$Pclass <- as.factor(allData$Pclass)\n",
+        "allData$Sex <- as.factor(allData$Sex)\n",
+        "allData$Age <- as.numeric(allData$Age)\n",
+        "allData$SibSp <- as.numeric(allData$SibSp) \n",
+        "allData$Parch <- as.numeric(allData$Parch)\n",
+        "allData$Cabin <- as.factor(allData$Cabin)\n",
+        "allData$Embarked <- as.factor(allData$Embarked)\n",
+        "str(allData)"
+      ]
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {
+        "_cell_guid": "03a8ed57-37b7-d317-0c04-90fe2e7c0b8d"
+      },
+      "source": [
+        "Much better. Now, the next thing to note is that the Name variable has titles mixed in, so let's try and remove these, and create a new factor variable for the title."
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "_cell_guid": "84c245d0-494b-3b05-1fdc-bbe0a6874e6f"
+      },
+      "outputs": [],
+      "source": [
+        "allData$Title <- (gsub(\"(.*, )|(\\\\..*)\", \"\", allData$Name ))\n",
+        "table(allData$Sex, allData$Title)"
+      ]
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {
+        "_cell_guid": "04a1bc7f-c047-99de-84bd-2d0f4f34f8d3"
+      },
+      "source": [
+        "We should deal with the more obscure titles. Some of these are obvious, but for the others, we shall create a new obscure class."
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "_cell_guid": "1a7f394e-dbd7-8dd1-9677-3feb54b0b9be"
+      },
+      "outputs": [],
+      "source": [
+        "obscure <- c(\"Capt\", \"Col\", \"Don\", \"Dona\", \"Dr\", \"Jonkheer\", \"Lady\", \"Major\", \"Rev\", \"Sir\", \"the Countess\")\n",
+        "allData$Title[allData$Title == 'Ms'] <- 'Miss'\n",
+        "allData$Title[allData$Title == \"Mlle\"] <- \"Miss\"\n",
+        "allData$Title[allData$Title == \"Mme\"] <- \"Mrs\"\n",
+        "allData$Title[allData$Title %in% obscure] <- \"Obscure\""
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "_cell_guid": "68beef07-a057-7d56-69a8-396c08ed7386"
+      },
+      "outputs": [],
+      "source": [
+        "allData$Fare[is.na(allData$Fare)] <- mean(allData$Fare, na.rm=TRUE)"
+      ]
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {
+        "_cell_guid": "c9ae6361-0582-4e13-fe65-2b272b8188ef"
+      },
+      "source": [
+        "Now, we have a lot of missing ages. Let's try and predict the ages based on the other variables. First, let's take a subset of the data for which we have Age information, and then use this to build a decision tree."
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "_cell_guid": "199589b5-835f-d140-0abc-823fa592e104"
+      },
+      "outputs": [],
+      "source": [
+        "agesIntact <- allData[!is.na(allData$Age),]\n",
+        "set.seed(799)\n",
+        "ageModel <- train(Age~Pclass, data=agesIntact, method=\"rpart\")"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "_cell_guid": "a295fe8c-b782-d4b8-58c6-8dcf47e8d6d1"
+      },
+      "outputs": [],
+      "source": [
+        "agesToPredict <- allData[is.na(allData$Age),]\n",
+        "preds <- predict(ageModel, newdata=agesToPredict)"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "_cell_guid": "bfc9f899-9cb0-ee9c-73be-7f7fed39ca6d"
+      },
+      "outputs": [],
+      "source": [
+        "agesToPredict <- allData[is.na(allData$Age),]\n",
+        "preds <- predict(ageModel, newdata=agesToPredict)\n",
+        "allData$Age[is.na(allData$Age)] <- preds"
+      ]
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {
+        "_cell_guid": "ded8b615-034c-ee98-6ee9-316947242daf"
+      },
+      "source": [
+        "Let's split the data back into training and testing, and create some cross validation data from the training set."
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "_cell_guid": "bfdda478-bada-6c49-89a8-77188c8356a1"
+      },
+      "outputs": [],
+      "source": [
+        "finalTraining <- allData[1:891,]\n",
+        "finalTesting <- allData[892:1309,]\n",
+        "inCrossVal <- createDataPartition(y=finalTraining$Survived,p=0.75, list=FALSE)\n",
+        "realTraining <- finalTraining[inCrossVal,]\n",
+        "crossVal <- finalTraining[-inCrossVal,]"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "_cell_guid": "b836bc61-52d1-f239-8de9-7479cd49a16b"
+      },
+      "outputs": [],
+      "source": [
+        "control <- trainControl(method = \"repeatedcv\", number = 10, repeats = 10)\n",
+        "survivedModelFit <- train(Survived~Pclass+Title+Parch+SibSp+Fare, method=\"rf\", data=realTraining, trControl=control)"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "_cell_guid": "a42a4140-6017-f491-cee7-0a8be205ff36"
+      },
+      "outputs": [],
+      "source": [
+        "nrow(allData)"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "_cell_guid": "5fa4a7df-2745-d3ea-768b-03fb86623c89"
+      },
+      "outputs": [],
+      "source": ""
+    }
+  ],
+  "metadata": {
+    "_change_revision": 0,
+    "_is_fork": false,
+    "kernelspec": {
+      "display_name": "R",
+      "language": "R",
+      "name": "ir"
+    },
+    "language_info": {
+      "codemirror_mode": "r",
+      "file_extension": ".r",
+      "mimetype": "text/x-r-source",
+      "name": "R",
+      "pygments_lexer": "r",
+      "version": "3.3.2"
+    }
+  },
+  "nbformat": 4,
+  "nbformat_minor": 0
+}

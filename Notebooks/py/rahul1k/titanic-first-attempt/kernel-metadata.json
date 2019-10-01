@@ -1,0 +1,17 @@
+{
+  "title": "Titanic First Attempt",
+  "enable_internet": false,
+  "language": "python",
+  "is_private": false,
+  "competition_sources": [
+    "titanic"
+  ],
+  "id": "rahul1k/titanic-first-attempt",
+  "enable_gpu": false,
+  "id_no": 1710088,
+  "kernel_type": "notebook",
+  "dataset_sources": [],
+  "kernel_sources": [],
+  "code_file": "titanic-first-attempt.ipynb",
+  "keywords": []
+}

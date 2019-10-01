@@ -1,0 +1,17 @@
+{
+  "id": "rajarshighoshal/titanic-my-first-competition",
+  "dataset_sources": [],
+  "kernel_type": "notebook",
+  "enable_gpu": false,
+  "language": "python",
+  "code_file": "titanic-my-first-competition.ipynb",
+  "id_no": 1483652,
+  "kernel_sources": [],
+  "keywords": [],
+  "enable_internet": false,
+  "competition_sources": [
+    "titanic"
+  ],
+  "is_private": false,
+  "title": "Titanic - my first competition"
+}

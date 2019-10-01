@@ -1,0 +1,17 @@
+{
+  "is_private": false,
+  "id": "hgauthier/titanic-data-science-solutions",
+  "kernel_type": "notebook",
+  "enable_gpu": false,
+  "keywords": [],
+  "enable_internet": false,
+  "code_file": "titanic-data-science-solutions.ipynb",
+  "dataset_sources": [],
+  "competition_sources": [
+    "titanic"
+  ],
+  "language": "python",
+  "kernel_sources": [],
+  "title": "Titanic Data Science Solutions",
+  "id_no": 229605
+}

@@ -1,0 +1,17 @@
+{
+  "is_private": false,
+  "enable_gpu": false,
+  "enable_internet": false,
+  "code_file": "exploring-the-titanic-dataset.irnb",
+  "title": "Exploring The Titanic Dataset",
+  "competition_sources": [
+    "titanic"
+  ],
+  "keywords": [],
+  "id": "shashaalam/exploring-the-titanic-dataset",
+  "id_no": 173374,
+  "language": "r",
+  "kernel_sources": [],
+  "kernel_type": "notebook",
+  "dataset_sources": []
+}

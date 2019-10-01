@@ -1,0 +1,23 @@
+{
+  "code_file": "titanic-eda-modeling-and-evaluation-step-by-step.ipynb",
+  "kernel_type": "notebook",
+  "enable_gpu": false,
+  "kernel_sources": [],
+  "keywords": [
+    "education",
+    "tutorial",
+    "beginner",
+    "data visualization",
+    "feature engineering"
+  ],
+  "title": "Titanic EDA, Modeling and Evaluation-step-by-step",
+  "dataset_sources": [],
+  "language": "python",
+  "is_private": false,
+  "id": "pawanm/titanic-eda-modeling-and-evaluation-step-by-step",
+  "id_no": 952613,
+  "competition_sources": [
+    "titanic"
+  ],
+  "enable_internet": false
+}

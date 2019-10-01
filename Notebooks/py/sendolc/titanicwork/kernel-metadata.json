@@ -1,0 +1,17 @@
+{
+  "competition_sources": [
+    "titanic"
+  ],
+  "id": "sendolc/titanicwork",
+  "code_file": "titanicwork.ipynb",
+  "enable_gpu": false,
+  "enable_internet": false,
+  "kernel_type": "notebook",
+  "language": "python",
+  "id_no": 32574,
+  "dataset_sources": [],
+  "keywords": [],
+  "is_private": false,
+  "kernel_sources": [],
+  "title": "titanicwork"
+}

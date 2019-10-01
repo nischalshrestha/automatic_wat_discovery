@@ -1,0 +1,17 @@
+{
+  "title": "CS 100: ML with the Titanic Dataset",
+  "dataset_sources": [],
+  "enable_gpu": false,
+  "kernel_sources": [],
+  "is_private": false,
+  "kernel_type": "notebook",
+  "code_file": "cs-100-ml-with-the-titanic-dataset.ipynb",
+  "id": "michaelee/cs-100-ml-with-the-titanic-dataset",
+  "enable_internet": false,
+  "competition_sources": [
+    "titanic"
+  ],
+  "language": "python",
+  "keywords": [],
+  "id_no": 390200
+}

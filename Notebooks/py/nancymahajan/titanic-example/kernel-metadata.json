@@ -1,0 +1,19 @@
+{
+  "dataset_sources": [],
+  "enable_internet": false,
+  "is_private": false,
+  "id_no": 585608,
+  "kernel_type": "notebook",
+  "competition_sources": [
+    "titanic"
+  ],
+  "enable_gpu": false,
+  "keywords": [
+    "beginner"
+  ],
+  "code_file": "titanic-example.ipynb",
+  "title": "Titanic Example",
+  "language": "python",
+  "id": "nancymahajan/titanic-example",
+  "kernel_sources": []
+}

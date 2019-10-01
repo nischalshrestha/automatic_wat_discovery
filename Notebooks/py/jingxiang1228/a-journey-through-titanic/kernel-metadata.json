@@ -1,0 +1,17 @@
+{
+  "id": "jingxiang1228/a-journey-through-titanic",
+  "is_private": false,
+  "keywords": [],
+  "kernel_sources": [],
+  "dataset_sources": [],
+  "title": "A Journey through Titanic",
+  "code_file": "a-journey-through-titanic.ipynb",
+  "competition_sources": [
+    "titanic"
+  ],
+  "kernel_type": "notebook",
+  "language": "python",
+  "id_no": 103192,
+  "enable_internet": false,
+  "enable_gpu": false
+}

@@ -1,0 +1,23 @@
+{
+  "id": "rblcoder/titanic-feature-importance",
+  "kernel_type": "notebook",
+  "keywords": [
+    "beginner",
+    "eda",
+    "data visualization",
+    "classification",
+    "feature engineering"
+  ],
+  "title": "Titanic Feature Importance",
+  "kernel_sources": [],
+  "enable_gpu": false,
+  "is_private": false,
+  "code_file": "titanic-feature-importance.ipynb",
+  "competition_sources": [
+    "titanic"
+  ],
+  "enable_internet": false,
+  "language": "python",
+  "dataset_sources": [],
+  "id_no": 2053254
+}

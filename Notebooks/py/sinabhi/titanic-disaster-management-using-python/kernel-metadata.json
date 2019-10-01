@@ -1,0 +1,17 @@
+{
+  "kernel_sources": [],
+  "is_private": false,
+  "id": "sinabhi/titanic-disaster-management-using-python",
+  "enable_internet": false,
+  "competition_sources": [
+    "titanic"
+  ],
+  "code_file": "titanic-disaster-management-using-python.ipynb",
+  "language": "python",
+  "keywords": [],
+  "kernel_type": "notebook",
+  "dataset_sources": [],
+  "title": "Titanic Disaster Management Using Python",
+  "id_no": 296921,
+  "enable_gpu": false
+}

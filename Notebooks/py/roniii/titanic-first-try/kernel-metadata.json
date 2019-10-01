@@ -1,0 +1,17 @@
+{
+  "code_file": "titanic-first-try.ipynb",
+  "dataset_sources": [],
+  "language": "python",
+  "title": "Titanic - first try",
+  "kernel_type": "notebook",
+  "enable_internet": false,
+  "kernel_sources": [],
+  "competition_sources": [
+    "titanic"
+  ],
+  "is_private": false,
+  "keywords": [],
+  "id": "roniii/titanic-first-try",
+  "enable_gpu": false,
+  "id_no": 496765
+}

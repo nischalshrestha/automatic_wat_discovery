@@ -1,0 +1,20 @@
+{
+  "language": "python",
+  "code_file": "learning-data-titanic-prediction-in-python.ipynb",
+  "enable_internet": false,
+  "dataset_sources": [],
+  "kernel_sources": [],
+  "kernel_type": "notebook",
+  "enable_gpu": false,
+  "id_no": 777941,
+  "id": "myselfuma/learning-data-titanic-prediction-in-python",
+  "competition_sources": [
+    "titanic"
+  ],
+  "title": "Learning Data: Titanic Prediction in Python",
+  "is_private": false,
+  "keywords": [
+    "beginner",
+    "classification"
+  ]
+}

@@ -1,0 +1,17 @@
+{
+  "is_private": false,
+  "enable_internet": false,
+  "competition_sources": [
+    "titanic"
+  ],
+  "keywords": [],
+  "id": "laking10/simple-decision-tree-for-the-titanic-dataset",
+  "language": "r",
+  "kernel_type": "notebook",
+  "code_file": "simple-decision-tree-for-the-titanic-dataset.irnb",
+  "title": "Simple decision tree for the Titanic dataset",
+  "enable_gpu": false,
+  "id_no": 193167,
+  "dataset_sources": [],
+  "kernel_sources": []
+}

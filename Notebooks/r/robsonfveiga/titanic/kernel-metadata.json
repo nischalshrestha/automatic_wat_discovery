@@ -1,0 +1,17 @@
+{
+  "id": "robsonfveiga/titanic",
+  "kernel_type": "notebook",
+  "enable_internet": false,
+  "title": "Titanic",
+  "enable_gpu": false,
+  "language": "python",
+  "id_no": 94433,
+  "dataset_sources": [],
+  "keywords": [],
+  "kernel_sources": [],
+  "competition_sources": [
+    "titanic"
+  ],
+  "is_private": false,
+  "code_file": "titanic.ipynb"
+}

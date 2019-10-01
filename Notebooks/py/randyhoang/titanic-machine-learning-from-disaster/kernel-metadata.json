@@ -1,0 +1,19 @@
+{
+  "competition_sources": [
+    "titanic"
+  ],
+  "id_no": 1586189,
+  "keywords": [
+    "tutorial"
+  ],
+  "id": "randyhoang/titanic-machine-learning-from-disaster",
+  "title": "Titanic: Machine Learning from Disaster",
+  "kernel_type": "notebook",
+  "is_private": false,
+  "dataset_sources": [],
+  "code_file": "titanic-machine-learning-from-disaster.ipynb",
+  "language": "python",
+  "enable_internet": false,
+  "kernel_sources": [],
+  "enable_gpu": false
+}

@@ -1,0 +1,17 @@
+{
+  "id": "byounginkim/test-tensorflow",
+  "kernel_sources": [],
+  "code_file": "test-tensorflow.ipynb",
+  "id_no": 188695,
+  "language": "python",
+  "dataset_sources": [],
+  "enable_gpu": false,
+  "title": "test tensorflow",
+  "enable_internet": false,
+  "kernel_type": "notebook",
+  "competition_sources": [
+    "titanic"
+  ],
+  "keywords": [],
+  "is_private": false
+}

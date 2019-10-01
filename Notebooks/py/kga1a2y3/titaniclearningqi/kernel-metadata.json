@@ -1,0 +1,17 @@
+{
+  "id_no": 244749,
+  "id": "kga1a2y3/titaniclearningqi",
+  "is_private": false,
+  "kernel_type": "notebook",
+  "keywords": [],
+  "enable_internet": false,
+  "code_file": "titaniclearningqi.ipynb",
+  "language": "python",
+  "competition_sources": [
+    "titanic"
+  ],
+  "dataset_sources": [],
+  "title": "TitanicLearningQI",
+  "enable_gpu": false,
+  "kernel_sources": []
+}

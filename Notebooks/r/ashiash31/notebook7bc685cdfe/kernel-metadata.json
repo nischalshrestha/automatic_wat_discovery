@@ -1,0 +1,17 @@
+{
+  "title": "Notebook7bc685cdfe",
+  "enable_gpu": false,
+  "keywords": [],
+  "kernel_sources": [],
+  "kernel_type": "notebook",
+  "id": "ashiash31/notebook7bc685cdfe",
+  "language": "python",
+  "is_private": false,
+  "dataset_sources": [],
+  "id_no": 276286,
+  "competition_sources": [
+    "titanic"
+  ],
+  "enable_internet": false,
+  "code_file": "notebook7bc685cdfe.ipynb"
+}

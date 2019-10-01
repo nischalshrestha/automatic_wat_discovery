@@ -1,0 +1,17 @@
+{
+  "id_no": 175523,
+  "is_private": false,
+  "kernel_sources": [],
+  "title": "Notebookd7d3a098c8",
+  "keywords": [],
+  "enable_gpu": false,
+  "dataset_sources": [],
+  "enable_internet": false,
+  "kernel_type": "notebook",
+  "language": "r",
+  "code_file": "notebook05880c233f.irnb",
+  "competition_sources": [
+    "titanic"
+  ],
+  "id": "dodoman/notebook05880c233f"
+}

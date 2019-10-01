@@ -1,0 +1,17 @@
+{
+  "kernel_sources": [],
+  "kernel_type": "notebook",
+  "code_file": "step-by-step-solving-titanic-problem.ipynb",
+  "title": "Step by step solving titanic problem",
+  "enable_internet": false,
+  "keywords": [],
+  "id": "anaskad/step-by-step-solving-titanic-problem",
+  "enable_gpu": false,
+  "language": "python",
+  "competition_sources": [
+    "titanic"
+  ],
+  "dataset_sources": [],
+  "is_private": false,
+  "id_no": 317100
+}

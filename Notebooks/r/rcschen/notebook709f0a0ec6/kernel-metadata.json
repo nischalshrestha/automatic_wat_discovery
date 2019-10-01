@@ -1,0 +1,17 @@
+{
+  "id": "rcschen/notebook709f0a0ec6",
+  "id_no": 222462,
+  "title": "Notebook709f0a0ec6",
+  "is_private": false,
+  "competition_sources": [
+    "titanic"
+  ],
+  "kernel_type": "notebook",
+  "code_file": "notebook709f0a0ec6.ipynb",
+  "kernel_sources": [],
+  "keywords": [],
+  "language": "python",
+  "dataset_sources": [],
+  "enable_internet": false,
+  "enable_gpu": false
+}

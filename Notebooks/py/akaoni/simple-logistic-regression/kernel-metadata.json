@@ -1,0 +1,17 @@
+{
+  "code_file": "simple-logistic-regression.ipynb",
+  "language": "python",
+  "title": "Simple Logistic Regression",
+  "enable_internet": false,
+  "keywords": [],
+  "id_no": 1836208,
+  "competition_sources": [
+    "titanic"
+  ],
+  "kernel_sources": [],
+  "dataset_sources": [],
+  "kernel_type": "notebook",
+  "enable_gpu": false,
+  "id": "akaoni/simple-logistic-regression",
+  "is_private": false
+}

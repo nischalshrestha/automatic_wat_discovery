@@ -1,0 +1,17 @@
+{
+  "enable_gpu": false,
+  "kernel_type": "notebook",
+  "language": "python",
+  "id_no": 1352080,
+  "enable_internet": false,
+  "title": "Titanic Intro",
+  "is_private": false,
+  "id": "frizzles7/titanic-intro",
+  "kernel_sources": [],
+  "keywords": [],
+  "code_file": "titanic-intro.ipynb",
+  "competition_sources": [
+    "titanic"
+  ],
+  "dataset_sources": []
+}

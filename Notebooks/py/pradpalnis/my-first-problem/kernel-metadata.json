@@ -1,0 +1,17 @@
+{
+  "code_file": "my-first-problem.ipynb",
+  "competition_sources": [
+    "titanic"
+  ],
+  "enable_internet": false,
+  "id_no": 816831,
+  "is_private": false,
+  "id": "pradpalnis/my-first-problem",
+  "language": "python",
+  "dataset_sources": [],
+  "title": "My First Problem ",
+  "enable_gpu": false,
+  "kernel_type": "notebook",
+  "kernel_sources": [],
+  "keywords": []
+}

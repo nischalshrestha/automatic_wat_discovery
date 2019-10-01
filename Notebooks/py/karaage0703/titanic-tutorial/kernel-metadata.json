@@ -1,0 +1,17 @@
+{
+  "competition_sources": [
+    "titanic"
+  ],
+  "code_file": "titanic-tutorial.ipynb",
+  "dataset_sources": [],
+  "is_private": false,
+  "title": "Titanic Tutorial",
+  "id": "karaage0703/titanic-tutorial",
+  "language": "python",
+  "kernel_sources": [],
+  "id_no": 769747,
+  "enable_gpu": false,
+  "enable_internet": false,
+  "kernel_type": "notebook",
+  "keywords": []
+}

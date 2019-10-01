@@ -1,0 +1,21 @@
+{
+  "title": "A comprehensive solution to your first ML problem",
+  "enable_internet": false,
+  "language": "python",
+  "id": "madhulekha/a-comprehensive-solution-to-your-first-ml-problem",
+  "keywords": [
+    "tutorial",
+    "beginner",
+    "random forest"
+  ],
+  "kernel_sources": [],
+  "id_no": 482209,
+  "competition_sources": [
+    "titanic"
+  ],
+  "kernel_type": "notebook",
+  "dataset_sources": [],
+  "code_file": "a-comprehensive-solution-to-your-first-ml-problem.ipynb",
+  "enable_gpu": false,
+  "is_private": false
+}

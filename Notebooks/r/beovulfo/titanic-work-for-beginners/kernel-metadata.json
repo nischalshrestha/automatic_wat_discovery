@@ -1,0 +1,17 @@
+{
+  "is_private": false,
+  "id": "beovulfo/titanic-work-for-beginners",
+  "kernel_type": "notebook",
+  "competition_sources": [
+    "titanic"
+  ],
+  "dataset_sources": [],
+  "title": "Titanic work for beginners!",
+  "enable_gpu": false,
+  "enable_internet": false,
+  "language": "r",
+  "code_file": "titanic-work-for-beginners.irnb",
+  "kernel_sources": [],
+  "id_no": 247619,
+  "keywords": []
+}

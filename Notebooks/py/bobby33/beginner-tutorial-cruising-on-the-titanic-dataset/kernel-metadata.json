@@ -1,0 +1,23 @@
+{
+  "title": "Beginner tutorial Cruising on the titanic dataset",
+  "kernel_type": "notebook",
+  "competition_sources": [
+    "titanic"
+  ],
+  "dataset_sources": [],
+  "is_private": false,
+  "code_file": "beginner-tutorial-cruising-on-the-titanic-dataset.ipynb",
+  "id_no": 721688,
+  "language": "python",
+  "enable_internet": false,
+  "kernel_sources": [],
+  "id": "bobby33/beginner-tutorial-cruising-on-the-titanic-dataset",
+  "enable_gpu": false,
+  "keywords": [
+    "beginner",
+    "data visualization",
+    "preprocessing",
+    "classification",
+    "feature engineering"
+  ]
+}

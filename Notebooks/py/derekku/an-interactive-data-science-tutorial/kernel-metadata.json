@@ -1,0 +1,17 @@
+{
+  "dataset_sources": [],
+  "id": "derekku/an-interactive-data-science-tutorial",
+  "keywords": [],
+  "language": "python",
+  "competition_sources": [
+    "titanic"
+  ],
+  "enable_gpu": false,
+  "code_file": "an-interactive-data-science-tutorial.ipynb",
+  "id_no": 324820,
+  "enable_internet": false,
+  "kernel_type": "notebook",
+  "is_private": false,
+  "title": "An Interactive Data Science Tutorial",
+  "kernel_sources": []
+}

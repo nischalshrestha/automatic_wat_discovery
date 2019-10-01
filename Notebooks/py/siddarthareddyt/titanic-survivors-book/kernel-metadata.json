@@ -1,0 +1,17 @@
+{
+  "kernel_type": "notebook",
+  "keywords": [],
+  "code_file": "titanic-survivors-book.ipynb",
+  "is_private": false,
+  "title": "Titanic Survivors book",
+  "enable_gpu": false,
+  "kernel_sources": [],
+  "dataset_sources": [],
+  "competition_sources": [
+    "titanic"
+  ],
+  "id_no": 508869,
+  "enable_internet": false,
+  "language": "python",
+  "id": "siddarthareddyt/titanic-survivors-book"
+}

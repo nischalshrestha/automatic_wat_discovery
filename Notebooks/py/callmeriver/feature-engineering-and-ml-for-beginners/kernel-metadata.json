@@ -1,0 +1,17 @@
+{
+  "code_file": "feature-engineering-and-ml-for-beginners.ipynb",
+  "language": "python",
+  "keywords": [],
+  "title": "Feature Engineering and ML for Beginners",
+  "enable_gpu": false,
+  "enable_internet": false,
+  "id_no": 1784828,
+  "competition_sources": [
+    "titanic"
+  ],
+  "kernel_type": "notebook",
+  "kernel_sources": [],
+  "dataset_sources": [],
+  "id": "callmeriver/feature-engineering-and-ml-for-beginners",
+  "is_private": false
+}

@@ -1,0 +1,17 @@
+{
+  "enable_internet": false,
+  "kernel_type": "notebook",
+  "title": "Titanic: Beginner's Guide with sklearn ",
+  "competition_sources": [
+    "titanic"
+  ],
+  "enable_gpu": true,
+  "code_file": "titanic-beginner-s-guide-with-sklearn.ipynb",
+  "kernel_sources": [],
+  "keywords": [],
+  "id_no": 1462927,
+  "language": "python",
+  "is_private": false,
+  "dataset_sources": [],
+  "id": "syedmujahedalih/titanic-beginner-s-guide-with-sklearn"
+}

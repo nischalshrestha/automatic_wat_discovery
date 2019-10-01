@@ -1,0 +1,135 @@
+{
+  "cells": [
+    {
+      "cell_type": "markdown",
+      "metadata": {
+        "_cell_guid": "3b698e0e-2d28-83bb-c7a9-8020a397e162"
+      },
+      "source": ""
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "_cell_guid": "b53f4903-ccce-6f64-0347-2b84837b6138"
+      },
+      "outputs": [],
+      "source": [
+        "# This R environment comes with all of CRAN preinstalled, as well as many other helpful packages\n",
+        "# The environment is defined by the kaggle/rstats docker image: https://github.com/kaggle/docker-rstats\n",
+        "# For example, here's several helpful packages to load in \n",
+        "\n",
+        "library('ggplot2') # Data visualization\n",
+        "library('readr') # CSV file I/O, e.g. the read_csv function\n",
+        "library('ggthemes') # visualization\n",
+        "library('scales') # visualization\n",
+        "library('dplyr') # data manipulation\n",
+        "library('mice') # imputation\n",
+        "library('randomForest') # classification algorithm\n",
+        "# Input data files are available in the \"../input/\" directory.\n",
+        "# For example, running this (by clicking run or pressing Shift+Enter) will list the files in the input directory\n",
+        "\n",
+        "system(\"ls ../input\")\n",
+        "\n",
+        "# Any results you write to the current directory are saved as output."
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "_cell_guid": "694d5992-1917-270e-cb40-606fa9c1fb84"
+      },
+      "outputs": [],
+      "source": [
+        "train <- read.csv('../input/train.csv', stringsAsFactors = F)\n",
+        "test  <- read.csv('../input/test.csv', stringsAsFactors = F)\n",
+        "\n",
+        "full  <- bind_rows(train, test) # bind training & test data\n",
+        "\n",
+        "# check data\n",
+        "str(full)"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "_cell_guid": "8a0c9e0b-7b7d-5d9a-b75b-5d246d613c15"
+      },
+      "outputs": [],
+      "source": [
+        "# Grab title from passenger names\n",
+        "full$Title <- gsub('(.*, )|(\\\\..*)', '', full$Name)\n",
+        "\n",
+        "# Show title counts by sex\n",
+        "table(full$Sex, full$Title)"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "_cell_guid": "8483f4a9-ac7e-ffb2-7c67-0918ca424fcb"
+      },
+      "outputs": [],
+      "source": [
+        "# Titles with very low cell counts to be combined to \"rare\" level\n",
+        "rare_title <- c('Dona', 'Lady', 'the Countess','Capt', 'Col', 'Don', \n",
+        "                'Dr', 'Major', 'Rev', 'Sir', 'Jonkheer')\n",
+        "\n",
+        "# Also reassign mlle, ms, and mme accordingly\n",
+        "full$Title[full$Title == 'Mlle']        <- 'Miss' \n",
+        "full$Title[full$Title == 'Ms']          <- 'Miss'\n",
+        "full$Title[full$Title == 'Mme']         <- 'Mrs' \n",
+        "full$Title[full$Title %in% rare_title]  <- 'Rare Title'\n",
+        "\n",
+        "# Show title counts by sex again\n",
+        "table(full$Sex, full$Title)"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "_cell_guid": "b81bf6fb-0c56-6929-6ba1-edee6130e47f"
+      },
+      "outputs": [],
+      "source": [
+        "# Finally, grab surname from passenger name\n",
+        "full$Surname <- sapply(full$Name,  \n",
+        "                      function(x) strsplit(x, split = '[,.]')[[1]][1])"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "_cell_guid": "88ce8c8d-9773-ad69-0afe-9d1cfcc5784c"
+      },
+      "outputs": [],
+      "source": [
+        "cat(paste('We have <b>', nlevels(factor(full$Surname)), '</b> unique surnames. I would be interested to infer ethnicity based on surname --- another time.'))"
+      ]
+    }
+  ],
+  "metadata": {
+    "_change_revision": 0,
+    "_is_fork": false,
+    "kernelspec": {
+      "display_name": "R",
+      "language": "R",
+      "name": "ir"
+    },
+    "language_info": {
+      "codemirror_mode": "r",
+      "file_extension": ".r",
+      "mimetype": "text/x-r-source",
+      "name": "R",
+      "pygments_lexer": "r",
+      "version": "3.3.2"
+    }
+  },
+  "nbformat": 4,
+  "nbformat_minor": 0
+}

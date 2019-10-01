@@ -1,0 +1,17 @@
+{
+  "code_file": "titanic-machine-learning-a-noob-s-approach.ipynb",
+  "id": "keshik/titanic-machine-learning-a-noob-s-approach",
+  "language": "python",
+  "enable_internet": false,
+  "dataset_sources": [],
+  "id_no": 1805978,
+  "enable_gpu": false,
+  "kernel_sources": [],
+  "kernel_type": "notebook",
+  "is_private": false,
+  "keywords": [],
+  "competition_sources": [
+    "titanic"
+  ],
+  "title": "Titanic : Machine Learning : A Noob's Approach"
+}

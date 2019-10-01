@@ -1,0 +1,17 @@
+{
+  "id": "ericfeng84/introduction-for-data-science-top-30",
+  "id_no": 354916,
+  "title": "Introduction for Data Science  (Top 30%)",
+  "code_file": "introduction-for-data-science-top-30.ipynb",
+  "language": "python",
+  "kernel_type": "notebook",
+  "is_private": false,
+  "enable_gpu": false,
+  "enable_internet": false,
+  "keywords": [],
+  "dataset_sources": [],
+  "kernel_sources": [],
+  "competition_sources": [
+    "titanic"
+  ]
+}

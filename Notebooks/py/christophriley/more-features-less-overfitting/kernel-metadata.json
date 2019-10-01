@@ -1,0 +1,17 @@
+{
+  "keywords": [],
+  "kernel_type": "notebook",
+  "code_file": "more-features-less-overfitting.ipynb",
+  "language": "python",
+  "title": "More features, less overfitting",
+  "competition_sources": [
+    "titanic"
+  ],
+  "enable_gpu": false,
+  "dataset_sources": [],
+  "enable_internet": false,
+  "id": "christophriley/more-features-less-overfitting",
+  "id_no": 464360,
+  "is_private": false,
+  "kernel_sources": []
+}

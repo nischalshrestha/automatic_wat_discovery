@@ -1,0 +1,17 @@
+{
+  "kernel_sources": [],
+  "dataset_sources": [],
+  "id": "edouardmalet/a-journey-through-titanic",
+  "kernel_type": "notebook",
+  "id_no": 101907,
+  "is_private": false,
+  "enable_gpu": false,
+  "title": "A Journey through Titanic",
+  "competition_sources": [
+    "titanic"
+  ],
+  "keywords": [],
+  "enable_internet": false,
+  "code_file": "a-journey-through-titanic.irnb",
+  "language": "r"
+}

@@ -1,0 +1,17 @@
+{
+  "id": "bahmad1/fork-of-cs-100-ml-with-the-titanic-dataset-472f6f",
+  "kernel_sources": [],
+  "id_no": 1754871,
+  "code_file": "fork-of-cs-100-ml-with-the-titanic-dataset-472f6f.ipynb",
+  "is_private": false,
+  "enable_internet": false,
+  "dataset_sources": [],
+  "keywords": [],
+  "title": "Fork of CS 100: ML with the Titanic Dataset 472f6f",
+  "kernel_type": "notebook",
+  "competition_sources": [
+    "titanic"
+  ],
+  "language": "python",
+  "enable_gpu": false
+}

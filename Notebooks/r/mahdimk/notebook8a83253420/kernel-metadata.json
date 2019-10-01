@@ -1,0 +1,17 @@
+{
+  "enable_gpu": false,
+  "keywords": [],
+  "kernel_type": "notebook",
+  "enable_internet": false,
+  "competition_sources": [
+    "titanic"
+  ],
+  "language": "python",
+  "kernel_sources": [],
+  "id_no": 229130,
+  "id": "mahdimk/notebook8a83253420",
+  "title": "Notebook8a83253420",
+  "code_file": "notebook8a83253420.ipynb",
+  "is_private": false,
+  "dataset_sources": []
+}

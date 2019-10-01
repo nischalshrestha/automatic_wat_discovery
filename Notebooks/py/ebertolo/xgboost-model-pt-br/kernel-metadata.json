@@ -1,0 +1,17 @@
+{
+  "enable_internet": false,
+  "kernel_type": "notebook",
+  "title": "Xgboost Model [pt-BR]",
+  "id": "ebertolo/xgboost-model-pt-br",
+  "language": "python",
+  "dataset_sources": [],
+  "kernel_sources": [],
+  "keywords": [],
+  "code_file": "xgboost-model-pt-br.ipynb",
+  "enable_gpu": false,
+  "id_no": 356605,
+  "is_private": false,
+  "competition_sources": [
+    "titanic"
+  ]
+}

@@ -1,0 +1,17 @@
+{
+  "language": "python",
+  "dataset_sources": [],
+  "competition_sources": [
+    "titanic"
+  ],
+  "enable_internet": false,
+  "is_private": false,
+  "id_no": 107541,
+  "kernel_sources": [],
+  "title": "TitanicSurvival - DataAnalysis & MachineLearning",
+  "id": "nicolasdupont/titanicsurvival-dataanalysis-machinelearning",
+  "kernel_type": "notebook",
+  "code_file": "titanicsurvival-dataanalysis-machinelearning.ipynb",
+  "keywords": [],
+  "enable_gpu": false
+}

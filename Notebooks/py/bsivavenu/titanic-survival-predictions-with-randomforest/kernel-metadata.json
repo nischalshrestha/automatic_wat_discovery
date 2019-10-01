@@ -1,0 +1,23 @@
+{
+  "id": "bsivavenu/titanic-survival-predictions-with-randomforest",
+  "kernel_type": "notebook",
+  "enable_internet": false,
+  "id_no": 365005,
+  "dataset_sources": [],
+  "keywords": [
+    "tutorial",
+    "beginner",
+    "eda",
+    "ensembling",
+    "random forest"
+  ],
+  "is_private": false,
+  "enable_gpu": false,
+  "competition_sources": [
+    "titanic"
+  ],
+  "title": "Titanic Survival Predictions with RandomForest",
+  "kernel_sources": [],
+  "code_file": "titanic-survival-predictions-with-randomforest.ipynb",
+  "language": "python"
+}

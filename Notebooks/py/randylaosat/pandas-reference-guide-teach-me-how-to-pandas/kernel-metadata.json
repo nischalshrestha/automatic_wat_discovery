@@ -1,0 +1,17 @@
+{
+  "language": "python",
+  "code_file": "pandas-reference-guide-teach-me-how-to-pandas.ipynb",
+  "competition_sources": [
+    "titanic"
+  ],
+  "keywords": [],
+  "kernel_sources": [],
+  "enable_gpu": false,
+  "dataset_sources": [],
+  "kernel_type": "notebook",
+  "id": "randylaosat/pandas-reference-guide-teach-me-how-to-pandas",
+  "title": "Pandas Reference Guide: Teach me How to Pandas",
+  "enable_internet": false,
+  "id_no": 1293077,
+  "is_private": false
+}

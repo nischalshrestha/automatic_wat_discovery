@@ -1,0 +1,17 @@
+{
+  "id_no": 1602712,
+  "code_file": "titanic-competition-in-progress.ipynb",
+  "title": "Titanic Competition In Progress",
+  "is_private": false,
+  "id": "ephemerai/titanic-competition-in-progress",
+  "language": "python",
+  "dataset_sources": [],
+  "keywords": [],
+  "kernel_type": "notebook",
+  "competition_sources": [
+    "titanic"
+  ],
+  "kernel_sources": [],
+  "enable_gpu": false,
+  "enable_internet": false
+}

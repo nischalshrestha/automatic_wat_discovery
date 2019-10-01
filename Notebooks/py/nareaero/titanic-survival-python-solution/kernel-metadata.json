@@ -1,0 +1,17 @@
+{
+  "enable_gpu": false,
+  "language": "python",
+  "id": "nareaero/titanic-survival-python-solution",
+  "keywords": [],
+  "kernel_type": "notebook",
+  "is_private": false,
+  "title": "Titanic survival - python solution",
+  "id_no": 235112,
+  "code_file": "titanic-survival-python-solution.ipynb",
+  "kernel_sources": [],
+  "dataset_sources": [],
+  "competition_sources": [
+    "titanic"
+  ],
+  "enable_internet": false
+}

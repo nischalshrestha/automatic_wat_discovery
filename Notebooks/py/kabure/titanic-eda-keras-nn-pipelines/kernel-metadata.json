@@ -1,0 +1,23 @@
+{
+  "is_private": false,
+  "language": "python",
+  "kernel_type": "notebook",
+  "title": "Titanic [EDA] + Keras NN + Pipelines",
+  "dataset_sources": [],
+  "kernel_sources": [],
+  "id": "kabure/titanic-eda-keras-nn-pipelines",
+  "id_no": 538832,
+  "enable_internet": false,
+  "enable_gpu": false,
+  "competition_sources": [
+    "titanic"
+  ],
+  "keywords": [
+    "tutorial",
+    "eda",
+    "data visualization",
+    "feature engineering",
+    "random forest"
+  ],
+  "code_file": "titanic-eda-keras-nn-pipelines.ipynb"
+}

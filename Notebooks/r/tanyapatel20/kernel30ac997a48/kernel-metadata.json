@@ -1,0 +1,17 @@
+{
+  "dataset_sources": [],
+  "kernel_type": "notebook",
+  "enable_gpu": false,
+  "kernel_sources": [],
+  "title": "Kernel30ac997a48",
+  "keywords": [],
+  "language": "r",
+  "competition_sources": [
+    "titanic"
+  ],
+  "is_private": false,
+  "id_no": 665731,
+  "id": "tanyapatel20/kernel30ac997a48",
+  "enable_internet": false,
+  "code_file": "kernel30ac997a48.irnb"
+}

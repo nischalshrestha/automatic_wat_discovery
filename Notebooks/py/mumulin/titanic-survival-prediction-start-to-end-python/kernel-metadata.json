@@ -1,0 +1,17 @@
+{
+  "title": "Titanic Survival Prediction Start to End (Python)",
+  "id": "mumulin/titanic-survival-prediction-start-to-end-python",
+  "code_file": "titanic-survival-prediction-start-to-end-python.ipynb",
+  "keywords": [],
+  "competition_sources": [
+    "titanic"
+  ],
+  "enable_gpu": false,
+  "kernel_type": "notebook",
+  "language": "python",
+  "id_no": 1678998,
+  "is_private": false,
+  "kernel_sources": [],
+  "enable_internet": false,
+  "dataset_sources": []
+}

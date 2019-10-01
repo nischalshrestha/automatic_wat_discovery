@@ -1,0 +1,17 @@
+{
+  "dataset_sources": [],
+  "is_private": false,
+  "id": "rodolpho27/desafio-titanic-em-naive-bayes",
+  "title": "Desafio Titanic em Naive Bayes",
+  "language": "r",
+  "code_file": "desafio-titanic-em-naive-bayes.irnb",
+  "kernel_sources": [],
+  "kernel_type": "notebook",
+  "keywords": [],
+  "competition_sources": [
+    "titanic"
+  ],
+  "enable_internet": false,
+  "id_no": 737926,
+  "enable_gpu": false
+}

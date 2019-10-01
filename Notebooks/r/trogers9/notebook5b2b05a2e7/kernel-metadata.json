@@ -1,0 +1,17 @@
+{
+  "competition_sources": [
+    "titanic"
+  ],
+  "kernel_type": "notebook",
+  "dataset_sources": [],
+  "kernel_sources": [],
+  "is_private": false,
+  "enable_internet": false,
+  "code_file": "notebook5b2b05a2e7.irnb",
+  "id_no": 219710,
+  "keywords": [],
+  "id": "trogers9/notebook5b2b05a2e7",
+  "title": "Notebook5b2b05a2e7",
+  "enable_gpu": false,
+  "language": "r"
+}

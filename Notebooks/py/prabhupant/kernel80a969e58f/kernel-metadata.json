@@ -1,0 +1,17 @@
+{
+  "kernel_type": "notebook",
+  "code_file": "kernel80a969e58f.ipynb",
+  "dataset_sources": [],
+  "kernel_sources": [],
+  "title": "Kernel80a969e58f",
+  "competition_sources": [
+    "titanic"
+  ],
+  "id_no": 920471,
+  "id": "prabhupant/kernel80a969e58f",
+  "keywords": [],
+  "language": "python",
+  "enable_gpu": false,
+  "is_private": false,
+  "enable_internet": false
+}

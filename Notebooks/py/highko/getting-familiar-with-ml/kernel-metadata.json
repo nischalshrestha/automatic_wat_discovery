@@ -1,0 +1,17 @@
+{
+  "id": "highko/getting-familiar-with-ml",
+  "dataset_sources": [],
+  "is_private": false,
+  "title": "Getting familiar with ML",
+  "language": "python",
+  "keywords": [],
+  "enable_internet": false,
+  "kernel_type": "notebook",
+  "kernel_sources": [],
+  "competition_sources": [
+    "titanic"
+  ],
+  "code_file": "getting-familiar-with-ml.ipynb",
+  "id_no": 820100,
+  "enable_gpu": true
+}

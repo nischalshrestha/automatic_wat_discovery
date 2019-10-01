@@ -1,0 +1,17 @@
+{
+  "language": "python",
+  "enable_gpu": false,
+  "keywords": [],
+  "id": "wikaiqi/titaniclearningqi",
+  "kernel_sources": [],
+  "dataset_sources": [],
+  "is_private": false,
+  "id_no": 236940,
+  "title": "TitanicLearningQI",
+  "kernel_type": "notebook",
+  "competition_sources": [
+    "titanic"
+  ],
+  "enable_internet": false,
+  "code_file": "titaniclearningqi.ipynb"
+}

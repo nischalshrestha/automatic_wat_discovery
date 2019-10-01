@@ -1,0 +1,17 @@
+{
+  "title": "Titanic: My Solution",
+  "competition_sources": [
+    "titanic"
+  ],
+  "kernel_sources": [],
+  "dataset_sources": [],
+  "language": "python",
+  "enable_internet": false,
+  "keywords": [],
+  "kernel_type": "notebook",
+  "enable_gpu": false,
+  "is_private": false,
+  "id_no": 1561113,
+  "id": "luckscylla/titanic-my-solution",
+  "code_file": "titanic-my-solution.ipynb"
+}

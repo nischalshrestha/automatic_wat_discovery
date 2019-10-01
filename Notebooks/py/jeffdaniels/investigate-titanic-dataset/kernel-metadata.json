@@ -1,0 +1,17 @@
+{
+  "enable_gpu": false,
+  "id_no": 1023171,
+  "title": "Investigate Titanic Dataset",
+  "id": "jeffdaniels/investigate-titanic-dataset",
+  "enable_internet": false,
+  "competition_sources": [
+    "titanic"
+  ],
+  "code_file": "investigate-titanic-dataset.ipynb",
+  "kernel_type": "notebook",
+  "dataset_sources": [],
+  "language": "python",
+  "keywords": [],
+  "is_private": false,
+  "kernel_sources": []
+}

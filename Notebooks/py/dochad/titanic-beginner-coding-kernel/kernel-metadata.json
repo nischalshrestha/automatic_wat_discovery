@@ -1,0 +1,21 @@
+{
+  "language": "python",
+  "kernel_type": "notebook",
+  "code_file": "titanic-beginner-coding-kernel.ipynb",
+  "title": "Titanic Beginner Coding Kernel",
+  "dataset_sources": [],
+  "id_no": 1779373,
+  "enable_internet": false,
+  "is_private": false,
+  "enable_gpu": false,
+  "keywords": [
+    "data cleaning",
+    "data visualization",
+    "starter code"
+  ],
+  "id": "dochad/titanic-beginner-coding-kernel",
+  "competition_sources": [
+    "titanic"
+  ],
+  "kernel_sources": []
+}

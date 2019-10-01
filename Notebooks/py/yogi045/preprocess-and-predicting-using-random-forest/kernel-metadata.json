@@ -1,0 +1,17 @@
+{
+  "id": "yogi045/preprocess-and-predicting-using-random-forest",
+  "id_no": 325911,
+  "title": "Preprocess and Predicting Using Random Forest",
+  "code_file": "preprocess-and-predicting-using-random-forest.ipynb",
+  "language": "python",
+  "kernel_type": "notebook",
+  "is_private": false,
+  "enable_gpu": false,
+  "enable_internet": false,
+  "keywords": [],
+  "dataset_sources": [],
+  "kernel_sources": [],
+  "competition_sources": [
+    "titanic"
+  ]
+}

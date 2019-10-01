@@ -1,0 +1,17 @@
+{
+  "kernel_type": "notebook",
+  "kernel_sources": [],
+  "keywords": [],
+  "dataset_sources": [],
+  "id": "hidehito/hidehitofukushima-draft",
+  "id_no": 1536956,
+  "enable_gpu": false,
+  "enable_internet": false,
+  "title": "hidehitofukushima 'draft ",
+  "language": "python",
+  "code_file": "hidehitofukushima-draft.ipynb",
+  "competition_sources": [
+    "titanic"
+  ],
+  "is_private": false
+}

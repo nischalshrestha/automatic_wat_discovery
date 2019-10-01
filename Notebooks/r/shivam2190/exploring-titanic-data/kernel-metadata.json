@@ -1,0 +1,17 @@
+{
+  "title": "Exploring Titanic data",
+  "id_no": 159000,
+  "competition_sources": [
+    "titanic"
+  ],
+  "is_private": false,
+  "kernel_type": "notebook",
+  "kernel_sources": [],
+  "enable_gpu": false,
+  "language": "r",
+  "keywords": [],
+  "code_file": "exploring-titanic-data.irnb",
+  "id": "shivam2190/exploring-titanic-data",
+  "enable_internet": false,
+  "dataset_sources": []
+}

@@ -1,0 +1,19 @@
+{
+  "enable_gpu": false,
+  "kernel_sources": [],
+  "kernel_type": "notebook",
+  "id_no": 1965820,
+  "title": "TitanicRandomForest",
+  "is_private": false,
+  "dataset_sources": [],
+  "id": "ksarafrazi/titanicrandomforest",
+  "keywords": [
+    "random forest"
+  ],
+  "competition_sources": [
+    "titanic"
+  ],
+  "enable_internet": false,
+  "language": "python",
+  "code_file": "titanicrandomforest.ipynb"
+}

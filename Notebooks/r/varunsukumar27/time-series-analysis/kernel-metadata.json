@@ -1,0 +1,17 @@
+{
+  "enable_gpu": false,
+  "enable_internet": false,
+  "is_private": false,
+  "title": "Time Series Analysis",
+  "competition_sources": [
+    "titanic"
+  ],
+  "kernel_sources": [],
+  "keywords": [],
+  "language": "r",
+  "id_no": 1192101,
+  "kernel_type": "notebook",
+  "code_file": "time-series-analysis.irnb",
+  "id": "varunsukumar27/time-series-analysis",
+  "dataset_sources": []
+}

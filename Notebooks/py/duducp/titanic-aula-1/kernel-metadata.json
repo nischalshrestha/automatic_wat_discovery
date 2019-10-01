@@ -1,0 +1,17 @@
+{
+  "enable_gpu": false,
+  "id": "duducp/titanic-aula-1",
+  "language": "python",
+  "kernel_type": "notebook",
+  "code_file": "titanic-aula-1.ipynb",
+  "kernel_sources": [],
+  "title": "Titanic Aula 1",
+  "keywords": [],
+  "competition_sources": [
+    "titanic"
+  ],
+  "id_no": 712983,
+  "is_private": false,
+  "enable_internet": false,
+  "dataset_sources": []
+}

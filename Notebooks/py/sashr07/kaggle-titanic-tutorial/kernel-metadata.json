@@ -1,0 +1,17 @@
+{
+  "kernel_sources": [],
+  "competition_sources": [
+    "titanic"
+  ],
+  "language": "python",
+  "kernel_type": "notebook",
+  "code_file": "kaggle-titanic-tutorial.ipynb",
+  "keywords": [],
+  "id_no": 487076,
+  "title": "Kaggle Titanic Tutorial",
+  "is_private": false,
+  "dataset_sources": [],
+  "id": "sashr07/kaggle-titanic-tutorial",
+  "enable_internet": false,
+  "enable_gpu": false
+}

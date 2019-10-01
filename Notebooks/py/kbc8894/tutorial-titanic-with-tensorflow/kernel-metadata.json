@@ -1,0 +1,19 @@
+{
+  "kernel_sources": [],
+  "is_private": false,
+  "title": "Tutorial Titanic with tensorflow",
+  "kernel_type": "notebook",
+  "language": "python",
+  "enable_internet": false,
+  "enable_gpu": false,
+  "id": "kbc8894/tutorial-titanic-with-tensorflow",
+  "dataset_sources": [],
+  "keywords": [
+    "beginner"
+  ],
+  "competition_sources": [
+    "titanic"
+  ],
+  "id_no": 389361,
+  "code_file": "tutorial-titanic-with-tensorflow.ipynb"
+}

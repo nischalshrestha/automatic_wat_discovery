@@ -1,0 +1,22 @@
+{
+  "kernel_type": "notebook",
+  "dataset_sources": [],
+  "id_no": 521447,
+  "kernel_sources": [],
+  "language": "python",
+  "id": "rafaelgoncalves/analysis-visualization-and-learning-log-reg",
+  "enable_internet": false,
+  "competition_sources": [
+    "titanic"
+  ],
+  "is_private": false,
+  "title": "Analysis, Visualization and Learning (Log. Reg.)",
+  "code_file": "analysis-visualization-and-learning-log-reg.ipynb",
+  "enable_gpu": false,
+  "keywords": [
+    "beginner",
+    "data visualization",
+    "feature engineering",
+    "logistic regression"
+  ]
+}

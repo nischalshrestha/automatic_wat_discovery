@@ -1,0 +1,17 @@
+{
+  "kernel_sources": [],
+  "keywords": [],
+  "id": "swasswa/titanic-trial-2",
+  "is_private": false,
+  "code_file": "titanic-trial-2.ipynb",
+  "enable_internet": false,
+  "competition_sources": [
+    "titanic"
+  ],
+  "dataset_sources": [],
+  "language": "python",
+  "kernel_type": "notebook",
+  "title": "Titanic_Trial_2",
+  "id_no": 138707,
+  "enable_gpu": false
+}

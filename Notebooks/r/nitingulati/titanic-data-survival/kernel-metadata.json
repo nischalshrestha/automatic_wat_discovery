@@ -1,0 +1,17 @@
+{
+  "kernel_type": "notebook",
+  "dataset_sources": [],
+  "code_file": "titanic-data-survival.irnb",
+  "keywords": [],
+  "title": "Titanic Data - Survival",
+  "competition_sources": [
+    "titanic"
+  ],
+  "kernel_sources": [],
+  "enable_internet": false,
+  "id": "nitingulati/titanic-data-survival",
+  "id_no": 152916,
+  "is_private": false,
+  "language": "r",
+  "enable_gpu": false
+}

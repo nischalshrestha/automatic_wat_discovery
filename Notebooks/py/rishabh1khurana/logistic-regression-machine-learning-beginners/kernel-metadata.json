@@ -1,0 +1,17 @@
+{
+  "competition_sources": [
+    "titanic"
+  ],
+  "dataset_sources": [],
+  "kernel_type": "notebook",
+  "title": "Logistic regression-Machine Learning-beginners",
+  "kernel_sources": [],
+  "id_no": 323402,
+  "id": "rishabh1khurana/logistic-regression-machine-learning-beginners",
+  "is_private": false,
+  "language": "python",
+  "enable_gpu": false,
+  "enable_internet": false,
+  "keywords": [],
+  "code_file": "logistic-regression-machine-learning-beginners.ipynb"
+}

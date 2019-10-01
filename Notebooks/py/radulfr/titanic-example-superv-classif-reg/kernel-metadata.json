@@ -1,0 +1,21 @@
+{
+  "id": "radulfr/titanic-example-superv-classif-reg",
+  "id_no": 2004879,
+  "language": "python",
+  "title": "Titanic example Superv Classif/Reg",
+  "is_private": false,
+  "dataset_sources": [],
+  "kernel_type": "notebook",
+  "code_file": "titanic-example-superv-classif-reg.ipynb",
+  "enable_internet": false,
+  "enable_gpu": false,
+  "keywords": [
+    "tutorial",
+    "data cleaning",
+    "starter code"
+  ],
+  "competition_sources": [
+    "titanic"
+  ],
+  "kernel_sources": []
+}

@@ -1,0 +1,22 @@
+{
+  "is_private": false,
+  "id": "ylt0609/3-strategies-analyzing-age-and-their-impact",
+  "kernel_sources": [],
+  "competition_sources": [
+    "titanic"
+  ],
+  "keywords": [
+    "advanced",
+    "data visualization",
+    "feature engineering",
+    "random forest"
+  ],
+  "id_no": 1028262,
+  "code_file": "3-strategies-analyzing-age-and-their-impact.ipynb",
+  "title": " 3 Strategies Analyzing Age and Their Impact ",
+  "kernel_type": "notebook",
+  "enable_gpu": true,
+  "language": "python",
+  "dataset_sources": [],
+  "enable_internet": false
+}

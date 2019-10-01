@@ -1,0 +1,17 @@
+{
+  "language": "python",
+  "enable_gpu": false,
+  "title": "Frank-Titanic-GBM-GridCV",
+  "dataset_sources": [],
+  "kernel_type": "notebook",
+  "keywords": [],
+  "is_private": false,
+  "kernel_sources": [],
+  "id_no": 69498,
+  "enable_internet": false,
+  "id": "ymcdull/frank-titanic-first-test",
+  "code_file": "frank-titanic-first-test.ipynb",
+  "competition_sources": [
+    "titanic"
+  ]
+}

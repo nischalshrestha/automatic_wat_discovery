@@ -1,0 +1,21 @@
+{
+  "code_file": "dnn-with-tensorflow-s-dataset-api-and-estimator.ipynb",
+  "title": "DNN with TensorFlow's Dataset API and Estimator",
+  "dataset_sources": [],
+  "kernel_type": "notebook",
+  "kernel_sources": [],
+  "is_private": false,
+  "competition_sources": [
+    "titanic"
+  ],
+  "keywords": [
+    "beginner",
+    "deep learning",
+    "dnn"
+  ],
+  "enable_internet": false,
+  "language": "python",
+  "id": "matlihan/dnn-with-tensorflow-s-dataset-api-and-estimator",
+  "enable_gpu": false,
+  "id_no": 476157
+}

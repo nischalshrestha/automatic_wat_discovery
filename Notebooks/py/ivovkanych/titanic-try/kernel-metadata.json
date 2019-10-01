@@ -1,0 +1,17 @@
+{
+  "enable_internet": false,
+  "kernel_sources": [],
+  "competition_sources": [
+    "titanic"
+  ],
+  "enable_gpu": false,
+  "language": "python",
+  "is_private": false,
+  "dataset_sources": [],
+  "title": "Fork of voi_first_try",
+  "id_no": 100670,
+  "id": "ivovkanych/titanic-try",
+  "keywords": [],
+  "code_file": "titanic-try.ipynb",
+  "kernel_type": "notebook"
+}

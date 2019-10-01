@@ -1,0 +1,17 @@
+{
+  "kernel_type": "notebook",
+  "kernel_sources": [],
+  "competition_sources": [
+    "titanic"
+  ],
+  "dataset_sources": [],
+  "language": "python",
+  "id_no": 105233,
+  "enable_gpu": false,
+  "title": "Titanic Death Decider",
+  "enable_internet": false,
+  "is_private": false,
+  "keywords": [],
+  "id": "tayden/titanic-death-decider",
+  "code_file": "titanic-death-decider.ipynb"
+}

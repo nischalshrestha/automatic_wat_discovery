@@ -1,0 +1,17 @@
+{
+  "is_private": false,
+  "dataset_sources": [],
+  "id": "philippsp/increase-your-model-accuracy-with-this-feature",
+  "title": "Increase your model accuracy with this feature",
+  "id_no": 228290,
+  "kernel_type": "notebook",
+  "enable_internet": false,
+  "language": "r",
+  "kernel_sources": [],
+  "code_file": "increase-your-model-accuracy-with-this-feature.irnb",
+  "keywords": [],
+  "competition_sources": [
+    "titanic"
+  ],
+  "enable_gpu": false
+}

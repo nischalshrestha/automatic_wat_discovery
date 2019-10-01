@@ -1,0 +1,17 @@
+{
+  "title": "Kernel650e41e43a",
+  "kernel_sources": [],
+  "id": "pietrodimarco/titanic-data",
+  "enable_gpu": false,
+  "is_private": false,
+  "enable_internet": false,
+  "kernel_type": "notebook",
+  "code_file": "titanic-data.ipynb",
+  "language": "python",
+  "dataset_sources": [],
+  "keywords": [],
+  "id_no": 663694,
+  "competition_sources": [
+    "titanic"
+  ]
+}

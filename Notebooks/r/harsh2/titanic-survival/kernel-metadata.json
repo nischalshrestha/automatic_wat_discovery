@@ -1,0 +1,17 @@
+{
+  "enable_internet": false,
+  "enable_gpu": false,
+  "code_file": "titanic-survival.irnb",
+  "keywords": [],
+  "competition_sources": [
+    "titanic"
+  ],
+  "is_private": false,
+  "language": "r",
+  "dataset_sources": [],
+  "kernel_type": "notebook",
+  "id": "harsh2/titanic-survival",
+  "kernel_sources": [],
+  "title": "Titanic Survival",
+  "id_no": 562759
+}

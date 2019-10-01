@@ -1,0 +1,17 @@
+{
+  "kernel_type": "notebook",
+  "competition_sources": [
+    "titanic"
+  ],
+  "title": "Artificial Neural Network using Keras",
+  "keywords": [],
+  "enable_gpu": false,
+  "code_file": "artificial-neural-network-using-keras.ipynb",
+  "kernel_sources": [],
+  "is_private": false,
+  "enable_internet": false,
+  "id_no": 714742,
+  "id": "damienpark/artificial-neural-network-using-keras",
+  "language": "python",
+  "dataset_sources": []
+}

@@ -1,0 +1,17 @@
+{
+  "title": "Notebookca5a21c446",
+  "competition_sources": [
+    "titanic"
+  ],
+  "enable_gpu": false,
+  "id_no": 201296,
+  "dataset_sources": [],
+  "is_private": false,
+  "enable_internet": false,
+  "language": "python",
+  "kernel_sources": [],
+  "code_file": "notebookca5a21c446.ipynb",
+  "keywords": [],
+  "id": "slartibartfast06/notebookca5a21c446",
+  "kernel_type": "notebook"
+}

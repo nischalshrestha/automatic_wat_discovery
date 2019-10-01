@@ -1,0 +1,17 @@
+{
+  "title": "Titanic 101 | STAT-5302",
+  "is_private": false,
+  "language": "python",
+  "kernel_type": "notebook",
+  "enable_gpu": false,
+  "keywords": [],
+  "code_file": "titanic-101-stat-5302.ipynb",
+  "id_no": 2047983,
+  "dataset_sources": [],
+  "kernel_sources": [],
+  "enable_internet": false,
+  "competition_sources": [
+    "titanic"
+  ],
+  "id": "anicksaha/titanic-101-stat-5302"
+}

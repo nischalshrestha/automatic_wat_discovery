@@ -1,0 +1,22 @@
+{
+  "kernel_type": "notebook",
+  "keywords": [
+    "tutorial",
+    "beginner",
+    "data visualization",
+    "classification"
+  ],
+  "enable_internet": false,
+  "competition_sources": [
+    "titanic"
+  ],
+  "title": "Titanic using the pseudo-labeling method",
+  "dataset_sources": [],
+  "is_private": false,
+  "id": "farisai/titanic-using-the-pseudo-labeling-method",
+  "enable_gpu": false,
+  "language": "python",
+  "id_no": 355072,
+  "code_file": "titanic-using-the-pseudo-labeling-method.ipynb",
+  "kernel_sources": []
+}

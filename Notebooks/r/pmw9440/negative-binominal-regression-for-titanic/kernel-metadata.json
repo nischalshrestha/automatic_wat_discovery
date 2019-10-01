@@ -1,0 +1,17 @@
+{
+  "language": "r",
+  "dataset_sources": [],
+  "is_private": false,
+  "id": "pmw9440/negative-binominal-regression-for-titanic",
+  "kernel_sources": [],
+  "id_no": 1435008,
+  "competition_sources": [
+    "titanic"
+  ],
+  "enable_internet": false,
+  "enable_gpu": false,
+  "keywords": [],
+  "kernel_type": "notebook",
+  "title": "Negative Binominal  Regression for Titanic",
+  "code_file": "negative-binominal-regression-for-titanic.irnb"
+}

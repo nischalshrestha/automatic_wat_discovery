@@ -1,0 +1,17 @@
+{
+  "competition_sources": [
+    "titanic"
+  ],
+  "keywords": [],
+  "kernel_type": "notebook",
+  "enable_internet": false,
+  "id_no": 267517,
+  "id": "ninjatrader/notebookc62fcf20b2",
+  "dataset_sources": [],
+  "enable_gpu": false,
+  "title": "Notebookc62fcf20b2",
+  "language": "python",
+  "kernel_sources": [],
+  "code_file": "notebookc62fcf20b2.ipynb",
+  "is_private": false
+}

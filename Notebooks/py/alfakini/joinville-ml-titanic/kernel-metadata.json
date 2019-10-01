@@ -1,0 +1,17 @@
+{
+  "competition_sources": [
+    "titanic"
+  ],
+  "code_file": "joinville-ml-titanic.ipynb",
+  "id": "alfakini/joinville-ml-titanic",
+  "id_no": 221434,
+  "language": "python",
+  "title": "Joinville ML Titanic",
+  "dataset_sources": [],
+  "keywords": [],
+  "enable_gpu": false,
+  "kernel_type": "notebook",
+  "is_private": false,
+  "kernel_sources": [],
+  "enable_internet": false
+}

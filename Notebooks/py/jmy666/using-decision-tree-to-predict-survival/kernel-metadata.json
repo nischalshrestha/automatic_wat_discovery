@@ -1,0 +1,20 @@
+{
+  "kernel_type": "notebook",
+  "competition_sources": [
+    "titanic"
+  ],
+  "kernel_sources": [],
+  "dataset_sources": [],
+  "enable_internet": false,
+  "code_file": "using-decision-tree-to-predict-survival.ipynb",
+  "language": "python",
+  "id_no": 534518,
+  "is_private": false,
+  "keywords": [
+    "beginner",
+    "decision tree"
+  ],
+  "title": "Using Decision Tree to Predict Survival",
+  "enable_gpu": false,
+  "id": "jmy666/using-decision-tree-to-predict-survival"
+}

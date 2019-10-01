@@ -1,0 +1,23 @@
+{
+  "is_private": false,
+  "enable_gpu": false,
+  "kernel_sources": [],
+  "dataset_sources": [],
+  "kernel_type": "notebook",
+  "title": "The preprocessing framework with Titanic",
+  "keywords": [
+    "tutorial",
+    "beginner",
+    "data cleaning",
+    "preprocessing",
+    "feature engineering"
+  ],
+  "enable_internet": false,
+  "code_file": "the-preprocessing-framework-with-titanic.ipynb",
+  "competition_sources": [
+    "titanic"
+  ],
+  "language": "python",
+  "id": "datalana/the-preprocessing-framework-with-titanic",
+  "id_no": 812163
+}

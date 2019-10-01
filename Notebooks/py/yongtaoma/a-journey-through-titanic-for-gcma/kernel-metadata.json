@@ -1,0 +1,17 @@
+{
+  "enable_gpu": false,
+  "id": "yongtaoma/a-journey-through-titanic-for-gcma",
+  "enable_internet": false,
+  "kernel_sources": [],
+  "language": "python",
+  "keywords": [],
+  "id_no": 527899,
+  "kernel_type": "notebook",
+  "code_file": "a-journey-through-titanic-for-gcma.ipynb",
+  "is_private": false,
+  "dataset_sources": [],
+  "title": "A Journey through Titanic for GCMA",
+  "competition_sources": [
+    "titanic"
+  ]
+}

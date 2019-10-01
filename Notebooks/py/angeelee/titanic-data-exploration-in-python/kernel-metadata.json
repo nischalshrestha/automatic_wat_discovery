@@ -1,0 +1,17 @@
+{
+  "kernel_sources": [],
+  "id_no": 528634,
+  "enable_gpu": false,
+  "id": "angeelee/titanic-data-exploration-in-python",
+  "keywords": [],
+  "title": "Titanic Data Exploration in Python",
+  "dataset_sources": [],
+  "language": "python",
+  "is_private": false,
+  "enable_internet": false,
+  "code_file": "titanic-data-exploration-in-python.ipynb",
+  "kernel_type": "notebook",
+  "competition_sources": [
+    "titanic"
+  ]
+}

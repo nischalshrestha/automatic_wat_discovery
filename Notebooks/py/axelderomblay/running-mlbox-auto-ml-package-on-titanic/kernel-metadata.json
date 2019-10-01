@@ -1,0 +1,17 @@
+{
+  "is_private": false,
+  "enable_internet": false,
+  "title": "Running \"MLBox\" auto-ML package on Titanic",
+  "keywords": [],
+  "code_file": "running-mlbox-auto-ml-package-on-titanic.ipynb",
+  "competition_sources": [
+    "titanic"
+  ],
+  "language": "python",
+  "enable_gpu": false,
+  "id_no": 321272,
+  "kernel_sources": [],
+  "dataset_sources": [],
+  "kernel_type": "notebook",
+  "id": "axelderomblay/running-mlbox-auto-ml-package-on-titanic"
+}

@@ -1,0 +1,17 @@
+{
+  "id": "blastchar/titanic-the-machine-learning-h2o-ensemble",
+  "keywords": [],
+  "language": "r",
+  "is_private": false,
+  "enable_internet": false,
+  "code_file": "titanic-the-machine-learning-h2o-ensemble.irnb",
+  "competition_sources": [
+    "titanic"
+  ],
+  "kernel_sources": [],
+  "enable_gpu": false,
+  "title": "Titanic The Machine Learning h2o Ensemble",
+  "id_no": 763568,
+  "kernel_type": "notebook",
+  "dataset_sources": []
+}

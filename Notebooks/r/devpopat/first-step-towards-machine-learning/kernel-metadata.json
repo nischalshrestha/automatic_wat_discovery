@@ -1,0 +1,20 @@
+{
+  "title": "First step towards Machine Learning",
+  "language": "r",
+  "dataset_sources": [],
+  "keywords": [
+    "tutorial",
+    "beginner"
+  ],
+  "id": "devpopat/first-step-towards-machine-learning",
+  "kernel_type": "notebook",
+  "id_no": 1974907,
+  "code_file": "first-step-towards-machine-learning.irnb",
+  "enable_gpu": false,
+  "enable_internet": false,
+  "kernel_sources": [],
+  "is_private": false,
+  "competition_sources": [
+    "titanic"
+  ]
+}

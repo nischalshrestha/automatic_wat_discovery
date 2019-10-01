@@ -1,0 +1,17 @@
+{
+  "enable_gpu": false,
+  "competition_sources": [
+    "titanic"
+  ],
+  "is_private": false,
+  "title": "Titanic First Visualization on the basis of title",
+  "id_no": 593837,
+  "keywords": [],
+  "enable_internet": false,
+  "kernel_type": "notebook",
+  "language": "r",
+  "dataset_sources": [],
+  "code_file": "titanic-first-visualization-on-the-basis-of-title.irnb",
+  "kernel_sources": [],
+  "id": "nitsbat/titanic-first-visualization-on-the-basis-of-title"
+}

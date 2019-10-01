@@ -1,0 +1,17 @@
+{
+  "enable_gpu": false,
+  "kernel_type": "notebook",
+  "keywords": [],
+  "id_no": 1362784,
+  "code_file": "titanic-tutorial-using-hands-on-guide.ipynb",
+  "id": "marieb/titanic-tutorial-using-hands-on-guide",
+  "kernel_sources": [],
+  "language": "python",
+  "title": "Titanic Tutorial Using Hands On Guide",
+  "competition_sources": [
+    "titanic"
+  ],
+  "enable_internet": false,
+  "is_private": false,
+  "dataset_sources": []
+}

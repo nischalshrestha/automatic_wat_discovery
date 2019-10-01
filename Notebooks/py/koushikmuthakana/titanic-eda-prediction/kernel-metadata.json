@@ -1,0 +1,17 @@
+{
+  "title": "Titanic: EDA&Prediction",
+  "id_no": 2012677,
+  "kernel_sources": [],
+  "is_private": false,
+  "competition_sources": [
+    "titanic"
+  ],
+  "language": "python",
+  "code_file": "titanic-eda-prediction.ipynb",
+  "keywords": [],
+  "enable_gpu": false,
+  "id": "koushikmuthakana/titanic-eda-prediction",
+  "enable_internet": false,
+  "kernel_type": "notebook",
+  "dataset_sources": []
+}

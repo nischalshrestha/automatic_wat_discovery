@@ -1,0 +1,17 @@
+{
+  "is_private": false,
+  "enable_internet": false,
+  "language": "r",
+  "competition_sources": [
+    "titanic"
+  ],
+  "code_file": "notebookf5e5399cd4.irnb",
+  "kernel_sources": [],
+  "id_no": 230468,
+  "enable_gpu": false,
+  "kernel_type": "notebook",
+  "id": "julesb/notebookf5e5399cd4",
+  "keywords": [],
+  "title": "Notebookf5e5399cd4",
+  "dataset_sources": []
+}

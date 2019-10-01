@@ -1,0 +1,17 @@
+{
+  "keywords": [],
+  "kernel_sources": [],
+  "competition_sources": [
+    "titanic"
+  ],
+  "enable_internet": false,
+  "title": "Fork of Fork of Just a rough logistic regression i",
+  "id_no": 205148,
+  "kernel_type": "notebook",
+  "is_private": false,
+  "id": "ghoshtumpu/fork-of-fork-of-just-a-rough-logistic-regression-i",
+  "language": "r",
+  "code_file": "fork-of-fork-of-just-a-rough-logistic-regression-i.irnb",
+  "enable_gpu": false,
+  "dataset_sources": []
+}

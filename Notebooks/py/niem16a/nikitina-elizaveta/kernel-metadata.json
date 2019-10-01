@@ -1,0 +1,17 @@
+{
+  "competition_sources": [
+    "titanic"
+  ],
+  "dataset_sources": [],
+  "id": "niem16a/nikitina-elizaveta",
+  "code_file": "nikitina-elizaveta.ipynb",
+  "enable_internet": false,
+  "is_private": false,
+  "id_no": 1912677,
+  "title": "Nikitina Elizaveta",
+  "enable_gpu": false,
+  "keywords": [],
+  "language": "python",
+  "kernel_type": "notebook",
+  "kernel_sources": []
+}

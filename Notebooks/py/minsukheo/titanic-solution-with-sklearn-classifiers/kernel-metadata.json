@@ -1,0 +1,19 @@
+{
+  "id_no": 412853,
+  "id": "minsukheo/titanic-solution-with-sklearn-classifiers",
+  "competition_sources": [
+    "titanic"
+  ],
+  "kernel_type": "notebook",
+  "code_file": "titanic-solution-with-sklearn-classifiers.ipynb",
+  "dataset_sources": [],
+  "keywords": [
+    "data visualization"
+  ],
+  "is_private": false,
+  "title": "Titanic Solution with sklearn classifiers",
+  "enable_gpu": false,
+  "language": "python",
+  "enable_internet": false,
+  "kernel_sources": []
+}

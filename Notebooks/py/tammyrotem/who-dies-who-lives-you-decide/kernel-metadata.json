@@ -1,0 +1,20 @@
+{
+  "id": "tammyrotem/who-dies-who-lives-you-decide",
+  "dataset_sources": [],
+  "keywords": [
+    "classification",
+    "random forest"
+  ],
+  "code_file": "who-dies-who-lives-you-decide.ipynb",
+  "title": "Who Dies? Who Lives? You Decide!",
+  "kernel_type": "notebook",
+  "is_private": false,
+  "competition_sources": [
+    "titanic"
+  ],
+  "enable_internet": false,
+  "id_no": 434514,
+  "language": "python",
+  "kernel_sources": [],
+  "enable_gpu": false
+}

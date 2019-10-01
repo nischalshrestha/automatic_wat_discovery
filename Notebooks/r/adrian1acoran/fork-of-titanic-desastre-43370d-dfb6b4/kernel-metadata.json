@@ -1,0 +1,30 @@
+{
+  "dataset_sources": [
+    "github/github-repos",
+    "pytorch/vgg13bn",
+    "bigquery/patents",
+    "adrian1acoran/pi-31415"
+  ],
+  "competition_sources": [
+    "titanic",
+    "house-prices-advanced-regression-techniques",
+    "two-sigma-financial-news",
+    "human-protein-atlas-image-classification"
+  ],
+  "id": "adrian1acoran/fork-of-titanic-desastre-43370d-dfb6b4",
+  "is_private": false,
+  "title": "Fork of Titanic. desastre  43370d dfb6b4",
+  "code_file": "fork-of-titanic-desastre-43370d-dfb6b4.irnb",
+  "language": "r",
+  "id_no": 1914282,
+  "kernel_sources": [
+    "mrisdal/quick-dirty-randomforest",
+    "ldfreeman3/a-data-science-framework-to-achieve-99-accuracy",
+    "kanncaa1/data-sciencetutorial-for-beginners",
+    "sudalairajkumar/simple-exploration-baseline-ga-customer-revenue"
+  ],
+  "enable_internet": false,
+  "enable_gpu": true,
+  "keywords": [],
+  "kernel_type": "notebook"
+}

@@ -1,0 +1,17 @@
+{
+  "enable_gpu": false,
+  "id_no": 1907790,
+  "dataset_sources": [],
+  "title": "titanic, feature from name",
+  "competition_sources": [
+    "titanic"
+  ],
+  "enable_internet": false,
+  "kernel_sources": [],
+  "id": "bubblride/titanic-feature-from-name",
+  "keywords": [],
+  "code_file": "titanic-feature-from-name.ipynb",
+  "language": "python",
+  "is_private": false,
+  "kernel_type": "notebook"
+}

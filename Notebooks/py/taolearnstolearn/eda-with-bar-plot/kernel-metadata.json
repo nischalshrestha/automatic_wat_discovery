@@ -1,0 +1,21 @@
+{
+  "kernel_sources": [],
+  "is_private": false,
+  "dataset_sources": [],
+  "code_file": "eda-with-bar-plot.ipynb",
+  "id": "taolearnstolearn/eda-with-bar-plot",
+  "competition_sources": [
+    "titanic"
+  ],
+  "keywords": [
+    "beginner",
+    "eda",
+    "data visualization"
+  ],
+  "kernel_type": "notebook",
+  "title": "EDA with bar plot",
+  "enable_internet": false,
+  "language": "python",
+  "enable_gpu": false,
+  "id_no": 1532161
+}

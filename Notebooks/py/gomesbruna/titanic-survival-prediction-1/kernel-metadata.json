@@ -1,0 +1,17 @@
+{
+  "id_no": 173950,
+  "enable_internet": false,
+  "title": "Titanic Survival Prediction #1",
+  "is_private": false,
+  "keywords": [],
+  "enable_gpu": false,
+  "kernel_sources": [],
+  "id": "gomesbruna/titanic-survival-prediction-1",
+  "code_file": "titanic-survival-prediction-1.ipynb",
+  "kernel_type": "notebook",
+  "language": "python",
+  "competition_sources": [
+    "titanic"
+  ],
+  "dataset_sources": []
+}

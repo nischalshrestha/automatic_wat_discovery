@@ -1,0 +1,17 @@
+{
+  "enable_gpu": false,
+  "id_no": 764656,
+  "competition_sources": [
+    "titanic"
+  ],
+  "code_file": "fork-of-titanic-ml-from-disaster-dnn-with-keras.ipynb",
+  "language": "python",
+  "kernel_sources": [],
+  "is_private": false,
+  "id": "arthurspa/fork-of-titanic-ml-from-disaster-dnn-with-keras",
+  "title": "Fork of Titanic: ML from Disaster - DNN with Keras",
+  "dataset_sources": [],
+  "keywords": [],
+  "kernel_type": "notebook",
+  "enable_internet": false
+}

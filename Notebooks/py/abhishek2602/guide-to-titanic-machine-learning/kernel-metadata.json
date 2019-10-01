@@ -1,0 +1,17 @@
+{
+  "title": "Guide to Titanic Machine Learning",
+  "keywords": [],
+  "kernel_type": "notebook",
+  "enable_internet": false,
+  "id": "abhishek2602/guide-to-titanic-machine-learning",
+  "id_no": 1935420,
+  "is_private": false,
+  "kernel_sources": [],
+  "language": "python",
+  "code_file": "guide-to-titanic-machine-learning.ipynb",
+  "enable_gpu": false,
+  "competition_sources": [
+    "titanic"
+  ],
+  "dataset_sources": []
+}

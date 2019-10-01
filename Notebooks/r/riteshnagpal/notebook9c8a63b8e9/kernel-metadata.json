@@ -1,0 +1,17 @@
+{
+  "kernel_type": "notebook",
+  "dataset_sources": [],
+  "kernel_sources": [],
+  "is_private": false,
+  "id_no": 165635,
+  "enable_internet": false,
+  "title": "Notebook4292a77ccd",
+  "code_file": "notebook9c8a63b8e9.irnb",
+  "language": "r",
+  "enable_gpu": false,
+  "competition_sources": [
+    "titanic"
+  ],
+  "id": "riteshnagpal/notebook9c8a63b8e9",
+  "keywords": []
+}

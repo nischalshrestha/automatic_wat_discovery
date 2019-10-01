@@ -1,0 +1,17 @@
+{
+  "code_file": "titanic-random-forest-82-78.ipynb",
+  "language": "python",
+  "kernel_sources": [],
+  "id": "qweasddd/titanic-random-forest-82-78",
+  "dataset_sources": [],
+  "kernel_type": "notebook",
+  "title": "Titanic Random Forest: 82.78%",
+  "keywords": [],
+  "enable_gpu": false,
+  "enable_internet": false,
+  "competition_sources": [
+    "titanic"
+  ],
+  "id_no": 220429,
+  "is_private": false
+}

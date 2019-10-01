@@ -1,0 +1,20 @@
+{
+  "keywords": [
+    "beginner",
+    "random forest"
+  ],
+  "dataset_sources": [],
+  "enable_internet": false,
+  "competition_sources": [
+    "titanic"
+  ],
+  "code_file": "titanicjuly2016.irnb",
+  "enable_gpu": false,
+  "title": "TitanicJuly2016",
+  "id_no": 82240,
+  "is_private": false,
+  "kernel_type": "notebook",
+  "kernel_sources": [],
+  "id": "besttinaes/titanicjuly2016",
+  "language": "r"
+}

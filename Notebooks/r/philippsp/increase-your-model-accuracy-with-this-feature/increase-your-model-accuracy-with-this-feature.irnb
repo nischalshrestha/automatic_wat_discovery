@@ -1,0 +1,344 @@
+{
+  "cells": [
+    {
+      "cell_type": "markdown",
+      "metadata": {
+        "_cell_guid": "5ed62404-6a9a-3de0-7a00-73a132f9a7dc"
+      },
+      "source": [
+        "#Do families survive together?\n",
+        "\n",
+        "One would assume that families tried to escape together and accordingly should either die or survive together. \n",
+        "\n",
+        "Here, i wanted to share my approach to determine whether families survive or die together, i.e.\n",
+        "whether a passenger is more likely to survive if his other family members have died or survived.\n",
+        "\n",
+        "\n",
+        "\n",
+        "\n",
+        "To answer this question I performed 2 steps:\n",
+        "\n",
+        " **1. Group passengers into families**\n",
+        "\n",
+        "**2. Calculate for each member of a family\n",
+        "    the proportion of the remaining family members who survived**\n",
+        "\n",
+        "\n",
+        "This feature can then in turn be used to predict survival.\n",
+        "\n",
+        "\n",
+        "-------"
+      ]
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {
+        "_cell_guid": "4b534fe5-ba45-2c85-7cad-3004a263c2b4"
+      },
+      "source": [
+        "##Load data sets and prepare"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "_cell_guid": "6c4ee0a0-20f6-4e4d-9934-c248cc91a4f8"
+      },
+      "outputs": [],
+      "source": [
+        "library(dplyr)\n",
+        "library(cluster)\n",
+        "library(ggplot2)\n",
+        "\n",
+        "train <- read.csv('../input/train.csv', stringsAsFactors = F)\n",
+        "test  <- read.csv('../input/test.csv', stringsAsFactors = F)\n",
+        "\n",
+        "full <- bind_rows(train,test)\n",
+        "\n",
+        "# Create a family size variable including the passenger themselves\n",
+        "full$Fsize <- full$SibSp + full$Parch + 1\n",
+        "\n",
+        "# grab surname from passenger name\n",
+        "full$Surname <- sapply(full$Name,  \n",
+        "                       function(x) strsplit(x, split = '[,.]')[[1]][1])"
+      ]
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {
+        "_cell_guid": "a99c05b0-615a-43f9-3d42-c2a8a4a4ac9f"
+      },
+      "source": [
+        "##1) Group passengers into families\n",
+        "\n",
+        "My approach of grouping passenger into families relies on methods from cluster analysis. The idea is that members of a family should share some attributes, such as being in the same passenger class, sharing a ticket, etc. \n",
+        "\n",
+        "Using these attributes we can compare the potential family members (i.e., those with the same name) regarding their similarity. We can then define a threshold (i.e. a minimum number of attributes that should be the same to qualify as a family) to group members of a family. \n",
+        "With this approach you can make the grouping into families either very strict (by requiring the passenger to match in all attributes) or rather lenient (by requiring the passengers to match in only some attributes).\n",
+        "\n",
+        "But lets do some preparations first:"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "_cell_guid": "f75ed89c-4d67-629f-34af-d8f5b570def8"
+      },
+      "outputs": [],
+      "source": [
+        "## Create a family variable and group passengers into family\n",
+        "full$family <- NaN\n",
+        "\n",
+        "## filter out those family names appearing more than once\n",
+        "potentialNames <- full %>% \n",
+        "    group_by(Surname) %>% \n",
+        "    summarize(family_n = n()) %>% \n",
+        "    filter(family_n > 1) %>% \n",
+        "    select(Surname)"
+      ]
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {
+        "_cell_guid": "ba840d6c-3692-8046-ca13-282164290b34"
+      },
+      "source": [
+        "For determining family membership I treated the variables Pclass, Fsize, Ticket, Fare and Embarked as relevant.\n",
+        "\n",
+        "To be grouped into a family passengers should have the same value in at least 3 of those variables."
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "_cell_guid": "d92a071b-f0b8-9e30-8117-7eec562bae6a"
+      },
+      "outputs": [],
+      "source": [
+        "## if passengers are from the same family one would assume they share some attributes\n",
+        "compareAttribs <- c(\"Pclass\", \"Fsize\", \"Ticket\", \"Fare\", \"Embarked\")\n",
+        "\n",
+        "## set the minimum number of attributes that have to match in order to be qualified as a family\n",
+        "minMatch <- 3"
+      ]
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {
+        "_cell_guid": "4cd58bca-7416-bd7a-bb87-4013a5ec52f3"
+      },
+      "source": [
+        "Now we can calculate the dissimilarity between all passengers sharing a surname, which can then be used to group those with small dissimilarity together. \n",
+        "\n",
+        "The dissimilarity can be calculated using the *daisy* function in the *cluster* package."
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "_cell_guid": "555c00e5-e355-0737-f031-715d1c124e20"
+      },
+      "outputs": [],
+      "source": [
+        "# initalize a family number, which is going to be increased with every family identified\n",
+        "familyNum <- 1 \n",
+        "\n",
+        "# loop through all potential families\n",
+        "for (i in 1:length(potentialNames$Surname)){\n",
+        "  \n",
+        "  # select all passengers with a given surname\n",
+        "  tmp <- full %>% \n",
+        "    filter(Surname %in% potentialNames$Surname[i] & Fsize>1) %>% \n",
+        "    select(one_of(c(\"PassengerId\",compareAttribs))) %>% \n",
+        "    mutate_each(funs(as.factor))\n",
+        "  \n",
+        "  if (nrow(tmp)>1){\n",
+        "    # calculate the dissimilarity\n",
+        "    dissim <- cluster::daisy(select(tmp,one_of(compareAttribs)))\n",
+        "    # group passengers according to their similarity (i.e. cluster analysis)\n",
+        "    hclust <- as.hclust(cluster::agnes(dissim,diss = TRUE))\n",
+        "    # get the clusters according to our threshold, such that passenger in clusters match at least in minMatch attributes\n",
+        "    clusts <- cutree(hclust, h = 1 - minMatch/length(compareAttribs))\n",
+        "    \n",
+        "    # get clusters with at least 2 members and assign a family number to the members\n",
+        "    finalClusts <- unique(clusts[duplicated(clusts)])\n",
+        "    for (j in 1:length(finalClusts)) {\n",
+        "      full$family[full$PassengerId %in% tmp$PassengerId[clusts==finalClusts[j]]] <- familyNum\n",
+        "      familyNum <- familyNum + 1\n",
+        "    }\n",
+        "  }\n",
+        "}"
+      ]
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {
+        "_cell_guid": "887ee3ed-1dd2-0524-e346-4691185085c6"
+      },
+      "source": [
+        "We have now grouped the passengers into families (see below)"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "_cell_guid": "24a19ef1-41de-d376-e835-8603d9165009"
+      },
+      "outputs": [],
+      "source": [
+        "full %>% arrange(family) %>% select(PassengerId, family, Surname, Pclass, Fsize, Ticket, Fare, Embarked) %>% head(n=10)"
+      ]
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {
+        "_cell_guid": "886e7fdf-2399-1cf1-7f82-025f904c3213"
+      },
+      "source": [
+        "##2) Calculate the probability of the survival of other family members\n",
+        "\n",
+        "Now we can calculate for each passenger in a family the proportion of the other family members that survived. "
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "_cell_guid": "35a1be7b-237d-8243-40fe-7de62d51fdec"
+      },
+      "outputs": [],
+      "source": [
+        "full$quote <- \"alone\"\n",
+        "for (i in 1:familyNum){\n",
+        "  tmp <- full %>% filter(family==i)\n",
+        "  for (j in 1:nrow(tmp)) {\n",
+        "    quote <- mean(tmp$Survived[setdiff(1:nrow(tmp),j)], na.rm = T)\n",
+        "    full$quote[full$PassengerId == tmp$PassengerId[j]] <- quote\n",
+        "  }\n",
+        "}"
+      ]
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {
+        "_cell_guid": "593399d8-4866-f619-1672-df88220bfede"
+      },
+      "source": [
+        "Now we can check whether our newly created feature is related to survival. "
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "_cell_guid": "459c0aa9-1d9e-7697-3ff3-575a761597f7"
+      },
+      "outputs": [],
+      "source": [
+        "full %>% group_by(quote) %>% summarize(msurvived = mean(Survived, na.rm=T), n=n())"
+      ]
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {
+        "_cell_guid": "7cb26cac-5683-f66b-8639-ed2e9bc8c971"
+      },
+      "source": [
+        "We can see that there seems to be a relation between the probability of survival of the passenger and its families survival rate.\n",
+        "However some \"quotes\" only have few observations. So we might group them together:"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "_cell_guid": "4e59c014-9146-9b55-3991-68fbfda086a4"
+      },
+      "outputs": [],
+      "source": [
+        "full$quote[full$quote < 0.5] <- 0\n",
+        "full$quote[full$quote >= 0.5 & full$quote <= 1] <- 1\n",
+        "full$quote[is.na(full$quote)] <- NaN\n",
+        "\n",
+        "dfplot <- full %>% \n",
+        "    group_by(quote) %>% \n",
+        "    summarize(m = mean(Survived,na.rm=T), n = n(), se = sd(Survived,na.rm=T)/sqrt(n()))\n",
+        "\n",
+        "# convert quote to factor and plot\n",
+        "dfplot$quote <- factor(dfplot$quote, levels = c(\"0\",\"1\",\"NaN\",\"alone\"))\n",
+        "ggplot(dfplot,aes(x=quote,y=m,fill=quote))+geom_bar(stat=\"identity\")+geom_errorbar(aes(x=quote,ymin=m-se,ymax=m+se,width=0.35))+\n",
+        "    xlab(\"Proportion of other family members surviving\")+ylab(\"Probability of own survival\")+\n",
+        "    theme_bw()+theme(axis.text = element_text(size=18), axis.title = element_text(size=22), legend.position = \"none\")"
+      ]
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {
+        "_cell_guid": "f6e177a8-fe51-ed6e-8af8-7d0eeb719155"
+      },
+      "source": [
+        "We can see that it makes a huge difference for survival if the other family members survived (1) or died (0).\n",
+        "More specifically, if most of my other family members survived, I have a higher chance of surviving myself. If, in contrast most of my other family members died, I have a higher chance of dying myself. \n",
+        "\n",
+        "So we can state that:\n",
+        "\n",
+        "##Families survive or die together"
+      ]
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {
+        "_cell_guid": "ae163855-0e3b-f431-ef19-31c3c9bc2e38"
+      },
+      "source": [
+        "#Feature Importance\n",
+        "\n",
+        "I just ran a quick Random Forest to check the feature importance of the new \"quote\" feature:\n",
+        "We can see that the newly created feature ranks quite high.\n",
+        "\n",
+        "![feature importance][1]\n",
+        "\n",
+        "\n",
+        "  [1]: http://i.imgur.com/lYrHSN0.png"
+      ]
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {
+        "_cell_guid": "d5210dec-ce7d-0f8d-3904-fa59af90b5b2"
+      },
+      "source": [
+        "# Leaderboard score\n",
+        "Adding this new feature to a simple random forest model with the variables Pclass, Sex, SibSp, Parch, Embarked and Fare, \n",
+        "boosted leaderboard score from 77.2% to **78.9%**.\n",
+        "\n",
+        "\n",
+        "Please **upvote** if you like this kernel.  "
+      ]
+    }
+  ],
+  "metadata": {
+    "_change_revision": 0,
+    "_is_fork": false,
+    "kernelspec": {
+      "display_name": "R",
+      "language": "R",
+      "name": "ir"
+    },
+    "language_info": {
+      "codemirror_mode": "r",
+      "file_extension": ".r",
+      "mimetype": "text/x-r-source",
+      "name": "R",
+      "pygments_lexer": "r",
+      "version": "3.4.0"
+    }
+  },
+  "nbformat": 4,
+  "nbformat_minor": 0
+}

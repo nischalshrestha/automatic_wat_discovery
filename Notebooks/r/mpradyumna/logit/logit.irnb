@@ -1,0 +1,132 @@
+{
+  "cells": [
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "_cell_guid": "424a8706-164b-bd5e-f03b-5b3848a8e6b4"
+      },
+      "outputs": [],
+      "source": [
+        "# This R environment comes with all of CRAN preinstalled, as well as many other helpful packages\n",
+        "# The environment is defined by the kaggle/rstats docker image: https://github.com/kaggle/docker-rstats\n",
+        "# For example, here's several helpful packages to load in \n",
+        "library(readr)\n",
+        "library(ggplot2)\n",
+        "library(ROCR)\n",
+        "library(ggplot2)\n",
+        "library(caret)\n",
+        "library(mice)\n",
+        "\n",
+        "# Input data files are available in the \"../input/\" directory.\n",
+        "# For example, running this (by clicking run or pressing Shift+Enter) will list the files in the input directory\n",
+        "\n",
+        "rawdata <- read.csv('../input/train.csv',stringsAsFactors = FALSE)\n",
+        "names(rawdata)\n",
+        "str(rawdata)\n",
+        "\n",
+        "mi.data <- mice(rawdata, seed = 1234, printFlag = FALSE)\n",
+        "\n",
+        "mice:::print.mids(mi.data)\n",
+        "\n",
+        "plot(mi.data)\n",
+        "\n",
+        "cleandata <- complete(mi.data, action = 3)\n",
+        "sum(is.na(cleandata))\n",
+        "\n",
+        "set.seed(3456)\n",
+        "trainIndex <- sample(1:nrow(cleandata),floor(0.7*nrow(cleandata)), replace = TRUE)\n",
+        "\n",
+        "train_data <- cleandata[trainIndex,]\n",
+        "test_data <- cleandata[-trainIndex,]\n",
+        "\n",
+        "\n",
+        "model <- glm(Survived~Age+Pclass+Sex+Parch, family =\"binomial\", data=train_data)\n",
+        "summary(model)\n",
+        "\n",
+        "predictions <- predict(model, type=\"response\") \n",
+        "pred_class <- ifelse(predictions> 0.5, 1, 0)\n",
+        "\n",
+        "\n",
+        "confusion.mat_train <- table(train_data$Survived,pred_class)\n",
+        "accuracy_train <- sum(diag(confusion.mat_train))/sum(confusion.mat_train)\n",
+        "precision_train <- confusion.mat_train[2,2]/sum(confusion.mat_train[,2])\n",
+        "recall_train <- confusion.mat_train[2,2]/sum(confusion.mat_train[2,])\n",
+        "\n",
+        "\n",
+        "fitted.results <- predict(model,test_data,type='response')\n",
+        "fitted.class <- ifelse(fitted.results > 0.5,1,0)\n",
+        "\n",
+        "\n",
+        "confusion.mat_test = table(test_data$Survived,fitted.class)\n",
+        "accuracy_test = sum(diag(confusion.mat_test))/sum(confusion.mat_test)\n",
+        "precision_test = confusion.mat_test[2,2]/sum(confusion.mat_test[,2])\n",
+        "recall_test = confusion.mat_test[2,2]/sum(confusion.mat_test[2,])\n",
+        "\n",
+        "\n",
+        "predicted <- predict(model,type=\"response\")\n",
+        "prob <- prediction(predicted, train_data$Survived)\n",
+        "tprfpr <- performance(prob, \"tpr\", \"fpr\")\n",
+        "plot(tprfpr)\n",
+        "\n",
+        "cutoffs <- data.frame(cut=tprfpr@alpha.values[[1]], fpr=tprfpr@x.values[[1]], \n",
+        "                      tpr=tprfpr@y.values[[1]])\n",
+        "cutoffs <- cutoffs[order(cutoffs$tpr, decreasing=TRUE),]\n",
+        "\n",
+        "head(subset(cutoffs, fpr < 0.2))\n",
+        "\n",
+        "plot(tprfpr, colorize = TRUE, print.cutoffs.at=seq(0,1,by=0.1), text.adj=c(-0.2,1.7))\n",
+        "\n",
+        "tpr <- unlist(slot(tprfpr, \"y.values\"))\n",
+        "fpr <- unlist(slot(tprfpr, \"x.values\"))\n",
+        "roc <- data.frame(tpr, fpr)\n",
+        "\n",
+        "ggplot(roc) + geom_line(aes(x = fpr, y = tpr)) + \n",
+        "  geom_abline(intercept=0,slope=1,colour=\"blue\") + \n",
+        "  ylab(\"Sensitivity\") +    xlab(\"1 - Specificity\")\n",
+        "\n",
+        "\n"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "_cell_guid": "ca83d9c4-f1b2-41d4-6d7e-21a3c57e3a4a"
+      },
+      "outputs": [],
+      "source": [
+        "submit <- data.frame(PassengerId = test_data$PassengerId, Survived = test_data$Survived)\n",
+        "write.csv(submit, file = \"theyallperish.csv\", row.names = FALSE)"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "_cell_guid": "fe1faee4-053c-d608-060d-65fca9cebf2d"
+      },
+      "outputs": [],
+      "source": ""
+    }
+  ],
+  "metadata": {
+    "_change_revision": 0,
+    "_is_fork": false,
+    "kernelspec": {
+      "display_name": "R",
+      "language": "R",
+      "name": "ir"
+    },
+    "language_info": {
+      "codemirror_mode": "r",
+      "file_extension": ".r",
+      "mimetype": "text/x-r-source",
+      "name": "R",
+      "pygments_lexer": "r",
+      "version": "3.3.1"
+    }
+  },
+  "nbformat": 4,
+  "nbformat_minor": 0
+}

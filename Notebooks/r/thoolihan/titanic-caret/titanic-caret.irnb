@@ -1,0 +1,158 @@
+{
+  "cells": [
+    {
+      "cell_type": "markdown",
+      "metadata": {
+        "_cell_guid": "4dfe779e-a1a2-18e8-bf16-128462f64085"
+      },
+      "source": [
+        "# Caret Streamlined Attempt\n",
+        "Attempting to be code light"
+      ]
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {
+        "_cell_guid": "4863b3f9-b018-4b8a-fc79-419dda1cb9fa"
+      },
+      "source": [
+        "## Load Data"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "_cell_guid": "3beddc77-e7d1-45e5-a5a8-e196a031a6bd"
+      },
+      "outputs": [],
+      "source": [
+        "col.classes <- c('numeric', #PassengerId\n",
+        "                 'numeric', #Survived\n",
+        "                 'numeric', #Pclass\n",
+        "                 'character', #Name\n",
+        "                 'factor', #Sex\n",
+        "                 'numeric', #Age\n",
+        "                 'integer', #SibSp\n",
+        "                 'integer', #Parch\n",
+        "                 'character', #Ticket\n",
+        "                 'numeric', #Fare\n",
+        "                 'character', #Cabin\n",
+        "                 'factor') #Embarked\n",
+        "\n",
+        "# Training Set\n",
+        "df <- read.csv('../input/train.csv',  \n",
+        "                       colClasses = col.classes,\n",
+        "                       row.names = 1,\n",
+        "                       header = TRUE)\n",
+        "\n",
+        "# Kaggle Validation Set\n",
+        "vdf <- read.csv('../input/test.csv',  \n",
+        "                       colClasses = col.classes[-2],  # Survived column doesn't exist in test\n",
+        "                       header = TRUE)"
+      ]
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {
+        "_cell_guid": "e0e80428-bd04-42bc-9cf7-31e4d97db4a7"
+      },
+      "source": [
+        "## Turn survived, class into a factor"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "_cell_guid": "e5e768d1-9e19-402c-b104-ccef64287a00"
+      },
+      "outputs": [],
+      "source": [
+        "df$Pclass <- factor(df$Pclass, labels = \"class\")\n",
+        "vdf$Pclass <- factor(vdf$Pclass, labels = \"class\")\n",
+        "\n",
+        "df$Survived <- factor(df$Survived, labels = c('No', 'Yes'))\n",
+        "\n",
+        "summary(df[, c('Pclass', 'Survived')])"
+      ]
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {
+        "_cell_guid": "2973aec5-59c0-47eb-35ad-a4a9ea15b976"
+      },
+      "source": [
+        "## Train Model"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "_cell_guid": "bc6b05fe-6480-436c-b2c4-69356819d0a3"
+      },
+      "outputs": [],
+      "source": [
+        "library(caret)\n",
+        "\n",
+        "trctl <- trainControl(method = 'cv', repeats = 10, savePredictions = TRUE)\n",
+        "\n",
+        "model <- train(Survived ~ Pclass + Sex + Age + SibSp + Parch + Fare + Embarked + \n",
+        "               Pclass:Age:Sex + Pclass:Sex + Sex:SibSp:Parch, \n",
+        "               data = df,\n",
+        "               method = \"glm\",\n",
+        "               preProcess = c('knnImpute', 'pca'),\n",
+        "               na.action = na.pass,\n",
+        "               trControl = trctl)\n",
+        "\n",
+        "model"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "_cell_guid": "9e14cae4-d602-ba62-b7a9-888e7d2c21f5"
+      },
+      "outputs": [],
+      "source": [
+        "cm <- confusionMatrix(model$pred$pred, model$pred$obs, positive = 'Yes')\n",
+        "cm$byClass[['F1']]"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "_cell_guid": "ac6974d9-934a-cd40-6deb-3c8c6dba7986"
+      },
+      "outputs": [],
+      "source": [
+        "vdf$Survived <- predict(model, vdf, na.action = na.pass)\n",
+        "vdf$Survived <- ifelse(vdf$Survived == 'Yes', 1, 0)\n",
+        "write.csv(vdf[, c('PassengerId', 'Survived')], file = 'submission.csv', row.names = FALSE)\n",
+        "Sys.sleep(1)"
+      ]
+    }
+  ],
+  "metadata": {
+    "_change_revision": 0,
+    "_is_fork": false,
+    "kernelspec": {
+      "display_name": "R",
+      "language": "R",
+      "name": "ir"
+    },
+    "language_info": {
+      "codemirror_mode": "r",
+      "file_extension": ".r",
+      "mimetype": "text/x-r-source",
+      "name": "R",
+      "pygments_lexer": "r",
+      "version": "3.3.3"
+    }
+  },
+  "nbformat": 4,
+  "nbformat_minor": 0
+}

@@ -1,0 +1,23 @@
+{
+  "id": "meetnandu05/titanic-problem-using-logistic-regression",
+  "title": "Titanic Problem Using Logistic Regression",
+  "code_file": "titanic-problem-using-logistic-regression.ipynb",
+  "enable_gpu": false,
+  "kernel_sources": [],
+  "dataset_sources": [],
+  "enable_internet": false,
+  "keywords": [
+    "beginner",
+    "data visualization",
+    "preprocessing",
+    "classification",
+    "logistic regression"
+  ],
+  "competition_sources": [
+    "titanic"
+  ],
+  "id_no": 1736700,
+  "is_private": false,
+  "kernel_type": "notebook",
+  "language": "python"
+}

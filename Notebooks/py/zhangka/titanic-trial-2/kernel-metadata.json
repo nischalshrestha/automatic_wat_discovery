@@ -1,0 +1,17 @@
+{
+  "is_private": false,
+  "code_file": "titanic-trial-2.ipynb",
+  "title": "Titanic trial 2",
+  "dataset_sources": [],
+  "enable_internet": false,
+  "keywords": [],
+  "language": "python",
+  "id_no": 550010,
+  "competition_sources": [
+    "titanic"
+  ],
+  "id": "zhangka/titanic-trial-2",
+  "enable_gpu": false,
+  "kernel_type": "notebook",
+  "kernel_sources": []
+}

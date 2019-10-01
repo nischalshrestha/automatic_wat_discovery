@@ -1,0 +1,17 @@
+{
+  "is_private": false,
+  "kernel_type": "notebook",
+  "kernel_sources": [],
+  "language": "python",
+  "enable_internet": false,
+  "title": "Titanic: Did only female passengers Survive?",
+  "id": "manishkumar1980/titanic-did-only-female-passengers-survive",
+  "dataset_sources": [],
+  "code_file": "titanic-did-only-female-passengers-survive.ipynb",
+  "competition_sources": [
+    "titanic"
+  ],
+  "enable_gpu": false,
+  "id_no": 473477,
+  "keywords": []
+}

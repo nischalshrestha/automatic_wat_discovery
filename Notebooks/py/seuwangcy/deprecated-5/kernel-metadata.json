@@ -1,0 +1,17 @@
+{
+  "id": "seuwangcy/deprecated-5",
+  "competition_sources": [
+    "titanic"
+  ],
+  "id_no": 159117,
+  "enable_internet": false,
+  "kernel_type": "notebook",
+  "dataset_sources": [],
+  "keywords": [],
+  "kernel_sources": [],
+  "language": "python",
+  "title": "Deprecated-5",
+  "enable_gpu": false,
+  "is_private": false,
+  "code_file": "deprecated-5.ipynb"
+}

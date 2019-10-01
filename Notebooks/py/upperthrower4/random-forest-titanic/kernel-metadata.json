@@ -1,0 +1,17 @@
+{
+  "title": "Random Forest Titanic",
+  "language": "python",
+  "kernel_type": "notebook",
+  "code_file": "random-forest-titanic.ipynb",
+  "is_private": false,
+  "competition_sources": [
+    "titanic"
+  ],
+  "enable_internet": false,
+  "id": "upperthrower4/random-forest-titanic",
+  "keywords": [],
+  "id_no": 1479300,
+  "dataset_sources": [],
+  "enable_gpu": true,
+  "kernel_sources": []
+}

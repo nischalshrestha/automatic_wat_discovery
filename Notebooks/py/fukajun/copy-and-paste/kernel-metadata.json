@@ -1,0 +1,17 @@
+{
+  "competition_sources": [
+    "titanic"
+  ],
+  "title": "copy and paste",
+  "code_file": "copy-and-paste.ipynb",
+  "id_no": 965062,
+  "language": "python",
+  "keywords": [],
+  "enable_internet": false,
+  "kernel_type": "notebook",
+  "dataset_sources": [],
+  "kernel_sources": [],
+  "enable_gpu": false,
+  "is_private": false,
+  "id": "fukajun/copy-and-paste"
+}

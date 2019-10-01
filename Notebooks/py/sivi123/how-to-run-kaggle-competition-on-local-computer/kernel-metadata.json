@@ -1,0 +1,20 @@
+{
+  "is_private": false,
+  "enable_gpu": false,
+  "enable_internet": false,
+  "kernel_sources": [],
+  "kernel_type": "notebook",
+  "competition_sources": [
+    "titanic"
+  ],
+  "id": "sivi123/how-to-run-kaggle-competition-on-local-computer",
+  "language": "python",
+  "id_no": 895721,
+  "keywords": [
+    "tutorial",
+    "beginner"
+  ],
+  "code_file": "how-to-run-kaggle-competition-on-local-computer.ipynb",
+  "title": "How to run Kaggle Competition on local computer",
+  "dataset_sources": []
+}

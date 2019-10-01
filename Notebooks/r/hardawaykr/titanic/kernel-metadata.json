@@ -1,0 +1,17 @@
+{
+  "keywords": [],
+  "title": "titanic",
+  "code_file": "titanic.irnb",
+  "is_private": false,
+  "id_no": 91907,
+  "kernel_type": "notebook",
+  "kernel_sources": [],
+  "dataset_sources": [],
+  "id": "hardawaykr/titanic",
+  "enable_gpu": false,
+  "enable_internet": false,
+  "language": "r",
+  "competition_sources": [
+    "titanic"
+  ]
+}

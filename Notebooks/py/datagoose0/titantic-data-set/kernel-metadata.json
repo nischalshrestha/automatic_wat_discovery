@@ -1,0 +1,17 @@
+{
+  "language": "python",
+  "enable_internet": false,
+  "id_no": 1049728,
+  "is_private": false,
+  "kernel_type": "notebook",
+  "competition_sources": [
+    "titanic"
+  ],
+  "code_file": "titantic-data-set.ipynb",
+  "keywords": [],
+  "enable_gpu": false,
+  "dataset_sources": [],
+  "id": "datagoose0/titantic-data-set",
+  "kernel_sources": [],
+  "title": "Titantic Data Set"
+}

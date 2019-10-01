@@ -1,0 +1,17 @@
+{
+  "keywords": [],
+  "is_private": false,
+  "id": "joakark/notebook34fc230266",
+  "dataset_sources": [],
+  "enable_internet": false,
+  "enable_gpu": false,
+  "title": "Notebook34fc230266",
+  "id_no": 220673,
+  "code_file": "notebook34fc230266.ipynb",
+  "kernel_type": "notebook",
+  "kernel_sources": [],
+  "language": "python",
+  "competition_sources": [
+    "titanic"
+  ]
+}

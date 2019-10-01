@@ -1,0 +1,473 @@
+{
+  "cells": [
+    {
+      "cell_type": "markdown",
+      "metadata": {
+        "_cell_guid": "97c32d88-0293-bb4d-4c6a-bdb4201d5e3f"
+      },
+      "source": [
+        "Load Libraries"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "_cell_guid": "fc5f2db9-af95-4907-969f-b1c6e19b0213"
+      },
+      "outputs": [],
+      "source": [
+        "library(rpart)\n",
+        "library(dplyr)\n",
+        "\n",
+        "# Load in the packages to build a fancy plot\n",
+        "library(rattle)\n",
+        "library(rpart.plot)\n",
+        "library(RColorBrewer)\n",
+        "\n",
+        "library(randomForest)"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "_cell_guid": "4a636661-91aa-47ff-3b49-bbda710cc889"
+      },
+      "outputs": [],
+      "source": [
+        "train <- read.csv(\"../input/train.csv\")\n",
+        "test <- read.csv(\"../input/test.csv\")"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "_cell_guid": "85412f21-c947-bca5-9acc-7bf651d1c902"
+      },
+      "outputs": [],
+      "source": [
+        "\n",
+        "str(train)"
+      ]
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {
+        "_cell_guid": "3a8000d9-db2c-31b7-79ea-8ba557502130"
+      },
+      "source": [
+        "Survivors - Absolute Numbers"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "_cell_guid": "717d19aa-76bf-6959-dbb8-1b17acb4f017"
+      },
+      "outputs": [],
+      "source": [
+        "table(train$Survived)"
+      ]
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {
+        "_cell_guid": "d0c623fe-8bb9-5b5f-0212-65ffee074f23"
+      },
+      "source": [
+        "Survivor -  Proportion"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "_cell_guid": "ba583f12-d3b5-8e62-6169-91dc0fa339b4"
+      },
+      "outputs": [],
+      "source": [
+        "prop.table(table(train$Survived))"
+      ]
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {
+        "_cell_guid": "4c033dec-fc06-b180-f541-2bb241db0862"
+      },
+      "source": [
+        "Survivors By Gender - Absolute Numbers"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "_cell_guid": "b9107f1e-ff47-0fad-9ad6-aedb453a1ad4"
+      },
+      "outputs": [],
+      "source": [
+        "table(train$Sex, train$Survived)"
+      ]
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {
+        "_cell_guid": "0925a7a5-c246-5f26-78a2-03cb17afa2b0"
+      },
+      "source": [
+        "Survivors By Gender - Proportion"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "_cell_guid": "fd476bb4-fd02-6359-c0fe-bf241edca554"
+      },
+      "outputs": [],
+      "source": [
+        "prop.table(table(train$Sex,train$Survived), 1)"
+      ]
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {
+        "_cell_guid": "e7a3cbda-0275-f2c9-6e3d-57b18a2b6211"
+      },
+      "source": [
+        "Check Binary Variable using Age"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "_cell_guid": "8f6d5552-c9f5-0f01-f7f8-2ece373a7ea9"
+      },
+      "outputs": [],
+      "source": [
+        "train$Child <- NA\n",
+        "train$Child[train$Age < 18] <- 1\n",
+        "train$Child[train$Age >= 18] <- 0"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "_cell_guid": "7cb89d3e-9b3d-dd7c-8c2e-038dd184ad03"
+      },
+      "outputs": [],
+      "source": [
+        "prop.table(table(train$Child, train$Survived), 1)"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "_cell_guid": "0eeee7fd-03ec-066f-3178-74e57d6892e7"
+      },
+      "outputs": [],
+      "source": [
+        "#make a copy of test\n",
+        "test_one <- test\n",
+        "# Initialize a Survived column to 0\n",
+        "test_one$Survived <- 0\n",
+        "# Set Survived to 1 if Sex equals \"female\"\n",
+        "test_one$Survived[test_one$Sex == \"female\"] <- 1\n"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "_cell_guid": "bbf1f318-70d4-3340-b476-457ebb4be766"
+      },
+      "outputs": [],
+      "source": [
+        "# Copy of test\n",
+        "test_one <- test\n",
+        "\n",
+        "# Initialize a Survived column to 0\n",
+        "test_one$Survived <- 0\n",
+        "\n",
+        "# Set Survived to 1 if Sex equals \"female\"\n",
+        "test_one$Survived[test_one$Sex == \"female\"] <- 1\n"
+      ]
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {
+        "_cell_guid": "25185ca7-8b87-e395-1646-329e1ab545a1"
+      },
+      "source": [
+        "Build Decision Tree"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "_cell_guid": "57e03886-dde5-db23-4dcf-29fa8c44b43a"
+      },
+      "outputs": [],
+      "source": [
+        "my_tree <- rpart(Survived ~ Sex + Age,\n",
+        "                 data = train,\n",
+        "                 method =\"class\")"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "_cell_guid": "2f406ba9-984e-ed97-86c0-289d85f623d7"
+      },
+      "outputs": [],
+      "source": [
+        "my_tree_two <- rpart(Survived ~ \n",
+        "                     Pclass + Sex + Age + SibSp + Parch + Fare + Embarked, \n",
+        "                     data = train, \n",
+        "                     method = \"class\")"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "_cell_guid": "09056b8b-ba48-308a-87f3-e496bc5c0ed1"
+      },
+      "outputs": [],
+      "source": [
+        "plot(my_tree)\n",
+        "text(my_tree)"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "_cell_guid": "0dfb71c3-2a99-0d76-f8ba-f15102578ed1"
+      },
+      "outputs": [],
+      "source": [
+        "plot(my_tree_two)\n",
+        "text(my_tree_two)"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "_cell_guid": "2c44865c-c4ac-a6d4-4658-b1aa5da8c0de"
+      },
+      "outputs": [],
+      "source": [
+        "fancyRpartPlot(my_tree)"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "_cell_guid": "4e4dc1a4-b375-368f-862a-a0f28be57f41"
+      },
+      "outputs": [],
+      "source": [
+        "fancyRpartPlot(my_tree_two)"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "_cell_guid": "86474574-e646-f2f0-089d-aa909e6d6274"
+      },
+      "outputs": [],
+      "source": [
+        "# Make predictions on the test set\n",
+        "my_prediction <- predict(my_tree_two, newdata = test, type = \"class\")\n",
+        "str(my_prediction)\n",
+        "# Finish the data.frame() call\n",
+        "my_solution <- data.frame(PassengerId = test$PassengerId, Survived = my_prediction)\n",
+        "\n",
+        "# Use nrow() on my_solution\n",
+        "nrow(my_solution)"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "_cell_guid": "0be22129-cb40-26e3-6843-b80f02a61f26"
+      },
+      "outputs": [],
+      "source": [
+        "#modify the split\n",
+        "my_tree_three <- rpart(Survived ~ \n",
+        "                       Pclass + Sex + Age + SibSp + Parch + Fare + Embarked,\n",
+        "                       data = train, \n",
+        "                       method = \"class\", \n",
+        "                       control = rpart.control(minsplit = 50, cp = 0))\n",
+        "\n",
+        "# Visualize my_tree_three\n",
+        "fancyRpartPlot(my_tree_three)"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "_cell_guid": "728df33f-d8fb-f514-dab0-1ed5c784c288"
+      },
+      "outputs": [],
+      "source": [
+        "# Create train_two\n",
+        "train_two <- train\n",
+        "train_two$family_size <- train_two$SibSp + train_two$Parch + 1\n",
+        "\n",
+        "# Finish the command\n",
+        "my_tree_four <- rpart(Survived ~ Pclass + Sex + Age + SibSp + Parch + Fare + Embarked + family_size,\n",
+        "                      data = train_two, method = \"class\")\n",
+        "\n",
+        "# Visualize your new decision tree\n",
+        "fancyRpartPlot(my_tree_four)"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "_cell_guid": "fcbebff5-eede-166f-1213-6d99365e8e66"
+      },
+      "outputs": [],
+      "source": [
+        "str(train)"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "_cell_guid": "ae2a560c-5b7c-ddb6-befd-ac77ff351bd6"
+      },
+      "outputs": [],
+      "source": [
+        "train_two$family_size <- train_two$SibSp + train_two$Parch + 1\n",
+        "\n",
+        "# Passenger on row 62 and 830 do not have a value for embarkment.\n",
+        "# Since many passengers embarked at Southampton, we give them the value S.\n",
+        "train$Embarked[c(62, 830)] <- \"S\"\n",
+        "\n",
+        "# Factorize embarkment codes.\n",
+        "train$Embarked <- factor(train$Embarked)\n",
+        "\n",
+        "# Passenger on row 1044(when combining train and test) has an NA Fare value. \n",
+        "#Let's replace it with the median fare value.\n",
+        "test[153,]\n",
+        "test$Fare[153] <- median(train$Fare, na.rm = TRUE)\n",
+        "test[153,]\n"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "_cell_guid": "fe7514a9-4a04-9e2d-b774-c8df0adcadbe"
+      },
+      "outputs": [],
+      "source": [
+        "train$family_size <- train$SibSp + train$Parch + 1\n",
+        "test$family_size <- test$SibSp + test$Parch + 1\n",
+        "\n",
+        "# How to fill in missing Age values?\n",
+        "# We make a prediction of a passengers Age using the other variables and a decision tree model.\n",
+        "# This time you give method = \"anova\" since you are predicting a continuous variable.\n",
+        "\n",
+        "predicted_train_age <- rpart(Age ~ Pclass + Sex + SibSp + Parch + Fare + Embarked + family_size,\n",
+        "                       data = train[!is.na(train$Age),], method = \"anova\")\n",
+        "predicted_test_age <- rpart(Age ~ Pclass + Sex + SibSp + Parch + Fare + Embarked + family_size,\n",
+        "                       data = train[!is.na(test$Age),], method = \"anova\")"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "_cell_guid": "9e050a28-a404-9ab6-ff1a-2906cd9d1fec"
+      },
+      "outputs": [],
+      "source": [
+        "train$Age[is.na(train$Age)] <- predict(predicted_train_age, train[is.na(train$Age),])\n",
+        "\n",
+        "\n",
+        "test$Age[is.na(test$Age)] <- predict(predicted_test_age, train[is.na(test$Age),])\n"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "_cell_guid": "28c4ddef-3b3c-9ab0-9821-fcf2390c8ab6"
+      },
+      "outputs": [],
+      "source": [
+        "# Set seed for reproducibility\n",
+        "set.seed(111)\n",
+        "# Apply the Random Forest Algorithm\n",
+        "my_forest <- randomForest(as.factor(Survived) ~ Pclass + Sex + Age + SibSp + Parch + Fare + Embarked,\n",
+        "                          data = train, importance = TRUE, ntree = 100)\n",
+        "\n",
+        "# Make your prediction using the test set\n",
+        "my_prediction <- predict(my_forest, test)\n",
+        "\n",
+        "# Create a data frame with two columns: PassengerId & Survived. Survived contains your predictions\n",
+        "my_solution <- data.frame(PassengerId = test$PassengerId, Survived = my_prediction)\n",
+        "\n"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "_cell_guid": "cd420984-6f5d-1114-1f3b-6026741e819a"
+      },
+      "outputs": [],
+      "source": [
+        "varImpPlot(my_forest)"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "_cell_guid": "b85ff351-12ac-0f0b-225d-fc17ea76df2a"
+      },
+      "outputs": [],
+      "source": ""
+    }
+  ],
+  "metadata": {
+    "_change_revision": 0,
+    "_is_fork": false,
+    "kernelspec": {
+      "display_name": "R",
+      "language": "R",
+      "name": "ir"
+    },
+    "language_info": {
+      "codemirror_mode": "r",
+      "file_extension": ".r",
+      "mimetype": "text/x-r-source",
+      "name": "R",
+      "pygments_lexer": "r",
+      "version": "3.3.2"
+    }
+  },
+  "nbformat": 4,
+  "nbformat_minor": 0
+}

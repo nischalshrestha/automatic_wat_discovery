@@ -1,0 +1,17 @@
+{
+  "id": "crosswords/titanic-adaboost",
+  "keywords": [],
+  "is_private": false,
+  "title": "Titanic - Adaboost ! ",
+  "kernel_sources": [],
+  "dataset_sources": [],
+  "id_no": 337539,
+  "enable_internet": false,
+  "kernel_type": "notebook",
+  "competition_sources": [
+    "titanic"
+  ],
+  "language": "python",
+  "enable_gpu": false,
+  "code_file": "titanic-adaboost.ipynb"
+}

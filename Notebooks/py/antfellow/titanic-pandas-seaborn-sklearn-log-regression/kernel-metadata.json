@@ -1,0 +1,17 @@
+{
+  "competition_sources": [
+    "titanic"
+  ],
+  "code_file": "titanic-pandas-seaborn-sklearn-log-regression.ipynb",
+  "id": "antfellow/titanic-pandas-seaborn-sklearn-log-regression",
+  "enable_internet": false,
+  "is_private": false,
+  "language": "python",
+  "keywords": [],
+  "id_no": 517110,
+  "kernel_sources": [],
+  "enable_gpu": false,
+  "kernel_type": "notebook",
+  "dataset_sources": [],
+  "title": "Titanic - pandas, seaborn & sklearn log regression"
+}

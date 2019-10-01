@@ -1,0 +1,17 @@
+{
+  "kernel_sources": [],
+  "code_file": "introduction-to-ensembling-stacking-in-python.ipynb",
+  "id": "dalonlobo/introduction-to-ensembling-stacking-in-python",
+  "is_private": false,
+  "kernel_type": "notebook",
+  "competition_sources": [
+    "titanic"
+  ],
+  "title": "Introduction to Ensembling/Stacking in Python",
+  "keywords": [],
+  "enable_internet": false,
+  "dataset_sources": [],
+  "id_no": 369754,
+  "enable_gpu": false,
+  "language": "python"
+}

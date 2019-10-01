@@ -1,0 +1,17 @@
+{
+  "competition_sources": [
+    "titanic"
+  ],
+  "kernel_sources": [],
+  "code_file": "predicting-survivors.irnb",
+  "enable_internet": false,
+  "language": "r",
+  "id_no": 335181,
+  "kernel_type": "notebook",
+  "id": "eshamohamed/predicting-survivors",
+  "title": "Predicting survivors",
+  "enable_gpu": false,
+  "is_private": false,
+  "dataset_sources": [],
+  "keywords": []
+}

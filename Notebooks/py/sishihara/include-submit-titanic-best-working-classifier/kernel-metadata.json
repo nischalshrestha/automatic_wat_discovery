@@ -1,0 +1,17 @@
+{
+  "code_file": "include-submit-titanic-best-working-classifier.ipynb",
+  "dataset_sources": [],
+  "id_no": 1098202,
+  "enable_gpu": false,
+  "competition_sources": [
+    "titanic"
+  ],
+  "title": "[Include submit] Titanic best working Classifier",
+  "enable_internet": false,
+  "kernel_sources": [],
+  "keywords": [],
+  "id": "sishihara/include-submit-titanic-best-working-classifier",
+  "is_private": false,
+  "language": "python",
+  "kernel_type": "notebook"
+}

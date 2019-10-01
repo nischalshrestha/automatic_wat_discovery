@@ -1,0 +1,17 @@
+{
+  "enable_internet": false,
+  "kernel_sources": [],
+  "kernel_type": "notebook",
+  "is_private": false,
+  "language": "python",
+  "competition_sources": [
+    "titanic"
+  ],
+  "enable_gpu": false,
+  "id_no": 1979630,
+  "title": "titanic_baseline_from_L",
+  "keywords": [],
+  "dataset_sources": [],
+  "code_file": "titanic-baseline-from-l.ipynb",
+  "id": "heyley/titanic-baseline-from-l"
+}

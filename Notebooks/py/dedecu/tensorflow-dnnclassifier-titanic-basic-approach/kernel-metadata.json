@@ -1,0 +1,22 @@
+{
+  "id_no": 746332,
+  "competition_sources": [
+    "titanic"
+  ],
+  "keywords": [
+    "classification",
+    "dnn"
+  ],
+  "enable_internet": false,
+  "language": "python",
+  "is_private": false,
+  "code_file": "tensorflow-dnnclassifier-titanic-basic-approach.ipynb",
+  "id": "dedecu/tensorflow-dnnclassifier-titanic-basic-approach",
+  "dataset_sources": [
+    "dedecu/titanic-test-ready"
+  ],
+  "kernel_sources": [],
+  "title": "Tensorflow DNNClassifier Titanic: basic approach",
+  "enable_gpu": false,
+  "kernel_type": "notebook"
+}

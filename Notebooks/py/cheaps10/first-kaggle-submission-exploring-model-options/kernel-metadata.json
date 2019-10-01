@@ -1,0 +1,17 @@
+{
+  "is_private": false,
+  "title": "First Kaggle submission: exploring model options",
+  "id_no": 790953,
+  "kernel_sources": [],
+  "kernel_type": "notebook",
+  "enable_internet": false,
+  "competition_sources": [
+    "titanic"
+  ],
+  "language": "python",
+  "enable_gpu": false,
+  "id": "cheaps10/first-kaggle-submission-exploring-model-options",
+  "dataset_sources": [],
+  "code_file": "first-kaggle-submission-exploring-model-options.ipynb",
+  "keywords": []
+}

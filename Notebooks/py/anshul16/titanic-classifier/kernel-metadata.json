@@ -1,0 +1,17 @@
+{
+  "code_file": "titanic-classifier.ipynb",
+  "id_no": 1047737,
+  "enable_internet": false,
+  "dataset_sources": [],
+  "keywords": [],
+  "kernel_type": "notebook",
+  "enable_gpu": false,
+  "kernel_sources": [],
+  "is_private": false,
+  "competition_sources": [
+    "titanic"
+  ],
+  "id": "anshul16/titanic-classifier",
+  "language": "python",
+  "title": "Titanic Classifier"
+}

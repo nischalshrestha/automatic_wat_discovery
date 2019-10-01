@@ -1,0 +1,17 @@
+{
+  "keywords": [],
+  "title": "Notebookc045656c67",
+  "kernel_sources": [],
+  "id_no": 178887,
+  "id": "swchoi/notebookc8a69edbb6",
+  "enable_gpu": false,
+  "language": "r",
+  "code_file": "notebookc8a69edbb6.irnb",
+  "is_private": false,
+  "enable_internet": false,
+  "competition_sources": [
+    "titanic"
+  ],
+  "kernel_type": "notebook",
+  "dataset_sources": []
+}

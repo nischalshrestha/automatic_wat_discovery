@@ -1,0 +1,22 @@
+{
+  "enable_gpu": false,
+  "kernel_sources": [],
+  "id": "vinothan/eda-for-titanic-data-chanllege",
+  "kernel_type": "notebook",
+  "is_private": false,
+  "enable_internet": false,
+  "language": "python",
+  "id_no": 1058724,
+  "title": "EDA  For Titanic Data Chanllege",
+  "keywords": [
+    "tutorial",
+    "beginner",
+    "eda",
+    "data visualization"
+  ],
+  "competition_sources": [
+    "titanic"
+  ],
+  "code_file": "eda-for-titanic-data-chanllege.ipynb",
+  "dataset_sources": []
+}

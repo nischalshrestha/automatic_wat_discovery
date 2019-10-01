@@ -1,0 +1,17 @@
+{
+  "competition_sources": [
+    "titanic"
+  ],
+  "id": "ismirnov/first-kernel",
+  "enable_gpu": false,
+  "dataset_sources": [],
+  "id_no": 672912,
+  "is_private": false,
+  "enable_internet": false,
+  "code_file": "first-kernel.ipynb",
+  "keywords": [],
+  "title": "first_kernel",
+  "kernel_sources": [],
+  "language": "python",
+  "kernel_type": "notebook"
+}

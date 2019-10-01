@@ -1,0 +1,17 @@
+{
+  "id": "dwscrub/getstacked",
+  "id_no": 1080428,
+  "title": "getStaCkED",
+  "code_file": "getstacked.ipynb",
+  "language": "python",
+  "kernel_type": "notebook",
+  "is_private": false,
+  "enable_gpu": false,
+  "enable_internet": false,
+  "keywords": [],
+  "dataset_sources": [],
+  "kernel_sources": [],
+  "competition_sources": [
+    "titanic"
+  ]
+}

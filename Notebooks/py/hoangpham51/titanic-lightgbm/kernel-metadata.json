@@ -1,0 +1,17 @@
+{
+  "competition_sources": [
+    "titanic"
+  ],
+  "title": "Titanic_LightGBM",
+  "enable_gpu": false,
+  "id_no": 2080491,
+  "kernel_type": "notebook",
+  "code_file": "titanic-lightgbm.ipynb",
+  "is_private": false,
+  "dataset_sources": [],
+  "keywords": [],
+  "kernel_sources": [],
+  "id": "hoangpham51/titanic-lightgbm",
+  "language": "python",
+  "enable_internet": false
+}

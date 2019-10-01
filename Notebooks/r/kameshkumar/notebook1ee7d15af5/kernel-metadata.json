@@ -1,0 +1,17 @@
+{
+  "keywords": [],
+  "enable_gpu": false,
+  "id": "kameshkumar/notebook1ee7d15af5",
+  "is_private": false,
+  "kernel_sources": [],
+  "enable_internet": false,
+  "competition_sources": [
+    "titanic"
+  ],
+  "id_no": 215557,
+  "kernel_type": "notebook",
+  "language": "python",
+  "title": "Notebook1ee7d15af5",
+  "dataset_sources": [],
+  "code_file": "notebook1ee7d15af5.ipynb"
+}

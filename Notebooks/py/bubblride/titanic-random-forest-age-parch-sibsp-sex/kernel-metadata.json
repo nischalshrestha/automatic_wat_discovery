@@ -1,0 +1,17 @@
+{
+  "title": "titanic, random forest, Age + Parch + SibSp + Sex",
+  "kernel_type": "notebook",
+  "language": "python",
+  "id_no": 1900881,
+  "kernel_sources": [],
+  "enable_gpu": false,
+  "keywords": [],
+  "id": "bubblride/titanic-random-forest-age-parch-sibsp-sex",
+  "code_file": "titanic-random-forest-age-parch-sibsp-sex.ipynb",
+  "competition_sources": [
+    "titanic"
+  ],
+  "enable_internet": false,
+  "is_private": false,
+  "dataset_sources": []
+}

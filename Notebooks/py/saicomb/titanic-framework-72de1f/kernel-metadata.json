@@ -1,0 +1,17 @@
+{
+  "id": "saicomb/titanic-framework-72de1f",
+  "language": "python",
+  "competition_sources": [
+    "titanic"
+  ],
+  "enable_internet": false,
+  "dataset_sources": [],
+  "kernel_sources": [],
+  "is_private": false,
+  "kernel_type": "notebook",
+  "enable_gpu": false,
+  "keywords": [],
+  "code_file": "titanic-framework-72de1f.ipynb",
+  "title": " Titanic Framework 72de1f",
+  "id_no": 1592576
+}

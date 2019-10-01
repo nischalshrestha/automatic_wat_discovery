@@ -1,0 +1,17 @@
+{
+  "language": "python",
+  "keywords": [],
+  "title": "Introduction to Ensembling/Stacking in Python",
+  "kernel_type": "notebook",
+  "is_private": false,
+  "dataset_sources": [],
+  "competition_sources": [
+    "titanic"
+  ],
+  "id_no": 202951,
+  "code_file": "introduction-to-ensembling-stacking-in-python.ipynb",
+  "id": "zjplab/introduction-to-ensembling-stacking-in-python",
+  "enable_internet": false,
+  "enable_gpu": false,
+  "kernel_sources": []
+}

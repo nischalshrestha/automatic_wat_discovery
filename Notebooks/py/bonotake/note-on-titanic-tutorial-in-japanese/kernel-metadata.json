@@ -1,0 +1,17 @@
+{
+  "language": "python",
+  "is_private": false,
+  "code_file": "note-on-titanic-tutorial-in-japanese.ipynb",
+  "kernel_sources": [],
+  "keywords": [],
+  "title": "Note on Titanic tutorial, in Japanese\uff08\u65e5\u672c\u8a9e\u3067\uff09",
+  "id_no": 253142,
+  "competition_sources": [
+    "titanic"
+  ],
+  "kernel_type": "notebook",
+  "dataset_sources": [],
+  "enable_gpu": false,
+  "id": "bonotake/note-on-titanic-tutorial-in-japanese",
+  "enable_internet": false
+}

@@ -1,0 +1,17 @@
+{
+  "is_private": false,
+  "title": "submission_2",
+  "id_no": 1300331,
+  "kernel_type": "notebook",
+  "kernel_sources": [],
+  "code_file": "submission-2.ipynb",
+  "id": "tatesh/submission-2",
+  "enable_internet": false,
+  "language": "python",
+  "keywords": [],
+  "competition_sources": [
+    "titanic"
+  ],
+  "enable_gpu": false,
+  "dataset_sources": []
+}

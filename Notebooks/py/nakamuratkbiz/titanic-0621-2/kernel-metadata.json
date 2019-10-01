@@ -1,0 +1,17 @@
+{
+  "competition_sources": [
+    "titanic"
+  ],
+  "code_file": "titanic-0621-2.ipynb",
+  "enable_internet": false,
+  "dataset_sources": [],
+  "id_no": 1185000,
+  "language": "python",
+  "kernel_type": "notebook",
+  "id": "nakamuratkbiz/titanic-0621-2",
+  "enable_gpu": false,
+  "kernel_sources": [],
+  "title": "Titanic_0621_2",
+  "is_private": false,
+  "keywords": []
+}

@@ -1,0 +1,17 @@
+{
+  "competition_sources": [
+    "titanic"
+  ],
+  "is_private": false,
+  "dataset_sources": [],
+  "code_file": "first-testing.ipynb",
+  "id": "zerotang/first-testing",
+  "id_no": 95728,
+  "enable_internet": false,
+  "keywords": [],
+  "kernel_type": "notebook",
+  "kernel_sources": [],
+  "language": "python",
+  "title": "First Testing",
+  "enable_gpu": false
+}

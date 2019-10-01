@@ -1,0 +1,18 @@
+{
+  "title": "Titanic Prediction",
+  "id": "marioxx/titanic-prediction",
+  "enable_internet": false,
+  "is_private": false,
+  "kernel_type": "notebook",
+  "dataset_sources": [],
+  "competition_sources": [
+    "titanic",
+    "pubg-finish-placement-prediction"
+  ],
+  "language": "python",
+  "kernel_sources": [],
+  "id_no": 1887154,
+  "enable_gpu": false,
+  "code_file": "titanic-prediction.ipynb",
+  "keywords": []
+}

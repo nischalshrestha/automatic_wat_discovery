@@ -1,0 +1,17 @@
+{
+  "competition_sources": [
+    "titanic"
+  ],
+  "language": "python",
+  "id": "shep312/applying-lightgbm-to-titanic-dataset",
+  "enable_gpu": false,
+  "is_private": false,
+  "enable_internet": false,
+  "code_file": "applying-lightgbm-to-titanic-dataset.ipynb",
+  "dataset_sources": [],
+  "keywords": [],
+  "kernel_type": "notebook",
+  "kernel_sources": [],
+  "id_no": 467379,
+  "title": "Applying LightGBM to Titanic dataset"
+}

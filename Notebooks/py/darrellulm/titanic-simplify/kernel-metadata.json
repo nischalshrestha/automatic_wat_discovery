@@ -1,0 +1,17 @@
+{
+  "kernel_type": "notebook",
+  "code_file": "titanic-simplify.ipynb",
+  "kernel_sources": [],
+  "is_private": false,
+  "dataset_sources": [],
+  "keywords": [],
+  "enable_internet": false,
+  "id": "darrellulm/titanic-simplify",
+  "enable_gpu": false,
+  "language": "python",
+  "id_no": 223344,
+  "competition_sources": [
+    "titanic"
+  ],
+  "title": "Titanic - Simplify"
+}

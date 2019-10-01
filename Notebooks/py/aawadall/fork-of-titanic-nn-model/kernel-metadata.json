@@ -1,0 +1,20 @@
+{
+  "kernel_type": "notebook",
+  "id_no": 532577,
+  "enable_internet": false,
+  "id": "aawadall/fork-of-titanic-nn-model",
+  "title": "Fork of Titanic -NN Model",
+  "code_file": "fork-of-titanic-nn-model.ipynb",
+  "language": "python",
+  "keywords": [
+    "beginner",
+    "neural networks"
+  ],
+  "enable_gpu": false,
+  "dataset_sources": [],
+  "competition_sources": [
+    "titanic"
+  ],
+  "is_private": false,
+  "kernel_sources": []
+}

@@ -1,0 +1,17 @@
+{
+  "id_no": 247669,
+  "enable_gpu": false,
+  "language": "r",
+  "kernel_sources": [],
+  "kernel_type": "notebook",
+  "enable_internet": false,
+  "competition_sources": [
+    "titanic"
+  ],
+  "id": "kapillehar/titanic-rf-prediction-0-81818",
+  "is_private": false,
+  "code_file": "titanic-rf-prediction-0-81818.irnb",
+  "keywords": [],
+  "dataset_sources": [],
+  "title": "Titanic - RF Prediction 0.81818  "
+}

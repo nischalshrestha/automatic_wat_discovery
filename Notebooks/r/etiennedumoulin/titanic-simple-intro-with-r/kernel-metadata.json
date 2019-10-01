@@ -1,0 +1,17 @@
+{
+  "is_private": false,
+  "keywords": [],
+  "enable_gpu": false,
+  "kernel_type": "notebook",
+  "id_no": 263384,
+  "id": "etiennedumoulin/titanic-simple-intro-with-r",
+  "enable_internet": false,
+  "language": "r",
+  "dataset_sources": [],
+  "kernel_sources": [],
+  "code_file": "titanic-simple-intro-with-r.irnb",
+  "competition_sources": [
+    "titanic"
+  ],
+  "title": "Titanic, Simple Intro with R"
+}

@@ -1,0 +1,17 @@
+{
+  "id": "nitsbat/random-forest-on-titanic-problem",
+  "code_file": "random-forest-on-titanic-problem.irnb",
+  "enable_internet": false,
+  "keywords": [],
+  "language": "r",
+  "id_no": 595273,
+  "title": "Random Forest on Titanic Problem",
+  "dataset_sources": [],
+  "competition_sources": [
+    "titanic"
+  ],
+  "kernel_type": "notebook",
+  "enable_gpu": false,
+  "is_private": false,
+  "kernel_sources": []
+}

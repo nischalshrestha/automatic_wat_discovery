@@ -1,0 +1,23 @@
+{
+  "id": "tstomoki/titanic-with-basic-and-ensembles-methods",
+  "enable_internet": false,
+  "language": "python",
+  "title": "Titanic with basic and ensembles methods",
+  "enable_gpu": true,
+  "id_no": 1897265,
+  "is_private": false,
+  "code_file": "titanic-with-basic-and-ensembles-methods.ipynb",
+  "dataset_sources": [],
+  "kernel_type": "notebook",
+  "kernel_sources": [],
+  "competition_sources": [
+    "titanic"
+  ],
+  "keywords": [
+    "beginner",
+    "data cleaning",
+    "data visualization",
+    "feature engineering",
+    "starter code"
+  ]
+}

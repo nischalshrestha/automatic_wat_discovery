@@ -1,0 +1,20 @@
+{
+  "enable_internet": false,
+  "id_no": 2081775,
+  "title": "Titanic_solve",
+  "language": "python",
+  "id": "momentum96/titanic-solve",
+  "competition_sources": [
+    "titanic"
+  ],
+  "is_private": false,
+  "kernel_type": "notebook",
+  "code_file": "titanic-solve.ipynb",
+  "kernel_sources": [],
+  "keywords": [
+    "tutorial",
+    "beginner"
+  ],
+  "dataset_sources": [],
+  "enable_gpu": true
+}

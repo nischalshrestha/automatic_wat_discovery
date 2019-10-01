@@ -1,0 +1,17 @@
+{
+  "language": "python",
+  "enable_gpu": true,
+  "enable_internet": true,
+  "competition_sources": [
+    "titanic"
+  ],
+  "keywords": [],
+  "kernel_sources": [],
+  "dataset_sources": [],
+  "title": "Titanic - Learning From Disaster",
+  "id": "alexgazagnes/titanic-learning-from-disaster",
+  "code_file": "titanic-learning-from-disaster.ipynb",
+  "kernel_type": "notebook",
+  "is_private": false,
+  "id_no": 1502954
+}

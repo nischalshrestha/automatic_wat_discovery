@@ -1,0 +1,17 @@
+{
+  "kernel_type": "notebook",
+  "language": "r",
+  "id": "blubeck7/titanic-competition",
+  "enable_gpu": false,
+  "enable_internet": false,
+  "dataset_sources": [],
+  "keywords": [],
+  "title": "Titanic Competition",
+  "competition_sources": [
+    "titanic"
+  ],
+  "is_private": false,
+  "code_file": "titanic-competition.irnb",
+  "kernel_sources": [],
+  "id_no": 180632
+}

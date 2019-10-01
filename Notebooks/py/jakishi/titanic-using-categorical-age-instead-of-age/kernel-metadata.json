@@ -1,0 +1,17 @@
+{
+  "dataset_sources": [],
+  "kernel_sources": [],
+  "competition_sources": [
+    "titanic"
+  ],
+  "language": "python",
+  "id_no": 1325748,
+  "title": "Titanic using categorical Age instead of Age",
+  "enable_internet": false,
+  "enable_gpu": false,
+  "is_private": false,
+  "kernel_type": "notebook",
+  "code_file": "titanic-using-categorical-age-instead-of-age.ipynb",
+  "id": "jakishi/titanic-using-categorical-age-instead-of-age",
+  "keywords": []
+}

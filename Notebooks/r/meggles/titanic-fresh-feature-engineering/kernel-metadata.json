@@ -1,0 +1,17 @@
+{
+  "id": "meggles/titanic-fresh-feature-engineering",
+  "language": "r",
+  "enable_internet": false,
+  "competition_sources": [
+    "titanic"
+  ],
+  "enable_gpu": false,
+  "keywords": [],
+  "kernel_sources": [],
+  "id_no": 358250,
+  "code_file": "titanic-fresh-feature-engineering.irnb",
+  "dataset_sources": [],
+  "title": "Titanic: Fresh Feature Engineering",
+  "is_private": false,
+  "kernel_type": "notebook"
+}

@@ -1,0 +1,17 @@
+{
+  "id_no": 1532538,
+  "enable_gpu": false,
+  "title": "My Take on the Beginner Titanic Kernel",
+  "kernel_type": "notebook",
+  "dataset_sources": [],
+  "kernel_sources": [],
+  "code_file": "my-take-on-the-beginner-titanic-kernel.ipynb",
+  "keywords": [],
+  "is_private": false,
+  "competition_sources": [
+    "titanic"
+  ],
+  "enable_internet": false,
+  "language": "python",
+  "id": "flavin/my-take-on-the-beginner-titanic-kernel"
+}

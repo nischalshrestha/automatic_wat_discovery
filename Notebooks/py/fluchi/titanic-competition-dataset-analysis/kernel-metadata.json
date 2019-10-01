@@ -1,0 +1,23 @@
+{
+  "keywords": [
+    "categorical data",
+    "beginner",
+    "data cleaning",
+    "data visualization",
+    "classification"
+  ],
+  "enable_gpu": false,
+  "title": "Titanic competition: dataset analysis",
+  "id_no": 477424,
+  "competition_sources": [
+    "titanic"
+  ],
+  "kernel_type": "notebook",
+  "language": "python",
+  "is_private": false,
+  "id": "fluchi/titanic-competition-dataset-analysis",
+  "kernel_sources": [],
+  "code_file": "titanic-competition-dataset-analysis.ipynb",
+  "enable_internet": false,
+  "dataset_sources": []
+}

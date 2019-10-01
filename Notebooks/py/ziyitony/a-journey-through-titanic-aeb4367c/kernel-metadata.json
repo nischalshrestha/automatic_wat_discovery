@@ -1,0 +1,17 @@
+{
+  "language": "python",
+  "is_private": false,
+  "kernel_type": "notebook",
+  "id": "ziyitony/a-journey-through-titanic-aeb4367c",
+  "keywords": [],
+  "kernel_sources": [],
+  "enable_gpu": false,
+  "id_no": 133658,
+  "dataset_sources": [],
+  "enable_internet": false,
+  "competition_sources": [
+    "titanic"
+  ],
+  "code_file": "a-journey-through-titanic-aeb4367c.ipynb",
+  "title": "A Journey through Titanic aeb4367c"
+}

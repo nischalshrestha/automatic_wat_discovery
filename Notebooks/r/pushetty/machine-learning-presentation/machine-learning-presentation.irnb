@@ -1,0 +1,196 @@
+{
+  "cells": [
+    {
+      "cell_type": "markdown",
+      "metadata": {
+        "_cell_guid": "9fe27cfc-eb9a-1545-1b65-dd2a777d5027"
+      },
+      "source": [
+        " *Machine Learning Presentation Scribble  --- Pushparaj Shetty*"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "_cell_guid": "7b31a9d7-bb4d-8a35-75fb-c57ff2c3237f"
+      },
+      "outputs": [],
+      "source": [
+        "library(ggplot2) # Data visualization\n",
+        "library(readr) # CSV file I/O, e.g. the read_csv function\n",
+        "library(rpart)\n",
+        "library(randomForest)\n",
+        "\n",
+        "# Input data files are available in the \"../input/\" directory.\n",
+        "# Any results you write to the current directory are saved as output."
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "_cell_guid": "22c82ccb-0d45-f25d-b16f-680b1ee6b8c4"
+      },
+      "outputs": [],
+      "source": [
+        "#Descriptive Statistics with histogram and Boxplots\n",
+        "train_titanic<- read.table(\"../input/train.csv\", header=T,sep=\",\")\n",
+        "test_titanic<- read.table(\"../input/test.csv\", header=T,sep=\",\")\n",
+        "\n",
+        "str(train_titanic)\n",
+        "str(test_titanic)\n",
+        "#boxplot(Age ~ Pclass,data=train_titanic)\n",
+        "#boxplot(Age ~ Survived,data=train_titanic)\n",
+        "#hist(train_titanic$Age)"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "_cell_guid": "90b845dd-3bac-00e0-50bd-8c16f1f346e3"
+      },
+      "outputs": [],
+      "source": [
+        "#Inferential Statistics with Chi-square  [Tends to 0 -- Heavily Depends , Otherwise independent]\n",
+        "chisq.test(train_titanic$Survived,train_titanic$Sex)\n",
+        "chisq.test(train_titanic$Survived,train_titanic$Age)\n",
+        "\n",
+        "#ScatterPlot to check if there is a correlation \n",
+        "plot(train_titanic$Fare, train_titanic$Age, xlab = 'Fare', ylab = 'Age')\n",
+        "\n",
+        "cor.test(train_titanic$Age,train_titanic$Fare, method='pearson')"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "_cell_guid": "bc5dbdde-36d4-279f-4167-077b2200e445"
+      },
+      "outputs": [],
+      "source": [
+        "#Logistic regression to show the relation for Binary Variable with the rest of the Dependent VAriables\n",
+        "# This is an ugly Fit\n",
+        "\n",
+        "fit <- glm(Survived ~ Age + Pclass + Sex + SibSp + Parch + Fare + Embarked,\n",
+        "           data = train_titanic, family = binomial(link = 'logit'))\n",
+        "summary(fit)"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "_cell_guid": "20cfd316-01a5-27af-172a-8e9aa5d3e826"
+      },
+      "outputs": [],
+      "source": [
+        "# FEATURE ENGINEERING AND RANDOM FOREST APPLIED\n",
+        "# SHow your Data manipulation skills here pushpu\n",
+        "\n",
+        "#Attach element 'Survived' to the test set and combine test and train dataset\n",
+        "test_titanic$Survived <- NA\n",
+        "titanic <- rbind(train_titanic,test_titanic)\n",
+        "\n",
+        "##########################            FEATURE:: 1   EXPLORATORY        #########################\n",
+        "\n",
+        "#Strip off titles from Names [Make em string first]\n",
+        "titanic$Name <- as.character(titanic$Name)\n",
+        "titanic$Title <- sapply(titanic$Name, FUN=function(x) {strsplit(x, split='[,.]')[[1]][2]})\n",
+        "titanic$Title <- sub(' ', '', titanic$Title)\n",
+        "\n",
+        "#See varied titles\n",
+        "table(titanic$Title)\n",
+        "\n",
+        "# Combine small title groups\n",
+        "titanic$Title[titanic$Title %in% c('Mme', 'Mlle')] <- 'Mlle'\n",
+        "titanic$Title[titanic$Title %in% c('Capt', 'Don', 'Major', 'Sir')] <- 'Sir'\n",
+        "titanic$Title[titanic$Title %in% c('Dona', 'Lady', 'the Countess', 'Jonkheer')] <- 'Lady'\n",
+        "# Convert to a factor\n",
+        "titanic$Title <- factor(titanic$Title)\n",
+        "\n"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "_cell_guid": "b859d882-6da7-addf-4329-ac4db169a6b7"
+      },
+      "outputs": [],
+      "source": [
+        "############################             FEATURE:: 2    NORMALIZE(Reduce Outliers)           #####################\n",
+        "#Check All features having NAs \n",
+        "summary(titanic)\n",
+        "# fixup Age with NAs\n",
+        "summary(titanic$Age)  \n",
+        "Agefit <- rpart(Age ~ Pclass + Sex + SibSp + Parch + Fare + Embarked + Title, \n",
+        "                data=titanic[!is.na(titanic$Age),], method=\"anova\")\n",
+        "titanic$Age[is.na(titanic$Age)] <- predict(Agefit, titanic[is.na(titanic$Age),])\n",
+        "#check if the Age NAs have been fixed\n",
+        "summary(titanic$Age)\n",
+        "\n",
+        "# fixup blanks in Embarked\n",
+        "summary(titanic$Embarked)\n",
+        "which(titanic$Embarked == '')\n",
+        "titanic$Embarked[c(62,830)] = \"S\"\n",
+        "titanic$Embarked <- factor(titanic$Embarked)\n",
+        "# Fill in Fare NAs\n",
+        "summary(titanic$Fare)\n",
+        "which(is.na(titanic$Fare))\n",
+        "titanic$Fare[1044] <- median(titanic$Fare, na.rm=TRUE)\n",
+        "\n",
+        "#All NAs have been gone now\n",
+        "summary(titanic)\n"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "_cell_guid": "cd3db1c0-348b-2f0f-6a6c-729b8c0be4f6"
+      },
+      "outputs": [],
+      "source": [
+        "# Predicitive Analytics start here, force your seatbelts  -- Pilot Pushparaj :)  -- Random Forests ahead\n",
+        "#Split back to train and test\n",
+        "train_titanic <- titanic[1:891,]\n",
+        "test_titanic <- titanic[892:1309,]\n",
+        "summary(test_titanic)\n",
+        "# Build Random Forest Ensemble\n",
+        "set.seed(465)\n",
+        "model <- randomForest(as.factor(Survived) ~ Pclass + Sex + Age + SibSp + Parch + Fare + Embarked + Title,data=train_titanic, importance=TRUE, ntree=2000)\n",
+        "# Look at variable importance\n",
+        "varImpPlot(model)\n",
+        "# Now let's make a prediction and write a submission file\n",
+        "Prediction <- predict(model, test_titanic)\n",
+        "summary(Prediction)\n",
+        "\n",
+        "submit <- data.frame(PassengerId = test_titanic$PassengerId, Survived = Prediction)\n",
+        "write.csv(submit, file = \"random_forest_prediction.csv\", row.names = FALSE)\n",
+        "\n"
+      ]
+    }
+  ],
+  "metadata": {
+    "_change_revision": 0,
+    "_is_fork": false,
+    "kernelspec": {
+      "display_name": "R",
+      "language": "R",
+      "name": "ir"
+    },
+    "language_info": {
+      "codemirror_mode": "r",
+      "file_extension": ".r",
+      "mimetype": "text/x-r-source",
+      "name": "R",
+      "pygments_lexer": "r",
+      "version": "3.3.3"
+    }
+  },
+  "nbformat": 4,
+  "nbformat_minor": 0
+}

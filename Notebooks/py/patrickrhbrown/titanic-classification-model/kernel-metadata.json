@@ -1,0 +1,17 @@
+{
+  "competition_sources": [
+    "titanic"
+  ],
+  "dataset_sources": [],
+  "language": "python",
+  "enable_internet": false,
+  "kernel_sources": [],
+  "keywords": [],
+  "kernel_type": "notebook",
+  "is_private": false,
+  "id": "patrickrhbrown/titanic-classification-model",
+  "title": "Titanic Classification Model",
+  "code_file": "titanic-classification-model.ipynb",
+  "id_no": 320896,
+  "enable_gpu": false
+}

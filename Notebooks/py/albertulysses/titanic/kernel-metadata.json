@@ -1,0 +1,17 @@
+{
+  "title": "Titanic",
+  "competition_sources": [
+    "titanic"
+  ],
+  "kernel_type": "notebook",
+  "keywords": [],
+  "dataset_sources": [],
+  "language": "python",
+  "id_no": 2041762,
+  "code_file": "titanic.ipynb",
+  "enable_internet": false,
+  "id": "albertulysses/titanic",
+  "enable_gpu": false,
+  "kernel_sources": [],
+  "is_private": false
+}

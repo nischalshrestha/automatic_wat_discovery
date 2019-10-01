@@ -1,0 +1,17 @@
+{
+  "enable_internet": false,
+  "language": "python",
+  "kernel_sources": [],
+  "keywords": [],
+  "id": "artemfedorov/notebook20b2436af2",
+  "code_file": "notebook20b2436af2.ipynb",
+  "dataset_sources": [],
+  "competition_sources": [
+    "titanic"
+  ],
+  "id_no": 204708,
+  "is_private": false,
+  "enable_gpu": false,
+  "kernel_type": "notebook",
+  "title": "Notebook20b2436af2"
+}

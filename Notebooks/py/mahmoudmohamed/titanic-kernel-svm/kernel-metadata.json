@@ -1,0 +1,17 @@
+{
+  "competition_sources": [
+    "titanic"
+  ],
+  "title": "Titanic_Kernel_SVM",
+  "is_private": false,
+  "code_file": "titanic-kernel-svm.ipynb",
+  "enable_internet": false,
+  "id": "mahmoudmohamed/titanic-kernel-svm",
+  "kernel_type": "notebook",
+  "keywords": [],
+  "language": "python",
+  "id_no": 1150804,
+  "kernel_sources": [],
+  "enable_gpu": false,
+  "dataset_sources": []
+}

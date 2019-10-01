@@ -1,0 +1,22 @@
+{
+  "code_file": "titanic-deep-net-0-82296.irnb",
+  "dataset_sources": [],
+  "kernel_type": "notebook",
+  "id": "cdeotte/titanic-deep-net-0-82296",
+  "enable_internet": false,
+  "competition_sources": [
+    "titanic"
+  ],
+  "enable_gpu": false,
+  "id_no": 1233717,
+  "keywords": [
+    "tutorial",
+    "data visualization",
+    "deep learning",
+    "neural networks"
+  ],
+  "title": "Titanic Deep Net [0.82296]",
+  "is_private": false,
+  "kernel_sources": [],
+  "language": "r"
+}

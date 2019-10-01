@@ -1,0 +1,17 @@
+{
+  "kernel_type": "notebook",
+  "language": "python",
+  "enable_internet": false,
+  "kernel_sources": [],
+  "title": "Titanic Willem Wijgergangs",
+  "id": "willemw/titanic-willem-wijgergangs",
+  "dataset_sources": [],
+  "enable_gpu": false,
+  "competition_sources": [
+    "titanic"
+  ],
+  "code_file": "titanic-willem-wijgergangs.ipynb",
+  "is_private": false,
+  "id_no": 367912,
+  "keywords": []
+}

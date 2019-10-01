@@ -1,0 +1,17 @@
+{
+  "is_private": false,
+  "title": "Fork TSC - Clean Data Then Separate",
+  "id": "mtejeda/fork-tsc-clean-data-then-separate",
+  "dataset_sources": [],
+  "enable_internet": false,
+  "kernel_sources": [],
+  "code_file": "fork-tsc-clean-data-then-separate.ipynb",
+  "kernel_type": "notebook",
+  "keywords": [],
+  "id_no": 1328898,
+  "competition_sources": [
+    "titanic"
+  ],
+  "language": "python",
+  "enable_gpu": false
+}

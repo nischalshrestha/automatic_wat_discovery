@@ -1,0 +1,17 @@
+{
+  "enable_gpu": false,
+  "competition_sources": [
+    "titanic"
+  ],
+  "title": "titanic_bp",
+  "kernel_sources": [],
+  "dataset_sources": [],
+  "kernel_type": "notebook",
+  "keywords": [],
+  "is_private": false,
+  "code_file": "titanic-bp.ipynb",
+  "language": "python",
+  "id_no": 1549997,
+  "id": "etafer/titanic-bp",
+  "enable_internet": false
+}

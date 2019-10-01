@@ -1,0 +1,22 @@
+{
+  "enable_gpu": false,
+  "id_no": 1934841,
+  "is_private": false,
+  "code_file": "titanic-full-pipeline.ipynb",
+  "id": "jmargni/titanic-full-pipeline",
+  "language": "python",
+  "keywords": [
+    "data cleaning",
+    "classification",
+    "feature engineering",
+    "pipeline code"
+  ],
+  "enable_internet": false,
+  "kernel_type": "notebook",
+  "kernel_sources": [],
+  "competition_sources": [
+    "titanic"
+  ],
+  "dataset_sources": [],
+  "title": "Titanic full pipeline"
+}

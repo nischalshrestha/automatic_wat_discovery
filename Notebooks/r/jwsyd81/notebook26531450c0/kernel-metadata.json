@@ -1,0 +1,17 @@
+{
+  "kernel_sources": [],
+  "code_file": "notebook26531450c0.ipynb",
+  "enable_internet": false,
+  "id_no": 217266,
+  "enable_gpu": false,
+  "kernel_type": "notebook",
+  "competition_sources": [
+    "titanic"
+  ],
+  "id": "jwsyd81/notebook26531450c0",
+  "dataset_sources": [],
+  "language": "python",
+  "is_private": false,
+  "title": "Notebook26531450c0",
+  "keywords": []
+}

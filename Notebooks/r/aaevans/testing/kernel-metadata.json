@@ -1,0 +1,17 @@
+{
+  "dataset_sources": [],
+  "is_private": false,
+  "keywords": [],
+  "id_no": 263291,
+  "id": "aaevans/testing",
+  "code_file": "testing.irnb",
+  "title": "Testing",
+  "enable_internet": false,
+  "kernel_type": "notebook",
+  "language": "r",
+  "enable_gpu": false,
+  "kernel_sources": [],
+  "competition_sources": [
+    "titanic"
+  ]
+}

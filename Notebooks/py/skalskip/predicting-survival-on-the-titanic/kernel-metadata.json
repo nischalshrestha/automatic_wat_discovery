@@ -1,0 +1,22 @@
+{
+  "id": "skalskip/predicting-survival-on-the-titanic",
+  "id_no": 389806,
+  "title": "Predicting survival on the Titanic",
+  "code_file": "predicting-survival-on-the-titanic.ipynb",
+  "language": "python",
+  "kernel_type": "notebook",
+  "is_private": false,
+  "enable_gpu": false,
+  "enable_internet": false,
+  "keywords": [
+    "beginner",
+    "data visualization",
+    "feature engineering",
+    "model comparison"
+  ],
+  "dataset_sources": [],
+  "kernel_sources": [],
+  "competition_sources": [
+    "titanic"
+  ]
+}

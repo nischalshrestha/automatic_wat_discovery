@@ -1,0 +1,19 @@
+{
+  "dataset_sources": [
+    "dansbecker/melbourne-housing-snapshot"
+  ],
+  "competition_sources": [
+    "titanic"
+  ],
+  "enable_internet": false,
+  "kernel_type": "notebook",
+  "code_file": "4b-exercise-partial-dependence-plots.ipynb",
+  "enable_gpu": false,
+  "id": "plsms21/4b-exercise-partial-dependence-plots",
+  "kernel_sources": [],
+  "title": "4b Exercise: Partial Dependence Plots",
+  "is_private": false,
+  "id_no": 1827559,
+  "language": "python",
+  "keywords": []
+}

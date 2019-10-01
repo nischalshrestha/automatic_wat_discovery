@@ -1,0 +1,17 @@
+{
+  "language": "python",
+  "enable_gpu": false,
+  "kernel_sources": [],
+  "title": "This is Joe's Fantastic Titanic!!!",
+  "id": "jalfano/this-is-joe-s-fantastic-titanic",
+  "enable_internet": false,
+  "is_private": false,
+  "id_no": 1894514,
+  "kernel_type": "notebook",
+  "code_file": "this-is-joe-s-fantastic-titanic.ipynb",
+  "competition_sources": [
+    "titanic"
+  ],
+  "dataset_sources": [],
+  "keywords": []
+}

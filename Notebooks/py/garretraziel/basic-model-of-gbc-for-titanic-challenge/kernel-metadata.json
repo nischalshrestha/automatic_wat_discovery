@@ -1,0 +1,17 @@
+{
+  "enable_gpu": false,
+  "is_private": false,
+  "code_file": "basic-model-of-gbc-for-titanic-challenge.ipynb",
+  "competition_sources": [
+    "titanic"
+  ],
+  "language": "python",
+  "enable_internet": false,
+  "title": "Basic model of GBC for Titanic challenge",
+  "kernel_type": "notebook",
+  "id": "garretraziel/basic-model-of-gbc-for-titanic-challenge",
+  "kernel_sources": [],
+  "keywords": [],
+  "dataset_sources": [],
+  "id_no": 226644
+}

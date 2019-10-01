@@ -1,0 +1,17 @@
+{
+  "enable_gpu": false,
+  "title": "Notebook35b381fb9e",
+  "competition_sources": [
+    "titanic"
+  ],
+  "kernel_type": "notebook",
+  "id_no": 226729,
+  "kernel_sources": [],
+  "language": "python",
+  "dataset_sources": [],
+  "code_file": "notebook35b381fb9e.ipynb",
+  "enable_internet": false,
+  "id": "shivvani/notebook35b381fb9e",
+  "keywords": [],
+  "is_private": false
+}

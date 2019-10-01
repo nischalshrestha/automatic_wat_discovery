@@ -1,0 +1,17 @@
+{
+  "title": "Titanice - Logistic Regression - V1",
+  "competition_sources": [
+    "titanic"
+  ],
+  "enable_internet": false,
+  "dataset_sources": [],
+  "keywords": [],
+  "kernel_sources": [],
+  "id_no": 36861,
+  "language": "r",
+  "code_file": "titanice-logistic-regression-v1.irnb",
+  "is_private": false,
+  "id": "manasi/titanice-logistic-regression-v1",
+  "enable_gpu": false,
+  "kernel_type": "notebook"
+}

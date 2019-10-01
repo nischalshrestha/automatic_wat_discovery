@@ -1,0 +1,17 @@
+{
+  "competition_sources": [
+    "titanic"
+  ],
+  "kernel_sources": [],
+  "keywords": [],
+  "enable_internet": false,
+  "kernel_type": "notebook",
+  "enable_gpu": false,
+  "language": "r",
+  "dataset_sources": [],
+  "code_file": "first-go-at-kaggle.irnb",
+  "id": "rajdeepbasu/first-go-at-kaggle",
+  "id_no": 252383,
+  "title": "First go at Kaggle",
+  "is_private": false
+}

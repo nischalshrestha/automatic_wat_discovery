@@ -1,0 +1,19 @@
+{
+  "id": "dr1t10/titanicnet-with-pytorch",
+  "dataset_sources": [],
+  "kernel_sources": [],
+  "kernel_type": "notebook",
+  "competition_sources": [
+    "titanic"
+  ],
+  "id_no": 1541610,
+  "keywords": [
+    "beginner"
+  ],
+  "is_private": false,
+  "title": "TitanicNet with PyTorch",
+  "code_file": "titanicnet-with-pytorch.ipynb",
+  "enable_gpu": true,
+  "enable_internet": false,
+  "language": "python"
+}

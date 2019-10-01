@@ -1,0 +1,17 @@
+{
+  "language": "python",
+  "id_no": 1512434,
+  "is_private": false,
+  "kernel_type": "notebook",
+  "title": "1st notebook",
+  "enable_internet": false,
+  "dataset_sources": [],
+  "kernel_sources": [],
+  "keywords": [],
+  "id": "showtama/1st-notebook",
+  "competition_sources": [
+    "titanic"
+  ],
+  "enable_gpu": false,
+  "code_file": "1st-notebook.ipynb"
+}

@@ -1,0 +1,17 @@
+{
+  "code_file": "keras.ipynb",
+  "competition_sources": [
+    "titanic"
+  ],
+  "title": "keras",
+  "keywords": [],
+  "language": "python",
+  "kernel_sources": [],
+  "id": "rrqqmm/keras",
+  "enable_gpu": false,
+  "enable_internet": false,
+  "kernel_type": "notebook",
+  "is_private": false,
+  "id_no": 186974,
+  "dataset_sources": []
+}

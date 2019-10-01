@@ -1,0 +1,23 @@
+{
+  "id": "jquerne/titanic-pipelines-simple-features-0-80382",
+  "code_file": "titanic-pipelines-simple-features-0-80382.ipynb",
+  "id_no": 977015,
+  "is_private": false,
+  "competition_sources": [
+    "titanic"
+  ],
+  "kernel_sources": [],
+  "enable_gpu": false,
+  "language": "python",
+  "enable_internet": false,
+  "title": "Titanic Pipelines + simple features (0.80382)",
+  "dataset_sources": [],
+  "kernel_type": "notebook",
+  "keywords": [
+    "beginner",
+    "data cleaning",
+    "classification",
+    "pipeline code",
+    "random forest"
+  ]
+}

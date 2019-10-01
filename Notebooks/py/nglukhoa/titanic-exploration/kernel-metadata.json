@@ -1,0 +1,17 @@
+{
+  "kernel_sources": [],
+  "language": "python",
+  "keywords": [],
+  "kernel_type": "notebook",
+  "is_private": false,
+  "enable_internet": false,
+  "id": "nglukhoa/titanic-exploration",
+  "competition_sources": [
+    "titanic"
+  ],
+  "title": "Titanic exploration",
+  "code_file": "titanic-exploration.ipynb",
+  "id_no": 890598,
+  "dataset_sources": [],
+  "enable_gpu": false
+}

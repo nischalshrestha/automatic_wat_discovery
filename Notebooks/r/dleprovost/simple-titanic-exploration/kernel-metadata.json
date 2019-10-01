@@ -1,0 +1,17 @@
+{
+  "competition_sources": [
+    "titanic"
+  ],
+  "code_file": "simple-titanic-exploration.irnb",
+  "id": "dleprovost/simple-titanic-exploration",
+  "title": "Simple Titanic Exploration",
+  "keywords": [],
+  "id_no": 491962,
+  "is_private": false,
+  "enable_internet": false,
+  "kernel_sources": [],
+  "enable_gpu": false,
+  "language": "r",
+  "dataset_sources": [],
+  "kernel_type": "notebook"
+}

@@ -1,0 +1,17 @@
+{
+  "id_no": 248122,
+  "title": "Notebook69446cdfd5",
+  "is_private": false,
+  "id": "helloklima/notebook69446cdfd5",
+  "enable_gpu": false,
+  "language": "python",
+  "keywords": [],
+  "code_file": "notebook69446cdfd5.ipynb",
+  "kernel_type": "notebook",
+  "competition_sources": [
+    "titanic"
+  ],
+  "enable_internet": false,
+  "kernel_sources": [],
+  "dataset_sources": []
+}

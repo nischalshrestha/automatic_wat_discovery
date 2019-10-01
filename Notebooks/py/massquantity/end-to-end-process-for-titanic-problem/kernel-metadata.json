@@ -1,0 +1,17 @@
+{
+  "kernel_type": "notebook",
+  "language": "python",
+  "code_file": "end-to-end-process-for-titanic-problem.ipynb",
+  "dataset_sources": [],
+  "enable_gpu": false,
+  "id": "massquantity/end-to-end-process-for-titanic-problem",
+  "enable_internet": false,
+  "keywords": [],
+  "is_private": false,
+  "id_no": 323723,
+  "title": "End-to-End process for Titanic problem",
+  "competition_sources": [
+    "titanic"
+  ],
+  "kernel_sources": []
+}

@@ -1,0 +1,19 @@
+{
+  "keywords": [
+    "beginner"
+  ],
+  "code_file": "a-first-timer-tackles-the-titanic.ipynb",
+  "enable_gpu": false,
+  "title": "A First-timer Tackles the Titanic",
+  "kernel_sources": [],
+  "id_no": 626348,
+  "id": "rvislaywade/a-first-timer-tackles-the-titanic",
+  "kernel_type": "notebook",
+  "competition_sources": [
+    "titanic"
+  ],
+  "language": "python",
+  "dataset_sources": [],
+  "enable_internet": false,
+  "is_private": false
+}

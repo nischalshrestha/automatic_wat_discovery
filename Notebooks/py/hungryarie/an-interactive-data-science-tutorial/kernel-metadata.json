@@ -1,0 +1,17 @@
+{
+  "is_private": false,
+  "id_no": 250010,
+  "enable_internet": false,
+  "title": "An Interactive Data Science Tutorial",
+  "kernel_sources": [],
+  "language": "python",
+  "code_file": "an-interactive-data-science-tutorial.ipynb",
+  "enable_gpu": false,
+  "id": "hungryarie/an-interactive-data-science-tutorial",
+  "keywords": [],
+  "kernel_type": "notebook",
+  "dataset_sources": [],
+  "competition_sources": [
+    "titanic"
+  ]
+}

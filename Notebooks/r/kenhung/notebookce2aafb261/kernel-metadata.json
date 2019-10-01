@@ -1,0 +1,17 @@
+{
+  "id_no": 223866,
+  "kernel_sources": [],
+  "code_file": "notebookce2aafb261.ipynb",
+  "keywords": [],
+  "competition_sources": [
+    "titanic"
+  ],
+  "language": "python",
+  "is_private": false,
+  "id": "kenhung/notebookce2aafb261",
+  "enable_gpu": false,
+  "dataset_sources": [],
+  "title": "Notebookce2aafb261",
+  "enable_internet": false,
+  "kernel_type": "notebook"
+}

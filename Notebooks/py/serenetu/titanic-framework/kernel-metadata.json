@@ -1,0 +1,17 @@
+{
+  "code_file": "titanic-framework.ipynb",
+  "enable_internet": false,
+  "kernel_type": "notebook",
+  "keywords": [],
+  "competition_sources": [
+    "titanic"
+  ],
+  "kernel_sources": [],
+  "dataset_sources": [],
+  "title": " Titanic Framework",
+  "id_no": 1542439,
+  "id": "serenetu/titanic-framework",
+  "enable_gpu": false,
+  "language": "python",
+  "is_private": false
+}

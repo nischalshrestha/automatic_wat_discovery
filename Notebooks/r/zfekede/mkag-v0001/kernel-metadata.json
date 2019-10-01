@@ -1,0 +1,17 @@
+{
+  "enable_gpu": false,
+  "competition_sources": [
+    "titanic"
+  ],
+  "id": "zfekede/mkag-v0001",
+  "kernel_type": "notebook",
+  "code_file": "mkag-v0001.ipynb",
+  "kernel_sources": [],
+  "keywords": [],
+  "dataset_sources": [],
+  "language": "python",
+  "enable_internet": false,
+  "title": "_mKag_v0001",
+  "id_no": 218019,
+  "is_private": false
+}

@@ -1,0 +1,17 @@
+{
+  "title": "What if I was on the Titanic",
+  "is_private": false,
+  "id": "farzadinjast/what-if-i-was-on-the-titanic",
+  "kernel_sources": [],
+  "keywords": [],
+  "id_no": 812992,
+  "code_file": "what-if-i-was-on-the-titanic.ipynb",
+  "enable_gpu": false,
+  "enable_internet": false,
+  "competition_sources": [
+    "titanic"
+  ],
+  "dataset_sources": [],
+  "kernel_type": "notebook",
+  "language": "python"
+}

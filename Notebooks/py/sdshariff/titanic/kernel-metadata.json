@@ -1,0 +1,17 @@
+{
+  "enable_internet": false,
+  "title": "titanic",
+  "id": "sdshariff/titanic",
+  "enable_gpu": true,
+  "is_private": false,
+  "code_file": "titanic.ipynb",
+  "id_no": 1446115,
+  "language": "python",
+  "kernel_sources": [],
+  "kernel_type": "notebook",
+  "dataset_sources": [],
+  "keywords": [],
+  "competition_sources": [
+    "titanic"
+  ]
+}

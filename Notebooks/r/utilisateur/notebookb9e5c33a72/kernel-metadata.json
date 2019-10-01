@@ -1,0 +1,17 @@
+{
+  "code_file": "notebookb9e5c33a72.irnb",
+  "id": "utilisateur/notebookb9e5c33a72",
+  "title": "Notebookd1b046ed47",
+  "keywords": [],
+  "id_no": 123315,
+  "competition_sources": [
+    "titanic"
+  ],
+  "enable_internet": false,
+  "is_private": false,
+  "language": "r",
+  "kernel_type": "notebook",
+  "kernel_sources": [],
+  "dataset_sources": [],
+  "enable_gpu": false
+}

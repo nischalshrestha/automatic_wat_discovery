@@ -1,0 +1,17 @@
+{
+  "dataset_sources": [],
+  "kernel_type": "notebook",
+  "enable_internet": false,
+  "kernel_sources": [],
+  "language": "python",
+  "is_private": false,
+  "keywords": [],
+  "competition_sources": [
+    "titanic"
+  ],
+  "id_no": 453139,
+  "title": "Deep Learning from Titanic Disaster",
+  "code_file": "deep-learning-from-titanic-disaster.ipynb",
+  "enable_gpu": false,
+  "id": "simonxflu/deep-learning-from-titanic-disaster"
+}

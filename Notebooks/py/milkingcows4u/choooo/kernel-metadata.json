@@ -1,0 +1,17 @@
+{
+  "is_private": false,
+  "code_file": "choooo.ipynb",
+  "id_no": 63251,
+  "enable_internet": false,
+  "competition_sources": [
+    "titanic"
+  ],
+  "language": "python",
+  "enable_gpu": false,
+  "dataset_sources": [],
+  "kernel_sources": [],
+  "kernel_type": "notebook",
+  "id": "milkingcows4u/choooo",
+  "keywords": [],
+  "title": "choooo"
+}

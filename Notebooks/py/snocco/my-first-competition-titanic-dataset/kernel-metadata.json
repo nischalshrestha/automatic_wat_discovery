@@ -1,0 +1,21 @@
+{
+  "language": "python",
+  "enable_internet": false,
+  "kernel_type": "notebook",
+  "is_private": false,
+  "kernel_sources": [],
+  "code_file": "my-first-competition-titanic-dataset.ipynb",
+  "competition_sources": [
+    "titanic"
+  ],
+  "title": "My first competition: Titanic Dataset",
+  "keywords": [
+    "tutorial",
+    "beginner",
+    "classification"
+  ],
+  "enable_gpu": false,
+  "id": "snocco/my-first-competition-titanic-dataset",
+  "id_no": 1746481,
+  "dataset_sources": []
+}

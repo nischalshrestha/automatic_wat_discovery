@@ -1,0 +1,17 @@
+{
+  "id": "adrsok/titanic",
+  "code_file": "titanic.irnb",
+  "title": "titanic",
+  "id_no": 1275070,
+  "enable_internet": false,
+  "language": "r",
+  "enable_gpu": false,
+  "competition_sources": [
+    "titanic"
+  ],
+  "dataset_sources": [],
+  "kernel_sources": [],
+  "kernel_type": "notebook",
+  "keywords": [],
+  "is_private": false
+}

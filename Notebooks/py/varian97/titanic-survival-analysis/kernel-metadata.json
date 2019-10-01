@@ -1,0 +1,21 @@
+{
+  "keywords": [
+    "beginner",
+    "eda",
+    "data cleaning"
+  ],
+  "dataset_sources": [],
+  "enable_gpu": false,
+  "code_file": "titanic-survival-analysis.ipynb",
+  "competition_sources": [
+    "titanic"
+  ],
+  "enable_internet": false,
+  "is_private": false,
+  "id": "varian97/titanic-survival-analysis",
+  "id_no": 1388734,
+  "title": "Titanic Survival Analysis",
+  "kernel_sources": [],
+  "kernel_type": "notebook",
+  "language": "python"
+}

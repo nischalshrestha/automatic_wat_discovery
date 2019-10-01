@@ -1,0 +1,17 @@
+{
+  "code_file": "titanic-compitition.ipynb",
+  "title": "Titanic Compitition",
+  "kernel_sources": [],
+  "keywords": [],
+  "id": "kaveri15/titanic-compitition",
+  "competition_sources": [
+    "titanic"
+  ],
+  "kernel_type": "notebook",
+  "id_no": 1703483,
+  "enable_gpu": false,
+  "dataset_sources": [],
+  "language": "python",
+  "enable_internet": false,
+  "is_private": false
+}

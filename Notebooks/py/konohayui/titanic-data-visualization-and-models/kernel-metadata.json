@@ -1,0 +1,22 @@
+{
+  "is_private": false,
+  "enable_gpu": false,
+  "id_no": 525838,
+  "language": "python",
+  "code_file": "titanic-data-visualization-and-models.ipynb",
+  "dataset_sources": [],
+  "competition_sources": [
+    "titanic"
+  ],
+  "id": "konohayui/titanic-data-visualization-and-models",
+  "kernel_sources": [],
+  "keywords": [
+    "beginner",
+    "eda",
+    "data visualization",
+    "model comparison"
+  ],
+  "kernel_type": "notebook",
+  "title": "Titanic Data Visualization and Models ",
+  "enable_internet": false
+}

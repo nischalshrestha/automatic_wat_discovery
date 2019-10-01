@@ -1,0 +1,17 @@
+{
+  "is_private": false,
+  "title": "Data Exploration and Visualisation for beginner",
+  "enable_internet": false,
+  "id_no": 1830797,
+  "enable_gpu": false,
+  "kernel_sources": [],
+  "competition_sources": [
+    "titanic"
+  ],
+  "code_file": "data-exploration-and-visualisation-for-beginner.ipynb",
+  "id": "badouwan/data-exploration-and-visualisation-for-beginner",
+  "dataset_sources": [],
+  "keywords": [],
+  "language": "python",
+  "kernel_type": "notebook"
+}

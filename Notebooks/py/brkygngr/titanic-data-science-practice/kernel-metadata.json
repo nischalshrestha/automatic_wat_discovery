@@ -1,0 +1,17 @@
+{
+  "kernel_sources": [],
+  "id": "brkygngr/titanic-data-science-practice",
+  "code_file": "titanic-data-science-practice.ipynb",
+  "keywords": [],
+  "enable_gpu": false,
+  "competition_sources": [
+    "titanic"
+  ],
+  "title": "Titanic Data Science Practice",
+  "language": "python",
+  "is_private": false,
+  "kernel_type": "notebook",
+  "dataset_sources": [],
+  "id_no": 1540719,
+  "enable_internet": false
+}

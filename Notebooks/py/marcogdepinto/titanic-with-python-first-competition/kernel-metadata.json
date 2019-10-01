@@ -1,0 +1,17 @@
+{
+  "id_no": 1186449,
+  "keywords": [],
+  "title": "Titanic with Python: First Competition",
+  "competition_sources": [
+    "titanic"
+  ],
+  "kernel_type": "notebook",
+  "code_file": "titanic-with-python-first-competition.ipynb",
+  "enable_gpu": false,
+  "is_private": false,
+  "id": "marcogdepinto/titanic-with-python-first-competition",
+  "enable_internet": false,
+  "language": "python",
+  "kernel_sources": [],
+  "dataset_sources": []
+}

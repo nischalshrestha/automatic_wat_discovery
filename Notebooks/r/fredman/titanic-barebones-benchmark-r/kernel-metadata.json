@@ -1,0 +1,17 @@
+{
+  "id": "fredman/titanic-barebones-benchmark-r",
+  "keywords": [],
+  "id_no": 249565,
+  "enable_internet": false,
+  "enable_gpu": false,
+  "dataset_sources": [],
+  "language": "r",
+  "is_private": false,
+  "kernel_type": "notebook",
+  "kernel_sources": [],
+  "code_file": "titanic-barebones-benchmark-r.irnb",
+  "competition_sources": [
+    "titanic"
+  ],
+  "title": "Titanic Barebones Benchmark R"
+}

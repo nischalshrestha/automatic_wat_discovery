@@ -1,0 +1,17 @@
+{
+  "kernel_sources": [],
+  "competition_sources": [
+    "titanic"
+  ],
+  "id": "bubblride/titanic-e1071-c-svc-five-features",
+  "dataset_sources": [],
+  "title": "titanic, e1071, C-SVC (Five Features)",
+  "enable_gpu": false,
+  "enable_internet": false,
+  "keywords": [],
+  "is_private": false,
+  "code_file": "titanic-e1071-c-svc-five-features.irnb",
+  "kernel_type": "notebook",
+  "id_no": 1880018,
+  "language": "r"
+}

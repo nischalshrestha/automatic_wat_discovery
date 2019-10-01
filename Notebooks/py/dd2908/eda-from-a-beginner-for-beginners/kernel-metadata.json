@@ -1,0 +1,20 @@
+{
+  "id": "dd2908/eda-from-a-beginner-for-beginners",
+  "keywords": [
+    "eda",
+    "data visualization"
+  ],
+  "code_file": "eda-from-a-beginner-for-beginners.ipynb",
+  "language": "python",
+  "kernel_sources": [],
+  "is_private": false,
+  "dataset_sources": [],
+  "competition_sources": [
+    "titanic"
+  ],
+  "enable_gpu": false,
+  "kernel_type": "notebook",
+  "enable_internet": false,
+  "title": "EDA  - From a Beginner for Beginners",
+  "id_no": 483658
+}

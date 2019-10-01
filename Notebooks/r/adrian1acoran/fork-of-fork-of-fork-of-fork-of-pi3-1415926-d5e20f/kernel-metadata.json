@@ -1,0 +1,26 @@
+{
+  "id_no": 1852181,
+  "id": "adrian1acoran/fork-of-fork-of-fork-of-fork-of-pi3-1415926-d5e20f",
+  "title": "Fork of Fork of Fork of Fork of Pi3.1415926 d5e20f",
+  "is_private": false,
+  "keywords": [],
+  "enable_internet": true,
+  "competition_sources": [
+    "titanic"
+  ],
+  "language": "r",
+  "kernel_type": "notebook",
+  "enable_gpu": true,
+  "kernel_sources": [],
+  "dataset_sources": [
+    "pytorch/vgg13bn",
+    "ramamet4/app-store-apple-data-set-10k-apps",
+    "lava18/google-play-store-apps",
+    "crawford/boston-public-schools",
+    "bigquery/patents",
+    "census/total-business-inventories-and-sales-data",
+    "san-francisco/sf-police-calls-for-service-and-incidents",
+    "theworldbank/education-statistics"
+  ],
+  "code_file": "fork-of-fork-of-fork-of-fork-of-pi3-1415926-d5e20f.irnb"
+}

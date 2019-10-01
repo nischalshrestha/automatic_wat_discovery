@@ -1,0 +1,20 @@
+{
+  "code_file": "one-hour-data-analysis.ipynb",
+  "keywords": [
+    "tutorial",
+    "beginner"
+  ],
+  "kernel_sources": [],
+  "language": "python",
+  "dataset_sources": [],
+  "enable_internet": false,
+  "kernel_type": "notebook",
+  "competition_sources": [
+    "titanic"
+  ],
+  "id_no": 671508,
+  "id": "sunmiyoon/one-hour-data-analysis",
+  "is_private": false,
+  "enable_gpu": false,
+  "title": "One hour data analysis"
+}

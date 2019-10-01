@@ -1,0 +1,17 @@
+{
+  "is_private": false,
+  "keywords": [],
+  "title": "Titanic Dataset Walkthrough",
+  "kernel_type": "notebook",
+  "competition_sources": [
+    "titanic"
+  ],
+  "id_no": 115494,
+  "language": "r",
+  "code_file": "titanic-dataset-walkthrough.irnb",
+  "id": "marshalwong/titanic-dataset-walkthrough",
+  "kernel_sources": [],
+  "enable_internet": false,
+  "enable_gpu": false,
+  "dataset_sources": []
+}

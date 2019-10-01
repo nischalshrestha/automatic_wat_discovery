@@ -1,0 +1,17 @@
+{
+  "is_private": false,
+  "title": "EDA To Prediction(DieTanic)",
+  "enable_gpu": false,
+  "code_file": "eda-to-prediction-dietanic.ipynb",
+  "enable_internet": false,
+  "kernel_type": "notebook",
+  "kernel_sources": [],
+  "language": "python",
+  "competition_sources": [
+    "titanic"
+  ],
+  "id": "santoshbothe/eda-to-prediction-dietanic",
+  "id_no": 1732615,
+  "dataset_sources": [],
+  "keywords": []
+}

@@ -1,0 +1,23 @@
+{
+  "title": "Titanic Challenge data visualization and cleaning",
+  "enable_gpu": false,
+  "keywords": [
+    "beginner",
+    "data cleaning",
+    "data visualization",
+    "logistic regression",
+    "svm"
+  ],
+  "code_file": "titanic-challenge-data-visualization-and-cleaning.ipynb",
+  "language": "python",
+  "kernel_type": "notebook",
+  "dataset_sources": [],
+  "is_private": false,
+  "id_no": 1319372,
+  "competition_sources": [
+    "titanic"
+  ],
+  "kernel_sources": [],
+  "enable_internet": false,
+  "id": "kpreetsid/titanic-challenge-data-visualization-and-cleaning"
+}

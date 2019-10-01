@@ -1,0 +1,17 @@
+{
+  "language": "python",
+  "enable_internet": false,
+  "kernel_sources": [],
+  "enable_gpu": false,
+  "dataset_sources": [],
+  "id": "mahonghui/titanic-survival-prediction",
+  "keywords": [],
+  "kernel_type": "notebook",
+  "code_file": "titanic-survival-prediction.ipynb",
+  "id_no": 1604271,
+  "is_private": false,
+  "competition_sources": [
+    "titanic"
+  ],
+  "title": "Titanic Survival Prediction"
+}

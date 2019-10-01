@@ -1,0 +1,17 @@
+{
+  "id_no": 1515486,
+  "id": "olkauppi/titanic-competition-with-keras",
+  "language": "python",
+  "kernel_type": "notebook",
+  "enable_internet": false,
+  "dataset_sources": [],
+  "enable_gpu": false,
+  "keywords": [],
+  "code_file": "titanic-competition-with-keras.ipynb",
+  "competition_sources": [
+    "titanic"
+  ],
+  "kernel_sources": [],
+  "is_private": false,
+  "title": "Titanic competition with Keras"
+}

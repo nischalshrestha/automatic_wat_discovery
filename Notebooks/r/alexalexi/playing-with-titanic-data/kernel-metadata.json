@@ -1,0 +1,17 @@
+{
+  "enable_internet": false,
+  "code_file": "playing-with-titanic-data.irnb",
+  "competition_sources": [
+    "titanic"
+  ],
+  "language": "r",
+  "keywords": [],
+  "is_private": false,
+  "id_no": 305304,
+  "kernel_type": "notebook",
+  "enable_gpu": false,
+  "title": "Playing with Titanic data",
+  "id": "alexalexi/playing-with-titanic-data",
+  "kernel_sources": [],
+  "dataset_sources": []
+}

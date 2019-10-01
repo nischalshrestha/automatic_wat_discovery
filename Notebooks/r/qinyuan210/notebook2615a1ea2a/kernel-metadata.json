@@ -1,0 +1,17 @@
+{
+  "title": "Notebook2615a1ea2a",
+  "competition_sources": [
+    "titanic"
+  ],
+  "enable_internet": false,
+  "is_private": false,
+  "id_no": 217648,
+  "language": "r",
+  "code_file": "notebook2615a1ea2a.irnb",
+  "kernel_type": "notebook",
+  "keywords": [],
+  "dataset_sources": [],
+  "enable_gpu": false,
+  "id": "qinyuan210/notebook2615a1ea2a",
+  "kernel_sources": []
+}

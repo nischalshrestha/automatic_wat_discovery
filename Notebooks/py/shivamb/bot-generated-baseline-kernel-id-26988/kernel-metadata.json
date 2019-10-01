@@ -1,0 +1,17 @@
+{
+  "language": "python",
+  "competition_sources": [
+    "titanic"
+  ],
+  "code_file": "bot-generated-baseline-kernel-id-26988.ipynb",
+  "enable_gpu": false,
+  "id_no": 1539978,
+  "id": "shivamb/bot-generated-baseline-kernel-id-26988",
+  "kernel_type": "notebook",
+  "kernel_sources": [],
+  "dataset_sources": [],
+  "is_private": false,
+  "enable_internet": false,
+  "title": "Bot Generated Baseline Kernel :) (id: 26988)",
+  "keywords": []
+}

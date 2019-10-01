@@ -1,0 +1,17 @@
+{
+  "id": "wisedoge/introduction-to-ensembling-stacking-in-pyth-ace527",
+  "id_no": 231212,
+  "title": "Introduction to Ensembling/Stacking in Pyth ace527",
+  "code_file": "introduction-to-ensembling-stacking-in-pyth-ace527.ipynb",
+  "language": "python",
+  "kernel_type": "notebook",
+  "is_private": false,
+  "enable_gpu": false,
+  "enable_internet": false,
+  "keywords": [],
+  "dataset_sources": [],
+  "kernel_sources": [],
+  "competition_sources": [
+    "titanic"
+  ]
+}

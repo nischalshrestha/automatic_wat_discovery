@@ -1,0 +1,17 @@
+{
+  "enable_internet": false,
+  "kernel_sources": [],
+  "title": "Titanic Survival Prediction",
+  "keywords": [],
+  "id": "daztron/titanic-survival-prediction",
+  "is_private": false,
+  "code_file": "titanic-survival-prediction.ipynb",
+  "language": "python",
+  "id_no": 754767,
+  "kernel_type": "notebook",
+  "enable_gpu": false,
+  "dataset_sources": [],
+  "competition_sources": [
+    "titanic"
+  ]
+}

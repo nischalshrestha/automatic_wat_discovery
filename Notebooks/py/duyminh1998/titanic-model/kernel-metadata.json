@@ -1,0 +1,17 @@
+{
+  "enable_gpu": false,
+  "dataset_sources": [],
+  "id_no": 1652231,
+  "keywords": [],
+  "is_private": false,
+  "enable_internet": false,
+  "title": "Titanic Model",
+  "kernel_type": "notebook",
+  "code_file": "titanic-model.ipynb",
+  "id": "duyminh1998/titanic-model",
+  "language": "python",
+  "kernel_sources": [],
+  "competition_sources": [
+    "titanic"
+  ]
+}

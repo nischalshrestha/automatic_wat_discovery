@@ -1,0 +1,17 @@
+{
+  "title": "Playing with the knobs of sklearn decision tree",
+  "code_file": "playing-with-the-knobs-of-sklearn-decision-tree.ipynb",
+  "competition_sources": [
+    "titanic"
+  ],
+  "kernel_sources": [],
+  "id_no": 272437,
+  "id": "drgilermo/playing-with-the-knobs-of-sklearn-decision-tree",
+  "enable_gpu": false,
+  "kernel_type": "notebook",
+  "is_private": false,
+  "keywords": [],
+  "dataset_sources": [],
+  "language": "python",
+  "enable_internet": false
+}

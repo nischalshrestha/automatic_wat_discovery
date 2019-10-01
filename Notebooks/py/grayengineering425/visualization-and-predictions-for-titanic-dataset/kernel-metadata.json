@@ -1,0 +1,17 @@
+{
+  "id_no": 705480,
+  "keywords": [],
+  "title": "Visualization and Predictions for Titanic Dataset",
+  "enable_gpu": false,
+  "language": "python",
+  "id": "grayengineering425/visualization-and-predictions-for-titanic-dataset",
+  "enable_internet": false,
+  "code_file": "visualization-and-predictions-for-titanic-dataset.ipynb",
+  "kernel_sources": [],
+  "is_private": false,
+  "dataset_sources": [],
+  "competition_sources": [
+    "titanic"
+  ],
+  "kernel_type": "notebook"
+}

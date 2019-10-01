@@ -1,0 +1,19 @@
+{
+  "is_private": false,
+  "dataset_sources": [],
+  "code_file": "titanic-with-tensorflow.ipynb",
+  "id_no": 906266,
+  "enable_internet": false,
+  "kernel_type": "notebook",
+  "kernel_sources": [],
+  "title": "Titanic with tensorflow",
+  "keywords": [
+    "beginner"
+  ],
+  "competition_sources": [
+    "titanic"
+  ],
+  "language": "python",
+  "id": "wsm1992/titanic-with-tensorflow",
+  "enable_gpu": false
+}

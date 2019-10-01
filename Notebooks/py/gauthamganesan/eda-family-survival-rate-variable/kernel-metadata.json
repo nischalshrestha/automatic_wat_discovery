@@ -1,0 +1,17 @@
+{
+  "code_file": "eda-family-survival-rate-variable.ipynb",
+  "language": "python",
+  "id": "gauthamganesan/eda-family-survival-rate-variable",
+  "title": "EDA  | family survival rate variable",
+  "keywords": [],
+  "id_no": 1379072,
+  "kernel_type": "notebook",
+  "dataset_sources": [],
+  "is_private": false,
+  "enable_internet": false,
+  "kernel_sources": [],
+  "competition_sources": [
+    "titanic"
+  ],
+  "enable_gpu": false
+}

@@ -1,0 +1,17 @@
+{
+  "id_no": 208428,
+  "is_private": false,
+  "language": "r",
+  "kernel_type": "notebook",
+  "title": "Titanic Caret",
+  "enable_gpu": false,
+  "enable_internet": false,
+  "id": "thoolihan/titanic-caret",
+  "competition_sources": [
+    "titanic"
+  ],
+  "keywords": [],
+  "kernel_sources": [],
+  "code_file": "titanic-caret.irnb",
+  "dataset_sources": []
+}

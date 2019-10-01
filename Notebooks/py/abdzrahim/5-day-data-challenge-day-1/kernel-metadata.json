@@ -1,0 +1,21 @@
+{
+  "kernel_type": "notebook",
+  "competition_sources": [
+    "titanic"
+  ],
+  "is_private": false,
+  "kernel_sources": [],
+  "enable_internet": false,
+  "keywords": [
+    "dailychallenge"
+  ],
+  "code_file": "5-day-data-challenge-day-1.ipynb",
+  "language": "python",
+  "enable_gpu": false,
+  "id": "abdzrahim/5-day-data-challenge-day-1",
+  "title": "5 Day Data Challenge: Day 1",
+  "dataset_sources": [
+    "START-UMD/gtd"
+  ],
+  "id_no": 473894
+}

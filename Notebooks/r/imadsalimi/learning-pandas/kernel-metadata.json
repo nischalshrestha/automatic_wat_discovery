@@ -1,0 +1,17 @@
+{
+  "code_file": "learning-pandas.irnb",
+  "is_private": false,
+  "kernel_sources": [],
+  "keywords": [],
+  "id": "imadsalimi/learning-pandas",
+  "kernel_type": "notebook",
+  "competition_sources": [
+    "titanic"
+  ],
+  "id_no": 150906,
+  "dataset_sources": [],
+  "title": "Learning Pandas",
+  "enable_internet": false,
+  "enable_gpu": false,
+  "language": "r"
+}

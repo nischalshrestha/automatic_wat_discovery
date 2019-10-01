@@ -1,0 +1,17 @@
+{
+  "is_private": false,
+  "id": "frlhell/titanic-fastai-embeddings",
+  "title": "Titanic FastAI Embeddings",
+  "kernel_sources": [],
+  "keywords": [],
+  "kernel_type": "notebook",
+  "id_no": 1900553,
+  "code_file": "titanic-fastai-embeddings.ipynb",
+  "competition_sources": [
+    "titanic"
+  ],
+  "language": "python",
+  "enable_internet": false,
+  "enable_gpu": true,
+  "dataset_sources": []
+}

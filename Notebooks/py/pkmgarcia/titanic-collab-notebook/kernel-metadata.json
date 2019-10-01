@@ -1,0 +1,17 @@
+{
+  "is_private": false,
+  "dataset_sources": [],
+  "kernel_sources": [],
+  "kernel_type": "notebook",
+  "keywords": [],
+  "code_file": "titanic-collab-notebook.ipynb",
+  "id_no": 1443874,
+  "competition_sources": [
+    "titanic"
+  ],
+  "language": "python",
+  "title": "Titanic Collab Notebook",
+  "enable_gpu": false,
+  "id": "pkmgarcia/titanic-collab-notebook",
+  "enable_internet": false
+}

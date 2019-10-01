@@ -1,0 +1,17 @@
+{
+  "competition_sources": [
+    "titanic"
+  ],
+  "title": "Titanic: Data Analysis and Machine Learning",
+  "id": "miguelangelnieto/titanic-data-analysis-and-machine-learning",
+  "kernel_type": "notebook",
+  "language": "python",
+  "keywords": [],
+  "dataset_sources": [],
+  "id_no": 154271,
+  "enable_internet": false,
+  "enable_gpu": false,
+  "kernel_sources": [],
+  "code_file": "titanic-data-analysis-and-machine-learning.ipynb",
+  "is_private": false
+}

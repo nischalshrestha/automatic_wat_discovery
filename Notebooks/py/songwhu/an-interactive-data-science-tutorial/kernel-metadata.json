@@ -1,0 +1,17 @@
+{
+  "id_no": 209741,
+  "is_private": false,
+  "id": "songwhu/an-interactive-data-science-tutorial",
+  "kernel_type": "notebook",
+  "competition_sources": [
+    "titanic"
+  ],
+  "kernel_sources": [],
+  "enable_internet": false,
+  "enable_gpu": false,
+  "keywords": [],
+  "dataset_sources": [],
+  "title": "An Interactive Data Science Tutorial",
+  "code_file": "an-interactive-data-science-tutorial.ipynb",
+  "language": "python"
+}

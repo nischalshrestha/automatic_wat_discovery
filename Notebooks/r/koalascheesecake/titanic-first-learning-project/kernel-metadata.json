@@ -1,0 +1,17 @@
+{
+  "enable_internet": false,
+  "kernel_type": "notebook",
+  "keywords": [],
+  "kernel_sources": [],
+  "title": "Titanic - First Learning Project",
+  "id_no": 202341,
+  "dataset_sources": [],
+  "id": "koalascheesecake/titanic-first-learning-project",
+  "enable_gpu": false,
+  "language": "python",
+  "competition_sources": [
+    "titanic"
+  ],
+  "is_private": false,
+  "code_file": "titanic-first-learning-project.ipynb"
+}

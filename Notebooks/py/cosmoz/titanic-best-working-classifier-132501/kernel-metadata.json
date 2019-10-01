@@ -1,0 +1,17 @@
+{
+  "competition_sources": [
+    "titanic"
+  ],
+  "enable_internet": false,
+  "language": "python",
+  "keywords": [],
+  "dataset_sources": [],
+  "kernel_type": "notebook",
+  "is_private": false,
+  "title": "Titanic best working Classifier 132501",
+  "id": "cosmoz/titanic-best-working-classifier-132501",
+  "code_file": "titanic-best-working-classifier-132501.ipynb",
+  "enable_gpu": false,
+  "id_no": 203208,
+  "kernel_sources": []
+}

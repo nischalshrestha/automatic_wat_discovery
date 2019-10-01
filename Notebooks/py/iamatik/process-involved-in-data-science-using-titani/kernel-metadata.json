@@ -1,0 +1,17 @@
+{
+  "id_no": 1096139,
+  "competition_sources": [
+    "titanic"
+  ],
+  "id": "iamatik/process-involved-in-data-science-using-titani",
+  "enable_internet": false,
+  "is_private": false,
+  "keywords": [],
+  "enable_gpu": false,
+  "title": "Data Science Process: Using Titanic Survivor data",
+  "language": "python",
+  "kernel_type": "notebook",
+  "dataset_sources": [],
+  "code_file": "process-involved-in-data-science-using-titani.ipynb",
+  "kernel_sources": []
+}

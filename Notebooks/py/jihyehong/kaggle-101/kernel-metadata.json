@@ -1,0 +1,17 @@
+{
+  "id": "jihyehong/kaggle-101",
+  "enable_internet": false,
+  "code_file": "kaggle-101.ipynb",
+  "dataset_sources": [],
+  "language": "python",
+  "competition_sources": [
+    "titanic"
+  ],
+  "kernel_type": "notebook",
+  "kernel_sources": [],
+  "title": "Kaggle 101",
+  "enable_gpu": false,
+  "keywords": [],
+  "is_private": false,
+  "id_no": 570139
+}

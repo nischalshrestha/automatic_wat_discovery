@@ -1,0 +1,17 @@
+{
+  "id_no": 753496,
+  "language": "python",
+  "kernel_sources": [],
+  "is_private": false,
+  "title": "Titanic competition predictions",
+  "enable_internet": false,
+  "dataset_sources": [],
+  "id": "mklajnerok/titanic-competition-predictions",
+  "enable_gpu": false,
+  "competition_sources": [
+    "titanic"
+  ],
+  "kernel_type": "notebook",
+  "code_file": "titanic-competition-predictions.ipynb",
+  "keywords": []
+}

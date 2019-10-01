@@ -1,0 +1,17 @@
+{
+  "id_no": 1636467,
+  "is_private": false,
+  "title": "Basic EDA with Titanic dataset",
+  "competition_sources": [
+    "titanic"
+  ],
+  "kernel_type": "notebook",
+  "code_file": "basic-eda-with-titanic-dataset.ipynb",
+  "enable_internet": false,
+  "keywords": [],
+  "kernel_sources": [],
+  "language": "python",
+  "id": "stieranka/basic-eda-with-titanic-dataset",
+  "enable_gpu": false,
+  "dataset_sources": []
+}

@@ -1,0 +1,17 @@
+{
+  "id": "way2edata/exercise-notebook",
+  "enable_internet": false,
+  "language": "python",
+  "dataset_sources": [],
+  "code_file": "exercise-notebook.ipynb",
+  "kernel_type": "notebook",
+  "enable_gpu": false,
+  "competition_sources": [
+    "titanic"
+  ],
+  "id_no": 94241,
+  "title": "Exercise_notebook",
+  "keywords": [],
+  "kernel_sources": [],
+  "is_private": false
+}

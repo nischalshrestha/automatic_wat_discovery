@@ -1,0 +1,17 @@
+{
+  "dataset_sources": [],
+  "kernel_sources": [],
+  "enable_gpu": false,
+  "is_private": false,
+  "language": "python",
+  "keywords": [],
+  "competition_sources": [
+    "titanic"
+  ],
+  "id_no": 1311485,
+  "enable_internet": false,
+  "kernel_type": "notebook",
+  "title": "Titanic_Tutorial: Machine Learning from Disaster",
+  "code_file": "titanic-tutorial-machine-learning-from-disaster.ipynb",
+  "id": "rgunny/titanic-tutorial-machine-learning-from-disaster"
+}

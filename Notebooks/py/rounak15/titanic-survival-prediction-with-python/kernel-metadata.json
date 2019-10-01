@@ -1,0 +1,17 @@
+{
+  "id": "rounak15/titanic-survival-prediction-with-python",
+  "dataset_sources": [],
+  "enable_gpu": false,
+  "competition_sources": [
+    "titanic"
+  ],
+  "title": "Titanic Survival Prediction with Python",
+  "language": "python",
+  "enable_internet": false,
+  "keywords": [],
+  "kernel_type": "notebook",
+  "is_private": false,
+  "id_no": 1021680,
+  "kernel_sources": [],
+  "code_file": "titanic-survival-prediction-with-python.ipynb"
+}

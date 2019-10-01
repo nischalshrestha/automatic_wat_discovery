@@ -1,0 +1,17 @@
+{
+  "is_private": false,
+  "language": "python",
+  "enable_gpu": false,
+  "dataset_sources": [],
+  "kernel_sources": [],
+  "id": "manojsakhala/titanic-dataset-solution",
+  "id_no": 346130,
+  "competition_sources": [
+    "titanic"
+  ],
+  "enable_internet": false,
+  "title": "Titanic DataSet - Solution",
+  "code_file": "titanic-dataset-solution.ipynb",
+  "keywords": [],
+  "kernel_type": "notebook"
+}

@@ -1,0 +1,19 @@
+{
+  "code_file": "my-first-submission-titanic-using-python.ipynb",
+  "title": "My First submission - Titanic using python",
+  "id_no": 325486,
+  "enable_internet": false,
+  "id": "vijaygiri/my-first-submission-titanic-using-python",
+  "kernel_type": "notebook",
+  "competition_sources": [
+    "titanic"
+  ],
+  "enable_gpu": false,
+  "kernel_sources": [],
+  "dataset_sources": [
+    "abhinavralhan/titanic"
+  ],
+  "language": "python",
+  "keywords": [],
+  "is_private": false
+}

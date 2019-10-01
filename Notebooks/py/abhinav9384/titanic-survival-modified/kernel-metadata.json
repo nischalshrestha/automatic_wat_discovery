@@ -1,0 +1,20 @@
+{
+  "language": "python",
+  "kernel_type": "notebook",
+  "keywords": [
+    "beginner",
+    "classification"
+  ],
+  "id": "abhinav9384/titanic-survival-modified",
+  "is_private": false,
+  "enable_gpu": false,
+  "title": "Titanic Survival Modified",
+  "dataset_sources": [],
+  "enable_internet": false,
+  "id_no": 1454118,
+  "kernel_sources": [],
+  "competition_sources": [
+    "titanic"
+  ],
+  "code_file": "titanic-survival-modified.ipynb"
+}

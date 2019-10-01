@@ -1,0 +1,22 @@
+{
+  "kernel_type": "notebook",
+  "id_no": 1912771,
+  "competition_sources": [
+    "titanic"
+  ],
+  "enable_internet": false,
+  "language": "python",
+  "title": "Titanic Dataset analysis ",
+  "enable_gpu": false,
+  "is_private": false,
+  "kernel_sources": [],
+  "id": "rickgeng97/titanic-dataset-analysis",
+  "keywords": [
+    "data cleaning",
+    "data visualization",
+    "random forest",
+    "decision tree"
+  ],
+  "code_file": "titanic-dataset-analysis.ipynb",
+  "dataset_sources": []
+}

@@ -1,0 +1,17 @@
+{
+  "id_no": 301830,
+  "enable_gpu": false,
+  "kernel_sources": [],
+  "competition_sources": [
+    "titanic"
+  ],
+  "title": "Titanic ML",
+  "kernel_type": "notebook",
+  "language": "python",
+  "is_private": false,
+  "enable_internet": false,
+  "id": "yanyinggu/titanic-ml",
+  "code_file": "titanic-ml.ipynb",
+  "keywords": [],
+  "dataset_sources": []
+}

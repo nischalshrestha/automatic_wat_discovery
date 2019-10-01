@@ -1,0 +1,102 @@
+{
+  "cells": [
+    {
+      "cell_type": "markdown",
+      "metadata": {
+        "_cell_guid": "733248f2-fd5e-54cb-502c-67e40f72b98c"
+      },
+      "source": [
+        "just for trying of kaggle"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "_cell_guid": "de7f7fca-bf25-5fc2-9150-8d96bfe87138"
+      },
+      "outputs": [],
+      "source": [
+        "# This R environment comes with all of CRAN preinstalled, as well as many other helpful packages\n",
+        "# The environment is defined by the kaggle/rstats docker image: https://github.com/kaggle/docker-rstats\n",
+        "# For example, here's several helpful packages to load in \n",
+        "\n",
+        "library(ggplot2) # Data visualization\n",
+        "library(readr) # CSV file I/O, e.g. the read_csv function\n",
+        "\n",
+        "# Input data files are available in the \"../input/\" directory.\n",
+        "# For example, running this (by clicking run or pressing Shift+Enter) will list the files in the input directory\n",
+        "\n",
+        "system(\"ls ../input\")\n",
+        "\n",
+        "# Any results you write to the current directory are saved as output."
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "_cell_guid": "213b89a6-9745-772d-a67d-08e449e61492"
+      },
+      "outputs": [],
+      "source": [
+        "train<- read.csv(\"../input/train.csv\",stringsAsFactor=FALSE)\n",
+        "test<- read.csv(\"../input/test.csv\",stringsAsFactor=FALSE)\n",
+        "train$Sex[which(train$Sex==\"female\")]<-1\n",
+        "train$Sex[which(train$Sex==\"male\")]<-0\n",
+        "\n",
+        "for(i in c(\"Master.\",\"Miss.\",\"Mrs.\",\"Mr.\",\"Dr.\")){\n",
+        "train$Name[grep(i,train$Name,fixed=TRUE)]<-i}\n",
+        "\n",
+        "masterage<-mean(train$Age[which(train$Name==\"Master.\")],trim=.5,na.rm=TRUE)\n",
+        "missage<-mean(train$Age[which(train$Name==\"Miss.\")],trim=.5,na.rm=TRUE)\n",
+        "mrsage<-mean(train$Age[which(train$Name==\"Mrs.\")],trim=.5,na.rm=TRUE)\n",
+        "mrage<-mean(train$Age[which(train$Name==\"Mr.\")],trim=.5,na.rm=TRUE)\n",
+        "drage<-mean(train$Age[which(train$Name==\"Dr.\")],trim=.5,na.rm=TRUE)\n",
+        "\n",
+        "train$Age[is.na(train$Age)&train$Name==\"Master.\"]<-masterage\n",
+        "train$Age[is.na(train$Age)&train$Name==\"Miss.\"]<-missage\n",
+        "train$Age[is.na(train$Age)&train$Name==\"Mrs.\"]<-mrsage\n",
+        "train$Age[is.na(train$Age)&train$Name==\"Mr.\"]<-mrage\n",
+        "train$Age[is.na(train$Age)&train$Name==\"Dr.\"]<-drage\n",
+        "\n",
+        "train$Child<- 0\n",
+        "train[which(train$Age<14),c(\"Child\")]<-1\n",
+        "\n",
+        "train$Family<- NA\n",
+        "\n",
+        "for(i in 1:nrow(train)){\n",
+        "train$Family[i]<-train$SibSp[i]+train$Parch[i]+1\n",
+        "}\n",
+        "\n",
+        "train$Mother<- 0\n",
+        "train[which(train$Parch>0 & train$Age>18 & train$Name==\"Mrs.\"),c(\"Mother\")]<-1\n",
+        "\n",
+        "train$Cabin[which(!train$Cabin==\"\")]<-1\n",
+        "train$Cabin[which(train$Cabin==\"\")]<-0\n",
+        "\n",
+        "#\u5efa\u6a21\n",
+        "train.glm<- glm(Survived~Age+Child+Family+Sex*Pclass+Cabin,family=binomial,data=train)"
+      ]
+    }
+  ],
+  "metadata": {
+    "_change_revision": 0,
+    "_is_fork": false,
+    "kernelspec": {
+      "display_name": "R",
+      "language": "R",
+      "name": "ir"
+    },
+    "language_info": {
+      "codemirror_mode": "r",
+      "file_extension": ".r",
+      "mimetype": "text/x-r-source",
+      "name": "R",
+      "pygments_lexer": "r",
+      "version": "3.3.3"
+    }
+  },
+  "nbformat": 4,
+  "nbformat_minor": 0
+}

@@ -1,0 +1,17 @@
+{
+  "kernel_type": "notebook",
+  "code_file": "titanic.ipynb",
+  "id": "salamthabet/titanic",
+  "kernel_sources": [],
+  "competition_sources": [
+    "titanic"
+  ],
+  "is_private": false,
+  "enable_internet": false,
+  "language": "python",
+  "id_no": 1501720,
+  "dataset_sources": [],
+  "keywords": [],
+  "title": "Titanic",
+  "enable_gpu": false
+}

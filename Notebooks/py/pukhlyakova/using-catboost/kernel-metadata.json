@@ -1,0 +1,17 @@
+{
+  "language": "python",
+  "title": "Using CatBoost ",
+  "code_file": "using-catboost.ipynb",
+  "dataset_sources": [],
+  "is_private": false,
+  "kernel_type": "notebook",
+  "id_no": 315278,
+  "enable_gpu": false,
+  "id": "pukhlyakova/using-catboost",
+  "kernel_sources": [],
+  "keywords": [],
+  "enable_internet": false,
+  "competition_sources": [
+    "titanic"
+  ]
+}

@@ -1,0 +1,17 @@
+{
+  "id_no": 1551330,
+  "title": "EDA To Prediction (Titanic)",
+  "enable_gpu": false,
+  "language": "python",
+  "code_file": "eda-to-prediction-titanic.ipynb",
+  "enable_internet": false,
+  "is_private": false,
+  "kernel_type": "notebook",
+  "kernel_sources": [],
+  "id": "arunkumarramanan/eda-to-prediction-titanic",
+  "keywords": [],
+  "dataset_sources": [],
+  "competition_sources": [
+    "titanic"
+  ]
+}

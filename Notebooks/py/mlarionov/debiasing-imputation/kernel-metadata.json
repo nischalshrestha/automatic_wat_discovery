@@ -1,0 +1,17 @@
+{
+  "enable_internet": false,
+  "kernel_sources": [],
+  "language": "python",
+  "is_private": false,
+  "enable_gpu": false,
+  "kernel_type": "notebook",
+  "title": "Debiasing Imputation",
+  "id_no": 1917379,
+  "code_file": "debiasing-imputation.ipynb",
+  "dataset_sources": [],
+  "competition_sources": [
+    "titanic"
+  ],
+  "id": "mlarionov/debiasing-imputation",
+  "keywords": []
+}

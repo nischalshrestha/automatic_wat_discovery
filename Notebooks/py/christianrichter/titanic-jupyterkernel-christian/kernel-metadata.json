@@ -1,0 +1,17 @@
+{
+  "kernel_type": "notebook",
+  "competition_sources": [
+    "titanic"
+  ],
+  "keywords": [],
+  "id": "christianrichter/titanic-jupyterkernel-christian",
+  "enable_gpu": false,
+  "id_no": 1268736,
+  "code_file": "titanic-jupyterkernel-christian.ipynb",
+  "kernel_sources": [],
+  "is_private": false,
+  "enable_internet": false,
+  "language": "python",
+  "title": "Titanic_JupyterKernel_Christian",
+  "dataset_sources": []
+}

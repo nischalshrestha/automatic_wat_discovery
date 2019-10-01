@@ -1,0 +1,17 @@
+{
+  "title": "TOGETHER...this is how they survived ",
+  "competition_sources": [
+    "titanic"
+  ],
+  "is_private": false,
+  "id": "jayeshrane2107/together-this-is-how-they-survived",
+  "kernel_sources": [],
+  "dataset_sources": [],
+  "kernel_type": "notebook",
+  "enable_gpu": false,
+  "keywords": [],
+  "code_file": "together-this-is-how-they-survived.ipynb",
+  "id_no": 308836,
+  "language": "python",
+  "enable_internet": false
+}

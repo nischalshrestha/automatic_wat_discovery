@@ -1,0 +1,22 @@
+{
+  "code_file": "titanic-survival-with-random-forest-classification.ipynb",
+  "is_private": false,
+  "id_no": 1364594,
+  "dataset_sources": [],
+  "enable_internet": false,
+  "language": "python",
+  "title": "Titanic Survival with Random Forest Classification",
+  "id": "michaelmorr/titanic-survival-with-random-forest-classification",
+  "kernel_type": "notebook",
+  "enable_gpu": false,
+  "kernel_sources": [],
+  "competition_sources": [
+    "titanic"
+  ],
+  "keywords": [
+    "tutorial",
+    "beginner",
+    "classification",
+    "random forest"
+  ]
+}

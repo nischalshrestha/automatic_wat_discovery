@@ -1,0 +1,76 @@
+{
+  "metadata": {
+    "kernelspec": {
+      "display_name": "R",
+      "language": "R",
+      "name": "ir"
+    },
+    "language_info": {
+      "codemirror_mode": "r",
+      "file_extension": ".r",
+      "mimetype": "text/x-r-source",
+      "name": "R",
+      "pygments_lexer": "r",
+      "version": "3.3.2"
+    }
+  },
+  "nbformat": 4,
+  "nbformat_minor": 0,
+  "cells": [
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "collapsed": true,
+        "_cell_guid": "de6d5943-66cd-44fd-b132-c7e1716db91a"
+      },
+      "outputs": [],
+      "source": "options(jupyter.plot_mimetypes = \"image/png\")",
+      "execution_state": "idle"
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "collapsed": false,
+        "_cell_guid": "bc91ff23-41da-417a-ac96-a707c4b1125a"
+      },
+      "outputs": [],
+      "source": "# This R script will run on our backend. You can write arbitrary code here!\n\n#loading packages\n#library(DMwR) #Kaggle does not support DMwR?)\nlibrary(ggplot2)\nlibrary(VIM)\nlibrary(e1071)\n\n#Load input data, treat empty data cells as NAs\ntrain.raw <- read.csv(\"../input/train.csv\", na.strings = \"\")\ntest.raw  <- read.csv(\"../input/test.csv\", na.strings = \"\")",
+      "execution_state": "idle"
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "collapsed": false,
+        "_cell_guid": "a767945e-a06b-4414-8b38-f0d509a54b20"
+      },
+      "outputs": [],
+      "source": "#Basic stats and visualization to gain intuition\nggplot(train.raw, aes(x = Pclass, y = Sex, color=factor(Survived))) + geom_jitter()\nggplot(train.raw, aes(x = Age, y = Pclass, color=factor(Survived))) + geom_jitter()  ",
+      "execution_state": "idle"
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "collapsed": false,
+        "_cell_guid": "b929e5ee-f2d7-42c5-85d5-5111c9dfd6a9"
+      },
+      "outputs": [],
+      "source": "#some intuitions: \n  # - Females tend to have a better survival rate\n  # - Higher class passengers have a better survival rate\n  # - Older passengers >60 years of age have a lower survival rate\n\n#Check for missing values\nsapply(train.raw, function(x) {any(is.na(x))})\nsapply(test.raw, function(x) {any(is.na(x))})\n#in the training data, only the \"Age\" column has NAs, but in the test data, both Age and Fare has NAs\n\n#Quick data-filling with KNN (Kaggle does not support DMwR?)\n#train.clean = knnImputation(train.raw, k = 5, scale = T, meth = \"weightAvg\")\n#test.clean = knnImputation(test.raw, k = 5, scale = T, meth = \"weightAvg\")\ntrain.clean = kNN(train.raw, k = 5, dist_var = names(train.raw[, -2]))\ntest.clean = kNN(test.raw, k = 5, dist_var = names(test.raw[, -2]))",
+      "execution_state": "idle"
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "collapsed": false,
+        "_cell_guid": "091b102a-b366-41ca-8fc3-b38104d73772"
+      },
+      "outputs": [],
+      "source": "#Create 3 SVM models and perform cross-validations\nformula = Survived ~ Sex + Pclass + Age\n\nrows = nrow(train.clean)\n#arbitrary 10 folds for cross-validation\nk = 10 \nset.seed(999)\nscore = 0\n\n#training svm\nfor (i in 1:k) {\n    valIndices = sample(1:rows, rows/k)\n    model.svm = svm(formula, data = train.clean[-valIndices, ], kernel=\"radial\")\n    val.pred = predict(model.svm, train.clean[valIndices, ])\n    val.pred = ifelse(val.pred > 0.5, 1, 0)\n    result = table(predict = val.pred, actual = train.clean$Survived[valIndices])\n    newScore = (result[1,1] + result[2,2]) / sum(result)\n    print(paste0(\"cross validation set \", i, \" score = \", newScore))\n    score = score + newScore\n}\nscore = score / k\nprint(paste(\"Final Score = \", score))",
+      "execution_state": "idle"
+    }
+  ]
+}

@@ -1,0 +1,17 @@
+{
+  "title": "Crash introduction to ML with Titanic",
+  "id": "kanybek/crash-introduction-to-ml-with-titanic",
+  "enable_internet": false,
+  "code_file": "crash-introduction-to-ml-with-titanic.ipynb",
+  "dataset_sources": [],
+  "kernel_type": "notebook",
+  "id_no": 1978642,
+  "keywords": [],
+  "enable_gpu": false,
+  "kernel_sources": [],
+  "competition_sources": [
+    "titanic"
+  ],
+  "language": "python",
+  "is_private": false
+}

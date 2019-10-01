@@ -1,0 +1,17 @@
+{
+  "keywords": [],
+  "id_no": 224089,
+  "enable_internet": false,
+  "language": "python",
+  "is_private": false,
+  "kernel_sources": [],
+  "enable_gpu": false,
+  "code_file": "scripting-a-model-from-knime-workflow-to-python.ipynb",
+  "dataset_sources": [],
+  "title": "Scripting a Model: From KNIME workflow to Python",
+  "kernel_type": "notebook",
+  "competition_sources": [
+    "titanic"
+  ],
+  "id": "thiviyan/scripting-a-model-from-knime-workflow-to-python"
+}

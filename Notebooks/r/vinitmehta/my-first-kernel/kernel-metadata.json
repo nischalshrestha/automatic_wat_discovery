@@ -1,0 +1,17 @@
+{
+  "code_file": "my-first-kernel.irnb",
+  "title": "My first Kernel",
+  "competition_sources": [
+    "titanic"
+  ],
+  "enable_gpu": false,
+  "id_no": 208244,
+  "dataset_sources": [],
+  "language": "r",
+  "kernel_sources": [],
+  "keywords": [],
+  "kernel_type": "notebook",
+  "id": "vinitmehta/my-first-kernel",
+  "enable_internet": false,
+  "is_private": false
+}

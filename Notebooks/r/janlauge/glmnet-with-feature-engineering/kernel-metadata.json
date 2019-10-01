@@ -1,0 +1,17 @@
+{
+  "language": "r",
+  "dataset_sources": [],
+  "is_private": false,
+  "enable_internet": false,
+  "enable_gpu": false,
+  "keywords": [],
+  "title": "glmnet with feature engineering",
+  "id": "janlauge/glmnet-with-feature-engineering",
+  "competition_sources": [
+    "titanic"
+  ],
+  "kernel_type": "notebook",
+  "id_no": 51735,
+  "code_file": "glmnet-with-feature-engineering.irnb",
+  "kernel_sources": []
+}

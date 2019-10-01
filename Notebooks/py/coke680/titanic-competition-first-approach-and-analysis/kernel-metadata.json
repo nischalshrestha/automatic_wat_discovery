@@ -1,0 +1,22 @@
+{
+  "enable_internet": false,
+  "is_private": false,
+  "id_no": 362991,
+  "keywords": [
+    "data visualization",
+    "classification",
+    "random forest",
+    "xgboost"
+  ],
+  "title": "Titanic competition: First approach and analysis",
+  "dataset_sources": [],
+  "kernel_type": "notebook",
+  "competition_sources": [
+    "titanic"
+  ],
+  "language": "python",
+  "code_file": "titanic-competition-first-approach-and-analysis.ipynb",
+  "kernel_sources": [],
+  "enable_gpu": false,
+  "id": "coke680/titanic-competition-first-approach-and-analysis"
+}

@@ -1,0 +1,17 @@
+{
+  "title": "kernele38d5c1513",
+  "enable_internet": false,
+  "is_private": false,
+  "enable_gpu": false,
+  "competition_sources": [
+    "titanic"
+  ],
+  "kernel_type": "notebook",
+  "language": "python",
+  "id": "priyanksharma/kernele38d5c1513",
+  "keywords": [],
+  "id_no": 1391419,
+  "dataset_sources": [],
+  "kernel_sources": [],
+  "code_file": "kernele38d5c1513.ipynb"
+}

@@ -1,0 +1,17 @@
+{
+  "enable_gpu": false,
+  "kernel_type": "notebook",
+  "id": "goonerrish/notebook12e237b5d5",
+  "is_private": false,
+  "kernel_sources": [],
+  "competition_sources": [
+    "titanic"
+  ],
+  "code_file": "notebook12e237b5d5.ipynb",
+  "id_no": 205327,
+  "language": "python",
+  "enable_internet": false,
+  "title": "Notebook12e237b5d5",
+  "keywords": [],
+  "dataset_sources": []
+}

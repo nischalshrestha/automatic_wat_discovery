@@ -1,0 +1,112 @@
+{
+  "cells": [
+    {
+      "cell_type": "markdown",
+      "metadata": {
+        "_cell_guid": "450e1039-1959-185e-3a32-af33724b2ad5"
+      },
+      "source": ""
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "_cell_guid": "b9277961-50b9-4f5b-3cf0-1fa2c6561e2a"
+      },
+      "outputs": [],
+      "source": [
+        "# This R environment comes with all of CRAN preinstalled, as well as many other helpful packages\n",
+        "# The environment is defined by the kaggle/rstats docker image: https://github.com/kaggle/docker-rstats\n",
+        "# For example, here's several helpful packages to load in \n",
+        "\n",
+        "library(ggplot2) # Data visualization\n",
+        "library(readr) # CSV file I/O, e.g. the read_csv function\n",
+        "library(caret) # machine learning and parameter tuning\n",
+        "library(randomForest) # Random forrest!\n",
+        "library(fields)\n",
+        "# Input data files are available in the \"../input/\" directory.\n",
+        "# For example, running this (by clicking run or pressing Shift+Enter) will list the files in the input directory\n",
+        "\n",
+        "system(\"ls ../input\")\n",
+        "\n",
+        "# Any results you write to the current directory are saved as output.\n",
+        "# The train and test data is stored in the ../input directory\n",
+        "train <- read.csv(\"../input/train.csv\")\n",
+        "test  <- read.csv(\"../input/test.csv\")\n",
+        "\n",
+        "# We can inspect the train data. The results of this are printed in the log tab below\n",
+        "summary(train)\n",
+        "head(train)"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "_cell_guid": "6d020d90-5bfd-0350-37f0-235586373f76"
+      },
+      "outputs": [],
+      "source": [
+        "bplot.xy(train$Survived, train$Age)\n",
+        "bplot.xy(train$Survived, train$Fare)\n"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "_cell_guid": "0634024e-7fd0-5573-9ae5-9ee0ada745f4"
+      },
+      "outputs": [],
+      "source": [
+        "## Let's train a model\n",
+        "# Converting the Survived to Factor\n",
+        "train$Survived <- factor(train$Survived)\n",
+        "# SEED\n",
+        "set.seed(pi)\n",
+        "# Training the model\n",
+        "train.model <- train(Survived ~ Pclass + Sex + SibSp + Embarked + Parch + Fare,\n",
+        "                    data = train, \n",
+        "                    method = \"rf\",\n",
+        "                    trControl = trainControl(method = \"cv\", number = 5)\n",
+        "                    )\n",
+        "# vealuating the train Model\n",
+        "train.model"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "_cell_guid": "2b95dd67-6c6b-4066-3211-70c0e35cc082"
+      },
+      "outputs": [],
+      "source": [
+        "## Let's Predict now!\n",
+        "\n",
+        "test_prediction <- predict(train.model, data=test)\n",
+        "my_soluction_aliechoes <- data.frame(test_prediction)\n",
+        "write.csv(my_soluction_aliechoes, file = \"my_soluction_aliechoes.csv\", row.names = FALSE)\n"
+      ]
+    }
+  ],
+  "metadata": {
+    "_change_revision": 0,
+    "_is_fork": false,
+    "kernelspec": {
+      "display_name": "R",
+      "language": "R",
+      "name": "ir"
+    },
+    "language_info": {
+      "codemirror_mode": "r",
+      "file_extension": ".r",
+      "mimetype": "text/x-r-source",
+      "name": "R",
+      "pygments_lexer": "r",
+      "version": "3.3.2"
+    }
+  },
+  "nbformat": 4,
+  "nbformat_minor": 0
+}

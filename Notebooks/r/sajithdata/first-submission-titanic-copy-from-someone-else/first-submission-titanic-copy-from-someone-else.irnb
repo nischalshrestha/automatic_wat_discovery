@@ -1,0 +1,115 @@
+{
+  "cells": [
+    {
+      "cell_type": "markdown",
+      "metadata": {
+        "_cell_guid": "5a9d740d-f0c8-c657-16f9-0f0a17696241"
+      },
+      "source": [
+        "trying out r titanic package using code from someone else."
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "_cell_guid": "83d0e52e-42a1-3561-2965-fafab6eab215"
+      },
+      "outputs": [],
+      "source": [
+        "# This R environment comes with all of CRAN preinstalled, as well as many other helpful packages\n",
+        "# The environment is defined by the kaggle/rstats docker image: https://github.com/kaggle/docker-rstats\n",
+        "# For example, here's several helpful packages to load in \n",
+        "\n",
+        "library(ggplot2) # Data visualization\n",
+        "library(readr) # CSV file I/O, e.g. the read_csv function\n",
+        "\n",
+        "# Input data files are available in the \"../input/\" directory.\n",
+        "# For example, running this (by clicking run or pressing Shift+Enter) will list the files in the input directory\n",
+        "\n",
+        "system(\"ls ../input\")\n",
+        "\n",
+        "# Any results you write to the current directory are saved as output.\n",
+        "\n",
+        "library('ggplot2') # visualization\n",
+        "library('ggthemes') # visualization\n",
+        "library('scales') # visualization\n",
+        "library('dplyr') # data manipulation\n",
+        "library('mice') # imputation\n",
+        "library('randomForest') # classification algorithm\n",
+        "\n",
+        "# The train and test data is stored in the ../input directory\n",
+        "train <- read.csv('../input/train.csv', stringsAsFactors = F)\n",
+        "test  <- read.csv('../input/test.csv', stringsAsFactors = F)\n",
+        "\n",
+        "full  <- bind_rows(train, test) # bind training & test data\n",
+        "\n",
+        "# check data\n",
+        "str(full)\n",
+        "\n",
+        "# Grab title from passenger names\n",
+        "full$Title <- gsub('(.*, )|(\\\\..*)', '', full$Name)\n",
+        "\n",
+        "# Show title counts by sex\n",
+        "table(full$Sex, full$Title)\n",
+        "# Titles with very low cell counts to be combined to \"rare\" level\n",
+        "rare_title <- c('Dona', 'Lady', 'the Countess','Capt', 'Col', 'Don', \n",
+        "                'Dr', 'Major', 'Rev', 'Sir', 'Jonkheer')\n",
+        "\n",
+        "# Also reassign mlle, ms, and mme accordingly\n",
+        "full$Title[full$Title == 'Mlle']        <- 'Miss' \n",
+        "full$Title[full$Title == 'Ms']          <- 'Miss'\n",
+        "full$Title[full$Title == 'Mme']         <- 'Mrs' \n",
+        "full$Title[full$Title %in% rare_title]  <- 'Rare Title'\n",
+        "\n",
+        "# Show title counts by sex again\n",
+        "table(full$Sex, full$Title)\n",
+        "# Finally, grab surname from passenger name\n",
+        "full$Surname <- sapply(full$Name,  \n",
+        "                      function(x) strsplit(x, split = '[,.]')[[1]][1])\n",
+        "                      \n",
+        "cat(paste('We have <b>', nlevels(factor(full$Surname)), '</b> unique surnames. I would be interested to infer ethnicity based on surname --- another time.'))                      \n",
+        "\n",
+        "# Create a family size variable including the passenger themselves\n",
+        "full$Fsize <- full$SibSp + full$Parch + 1\n",
+        "\n",
+        "# Create a family variable \n",
+        "full$Family <- paste(full$Surname, full$Fsize, sep='_')\n",
+        "\n",
+        "# Use ggplot2 to visualize the relationship between family size & survival\n",
+        "ggplot(full[1:891,], aes(x = Fsize, fill = factor(Survived))) +\n",
+        "  geom_bar(stat='count', position='dodge') +\n",
+        "  scale_x_continuous(breaks=c(1:11)) +\n",
+        "  labs(x = 'Family Size') +\n",
+        "  theme_few()\n",
+        "  \n",
+        "# Discretize family size\n",
+        "full$FsizeD[full$Fsize == 1] <- 'singleton'\n",
+        "full$FsizeD[full$Fsize < 5 & full$Fsize > 1] <- 'small'\n",
+        "full$FsizeD[full$Fsize > 4] <- 'large'\n",
+        "\n",
+        "# Show family size by survival using a mosaic plot\n",
+        "mosaicplot(table(full$FsizeD, full$Survived), main='Family Size by Survival', shade=TRUE)  "
+      ]
+    }
+  ],
+  "metadata": {
+    "_change_revision": 0,
+    "_is_fork": false,
+    "kernelspec": {
+      "display_name": "R",
+      "language": "R",
+      "name": "ir"
+    },
+    "language_info": {
+      "codemirror_mode": "r",
+      "file_extension": ".r",
+      "mimetype": "text/x-r-source",
+      "name": "R",
+      "pygments_lexer": "r",
+      "version": "3.3.3"
+    }
+  },
+  "nbformat": 4,
+  "nbformat_minor": 0
+}

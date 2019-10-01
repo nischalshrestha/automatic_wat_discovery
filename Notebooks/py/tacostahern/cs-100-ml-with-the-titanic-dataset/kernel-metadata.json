@@ -1,0 +1,17 @@
+{
+  "id_no": 1682608,
+  "kernel_type": "notebook",
+  "id": "tacostahern/cs-100-ml-with-the-titanic-dataset",
+  "language": "python",
+  "dataset_sources": [],
+  "competition_sources": [
+    "titanic"
+  ],
+  "code_file": "cs-100-ml-with-the-titanic-dataset.ipynb",
+  "enable_internet": false,
+  "keywords": [],
+  "title": "CS 100: ML with the Titanic Dataset",
+  "enable_gpu": false,
+  "is_private": false,
+  "kernel_sources": []
+}

@@ -1,0 +1,17 @@
+{
+  "code_file": "notebookd1fc7ee64c.irnb",
+  "keywords": [],
+  "id": "huynguyen88/notebookd1fc7ee64c",
+  "id_no": 208310,
+  "title": "Notebookd1fc7ee64c",
+  "language": "r",
+  "enable_gpu": false,
+  "dataset_sources": [],
+  "competition_sources": [
+    "titanic"
+  ],
+  "enable_internet": false,
+  "kernel_type": "notebook",
+  "kernel_sources": [],
+  "is_private": false
+}

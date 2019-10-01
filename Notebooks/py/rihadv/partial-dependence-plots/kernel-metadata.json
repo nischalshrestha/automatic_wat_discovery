@@ -1,0 +1,19 @@
+{
+  "kernel_sources": [],
+  "id": "rihadv/partial-dependence-plots",
+  "keywords": [],
+  "competition_sources": [
+    "titanic"
+  ],
+  "dataset_sources": [
+    "dansbecker/melbourne-housing-snapshot"
+  ],
+  "kernel_type": "notebook",
+  "language": "python",
+  "enable_gpu": true,
+  "is_private": false,
+  "title": "Partial Dependence Plots",
+  "enable_internet": false,
+  "code_file": "partial-dependence-plots.ipynb",
+  "id_no": 2165112
+}

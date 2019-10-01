@@ -1,0 +1,17 @@
+{
+  "kernel_type": "notebook",
+  "competition_sources": [
+    "titanic"
+  ],
+  "title": "Notebook2a16e2b71d",
+  "code_file": "notebook2a16e2b71d.ipynb",
+  "enable_gpu": false,
+  "is_private": false,
+  "enable_internet": false,
+  "id_no": 225105,
+  "language": "python",
+  "id": "pavel79/notebook2a16e2b71d",
+  "dataset_sources": [],
+  "keywords": [],
+  "kernel_sources": []
+}

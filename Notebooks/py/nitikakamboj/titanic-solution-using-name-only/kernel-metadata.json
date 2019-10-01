@@ -1,0 +1,17 @@
+{
+  "kernel_sources": [],
+  "title": "titanic solution using name only",
+  "kernel_type": "notebook",
+  "dataset_sources": [],
+  "id": "nitikakamboj/titanic-solution-using-name-only",
+  "language": "python",
+  "enable_internet": false,
+  "id_no": 1272060,
+  "code_file": "titanic-solution-using-name-only.ipynb",
+  "enable_gpu": false,
+  "keywords": [],
+  "competition_sources": [
+    "titanic"
+  ],
+  "is_private": false
+}

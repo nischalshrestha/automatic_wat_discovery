@@ -1,0 +1,17 @@
+{
+  "id_no": 252262,
+  "kernel_sources": [],
+  "code_file": "start-for-basic-datascience.ipynb",
+  "dataset_sources": [],
+  "kernel_type": "notebook",
+  "competition_sources": [
+    "titanic"
+  ],
+  "id": "gosmaster/start-for-basic-datascience",
+  "enable_gpu": false,
+  "title": "start for basic datascience",
+  "keywords": [],
+  "is_private": false,
+  "enable_internet": false,
+  "language": "python"
+}

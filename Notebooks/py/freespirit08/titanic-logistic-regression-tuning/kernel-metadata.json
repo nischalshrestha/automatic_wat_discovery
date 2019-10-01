@@ -1,0 +1,23 @@
+{
+  "title": "Titanic - Logistic Regression Tuning",
+  "competition_sources": [
+    "titanic"
+  ],
+  "kernel_type": "notebook",
+  "kernel_sources": [],
+  "id_no": 1330327,
+  "id": "freespirit08/titanic-logistic-regression-tuning",
+  "is_private": false,
+  "enable_gpu": false,
+  "language": "python",
+  "dataset_sources": [],
+  "code_file": "titanic-logistic-regression-tuning.ipynb",
+  "keywords": [
+    "beginner",
+    "data visualization",
+    "classification",
+    "feature engineering",
+    "logistic regression"
+  ],
+  "enable_internet": false
+}

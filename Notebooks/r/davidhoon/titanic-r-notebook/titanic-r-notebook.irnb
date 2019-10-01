@@ -1,0 +1,188 @@
+{
+  "cells": [
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "_cell_guid": "72a1969b-6953-cab6-0711-0f3471e61eb7"
+      },
+      "outputs": [],
+      "source": [
+        "# This R environment comes with all of CRAN preinstalled, as well as many other helpful packages\n",
+        "# The environment is defined by the kaggle/rstats docker image: https://github.com/kaggle/docker-rstats\n",
+        "# For example, here's several helpful packages to load in \n",
+        "\n",
+        "library(ggplot2) # Data visualization\n",
+        "library(readr) # CSV file I/O, e.g. the read_csv function\n",
+        "\n",
+        "# Input data files are available in the \"../input/\" directory.\n",
+        "# For example, running this (by clicking run or pressing Shift+Enter) will list the files in the input directory\n",
+        "\n",
+        "system(\"ls ../input\")\n",
+        "\n",
+        "# Any results you write to the current directory are saved as output."
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "_cell_guid": "a98f878a-0663-24a5-6aa7-c310a8e2456c"
+      },
+      "outputs": [],
+      "source": [
+        "data <- read.csv(\"../input/train.csv\", sep=\",\")\n",
+        "summary(data)\n",
+        "ggplot(data) + geom_bar(aes(x=Survived))"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "_cell_guid": "b74ce58e-ecfc-86f3-59e6-97b1839cc201"
+      },
+      "outputs": [],
+      "source": [
+        "head(data)"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "_cell_guid": "1180672e-fd0b-84d6-e80b-c7028b38ad7c"
+      },
+      "outputs": [],
+      "source": [
+        "summary(data$Age)\n",
+        "ggplot(data) + geom_density(aes(x=Age))\n",
+        "data <- data[!is.na(data$Age), ]"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "_cell_guid": "b65c684a-1c88-19c6-0286-66cbbb883241"
+      },
+      "outputs": [],
+      "source": [
+        "excludedVar <- c(\"PassengerId\", \"Name\", \"Ticket\", \"Cabin\", \"Embarked\")\n",
+        "includedVar <- setdiff(names(data), excludedVar)\n",
+        "respondVar <- c(\"Survived\")\n",
+        "\n",
+        "trainingData <- data[, includedVar]\n",
+        "predictorVar <- setdiff(includedVar, respondVar)"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "_cell_guid": "5b461bb9-af41-5b89-6823-62b630f1147f"
+      },
+      "outputs": [],
+      "source": [
+        "summary(trainingData[, respondVar])\n",
+        "summary(trainingData[, predictorVar])"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "_cell_guid": "c447bd2b-d821-56ef-5d22-a3c86034f3da"
+      },
+      "outputs": [],
+      "source": [
+        "str(trainingData)"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "_cell_guid": "d285fc4c-2045-9450-d586-f11db6fff550"
+      },
+      "outputs": [],
+      "source": [
+        "library(C50)\n",
+        "model <- C5.0(y = as.factor(trainingData[, respondVar]), x = as.matrix(trainingData[, predictorVar]))\n",
+        "predictions <- predict(model, as.matrix(trainingData[, predictorVar]), type=\"class\")"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "_cell_guid": "c7427c61-ac74-7851-c446-ed75665f5f56"
+      },
+      "outputs": [],
+      "source": [
+        "summary(predictions)"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "_cell_guid": "e1cbf34c-ddf2-5f93-8f63-774c7d8bd3a3"
+      },
+      "outputs": [],
+      "source": [
+        "library(caret)\n",
+        "result <- confusionMatrix(predictions, trainingData[, respondVar], positive=\"1\")\n",
+        "result"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "_cell_guid": "f3158d45-c4ab-d1de-cec8-ae47b7ca3044"
+      },
+      "outputs": [],
+      "source": [
+        "testData <- read.csv(\"../input/test.csv\")\n",
+        "testData <- testData[, predictorVar]\n",
+        "summary(testData)"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "_cell_guid": "20b271ec-f78a-8890-0c08-6d9b1a2b688d"
+      },
+      "outputs": [],
+      "source": [
+        "testPredictions <- predict(model, as.matrix(testData[, predictorVar]), type=\"class\")\n",
+        "summary(testPredictions)\n",
+        "str(testPredictions)\n",
+        "length(testPredictions)\n",
+        "testPredictions\n",
+        "as.matrix(testData[1:35, predictorVar])"
+      ]
+    }
+  ],
+  "metadata": {
+    "_change_revision": 0,
+    "_is_fork": false,
+    "kernelspec": {
+      "display_name": "R",
+      "language": "R",
+      "name": "ir"
+    },
+    "language_info": {
+      "codemirror_mode": "r",
+      "file_extension": ".r",
+      "mimetype": "text/x-r-source",
+      "name": "R",
+      "pygments_lexer": "r",
+      "version": "3.3.3"
+    }
+  },
+  "nbformat": 4,
+  "nbformat_minor": 0
+}

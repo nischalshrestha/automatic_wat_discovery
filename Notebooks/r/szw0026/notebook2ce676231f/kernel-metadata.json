@@ -1,0 +1,17 @@
+{
+  "kernel_type": "notebook",
+  "dataset_sources": [],
+  "is_private": false,
+  "title": "Notebookf622c72b88",
+  "id": "szw0026/notebook2ce676231f",
+  "competition_sources": [
+    "titanic"
+  ],
+  "kernel_sources": [],
+  "enable_internet": false,
+  "keywords": [],
+  "enable_gpu": false,
+  "id_no": 126107,
+  "language": "r",
+  "code_file": "notebook2ce676231f.irnb"
+}

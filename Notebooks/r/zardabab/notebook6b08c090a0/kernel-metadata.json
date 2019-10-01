@@ -1,0 +1,17 @@
+{
+  "id_no": 208135,
+  "code_file": "notebook6b08c090a0.ipynb",
+  "enable_gpu": false,
+  "keywords": [],
+  "dataset_sources": [],
+  "language": "python",
+  "title": "Notebook6b08c090a0",
+  "kernel_type": "notebook",
+  "is_private": false,
+  "kernel_sources": [],
+  "id": "zardabab/notebook6b08c090a0",
+  "competition_sources": [
+    "titanic"
+  ],
+  "enable_internet": false
+}

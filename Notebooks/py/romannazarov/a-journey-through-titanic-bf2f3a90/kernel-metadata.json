@@ -1,0 +1,17 @@
+{
+  "id": "romannazarov/a-journey-through-titanic-bf2f3a90",
+  "id_no": 116839,
+  "title": "A Journey through Titanic bf2f3a90",
+  "code_file": "a-journey-through-titanic-bf2f3a90.ipynb",
+  "language": "python",
+  "kernel_type": "notebook",
+  "is_private": false,
+  "enable_gpu": false,
+  "enable_internet": false,
+  "keywords": [],
+  "dataset_sources": [],
+  "kernel_sources": [],
+  "competition_sources": [
+    "titanic"
+  ]
+}

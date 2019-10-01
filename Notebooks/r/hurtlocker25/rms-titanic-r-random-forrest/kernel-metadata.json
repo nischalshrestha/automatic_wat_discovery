@@ -1,0 +1,17 @@
+{
+  "language": "r",
+  "code_file": "rms-titanic-r-random-forrest.irnb",
+  "id_no": 305155,
+  "is_private": false,
+  "keywords": [],
+  "id": "hurtlocker25/rms-titanic-r-random-forrest",
+  "enable_internet": false,
+  "kernel_sources": [],
+  "title": "RMS Titanic - R/random forrest",
+  "kernel_type": "notebook",
+  "competition_sources": [
+    "titanic"
+  ],
+  "enable_gpu": false,
+  "dataset_sources": []
+}

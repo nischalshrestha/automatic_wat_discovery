@@ -1,0 +1,21 @@
+{
+  "competition_sources": [
+    "titanic"
+  ],
+  "id": "daniel83fr/titanic-how-to-start-a-beginners-path",
+  "dataset_sources": [],
+  "id_no": 889688,
+  "kernel_type": "notebook",
+  "keywords": [
+    "tutorial",
+    "beginner",
+    "data cleaning"
+  ],
+  "title": "Titanic - How to start (A beginners path)",
+  "code_file": "titanic-how-to-start-a-beginners-path.ipynb",
+  "kernel_sources": [],
+  "enable_gpu": false,
+  "is_private": false,
+  "language": "python",
+  "enable_internet": false
+}

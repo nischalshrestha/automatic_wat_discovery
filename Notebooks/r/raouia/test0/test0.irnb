@@ -1,0 +1,77 @@
+{
+  "cells": [
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "_cell_guid": "c4ee1e65-6c49-aec0-2100-5dc2626b3773"
+      },
+      "outputs": [],
+      "source": [
+        "# This R environment comes with all of CRAN preinstalled, as well as many other helpful packages\n",
+        "# The environment is defined by the kaggle/rstats docker image: https://github.com/kaggle/docker-rstats\n",
+        "# For example, here's several helpful packages to load in \n",
+        "\n",
+        "library(ggplot2) # Data visualization\n",
+        "library(readr) # CSV file I/O, e.g. the read_csv function\n",
+        "\n",
+        "# Input data files are available in the \"../input/\" directory.\n",
+        "# For example, running this (by clicking run or pressing Shift+Enter) will list the files in the input directory\n",
+        "\n",
+        "system(\"ls ../input\")\n",
+        "\n",
+        "# Any results you write to the current directory are saved as output."
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "_cell_guid": "88f6b7eb-84b0-03a8-a184-cc9225995927"
+      },
+      "outputs": [],
+      "source": [
+        "str(train)\n",
+        "\n",
+        "train <- read.csv(\"train.csv\", stringsAsFactors=FALSE)\n",
+        "\n",
+        "table(train$Survived)\n",
+        "\n",
+        "prop.table(table(train$Survived))\n",
+        "\n",
+        "test$Survived <- rep(0, 418)\n",
+        "\n",
+        "submit <- data.frame(PassengerId = test$PassengerId, Survived = test$Survived)\n",
+        "write.csv(submit, file = \"theyallperish.csv\", row.names = FALSE)"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "_cell_guid": "db443942-b509-26f1-2aa5-0e23f75f831c"
+      },
+      "outputs": [],
+      "source": ""
+    }
+  ],
+  "metadata": {
+    "_change_revision": 0,
+    "_is_fork": false,
+    "kernelspec": {
+      "display_name": "R",
+      "language": "R",
+      "name": "ir"
+    },
+    "language_info": {
+      "codemirror_mode": "r",
+      "file_extension": ".r",
+      "mimetype": "text/x-r-source",
+      "name": "R",
+      "pygments_lexer": "r",
+      "version": "3.4.0"
+    }
+  },
+  "nbformat": 4,
+  "nbformat_minor": 0
+}

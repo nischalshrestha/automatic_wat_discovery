@@ -1,0 +1,17 @@
+{
+  "id_no": 205707,
+  "enable_internet": false,
+  "title": "Notebook31cf98d93b",
+  "id": "syedyunus/notebook31cf98d93b",
+  "kernel_sources": [],
+  "keywords": [],
+  "competition_sources": [
+    "titanic"
+  ],
+  "code_file": "notebook31cf98d93b.ipynb",
+  "language": "python",
+  "is_private": false,
+  "kernel_type": "notebook",
+  "dataset_sources": [],
+  "enable_gpu": false
+}

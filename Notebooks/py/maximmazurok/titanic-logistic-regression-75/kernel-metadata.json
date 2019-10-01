@@ -1,0 +1,17 @@
+{
+  "title": "Titanic: Logistic Regression ~75%",
+  "kernel_sources": [],
+  "is_private": false,
+  "id_no": 180926,
+  "code_file": "titanic-logistic-regression-75.ipynb",
+  "competition_sources": [
+    "titanic"
+  ],
+  "dataset_sources": [],
+  "enable_internet": false,
+  "language": "python",
+  "enable_gpu": false,
+  "id": "maximmazurok/titanic-logistic-regression-75",
+  "keywords": [],
+  "kernel_type": "notebook"
+}

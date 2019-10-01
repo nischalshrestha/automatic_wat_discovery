@@ -1,0 +1,17 @@
+{
+  "competition_sources": [
+    "titanic"
+  ],
+  "keywords": [],
+  "enable_internet": false,
+  "dataset_sources": [],
+  "language": "python",
+  "code_file": "classification-practice-of-survival.ipynb",
+  "is_private": false,
+  "kernel_type": "notebook",
+  "id": "justjun0321/classification-practice-of-survival",
+  "title": "Classification practice of survive",
+  "enable_gpu": false,
+  "id_no": 440678,
+  "kernel_sources": []
+}

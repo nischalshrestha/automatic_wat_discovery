@@ -1,0 +1,17 @@
+{
+  "competition_sources": [
+    "titanic"
+  ],
+  "kernel_sources": [],
+  "dataset_sources": [],
+  "id_no": 1011681,
+  "enable_internet": false,
+  "enable_gpu": false,
+  "language": "python",
+  "kernel_type": "notebook",
+  "title": "shinyafujita_03",
+  "keywords": [],
+  "is_private": false,
+  "id": "shinyafujita/shinyafujita-03",
+  "code_file": "shinyafujita-03.ipynb"
+}

@@ -1,0 +1,22 @@
+{
+  "competition_sources": [
+    "titanic"
+  ],
+  "id": "josh24990/titanic-detailed-walkthrough-for-a-top-5-score",
+  "kernel_sources": [],
+  "title": "Titanic: Detailed walkthrough for a top 5% score",
+  "is_private": false,
+  "kernel_type": "notebook",
+  "keywords": [
+    "beginner",
+    "classification",
+    "ensembling",
+    "feature engineering"
+  ],
+  "dataset_sources": [],
+  "code_file": "titanic-detailed-walkthrough-for-a-top-5-score.ipynb",
+  "id_no": 1034460,
+  "enable_internet": false,
+  "enable_gpu": false,
+  "language": "python"
+}

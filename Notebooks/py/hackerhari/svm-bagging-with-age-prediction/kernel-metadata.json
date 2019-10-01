@@ -1,0 +1,17 @@
+{
+  "competition_sources": [
+    "titanic"
+  ],
+  "is_private": false,
+  "enable_internet": false,
+  "id_no": 1877479,
+  "code_file": "svm-bagging-with-age-prediction.ipynb",
+  "keywords": [],
+  "id": "hackerhari/svm-bagging-with-age-prediction",
+  "kernel_sources": [],
+  "title": "svm bagging with age prediction",
+  "kernel_type": "notebook",
+  "dataset_sources": [],
+  "language": "python",
+  "enable_gpu": false
+}

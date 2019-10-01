@@ -1,0 +1,17 @@
+{
+  "competition_sources": [
+    "titanic"
+  ],
+  "title": "Titanic: Model Exploration",
+  "kernel_type": "notebook",
+  "keywords": [],
+  "is_private": false,
+  "id": "limjingyu/titanic-model-exploration",
+  "code_file": "titanic-model-exploration.ipynb",
+  "enable_gpu": false,
+  "id_no": 463423,
+  "enable_internet": false,
+  "language": "python",
+  "kernel_sources": [],
+  "dataset_sources": []
+}

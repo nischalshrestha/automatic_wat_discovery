@@ -1,0 +1,17 @@
+{
+  "kernel_sources": [],
+  "kernel_type": "notebook",
+  "title": "Notebook2803b2f122",
+  "is_private": false,
+  "id": "msgauthaman/notebook2803b2f122",
+  "id_no": 220063,
+  "keywords": [],
+  "dataset_sources": [],
+  "competition_sources": [
+    "titanic"
+  ],
+  "code_file": "notebook2803b2f122.irnb",
+  "enable_gpu": false,
+  "language": "r",
+  "enable_internet": false
+}

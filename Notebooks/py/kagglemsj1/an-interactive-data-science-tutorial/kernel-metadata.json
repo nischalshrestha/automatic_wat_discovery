@@ -1,0 +1,17 @@
+{
+  "competition_sources": [
+    "titanic"
+  ],
+  "keywords": [],
+  "kernel_sources": [],
+  "kernel_type": "notebook",
+  "is_private": false,
+  "id": "kagglemsj1/an-interactive-data-science-tutorial",
+  "enable_internet": false,
+  "id_no": 266885,
+  "language": "python",
+  "title": "An Interactive Data Science Tutorial",
+  "dataset_sources": [],
+  "enable_gpu": false,
+  "code_file": "an-interactive-data-science-tutorial.ipynb"
+}

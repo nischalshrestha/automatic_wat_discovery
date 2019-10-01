@@ -1,0 +1,17 @@
+{
+  "id": "shenglei/second-try-in-titanic-with-ensemble-stacking",
+  "id_no": 301410,
+  "title": "Second Try in Titanic with Ensemble/Stacking",
+  "code_file": "second-try-in-titanic-with-ensemble-stacking.ipynb",
+  "language": "python",
+  "kernel_type": "notebook",
+  "is_private": false,
+  "enable_gpu": false,
+  "enable_internet": false,
+  "keywords": [],
+  "dataset_sources": [],
+  "kernel_sources": [],
+  "competition_sources": [
+    "titanic"
+  ]
+}

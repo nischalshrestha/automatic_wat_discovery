@@ -1,0 +1,17 @@
+{
+  "code_file": "titanic-decision-tree-age-parch.ipynb",
+  "language": "python",
+  "title": "titanic, decision tree, Age + Parch",
+  "competition_sources": [
+    "titanic"
+  ],
+  "is_private": false,
+  "enable_gpu": false,
+  "kernel_sources": [],
+  "id_no": 1897792,
+  "enable_internet": false,
+  "kernel_type": "notebook",
+  "keywords": [],
+  "id": "bubblride/titanic-decision-tree-age-parch",
+  "dataset_sources": []
+}

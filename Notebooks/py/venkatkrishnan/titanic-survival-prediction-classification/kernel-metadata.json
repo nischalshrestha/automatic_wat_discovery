@@ -1,0 +1,17 @@
+{
+  "dataset_sources": [],
+  "language": "python",
+  "competition_sources": [
+    "titanic"
+  ],
+  "id": "venkatkrishnan/titanic-survival-prediction-classification",
+  "title": "Titanic survival prediction-Classification",
+  "kernel_type": "notebook",
+  "code_file": "titanic-survival-prediction-classification.ipynb",
+  "enable_internet": false,
+  "is_private": false,
+  "enable_gpu": false,
+  "keywords": [],
+  "id_no": 1662665,
+  "kernel_sources": []
+}

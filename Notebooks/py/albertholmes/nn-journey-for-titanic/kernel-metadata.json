@@ -1,0 +1,17 @@
+{
+  "language": "python",
+  "code_file": "nn-journey-for-titanic.ipynb",
+  "kernel_sources": [],
+  "is_private": false,
+  "kernel_type": "notebook",
+  "dataset_sources": [],
+  "enable_gpu": false,
+  "id_no": 489273,
+  "id": "albertholmes/nn-journey-for-titanic",
+  "competition_sources": [
+    "titanic"
+  ],
+  "title": "NN JOURNEY FOR TITANIC",
+  "keywords": [],
+  "enable_internet": false
+}

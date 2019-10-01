@@ -1,0 +1,22 @@
+{
+  "kernel_sources": [],
+  "is_private": false,
+  "keywords": [
+    "tutorial",
+    "beginner",
+    "data visualization",
+    "starter code"
+  ],
+  "id_no": 1394412,
+  "kernel_type": "notebook",
+  "language": "python",
+  "title": "Titanic 2",
+  "id": "ham9615/titanic-2",
+  "enable_internet": false,
+  "code_file": "titanic-2.ipynb",
+  "competition_sources": [
+    "titanic"
+  ],
+  "dataset_sources": [],
+  "enable_gpu": true
+}

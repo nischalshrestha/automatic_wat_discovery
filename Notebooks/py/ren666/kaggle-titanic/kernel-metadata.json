@@ -1,0 +1,17 @@
+{
+  "code_file": "kaggle-titanic.ipynb",
+  "enable_gpu": false,
+  "language": "python",
+  "kernel_type": "notebook",
+  "competition_sources": [
+    "titanic"
+  ],
+  "dataset_sources": [],
+  "is_private": false,
+  "id_no": 1170835,
+  "kernel_sources": [],
+  "keywords": [],
+  "id": "ren666/kaggle-titanic",
+  "enable_internet": false,
+  "title": "kaggle Titanic"
+}

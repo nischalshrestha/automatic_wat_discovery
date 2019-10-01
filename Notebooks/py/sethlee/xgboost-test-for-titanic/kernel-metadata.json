@@ -1,0 +1,17 @@
+{
+  "competition_sources": [
+    "titanic"
+  ],
+  "dataset_sources": [],
+  "kernel_sources": [],
+  "id": "sethlee/xgboost-test-for-titanic",
+  "id_no": 1845296,
+  "title": "XGBoost test for Titanic",
+  "kernel_type": "notebook",
+  "code_file": "xgboost-test-for-titanic.ipynb",
+  "keywords": [],
+  "enable_internet": false,
+  "enable_gpu": false,
+  "language": "python",
+  "is_private": false
+}

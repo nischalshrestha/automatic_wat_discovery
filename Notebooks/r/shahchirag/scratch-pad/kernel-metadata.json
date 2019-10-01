@@ -1,0 +1,17 @@
+{
+  "id": "shahchirag/scratch-pad",
+  "kernel_sources": [],
+  "competition_sources": [
+    "titanic"
+  ],
+  "dataset_sources": [],
+  "enable_gpu": false,
+  "code_file": "scratch-pad.ipynb",
+  "keywords": [],
+  "language": "python",
+  "title": "Scratch pad",
+  "is_private": false,
+  "id_no": 175254,
+  "kernel_type": "notebook",
+  "enable_internet": false
+}

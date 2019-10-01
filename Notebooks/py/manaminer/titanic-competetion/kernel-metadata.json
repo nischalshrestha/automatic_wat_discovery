@@ -1,0 +1,17 @@
+{
+  "keywords": [],
+  "title": "titanic competetion",
+  "dataset_sources": [],
+  "code_file": "titanic-competetion.ipynb",
+  "kernel_sources": [],
+  "enable_internet": false,
+  "enable_gpu": false,
+  "id": "manaminer/titanic-competetion",
+  "language": "python",
+  "id_no": 1570473,
+  "competition_sources": [
+    "titanic"
+  ],
+  "kernel_type": "notebook",
+  "is_private": false
+}

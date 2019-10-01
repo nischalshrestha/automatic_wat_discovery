@@ -1,0 +1,17 @@
+{
+  "enable_internet": false,
+  "enable_gpu": false,
+  "dataset_sources": [],
+  "code_file": "gender-age-class-model-r.irnb",
+  "id_no": 52450,
+  "kernel_sources": [],
+  "keywords": [],
+  "language": "r",
+  "is_private": false,
+  "title": "gender_age_class_model.r",
+  "id": "odinvanguard/gender-age-class-model-r",
+  "competition_sources": [
+    "titanic"
+  ],
+  "kernel_type": "notebook"
+}

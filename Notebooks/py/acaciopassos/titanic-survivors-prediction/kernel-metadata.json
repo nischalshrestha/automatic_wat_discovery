@@ -1,0 +1,21 @@
+{
+  "id": "acaciopassos/titanic-survivors-prediction",
+  "competition_sources": [
+    "titanic"
+  ],
+  "id_no": 2012125,
+  "kernel_sources": [],
+  "is_private": false,
+  "dataset_sources": [],
+  "language": "python",
+  "enable_internet": false,
+  "keywords": [
+    "beginner",
+    "classification",
+    "binary classification"
+  ],
+  "code_file": "titanic-survivors-prediction.ipynb",
+  "title": "Titanic survivors prediction",
+  "enable_gpu": true,
+  "kernel_type": "notebook"
+}

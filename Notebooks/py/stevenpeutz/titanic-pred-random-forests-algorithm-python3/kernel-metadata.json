@@ -1,0 +1,17 @@
+{
+  "enable_gpu": false,
+  "id_no": 329329,
+  "language": "python",
+  "keywords": [],
+  "dataset_sources": [],
+  "title": "Titanic,  pred. random forests algorithm, Python3",
+  "id": "stevenpeutz/titanic-pred-random-forests-algorithm-python3",
+  "kernel_type": "notebook",
+  "enable_internet": false,
+  "kernel_sources": [],
+  "code_file": "titanic-pred-random-forests-algorithm-python3.ipynb",
+  "competition_sources": [
+    "titanic"
+  ],
+  "is_private": false
+}

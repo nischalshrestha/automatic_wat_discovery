@@ -1,0 +1,17 @@
+{
+  "code_file": "introduction-to-ensembling-stacking-in-pyth-74576d.ipynb",
+  "id_no": 1978805,
+  "language": "python",
+  "id": "fenderi/introduction-to-ensembling-stacking-in-pyth-74576d",
+  "kernel_sources": [],
+  "is_private": false,
+  "enable_internet": false,
+  "kernel_type": "notebook",
+  "competition_sources": [
+    "titanic"
+  ],
+  "keywords": [],
+  "dataset_sources": [],
+  "enable_gpu": false,
+  "title": "Introduction to Ensembling/Stacking in Pyth 74576d"
+}

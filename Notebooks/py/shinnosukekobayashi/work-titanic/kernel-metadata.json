@@ -1,0 +1,17 @@
+{
+  "enable_internet": false,
+  "id_no": 1465359,
+  "enable_gpu": false,
+  "kernel_sources": [],
+  "is_private": false,
+  "language": "python",
+  "id": "shinnosukekobayashi/work-titanic",
+  "keywords": [],
+  "dataset_sources": [],
+  "title": "Work_Titanic",
+  "code_file": "work-titanic.ipynb",
+  "competition_sources": [
+    "titanic"
+  ],
+  "kernel_type": "notebook"
+}

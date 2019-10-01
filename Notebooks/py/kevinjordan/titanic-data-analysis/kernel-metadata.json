@@ -1,0 +1,17 @@
+{
+  "language": "python",
+  "id": "kevinjordan/titanic-data-analysis",
+  "competition_sources": [
+    "titanic"
+  ],
+  "enable_gpu": false,
+  "keywords": [],
+  "enable_internet": false,
+  "kernel_sources": [],
+  "code_file": "titanic-data-analysis.ipynb",
+  "kernel_type": "notebook",
+  "is_private": false,
+  "title": "Titanic Data Analysis",
+  "id_no": 567077,
+  "dataset_sources": []
+}

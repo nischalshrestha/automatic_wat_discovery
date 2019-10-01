@@ -1,0 +1,17 @@
+{
+  "keywords": [],
+  "language": "python",
+  "id": "tanakataro73/kernel-titanic-practice1-lp-tech-net",
+  "title": "kernel_titanic_practice1_lp-tech_net",
+  "code_file": "kernel-titanic-practice1-lp-tech-net.ipynb",
+  "kernel_type": "notebook",
+  "is_private": false,
+  "competition_sources": [
+    "titanic"
+  ],
+  "enable_internet": false,
+  "kernel_sources": [],
+  "id_no": 1357368,
+  "enable_gpu": true,
+  "dataset_sources": []
+}

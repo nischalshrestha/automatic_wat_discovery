@@ -1,0 +1,19 @@
+{
+  "kernel_sources": [],
+  "code_file": "titanic-survival-prediction-using-family-status.ipynb",
+  "id": "hfujita/titanic-survival-prediction-using-family-status",
+  "dataset_sources": [],
+  "keywords": [
+    "beginner"
+  ],
+  "is_private": false,
+  "competition_sources": [
+    "titanic"
+  ],
+  "title": "Titanic survival prediction using family status",
+  "id_no": 1306079,
+  "language": "python",
+  "enable_gpu": false,
+  "enable_internet": false,
+  "kernel_type": "notebook"
+}

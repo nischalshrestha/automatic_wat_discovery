@@ -1,0 +1,17 @@
+{
+  "id": "rgoodman/titanic-approach-from-scratch",
+  "code_file": "titanic-approach-from-scratch.ipynb",
+  "competition_sources": [
+    "titanic"
+  ],
+  "kernel_type": "notebook",
+  "enable_gpu": false,
+  "enable_internet": false,
+  "kernel_sources": [],
+  "id_no": 167115,
+  "keywords": [],
+  "is_private": false,
+  "language": "python",
+  "title": "Titanic - Approach from Scratch",
+  "dataset_sources": []
+}

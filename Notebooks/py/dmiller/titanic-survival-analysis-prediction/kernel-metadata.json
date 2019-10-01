@@ -1,0 +1,17 @@
+{
+  "id": "dmiller/titanic-survival-analysis-prediction",
+  "enable_internet": false,
+  "competition_sources": [
+    "titanic"
+  ],
+  "title": "Titanic Survival: Analysis & Prediction",
+  "kernel_sources": [],
+  "is_private": false,
+  "code_file": "titanic-survival-analysis-prediction.ipynb",
+  "keywords": [],
+  "kernel_type": "notebook",
+  "enable_gpu": false,
+  "language": "python",
+  "id_no": 423714,
+  "dataset_sources": []
+}

@@ -1,0 +1,17 @@
+{
+  "competition_sources": [
+    "titanic"
+  ],
+  "code_file": "titanic-kaggletrial.ipynb",
+  "is_private": false,
+  "enable_gpu": false,
+  "language": "python",
+  "id": "ganguly/titanic-kaggletrial",
+  "id_no": 181167,
+  "keywords": [],
+  "dataset_sources": [],
+  "title": "Titanic : KaggleTrial",
+  "kernel_sources": [],
+  "enable_internet": false,
+  "kernel_type": "notebook"
+}

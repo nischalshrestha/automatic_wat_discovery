@@ -1,0 +1,125 @@
+{
+  "cells": [
+    {
+      "cell_type": "markdown",
+      "metadata": {
+        "_cell_guid": "8956d15c-c5b0-11df-1d07-332f57e91327"
+      },
+      "source": [
+        "TicketNumber\u3000visualization"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "_cell_guid": "141042d5-f300-a82c-5374-74cb5db743c5"
+      },
+      "outputs": [],
+      "source": [
+        "# This R environment comes with all of CRAN preinstalled, as well as many other helpful packages\n",
+        "# The environment is defined by the kaggle/rstats docker image: https://github.com/kaggle/docker-rstats\n",
+        "# For example, here's several helpful packages to load in \n",
+        "\n",
+        "library(ggplot2) # Data visualization\n",
+        "library(readr) # CSV file I/O, e.g. the read_csv function\n",
+        "library(dplyr)\n",
+        "library('stringr')\n",
+        "# Input data files are available in the \"../input/\" directory.\n",
+        "# For example, running this (by clicking run or pressing Shift+Enter) will list the files in the input directory\n",
+        "\n",
+        "train <- read.csv('../input/train.csv', stringsAsFactors = F)\n",
+        "\n",
+        "# Any results you write to the current directory are saved as output."
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "_cell_guid": "6d747e13-2ac2-0a18-9311-13ab8f536280"
+      },
+      "outputs": [],
+      "source": [
+        "train$Ticket_Num <- sapply(train$Ticket, FUN=function(x) {ifelse(str_detect(x, \" \"),str_split(x, \" \")[[1]][2], as.character(x))})"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "_cell_guid": "7d9ea926-ab51-9332-067c-0136b3211f97"
+      },
+      "outputs": [],
+      "source": [
+        "ggplot(train, aes(x =Ticket_Num, y =Fare)) + geom_point(aes(colour = Pclass,shape = factor(Survived)))"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "_cell_guid": "5a3b44dc-6ad6-1114-ebac-c13c2c6d8996"
+      },
+      "outputs": [],
+      "source": [
+        "ggplot(train, aes(x =Ticket_Num, y =Fare)) + geom_text(aes(label=Ticket_Num))"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "_cell_guid": "1a19e58d-e598-5090-d01b-51250c589b6c"
+      },
+      "outputs": [],
+      "source": [
+        "train$Ticket_Num2[train$Ticket_Num <= 10000] <- 1\n",
+        "train$Ticket_Num2[train$Ticket_Num <= 20000] = 2\n",
+        "train$Ticket_Num2[train$Ticket_Num <= 30000] = 3\n",
+        "train$Ticket_Num2[train$Ticket_Num > 30000] = 4"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "_cell_guid": "36b19fcf-11dd-f873-4064-1c8eaa504e4d"
+      },
+      "outputs": [],
+      "source": [
+        "ggplot(train, aes(x =Ticket_Num, y =Fare)) + geom_text(aes(label=Ticket_Num2,colour= factor(Survived)))"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "_cell_guid": "d55aca6c-4811-57cf-ff99-aa1953bfbb9b"
+      },
+      "outputs": [],
+      "source": [
+        ""
+      ]
+    }
+  ],
+  "metadata": {
+    "_change_revision": 0,
+    "_is_fork": false,
+    "kernelspec": {
+      "display_name": "R",
+      "language": "R",
+      "name": "ir"
+    },
+    "language_info": {
+      "codemirror_mode": "r",
+      "file_extension": ".r",
+      "mimetype": "text/x-r-source",
+      "name": "R",
+      "pygments_lexer": "r",
+      "version": "3.3.3"
+    }
+  },
+  "nbformat": 4,
+  "nbformat_minor": 0
+}

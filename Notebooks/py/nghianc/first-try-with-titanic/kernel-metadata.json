@@ -1,0 +1,17 @@
+{
+  "competition_sources": [
+    "titanic"
+  ],
+  "id": "nghianc/first-try-with-titanic",
+  "kernel_type": "notebook",
+  "enable_gpu": false,
+  "code_file": "first-try-with-titanic.ipynb",
+  "id_no": 1737449,
+  "language": "python",
+  "enable_internet": false,
+  "dataset_sources": [],
+  "kernel_sources": [],
+  "keywords": [],
+  "is_private": false,
+  "title": "First_try_with_Titanic"
+}

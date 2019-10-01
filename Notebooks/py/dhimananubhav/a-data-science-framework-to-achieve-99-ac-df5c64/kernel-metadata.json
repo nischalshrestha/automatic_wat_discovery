@@ -1,0 +1,17 @@
+{
+  "language": "python",
+  "competition_sources": [
+    "titanic"
+  ],
+  "id": "dhimananubhav/a-data-science-framework-to-achieve-99-ac-df5c64",
+  "keywords": [],
+  "kernel_sources": [],
+  "dataset_sources": [],
+  "kernel_type": "notebook",
+  "code_file": "a-data-science-framework-to-achieve-99-ac-df5c64.ipynb",
+  "is_private": false,
+  "id_no": 1609511,
+  "title": "A Data Science Framework: To Achieve 99% Ac df5c64",
+  "enable_gpu": false,
+  "enable_internet": false
+}

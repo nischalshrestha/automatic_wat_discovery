@@ -1,0 +1,19 @@
+{
+  "competition_sources": [
+    "titanic"
+  ],
+  "id_no": 417140,
+  "id": "paultimothymooney/predicting-survival-on-titanic-method-comparison",
+  "is_private": false,
+  "enable_internet": false,
+  "kernel_type": "notebook",
+  "dataset_sources": [],
+  "kernel_sources": [],
+  "title": "Predicting Survival on Titanic: Method Comparison",
+  "keywords": [
+    "feature engineering"
+  ],
+  "enable_gpu": false,
+  "code_file": "predicting-survival-on-titanic-method-comparison.ipynb",
+  "language": "python"
+}

@@ -1,0 +1,17 @@
+{
+  "language": "r",
+  "dataset_sources": [],
+  "enable_gpu": false,
+  "title": "Titanic disaster in R",
+  "kernel_sources": [],
+  "competition_sources": [
+    "titanic"
+  ],
+  "id": "scout16/titanic-disaster-in-r",
+  "code_file": "titanic-disaster-in-r.irnb",
+  "kernel_type": "notebook",
+  "keywords": [],
+  "enable_internet": false,
+  "id_no": 238981,
+  "is_private": false
+}

@@ -1,0 +1,17 @@
+{
+  "keywords": [],
+  "competition_sources": [
+    "titanic"
+  ],
+  "kernel_sources": [],
+  "language": "python",
+  "code_file": "sink-or-survive.ipynb",
+  "dataset_sources": [],
+  "title": "Sink or survive?",
+  "enable_internet": false,
+  "enable_gpu": false,
+  "id_no": 137102,
+  "id": "ddzsotjan/sink-or-survive",
+  "is_private": false,
+  "kernel_type": "notebook"
+}

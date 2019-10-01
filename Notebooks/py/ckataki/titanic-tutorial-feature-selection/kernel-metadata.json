@@ -1,0 +1,17 @@
+{
+  "competition_sources": [
+    "titanic"
+  ],
+  "is_private": false,
+  "dataset_sources": [],
+  "kernel_type": "notebook",
+  "enable_gpu": false,
+  "language": "python",
+  "title": "Titanic Tutorial - Feature selection",
+  "keywords": [],
+  "code_file": "titanic-tutorial-feature-selection.ipynb",
+  "enable_internet": false,
+  "id_no": 189368,
+  "kernel_sources": [],
+  "id": "ckataki/titanic-tutorial-feature-selection"
+}

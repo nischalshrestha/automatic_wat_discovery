@@ -1,0 +1,17 @@
+{
+  "language": "python",
+  "id_no": 2066675,
+  "enable_internet": false,
+  "competition_sources": [
+    "titanic"
+  ],
+  "enable_gpu": false,
+  "id": "dhiazfathra/regresi-logistik-titanic",
+  "kernel_type": "notebook",
+  "code_file": "regresi-logistik-titanic.ipynb",
+  "dataset_sources": [],
+  "kernel_sources": [],
+  "is_private": false,
+  "title": "Regresi Logistik Titanic",
+  "keywords": []
+}

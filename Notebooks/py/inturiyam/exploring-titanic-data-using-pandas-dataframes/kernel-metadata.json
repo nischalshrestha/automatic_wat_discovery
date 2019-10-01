@@ -1,0 +1,22 @@
+{
+  "keywords": [
+    "tutorial",
+    "beginner",
+    "data visualization",
+    "feature engineering"
+  ],
+  "dataset_sources": [],
+  "language": "python",
+  "competition_sources": [
+    "titanic"
+  ],
+  "kernel_type": "notebook",
+  "is_private": false,
+  "kernel_sources": [],
+  "id_no": 1371189,
+  "title": "Exploring Titanic Data using Pandas Dataframes",
+  "id": "inturiyam/exploring-titanic-data-using-pandas-dataframes",
+  "enable_gpu": false,
+  "enable_internet": false,
+  "code_file": "exploring-titanic-data-using-pandas-dataframes.ipynb"
+}

@@ -1,0 +1,17 @@
+{
+  "keywords": [],
+  "language": "python",
+  "title": "Titanic_Survival Analysis",
+  "id": "maddy1/titanic-survival-analysis",
+  "kernel_type": "notebook",
+  "kernel_sources": [],
+  "enable_gpu": false,
+  "competition_sources": [
+    "titanic"
+  ],
+  "dataset_sources": [],
+  "is_private": false,
+  "code_file": "titanic-survival-analysis.ipynb",
+  "enable_internet": false,
+  "id_no": 1622977
+}

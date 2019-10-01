@@ -1,0 +1,17 @@
+{
+  "id": "bubblride/titanic-e1071-nu-svc",
+  "keywords": [],
+  "is_private": false,
+  "title": "titanic, e1071, nu-SVC",
+  "kernel_sources": [],
+  "enable_internet": false,
+  "id_no": 1879928,
+  "language": "r",
+  "kernel_type": "notebook",
+  "code_file": "titanic-e1071-nu-svc.irnb",
+  "competition_sources": [
+    "titanic"
+  ],
+  "enable_gpu": false,
+  "dataset_sources": []
+}

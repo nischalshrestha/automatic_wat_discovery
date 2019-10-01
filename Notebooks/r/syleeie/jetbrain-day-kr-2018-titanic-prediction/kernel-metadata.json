@@ -1,0 +1,17 @@
+{
+  "kernel_sources": [],
+  "enable_internet": false,
+  "kernel_type": "notebook",
+  "language": "r",
+  "title": "Jetbrain Day Kr 2018 - Titanic Prediction",
+  "keywords": [],
+  "dataset_sources": [],
+  "is_private": false,
+  "id": "syleeie/jetbrain-day-kr-2018-titanic-prediction",
+  "enable_gpu": true,
+  "code_file": "jetbrain-day-kr-2018-titanic-prediction.irnb",
+  "id_no": 2141451,
+  "competition_sources": [
+    "titanic"
+  ]
+}

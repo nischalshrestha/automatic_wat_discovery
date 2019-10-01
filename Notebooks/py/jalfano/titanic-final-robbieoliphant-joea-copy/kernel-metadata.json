@@ -1,0 +1,17 @@
+{
+  "title": "Titanic_Final_RobbieOliphant_JoeA_copy",
+  "dataset_sources": [],
+  "kernel_type": "notebook",
+  "enable_internet": false,
+  "keywords": [],
+  "is_private": false,
+  "kernel_sources": [],
+  "enable_gpu": false,
+  "id_no": 953619,
+  "competition_sources": [
+    "titanic"
+  ],
+  "language": "python",
+  "id": "jalfano/titanic-final-robbieoliphant-joea-copy",
+  "code_file": "titanic-final-robbieoliphant-joea-copy.ipynb"
+}

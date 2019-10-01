@@ -1,0 +1,17 @@
+{
+  "kernel_type": "notebook",
+  "keywords": [],
+  "is_private": false,
+  "code_file": "titanic-survival-prediction-for-beginners.ipynb",
+  "title": "Titanic Survival Prediction for Beginners",
+  "id": "sanjeetiitr1/titanic-survival-prediction-for-beginners",
+  "enable_gpu": false,
+  "language": "python",
+  "enable_internet": false,
+  "id_no": 907911,
+  "kernel_sources": [],
+  "competition_sources": [
+    "titanic"
+  ],
+  "dataset_sources": []
+}

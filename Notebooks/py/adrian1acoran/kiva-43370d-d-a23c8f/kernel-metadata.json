@@ -1,0 +1,32 @@
+{
+  "code_file": "kiva-43370d-d-a23c8f.ipynb",
+  "kernel_type": "notebook",
+  "competition_sources": [
+    "titanic",
+    "house-prices-advanced-regression-techniques",
+    "two-sigma-financial-news",
+    "human-protein-atlas-image-classification"
+  ],
+  "kernel_sources": [
+    "mrisdal/quick-dirty-randomforest",
+    "ldfreeman3/a-data-science-framework-to-achieve-99-accuracy",
+    "kanncaa1/data-sciencetutorial-for-beginners",
+    "sudalairajkumar/simple-exploration-baseline-ga-customer-revenue"
+  ],
+  "keywords": [],
+  "language": "python",
+  "dataset_sources": [
+    "github/github-repos",
+    "pytorch/vgg13bn",
+    "kiva/data-science-for-good-kiva-crowdfunding",
+    "lava18/google-play-store-apps",
+    "bigquery/patents",
+    "adrian1acoran/pi-31415"
+  ],
+  "enable_internet": false,
+  "enable_gpu": true,
+  "id_no": 1916763,
+  "is_private": false,
+  "title": "kiva  43370d d a23c8f",
+  "id": "adrian1acoran/kiva-43370d-d-a23c8f"
+}

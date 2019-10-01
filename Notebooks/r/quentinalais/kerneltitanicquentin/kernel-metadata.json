@@ -1,0 +1,17 @@
+{
+  "id_no": 2099605,
+  "title": "kernelTitanicQuentin",
+  "keywords": [],
+  "enable_internet": false,
+  "code_file": "kerneltitanicquentin.irnb",
+  "enable_gpu": false,
+  "is_private": false,
+  "id": "quentinalais/kerneltitanicquentin",
+  "language": "r",
+  "kernel_sources": [],
+  "competition_sources": [
+    "titanic"
+  ],
+  "kernel_type": "notebook",
+  "dataset_sources": []
+}

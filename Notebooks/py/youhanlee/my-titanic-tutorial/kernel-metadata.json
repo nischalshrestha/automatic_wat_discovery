@@ -1,0 +1,17 @@
+{
+  "keywords": [],
+  "is_private": false,
+  "title": "my_titanic_tutorial",
+  "code_file": "my-titanic-tutorial.ipynb",
+  "competition_sources": [
+    "titanic"
+  ],
+  "id": "youhanlee/my-titanic-tutorial",
+  "kernel_sources": [],
+  "enable_gpu": false,
+  "dataset_sources": [],
+  "enable_internet": false,
+  "id_no": 1077826,
+  "kernel_type": "notebook",
+  "language": "python"
+}

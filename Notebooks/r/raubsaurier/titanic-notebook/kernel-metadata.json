@@ -1,0 +1,17 @@
+{
+  "id": "raubsaurier/titanic-notebook",
+  "language": "r",
+  "dataset_sources": [],
+  "keywords": [],
+  "kernel_type": "notebook",
+  "kernel_sources": [],
+  "code_file": "titanic-notebook.irnb",
+  "is_private": false,
+  "title": "Titanic Notebook",
+  "enable_internet": false,
+  "competition_sources": [
+    "titanic"
+  ],
+  "id_no": 167378,
+  "enable_gpu": false
+}

@@ -1,0 +1,17 @@
+{
+  "dataset_sources": [],
+  "kernel_type": "notebook",
+  "id_no": 395821,
+  "enable_internet": false,
+  "competition_sources": [
+    "titanic"
+  ],
+  "language": "r",
+  "title": "Decision tree to predict Survivals",
+  "id": "manjeetsingh/decision-tree-to-predict-survivals",
+  "is_private": false,
+  "keywords": [],
+  "code_file": "decision-tree-to-predict-survivals.irnb",
+  "kernel_sources": [],
+  "enable_gpu": false
+}

@@ -1,0 +1,17 @@
+{
+  "competition_sources": [
+    "titanic"
+  ],
+  "language": "r",
+  "id": "mjoshi/notebook43405a7076",
+  "kernel_sources": [],
+  "enable_gpu": false,
+  "keywords": [],
+  "title": "Notebookbc1e075db1",
+  "is_private": false,
+  "id_no": 183580,
+  "enable_internet": false,
+  "code_file": "notebook43405a7076.irnb",
+  "kernel_type": "notebook",
+  "dataset_sources": []
+}

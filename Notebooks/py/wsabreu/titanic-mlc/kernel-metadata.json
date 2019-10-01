@@ -1,0 +1,17 @@
+{
+  "is_private": false,
+  "id_no": 1834794,
+  "kernel_sources": [],
+  "language": "python",
+  "enable_gpu": false,
+  "competition_sources": [
+    "titanic"
+  ],
+  "kernel_type": "notebook",
+  "dataset_sources": [],
+  "id": "wsabreu/titanic-mlc",
+  "title": "Titanic - MLC",
+  "enable_internet": false,
+  "code_file": "titanic-mlc.ipynb",
+  "keywords": []
+}

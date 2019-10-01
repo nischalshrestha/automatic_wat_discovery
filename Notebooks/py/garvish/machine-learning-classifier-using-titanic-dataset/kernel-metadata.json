@@ -1,0 +1,17 @@
+{
+  "enable_internet": false,
+  "dataset_sources": [],
+  "id_no": 312686,
+  "code_file": "machine-learning-classifier-using-titanic-dataset.ipynb",
+  "competition_sources": [
+    "titanic"
+  ],
+  "language": "python",
+  "enable_gpu": false,
+  "title": "Machine Learning Classifier using Titanic Dataset",
+  "kernel_sources": [],
+  "keywords": [],
+  "is_private": false,
+  "kernel_type": "notebook",
+  "id": "garvish/machine-learning-classifier-using-titanic-dataset"
+}

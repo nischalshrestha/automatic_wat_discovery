@@ -1,0 +1,17 @@
+{
+  "kernel_type": "notebook",
+  "is_private": false,
+  "id": "nan777/titanicdub-gya",
+  "keywords": [],
+  "enable_internet": false,
+  "dataset_sources": [],
+  "language": "python",
+  "code_file": "titanicdub-gya.ipynb",
+  "kernel_sources": [],
+  "title": "Titanicdub gya",
+  "competition_sources": [
+    "titanic"
+  ],
+  "enable_gpu": false,
+  "id_no": 1895407
+}

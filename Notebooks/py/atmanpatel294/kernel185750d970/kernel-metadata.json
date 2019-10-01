@@ -1,0 +1,17 @@
+{
+  "is_private": false,
+  "keywords": [],
+  "dataset_sources": [],
+  "id_no": 993389,
+  "title": "Kernel185750d970",
+  "id": "atmanpatel294/kernel185750d970",
+  "enable_gpu": false,
+  "language": "python",
+  "kernel_type": "notebook",
+  "competition_sources": [
+    "titanic"
+  ],
+  "code_file": "kernel185750d970.ipynb",
+  "kernel_sources": [],
+  "enable_internet": false
+}

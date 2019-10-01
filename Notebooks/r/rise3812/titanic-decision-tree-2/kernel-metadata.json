@@ -1,0 +1,17 @@
+{
+  "enable_internet": false,
+  "id": "rise3812/titanic-decision-tree-2",
+  "code_file": "titanic-decision-tree-2.irnb",
+  "language": "r",
+  "kernel_sources": [],
+  "id_no": 42734,
+  "enable_gpu": false,
+  "competition_sources": [
+    "titanic"
+  ],
+  "is_private": false,
+  "kernel_type": "notebook",
+  "dataset_sources": [],
+  "keywords": [],
+  "title": "titanic_decision_tree_2"
+}

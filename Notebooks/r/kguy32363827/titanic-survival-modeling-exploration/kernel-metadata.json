@@ -1,0 +1,17 @@
+{
+  "id": "kguy32363827/titanic-survival-modeling-exploration",
+  "competition_sources": [
+    "titanic"
+  ],
+  "language": "r",
+  "dataset_sources": [],
+  "code_file": "titanic-survival-modeling-exploration.irnb",
+  "kernel_type": "notebook",
+  "enable_gpu": false,
+  "id_no": 499412,
+  "keywords": [],
+  "kernel_sources": [],
+  "title": "Titanic Survival: Modeling Exploration",
+  "is_private": false,
+  "enable_internet": false
+}

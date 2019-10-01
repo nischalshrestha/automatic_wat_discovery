@@ -1,0 +1,17 @@
+{
+  "id": "mikecui33/notebooke36bb8f2b8",
+  "dataset_sources": [],
+  "code_file": "notebooke36bb8f2b8.irnb",
+  "id_no": 372565,
+  "title": "Notebooke36bb8f2b8",
+  "kernel_sources": [],
+  "enable_internet": false,
+  "enable_gpu": false,
+  "competition_sources": [
+    "titanic"
+  ],
+  "is_private": false,
+  "kernel_type": "notebook",
+  "language": "r",
+  "keywords": []
+}

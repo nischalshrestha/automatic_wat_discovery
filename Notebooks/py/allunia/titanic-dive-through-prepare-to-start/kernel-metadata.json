@@ -1,0 +1,17 @@
+{
+  "kernel_sources": [],
+  "enable_gpu": false,
+  "title": "Titanic Dive Through - Prepare to start",
+  "id_no": 1247519,
+  "is_private": false,
+  "id": "allunia/titanic-dive-through-prepare-to-start",
+  "code_file": "titanic-dive-through-prepare-to-start.ipynb",
+  "dataset_sources": [],
+  "kernel_type": "notebook",
+  "keywords": [],
+  "enable_internet": false,
+  "competition_sources": [
+    "titanic"
+  ],
+  "language": "python"
+}

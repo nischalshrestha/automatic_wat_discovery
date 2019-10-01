@@ -1,0 +1,17 @@
+{
+  "enable_internet": false,
+  "kernel_sources": [],
+  "keywords": [],
+  "language": "python",
+  "id_no": 125351,
+  "code_file": "my-titanic.ipynb",
+  "dataset_sources": [],
+  "is_private": false,
+  "kernel_type": "notebook",
+  "competition_sources": [
+    "titanic"
+  ],
+  "id": "richarlee/my-titanic",
+  "title": "my titanic",
+  "enable_gpu": false
+}

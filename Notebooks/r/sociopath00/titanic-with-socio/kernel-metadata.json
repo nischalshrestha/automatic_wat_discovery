@@ -1,0 +1,17 @@
+{
+  "enable_gpu": false,
+  "kernel_sources": [],
+  "kernel_type": "notebook",
+  "language": "r",
+  "dataset_sources": [],
+  "id": "sociopath00/titanic-with-socio",
+  "is_private": false,
+  "title": "Titanic with Socio",
+  "enable_internet": false,
+  "competition_sources": [
+    "titanic"
+  ],
+  "keywords": [],
+  "code_file": "titanic-with-socio.irnb",
+  "id_no": 223545
+}

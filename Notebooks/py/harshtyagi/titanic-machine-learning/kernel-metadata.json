@@ -1,0 +1,17 @@
+{
+  "enable_gpu": false,
+  "is_private": false,
+  "title": "Titanic Machine Learning.",
+  "kernel_sources": [],
+  "enable_internet": false,
+  "language": "python",
+  "code_file": "titanic-machine-learning.ipynb",
+  "id": "harshtyagi/titanic-machine-learning",
+  "kernel_type": "notebook",
+  "competition_sources": [
+    "titanic"
+  ],
+  "id_no": 315032,
+  "keywords": [],
+  "dataset_sources": []
+}

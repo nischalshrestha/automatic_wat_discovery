@@ -1,0 +1,17 @@
+{
+  "title": "Simple notebook - Titanic",
+  "competition_sources": [
+    "titanic"
+  ],
+  "enable_internet": false,
+  "id": "dsjhala/simple-notebook-titanic",
+  "enable_gpu": false,
+  "language": "python",
+  "is_private": false,
+  "kernel_sources": [],
+  "code_file": "simple-notebook-titanic.ipynb",
+  "keywords": [],
+  "kernel_type": "notebook",
+  "dataset_sources": [],
+  "id_no": 346638
+}

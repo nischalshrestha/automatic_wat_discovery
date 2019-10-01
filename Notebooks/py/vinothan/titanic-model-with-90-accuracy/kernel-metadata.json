@@ -1,0 +1,23 @@
+{
+  "code_file": "titanic-model-with-90-accuracy.ipynb",
+  "keywords": [
+    "tutorial",
+    "beginner",
+    "data cleaning",
+    "feature engineering",
+    "random forest"
+  ],
+  "id_no": 1330013,
+  "language": "python",
+  "enable_internet": false,
+  "kernel_sources": [],
+  "is_private": false,
+  "competition_sources": [
+    "titanic"
+  ],
+  "enable_gpu": false,
+  "dataset_sources": [],
+  "title": "Titanic Model with 90% accuracy",
+  "id": "vinothan/titanic-model-with-90-accuracy",
+  "kernel_type": "notebook"
+}

@@ -1,0 +1,17 @@
+{
+  "id_no": 524128,
+  "kernel_type": "notebook",
+  "competition_sources": [
+    "titanic"
+  ],
+  "keywords": [],
+  "title": "Titanic Decision Tree implemented as Lean Startup ",
+  "kernel_sources": [],
+  "language": "python",
+  "code_file": "titanic-decision-tree-implemented-as-lean-startup.ipynb",
+  "dataset_sources": [],
+  "enable_internet": false,
+  "enable_gpu": false,
+  "id": "tlapusan/titanic-decision-tree-implemented-as-lean-startup",
+  "is_private": false
+}

@@ -1,0 +1,19 @@
+{
+  "id": "allunia/titanic-dive-through-feature-scaling-and-outliers",
+  "language": "python",
+  "dataset_sources": [
+    "allunia/titanicdivethrough-featurecave"
+  ],
+  "competition_sources": [
+    "titanic"
+  ],
+  "id_no": 1384205,
+  "kernel_sources": [],
+  "keywords": [],
+  "enable_internet": false,
+  "enable_gpu": false,
+  "is_private": false,
+  "code_file": "titanic-dive-through-feature-scaling-and-outliers.ipynb",
+  "title": "Titanic Dive Through: Feature scaling and outliers",
+  "kernel_type": "notebook"
+}

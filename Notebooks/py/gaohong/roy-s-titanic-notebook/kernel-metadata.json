@@ -1,0 +1,17 @@
+{
+  "dataset_sources": [],
+  "is_private": false,
+  "kernel_sources": [],
+  "enable_gpu": false,
+  "id_no": 115613,
+  "enable_internet": false,
+  "id": "gaohong/roy-s-titanic-notebook",
+  "title": "Roy's Titanic Notebook",
+  "code_file": "roy-s-titanic-notebook.ipynb",
+  "kernel_type": "notebook",
+  "language": "python",
+  "keywords": [],
+  "competition_sources": [
+    "titanic"
+  ]
+}

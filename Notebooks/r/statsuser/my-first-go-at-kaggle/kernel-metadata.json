@@ -1,0 +1,17 @@
+{
+  "title": "My first go at Kaggle",
+  "id": "statsuser/my-first-go-at-kaggle",
+  "kernel_type": "notebook",
+  "id_no": 238075,
+  "enable_internet": false,
+  "code_file": "my-first-go-at-kaggle.ipynb",
+  "language": "python",
+  "competition_sources": [
+    "titanic"
+  ],
+  "is_private": false,
+  "dataset_sources": [],
+  "kernel_sources": [],
+  "enable_gpu": false,
+  "keywords": []
+}

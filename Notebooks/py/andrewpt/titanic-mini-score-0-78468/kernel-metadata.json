@@ -1,0 +1,17 @@
+{
+  "enable_gpu": false,
+  "id": "andrewpt/titanic-mini-score-0-78468",
+  "is_private": false,
+  "kernel_sources": [],
+  "title": "Titanic_mini_score_0_78468",
+  "code_file": "titanic-mini-score-0-78468.ipynb",
+  "enable_internet": false,
+  "keywords": [],
+  "dataset_sources": [],
+  "kernel_type": "notebook",
+  "id_no": 1734033,
+  "competition_sources": [
+    "titanic"
+  ],
+  "language": "python"
+}

@@ -1,0 +1,17 @@
+{
+  "title": "my_first_kaggle_notebook",
+  "language": "r",
+  "id_no": 41529,
+  "enable_internet": false,
+  "is_private": false,
+  "kernel_type": "notebook",
+  "code_file": "my-first-kaggle-notebook.irnb",
+  "enable_gpu": false,
+  "competition_sources": [
+    "titanic"
+  ],
+  "dataset_sources": [],
+  "keywords": [],
+  "kernel_sources": [],
+  "id": "rise3812/my-first-kaggle-notebook"
+}

@@ -1,0 +1,17 @@
+{
+  "id": "cfagan101/visualization-and-running-various-models",
+  "id_no": 37840,
+  "title": "Visualization and running various models",
+  "code_file": "visualization-and-running-various-models.ipynb",
+  "language": "python",
+  "kernel_type": "notebook",
+  "is_private": false,
+  "enable_gpu": false,
+  "enable_internet": false,
+  "keywords": [],
+  "dataset_sources": [],
+  "kernel_sources": [],
+  "competition_sources": [
+    "titanic"
+  ]
+}

@@ -1,0 +1,17 @@
+{
+  "dataset_sources": [],
+  "enable_gpu": false,
+  "title": "Titanic: Prima soluzione DecisionTree",
+  "code_file": "titanic-prima-soluzione-decisiontree.ipynb",
+  "id_no": 1787415,
+  "language": "python",
+  "competition_sources": [
+    "titanic"
+  ],
+  "id": "ciotolaaaa/titanic-prima-soluzione-decisiontree",
+  "enable_internet": false,
+  "is_private": false,
+  "kernel_sources": [],
+  "kernel_type": "notebook",
+  "keywords": []
+}

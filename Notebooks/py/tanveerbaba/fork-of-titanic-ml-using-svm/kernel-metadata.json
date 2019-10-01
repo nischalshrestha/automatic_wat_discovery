@@ -1,0 +1,17 @@
+{
+  "id_no": 715044,
+  "is_private": false,
+  "dataset_sources": [],
+  "id": "tanveerbaba/fork-of-titanic-ml-using-svm",
+  "competition_sources": [
+    "titanic"
+  ],
+  "title": "Fork of Titanic ML using SVM",
+  "kernel_sources": [],
+  "keywords": [],
+  "language": "python",
+  "enable_gpu": false,
+  "kernel_type": "notebook",
+  "code_file": "fork-of-titanic-ml-using-svm.ipynb",
+  "enable_internet": false
+}

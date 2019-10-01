@@ -1,0 +1,17 @@
+{
+  "dataset_sources": [],
+  "kernel_type": "notebook",
+  "enable_gpu": false,
+  "enable_internet": false,
+  "code_file": "notebookacfba79dc4.ipynb",
+  "title": "Notebookacfba79dc4",
+  "competition_sources": [
+    "titanic"
+  ],
+  "kernel_sources": [],
+  "is_private": false,
+  "id_no": 247565,
+  "keywords": [],
+  "id": "sirjackshen/notebookacfba79dc4",
+  "language": "python"
+}

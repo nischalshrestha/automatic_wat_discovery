@@ -1,0 +1,21 @@
+{
+  "enable_internet": false,
+  "competition_sources": [
+    "titanic"
+  ],
+  "title": "Random_forest in the Titanic dataset (simple way)",
+  "kernel_sources": [],
+  "code_file": "random-forest-in-the-titanic-dataset-simple-way.ipynb",
+  "kernel_type": "notebook",
+  "enable_gpu": false,
+  "id": "rbiasuz/random-forest-in-the-titanic-dataset-simple-way",
+  "is_private": false,
+  "dataset_sources": [],
+  "keywords": [
+    "databases",
+    "classification",
+    "random forest"
+  ],
+  "id_no": 1427848,
+  "language": "python"
+}

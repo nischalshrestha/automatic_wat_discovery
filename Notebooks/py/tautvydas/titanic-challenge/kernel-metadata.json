@@ -1,0 +1,17 @@
+{
+  "competition_sources": [
+    "titanic"
+  ],
+  "title": "Titanic challenge",
+  "enable_internet": false,
+  "code_file": "titanic-challenge.ipynb",
+  "kernel_sources": [],
+  "is_private": false,
+  "dataset_sources": [],
+  "id_no": 484523,
+  "id": "tautvydas/titanic-challenge",
+  "enable_gpu": false,
+  "kernel_type": "notebook",
+  "keywords": [],
+  "language": "python"
+}

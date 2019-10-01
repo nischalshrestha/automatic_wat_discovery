@@ -1,0 +1,17 @@
+{
+  "enable_internet": false,
+  "title": "Titanic Survival Study",
+  "competition_sources": [
+    "titanic"
+  ],
+  "enable_gpu": false,
+  "language": "python",
+  "dataset_sources": [],
+  "kernel_sources": [],
+  "kernel_type": "notebook",
+  "code_file": "titanic-survival-study.ipynb",
+  "id_no": 2120754,
+  "is_private": false,
+  "keywords": [],
+  "id": "dogacandu/titanic-survival-study"
+}

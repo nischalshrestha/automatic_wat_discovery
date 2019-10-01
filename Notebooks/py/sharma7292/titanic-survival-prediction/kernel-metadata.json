@@ -1,0 +1,23 @@
+{
+  "is_private": false,
+  "code_file": "titanic-survival-prediction.ipynb",
+  "keywords": [
+    "beginner",
+    "eda",
+    "data visualization",
+    "classification",
+    "feature engineering"
+  ],
+  "language": "python",
+  "id_no": 1780981,
+  "dataset_sources": [],
+  "enable_internet": false,
+  "kernel_type": "notebook",
+  "competition_sources": [
+    "titanic"
+  ],
+  "title": "Titanic Survival Prediction",
+  "id": "sharma7292/titanic-survival-prediction",
+  "enable_gpu": false,
+  "kernel_sources": []
+}

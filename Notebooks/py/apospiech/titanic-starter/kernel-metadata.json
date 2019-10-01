@@ -1,0 +1,17 @@
+{
+  "language": "python",
+  "id": "apospiech/titanic-starter",
+  "code_file": "titanic-starter.ipynb",
+  "is_private": false,
+  "kernel_type": "notebook",
+  "enable_internet": false,
+  "competition_sources": [
+    "titanic"
+  ],
+  "dataset_sources": [],
+  "kernel_sources": [],
+  "title": "Titanic-Starter",
+  "enable_gpu": false,
+  "keywords": [],
+  "id_no": 415360
+}

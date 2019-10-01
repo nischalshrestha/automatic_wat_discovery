@@ -1,0 +1,224 @@
+{
+  "cells": [
+    {
+      "cell_type": "markdown",
+      "metadata": {
+        "_cell_guid": "5ac24b19-8781-c05a-52fc-2204fb2688ef"
+      },
+      "source": [
+        "Loading Libraries"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "_cell_guid": "67e7de21-f6a9-7161-f1e5-e05cede04fd2"
+      },
+      "outputs": [],
+      "source": [
+        "# This R environment comes with all of CRAN preinstalled, as well as many other helpful packages\n",
+        "# The environment is defined by the kaggle/rstats docker image: https://github.com/kaggle/docker-rstats\n",
+        "# For example, here's several helpful packages to load in \n",
+        "\n",
+        "library(ggplot2) # Data visualization\n",
+        "library(readr) # CSV file I/O, e.g. the read_csv function\n",
+        "library(randomForest) \n",
+        "# Input data files are available in the \"../input/\" directory.\n",
+        "# For example, running this (by clicking run or pressing Shift+Enter) will list the files in the input directory\n",
+        "\n",
+        "system(\"ls ../input\")\n",
+        "rfNews()\n",
+        "# Any results you write to the current directory are saved as output."
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "_cell_guid": "ffe5387e-5dd0-9293-6ec6-144232f8268d"
+      },
+      "outputs": [],
+      "source": [
+        "train <- read.table(\"../input/train.csv\", header = T, sep = \",\", stringsAsFactors = F)\n",
+        "test <- read.table(\"../input/test.csv\", header = T, sep = \",\", stringsAsFactors = F)"
+      ]
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {
+        "_cell_guid": "0289a350-946a-f74a-b61e-b4b0fcaea7e5"
+      },
+      "source": [
+        "#New column is added to identify training data when dataset will be merged"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "_cell_guid": "92a0e32a-c4f8-f547-2438-9cba66467a5b"
+      },
+      "outputs": [],
+      "source": [
+        "train$isTrain <- TRUE\n",
+        "test$isTrain <- FALSE\n",
+        "\n",
+        "test$Survived <- NA"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "_cell_guid": "90a77189-17d7-2b57-2b9a-ac9b9fe3ed67"
+      },
+      "outputs": [],
+      "source": [
+        "full <- rbind(train,test)\n",
+        "str(full)"
+      ]
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {
+        "_cell_guid": "3e1a314f-ed39-40b1-2b74-6c27d24f2047"
+      },
+      "source": [
+        "Converting columns into factors"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "_cell_guid": "24dace70-a219-aa61-103a-c3cf11804d46"
+      },
+      "outputs": [],
+      "source": [
+        "full$Pclass<-as.ordered(full$Pclass)\n",
+        "full$Sex <- as.factor(full$Sex)\n",
+        "full$Embarked <- as.factor(full$Embarked)\n",
+        "str(full)"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "_cell_guid": "3ab6813d-0cdc-f502-828b-6a8fbc2a9762"
+      },
+      "outputs": [],
+      "source": [
+        "ageTrain <- full[is.na(full$Age),]\n",
+        "ageV <- full[is.na(full$Age)==FALSE,]\n",
+        "\n",
+        "age.Formula <- \"Age ~ Pclass + Sex + SibSp + Parch+ Fare\"\n",
+        "age.Formula <- as.formula(age.Formula)\n",
+        "age.Model <- lm(age.Formula,ageV)\n",
+        "\n",
+        "age.Predict<-predict(age.Model,ageTrain)\n",
+        "age.Predict<-round(age.Predict)\n",
+        "ageTrain$Age<-age.Predict\n",
+        "tail(ageTrain)"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "_cell_guid": "b830bf37-fb1a-5648-3083-d8ac9cd2ed8d"
+      },
+      "outputs": [],
+      "source": [
+        "full<-rbind(ageTrain, ageV)\n",
+        "\n",
+        "#dim(full)\n",
+        "full<- full[order(full$PassengerId),]\n",
+        "tail(full)"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "_cell_guid": "e6e67669-c2a7-dbd7-b8fa-8bde8ffdf755"
+      },
+      "outputs": [],
+      "source": [
+        "boxplot(train$Fare)\n",
+        "outBound <- boxplot.stats(train$Fare)$stats[5]\n",
+        "Fare.t<-full[full$Fare<=outBound,]\n",
+        "fare.formula<-\"Fare ~ Pclass + Age + Sex + SibSp + Parch \"\n",
+        "fare.formula<- as.formula(fare.formula)\n",
+        "fare.Model<-lm(fare.formula, Fare.t)\n",
+        "\n",
+        "fare.Pred<-predict(fare.Model, full[1044,])\n",
+        "full[1044,]$Fare<- fare.Pred\n",
+        "full[1040:1045,]"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "_cell_guid": "6c351197-9bdb-9474-97b6-a7b95100ac54"
+      },
+      "outputs": [],
+      "source": [
+        "train <- full[full$isTrain== TRUE,]\n",
+        "test <- full[full$isTrain== FALSE,]\n",
+        "\n",
+        "train$Survived<- as.factor(train$Survived)"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "_cell_guid": "ca8b3f51-1d2d-c6ea-1f73-d91438544d36"
+      },
+      "outputs": [],
+      "source": [
+        "fml<- \"Survived ~ Pclass + Sex + Age + SibSp + Parch + Embarked + Fare\"\n",
+        "fml<-as.formula(fml)\n",
+        "titanic.model<-randomForest(fml,train, ntree=500, mtry=3, nodesize=0.01*nrow(train) )\n",
+        "Survived<-predict(titanic.model,test)"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "_cell_guid": "50735d49-2a5d-84a3-b0c7-1351ff2b9e82"
+      },
+      "outputs": [],
+      "source": [
+        "PassengerId<- test$PassengerId\n",
+        "op<-as.data.frame(PassengerId)\n",
+        "\n",
+        "op$Survived <- Survived\n",
+        "write.csv(op, file= \"Titanic_socio.csv\", row.names = F)"
+      ]
+    }
+  ],
+  "metadata": {
+    "_change_revision": 0,
+    "_is_fork": false,
+    "kernelspec": {
+      "display_name": "R",
+      "language": "R",
+      "name": "ir"
+    },
+    "language_info": {
+      "codemirror_mode": "r",
+      "file_extension": ".r",
+      "mimetype": "text/x-r-source",
+      "name": "R",
+      "pygments_lexer": "r",
+      "version": "3.3.3"
+    }
+  },
+  "nbformat": 4,
+  "nbformat_minor": 0
+}

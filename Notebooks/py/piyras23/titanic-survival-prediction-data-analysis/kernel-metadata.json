@@ -1,0 +1,22 @@
+{
+  "kernel_type": "notebook",
+  "code_file": "titanic-survival-prediction-data-analysis.ipynb",
+  "id_no": 1774700,
+  "competition_sources": [
+    "titanic"
+  ],
+  "enable_gpu": false,
+  "title": "Titanic Survival Prediction & Data Analysis ",
+  "dataset_sources": [],
+  "enable_internet": false,
+  "is_private": false,
+  "kernel_sources": [],
+  "keywords": [
+    "beginner",
+    "eda",
+    "classification",
+    "starter code"
+  ],
+  "language": "python",
+  "id": "piyras23/titanic-survival-prediction-data-analysis"
+}

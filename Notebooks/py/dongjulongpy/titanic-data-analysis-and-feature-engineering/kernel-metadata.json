@@ -1,0 +1,17 @@
+{
+  "enable_gpu": false,
+  "code_file": "titanic-data-analysis-and-feature-engineering.ipynb",
+  "enable_internet": false,
+  "keywords": [],
+  "competition_sources": [
+    "titanic"
+  ],
+  "kernel_type": "notebook",
+  "is_private": false,
+  "language": "python",
+  "id": "dongjulongpy/titanic-data-analysis-and-feature-engineering",
+  "kernel_sources": [],
+  "dataset_sources": [],
+  "title": "Titanic - Data Analysis and Feature Engineering",
+  "id_no": 2198536
+}

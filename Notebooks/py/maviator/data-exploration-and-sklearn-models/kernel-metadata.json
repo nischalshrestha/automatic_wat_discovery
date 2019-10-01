@@ -1,0 +1,17 @@
+{
+  "id": "maviator/data-exploration-and-sklearn-models",
+  "id_no": 355118,
+  "title": "Data exploration and Sklearn models",
+  "code_file": "data-exploration-and-sklearn-models.ipynb",
+  "language": "python",
+  "kernel_type": "notebook",
+  "is_private": false,
+  "enable_gpu": false,
+  "enable_internet": false,
+  "keywords": [],
+  "dataset_sources": [],
+  "kernel_sources": [],
+  "competition_sources": [
+    "titanic"
+  ]
+}

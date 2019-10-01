@@ -1,0 +1,17 @@
+{
+  "kernel_type": "notebook",
+  "keywords": [],
+  "id": "odobenus/lime-titanic-day3",
+  "language": "python",
+  "competition_sources": [
+    "titanic"
+  ],
+  "enable_gpu": false,
+  "id_no": 1566382,
+  "is_private": false,
+  "enable_internet": false,
+  "kernel_sources": [],
+  "code_file": "lime-titanic-day3.ipynb",
+  "dataset_sources": [],
+  "title": "LIME_titanic_day3"
+}

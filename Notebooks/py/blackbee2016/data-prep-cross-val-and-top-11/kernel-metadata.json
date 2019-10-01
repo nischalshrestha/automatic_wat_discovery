@@ -1,0 +1,17 @@
+{
+  "keywords": [],
+  "enable_gpu": false,
+  "is_private": false,
+  "language": "python",
+  "competition_sources": [
+    "titanic"
+  ],
+  "title": "Data Prep, cross val, and top 11%",
+  "code_file": "data-prep-cross-val-and-top-11.ipynb",
+  "kernel_sources": [],
+  "dataset_sources": [],
+  "id_no": 894965,
+  "enable_internet": false,
+  "kernel_type": "notebook",
+  "id": "blackbee2016/data-prep-cross-val-and-top-11"
+}

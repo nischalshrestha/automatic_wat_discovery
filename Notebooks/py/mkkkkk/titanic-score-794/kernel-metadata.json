@@ -1,0 +1,22 @@
+{
+  "language": "python",
+  "title": "Titanic:(score.794)",
+  "id_no": 2160301,
+  "kernel_type": "notebook",
+  "is_private": false,
+  "enable_internet": false,
+  "competition_sources": [
+    "titanic"
+  ],
+  "dataset_sources": [],
+  "code_file": "titanic-score-794.ipynb",
+  "id": "mkkkkk/titanic-score-794",
+  "keywords": [
+    "beginner",
+    "data cleaning",
+    "data visualization",
+    "starter code"
+  ],
+  "kernel_sources": [],
+  "enable_gpu": false
+}

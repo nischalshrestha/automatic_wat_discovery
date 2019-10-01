@@ -1,0 +1,22 @@
+{
+  "is_private": false,
+  "id": "jellevde/trying-to-use-kernels",
+  "dataset_sources": [],
+  "enable_internet": false,
+  "kernel_type": "notebook",
+  "code_file": "trying-to-use-kernels.irnb",
+  "title": "Trying to use kernels",
+  "enable_gpu": false,
+  "language": "r",
+  "keywords": [
+    "data cleaning",
+    "feature engineering",
+    "random forest",
+    "xgboost"
+  ],
+  "competition_sources": [
+    "titanic"
+  ],
+  "kernel_sources": [],
+  "id_no": 661864
+}

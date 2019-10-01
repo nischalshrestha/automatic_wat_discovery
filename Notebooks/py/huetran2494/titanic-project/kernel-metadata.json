@@ -1,0 +1,17 @@
+{
+  "dataset_sources": [],
+  "language": "python",
+  "enable_internet": false,
+  "enable_gpu": false,
+  "keywords": [],
+  "kernel_type": "notebook",
+  "is_private": false,
+  "id_no": 1950800,
+  "competition_sources": [
+    "titanic"
+  ],
+  "title": "Titanic project",
+  "code_file": "titanic-project.ipynb",
+  "kernel_sources": [],
+  "id": "huetran2494/titanic-project"
+}

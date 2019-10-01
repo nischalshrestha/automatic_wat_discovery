@@ -1,0 +1,17 @@
+{
+  "enable_gpu": false,
+  "keywords": [],
+  "dataset_sources": [],
+  "code_file": "decision-tree.ipynb",
+  "competition_sources": [
+    "titanic"
+  ],
+  "enable_internet": false,
+  "kernel_sources": [],
+  "is_private": false,
+  "kernel_type": "notebook",
+  "id_no": 172481,
+  "language": "python",
+  "id": "foutik/decision-tree",
+  "title": "Decision tree"
+}

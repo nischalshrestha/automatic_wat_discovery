@@ -1,0 +1,17 @@
+{
+  "enable_gpu": false,
+  "kernel_type": "notebook",
+  "keywords": [],
+  "id": "francoisolivier/titanic-20",
+  "is_private": false,
+  "competition_sources": [
+    "titanic"
+  ],
+  "enable_internet": false,
+  "id_no": 203646,
+  "language": "r",
+  "kernel_sources": [],
+  "code_file": "titanic-20.irnb",
+  "dataset_sources": [],
+  "title": "Titanic_20"
+}

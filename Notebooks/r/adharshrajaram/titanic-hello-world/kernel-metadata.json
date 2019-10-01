@@ -1,0 +1,17 @@
+{
+  "kernel_type": "notebook",
+  "dataset_sources": [],
+  "code_file": "titanic-hello-world.irnb",
+  "competition_sources": [
+    "titanic"
+  ],
+  "kernel_sources": [],
+  "is_private": false,
+  "enable_gpu": false,
+  "enable_internet": false,
+  "title": "Titanic : Hello World",
+  "id_no": 276989,
+  "keywords": [],
+  "id": "adharshrajaram/titanic-hello-world",
+  "language": "r"
+}

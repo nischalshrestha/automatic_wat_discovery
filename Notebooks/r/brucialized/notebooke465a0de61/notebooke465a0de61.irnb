@@ -1,0 +1,237 @@
+{
+  "metadata": {
+    "kernelspec": {
+      "display_name": "R",
+      "language": "R",
+      "name": "ir"
+    },
+    "language_info": {
+      "codemirror_mode": "r",
+      "file_extension": ".r",
+      "mimetype": "text/x-r-source",
+      "name": "R",
+      "pygments_lexer": "r",
+      "version": "3.3.2"
+    }
+  },
+  "nbformat": 4,
+  "nbformat_minor": 0,
+  "cells": [
+    {
+      "metadata": {
+        "_cell_guid": "2f1873d9-e13a-5aa6-fe92-2dd3c9d4351b",
+        "_active": false,
+        "collapsed": false
+      },
+      "source": "**1. Synopsis.**\n The analysis is to predict the survivor of passengers in Titanic which got wrecked by the iceberg. The analysis on the data set shows that female's survivor rate was much higher than male, regardless of the social class. Especially, men of the third class show much higher dying rate. ",
+      "execution_count": null,
+      "cell_type": "markdown",
+      "outputs": [],
+      "execution_state": "idle"
+    },
+    {
+      "metadata": {
+        "_cell_guid": "87175fe0-2f9b-f0fb-2ee2-932390b6b207",
+        "_active": false,
+        "collapsed": false
+      },
+      "source": "library(caret) # For the machine learning\nlibrary(ggplot2) # For visualization\nlibrary(plyr)\nlibrary(dplyr) \nlibrary(Hmisc) \nlibrary(reshape2) # for data manipulation\n\nsystem(\"ls ../input\")\n\n\n",
+      "execution_count": null,
+      "cell_type": "code",
+      "outputs": [],
+      "execution_state": "idle"
+    },
+    {
+      "metadata": {
+        "_cell_guid": "c69fd7f4-d33c-259c-b1e4-65db32aab081",
+        "_active": false,
+        "collapsed": false
+      },
+      "source": "**2. The survivor rate per Class**\nAmong the total passengers, more than 50% passengers are from the third class, followed by the first class, then second class. And the data analysis shows that the survivor rate is higher when the passenger class is high.",
+      "execution_count": null,
+      "cell_type": "markdown",
+      "outputs": [],
+      "execution_state": "idle"
+    },
+    {
+      "metadata": {
+        "_cell_guid": "b9f5603e-1bbf-7307-b87c-57bc7e8b6d66",
+        "_active": false,
+        "collapsed": false
+      },
+      "source": "train <- read.csv('../input/train.csv', stringsAsFactors = F)\ntest  <- read.csv('../input/test.csv', stringsAsFactors = F)\n\ntrain$Survived <- factor(train$Survived, levels = c(1,0))\nlevels(train$Survived) <- c(\"Survived\", \"Died\")\n\ntrain$Pclass <- as.factor(train$Pclass)\nlevels(train$Pclass) <- c(\"1st Class\", \"2nd Class\", \"3rd Class\")\n\nmosaicplot(train$Pclass ~ train$Survived, main = \"Passenger Survived per Class\",\n           color=c(\"#8dd3c7\", \"#fb8072\"), shade=FALSE, xlab=\"\", ylab=\"\",\n           off=c(0), cex.axis=1.4)\n",
+      "execution_count": null,
+      "cell_type": "code",
+      "outputs": [],
+      "execution_state": "idle"
+    },
+    {
+      "metadata": {
+        "_cell_guid": "76d574ce-529b-9c2d-af67-ce9f7a59cd36",
+        "_active": false,
+        "collapsed": false
+      },
+      "source": "**3. The distribution of age**\nThe histogram of who died and who survived shows the similar shape. But the historgram of surviving ones  shows much higher frequency in less then 10. ",
+      "execution_count": null,
+      "cell_type": "markdown",
+      "outputs": [],
+      "execution_state": "idle"
+    },
+    {
+      "metadata": {
+        "_cell_guid": "e8c3653b-a119-20ee-272c-bda9e3a91da0",
+        "_active": false,
+        "collapsed": false
+      },
+      "source": "suv <- subset(train, train$Survived == \"Survived\",select = Age)\nhist(suv)\ntitle(\"Histogram of who survived\")\ndie <- subset(train, train$Survived == \"Died\", select = Age)\nhist(die)\ntitle(\"Histogram of who died\")",
+      "execution_count": null,
+      "cell_type": "code",
+      "outputs": [],
+      "execution_state": "idle"
+    },
+    {
+      "metadata": {
+        "_cell_guid": "09ee75f9-43ea-4002-f356-384aa5f23ae8",
+        "_active": false,
+        "collapsed": false
+      },
+      "source": "The mosaic graph also shows less than age 10 was likely to survive compared to other groups.",
+      "execution_count": null,
+      "cell_type": "markdown",
+      "outputs": [],
+      "execution_state": "idle"
+    },
+    {
+      "metadata": {
+        "_cell_guid": "3701e299-1b52-2725-9b79-3fb82843c49f",
+        "_active": false,
+        "collapsed": false
+      },
+      "source": "a <- is.na(train$Age)\ntrain$Ageq <- cut2(train$Age,c(10,20,30,40,50,60,70,80))\ntrain$Ageq <- as.character(train$Ageq)\nb <- is.na(train$Ageq)\ntrain$Ageq[b] <- \"Unknown\"\ntrain$Ageq <- as.factor(train$Ageq)\nlevels(train$Ageq) <- c(\"to10\", \"to20\", \"to30\", \"to40\",\n                        \"to50\", \"to60\", \"to70\", \"to80\",\"Unknown\")\n\nmosaicplot(train$Ageq ~ train$Survived, main = \"Passenger Survived per Age\",\n           color=c(\"#8dd3c7\", \"#fb8072\"), shade=FALSE,  xlab=\"\", ylab=\"\",\n           off=c(0), cex.axis=0.5)",
+      "execution_count": null,
+      "cell_type": "code",
+      "outputs": [],
+      "execution_state": "idle"
+    },
+    {
+      "metadata": {
+        "_cell_guid": "af9f8f28-7c45-2726-c0ae-cbf8e8d9ac74",
+        "_active": false,
+        "collapsed": false
+      },
+      "source": "How about the survivor rate of age with respect to sex. The dashed line is for 'surviving group', and the solid line is 'not surviving group'. The graph shows that men died more than survived in the most of the age group except for the less than age 10, and the number of women who survived is more than the number of who died regardless of the age.",
+      "execution_count": null,
+      "cell_type": "markdown",
+      "outputs": [],
+      "execution_state": "idle"
+    },
+    {
+      "metadata": {
+        "_cell_guid": "8f92c158-268b-69ba-a4ba-6d49e9c33aee",
+        "_active": false,
+        "collapsed": false
+      },
+      "source": "d <- dcast(train, Ageq + Sex ~ Survived)\n\ng <- ggplot(data = d, aes(x = Ageq, y = Survived, group = Sex, colour = Sex),cex = 0.4)\ng + geom_line(stat = \"identity\", cex = 1.5, linetype = \"dashed\") + \n        geom_line(data = d, aes(x = Ageq, y=Died), stat = \"identity\", cex = 1.5) +\n        ylab(\"Number of people\")",
+      "execution_count": null,
+      "cell_type": "code",
+      "outputs": [],
+      "execution_state": "idle"
+    },
+    {
+      "metadata": {
+        "_cell_guid": "e26aa9ae-896f-1779-2fa5-96715ef38465",
+        "_active": false,
+        "collapsed": false
+      },
+      "source": "How about the survivor for each sex with respect to the class. Although the graph indicates that the man shows the sacrifice regardless of their passenger class, the degree of sacrifice of two higher class seems bit moderate. And the dying number of woman in the third class is almost equal to the survivor. ",
+      "execution_count": null,
+      "cell_type": "markdown",
+      "outputs": [],
+      "execution_state": "idle"
+    },
+    {
+      "metadata": {
+        "_cell_guid": "15b7d45f-8ebc-d325-b06d-986cf4bc6568",
+        "_active": false,
+        "collapsed": false
+      },
+      "source": "d1 <- dcast(train, Pclass + Sex ~ Survived)\n\ng1 <- ggplot(data = d1, aes(x = Pclass, y = Survived, group = Sex, colour = Sex),cex = 0.4)\ng1 + geom_line(stat = \"identity\", cex = 1.5, linetype = \"dashed\") + \n        geom_line(data = d1, aes(x = Pclass, y=Died), stat = \"identity\", cex = 1.5) +\n        ylab(\"Number of people\")",
+      "execution_count": null,
+      "cell_type": "code",
+      "outputs": [],
+      "execution_state": "idle"
+    },
+    {
+      "metadata": {
+        "_cell_guid": "831844be-e0ee-6ec5-22eb-ba408f5a31ac",
+        "_active": false,
+        "collapsed": false
+      },
+      "source": "## Convert the value of Cabin \n\nA <- grepl(patter = \"^A\", train$Cabin)\nB <- grepl(patter = \"^B\", train$Cabin)\nC <- grepl(patter = \"^C\", train$Cabin)\nD <- grepl(pattern = \"^D\",x = train$Cabin)\nE <- grepl(pattern = \"^E\",x = train$Cabin)\nF <- grepl(pattern = \"^F\",x = train$Cabin)\nT <- grepl(pattern = \"^T\",x = train$Cabin)\nY <- A|B|C|D|E|F|T\nN <- !Y\n\ntrain$Cabin[A] <- \"A\"\ntrain$Cabin[B] <- \"B\"\ntrain$Cabin[C] <- \"C\"\ntrain$Cabin[D] <- \"D\"\ntrain$Cabin[E] <- \"E\"\ntrain$Cabin[F] <- \"F\"\ntrain$Cabin[T] <- \"T\"\ntrain$Cabin[N] <- \"Unknown\"",
+      "execution_count": null,
+      "cell_type": "code",
+      "outputs": [],
+      "execution_state": "idle"
+    },
+    {
+      "metadata": {
+        "_cell_guid": "b85ea175-b994-cdc0-61cf-e1673c22122b",
+        "_active": false,
+        "collapsed": false
+      },
+      "source": "train$SibSp <- as.factor(train$SibSp)\ntrain$Parch <- as.factor(train$Parch)\ntrain$Cabin <- as.factor(train$Cabin)\n\ntrain <- train[, -c(1,4,6)]",
+      "execution_count": null,
+      "cell_type": "code",
+      "outputs": [],
+      "execution_state": "idle"
+    },
+    {
+      "metadata": {
+        "_cell_guid": "f90e6b6c-011e-155c-4554-fb22e34dee5c",
+        "_active": false,
+        "collapsed": false
+      },
+      "source": "itrain <- createDataPartition(y = train$Survived, p = 0.75, list = FALSE)\n\nTr <- train[itrain,]\nTs <- train[-itrain,]",
+      "execution_count": null,
+      "cell_type": "code",
+      "outputs": [],
+      "execution_state": "idle"
+    },
+    {
+      "metadata": {
+        "_cell_guid": "7fe6a495-8486-78fd-f10b-2bbd1de43b1b",
+        "_active": false,
+        "collapsed": false
+      },
+      "source": "ctrl <- trainControl(method = \"repeatedcv\", repeats = 3, number = 10)\nrfGrid <- expand.grid(.mtry = 7)\nrf <- train(Survived ~ ., data = Tr, method = \"rf\", trControl = ctrl, tuneGrid = rfGrid,\n            metric = \"Kappa\")",
+      "execution_count": null,
+      "cell_type": "code",
+      "outputs": [],
+      "execution_state": "idle"
+    },
+    {
+      "metadata": {
+        "_cell_guid": "af61be27-84ac-008d-6c56-89d60b8bc59f",
+        "_active": false,
+        "collapsed": false
+      },
+      "source": null,
+      "execution_count": null,
+      "cell_type": "markdown",
+      "outputs": [],
+      "execution_state": "idle"
+    },
+    {
+      "metadata": {
+        "_cell_guid": "ffb76fae-bdba-69c5-b465-64e206bce2e0",
+        "_active": true,
+        "collapsed": false
+      },
+      "source": "rf",
+      "execution_count": null,
+      "cell_type": "code",
+      "outputs": [],
+      "execution_state": "idle"
+    }
+  ]
+}

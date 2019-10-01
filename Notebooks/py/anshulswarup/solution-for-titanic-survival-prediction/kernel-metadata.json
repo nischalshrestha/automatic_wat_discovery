@@ -1,0 +1,17 @@
+{
+  "kernel_type": "notebook",
+  "code_file": "solution-for-titanic-survival-prediction.ipynb",
+  "id_no": 266130,
+  "language": "python",
+  "enable_internet": false,
+  "dataset_sources": [],
+  "id": "anshulswarup/solution-for-titanic-survival-prediction",
+  "keywords": [],
+  "title": "Solution for Titanic Survival Prediction",
+  "kernel_sources": [],
+  "enable_gpu": false,
+  "competition_sources": [
+    "titanic"
+  ],
+  "is_private": false
+}

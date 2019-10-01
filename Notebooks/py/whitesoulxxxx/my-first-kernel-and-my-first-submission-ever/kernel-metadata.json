@@ -1,0 +1,17 @@
+{
+  "language": "python",
+  "kernel_sources": [],
+  "code_file": "my-first-kernel-and-my-first-submission-ever.ipynb",
+  "is_private": false,
+  "competition_sources": [
+    "titanic"
+  ],
+  "title": "my first kernel and my first submission ever :)",
+  "id_no": 921459,
+  "id": "whitesoulxxxx/my-first-kernel-and-my-first-submission-ever",
+  "enable_gpu": false,
+  "kernel_type": "notebook",
+  "keywords": [],
+  "dataset_sources": [],
+  "enable_internet": false
+}

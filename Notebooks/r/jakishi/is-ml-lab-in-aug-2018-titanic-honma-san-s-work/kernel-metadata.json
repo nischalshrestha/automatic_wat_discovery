@@ -1,0 +1,17 @@
+{
+  "kernel_type": "notebook",
+  "enable_gpu": false,
+  "dataset_sources": [],
+  "id": "jakishi/is-ml-lab-in-aug-2018-titanic-honma-san-s-work",
+  "competition_sources": [
+    "titanic"
+  ],
+  "language": "r",
+  "id_no": 1560957,
+  "enable_internet": false,
+  "is_private": false,
+  "code_file": "is-ml-lab-in-aug-2018-titanic-honma-san-s-work.irnb",
+  "title": "IS ML Lab. in Aug. 2018: Titanic Honma san's work",
+  "kernel_sources": [],
+  "keywords": []
+}

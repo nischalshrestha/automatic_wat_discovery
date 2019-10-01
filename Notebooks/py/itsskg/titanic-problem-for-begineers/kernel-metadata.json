@@ -1,0 +1,20 @@
+{
+  "kernel_type": "notebook",
+  "title": "Titanic problem for begineers.",
+  "is_private": false,
+  "kernel_sources": [],
+  "code_file": "titanic-problem-for-begineers.ipynb",
+  "id_no": 1744678,
+  "language": "python",
+  "dataset_sources": [],
+  "enable_internet": false,
+  "competition_sources": [
+    "titanic"
+  ],
+  "id": "itsskg/titanic-problem-for-begineers",
+  "keywords": [
+    "beginner",
+    "data visualization"
+  ],
+  "enable_gpu": false
+}

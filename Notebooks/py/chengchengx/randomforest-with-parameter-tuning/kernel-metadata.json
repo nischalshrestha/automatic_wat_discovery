@@ -1,0 +1,17 @@
+{
+  "kernel_sources": [],
+  "code_file": "randomforest-with-parameter-tuning.ipynb",
+  "kernel_type": "notebook",
+  "dataset_sources": [],
+  "competition_sources": [
+    "titanic"
+  ],
+  "id_no": 444105,
+  "enable_internet": false,
+  "id": "chengchengx/randomforest-with-parameter-tuning",
+  "is_private": false,
+  "keywords": [],
+  "enable_gpu": false,
+  "language": "python",
+  "title": "RandomForest with parameter tuning"
+}

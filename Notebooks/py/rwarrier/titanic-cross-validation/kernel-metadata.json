@@ -1,0 +1,17 @@
+{
+  "title": "Titanic - Cross Validation",
+  "id": "rwarrier/titanic-cross-validation",
+  "dataset_sources": [],
+  "code_file": "titanic-cross-validation.ipynb",
+  "enable_gpu": false,
+  "is_private": false,
+  "enable_internet": false,
+  "keywords": [],
+  "id_no": 256443,
+  "competition_sources": [
+    "titanic"
+  ],
+  "kernel_sources": [],
+  "kernel_type": "notebook",
+  "language": "python"
+}

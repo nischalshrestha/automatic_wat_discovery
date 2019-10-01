@@ -1,0 +1,17 @@
+{
+  "enable_gpu": false,
+  "id": "ampretuzo/dumb-titanic",
+  "is_private": false,
+  "title": "dumb titanic",
+  "language": "python",
+  "enable_internet": false,
+  "competition_sources": [
+    "titanic"
+  ],
+  "id_no": 1090567,
+  "dataset_sources": [],
+  "code_file": "dumb-titanic.ipynb",
+  "keywords": [],
+  "kernel_sources": [],
+  "kernel_type": "notebook"
+}

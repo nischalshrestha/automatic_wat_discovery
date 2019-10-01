@@ -1,0 +1,22 @@
+{
+  "kernel_sources": [],
+  "enable_gpu": false,
+  "dataset_sources": [],
+  "keywords": [
+    "tutorial",
+    "data visualization",
+    "feature engineering",
+    "pca"
+  ],
+  "enable_internet": false,
+  "id_no": 1029920,
+  "title": "Titanic \"Spam\" Filter",
+  "language": "r",
+  "id": "cdeotte/titanic-spam-filter",
+  "is_private": false,
+  "code_file": "titanic-spam-filter.irnb",
+  "competition_sources": [
+    "titanic"
+  ],
+  "kernel_type": "notebook"
+}

@@ -1,0 +1,873 @@
+{
+  "cells": [
+    {
+      "cell_type": "markdown",
+      "metadata": {
+        "_cell_guid": "0013026f-2082-05f1-783f-4deec6fc3d70"
+      },
+      "source": [
+        "Before starting the Kernel, I want to thank these two kernels from Kaggle, where I learned some of the techniques I will be using:\n",
+        "\n",
+        "1. [Pythanic](https://www.kaggle.com/headsortails/pytanic)\n",
+        "2. [Introduction to Ensembling/Stacking in Python](https://www.kaggle.com/arthurtok/introduction-to-ensembling-stacking-in-python)"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "_cell_guid": "10235be5-bb58-c95d-3fe7-cd351997ece4"
+      },
+      "outputs": [],
+      "source": [
+        "# This Python 3 environment comes with many helpful analytics libraries installed\n",
+        "# It is defined by the kaggle/python docker image: https://github.com/kaggle/docker-python\n",
+        "# For example, here's several helpful packages to load in \n",
+        "\n",
+        "import pandas as pd\n",
+        "import numpy as np\n",
+        "import re\n",
+        "\n",
+        "import seaborn as sns\n",
+        "import matplotlib.pyplot as plt\n",
+        "%matplotlib inline\n",
+        "\n",
+        "from sklearn.linear_model import LogisticRegression\n",
+        "from sklearn.neighbors import KNeighborsClassifier\n",
+        "from sklearn.ensemble import RandomForestClassifier\n",
+        "from sklearn.ensemble import ExtraTreesClassifier\n",
+        "from sklearn.ensemble import AdaBoostClassifier\n",
+        "from sklearn.ensemble import GradientBoostingClassifier\n",
+        "from sklearn.ensemble import VotingClassifier\n",
+        "from sklearn.svm import SVC\n",
+        "import xgboost as xgb\n",
+        "from mlxtend.classifier import StackingClassifier\n",
+        "from sklearn.metrics import confusion_matrix, classification_report\n",
+        "from sklearn.model_selection import train_test_split, cross_val_score, ShuffleSplit\n",
+        "\n",
+        "import warnings\n",
+        "warnings.filterwarnings('ignore')"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "_cell_guid": "5776e74c-23fd-a8e0-f1f3-e3fb54d27e8a"
+      },
+      "outputs": [],
+      "source": [
+        "train_df = pd.read_csv(\"../input/train.csv\")\n",
+        "test_df = pd.read_csv(\"../input/test.csv\")"
+      ]
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {
+        "_cell_guid": "2d821ece-0c53-6215-219a-d8b3af64639f"
+      },
+      "source": [
+        "We won't be needing **'PassengerId'**. Let's drop it. "
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "_cell_guid": "f4954ff9-682c-caab-12fb-870281bf22d2"
+      },
+      "outputs": [],
+      "source": [
+        "train_df.drop(['PassengerId'], 1, inplace=True)\n",
+        "test_df.drop(['PassengerId'], 1, inplace=True)"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "_cell_guid": "6680638d-6ef2-4af1-c301-e033f4f5ffbb"
+      },
+      "outputs": [],
+      "source": [
+        "train_df.head()"
+      ]
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {
+        "_cell_guid": "bdad2edb-bc8b-5f5f-a976-dc383069a6fc"
+      },
+      "source": [
+        "### Feature Engineering\n",
+        "\n",
+        "I am going to dig into each of the features and analyze what we can get from them. As a first step, I will start with **'Ticket'**.\n",
+        "\n",
+        "I am going to check for every passenger whether their ticket is unique or if they are sharing it with other passengers. "
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "_cell_guid": "3a5a4a53-ab3e-7cee-05cb-0fbd95aa03c5"
+      },
+      "outputs": [],
+      "source": [
+        "ticketgrouptrain = train_df.groupby('Ticket').size().reset_index()\n",
+        "ticketgrouptest = test_df.groupby('Ticket').size().reset_index()\n",
+        "ticketgrouptrain.rename(columns = {0: 'Count'}, inplace=True)\n",
+        "ticketgrouptest.rename(columns = {0: 'Count'}, inplace=True)\n",
+        "\n",
+        "for i in range(0,train_df.shape[0]):\n",
+        "    train_df.ix[i, 'Sharedticket'] = ticketgrouptrain.Count[ticketgrouptrain.Ticket == train_df.Ticket[i]].item()\n",
+        "for i in range(0,test_df.shape[0]):\n",
+        "    test_df.ix[i, 'Sharedticket'] = ticketgrouptest.Count[ticketgrouptest.Ticket == test_df.Ticket[i]].item()   \n",
+        "\n",
+        "train_df.drop('Ticket', 1, inplace=True)\n",
+        "test_df.drop('Ticket', 1, inplace=True)   "
+      ]
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {
+        "_cell_guid": "ab990ff1-b897-45d5-cbf6-62d893d92615"
+      },
+      "source": [
+        "Let's visualize it to see the impact on the survival rate. "
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "_cell_guid": "8b3d301a-8448-8207-f756-d1b4ed24fbcf"
+      },
+      "outputs": [],
+      "source": [
+        "fig, axs = plt.subplots(ncols=2, figsize=(12,4))\n",
+        "sns.barplot(x='Sharedticket', y = 'Survived', data = train_df, ax = axs[0])\n",
+        "sns.barplot(x=train_df.groupby('Sharedticket').size().index, \n",
+        "            y = train_df.groupby('Sharedticket').size().values, ax = axs[1])"
+      ]
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {
+        "_cell_guid": "36c7a341-8a93-351d-ab8a-55b99265f84e"
+      },
+      "source": [
+        "I am going to try to reduce index values to see if we can get a more concise result."
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "_cell_guid": "8a86424f-9a08-b890-7f5e-cc0efb69c475"
+      },
+      "outputs": [],
+      "source": [
+        "train_df['Sharedticket2'] = train_df.Sharedticket\n",
+        "train_df.Sharedticket2[(train_df.Sharedticket2 == 2.0) | (train_df.Sharedticket2 == 3.0)  | \n",
+        "                      (train_df.Sharedticket2 == 4.0) ] = 2\n",
+        "train_df.Sharedticket2[(train_df.Sharedticket2 == 5.0) | (train_df.Sharedticket2 == 6.0) | \n",
+        "                       (train_df.Sharedticket2 == 7.0)] = 3"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "_cell_guid": "1c070431-d1e9-c233-4944-8c5cbae6b8f7"
+      },
+      "outputs": [],
+      "source": [
+        "fig, axs = plt.subplots(ncols=2, figsize=(12,4))\n",
+        "sns.barplot(x='Sharedticket2', y = 'Survived', data = train_df, ax = axs[0])\n",
+        "sns.barplot(x=train_df.groupby('Sharedticket2').size().index, y = train_df.groupby('Sharedticket2').size().values, ax = axs[1])"
+      ]
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {
+        "_cell_guid": "ac4de6e2-0e17-597d-9bf2-cebc2e9df6e6"
+      },
+      "source": [
+        "Finally I am going to convert it into categorical values"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "_cell_guid": "b272b0b8-27a3-450c-fcc2-53ffbfb0c823"
+      },
+      "outputs": [],
+      "source": [
+        "train_df.Sharedticket[train_df.Sharedticket == 1] = 'Not shared'\n",
+        "train_df.Sharedticket[(train_df.Sharedticket == 2.0) | (train_df.Sharedticket == 3.0)  | \n",
+        "                      (train_df.Sharedticket == 4.0) ] = 'Shared small'\n",
+        "train_df.Sharedticket[(train_df.Sharedticket == 5.0) | (train_df.Sharedticket == 6.0) | \n",
+        "                       (train_df.Sharedticket == 7.0)] = 'Shared big'\n",
+        "test_df.Sharedticket[test_df.Sharedticket == 1] = 'Not shared'\n",
+        "test_df.Sharedticket[(test_df.Sharedticket == 2.0) | (test_df.Sharedticket == 3.0)  | \n",
+        "                      (test_df.Sharedticket == 4.0) ] = 'Shared small'\n",
+        "test_df.Sharedticket[(test_df.Sharedticket == 5.0) | (test_df.Sharedticket == 6.0) | \n",
+        "                       (test_df.Sharedticket == 7.0)] = 'Shared big'\n",
+        "train_df.drop('Sharedticket2', 1, inplace=True)"
+      ]
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {
+        "_cell_guid": "0e94bca0-0112-7509-20f8-fa7a8bd3105c"
+      },
+      "source": [
+        "Let's continue with the **siblings/spouses** and **parents/childrens** features. I am going to add them together and then split the whole dataset into passengers traveling alone, those traveling with small families, and those traveling with big families. It does seem to make an impact. "
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "_cell_guid": "73e99865-4ec2-be18-944f-22fbcc5572b9"
+      },
+      "outputs": [],
+      "source": [
+        "train_df['Family'] = train_df['SibSp'] + train_df['Parch']\n",
+        "test_df['Family'] = test_df['SibSp'] + test_df['Parch']"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "_cell_guid": "69d08146-e86c-b04f-5ff3-9d79e4b93856"
+      },
+      "outputs": [],
+      "source": [
+        "fig, axs = plt.subplots(ncols=2, figsize=(12,4))\n",
+        "sns.barplot(x='Family', y = 'Survived', data = train_df, ax = axs[0])\n",
+        "sns.countplot(train_df['Family'], ax = axs[1])"
+      ]
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {
+        "_cell_guid": "1dc22a41-bf06-33aa-5680-87674a60ba47"
+      },
+      "source": [
+        "Again, I am going to narrow down the options."
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "_cell_guid": "e2241f16-cbc9-6569-49da-eb2633577e4b"
+      },
+      "outputs": [],
+      "source": [
+        "for i in range(0, train_df.shape[0]):\n",
+        "    if train_df.Family[i] == 0:\n",
+        "        train_df.ix[i, 'Familytype'] = 'Alone'\n",
+        "    elif (train_df.Family[i] > 0) & (train_df.Family[i] < 4):\n",
+        "        train_df.ix[i, 'Familytype'] = 'Small family'\n",
+        "    else:\n",
+        "        train_df.ix[i, 'Familytype'] = 'Big family'\n",
+        "\n",
+        "for i in range(0, test_df.shape[0]):\n",
+        "    if test_df.Family[i] == 0:\n",
+        "        test_df.ix[i, 'Familytype'] = 'Alone'\n",
+        "    elif (test_df.Family[i] > 0) & (test_df.Family[i] < 4):\n",
+        "        test_df.ix[i, 'Familytype'] = 'Small family'\n",
+        "    else:\n",
+        "        test_df.ix[i, 'Familytype'] = 'Big family'   \n",
+        "        \n",
+        "train_df.drop(['SibSp', 'Parch', 'Family'], 1, inplace=True)\n",
+        "test_df.drop(['SibSp', 'Parch', 'Family'], 1, inplace=True) "
+      ]
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {
+        "_cell_guid": "fffb2724-632c-27d3-301a-b847ce2393a7"
+      },
+      "source": [
+        "I want to check how correlated this feature is with 'Sharedticket'. As you can see below, they are clearly related, but not as much as I expected. For the time being I am going to keep both. "
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "_cell_guid": "3474c03c-45cd-995e-2cb3-57fb07729acd"
+      },
+      "outputs": [],
+      "source": [
+        "tab = pd.crosstab(train_df['Sharedticket'], train_df['Familytype'])\n",
+        "print(tab)"
+      ]
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {
+        "_cell_guid": "f96a2b16-5342-7679-cc40-0380de190d41"
+      },
+      "source": [
+        "Now let's move to **'Embarked'**. Before starting, there are two missing entries in the train dataset. We see that the Fare for both entries is really high. I am going to plot to see the typical fare of each port and then decide. "
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "_cell_guid": "6b00108d-a415-1da0-0dff-cd51b7d41bfd"
+      },
+      "outputs": [],
+      "source": [
+        "train_df[train_df.Embarked.isnull()]"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "_cell_guid": "fdae2307-9d7c-33fd-bb55-7eb40a3939a8"
+      },
+      "outputs": [],
+      "source": [
+        "sns.barplot(x='Embarked', y ='Fare', data= train_df)"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "_cell_guid": "d2d5d486-7be1-770e-3eb5-e58d9d28bea5"
+      },
+      "outputs": [],
+      "source": [
+        "train_df.Embarked[train_df.Embarked.isnull()] = 'C'"
+      ]
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {
+        "_cell_guid": "89f9b397-c076-6443-0af5-437d32d7ebea"
+      },
+      "source": [
+        "'C' seems like a good guess. In the plot below we see that Embarked can be a good feature as is, so I am not going to touch it. "
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "_cell_guid": "ba11ccc1-dc0d-4dd2-dcb0-53cad98e9f11"
+      },
+      "outputs": [],
+      "source": [
+        "fig, axs = plt.subplots(ncols=2, figsize=(12,4))\n",
+        "sns.barplot(x='Embarked', y = 'Survived', data = train_df, ax = axs[0])\n",
+        "sns.countplot(train_df['Embarked'], ax = axs[1])"
+      ]
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {
+        "_cell_guid": "a5e45b50-140c-3819-cddc-613aa87365c5"
+      },
+      "source": [
+        "What about **'Cabin'**? This is the feature with more NA values, so many that normally we would do good by dropping it. But in this case, the fact that there are missing values might be more related to the target than expected, because missing information can be connected to not survivals. \n",
+        "\n",
+        "Let's see."
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "_cell_guid": "94181f0a-0cfe-2e22-ea3b-a8fbb2d60dc4"
+      },
+      "outputs": [],
+      "source": [
+        "train_df.Cabin[train_df.Cabin.isnull()] = 'Z'\n",
+        "train_df.Cabin = [x[0] for x in train_df.Cabin]\n",
+        "test_df.Cabin[test_df.Cabin.isnull()] = 'Z'\n",
+        "test_df.Cabin = [x[0] for x in test_df.Cabin]"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "_cell_guid": "872c59de-697d-4637-601f-b49704d3c04e"
+      },
+      "outputs": [],
+      "source": [
+        "fig, axs = plt.subplots(ncols=2, figsize=(12,4))\n",
+        "sns.barplot(x='Cabin', y = 'Survived', data = train_df, ax = axs[0])\n",
+        "sns.countplot(train_df['Cabin'], ax = axs[1])"
+      ]
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {
+        "_cell_guid": "fd3d5d99-b025-e9ee-dae1-7ab78b7a1ba4"
+      },
+      "source": [
+        "We confirm in the plot that the missing info does impact the survival rate. I am only going to keep whether they had the Cabin or not. "
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "_cell_guid": "bf1c9178-9a07-25ed-7469-9f5133910021"
+      },
+      "outputs": [],
+      "source": [
+        "train_df.ix[(train_df.Cabin != 'Z'), 'Cabinknown'] = 'Yes'\n",
+        "train_df.ix[(train_df.Cabin == 'Z'), 'Cabinknown'] = 'No'\n",
+        "test_df.ix[(test_df.Cabin != 'Z'), 'Cabinknown'] = 'Yes'\n",
+        "test_df.ix[(test_df.Cabin == 'Z'), 'Cabinknown'] = 'No'\n",
+        "train_df.drop('Cabin', 1, inplace=True)\n",
+        "test_df.drop('Cabin', 1, inplace=True)"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "_cell_guid": "184a8312-3d27-00a3-792e-bca8abc3aa56"
+      },
+      "outputs": [],
+      "source": [
+        "sns.barplot(x='Cabinknown', y = 'Survived', data = train_df)"
+      ]
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {
+        "_cell_guid": "dfbef3cb-5696-f83b-c2d5-5ceed7f9ad47"
+      },
+      "source": [
+        "Let's move on to the **'Fare'** feature. Before anything, there is a missing value in the test dataset. I am going to calculate the mean of the Fare for the entries with the same port and 'Pclass'. "
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "_cell_guid": "8cbbb17f-347b-d909-f7fa-96ed97fbabb3"
+      },
+      "outputs": [],
+      "source": [
+        "test_df[test_df.Fare.isnull()]\n",
+        "train_df.Fare[(train_df['Pclass'] == 3) & (train_df['Embarked'] == 'S')].mean()\n",
+        "test_df.Fare[test_df.Fare.isnull()] = 14.64"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "_cell_guid": "3eb52533-2ad2-5b50-41e3-cf19a8e0b240"
+      },
+      "outputs": [],
+      "source": [
+        "sns.boxplot(x=train_df.Survived, y= np.log10(train_df.Fare + 1))"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "_cell_guid": "a807529b-d5ba-283c-15d3-cd6246fe45a0"
+      },
+      "outputs": [],
+      "source": [
+        "train_df.ix[(train_df.Fare >= 70),'Fare2'] = 3\n",
+        "train_df.ix[(train_df.Fare < 70),'Fare2'] = 2\n",
+        "train_df.ix[(train_df.Fare <= 10),'Fare2'] = 1\n",
+        "test_df.ix[(test_df.Fare >= 70),'Fare2'] = 3\n",
+        "test_df.ix[(test_df.Fare < 70),'Fare2'] = 2\n",
+        "test_df.ix[(test_df.Fare <= 10),'Fare2'] = 1"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "_cell_guid": "1a4d407c-e133-1a34-d768-f1c476028d7b"
+      },
+      "outputs": [],
+      "source": [
+        "fig, axs = plt.subplots(ncols=2, figsize=(12,4))\n",
+        "sns.barplot(x='Fare2', y = 'Survived', data = train_df, ax = axs[0])\n",
+        "sns.countplot(x='Fare2', data = train_df, ax = axs[1])"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "_cell_guid": "fc18875c-5da8-8874-8467-cd301a8b215a"
+      },
+      "outputs": [],
+      "source": [
+        "train_df.drop('Fare', 1, inplace=True)\n",
+        "test_df.drop('Fare', 1, inplace=True)"
+      ]
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {
+        "_cell_guid": "65a13a45-d1b0-99ac-7e9f-928d80b55d49"
+      },
+      "source": [
+        "Now let's tackle the most interesting and unexpected feature: the **'Name'**. I am going to extract the titles of each passenger. As we will see, the title, mainly Master, will allow us to identify the male kids. I will as well move the weird titles to the most common ones. "
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "_cell_guid": "9d41fd86-179b-2c94-d25a-3660549cc374"
+      },
+      "outputs": [],
+      "source": [
+        "for i in range(0,train_df.shape[0]):\n",
+        "    train_df.ix[i, 'Title'] = re.search('([A-Za-z]+)\\.', train_df.Name[i]).group(0)\n",
+        "for i in range(0,test_df.shape[0]):\n",
+        "    test_df.ix[i, 'Title'] = re.search('([A-Za-z]+)\\.', test_df.Name[i]).group(0)"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "_cell_guid": "b7952d6d-a521-cf66-cebd-177aa3b54011"
+      },
+      "outputs": [],
+      "source": [
+        "train_df.Title.value_counts()"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "_cell_guid": "0f4cec13-9d40-c150-8d3c-7095571eb265"
+      },
+      "outputs": [],
+      "source": [
+        "test_df.Title.value_counts()"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "_cell_guid": "884e47e7-f194-da3e-8e20-754150781a2c"
+      },
+      "outputs": [],
+      "source": [
+        "train_df.Title[(train_df.Title == 'Dr.') | (train_df.Title == 'Rev.') | (train_df.Title == 'Major.') | \n",
+        "               (train_df.Title == 'Col.') | (train_df.Title == 'Sir.') | (train_df.Title == 'Don.') |\n",
+        "              (train_df.Title == 'Capt.') | (train_df.Title == 'Jonkheer.')] = 'Mr.'\n",
+        "train_df.Title[(train_df.Title == 'Mlle.') | (train_df.Title == 'Ms.') | (train_df.Title == 'Lady.')] = 'Miss.'\n",
+        "train_df.Title[(train_df.Title == 'Mme.') | (train_df.Title == 'Countess.')] = 'Mrs.'\n",
+        "test_df.Title[(test_df.Title == 'Col.') | (test_df.Title == 'Rev.') | (test_df.Title == 'Dr.')] = 'Mr.'\n",
+        "test_df.Title[(test_df.Title == 'Dona.')] = 'Mrs.'\n",
+        "test_df.Title[(test_df.Title == 'Ms.')] = 'Miss.'"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "_cell_guid": "956bdfd1-5e42-38ac-a5ab-306e059a577e"
+      },
+      "outputs": [],
+      "source": [
+        "fig, axs = plt.subplots(ncols=2, figsize=(12,4))\n",
+        "sns.barplot(x='Title', y = 'Survived', data = train_df, ax = axs[0])\n",
+        "sns.countplot(train_df['Title'], ax = axs[1])"
+      ]
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {
+        "_cell_guid": "c16576c8-5442-ce16-c391-3b47ceaed4d4"
+      },
+      "source": [
+        "As you can see above. The females and Master (kids) have higher chances of surviving. Below I am going to plot the Age feature and, as we can see, apart from male children, it doesn't seem to be really related to survival rate. We might be doing well by keeping: male, child male and women. "
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "_cell_guid": "501d9b62-6b2e-a1aa-a559-7c29cff8b282"
+      },
+      "outputs": [],
+      "source": [
+        "fig, axs = plt.subplots(ncols=2, figsize=(12,4))\n",
+        "sns.distplot(train_df.Age[-train_df.Age.isnull() & (train_df.Survived == 1) & (train_df.Sex == 'male')], kde = False, ax = axs[0])\n",
+        "sns.distplot(train_df.Age[-train_df.Age.isnull() & (train_df.Survived == 0) & (train_df.Sex == 'male')], color = 'red', kde = False, ax = axs[0])\n",
+        "sns.distplot(train_df.Age[-train_df.Age.isnull() & (train_df.Survived == 1) & (train_df.Sex == 'female')], kde = False, ax = axs[1])\n",
+        "sns.distplot(train_df.Age[-train_df.Age.isnull() & (train_df.Survived == 0) & (train_df.Sex == 'female')], color = 'red', kde = False, ax = axs[1])"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "_cell_guid": "2b8b616b-b734-2ea4-8526-c952c829a7e5"
+      },
+      "outputs": [],
+      "source": [
+        "train_df.Title[(train_df.Title == 'Miss.') | (train_df.Title == 'Mrs.')] = 'Woman'\n",
+        "test_df.Title[(test_df.Title == 'Miss.') | (test_df.Title == 'Mrs.')] = 'Woman'\n",
+        "train_df.rename(columns = {'Title': 'Person'}, inplace=True)\n",
+        "test_df.rename(columns = {'Title': 'Person'}, inplace=True)\n",
+        "train_df.drop(['Name', 'Sex'], 1, inplace=True)\n",
+        "test_df.drop(['Name', 'Sex'], 1, inplace=True)"
+      ]
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {
+        "_cell_guid": "b8a19b71-4132-e391-22d2-b0aea5385381"
+      },
+      "source": [
+        "With age, the only thing we might want to do is to create the same values we created for Cabin. Whether we know the age or not. "
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "_cell_guid": "0d902376-3a4d-1d3a-205b-13d973e6217e"
+      },
+      "outputs": [],
+      "source": [
+        "train_df.ix[-np.isnan(train_df.Age), 'Ageknown'] = 'Yes'\n",
+        "train_df.ix[np.isnan(train_df.Age), 'Ageknown'] = 'No'\n",
+        "test_df.ix[-np.isnan(test_df.Age), 'Ageknown'] = 'Yes'\n",
+        "test_df.ix[np.isnan(test_df.Age), 'Ageknown'] = 'No'"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "_cell_guid": "f084cdfb-7823-1d64-f6f0-5dfe98c6f50e"
+      },
+      "outputs": [],
+      "source": [
+        "sns.barplot(x='Ageknown', y = 'Survived', data = train_df)"
+      ]
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {
+        "_cell_guid": "e445d216-7bc4-a669-b150-c4466e9e45bf"
+      },
+      "source": [
+        "The last feature is **'Pclass'**, which clearly has a big impact. Below, as promised, I check whether Fare and Pclass are correlated. They do seem to be connected but, as you can see, belonging to one Pclass changes the survival rate for the same Fare. "
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "_cell_guid": "044e3da5-ed79-a5ff-416c-b954c14be069"
+      },
+      "outputs": [],
+      "source": [
+        "sns.barplot(x = 'Pclass', y = 'Survived', data = train_df)"
+      ]
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {
+        "_cell_guid": "ecd9c983-3f68-f691-074a-f2595906a82e"
+      },
+      "source": [
+        "### Machine learning\n",
+        "\n",
+        "Now let's finalize the dataframe and get the dummies for the categorical values. "
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "_cell_guid": "30e3b89e-d627-bbc1-6c12-4b5813eb2c2b"
+      },
+      "outputs": [],
+      "source": [
+        "col_names = ['Cabinknown', 'Embarked', 'Person', 'Ageknown', 'Sharedticket', 'Familytype']\n",
+        "train_df = pd.get_dummies(train_df, columns=col_names, drop_first=True)\n",
+        "test_df = pd.get_dummies(test_df, columns=col_names, drop_first=True)\n",
+        "train_df.drop('Age', 1, inplace=True)\n",
+        "test_df.drop('Age', 1, inplace=True)"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "_cell_guid": "5020a8ad-9147-4724-1caf-d15881c35d4a"
+      },
+      "outputs": [],
+      "source": [
+        "train_df.head()"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "_cell_guid": "40bd625d-a45d-647c-eb99-cf3ee39c5f68"
+      },
+      "outputs": [],
+      "source": [
+        "X = np.array(train_df.drop('Survived', 1))\n",
+        "y = np.array(train_df['Survived'])\n",
+        "testX = np.array(test_df)"
+      ]
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {
+        "_cell_guid": "08458ccc-857e-c7ef-e8c2-2aff5e6ca813"
+      },
+      "source": [
+        "Before using the **VotingClassifier** and the **StackingClassifier**, I am going to see how the individual algorithms perform. "
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "_cell_guid": "7a316032-aa9f-b10e-0d2d-64950246907e"
+      },
+      "outputs": [],
+      "source": [
+        "svcmod = SVC(C = 15, kernel = 'rbf', gamma = 0.2, probability= True)\n",
+        "svcmod.scores = cross_val_score(svcmod, X, y, cv=5)\n",
+        "\n",
+        "knnmod = KNeighborsClassifier(n_neighbors= 21)\n",
+        "knnmod.scores = cross_val_score(knnmod, X, y, cv=5)\n",
+        "\n",
+        "rfmod = RandomForestClassifier(n_estimators=100, max_features=10, max_depth=5)\n",
+        "rfmod.scores = cross_val_score(rfmod, X, y, cv=5)\n",
+        "\n",
+        "xgbmod = xgb.XGBClassifier(learning_rate= 0.1, gamma = 0.8, max_depth= 3, min_child_weight=7, \n",
+        "                           objective= 'binary:logistic', subsample=0.8, colsample_bytree=0.8, \n",
+        "                           scale_pos_weight=1, n_estimators = 1000, nthread = -1)\n",
+        "xgbmod.scores = cross_val_score(xgbmod, X, y, cv=5)\n",
+        "\n",
+        "etmod = ExtraTreesClassifier(n_estimators=300, max_features=6, max_depth=6)\n",
+        "etmod.scores = cross_val_score(etmod, X, y, cv=5)\n",
+        "\n",
+        "admod = AdaBoostClassifier(n_estimators= 100, learning_rate= 0.1)\n",
+        "admod.scores = cross_val_score(admod, X, y, cv=5)\n",
+        "\n",
+        "lr = LogisticRegression(C = 0.1)\n",
+        "lr.scores = cross_val_score(lr, X, y, cv=5)\n",
+        "\n",
+        "for clf, label in zip([svcmod, knnmod, rfmod, xgbmod, etmod, admod, lr], \n",
+        "                      ['SVC', \n",
+        "                       'KNN', \n",
+        "                       'Random Forest',\n",
+        "                       'XGB',\n",
+        "                       'ExtraTrees',\n",
+        "                       'AdaBoost',\n",
+        "                       'Logistic Regression']):\n",
+        "    print(\"%s Accuracy: %0.3f\" % (label,clf.scores.mean()))"
+      ]
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {
+        "_cell_guid": "6a7d72a7-20c9-66d7-0e54-ba9fcd3b9009"
+      },
+      "source": [
+        "Let's now use **VotingClassifier**.  I have decided to drop the SVC (as it didn't give good results) and give a higher weight to KNN and XGB. I think XGB is clear why (it normally gets the best results), but I have chosen KNN as weight 2 because it had the most different results compared to the rest."
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "_cell_guid": "d54ea636-d78f-c8af-7369-7d7b5a358d04"
+      },
+      "outputs": [],
+      "source": [
+        "votemod = VotingClassifier(estimators=[('xgb', xgbmod), ('et', etmod), ('knn', knnmod), \n",
+        "                                       ('rf', rfmod), ('ad', admod)], \n",
+        "                           weights = [2,1,2,1,1],\n",
+        "                           voting='soft')\n",
+        "votemod.scores = cross_val_score(votemod, X, y, cv=5)\n",
+        "print(votemod.scores.mean())"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "_cell_guid": "4514d359-5529-5e5c-377b-14614489fd01"
+      },
+      "outputs": [],
+      "source": [
+        "stcmod = StackingClassifier(classifiers=[svcmod, xgbmod, knnmod, etmod, admod, rfmod], \n",
+        "                            meta_classifier=lr)\n",
+        "stcmod.scores = cross_val_score(stcmod, X, y, cv=5)\n",
+        "print(stcmod.scores.mean())"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "_cell_guid": "ccd4673c-e7a5-b219-5775-f20e256af0af"
+      },
+      "outputs": [],
+      "source": [
+        "votemod.fit(X,y)\n",
+        "predictionsfinal = votemod.predict(testX)\n",
+        "\n",
+        "testfinal = pd.read_csv('../input/test.csv')\n",
+        "\n",
+        "submit = pd.DataFrame({'PassengerId' : testfinal.loc[:,'PassengerId'],\n",
+        "                       'Survived': predictionsfinal})\n",
+        "submit.to_csv(\"../working/submit.csv\", index=False)"
+      ]
+    }
+  ],
+  "metadata": {
+    "_change_revision": 0,
+    "_is_fork": false,
+    "kernelspec": {
+      "display_name": "R",
+      "language": "R",
+      "name": "ir"
+    },
+    "language_info": {
+      "codemirror_mode": "r",
+      "file_extension": ".r",
+      "mimetype": "text/x-r-source",
+      "name": "R",
+      "pygments_lexer": "r",
+      "version": "3.4.0"
+    }
+  },
+  "nbformat": 4,
+  "nbformat_minor": 0
+}

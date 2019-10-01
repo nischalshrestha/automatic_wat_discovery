@@ -1,0 +1,17 @@
+{
+  "competition_sources": [
+    "titanic"
+  ],
+  "id": "mikekosk/mike-kosk",
+  "kernel_type": "notebook",
+  "language": "r",
+  "dataset_sources": [],
+  "enable_gpu": false,
+  "is_private": false,
+  "title": "Mike Kosk",
+  "id_no": 143910,
+  "code_file": "mike-kosk.irnb",
+  "kernel_sources": [],
+  "enable_internet": false,
+  "keywords": []
+}

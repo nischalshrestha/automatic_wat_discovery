@@ -1,0 +1,17 @@
+{
+  "language": "python",
+  "code_file": "titanic-survival-solution-by-automl.ipynb",
+  "id": "thanhtunggggg/titanic-survival-solution-by-automl",
+  "enable_internet": false,
+  "title": "Titanic survival solution by autoML",
+  "kernel_type": "notebook",
+  "competition_sources": [
+    "titanic"
+  ],
+  "id_no": 1188124,
+  "keywords": [],
+  "kernel_sources": [],
+  "is_private": false,
+  "dataset_sources": [],
+  "enable_gpu": false
+}

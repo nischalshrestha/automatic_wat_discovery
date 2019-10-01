@@ -1,0 +1,17 @@
+{
+  "title": "Titanic practice",
+  "enable_gpu": false,
+  "code_file": "titanic-practice.ipynb",
+  "is_private": false,
+  "keywords": [],
+  "kernel_type": "notebook",
+  "competition_sources": [
+    "titanic"
+  ],
+  "kernel_sources": [],
+  "language": "python",
+  "dataset_sources": [],
+  "id_no": 1586809,
+  "id": "allfiction/titanic-practice",
+  "enable_internet": false
+}

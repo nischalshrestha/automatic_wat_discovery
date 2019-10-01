@@ -1,0 +1,19 @@
+{
+  "kernel_type": "notebook",
+  "keywords": [],
+  "id_no": 1386351,
+  "kernel_sources": [],
+  "competition_sources": [
+    "titanic"
+  ],
+  "enable_gpu": false,
+  "code_file": "tcc-predict-2-0.ipynb",
+  "is_private": false,
+  "id": "wyller/tcc-predict-2-0",
+  "language": "python",
+  "enable_internet": false,
+  "dataset_sources": [
+    "gbonesso/b3-stock-quotes"
+  ],
+  "title": "TCC Predict 2.0"
+}

@@ -1,0 +1,17 @@
+{
+  "kernel_sources": [],
+  "dataset_sources": [],
+  "enable_gpu": true,
+  "title": "20181017",
+  "enable_internet": false,
+  "keywords": [],
+  "id_no": 1889061,
+  "language": "python",
+  "code_file": "20181017.ipynb",
+  "is_private": false,
+  "competition_sources": [
+    "titanic"
+  ],
+  "kernel_type": "notebook",
+  "id": "yekang/20181017"
+}

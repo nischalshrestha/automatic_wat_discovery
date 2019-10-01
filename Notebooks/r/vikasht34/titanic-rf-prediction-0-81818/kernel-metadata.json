@@ -1,0 +1,17 @@
+{
+  "competition_sources": [
+    "titanic"
+  ],
+  "kernel_type": "notebook",
+  "title": "Titanic - RF Prediction 0.81818  ",
+  "keywords": [],
+  "language": "r",
+  "dataset_sources": [],
+  "id_no": 263531,
+  "code_file": "titanic-rf-prediction-0-81818.irnb",
+  "enable_gpu": false,
+  "id": "vikasht34/titanic-rf-prediction-0-81818",
+  "enable_internet": false,
+  "kernel_sources": [],
+  "is_private": false
+}

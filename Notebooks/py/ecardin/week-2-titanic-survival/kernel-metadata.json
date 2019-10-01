@@ -1,0 +1,17 @@
+{
+  "kernel_sources": [],
+  "language": "python",
+  "keywords": [],
+  "kernel_type": "notebook",
+  "is_private": false,
+  "title": "[Week 2] Titanic Survival",
+  "code_file": "week-2-titanic-survival.ipynb",
+  "id": "ecardin/week-2-titanic-survival",
+  "competition_sources": [
+    "titanic"
+  ],
+  "enable_internet": false,
+  "enable_gpu": false,
+  "dataset_sources": [],
+  "id_no": 1958933
+}

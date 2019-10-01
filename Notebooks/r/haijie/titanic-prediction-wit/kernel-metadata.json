@@ -1,0 +1,17 @@
+{
+  "kernel_type": "notebook",
+  "competition_sources": [
+    "titanic"
+  ],
+  "title": "Titanic prediction wit",
+  "is_private": false,
+  "id": "haijie/titanic-prediction-wit",
+  "dataset_sources": [],
+  "kernel_sources": [],
+  "keywords": [],
+  "enable_internet": false,
+  "language": "r",
+  "enable_gpu": false,
+  "id_no": 262833,
+  "code_file": "titanic-prediction-wit.irnb"
+}

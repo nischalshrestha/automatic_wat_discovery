@@ -1,0 +1,20 @@
+{
+  "language": "python",
+  "title": "Titanic Data Analysis and ML",
+  "enable_gpu": false,
+  "kernel_type": "notebook",
+  "id_no": 450524,
+  "keywords": [
+    "machine learning",
+    "preprocessing"
+  ],
+  "kernel_sources": [],
+  "dataset_sources": [],
+  "id": "sanjaydeo96/titanic-data-analysis-and-ml",
+  "competition_sources": [
+    "titanic"
+  ],
+  "enable_internet": false,
+  "is_private": false,
+  "code_file": "titanic-data-analysis-and-ml.ipynb"
+}

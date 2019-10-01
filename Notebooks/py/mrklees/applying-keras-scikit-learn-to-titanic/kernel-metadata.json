@@ -1,0 +1,17 @@
+{
+  "id": "mrklees/applying-keras-scikit-learn-to-titanic",
+  "competition_sources": [
+    "titanic"
+  ],
+  "language": "python",
+  "kernel_type": "notebook",
+  "dataset_sources": [],
+  "keywords": [],
+  "is_private": false,
+  "code_file": "applying-keras-scikit-learn-to-titanic.ipynb",
+  "kernel_sources": [],
+  "enable_internet": false,
+  "id_no": 264345,
+  "title": "Applying Keras/Scikit-Learn to Titanic ",
+  "enable_gpu": false
+}

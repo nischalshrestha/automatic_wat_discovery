@@ -1,0 +1,17 @@
+{
+  "id_no": 212883,
+  "id": "gogocatmario/notebooke21f6982e8",
+  "code_file": "notebooke21f6982e8.irnb",
+  "language": "r",
+  "enable_gpu": false,
+  "enable_internet": false,
+  "competition_sources": [
+    "titanic"
+  ],
+  "title": "Notebooke21f6982e8",
+  "is_private": false,
+  "dataset_sources": [],
+  "keywords": [],
+  "kernel_sources": [],
+  "kernel_type": "notebook"
+}

@@ -1,0 +1,17 @@
+{
+  "enable_internet": false,
+  "dataset_sources": [],
+  "language": "python",
+  "id_no": 614909,
+  "keywords": [],
+  "competition_sources": [
+    "titanic"
+  ],
+  "title": "Kernel58cbe17211",
+  "enable_gpu": false,
+  "code_file": "kernel58cbe17211.ipynb",
+  "id": "davidmerrick/kernel58cbe17211",
+  "kernel_sources": [],
+  "kernel_type": "notebook",
+  "is_private": false
+}

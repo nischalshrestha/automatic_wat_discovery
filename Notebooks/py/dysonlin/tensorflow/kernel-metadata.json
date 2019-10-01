@@ -1,0 +1,17 @@
+{
+  "title": "Tensorflow",
+  "competition_sources": [
+    "titanic"
+  ],
+  "enable_gpu": false,
+  "language": "python",
+  "enable_internet": false,
+  "id": "dysonlin/tensorflow",
+  "kernel_type": "notebook",
+  "kernel_sources": [],
+  "keywords": [],
+  "is_private": false,
+  "code_file": "tensorflow.ipynb",
+  "id_no": 175375,
+  "dataset_sources": []
+}

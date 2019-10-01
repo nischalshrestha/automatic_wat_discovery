@@ -1,0 +1,21 @@
+{
+  "language": "python",
+  "kernel_sources": [],
+  "enable_internet": false,
+  "code_file": "titanickernel.ipynb",
+  "kernel_type": "notebook",
+  "dataset_sources": [],
+  "enable_gpu": false,
+  "id": "charbull/titanickernel",
+  "is_private": false,
+  "competition_sources": [
+    "titanic"
+  ],
+  "keywords": [
+    "beginner",
+    "machine learning",
+    "neural networks"
+  ],
+  "id_no": 537402,
+  "title": "TitanicKernel"
+}

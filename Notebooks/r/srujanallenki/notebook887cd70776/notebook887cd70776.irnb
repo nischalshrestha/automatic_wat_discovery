@@ -1,0 +1,45 @@
+{
+  "metadata": {
+    "kernelspec": {
+      "display_name": "R",
+      "language": "R",
+      "name": "ir"
+    },
+    "language_info": {
+      "codemirror_mode": "r",
+      "file_extension": ".r",
+      "mimetype": "text/x-r-source",
+      "name": "R",
+      "pygments_lexer": "r",
+      "version": "3.3.2"
+    }
+  },
+  "nbformat": 4,
+  "nbformat_minor": 0,
+  "cells": [
+    {
+      "metadata": {
+        "_cell_guid": "e41ae154-f7c3-7e58-3a79-5975e14238e9",
+        "_active": true,
+        "collapsed": false
+      },
+      "source": "# This R environment comes with all of CRAN preinstalled, as well as many other helpful packages\n# The environment is defined by the kaggle/rstats docker image: https://github.com/kaggle/docker-rstats\n# For example, here's several helpful packages to load in \n\nlibrary(ggplot2) # Data visualization\nlibrary(readr) # CSV file I/O, e.g. the read_csv function\nlibrary(dplyr)            # For data frame manipulation and the %>%  pipe\nlibrary(ggplot2)          # For visualizations\nlibrary(gridExtra)        # For plotting multiple plots\npaste0(installed.packages()[,\"mice\"], \"-\", installed.packages()[,\"2.3\"])\n#install.packages(\"mice\")\nlibrary(mice)             # multivariate imputation by chained equations\nlibrary(randomForest)\n\n# Input data files are available in the \"../input/\" directory.\n# For example, running this (by clicking run or pressing Shift+Enter) will list the files in the input directory\n\nsystem(\"ls ../input\")\n\n# Any results you write to the current directory are saved as output.",
+      "execution_count": null,
+      "cell_type": "code",
+      "outputs": [],
+      "execution_state": "idle"
+    },
+    {
+      "metadata": {
+        "_cell_guid": "1b4ce1d9-89f2-5790-d189-32a06d2454d3",
+        "_active": false,
+        "collapsed": false
+      },
+      "source": "train<-read.csv(\"../input/train.csv\")\n\n#total<-bind_rows(train,test)\n\ntotal<-train\nsapply(total, function(x) sum(is.na(x)))\ntotal$Survived<-as.factor(total$Survived)\ntotal$Pclass<-as.factor(total$Pclass)\ntotal$Sex<-as.factor(total$Sex)\ntotal$Embarked<-as.factor(total$Embarked)\nlibrary(mice)\n\nimpute<-mice(total[c('Age','Sex','Pclass','SibSp','Parch','Embarked','Fare')],method = \"rf\")\nimpute_complete<-complete(impute)\ntotal$Age<-impute_complete$Age\ntotal$Fare<-impute_complete$Fare\ntotal$child<-\"no\"\nfor (j in 1:nrow(total)) {\n  if (as.numeric(as.character(total$Age[j]))<16){\n    total$child[j]<-\"yes\"\n  }\n  total$Title <- factor(gsub('(.*, )|(\\\\..*)', '', total$Name))\n}\ntotal$child<-as.factor(total$child)\ntotal$Title<-as.factor(total$Title)\n\nsamp <- sample(nrow(train), 0.8 * nrow(train))\ntrain1<-total[samp,]\ntrain2<-total[-samp,]\nlibrary(randomForest)\n\nfor (i in 1:nrow(train1)) {\n  model1<-randomForest(Survived~Pclass+Sex+Age+SibSp+Parch+Embarked+child+Title,data = train1)\n}\ntrain2$pred<-predict(model1,train2)\n######2\ntrain1<-total[samp,]\n\nfor (i in 1:nrow(train1)) {\n  model2<-randomForest(Survived~Pclass+Sex+Age+SibSp+Parch+Embarked+child+Title,data = train1)\n}\ntrain2$pred2<-predict(model2,train2)\n##########3\ntrain1<-total[samp,]\n\nfor (i in 1:nrow(train1)) {\n  model3<-randomForest(Survived~Pclass+Sex+Age+SibSp+Parch+Embarked+child+Title,data = train1)\n}\ntrain2$pred3<-predict(model3,train2)\n\ntable(train2$pred3,train2$Survived)\n########\ntrain2$pred<-as.character(train2$pred)\ntrain2$pred2<-as.character(train2$pred2)\ntrain2$pred3<-as.character(train2$pred3)\ntrain2$pred<-as.numeric(train2$pred)\ntrain2$pred2<-as.numeric(train2$pred2)\ntrain2$pred3<-as.numeric(train2$pred3)\nif (sum(train2$pred+train2$pred2+train2$pred3)==0|sum(train2$pred+train2$pred2+train2$pred3)==1 )\n{\n  train2$pred_final<-0\n}\nif (sum(train2$pred+train2$pred2+train2$pred3)==2|sum(train2$pred+train2$pred2+train2$pred3)==3){\n  train2$pred_final<-1 }\n\n\ntab<-table(train2$pred,train2$Survived)\nlibrary(caret)\nconfusionMatrix(tab)\nimportance(model1)\nimportance(model2)\nimportance(model3)\n\n#########################\ntest<-read.csv(\"ls ../input/test.csv\")\nsapply(test, function(x) sum(is.na(x)))\ntest$Pclass<-as.factor(test$Pclass)\ntest$Sex<-as.factor(test$Sex)\ntest$Embarked<-as.factor(test$Embarked)\nlibrary(mice)\n\nimpute<-mice(test[c('Age','Sex','Pclass','SibSp','Parch','Embarked','Fare')],method = \"rf\")\nimpute_complete<-complete(impute)\ntest$Age<-impute_complete$Age\ntest$Fare<-impute_complete$Fare\ntest$child<-\"no\"\nfor (j in 1:nrow(test)) {\n  if (as.numeric(as.character(test$Age[j]))<16){\n    test$child[j]<-\"yes\"\n  }\n  test$Title <- factor(gsub('(.*, )|(\\\\..*)', '', test$Name))\n}\ntest$child<-as.factor(test$child)\ntest$Title<-as.factor(test$Title)\n\nlevels(test$Pclass) <- levels(total$Pclass)\nlevels(test$child) <- levels(total$child)\nlevels(test$Title) <- levels(total$Title)\nlevels(test$Sex) <- levels(total$Sex)\nlevels(test$Age) <- levels(total$Age)\nlevels(test$SibSp) <- levels(total$SibSp)\nlevels(test$Parch) <- levels(total$Parch)\nlevels(test$Embarked) <- levels(total$Embarked)\n\ntest$pred<-predict(model1,test)\ntest$pred2<-predict(model2,test)\ntest$pred3<-predict(model3,test)\n\ntest$pred<-as.character(test$pred)\ntest$pred2<-as.character(test$pred2)\ntest$pred3<-as.character(test$pred3)\ntest$pred<-as.numeric(test$pred)\ntest$pred2<-as.numeric(test$pred2)\ntest$pred3<-as.numeric(test$pred3)\n\nfor(i in 1:nrow(test)){\nif (sum(test$pred[i]+test$pred2[i]+test$pred3[i])==0|sum(test$pred[i]+test$pred2[i]+test$pred3[i])==1 )\n{\n  test$pred_final[i]<-0\n}\nif (sum(test$pred[i]+test$pred2[i]+test$pred3[i])==2|sum(test$pred[i]+test$pred2[i]+test$pred3[i])==3)\n  {\n  test$pred_final[i]<-1 \n  }\n}\n\ntest_final<-test[,c(\"PassengerId\",\"pred_final\" )]\n\nwrite.csv(test_final,\"Predicted survival.csv\")\n",
+      "execution_count": null,
+      "cell_type": "code",
+      "outputs": [],
+      "execution_state": "idle"
+    }
+  ]
+}

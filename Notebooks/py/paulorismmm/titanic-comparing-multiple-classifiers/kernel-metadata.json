@@ -1,0 +1,17 @@
+{
+  "title": "Titanic: comparing multiple classifiers",
+  "id_no": 950107,
+  "id": "paulorismmm/titanic-comparing-multiple-classifiers",
+  "language": "python",
+  "is_private": false,
+  "enable_gpu": false,
+  "competition_sources": [
+    "titanic"
+  ],
+  "code_file": "titanic-comparing-multiple-classifiers.ipynb",
+  "enable_internet": false,
+  "kernel_type": "notebook",
+  "kernel_sources": [],
+  "keywords": [],
+  "dataset_sources": []
+}

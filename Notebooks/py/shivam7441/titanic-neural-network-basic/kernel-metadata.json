@@ -1,0 +1,17 @@
+{
+  "enable_internet": false,
+  "title": "Titanic Neural network basic",
+  "enable_gpu": false,
+  "id": "shivam7441/titanic-neural-network-basic",
+  "keywords": [],
+  "kernel_type": "notebook",
+  "language": "python",
+  "code_file": "titanic-neural-network-basic.ipynb",
+  "kernel_sources": [],
+  "dataset_sources": [],
+  "competition_sources": [
+    "titanic"
+  ],
+  "is_private": false,
+  "id_no": 2092683
+}

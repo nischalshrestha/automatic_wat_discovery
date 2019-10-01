@@ -1,0 +1,17 @@
+{
+  "dataset_sources": [],
+  "id": "ashar7/titanic-survival-prediction",
+  "competition_sources": [
+    "titanic"
+  ],
+  "enable_internet": false,
+  "id_no": 1114784,
+  "is_private": false,
+  "enable_gpu": false,
+  "keywords": [],
+  "kernel_type": "notebook",
+  "language": "python",
+  "code_file": "titanic-survival-prediction.ipynb",
+  "title": "titanic survival prediction",
+  "kernel_sources": []
+}

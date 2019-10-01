@@ -1,0 +1,17 @@
+{
+  "keywords": [],
+  "is_private": false,
+  "competition_sources": [
+    "titanic"
+  ],
+  "kernel_type": "notebook",
+  "id_no": 220644,
+  "dataset_sources": [],
+  "id": "drewmellor/titanic-alpha-attempt",
+  "enable_internet": false,
+  "title": "Titanic Alpha attempt",
+  "kernel_sources": [],
+  "code_file": "titanic-alpha-attempt.ipynb",
+  "enable_gpu": false,
+  "language": "python"
+}

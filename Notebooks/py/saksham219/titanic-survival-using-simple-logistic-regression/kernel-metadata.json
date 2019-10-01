@@ -1,0 +1,17 @@
+{
+  "enable_internet": false,
+  "enable_gpu": false,
+  "kernel_sources": [],
+  "code_file": "titanic-survival-using-simple-logistic-regression.ipynb",
+  "id_no": 369091,
+  "is_private": false,
+  "title": "Titanic survival using simple logistic regression",
+  "kernel_type": "notebook",
+  "language": "python",
+  "id": "saksham219/titanic-survival-using-simple-logistic-regression",
+  "dataset_sources": [],
+  "competition_sources": [
+    "titanic"
+  ],
+  "keywords": []
+}

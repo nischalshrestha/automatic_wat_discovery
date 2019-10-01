@@ -1,0 +1,17 @@
+{
+  "enable_internet": false,
+  "keywords": [],
+  "enable_gpu": false,
+  "kernel_sources": [],
+  "competition_sources": [
+    "titanic"
+  ],
+  "title": "My Titanic Attempt",
+  "language": "python",
+  "id": "asindico/my-titanic-attempt",
+  "id_no": 152698,
+  "dataset_sources": [],
+  "is_private": false,
+  "kernel_type": "notebook",
+  "code_file": "my-titanic-attempt.ipynb"
+}

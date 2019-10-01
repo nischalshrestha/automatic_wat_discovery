@@ -1,0 +1,17 @@
+{
+  "enable_internet": false,
+  "dataset_sources": [],
+  "keywords": [],
+  "is_private": false,
+  "kernel_type": "notebook",
+  "id_no": 212082,
+  "kernel_sources": [],
+  "competition_sources": [
+    "titanic"
+  ],
+  "code_file": "an-interactive-data-science-tutorial-a7e69b.ipynb",
+  "title": "An Interactive Data Science Tutorial a7e69b",
+  "language": "python",
+  "id": "liyucan/an-interactive-data-science-tutorial-a7e69b",
+  "enable_gpu": false
+}

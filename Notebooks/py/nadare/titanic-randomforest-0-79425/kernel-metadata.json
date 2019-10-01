@@ -1,0 +1,17 @@
+{
+  "id": "nadare/titanic-randomforest-0-79425",
+  "dataset_sources": [],
+  "keywords": [],
+  "title": "titanic randomforest (0.79425) ",
+  "language": "python",
+  "enable_internet": false,
+  "id_no": 1096781,
+  "kernel_sources": [],
+  "enable_gpu": false,
+  "competition_sources": [
+    "titanic"
+  ],
+  "code_file": "titanic-randomforest-0-79425.ipynb",
+  "is_private": false,
+  "kernel_type": "notebook"
+}

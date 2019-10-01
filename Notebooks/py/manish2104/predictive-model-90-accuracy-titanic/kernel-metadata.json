@@ -1,0 +1,23 @@
+{
+  "enable_gpu": false,
+  "kernel_sources": [],
+  "enable_internet": false,
+  "title": "Predictive Model(90% Accuracy) - Titanic",
+  "id_no": 1205855,
+  "id": "manish2104/predictive-model-90-accuracy-titanic",
+  "code_file": "predictive-model-90-accuracy-titanic.ipynb",
+  "is_private": false,
+  "kernel_type": "notebook",
+  "keywords": [
+    "data cleaning",
+    "data visualization",
+    "classification",
+    "feature engineering",
+    "deep learning"
+  ],
+  "language": "python",
+  "competition_sources": [
+    "titanic"
+  ],
+  "dataset_sources": []
+}

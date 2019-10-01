@@ -1,0 +1,17 @@
+{
+  "dataset_sources": [],
+  "keywords": [],
+  "kernel_type": "notebook",
+  "language": "python",
+  "code_file": "analysis-of-algorithms.ipynb",
+  "enable_internet": false,
+  "kernel_sources": [],
+  "competition_sources": [
+    "titanic"
+  ],
+  "id": "sangarshanan/analysis-of-algorithms",
+  "id_no": 745559,
+  "is_private": false,
+  "title": "Analysis of algorithms",
+  "enable_gpu": false
+}

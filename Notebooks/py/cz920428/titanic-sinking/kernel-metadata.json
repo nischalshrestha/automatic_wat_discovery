@@ -1,0 +1,17 @@
+{
+  "code_file": "titanic-sinking.ipynb",
+  "id": "cz920428/titanic-sinking",
+  "keywords": [],
+  "kernel_type": "notebook",
+  "id_no": 329660,
+  "competition_sources": [
+    "titanic"
+  ],
+  "enable_internet": false,
+  "title": "Titanic Sinking ",
+  "kernel_sources": [],
+  "is_private": false,
+  "enable_gpu": false,
+  "language": "python",
+  "dataset_sources": []
+}

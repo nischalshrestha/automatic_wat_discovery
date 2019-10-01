@@ -1,0 +1,17 @@
+{
+  "language": "python",
+  "keywords": [],
+  "id": "alanoud1/my-first-kernel-titanic",
+  "id_no": 270794,
+  "kernel_sources": [],
+  "enable_gpu": false,
+  "title": "My First Kernel - Titanic",
+  "kernel_type": "notebook",
+  "enable_internet": false,
+  "code_file": "my-first-kernel-titanic.ipynb",
+  "is_private": false,
+  "competition_sources": [
+    "titanic"
+  ],
+  "dataset_sources": []
+}

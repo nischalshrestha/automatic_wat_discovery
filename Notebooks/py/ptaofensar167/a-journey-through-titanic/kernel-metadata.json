@@ -1,0 +1,17 @@
+{
+  "code_file": "a-journey-through-titanic.ipynb",
+  "id": "ptaofensar167/a-journey-through-titanic",
+  "dataset_sources": [],
+  "kernel_sources": [],
+  "enable_gpu": false,
+  "language": "python",
+  "id_no": 119794,
+  "enable_internet": false,
+  "competition_sources": [
+    "titanic"
+  ],
+  "keywords": [],
+  "title": "A Journey through Titanic",
+  "is_private": false,
+  "kernel_type": "notebook"
+}

@@ -1,0 +1,17 @@
+{
+  "kernel_sources": [],
+  "language": "python",
+  "is_private": false,
+  "title": "TitanicDNN",
+  "keywords": [],
+  "id": "ksarafrazi/titanicdnn",
+  "kernel_type": "notebook",
+  "enable_gpu": false,
+  "competition_sources": [
+    "titanic"
+  ],
+  "code_file": "titanicdnn.ipynb",
+  "enable_internet": false,
+  "id_no": 2024689,
+  "dataset_sources": []
+}

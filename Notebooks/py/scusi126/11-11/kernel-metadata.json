@@ -1,0 +1,17 @@
+{
+  "title": "11/11",
+  "kernel_type": "notebook",
+  "kernel_sources": [],
+  "competition_sources": [
+    "titanic"
+  ],
+  "id": "scusi126/11-11",
+  "dataset_sources": [],
+  "is_private": false,
+  "enable_internet": false,
+  "id_no": 2074706,
+  "code_file": "11-11.ipynb",
+  "keywords": [],
+  "enable_gpu": false,
+  "language": "python"
+}

@@ -1,0 +1,23 @@
+{
+  "kernel_type": "notebook",
+  "code_file": "titanic-models-101-for-adventurous-pioneers.irnb",
+  "title": "Titanic Models 101 - For Adventurous Pioneers",
+  "is_private": false,
+  "id": "lorenzopagliaro01/titanic-models-101-for-adventurous-pioneers",
+  "id_no": 840844,
+  "enable_internet": false,
+  "competition_sources": [
+    "titanic"
+  ],
+  "language": "r",
+  "keywords": [
+    "tutorial",
+    "model comparison",
+    "random forest",
+    "linear regression",
+    "decision tree"
+  ],
+  "kernel_sources": [],
+  "dataset_sources": [],
+  "enable_gpu": false
+}

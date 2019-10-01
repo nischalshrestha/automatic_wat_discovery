@@ -1,0 +1,17 @@
+{
+  "id_no": 1627851,
+  "keywords": [],
+  "is_private": false,
+  "code_file": "logistic-regression-hw.ipynb",
+  "id": "rasitiri/logistic-regression-hw",
+  "language": "python",
+  "competition_sources": [
+    "titanic"
+  ],
+  "enable_gpu": false,
+  "title": "Logistic Regression HW",
+  "enable_internet": false,
+  "kernel_sources": [],
+  "dataset_sources": [],
+  "kernel_type": "notebook"
+}

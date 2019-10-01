@@ -1,0 +1,19 @@
+{
+  "enable_internet": false,
+  "kernel_sources": [],
+  "code_file": "using-real-historical-data-as-varlidation-set.ipynb",
+  "competition_sources": [
+    "titanic"
+  ],
+  "enable_gpu": false,
+  "id": "naturebalance/using-real-historical-data-as-varlidation-set",
+  "kernel_type": "notebook",
+  "language": "python",
+  "dataset_sources": [
+    "naturebalance/test-dataset"
+  ],
+  "keywords": [],
+  "is_private": false,
+  "id_no": 1958089,
+  "title": "Using real historical data as Varlidation set"
+}

@@ -1,0 +1,17 @@
+{
+  "keywords": [],
+  "title": "Titanic",
+  "dataset_sources": [],
+  "kernel_sources": [],
+  "enable_gpu": false,
+  "kernel_type": "notebook",
+  "enable_internet": false,
+  "id_no": 69474,
+  "code_file": "notebook-0eb31dbac724623a16d0.irnb",
+  "competition_sources": [
+    "titanic"
+  ],
+  "is_private": false,
+  "id": "torenunez/notebook-0eb31dbac724623a16d0",
+  "language": "r"
+}

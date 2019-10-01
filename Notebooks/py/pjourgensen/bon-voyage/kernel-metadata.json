@@ -1,0 +1,17 @@
+{
+  "is_private": false,
+  "enable_internet": false,
+  "kernel_sources": [],
+  "keywords": [],
+  "dataset_sources": [],
+  "kernel_type": "notebook",
+  "title": "Bon Voyage!",
+  "id_no": 1766044,
+  "language": "python",
+  "id": "pjourgensen/bon-voyage",
+  "competition_sources": [
+    "titanic"
+  ],
+  "enable_gpu": false,
+  "code_file": "bon-voyage.ipynb"
+}

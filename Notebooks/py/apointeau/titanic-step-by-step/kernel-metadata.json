@@ -1,0 +1,17 @@
+{
+  "enable_gpu": false,
+  "kernel_sources": [],
+  "language": "python",
+  "kernel_type": "notebook",
+  "competition_sources": [
+    "titanic"
+  ],
+  "title": "Titanic Step by Step",
+  "dataset_sources": [],
+  "id": "apointeau/titanic-step-by-step",
+  "id_no": 289731,
+  "enable_internet": false,
+  "is_private": false,
+  "code_file": "titanic-step-by-step.ipynb",
+  "keywords": []
+}

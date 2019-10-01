@@ -1,0 +1,17 @@
+{
+  "competition_sources": [
+    "titanic"
+  ],
+  "kernel_sources": [],
+  "id": "tlinnet/testing-the-titanic-problem-first-kaggle",
+  "title": "Testing the Titanic problem - First Kaggle",
+  "is_private": false,
+  "code_file": "testing-the-titanic-problem-first-kaggle.ipynb",
+  "dataset_sources": [],
+  "keywords": [],
+  "enable_gpu": false,
+  "enable_internet": false,
+  "kernel_type": "notebook",
+  "language": "python",
+  "id_no": 176609
+}

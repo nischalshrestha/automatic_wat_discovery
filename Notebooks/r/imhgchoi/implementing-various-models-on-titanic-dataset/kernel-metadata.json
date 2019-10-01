@@ -1,0 +1,17 @@
+{
+  "kernel_sources": [],
+  "competition_sources": [
+    "titanic"
+  ],
+  "kernel_type": "notebook",
+  "title": "Implementing Various Models on Titanic Dataset",
+  "is_private": false,
+  "dataset_sources": [],
+  "id_no": 409195,
+  "enable_gpu": false,
+  "id": "imhgchoi/implementing-various-models-on-titanic-dataset",
+  "language": "r",
+  "enable_internet": false,
+  "keywords": [],
+  "code_file": "implementing-various-models-on-titanic-dataset.irnb"
+}

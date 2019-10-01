@@ -1,0 +1,17 @@
+{
+  "competition_sources": [
+    "titanic"
+  ],
+  "is_private": false,
+  "enable_internet": false,
+  "kernel_type": "notebook",
+  "id_no": 75715,
+  "code_file": "test0001.irnb",
+  "dataset_sources": [],
+  "language": "r",
+  "keywords": [],
+  "enable_gpu": false,
+  "id": "chemjong/test0001",
+  "kernel_sources": [],
+  "title": "Test0001"
+}

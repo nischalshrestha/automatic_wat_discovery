@@ -1,0 +1,17 @@
+{
+  "id": "drakino/predicting-survivors-of-titanic",
+  "code_file": "predicting-survivors-of-titanic.ipynb",
+  "id_no": 694282,
+  "enable_gpu": false,
+  "dataset_sources": [],
+  "kernel_sources": [],
+  "keywords": [],
+  "kernel_type": "notebook",
+  "title": "Predicting Survivors of Titanic",
+  "enable_internet": false,
+  "is_private": false,
+  "competition_sources": [
+    "titanic"
+  ],
+  "language": "python"
+}

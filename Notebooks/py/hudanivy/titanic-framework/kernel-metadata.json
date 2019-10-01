@@ -1,0 +1,17 @@
+{
+  "enable_gpu": false,
+  "is_private": false,
+  "dataset_sources": [],
+  "kernel_type": "notebook",
+  "code_file": "titanic-framework.ipynb",
+  "id": "hudanivy/titanic-framework",
+  "kernel_sources": [],
+  "competition_sources": [
+    "titanic"
+  ],
+  "language": "python",
+  "id_no": 1527734,
+  "title": " Titanic Framework",
+  "keywords": [],
+  "enable_internet": false
+}

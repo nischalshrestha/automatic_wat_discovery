@@ -1,0 +1,17 @@
+{
+  "language": "python",
+  "dataset_sources": [],
+  "competition_sources": [
+    "titanic"
+  ],
+  "kernel_type": "notebook",
+  "title": "Titanic passenger survival",
+  "code_file": "titanic-passenger-survival.ipynb",
+  "keywords": [],
+  "enable_gpu": false,
+  "id_no": 79519,
+  "enable_internet": false,
+  "kernel_sources": [],
+  "id": "oysteijo/titanic-passenger-survival",
+  "is_private": false
+}

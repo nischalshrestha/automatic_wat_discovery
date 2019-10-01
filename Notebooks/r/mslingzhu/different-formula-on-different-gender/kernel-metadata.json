@@ -1,0 +1,17 @@
+{
+  "id_no": 73990,
+  "kernel_sources": [],
+  "title": "different formula on different gender",
+  "competition_sources": [
+    "titanic"
+  ],
+  "enable_internet": false,
+  "kernel_type": "notebook",
+  "code_file": "different-formula-on-different-gender.irnb",
+  "is_private": false,
+  "enable_gpu": false,
+  "keywords": [],
+  "language": "r",
+  "id": "mslingzhu/different-formula-on-different-gender",
+  "dataset_sources": []
+}

@@ -1,0 +1,20 @@
+{
+  "is_private": false,
+  "code_file": "andrew-ng-concepts.ipynb",
+  "language": "python",
+  "keywords": [
+    "beginner",
+    "logistic regression"
+  ],
+  "competition_sources": [
+    "titanic"
+  ],
+  "kernel_type": "notebook",
+  "title": "Andrew NG concepts",
+  "enable_internet": false,
+  "kernel_sources": [],
+  "enable_gpu": false,
+  "dataset_sources": [],
+  "id_no": 2064257,
+  "id": "aroramanish/andrew-ng-concepts"
+}

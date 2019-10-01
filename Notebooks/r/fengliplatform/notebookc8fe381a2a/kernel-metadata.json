@@ -1,0 +1,17 @@
+{
+  "kernel_type": "notebook",
+  "id": "fengliplatform/notebookc8fe381a2a",
+  "competition_sources": [
+    "titanic"
+  ],
+  "enable_internet": false,
+  "keywords": [],
+  "code_file": "notebookc8fe381a2a.ipynb",
+  "enable_gpu": false,
+  "is_private": false,
+  "title": "Notebookc8fe381a2a",
+  "id_no": 219483,
+  "kernel_sources": [],
+  "language": "python",
+  "dataset_sources": []
+}

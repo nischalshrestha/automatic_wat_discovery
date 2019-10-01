@@ -1,0 +1,17 @@
+{
+  "code_file": "interactive-widgets-in-a-notebook.ipynb",
+  "kernel_type": "notebook",
+  "competition_sources": [
+    "titanic"
+  ],
+  "enable_internet": false,
+  "dataset_sources": [],
+  "keywords": [],
+  "id_no": 33607,
+  "enable_gpu": false,
+  "language": "python",
+  "kernel_sources": [],
+  "id": "cavendish/interactive-widgets-in-a-notebook",
+  "title": "interactive widgets in a notebook?",
+  "is_private": false
+}

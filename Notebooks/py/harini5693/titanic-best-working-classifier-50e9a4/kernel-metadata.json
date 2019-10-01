@@ -1,0 +1,17 @@
+{
+  "kernel_sources": [],
+  "language": "python",
+  "id": "harini5693/titanic-best-working-classifier-50e9a4",
+  "kernel_type": "notebook",
+  "dataset_sources": [],
+  "enable_gpu": false,
+  "id_no": 189276,
+  "enable_internet": false,
+  "is_private": false,
+  "competition_sources": [
+    "titanic"
+  ],
+  "keywords": [],
+  "title": "Titanic best working Classifier 50e9a4",
+  "code_file": "titanic-best-working-classifier-50e9a4.ipynb"
+}

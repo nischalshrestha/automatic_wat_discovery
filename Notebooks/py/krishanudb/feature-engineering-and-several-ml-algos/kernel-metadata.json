@@ -1,0 +1,17 @@
+{
+  "competition_sources": [
+    "titanic"
+  ],
+  "id": "krishanudb/feature-engineering-and-several-ml-algos",
+  "is_private": false,
+  "code_file": "feature-engineering-and-several-ml-algos.ipynb",
+  "kernel_sources": [],
+  "dataset_sources": [],
+  "title": "Feature Engineering and several ML Algos",
+  "keywords": [],
+  "language": "python",
+  "enable_gpu": false,
+  "id_no": 202168,
+  "enable_internet": false,
+  "kernel_type": "notebook"
+}

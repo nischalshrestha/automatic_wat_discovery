@@ -1,0 +1,17 @@
+{
+  "kernel_type": "notebook",
+  "is_private": false,
+  "title": "Titanic: machine learning intro",
+  "id": "marbae/titanic-machine-learning-intro",
+  "keywords": [],
+  "enable_gpu": false,
+  "enable_internet": false,
+  "language": "python",
+  "code_file": "titanic-machine-learning-intro.ipynb",
+  "dataset_sources": [],
+  "competition_sources": [
+    "titanic"
+  ],
+  "id_no": 231571,
+  "kernel_sources": []
+}

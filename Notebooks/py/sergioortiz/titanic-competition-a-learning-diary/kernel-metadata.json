@@ -1,0 +1,24 @@
+{
+  "keywords": [
+    "learning",
+    "tutorial",
+    "beginner",
+    "starter code"
+  ],
+  "title": "Titanic Competition: A learning diary",
+  "code_file": "titanic-competition-a-learning-diary.ipynb",
+  "id_no": 1919210,
+  "is_private": false,
+  "enable_internet": false,
+  "competition_sources": [
+    "titanic"
+  ],
+  "enable_gpu": false,
+  "kernel_type": "notebook",
+  "language": "python",
+  "id": "sergioortiz/titanic-competition-a-learning-diary",
+  "kernel_sources": [
+    "sergioortiz/titanic-competition-feature-engineering-1"
+  ],
+  "dataset_sources": []
+}

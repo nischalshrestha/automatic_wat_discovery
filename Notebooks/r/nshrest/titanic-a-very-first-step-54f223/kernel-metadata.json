@@ -1,0 +1,17 @@
+{
+  "is_private": false,
+  "enable_internet": false,
+  "dataset_sources": [],
+  "title": "Titanic_A very first step  54f223",
+  "keywords": [],
+  "code_file": "titanic-a-very-first-step-54f223.irnb",
+  "id": "nshrest/titanic-a-very-first-step-54f223",
+  "kernel_type": "notebook",
+  "kernel_sources": [],
+  "competition_sources": [
+    "titanic"
+  ],
+  "enable_gpu": false,
+  "language": "r",
+  "id_no": 1983028
+}

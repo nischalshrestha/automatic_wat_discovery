@@ -1,0 +1,22 @@
+{
+  "id_no": 1921598,
+  "kernel_type": "notebook",
+  "code_file": "titanic-competition-data-exploration-1.ipynb",
+  "enable_gpu": false,
+  "language": "python",
+  "keywords": [
+    "tutorial",
+    "beginner",
+    "data visualization",
+    "starter code"
+  ],
+  "enable_internet": false,
+  "kernel_sources": [],
+  "competition_sources": [
+    "titanic"
+  ],
+  "id": "sergioortiz/titanic-competition-data-exploration-1",
+  "is_private": false,
+  "title": "Titanic Competition: Data Exploration #1",
+  "dataset_sources": []
+}

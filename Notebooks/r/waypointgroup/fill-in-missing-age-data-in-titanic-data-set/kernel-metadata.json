@@ -1,0 +1,17 @@
+{
+  "keywords": [],
+  "id": "waypointgroup/fill-in-missing-age-data-in-titanic-data-set",
+  "id_no": 311229,
+  "enable_gpu": false,
+  "competition_sources": [
+    "titanic"
+  ],
+  "code_file": "fill-in-missing-age-data-in-titanic-data-set.irnb",
+  "dataset_sources": [],
+  "title": "Fill in missing Age data in Titanic data set",
+  "language": "r",
+  "is_private": false,
+  "enable_internet": false,
+  "kernel_sources": [],
+  "kernel_type": "notebook"
+}

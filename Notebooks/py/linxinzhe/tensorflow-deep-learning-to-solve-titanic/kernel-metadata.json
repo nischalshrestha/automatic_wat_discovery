@@ -1,0 +1,17 @@
+{
+  "id": "linxinzhe/tensorflow-deep-learning-to-solve-titanic",
+  "is_private": false,
+  "enable_internet": false,
+  "id_no": 268097,
+  "kernel_sources": [],
+  "title": "Tensorflow-Deep Learning to Solve Titanic",
+  "dataset_sources": [],
+  "code_file": "tensorflow-deep-learning-to-solve-titanic.ipynb",
+  "competition_sources": [
+    "titanic"
+  ],
+  "kernel_type": "notebook",
+  "enable_gpu": false,
+  "keywords": [],
+  "language": "python"
+}

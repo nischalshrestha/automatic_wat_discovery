@@ -1,0 +1,17 @@
+{
+  "language": "python",
+  "enable_internet": false,
+  "id_no": 270463,
+  "code_file": "python-titanic-exploration.ipynb",
+  "enable_gpu": false,
+  "title": "Python Titanic - Exploration",
+  "competition_sources": [
+    "titanic"
+  ],
+  "is_private": false,
+  "kernel_type": "notebook",
+  "dataset_sources": [],
+  "keywords": [],
+  "kernel_sources": [],
+  "id": "jamesmcguigan/python-titanic-exploration"
+}

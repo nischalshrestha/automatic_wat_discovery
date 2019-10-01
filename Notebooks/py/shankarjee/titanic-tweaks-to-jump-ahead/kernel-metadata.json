@@ -1,0 +1,19 @@
+{
+  "id": "shankarjee/titanic-tweaks-to-jump-ahead",
+  "id_no": 477040,
+  "title": "Titanic tweaks to jump ahead",
+  "code_file": "titanic-tweaks-to-jump-ahead.ipynb",
+  "language": "python",
+  "kernel_type": "notebook",
+  "is_private": false,
+  "enable_gpu": false,
+  "enable_internet": false,
+  "keywords": [
+    "beginner"
+  ],
+  "dataset_sources": [],
+  "kernel_sources": [],
+  "competition_sources": [
+    "titanic"
+  ]
+}

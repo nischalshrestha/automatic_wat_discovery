@@ -1,0 +1,17 @@
+{
+  "title": "Notebook1381a6c208",
+  "enable_internet": false,
+  "id_no": 240941,
+  "enable_gpu": false,
+  "language": "r",
+  "kernel_type": "notebook",
+  "id": "jtanchante/notebook1381a6c208",
+  "is_private": false,
+  "code_file": "notebook1381a6c208.irnb",
+  "dataset_sources": [],
+  "keywords": [],
+  "competition_sources": [
+    "titanic"
+  ],
+  "kernel_sources": []
+}

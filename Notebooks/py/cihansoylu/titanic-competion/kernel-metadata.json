@@ -1,0 +1,17 @@
+{
+  "id": "cihansoylu/titanic-competion",
+  "id_no": 848577,
+  "title": "Titanic competion",
+  "code_file": "titanic-competion.ipynb",
+  "language": "python",
+  "kernel_type": "notebook",
+  "is_private": false,
+  "enable_gpu": false,
+  "enable_internet": false,
+  "keywords": [],
+  "dataset_sources": [],
+  "kernel_sources": [],
+  "competition_sources": [
+    "titanic"
+  ]
+}

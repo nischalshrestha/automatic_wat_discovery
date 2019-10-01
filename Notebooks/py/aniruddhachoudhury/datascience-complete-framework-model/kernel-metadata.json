@@ -1,0 +1,23 @@
+{
+  "enable_internet": false,
+  "is_private": false,
+  "keywords": [
+    "tutorial",
+    "beginner",
+    "data visualization",
+    "feature engineering",
+    "starter code"
+  ],
+  "dataset_sources": [],
+  "title": "DataScience Complete Framework Model",
+  "language": "python",
+  "kernel_sources": [],
+  "enable_gpu": false,
+  "id_no": 2155676,
+  "kernel_type": "notebook",
+  "competition_sources": [
+    "titanic"
+  ],
+  "code_file": "datascience-complete-framework-model.ipynb",
+  "id": "aniruddhachoudhury/datascience-complete-framework-model"
+}

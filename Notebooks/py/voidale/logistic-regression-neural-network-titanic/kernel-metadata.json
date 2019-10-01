@@ -1,0 +1,17 @@
+{
+  "kernel_type": "notebook",
+  "keywords": [],
+  "enable_internet": false,
+  "kernel_sources": [],
+  "enable_gpu": false,
+  "title": "Logistic Regression Neural Network - Titanic",
+  "id_no": 492764,
+  "competition_sources": [
+    "titanic"
+  ],
+  "dataset_sources": [],
+  "id": "voidale/logistic-regression-neural-network-titanic",
+  "code_file": "logistic-regression-neural-network-titanic.ipynb",
+  "is_private": false,
+  "language": "python"
+}

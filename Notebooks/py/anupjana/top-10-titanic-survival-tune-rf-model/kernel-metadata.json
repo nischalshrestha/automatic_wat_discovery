@@ -1,0 +1,23 @@
+{
+  "kernel_type": "notebook",
+  "enable_gpu": false,
+  "competition_sources": [
+    "titanic"
+  ],
+  "dataset_sources": [],
+  "code_file": "top-10-titanic-survival-tune-rf-model.ipynb",
+  "enable_internet": false,
+  "language": "python",
+  "kernel_sources": [],
+  "is_private": false,
+  "id": "anupjana/top-10-titanic-survival-tune-rf-model",
+  "id_no": 1489276,
+  "keywords": [
+    "data cleaning",
+    "data visualization",
+    "feature engineering",
+    "random forest",
+    "binary classification"
+  ],
+  "title": "Top 10% - Titanic Survival - Tune RF Model"
+}

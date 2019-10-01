@@ -1,0 +1,69 @@
+{
+  "metadata": {
+    "kernelspec": {
+      "display_name": "R",
+      "language": "R",
+      "name": "ir"
+    },
+    "language_info": {
+      "codemirror_mode": "r",
+      "file_extension": ".r",
+      "mimetype": "text/x-r-source",
+      "name": "R",
+      "pygments_lexer": "r",
+      "version": "3.3.2"
+    }
+  },
+  "nbformat": 4,
+  "nbformat_minor": 0,
+  "cells": [
+    {
+      "metadata": {
+        "_cell_guid": "0a8411e1-f6d9-76a4-f91c-f41e32ae5004",
+        "_active": false,
+        "collapsed": false
+      },
+      "source": null,
+      "execution_count": null,
+      "cell_type": "markdown",
+      "outputs": [],
+      "execution_state": "idle"
+    },
+    {
+      "metadata": {
+        "_cell_guid": "fa2e2629-dd9e-d235-5f0a-5b0125f83b0f",
+        "_active": false,
+        "collapsed": false
+      },
+      "source": "# Load packages\nlibrary('ggplot2') # visualization\nlibrary('ggthemes') # visualization\nlibrary('scales') # visualization\nlibrary('dplyr') # data manipulation\nlibrary('mice') # imputation\nlibrary('randomForest') # classification algorithm",
+      "execution_count": null,
+      "cell_type": "code",
+      "outputs": [],
+      "execution_state": "idle"
+    },
+    {
+      "metadata": {
+        "_cell_guid": "e47f3de0-866c-a04d-31b1-b6cee236555f",
+        "_active": false,
+        "collapsed": false
+      },
+      "source": "# Reading the data\ntrain <- read.csv('../input/train.csv', stringsAsFactors = F)\ntest  <- read.csv('../input/test.csv', stringsAsFactors = F)\n\nfull  <- bind_rows(train, test)\n\nstr(full)",
+      "execution_count": null,
+      "cell_type": "code",
+      "outputs": [],
+      "execution_state": "idle"
+    },
+    {
+      "metadata": {
+        "_cell_guid": "b2204c99-b4df-816c-cf26-6c1a323197a1",
+        "_active": true,
+        "collapsed": false
+      },
+      "source": "full$Name[1:5]\nfull$Ticket[1:50]",
+      "execution_count": null,
+      "cell_type": "code",
+      "outputs": [],
+      "execution_state": "idle"
+    }
+  ]
+}

@@ -1,0 +1,22 @@
+{
+  "kernel_sources": [],
+  "kernel_type": "notebook",
+  "language": "python",
+  "dataset_sources": [],
+  "competition_sources": [
+    "titanic"
+  ],
+  "keywords": [
+    "beginner",
+    "classification",
+    "feature engineering",
+    "deep learning"
+  ],
+  "id_no": 1088503,
+  "code_file": "beginner-attempt-at-titanic-competition.ipynb",
+  "enable_internet": false,
+  "is_private": false,
+  "title": "Beginner Attempt at Titanic Competition",
+  "enable_gpu": true,
+  "id": "rafibarash/beginner-attempt-at-titanic-competition"
+}

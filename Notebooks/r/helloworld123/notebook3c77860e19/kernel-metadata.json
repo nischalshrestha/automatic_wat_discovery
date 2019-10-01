@@ -1,0 +1,17 @@
+{
+  "enable_gpu": false,
+  "id_no": 202241,
+  "language": "python",
+  "kernel_type": "notebook",
+  "competition_sources": [
+    "titanic"
+  ],
+  "kernel_sources": [],
+  "id": "helloworld123/notebook3c77860e19",
+  "title": "Notebook3c77860e19",
+  "enable_internet": false,
+  "code_file": "notebook3c77860e19.ipynb",
+  "dataset_sources": [],
+  "is_private": false,
+  "keywords": []
+}

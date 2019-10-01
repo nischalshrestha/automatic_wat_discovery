@@ -1,0 +1,17 @@
+{
+  "id_no": 1506948,
+  "language": "python",
+  "code_file": "titanic-ml-from-disasters.ipynb",
+  "competition_sources": [
+    "titanic"
+  ],
+  "kernel_type": "notebook",
+  "title": "Titanic ML From Disasters",
+  "dataset_sources": [],
+  "keywords": [],
+  "kernel_sources": [],
+  "is_private": false,
+  "id": "captainilu/titanic-ml-from-disasters",
+  "enable_gpu": false,
+  "enable_internet": false
+}

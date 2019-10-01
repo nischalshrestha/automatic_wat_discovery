@@ -1,0 +1,17 @@
+{
+  "enable_internet": false,
+  "keywords": [],
+  "kernel_type": "notebook",
+  "is_private": false,
+  "enable_gpu": false,
+  "id_no": 180650,
+  "competition_sources": [
+    "titanic"
+  ],
+  "id": "dysonlin/titanic-scikit-learn-s-random-forest",
+  "kernel_sources": [],
+  "language": "python",
+  "dataset_sources": [],
+  "code_file": "titanic-scikit-learn-s-random-forest.ipynb",
+  "title": "Titanic: Scikit-Learn's Random Forest"
+}

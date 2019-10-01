@@ -1,0 +1,17 @@
+{
+  "id_no": 140493,
+  "kernel_type": "notebook",
+  "kernel_sources": [],
+  "enable_gpu": false,
+  "dataset_sources": [],
+  "id": "cloudly/script-v1",
+  "enable_internet": false,
+  "competition_sources": [
+    "titanic"
+  ],
+  "title": "Notebook70bad73421",
+  "language": "r",
+  "code_file": "script-v1.irnb",
+  "is_private": false,
+  "keywords": []
+}

@@ -1,0 +1,17 @@
+{
+  "is_private": false,
+  "enable_internet": false,
+  "enable_gpu": false,
+  "title": "Survival Prediction for the Disaster Titanic",
+  "language": "python",
+  "kernel_type": "notebook",
+  "id": "bharathraja/survival-prediction-for-the-disaster-titanic",
+  "competition_sources": [
+    "titanic"
+  ],
+  "id_no": 2180057,
+  "kernel_sources": [],
+  "code_file": "survival-prediction-for-the-disaster-titanic.ipynb",
+  "keywords": [],
+  "dataset_sources": []
+}

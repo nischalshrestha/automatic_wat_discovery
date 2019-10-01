@@ -1,0 +1,17 @@
+{
+  "id_no": 161849,
+  "is_private": false,
+  "enable_internet": false,
+  "id": "saulmb93/titanic-survival",
+  "competition_sources": [
+    "titanic"
+  ],
+  "language": "r",
+  "code_file": "titanic-survival.irnb",
+  "dataset_sources": [],
+  "kernel_type": "notebook",
+  "kernel_sources": [],
+  "title": "Titanic Survival ",
+  "enable_gpu": false,
+  "keywords": []
+}

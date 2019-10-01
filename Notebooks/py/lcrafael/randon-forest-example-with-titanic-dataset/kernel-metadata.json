@@ -1,0 +1,21 @@
+{
+  "id": "lcrafael/randon-forest-example-with-titanic-dataset",
+  "id_no": 1073479,
+  "title": "Randon Forest example with Titanic Dataset",
+  "code_file": "randon-forest-example-with-titanic-dataset.ipynb",
+  "language": "python",
+  "kernel_type": "notebook",
+  "is_private": false,
+  "enable_gpu": false,
+  "enable_internet": false,
+  "keywords": [
+    "data visualization",
+    "random forest",
+    "decision tree"
+  ],
+  "dataset_sources": [],
+  "kernel_sources": [],
+  "competition_sources": [
+    "titanic"
+  ]
+}

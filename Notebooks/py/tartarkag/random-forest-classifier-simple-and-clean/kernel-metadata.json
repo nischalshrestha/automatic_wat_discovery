@@ -1,0 +1,17 @@
+{
+  "kernel_sources": [],
+  "competition_sources": [
+    "titanic"
+  ],
+  "is_private": false,
+  "kernel_type": "notebook",
+  "id_no": 1290343,
+  "id": "tartarkag/random-forest-classifier-simple-and-clean",
+  "dataset_sources": [],
+  "keywords": [],
+  "language": "python",
+  "title": "Random forest classifier: simple and clean",
+  "code_file": "random-forest-classifier-simple-and-clean.ipynb",
+  "enable_gpu": false,
+  "enable_internet": false
+}

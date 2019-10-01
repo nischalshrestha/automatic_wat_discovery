@@ -1,0 +1,17 @@
+{
+  "title": "Delete this",
+  "language": "python",
+  "kernel_sources": [],
+  "enable_gpu": false,
+  "id": "andyborst/delete-this",
+  "kernel_type": "notebook",
+  "enable_internet": false,
+  "competition_sources": [
+    "titanic"
+  ],
+  "dataset_sources": [],
+  "id_no": 231505,
+  "is_private": false,
+  "keywords": [],
+  "code_file": "delete-this.ipynb"
+}

@@ -1,0 +1,17 @@
+{
+  "is_private": false,
+  "enable_gpu": false,
+  "kernel_type": "notebook",
+  "title": "Notebook6793cb7829",
+  "enable_internet": false,
+  "competition_sources": [
+    "titanic"
+  ],
+  "language": "python",
+  "id_no": 253304,
+  "id": "junjunjun/notebook6793cb7829",
+  "kernel_sources": [],
+  "keywords": [],
+  "code_file": "notebook6793cb7829.ipynb",
+  "dataset_sources": []
+}

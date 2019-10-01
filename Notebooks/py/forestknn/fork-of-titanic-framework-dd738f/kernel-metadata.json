@@ -1,0 +1,17 @@
+{
+  "id_no": 1571425,
+  "id": "forestknn/fork-of-titanic-framework-dd738f",
+  "language": "python",
+  "enable_gpu": false,
+  "dataset_sources": [],
+  "kernel_type": "notebook",
+  "keywords": [],
+  "code_file": "fork-of-titanic-framework-dd738f.ipynb",
+  "enable_internet": false,
+  "kernel_sources": [],
+  "is_private": false,
+  "title": "Fork of  Titanic Framework dd738f",
+  "competition_sources": [
+    "titanic"
+  ]
+}

@@ -1,0 +1,137 @@
+{"cells":[
+ {
+  "cell_type": "code",
+  "execution_count": null,
+  "metadata": {
+   "collapsed": false
+  },
+  "outputs": [],
+  "source": "# load data and packages\ntrain <- read.csv(\"../input/train.csv\")\ntest <- read.csv(\"../input/test.csv\")\nlibrary(ggplot2)\nlibrary(mice)\nlibrary(Rmisc)"
+ },
+ {
+  "cell_type": "code",
+  "execution_count": null,
+  "metadata": {
+   "collapsed": false
+  },
+  "outputs": [],
+  "source": "# combine train and test set for feature transformations\ncombined<-merge(train, test, all.x =T, all.y = T)\n# reset the column names for easier indexing\nnames(combined)<-c(\"id\",\"class\",\"name\",\"sex\",\"age\",\"sibsp\",\"parch\",\"ticket\",\"fare\",\"cabin\",\"embarked\",\"sur\")\n# check the structure of the data\nstr(combined)\nsummary(combined)\n# the id, class, sur should be factors\ncombined[,1]<-as.factor(combined[,1])\ncombined[,2]<-as.factor(combined[,2])\ncombined[,12]<-as.factor(combined[,12])\n# a table for missing patterns\nmd.pattern(combined)"
+ },
+ {
+  "cell_type": "code",
+  "execution_count": null,
+  "metadata": {
+   "collapsed": false
+  },
+  "outputs": [],
+  "source": "#the NA's for cabin and embarked are marked as empty values, change them to NA. \ncombined$cabin[which(combined$cabin == \"\")] <- NA\ncombined$embarked[which(combined$embarked == \"\")] <- NA\n\n# check the specific cabin levels\nlvls<-levels(combined$cabin)\n\n# its seems that cabins are from letters \"A to G\" + a special T cabin, \n# they can be regrouped and simplified into letter-only factor levels\ncombined$cabin<-as.character(combined$cabin)\ncabin.levels<-LETTERS[1:7]\nfor(i in cabin.levels){\n    combined$cabin[grep(i, combined$cabin)]<-i\n}\ncombined$cabin<-as.factor(combined$cabin) \n\n# check the structure now\ntable(combined$cabin)\nstr(combined)\n# there are a empty level in \"embarked\", drop the empty level\ncombined$embarked<-droplevels(combined$embarked) \nmissingembarked<-which(is.na(combined$embarked)) #62, 830 were missing. since most people embarked at S, impute with S\ncombined$embarked[c(62,830)] <- \"S\"\n\n"
+ },
+ {
+  "cell_type": "code",
+  "execution_count": null,
+  "metadata": {
+   "collapsed": false
+  },
+  "outputs": [],
+  "source": "# missing age can be guessed from person titles, extracting unique titles from name\ncombined$title<-character(length = nrow(combined))\ntitles<-c(\"Mr.\",\"Mrs.\",\"Miss\",\"Master\",\"Special\") # special is for Dr., Capt., Major., etc.\n# replace all common titles\nfor(i in titles[1:4]){\n    combined$title[grep(i, combined$name)] <- i\n}\n# replace others with all special titles\ncombined$title[which(combined$title == \"\")] <- \"Special\"\ncombined$title<-factor(combined$title, c(\"Mr.\",\"Mrs.\",\"Miss\", \"Master\",\"Special\"))\ntable(combined$title)"
+ },
+ {
+  "cell_type": "code",
+  "execution_count": null,
+  "metadata": {
+   "collapsed": false
+  },
+  "outputs": [],
+  "source": "# plot title against age colored by survival\nqplot(title, age, color = sur, data = combined, geom = \"jitter\")  "
+ },
+ {
+  "cell_type": "code",
+  "execution_count": null,
+  "metadata": {
+   "collapsed": false
+  },
+  "outputs": [],
+  "source": "# find mean, median, mode of age for each group\nmean.age<-aggregate(combined$age, by = list(combined$title), mean, na.rm = T)\nmedian.age<-aggregate(combined$age, by = list(combined$title), median, na.rm = T)\n  \n# a function to calculate mode\n  Mode <- function(x, na.rm = FALSE) {\n  if(na.rm){\n    x = x[!is.na(x)]\n  }\n  ux <- unique(x)\n  return(ux[which.max(tabulate(match(x, ux)))])\n  }\nmode.age<-aggregate(combined$age, by = list(combined$title), Mode, na.rm = T)\n# merge the results into one df\ndt1<-merge(mean.age, median.age, by = \"Group.1\", all.x = T)\ninfo<-merge(dt1, mode.age, by = \"Group.1\", all.x = T)\nnames(info)<-c(\"title\",\"mean\",\"median\",\"mode\")\ninfo"
+ },
+ {
+  "cell_type": "code",
+  "execution_count": null,
+  "metadata": {
+   "collapsed": false
+  },
+  "outputs": [],
+  "source": "qplot(age, color = title, data = combined, geom = \"density\") # age distribution according to titles"
+ },
+ {
+  "cell_type": "code",
+  "execution_count": null,
+  "metadata": {
+   "collapsed": false
+  },
+  "outputs": [],
+  "source": "#for \"Special\", normal, median for imputation\n#for \"Master\", highly positively skewed, mode for imputation\n#for \"Miss\", normal, take the median\n#for \"Mr\", slightly skewed, take the median \n#for \"Mrs\" normal, taken the median\n\n# imputation\nnaage.id<-which(is.na(combined$age))\nnaage.title<-combined$title[naage.id]\nage.imputed<-numeric()\nfor(i in 1:length(naage.title)){\n    if(naage.title[i] == \"Master\"){age.imputed[i] = info[1,4]} else\n    if(naage.title[i] == \"Miss\"){age.imputed[i] = info[2,3]} else\n    if(naage.title[i] == \"Mr.\"){age.imputed[i] = info[3,3]} else\n    if(naage.title[i] == \"Mrs.\"){age.imputed[i] = info[4,3]} else\n    {age.imputed[i] = info[5,3]}\n}\ncombined$age.imputed<-combined$age #create a new column for imputed age\ncombined$age.imputed[naage.id]<-age.imputed"
+ },
+ {
+  "cell_type": "code",
+  "execution_count": null,
+  "metadata": {
+   "collapsed": false
+  },
+  "outputs": [],
+  "source": "# plot imputed age\nqplot(age.imputed, color = title, data = combined, geom = \"density\")   \n\n# squareroot transform age\ncombined$age.sqrt<-sqrt(combined$age.imputed)"
+ },
+ {
+  "cell_type": "code",
+  "execution_count": null,
+  "metadata": {
+   "collapsed": false
+  },
+  "outputs": [],
+  "source": "# find the missing observations for fare\nmissingfare<-which(is.na(combined$fare)) # case 1044 is missing, find which class is this case\ncombined$class[1044]                     # it is a 3rd class ticket, find the average fare for 3rd clas\nmean.fare<-aggregate(combined$fare, by = list(combined$class), mean, na.rm = T)\nqplot(fare, color = class, data = combined, geom = \"density\") # it is skewed with a high kurtosis, impute with mode\nmode.fare<-aggregate(combined$fare, by = list(combined$class), Mode, na.rm = T) #8.05 for 3rd class\nmode.fare\ncombined$fare.imputed<-combined$fare\ncombined$fare.imputed[1044]<-mode.fare[3,2]\n"
+ },
+ {
+  "cell_type": "code",
+  "execution_count": null,
+  "metadata": {
+   "collapsed": false
+  },
+  "outputs": [],
+  "source": "# reorganize family features. family size = # of parent and child + # of sibings + 1\ncombined$fam_size<-combined$sibsp + combined$parch + 1\nqplot(fam_size, fill = class, data = combined)\n\n\n"
+ },
+ {
+  "cell_type": "code",
+  "execution_count": null,
+  "metadata": {
+   "collapsed": false
+  },
+  "outputs": [],
+  "source": "# ---------------------finished preprocessing, splitting into new train & test sets----------------------\ntrain<-combined[1:891, ]\ntest<-combined[892:1309,]"
+ },
+ {
+  "cell_type": "code",
+  "execution_count": null,
+  "metadata": {
+   "collapsed": false
+  },
+  "outputs": [],
+  "source": "# feature selection\n# exploratory on categorical features:\np1<-qplot(class, fill = sur, data = train)\np2<-qplot(sex, fill = sur, data = train)\np3<-qplot(embarked, fill = sur, data = train)\np4<-qplot(cabin, fill = sur, data =train)  #too many missing values for cabin, not include in the model\nmultiplot(p1,p2,p3,p4, cols = 2)"
+ },
+ {
+  "cell_type": "code",
+  "execution_count": null,
+  "metadata": {
+   "collapsed": false
+  },
+  "outputs": [],
+  "source": "# exploratory on continuous features:\np5<-qplot(age.imputed, fill = sur, data = train) \np6<-qplot(fam_size, fill = sur, data = train, binwidth = range(train$sibsp, na.rm =T)[2]/10)\np7<-qplot(fare.imputed, fill = sur, data = train, binwidth = range(train$fare, na.rm = T)[2]/15)\nmultiplot(p5,p6,p7, cols = 2)\n"
+ },
+ {
+  "cell_type": "code",
+  "execution_count": null,
+  "metadata": {
+   "collapsed": false
+  },
+  "outputs": [],
+  "source": "# train a logistic regression model\nmodel<-glm(sur~class+sex+age.sqrt+fam_size+title+fare.imputed, \n           family = \"binomial\", data = train)\nsummary(model)\n\n# apply model \nprediction<-predict.glm(model, newdata = test, type  = \"response\")\n\n# set cutoff, >.55 survived, <.55 dead\ncutoff<-.55\nsur<-vector()\nfor(i in 1:nrow(test)){\n  if(prediction[i] < cutoff) {sur[i] = 0} else\n  {sur[i] = 1}\n}\n\nresult<-test[, c(1,12)]\nresult[,2]<-sur\nnames(result)<-c(\"Passengerid\",\"Survived\")\n\n# output\nwrite.csv(result, file = \"solution.csv\", row.names = F)\n\n\n\n"
+ }
+],"metadata":{"kernelspec":{"display_name":"R","language":"R","name":"ir"}}, "nbformat": 4, "nbformat_minor": 0}

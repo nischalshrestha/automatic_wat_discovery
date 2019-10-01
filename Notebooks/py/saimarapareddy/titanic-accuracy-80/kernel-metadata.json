@@ -1,0 +1,17 @@
+{
+  "dataset_sources": [],
+  "title": "Titanic - Accuracy 80",
+  "language": "python",
+  "id": "saimarapareddy/titanic-accuracy-80",
+  "enable_internet": false,
+  "code_file": "titanic-accuracy-80.ipynb",
+  "kernel_sources": [],
+  "competition_sources": [
+    "titanic"
+  ],
+  "kernel_type": "notebook",
+  "id_no": 248589,
+  "is_private": false,
+  "enable_gpu": false,
+  "keywords": []
+}

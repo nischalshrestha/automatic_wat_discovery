@@ -1,0 +1,17 @@
+{
+  "enable_gpu": false,
+  "is_private": false,
+  "language": "python",
+  "title": "Notebookb49e1b2bf3",
+  "id": "shenzie/notebookb49e1b2bf3",
+  "code_file": "notebookb49e1b2bf3.ipynb",
+  "kernel_sources": [],
+  "dataset_sources": [],
+  "keywords": [],
+  "enable_internet": false,
+  "id_no": 254755,
+  "competition_sources": [
+    "titanic"
+  ],
+  "kernel_type": "notebook"
+}

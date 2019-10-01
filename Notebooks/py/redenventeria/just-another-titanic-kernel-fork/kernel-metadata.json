@@ -1,0 +1,17 @@
+{
+  "competition_sources": [
+    "titanic"
+  ],
+  "title": "Just Another Titanic Kernel... Fork",
+  "id_no": 1608186,
+  "code_file": "just-another-titanic-kernel-fork.ipynb",
+  "enable_internet": false,
+  "keywords": [],
+  "is_private": false,
+  "kernel_type": "notebook",
+  "language": "python",
+  "id": "redenventeria/just-another-titanic-kernel-fork",
+  "enable_gpu": false,
+  "kernel_sources": [],
+  "dataset_sources": []
+}

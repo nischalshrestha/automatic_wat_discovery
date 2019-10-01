@@ -1,0 +1,17 @@
+{
+  "id": "joetheshow/sample-svm-model-with-x-validation",
+  "keywords": [],
+  "title": "Sample SVM model with X-Validation",
+  "code_file": "sample-svm-model-with-x-validation.R",
+  "dataset_sources": [],
+  "is_private": false,
+  "enable_gpu": false,
+  "enable_internet": false,
+  "kernel_type": "script",
+  "competition_sources": [
+    "titanic"
+  ],
+  "language": "r",
+  "kernel_sources": [],
+  "id_no": 32594
+}

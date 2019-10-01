@@ -1,0 +1,17 @@
+{
+  "language": "python",
+  "kernel_type": "notebook",
+  "code_file": "first-step-for-data-research.ipynb",
+  "id_no": 245417,
+  "competition_sources": [
+    "titanic"
+  ],
+  "kernel_sources": [],
+  "is_private": false,
+  "enable_gpu": false,
+  "id": "djkooks/first-step-for-data-research",
+  "title": "First step for data research",
+  "dataset_sources": [],
+  "keywords": [],
+  "enable_internet": false
+}

@@ -1,0 +1,17 @@
+{
+  "is_private": false,
+  "id": "sabrinahan/data-visualization-about-titanic-2",
+  "language": "r",
+  "dataset_sources": [],
+  "title": "Data Visualization about Titanic-2",
+  "keywords": [],
+  "enable_internet": false,
+  "competition_sources": [
+    "titanic"
+  ],
+  "kernel_sources": [],
+  "code_file": "data-visualization-about-titanic-2.irnb",
+  "id_no": 298780,
+  "enable_gpu": false,
+  "kernel_type": "notebook"
+}

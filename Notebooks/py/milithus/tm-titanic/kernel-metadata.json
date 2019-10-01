@@ -1,0 +1,17 @@
+{
+  "dataset_sources": [],
+  "kernel_type": "notebook",
+  "language": "python",
+  "title": "TM titanic",
+  "kernel_sources": [],
+  "keywords": [],
+  "id": "milithus/tm-titanic",
+  "competition_sources": [
+    "titanic"
+  ],
+  "code_file": "tm-titanic.ipynb",
+  "enable_internet": false,
+  "id_no": 450217,
+  "is_private": false,
+  "enable_gpu": false
+}

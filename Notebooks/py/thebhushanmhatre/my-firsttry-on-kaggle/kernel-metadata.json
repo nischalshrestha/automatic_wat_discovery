@@ -1,0 +1,20 @@
+{
+  "keywords": [
+    "beginner",
+    "deep learning"
+  ],
+  "enable_gpu": false,
+  "competition_sources": [
+    "titanic"
+  ],
+  "dataset_sources": [],
+  "is_private": false,
+  "id": "thebhushanmhatre/my-firsttry-on-kaggle",
+  "enable_internet": false,
+  "title": "My FirstTry on Kaggle",
+  "kernel_sources": [],
+  "code_file": "my-firsttry-on-kaggle.ipynb",
+  "id_no": 1432681,
+  "language": "python",
+  "kernel_type": "notebook"
+}

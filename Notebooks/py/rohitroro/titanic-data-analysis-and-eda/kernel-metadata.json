@@ -1,0 +1,17 @@
+{
+  "code_file": "titanic-data-analysis-and-eda.ipynb",
+  "enable_internet": false,
+  "id_no": 1746056,
+  "title": "Titanic data analysis and EDA",
+  "id": "rohitroro/titanic-data-analysis-and-eda",
+  "kernel_sources": [],
+  "enable_gpu": false,
+  "kernel_type": "notebook",
+  "dataset_sources": [],
+  "keywords": [],
+  "is_private": false,
+  "competition_sources": [
+    "titanic"
+  ],
+  "language": "python"
+}

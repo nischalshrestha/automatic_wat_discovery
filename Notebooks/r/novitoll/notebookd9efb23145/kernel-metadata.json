@@ -1,0 +1,17 @@
+{
+  "competition_sources": [
+    "titanic"
+  ],
+  "code_file": "notebookd9efb23145.irnb",
+  "kernel_type": "notebook",
+  "id_no": 172566,
+  "id": "novitoll/notebookd9efb23145",
+  "enable_internet": false,
+  "is_private": false,
+  "kernel_sources": [],
+  "enable_gpu": false,
+  "title": "Notebook49af40e027",
+  "keywords": [],
+  "dataset_sources": [],
+  "language": "r"
+}

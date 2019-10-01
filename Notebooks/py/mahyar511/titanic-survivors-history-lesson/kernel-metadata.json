@@ -1,0 +1,17 @@
+{
+  "title": "Titanic Survivors; History Lesson!",
+  "dataset_sources": [],
+  "id_no": 363065,
+  "language": "python",
+  "is_private": false,
+  "keywords": [],
+  "code_file": "titanic-survivors-history-lesson.ipynb",
+  "kernel_sources": [],
+  "enable_internet": false,
+  "enable_gpu": false,
+  "kernel_type": "notebook",
+  "competition_sources": [
+    "titanic"
+  ],
+  "id": "mahyar511/titanic-survivors-history-lesson"
+}

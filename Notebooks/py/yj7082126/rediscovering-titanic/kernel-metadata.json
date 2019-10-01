@@ -1,0 +1,17 @@
+{
+  "language": "python",
+  "kernel_sources": [],
+  "id": "yj7082126/rediscovering-titanic",
+  "title": "Rediscovering Titanic",
+  "is_private": false,
+  "kernel_type": "notebook",
+  "id_no": 144324,
+  "enable_gpu": false,
+  "competition_sources": [
+    "titanic"
+  ],
+  "keywords": [],
+  "code_file": "rediscovering-titanic.ipynb",
+  "dataset_sources": [],
+  "enable_internet": false
+}

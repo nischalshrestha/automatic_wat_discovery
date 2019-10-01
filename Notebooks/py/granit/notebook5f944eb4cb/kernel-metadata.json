@@ -1,0 +1,17 @@
+{
+  "is_private": false,
+  "enable_gpu": false,
+  "code_file": "notebook5f944eb4cb.ipynb",
+  "kernel_type": "notebook",
+  "id_no": 136052,
+  "language": "python",
+  "competition_sources": [
+    "titanic"
+  ],
+  "title": "Notebook5f944eb4cb",
+  "enable_internet": false,
+  "id": "granit/notebook5f944eb4cb",
+  "kernel_sources": [],
+  "dataset_sources": [],
+  "keywords": []
+}

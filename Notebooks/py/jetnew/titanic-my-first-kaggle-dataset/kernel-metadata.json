@@ -1,0 +1,23 @@
+{
+  "kernel_sources": [],
+  "code_file": "titanic-my-first-kaggle-dataset.ipynb",
+  "dataset_sources": [],
+  "id": "jetnew/titanic-my-first-kaggle-dataset",
+  "language": "python",
+  "enable_internet": false,
+  "keywords": [
+    "eda",
+    "data cleaning",
+    "data visualization",
+    "classification",
+    "model comparison"
+  ],
+  "id_no": 1129041,
+  "title": "Titanic: My First Kaggle Dataset",
+  "kernel_type": "notebook",
+  "enable_gpu": false,
+  "is_private": false,
+  "competition_sources": [
+    "titanic"
+  ]
+}

@@ -1,0 +1,17 @@
+{
+  "dataset_sources": [],
+  "kernel_sources": [],
+  "language": "python",
+  "enable_gpu": false,
+  "title": "This is my best practice - Titanic",
+  "id_no": 1286140,
+  "enable_internet": false,
+  "kernel_type": "notebook",
+  "is_private": false,
+  "code_file": "this-is-my-best-practice-titanic.ipynb",
+  "keywords": [],
+  "id": "twanifuchi/this-is-my-best-practice-titanic",
+  "competition_sources": [
+    "titanic"
+  ]
+}

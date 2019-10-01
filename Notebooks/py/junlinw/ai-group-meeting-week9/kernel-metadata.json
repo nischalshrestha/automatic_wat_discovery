@@ -1,0 +1,17 @@
+{
+  "kernel_sources": [],
+  "kernel_type": "notebook",
+  "dataset_sources": [],
+  "competition_sources": [
+    "titanic"
+  ],
+  "id": "junlinw/ai-group-meeting-week9",
+  "code_file": "ai-group-meeting-week9.ipynb",
+  "keywords": [],
+  "is_private": false,
+  "enable_internet": false,
+  "id_no": 677134,
+  "language": "python",
+  "title": "AI Group Meeting Week9",
+  "enable_gpu": false
+}

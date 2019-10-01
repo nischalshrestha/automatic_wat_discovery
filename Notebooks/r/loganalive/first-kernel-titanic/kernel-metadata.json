@@ -1,0 +1,17 @@
+{
+  "competition_sources": [
+    "titanic"
+  ],
+  "keywords": [],
+  "is_private": false,
+  "enable_internet": false,
+  "enable_gpu": false,
+  "language": "r",
+  "kernel_type": "notebook",
+  "kernel_sources": [],
+  "dataset_sources": [],
+  "id_no": 614391,
+  "code_file": "first-kernel-titanic.irnb",
+  "title": "First Kernel - Titanic ",
+  "id": "loganalive/first-kernel-titanic"
+}

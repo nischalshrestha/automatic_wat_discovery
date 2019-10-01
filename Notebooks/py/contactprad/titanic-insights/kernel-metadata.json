@@ -1,0 +1,17 @@
+{
+  "enable_gpu": false,
+  "id": "contactprad/titanic-insights",
+  "id_no": 300198,
+  "dataset_sources": [],
+  "keywords": [],
+  "is_private": false,
+  "kernel_sources": [],
+  "title": "Titanic Insights",
+  "code_file": "titanic-insights.ipynb",
+  "competition_sources": [
+    "titanic"
+  ],
+  "language": "python",
+  "enable_internet": false,
+  "kernel_type": "notebook"
+}

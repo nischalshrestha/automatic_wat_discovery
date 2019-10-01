@@ -1,0 +1,17 @@
+{
+  "competition_sources": [
+    "titanic"
+  ],
+  "is_private": false,
+  "kernel_sources": [],
+  "dataset_sources": [],
+  "id_no": 240131,
+  "id": "martagajewska/notebookefc7b4090c",
+  "enable_gpu": false,
+  "title": "Notebookefc7b4090c",
+  "enable_internet": false,
+  "language": "r",
+  "keywords": [],
+  "kernel_type": "notebook",
+  "code_file": "notebookefc7b4090c.irnb"
+}

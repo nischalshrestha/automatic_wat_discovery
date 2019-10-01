@@ -1,0 +1,17 @@
+{
+  "id": "jordimen/titanic-data-science-solutions",
+  "dataset_sources": [],
+  "keywords": [],
+  "id_no": 201679,
+  "kernel_sources": [],
+  "title": "Titanic Data Science Solutions",
+  "language": "python",
+  "kernel_type": "notebook",
+  "code_file": "titanic-data-science-solutions.ipynb",
+  "is_private": false,
+  "competition_sources": [
+    "titanic"
+  ],
+  "enable_internet": false,
+  "enable_gpu": false
+}

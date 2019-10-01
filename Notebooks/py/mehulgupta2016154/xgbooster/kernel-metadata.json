@@ -1,0 +1,17 @@
+{
+  "language": "python",
+  "kernel_sources": [],
+  "code_file": "xgbooster.ipynb",
+  "kernel_type": "notebook",
+  "competition_sources": [
+    "titanic"
+  ],
+  "is_private": false,
+  "dataset_sources": [],
+  "id": "mehulgupta2016154/xgbooster",
+  "enable_gpu": false,
+  "keywords": [],
+  "enable_internet": false,
+  "id_no": 1110090,
+  "title": "xgbooster"
+}

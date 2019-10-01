@@ -1,0 +1,17 @@
+{
+  "kernel_type": "notebook",
+  "code_file": "xgboost-tutorial.ipynb",
+  "id_no": 1560089,
+  "keywords": [],
+  "kernel_sources": [],
+  "is_private": false,
+  "dataset_sources": [],
+  "enable_internet": false,
+  "competition_sources": [
+    "titanic"
+  ],
+  "title": "XGBOOST TUTORIAL",
+  "language": "python",
+  "enable_gpu": false,
+  "id": "chocozzz/xgboost-tutorial"
+}

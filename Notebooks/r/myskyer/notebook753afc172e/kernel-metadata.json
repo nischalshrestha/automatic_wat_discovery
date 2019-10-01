@@ -1,0 +1,17 @@
+{
+  "keywords": [],
+  "kernel_sources": [],
+  "is_private": false,
+  "code_file": "notebook753afc172e.ipynb",
+  "title": "Notebook753afc172e",
+  "enable_gpu": false,
+  "competition_sources": [
+    "titanic"
+  ],
+  "dataset_sources": [],
+  "enable_internet": false,
+  "language": "python",
+  "id_no": 221051,
+  "id": "myskyer/notebook753afc172e",
+  "kernel_type": "notebook"
+}

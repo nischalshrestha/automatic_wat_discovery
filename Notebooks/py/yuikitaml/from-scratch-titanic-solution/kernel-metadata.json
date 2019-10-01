@@ -1,0 +1,17 @@
+{
+  "enable_gpu": false,
+  "id_no": 1419717,
+  "kernel_type": "notebook",
+  "title": "From Scratch Titanic Solution",
+  "enable_internet": false,
+  "dataset_sources": [],
+  "is_private": false,
+  "id": "yuikitaml/from-scratch-titanic-solution",
+  "competition_sources": [
+    "titanic"
+  ],
+  "keywords": [],
+  "language": "python",
+  "code_file": "from-scratch-titanic-solution.ipynb",
+  "kernel_sources": []
+}

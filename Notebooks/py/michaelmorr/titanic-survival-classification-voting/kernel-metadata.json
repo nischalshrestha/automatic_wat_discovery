@@ -1,0 +1,23 @@
+{
+  "enable_internet": false,
+  "keywords": [
+    "tutorial",
+    "beginner",
+    "eda",
+    "data visualization",
+    "classification"
+  ],
+  "language": "python",
+  "dataset_sources": [],
+  "is_private": false,
+  "kernel_type": "notebook",
+  "id_no": 1397169,
+  "code_file": "titanic-survival-classification-voting.ipynb",
+  "title": "Titanic Survival - Classification Voting",
+  "kernel_sources": [],
+  "enable_gpu": false,
+  "id": "michaelmorr/titanic-survival-classification-voting",
+  "competition_sources": [
+    "titanic"
+  ]
+}

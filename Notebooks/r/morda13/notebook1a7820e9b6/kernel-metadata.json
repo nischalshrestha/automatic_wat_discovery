@@ -1,0 +1,17 @@
+{
+  "competition_sources": [
+    "titanic"
+  ],
+  "is_private": false,
+  "id_no": 111806,
+  "dataset_sources": [],
+  "id": "morda13/notebook1a7820e9b6",
+  "title": "Notebook1a7820e9b6",
+  "language": "r",
+  "enable_internet": false,
+  "keywords": [],
+  "kernel_type": "notebook",
+  "code_file": "notebook1a7820e9b6.irnb",
+  "enable_gpu": false,
+  "kernel_sources": []
+}

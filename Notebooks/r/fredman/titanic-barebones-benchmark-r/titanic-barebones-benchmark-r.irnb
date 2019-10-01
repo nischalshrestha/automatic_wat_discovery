@@ -1,0 +1,138 @@
+{
+  "cells": [
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "_cell_guid": "e71ac229-bd9f-6fcb-5541-894f8aa66898"
+      },
+      "outputs": [],
+      "source": [
+        "# This R environment comes with all of CRAN preinstalled, as well as many other helpful packages\n",
+        "# The environment is defined by the kaggle/rstats docker image: https://github.com/kaggle/docker-rstats\n",
+        "# For example, here's several helpful packages to load in \n",
+        "\n",
+        "library(ggplot2) # Data visualization\n",
+        "library(readr) # CSV file I/O, e.g. the read_csv function\n",
+        "\n",
+        "# Input data files are available in the \"../input/\" directory.\n",
+        "# For example, running this (by clicking run or pressing Shift+Enter) will list the files in the input directory\n",
+        "\n",
+        "system(\"ls ../input\")\n",
+        "\n",
+        "# Any results you write to the current directory are saved as output."
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "_cell_guid": "36935e98-e17c-b59a-d7b4-01283f7cda3d"
+      },
+      "outputs": [],
+      "source": [
+        "# Set seed and read input data\n",
+        "set.seed(1)\n",
+        "train <- read.csv(\"../input/train.csv\", stringsAsFactors=FALSE)\n",
+        "test  <- read.csv(\"../input/test.csv\",  stringsAsFactors=FALSE)"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "_cell_guid": "e7625f85-69c4-2e5c-6afc-45ccd52fac25"
+      },
+      "outputs": [],
+      "source": [
+        "#inspect data\n",
+        "head(train)\n",
+        "summary(train)"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "_cell_guid": "bce2448d-16af-e8db-7662-d372dd834f56"
+      },
+      "outputs": [],
+      "source": [
+        "selected_features <- c(\"Pclass\",\"Age\",\"Sex\",\"Parch\",\"SibSp\",\"Fare\",\"Embarked\")\n",
+        "\n",
+        "extractFeatures <- function(data) {\n",
+        "  features <- c(\"Pclass\",\n",
+        "                \"Age\",\n",
+        "                \"Sex\",\n",
+        "                \"Parch\",\n",
+        "                \"SibSp\",\n",
+        "                \"Fare\",\n",
+        "                \"Embarked\")\n",
+        "  fea <- data[,features]\n",
+        "  fea$Age[is.na(fea$Age)] <- -1\n",
+        "  fea$Fare[is.na(fea$Fare)] <- median(fea$Fare, na.rm=TRUE)\n",
+        "  fea$Embarked[fea$Embarked==\"\"] = \"S\"\n",
+        "  fea$Sex      <- as.factor(fea$Sex)\n",
+        "  fea$Embarked <- as.factor(fea$Embarked)\n",
+        "  return(fea)\n",
+        "}"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "_cell_guid": "a986b097-8795-2ab1-f92d-0dc6dcd40291"
+      },
+      "outputs": [],
+      "source": [
+        "# standard random forest\n",
+        "library(randomForest)\n",
+        "rf <- randomForest(extractFeatures(train), as.factor(train$Survived), ntree=100, importance=TRUE)\n",
+        "\n",
+        "submission <- data.frame(PassengerId = test$PassengerId)\n",
+        "submission$Survived <- predict(rf, extractFeatures(test))"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "_cell_guid": "637a1250-47ca-9608-d7d4-e730b5b2d911"
+      },
+      "outputs": [],
+      "source": [
+        "#export predictions\n",
+        "write.csv(submission, file = \"1_random_forest_r_submission.csv\", row.names=FALSE)"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "_cell_guid": "11039623-d72f-ba7c-4956-682206d7e902"
+      },
+      "outputs": [],
+      "source": ""
+    }
+  ],
+  "metadata": {
+    "_change_revision": 0,
+    "_is_fork": false,
+    "kernelspec": {
+      "display_name": "R",
+      "language": "R",
+      "name": "ir"
+    },
+    "language_info": {
+      "codemirror_mode": "r",
+      "file_extension": ".r",
+      "mimetype": "text/x-r-source",
+      "name": "R",
+      "pygments_lexer": "r",
+      "version": "3.3.3"
+    }
+  },
+  "nbformat": 4,
+  "nbformat_minor": 0
+}

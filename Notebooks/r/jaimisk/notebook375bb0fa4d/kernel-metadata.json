@@ -1,0 +1,17 @@
+{
+  "keywords": [],
+  "language": "r",
+  "id_no": 109139,
+  "id": "jaimisk/notebook375bb0fa4d",
+  "enable_internet": false,
+  "code_file": "notebook375bb0fa4d.irnb",
+  "dataset_sources": [],
+  "title": "Notebook8c91eb8008",
+  "kernel_type": "notebook",
+  "is_private": false,
+  "competition_sources": [
+    "titanic"
+  ],
+  "enable_gpu": false,
+  "kernel_sources": []
+}

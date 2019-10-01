@@ -1,0 +1,17 @@
+{
+  "enable_internet": false,
+  "id_no": 200908,
+  "language": "python",
+  "id": "jeremyloscheider/notebook2e0d2055b9",
+  "kernel_type": "notebook",
+  "dataset_sources": [],
+  "title": "Notebook2e0d2055b9",
+  "enable_gpu": false,
+  "code_file": "notebook2e0d2055b9.ipynb",
+  "keywords": [],
+  "kernel_sources": [],
+  "competition_sources": [
+    "titanic"
+  ],
+  "is_private": false
+}

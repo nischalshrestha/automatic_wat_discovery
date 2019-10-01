@@ -1,0 +1,22 @@
+{
+  "is_private": false,
+  "language": "python",
+  "keywords": [
+    "beginner",
+    "eda",
+    "gradient boosting",
+    "binary classification"
+  ],
+  "id_no": 1155388,
+  "enable_gpu": false,
+  "code_file": "start-here-titanic-survived-prediction.ipynb",
+  "kernel_sources": [],
+  "title": "Start here: Titanic Survived Prediction",
+  "id": "sz8416/start-here-titanic-survived-prediction",
+  "enable_internet": false,
+  "kernel_type": "notebook",
+  "dataset_sources": [],
+  "competition_sources": [
+    "titanic"
+  ]
+}

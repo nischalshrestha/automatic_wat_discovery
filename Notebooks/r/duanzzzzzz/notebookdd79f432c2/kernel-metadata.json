@@ -1,0 +1,17 @@
+{
+  "id_no": 247928,
+  "is_private": false,
+  "enable_gpu": false,
+  "enable_internet": false,
+  "competition_sources": [
+    "titanic"
+  ],
+  "id": "duanzzzzzz/notebookdd79f432c2",
+  "kernel_sources": [],
+  "language": "python",
+  "dataset_sources": [],
+  "kernel_type": "notebook",
+  "code_file": "notebookdd79f432c2.ipynb",
+  "title": "Notebookdd79f432c2",
+  "keywords": []
+}

@@ -1,0 +1,17 @@
+{
+  "kernel_sources": [],
+  "keywords": [],
+  "competition_sources": [
+    "titanic"
+  ],
+  "enable_internet": false,
+  "code_file": "tableau-and-titanic.ipynb",
+  "is_private": false,
+  "dataset_sources": [],
+  "id": "mehulgupta2016154/tableau-and-titanic",
+  "language": "python",
+  "title": "Tableau and Titanic",
+  "enable_gpu": false,
+  "kernel_type": "notebook",
+  "id_no": 1546994
+}

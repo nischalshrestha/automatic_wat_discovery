@@ -1,0 +1,21 @@
+{
+  "kernel_sources": [],
+  "id": "zquant/zq-titanic-a-to-z",
+  "id_no": 527168,
+  "enable_gpu": false,
+  "code_file": "zq-titanic-a-to-z.ipynb",
+  "kernel_type": "notebook",
+  "title": "zQ Titanic - A to Z",
+  "competition_sources": [
+    "titanic"
+  ],
+  "is_private": false,
+  "enable_internet": false,
+  "language": "python",
+  "keywords": [
+    "beginner",
+    "data visualization",
+    "random forest"
+  ],
+  "dataset_sources": []
+}

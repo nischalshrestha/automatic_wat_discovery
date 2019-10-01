@@ -1,0 +1,64 @@
+{
+  "cells": [
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "_cell_guid": "38e425ab-5c5d-8858-d7a7-f164cac10d40"
+      },
+      "outputs": [],
+      "source": [
+        "import numpy as np\n",
+        "import pandas as pd\n",
+        "import sklearn.linear_model as lm\n",
+        "from sklearn.model_selection import GridSearchCV\n",
+        "import matplotlib.pyplot as plt\n",
+        "%matplotlib inline"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "_cell_guid": "6548d9b5-ab37-75fd-35dc-577064512fc0"
+      },
+      "outputs": [],
+      "source": [
+        "train <- read.csv(\"../input/train.csv\", header=T)\n",
+        "test <- read.csv(\"../input/test.csv\", header=T)\n",
+        "gendermodel <- read.csv(\"../input/gendermodel.csv\", header=T)\n",
+        "genderclassmodel <- read.csv(\"../input/genderclassmodel.csv\", header=T)\n"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "_cell_guid": "bcd4da7b-0ecd-5f00-94f5-53e85912d606"
+      },
+      "outputs": [],
+      "source": [
+        ""
+      ]
+    }
+  ],
+  "metadata": {
+    "_change_revision": 0,
+    "_is_fork": false,
+    "kernelspec": {
+      "display_name": "R",
+      "language": "R",
+      "name": "ir"
+    },
+    "language_info": {
+      "codemirror_mode": "r",
+      "file_extension": ".r",
+      "mimetype": "text/x-r-source",
+      "name": "R",
+      "pygments_lexer": "r",
+      "version": "3.3.1"
+    }
+  },
+  "nbformat": 4,
+  "nbformat_minor": 0
+}

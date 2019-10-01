@@ -1,0 +1,17 @@
+{
+  "kernel_type": "notebook",
+  "is_private": false,
+  "dataset_sources": [],
+  "keywords": [],
+  "enable_gpu": false,
+  "competition_sources": [
+    "titanic"
+  ],
+  "title": "Titanic : mix of techniques - explanations",
+  "code_file": "titanic-mix-of-techniques-explanations.ipynb",
+  "id_no": 127667,
+  "language": "python",
+  "kernel_sources": [],
+  "id": "pierre54/titanic-mix-of-techniques-explanations",
+  "enable_internet": false
+}

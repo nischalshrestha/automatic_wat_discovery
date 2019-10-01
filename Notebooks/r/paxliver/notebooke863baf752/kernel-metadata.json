@@ -1,0 +1,17 @@
+{
+  "competition_sources": [
+    "titanic"
+  ],
+  "enable_gpu": false,
+  "title": "Notebooke863baf752",
+  "dataset_sources": [],
+  "code_file": "notebooke863baf752.ipynb",
+  "kernel_sources": [],
+  "keywords": [],
+  "enable_internet": false,
+  "id_no": 219203,
+  "language": "python",
+  "kernel_type": "notebook",
+  "is_private": false,
+  "id": "paxliver/notebooke863baf752"
+}

@@ -1,0 +1,17 @@
+{
+  "is_private": false,
+  "keywords": [],
+  "code_file": "titanic-machine-learning.ipynb",
+  "enable_internet": false,
+  "title": "Titanic machine learning",
+  "dataset_sources": [],
+  "kernel_sources": [],
+  "language": "python",
+  "id_no": 1861963,
+  "competition_sources": [
+    "titanic"
+  ],
+  "id": "ismailvanak/titanic-machine-learning",
+  "kernel_type": "notebook",
+  "enable_gpu": false
+}

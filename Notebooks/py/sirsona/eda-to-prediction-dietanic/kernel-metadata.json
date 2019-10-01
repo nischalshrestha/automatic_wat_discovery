@@ -1,0 +1,17 @@
+{
+  "dataset_sources": [],
+  "competition_sources": [
+    "titanic"
+  ],
+  "id": "sirsona/eda-to-prediction-dietanic",
+  "language": "python",
+  "is_private": false,
+  "code_file": "eda-to-prediction-dietanic.ipynb",
+  "kernel_sources": [],
+  "enable_internet": false,
+  "enable_gpu": false,
+  "keywords": [],
+  "kernel_type": "notebook",
+  "id_no": 463208,
+  "title": "EDA To Prediction(DieTanic)"
+}

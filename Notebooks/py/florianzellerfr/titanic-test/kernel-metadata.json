@@ -1,0 +1,17 @@
+{
+  "competition_sources": [
+    "titanic"
+  ],
+  "dataset_sources": [],
+  "kernel_sources": [],
+  "keywords": [],
+  "language": "python",
+  "enable_internet": false,
+  "is_private": false,
+  "code_file": "titanic-test.ipynb",
+  "id": "florianzellerfr/titanic-test",
+  "kernel_type": "notebook",
+  "id_no": 820544,
+  "title": "Titanic test",
+  "enable_gpu": false
+}

@@ -1,0 +1,17 @@
+{
+  "kernel_type": "notebook",
+  "title": "Titanic: logistic regression and SVC optimization",
+  "language": "python",
+  "enable_internet": false,
+  "enable_gpu": false,
+  "is_private": false,
+  "id": "lperez/titanic-logistic-regression-and-svc-optimization",
+  "keywords": [],
+  "code_file": "titanic-logistic-regression-and-svc-optimization.ipynb",
+  "competition_sources": [
+    "titanic"
+  ],
+  "kernel_sources": [],
+  "id_no": 294224,
+  "dataset_sources": []
+}

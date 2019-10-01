@@ -1,0 +1,17 @@
+{
+  "kernel_sources": [],
+  "competition_sources": [
+    "titanic"
+  ],
+  "enable_internet": false,
+  "id_no": 1382985,
+  "code_file": "processing-test-data.ipynb",
+  "keywords": [],
+  "dataset_sources": [],
+  "enable_gpu": false,
+  "kernel_type": "notebook",
+  "is_private": false,
+  "id": "inturiyam/processing-test-data",
+  "language": "python",
+  "title": "Processing Test Data"
+}

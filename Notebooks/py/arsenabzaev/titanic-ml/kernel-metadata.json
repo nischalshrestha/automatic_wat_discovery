@@ -1,0 +1,17 @@
+{
+  "kernel_sources": [],
+  "dataset_sources": [],
+  "competition_sources": [
+    "titanic"
+  ],
+  "code_file": "titanic-ml.ipynb",
+  "keywords": [],
+  "id_no": 121775,
+  "id": "arsenabzaev/titanic-ml",
+  "kernel_type": "notebook",
+  "title": "Titanic ML",
+  "enable_internet": false,
+  "language": "python",
+  "enable_gpu": false,
+  "is_private": false
+}

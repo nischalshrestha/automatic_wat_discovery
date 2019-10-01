@@ -1,0 +1,17 @@
+{
+  "kernel_type": "notebook",
+  "language": "python",
+  "enable_internet": false,
+  "enable_gpu": false,
+  "kernel_sources": [],
+  "competition_sources": [
+    "titanic"
+  ],
+  "is_private": false,
+  "id": "soumyaansh/titanic-revisit",
+  "dataset_sources": [],
+  "keywords": [],
+  "code_file": "titanic-revisit.ipynb",
+  "id_no": 82827,
+  "title": "Titanic Revisit"
+}

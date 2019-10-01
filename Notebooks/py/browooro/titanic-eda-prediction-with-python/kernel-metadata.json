@@ -1,0 +1,17 @@
+{
+  "is_private": false,
+  "keywords": [],
+  "kernel_sources": [],
+  "code_file": "titanic-eda-prediction-with-python.ipynb",
+  "id": "browooro/titanic-eda-prediction-with-python",
+  "dataset_sources": [],
+  "id_no": 862406,
+  "enable_gpu": false,
+  "language": "python",
+  "enable_internet": false,
+  "title": "Titanic EDA & Prediction with Python",
+  "kernel_type": "notebook",
+  "competition_sources": [
+    "titanic"
+  ]
+}

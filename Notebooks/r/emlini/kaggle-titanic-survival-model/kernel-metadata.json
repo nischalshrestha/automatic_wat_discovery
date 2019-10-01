@@ -1,0 +1,17 @@
+{
+  "keywords": [],
+  "competition_sources": [
+    "titanic"
+  ],
+  "code_file": "kaggle-titanic-survival-model.irnb",
+  "language": "r",
+  "kernel_type": "notebook",
+  "kernel_sources": [],
+  "id_no": 704596,
+  "enable_internet": false,
+  "enable_gpu": true,
+  "is_private": false,
+  "dataset_sources": [],
+  "id": "emlini/kaggle-titanic-survival-model",
+  "title": "Kaggle Titanic Survival Model"
+}

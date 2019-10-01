@@ -1,0 +1,17 @@
+{
+  "language": "python",
+  "kernel_type": "notebook",
+  "title": "10 Steps to Become a Data Scientist",
+  "dataset_sources": [],
+  "enable_gpu": false,
+  "keywords": [],
+  "id": "rhearai/10-steps-to-become-a-data-scientist",
+  "is_private": false,
+  "kernel_sources": [],
+  "enable_internet": false,
+  "id_no": 1984026,
+  "code_file": "10-steps-to-become-a-data-scientist.ipynb",
+  "competition_sources": [
+    "titanic"
+  ]
+}

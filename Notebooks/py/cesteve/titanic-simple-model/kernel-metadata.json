@@ -1,0 +1,21 @@
+{
+  "kernel_type": "notebook",
+  "id_no": 2143105,
+  "dataset_sources": [],
+  "id": "cesteve/titanic-simple-model",
+  "enable_gpu": false,
+  "title": "Titanic Simple Model",
+  "is_private": false,
+  "code_file": "titanic-simple-model.ipynb",
+  "keywords": [
+    "beginner",
+    "classification",
+    "starter code"
+  ],
+  "kernel_sources": [],
+  "competition_sources": [
+    "titanic"
+  ],
+  "language": "python",
+  "enable_internet": false
+}

@@ -1,0 +1,17 @@
+{
+  "competition_sources": [
+    "titanic"
+  ],
+  "enable_gpu": false,
+  "dataset_sources": [],
+  "enable_internet": false,
+  "keywords": [],
+  "title": "Titanic Data Analysis",
+  "code_file": "titanic-data-analysis.ipynb",
+  "language": "python",
+  "kernel_sources": [],
+  "id_no": 2041664,
+  "is_private": false,
+  "kernel_type": "notebook",
+  "id": "beck0910/titanic-data-analysis"
+}

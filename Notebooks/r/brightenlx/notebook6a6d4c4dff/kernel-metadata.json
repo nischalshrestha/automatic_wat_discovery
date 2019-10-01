@@ -1,0 +1,17 @@
+{
+  "keywords": [],
+  "competition_sources": [
+    "titanic"
+  ],
+  "kernel_sources": [],
+  "id_no": 237465,
+  "code_file": "notebook6a6d4c4dff.ipynb",
+  "id": "brightenlx/notebook6a6d4c4dff",
+  "enable_internet": false,
+  "title": "Notebook6a6d4c4dff",
+  "kernel_type": "notebook",
+  "is_private": false,
+  "dataset_sources": [],
+  "language": "python",
+  "enable_gpu": false
+}

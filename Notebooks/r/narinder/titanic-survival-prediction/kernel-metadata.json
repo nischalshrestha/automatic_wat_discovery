@@ -1,0 +1,17 @@
+{
+  "enable_gpu": false,
+  "id": "narinder/titanic-survival-prediction",
+  "competition_sources": [
+    "titanic"
+  ],
+  "is_private": false,
+  "title": "Titanic Survival Prediction",
+  "code_file": "titanic-survival-prediction.irnb",
+  "language": "r",
+  "dataset_sources": [],
+  "keywords": [],
+  "kernel_sources": [],
+  "id_no": 210042,
+  "enable_internet": false,
+  "kernel_type": "notebook"
+}

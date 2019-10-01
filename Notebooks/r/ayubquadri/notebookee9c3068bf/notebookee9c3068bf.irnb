@@ -1,0 +1,68 @@
+{
+  "metadata": {
+    "kernelspec": {
+      "display_name": "R",
+      "language": "R",
+      "name": "ir"
+    },
+    "language_info": {
+      "codemirror_mode": "r",
+      "file_extension": ".r",
+      "mimetype": "text/x-r-source",
+      "name": "R",
+      "pygments_lexer": "r",
+      "version": "3.3.2"
+    }
+  },
+  "nbformat": 4,
+  "nbformat_minor": 0,
+  "cells": [
+    {
+      "metadata": {
+        "_cell_guid": "172e065f-ad16-df5a-7dcc-aeb9c0c7170f",
+        "_active": false,
+        "collapsed": false
+      },
+      "source": "# This R environment comes with all of CRAN preinstalled, as well as many other helpful packages\n# The environment is defined by the kaggle/rstats docker image: https://github.com/kaggle/docker-rstats\n# For example, here's several helpful packages to load in \n\nlibrary(ggplot2) # Data visualization\nlibrary(readr) # CSV file I/O, e.g. the read_csv function\nlibrary('ggthemes') # visualization\nlibrary('scales') # visualization\nlibrary('dplyr') # data manipulation\nlibrary('mice') # imputation\nlibrary('randomForest')\n# Input data files are available in the \"../input/\" directory.\n# For example, running this (by clicking run or pressing Shift+Enter) will list the files in the input directory\n\nsystem(\"ls ../input\")\n\n# Any results you write to the current directory are saved as output.",
+      "execution_count": 1,
+      "cell_type": "code",
+      "outputs": [],
+      "execution_state": "idle"
+    },
+    {
+      "metadata": {
+        "_cell_guid": "442afad0-6721-372f-a042-2c8e82b502b2",
+        "_active": false,
+        "collapsed": false
+      },
+      "source": "train <- read.csv('../input/train.csv', stringsAsFactors = F)\ntest  <- read.csv('../input/test.csv', stringsAsFactors = F)\n\nfull  <- bind_rows(train, test) # bind training & test data\n\n# check data\nstr(full)\n",
+      "execution_count": 2,
+      "cell_type": "code",
+      "outputs": [],
+      "execution_state": "idle"
+    },
+    {
+      "metadata": {
+        "_cell_guid": "7a0541d8-64cc-3176-d5bc-0d5f97034835",
+        "_active": false,
+        "collapsed": false
+      },
+      "source": "full$Title <- gsub('(.*, )|(\\\\..*)', '', full$Name)\n\ntable(full$Sex, full$Title)\n",
+      "execution_count": 3,
+      "cell_type": "code",
+      "outputs": [],
+      "execution_state": "idle"
+    },
+    {
+      "metadata": {
+        "_cell_guid": "f07f8582-f298-482b-4a19-8df19b2032d6",
+        "_active": true,
+        "collapsed": false
+      },
+      "source": null,
+      "execution_count": null,
+      "cell_type": "code",
+      "outputs": []
+    }
+  ]
+}

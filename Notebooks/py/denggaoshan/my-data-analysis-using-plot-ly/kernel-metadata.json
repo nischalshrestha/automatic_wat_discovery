@@ -1,0 +1,17 @@
+{
+  "code_file": "my-data-analysis-using-plot-ly.ipynb",
+  "keywords": [],
+  "enable_gpu": false,
+  "enable_internet": false,
+  "id": "denggaoshan/my-data-analysis-using-plot-ly",
+  "kernel_type": "notebook",
+  "language": "python",
+  "dataset_sources": [],
+  "id_no": 405453,
+  "is_private": false,
+  "kernel_sources": [],
+  "title": "My Data Analysis using Plot.ly",
+  "competition_sources": [
+    "titanic"
+  ]
+}

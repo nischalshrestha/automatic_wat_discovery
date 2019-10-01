@@ -1,0 +1,17 @@
+{
+  "kernel_type": "notebook",
+  "id_no": 210381,
+  "competition_sources": [
+    "titanic"
+  ],
+  "keywords": [],
+  "dataset_sources": [],
+  "enable_internet": false,
+  "kernel_sources": [],
+  "code_file": "titatinc-data-set-and-islr-book.irnb",
+  "title": "Titatinc Data Set and ISLR book",
+  "is_private": false,
+  "language": "r",
+  "id": "stronggale/titatinc-data-set-and-islr-book",
+  "enable_gpu": false
+}

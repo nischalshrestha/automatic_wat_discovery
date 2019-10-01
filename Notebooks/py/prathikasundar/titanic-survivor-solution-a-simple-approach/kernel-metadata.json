@@ -1,0 +1,17 @@
+{
+  "competition_sources": [
+    "titanic"
+  ],
+  "kernel_type": "notebook",
+  "is_private": false,
+  "keywords": [],
+  "title": "Titanic Survivor Solution - A simple Approach",
+  "enable_gpu": false,
+  "kernel_sources": [],
+  "id_no": 1802997,
+  "dataset_sources": [],
+  "code_file": "titanic-survivor-solution-a-simple-approach.ipynb",
+  "id": "prathikasundar/titanic-survivor-solution-a-simple-approach",
+  "enable_internet": false,
+  "language": "python"
+}

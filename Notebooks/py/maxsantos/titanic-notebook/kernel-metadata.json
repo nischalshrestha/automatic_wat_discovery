@@ -1,0 +1,17 @@
+{
+  "kernel_sources": [],
+  "competition_sources": [
+    "titanic"
+  ],
+  "language": "python",
+  "code_file": "titanic-notebook.ipynb",
+  "kernel_type": "notebook",
+  "title": "Titanic Notebook",
+  "id": "maxsantos/titanic-notebook",
+  "id_no": 487472,
+  "enable_gpu": false,
+  "keywords": [],
+  "enable_internet": false,
+  "dataset_sources": [],
+  "is_private": false
+}

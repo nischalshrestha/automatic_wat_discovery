@@ -1,0 +1,17 @@
+{
+  "enable_gpu": false,
+  "kernel_type": "notebook",
+  "dataset_sources": [],
+  "is_private": false,
+  "keywords": [],
+  "title": "Feature engineering, data imputation - 80.86",
+  "kernel_sources": [],
+  "enable_internet": false,
+  "id_no": 180251,
+  "id": "jaeyoonpark/feature-engineering-data-imputation-80-86",
+  "code_file": "feature-engineering-data-imputation-80-86.ipynb",
+  "language": "python",
+  "competition_sources": [
+    "titanic"
+  ]
+}

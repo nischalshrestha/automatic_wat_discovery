@@ -1,0 +1,17 @@
+{
+  "code_file": "notebooke0b8a16988.ipynb",
+  "language": "python",
+  "dataset_sources": [],
+  "keywords": [],
+  "enable_internet": false,
+  "is_private": false,
+  "title": "Notebooke0b8a16988",
+  "kernel_type": "notebook",
+  "kernel_sources": [],
+  "competition_sources": [
+    "titanic"
+  ],
+  "id": "maruja/notebooke0b8a16988",
+  "id_no": 228627,
+  "enable_gpu": false
+}

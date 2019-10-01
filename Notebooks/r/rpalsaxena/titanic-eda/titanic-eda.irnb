@@ -1,0 +1,136 @@
+{
+  "cells": [
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "_cell_guid": "63ce73f3-f9b0-19a9-3a0d-70dd2aaa0650"
+      },
+      "outputs": [],
+      "source": [
+        "library(ggplot2) # Data visualization\n",
+        "library(readr) # CSV file I/O, e.g. the read_csv function\n",
+        "library('dplyr')\n",
+        "train <- read.csv('../input/train.csv' , strip.white = TRUE, stringsAsFactors = F)\n",
+        "test <- read.csv('../input/test.csv' , strip.white = TRUE, stringsAsFactors = F)\n",
+        "\n",
+        "full <- bind_rows(train, test)\n",
+        "str(full)"
+      ]
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {
+        "_cell_guid": "3f4a885b-fc5f-d44d-79c9-d14a7e24e586"
+      },
+      "source": [
+        "We are working with 1309 observations of 12 variables. "
+      ]
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {
+        "_cell_guid": "82dca374-8cbe-7ed0-c007-1c59b1f287e8"
+      },
+      "source": [
+        "##Feature Engineering"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "_cell_guid": "ced8a0e5-b2ab-e2ec-21c9-b5463a608d73"
+      },
+      "outputs": [],
+      "source": [
+        "head(full, 1)"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "_cell_guid": "0f1e8bca-7d22-7e08-6058-acf3c5241a53"
+      },
+      "outputs": [],
+      "source": [
+        "full$Title <- gsub('(.*, )|(\\\\..*)', '', full$Name)\n",
+        "table(full$Sex, full$Title)"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "_cell_guid": "ac545c87-7bd0-2574-bffd-76fdcc22f241"
+      },
+      "outputs": [],
+      "source": [
+        "rare_title <- c('Dona', 'Lady', 'the Countess','Capt', 'Col', 'Don', \n",
+        "                'Dr', 'Major', 'Rev', 'Sir', 'Jonkheer')\n",
+        "\n",
+        "# Also reassign mlle, ms, and mme accordingly\n",
+        "full$Title[full$Title == 'Mlle']        <- 'Miss' \n",
+        "full$Title[full$Title == 'Ms']          <- 'Miss'\n",
+        "full$Title[full$Title == 'Mme']         <- 'Mrs' \n",
+        "full$Title[full$Title %in% rare_title]  <- 'Rare Title'\n",
+        "\n",
+        "# Show title counts by sex again\n",
+        "table(full$Sex, full$Title)"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "_cell_guid": "e0a4fc13-3381-22f3-d24b-e5569b1b3062"
+      },
+      "outputs": [],
+      "source": [
+        "full$Surname <- sapply(full$Name,  \n",
+        "                      function(x) strsplit(x, split = '[, ]')[[1]][1])\n",
+        "full$Surname                          "
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "_cell_guid": "c0bea543-9188-096c-0adc-07aec3fdb6f0"
+      },
+      "outputs": [],
+      "source": [
+        "length(full$Surname)"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "_cell_guid": "d6b237c9-7699-5370-a7ba-3e29c8739a00"
+      },
+      "outputs": [],
+      "source": ""
+    }
+  ],
+  "metadata": {
+    "_change_revision": 0,
+    "_is_fork": false,
+    "kernelspec": {
+      "display_name": "R",
+      "language": "R",
+      "name": "ir"
+    },
+    "language_info": {
+      "codemirror_mode": "r",
+      "file_extension": ".r",
+      "mimetype": "text/x-r-source",
+      "name": "R",
+      "pygments_lexer": "r",
+      "version": "3.3.1"
+    }
+  },
+  "nbformat": 4,
+  "nbformat_minor": 0
+}

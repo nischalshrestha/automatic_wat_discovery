@@ -1,0 +1,17 @@
+{
+  "id": "michaelee/titanic-decision-tree",
+  "code_file": "titanic-decision-tree.ipynb",
+  "title": "Titanic Decision Tree",
+  "enable_gpu": false,
+  "language": "python",
+  "is_private": false,
+  "kernel_type": "notebook",
+  "id_no": 1788825,
+  "competition_sources": [
+    "titanic"
+  ],
+  "enable_internet": false,
+  "keywords": [],
+  "dataset_sources": [],
+  "kernel_sources": []
+}

@@ -1,0 +1,17 @@
+{
+  "title": "Notebookd59cd450ad",
+  "language": "r",
+  "enable_internet": false,
+  "id": "silsir/notebookd59cd450ad",
+  "id_no": 244970,
+  "enable_gpu": false,
+  "dataset_sources": [],
+  "code_file": "notebookd59cd450ad.irnb",
+  "is_private": false,
+  "keywords": [],
+  "competition_sources": [
+    "titanic"
+  ],
+  "kernel_type": "notebook",
+  "kernel_sources": []
+}

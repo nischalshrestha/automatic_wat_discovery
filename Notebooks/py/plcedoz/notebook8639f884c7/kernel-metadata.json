@@ -1,0 +1,17 @@
+{
+  "is_private": false,
+  "id": "plcedoz/notebook8639f884c7",
+  "enable_gpu": false,
+  "kernel_type": "notebook",
+  "enable_internet": false,
+  "dataset_sources": [],
+  "language": "python",
+  "kernel_sources": [],
+  "competition_sources": [
+    "titanic"
+  ],
+  "code_file": "notebook8639f884c7.ipynb",
+  "id_no": 132351,
+  "title": "Notebook8639f884c7",
+  "keywords": []
+}

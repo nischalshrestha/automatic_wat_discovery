@@ -1,0 +1,19 @@
+{
+  "competition_sources": [
+    "titanic"
+  ],
+  "title": "Survival of Titanic passagers",
+  "enable_internet": false,
+  "dataset_sources": [],
+  "keywords": [
+    "survival analysis"
+  ],
+  "enable_gpu": false,
+  "kernel_sources": [],
+  "language": "python",
+  "id": "abhisheksingh2702/survival-of-titanic-passagers",
+  "is_private": false,
+  "code_file": "survival-of-titanic-passagers.ipynb",
+  "id_no": 1579738,
+  "kernel_type": "notebook"
+}

@@ -1,0 +1,22 @@
+{
+  "id_no": 1723446,
+  "dataset_sources": [],
+  "kernel_type": "notebook",
+  "is_private": false,
+  "title": "Starter Code:Try predict with KSVM/ANN/XBG",
+  "language": "python",
+  "competition_sources": [
+    "titanic"
+  ],
+  "code_file": "starter-code-try-predict-with-ksvm-ann-xbg.ipynb",
+  "enable_gpu": false,
+  "kernel_sources": [],
+  "keywords": [
+    "beginner",
+    "classification",
+    "deep learning",
+    "starter code"
+  ],
+  "id": "alexzhuzk/starter-code-try-predict-with-ksvm-ann-xbg",
+  "enable_internet": false
+}

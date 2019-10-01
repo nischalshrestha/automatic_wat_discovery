@@ -1,0 +1,17 @@
+{
+  "language": "python",
+  "id": "asuryavanshi11/titanic-data-science-solution",
+  "dataset_sources": [],
+  "kernel_sources": [],
+  "enable_gpu": false,
+  "kernel_type": "notebook",
+  "id_no": 1036594,
+  "is_private": false,
+  "enable_internet": false,
+  "title": "Titanic Data Science Solution",
+  "keywords": [],
+  "code_file": "titanic-data-science-solution.ipynb",
+  "competition_sources": [
+    "titanic"
+  ]
+}

@@ -1,0 +1,17 @@
+{
+  "enable_internet": false,
+  "is_private": false,
+  "code_file": "alvin-titanic-assignment2.ipynb",
+  "title": "Alvin Titanic Assignment2",
+  "language": "python",
+  "kernel_sources": [],
+  "competition_sources": [
+    "titanic"
+  ],
+  "id_no": 1397799,
+  "keywords": [],
+  "kernel_type": "notebook",
+  "id": "syhwanlin/alvin-titanic-assignment2",
+  "dataset_sources": [],
+  "enable_gpu": false
+}

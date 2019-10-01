@@ -1,0 +1,19 @@
+{
+  "keywords": [
+    "logistic regression"
+  ],
+  "dataset_sources": [],
+  "language": "r",
+  "title": "Titanic - Logistic regression from scratch (0.779)",
+  "kernel_type": "notebook",
+  "kernel_sources": [],
+  "id_no": 409892,
+  "is_private": false,
+  "enable_gpu": false,
+  "id": "konosp/titanic-logistic-regression-from-scratch-0-779",
+  "enable_internet": false,
+  "code_file": "titanic-logistic-regression-from-scratch-0-779.irnb",
+  "competition_sources": [
+    "titanic"
+  ]
+}

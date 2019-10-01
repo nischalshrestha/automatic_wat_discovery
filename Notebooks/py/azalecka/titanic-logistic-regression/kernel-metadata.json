@@ -1,0 +1,17 @@
+{
+  "keywords": [],
+  "id": "azalecka/titanic-logistic-regression",
+  "code_file": "titanic-logistic-regression.ipynb",
+  "kernel_sources": [],
+  "language": "python",
+  "enable_gpu": false,
+  "dataset_sources": [],
+  "title": "Titanic - logistic regression",
+  "kernel_type": "notebook",
+  "enable_internet": false,
+  "is_private": false,
+  "id_no": 439144,
+  "competition_sources": [
+    "titanic"
+  ]
+}

@@ -1,0 +1,17 @@
+{
+  "competition_sources": [
+    "titanic"
+  ],
+  "title": "Teste2",
+  "kernel_sources": [],
+  "dataset_sources": [],
+  "kernel_type": "script",
+  "enable_gpu": false,
+  "enable_internet": false,
+  "is_private": false,
+  "language": "r",
+  "id": "hilberath/teste2",
+  "keywords": [],
+  "code_file": "teste2.R",
+  "id_no": 72063
+}

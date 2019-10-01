@@ -1,0 +1,17 @@
+{
+  "language": "python",
+  "is_private": false,
+  "kernel_type": "notebook",
+  "enable_gpu": false,
+  "keywords": [],
+  "kernel_sources": [],
+  "code_file": "titanic-model1.ipynb",
+  "competition_sources": [
+    "titanic"
+  ],
+  "title": "Titanic Model1",
+  "dataset_sources": [],
+  "id_no": 1375413,
+  "enable_internet": false,
+  "id": "nekojohn/titanic-model1"
+}

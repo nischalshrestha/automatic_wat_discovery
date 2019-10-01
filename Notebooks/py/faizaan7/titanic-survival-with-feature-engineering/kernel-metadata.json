@@ -1,0 +1,17 @@
+{
+  "kernel_sources": [],
+  "kernel_type": "notebook",
+  "code_file": "titanic-survival-with-feature-engineering.ipynb",
+  "title": "Titanic survival with Feature Engineering",
+  "id": "faizaan7/titanic-survival-with-feature-engineering",
+  "is_private": false,
+  "dataset_sources": [],
+  "competition_sources": [
+    "titanic"
+  ],
+  "enable_internet": false,
+  "enable_gpu": false,
+  "id_no": 1079419,
+  "keywords": [],
+  "language": "python"
+}

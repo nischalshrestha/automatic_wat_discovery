@@ -1,0 +1,17 @@
+{
+  "language": "python",
+  "code_file": "genetic-algorithm-by-ptop.ipynb",
+  "enable_gpu": true,
+  "enable_internet": false,
+  "dataset_sources": [],
+  "is_private": false,
+  "kernel_type": "notebook",
+  "competition_sources": [
+    "titanic"
+  ],
+  "keywords": [],
+  "id": "aalchemist/genetic-algorithm-by-ptop",
+  "id_no": 1424259,
+  "title": "GENETIC ALGORITHM BY PTOP",
+  "kernel_sources": []
+}

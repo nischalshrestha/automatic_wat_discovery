@@ -1,0 +1,17 @@
+{
+  "enable_internet": false,
+  "code_file": "notebookb55823f0de.irnb",
+  "competition_sources": [
+    "titanic"
+  ],
+  "id": "jituaswani/notebookb55823f0de",
+  "keywords": [],
+  "id_no": 230220,
+  "language": "r",
+  "is_private": false,
+  "dataset_sources": [],
+  "enable_gpu": false,
+  "kernel_sources": [],
+  "kernel_type": "notebook",
+  "title": "Notebookb55823f0de"
+}

@@ -1,0 +1,23 @@
+{
+  "language": "python",
+  "kernel_type": "notebook",
+  "title": "In-Depth Survival Analysis [ 85% ] for Beginners",
+  "code_file": "in-depth-survival-analysis-85-for-beginners.ipynb",
+  "id_no": 1248437,
+  "is_private": false,
+  "enable_gpu": false,
+  "keywords": [
+    "beginner",
+    "data cleaning",
+    "data visualization",
+    "classification",
+    "feature engineering"
+  ],
+  "competition_sources": [
+    "titanic"
+  ],
+  "id": "fuzzywizard/in-depth-survival-analysis-85-for-beginners",
+  "enable_internet": false,
+  "kernel_sources": [],
+  "dataset_sources": []
+}

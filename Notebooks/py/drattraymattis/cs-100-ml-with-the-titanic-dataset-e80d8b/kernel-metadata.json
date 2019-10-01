@@ -1,0 +1,17 @@
+{
+  "code_file": "cs-100-ml-with-the-titanic-dataset-e80d8b.ipynb",
+  "keywords": [],
+  "kernel_type": "notebook",
+  "enable_gpu": false,
+  "language": "python",
+  "competition_sources": [
+    "titanic"
+  ],
+  "is_private": false,
+  "title": "CS 100: ML with the Titanic Dataset e80d8b",
+  "id_no": 1739337,
+  "kernel_sources": [],
+  "id": "drattraymattis/cs-100-ml-with-the-titanic-dataset-e80d8b",
+  "dataset_sources": [],
+  "enable_internet": false
+}

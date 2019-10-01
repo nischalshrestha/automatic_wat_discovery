@@ -1,0 +1,17 @@
+{
+  "code_file": "titanic-predict.ipynb",
+  "competition_sources": [
+    "titanic"
+  ],
+  "id_no": 1488207,
+  "kernel_sources": [],
+  "language": "python",
+  "title": "Titanic Predict ",
+  "kernel_type": "notebook",
+  "enable_internet": false,
+  "dataset_sources": [],
+  "keywords": [],
+  "id": "lucablaq/titanic-predict",
+  "is_private": false,
+  "enable_gpu": false
+}

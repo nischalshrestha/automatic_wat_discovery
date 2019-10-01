@@ -1,0 +1,17 @@
+{
+  "keywords": [],
+  "kernel_sources": [],
+  "is_private": false,
+  "dataset_sources": [],
+  "kernel_type": "notebook",
+  "language": "python",
+  "code_file": "notebookf69aebec04.ipynb",
+  "enable_internet": false,
+  "id": "anuradhai/notebookf69aebec04",
+  "enable_gpu": false,
+  "id_no": 273924,
+  "title": "Notebookf69aebec04",
+  "competition_sources": [
+    "titanic"
+  ]
+}

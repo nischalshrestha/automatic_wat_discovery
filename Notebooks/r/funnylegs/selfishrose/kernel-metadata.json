@@ -1,0 +1,17 @@
+{
+  "competition_sources": [
+    "titanic"
+  ],
+  "kernel_sources": [],
+  "keywords": [],
+  "enable_gpu": false,
+  "dataset_sources": [],
+  "language": "r",
+  "is_private": false,
+  "enable_internet": false,
+  "id": "funnylegs/selfishrose",
+  "id_no": 205671,
+  "title": "SelfishRose",
+  "code_file": "selfishrose.irnb",
+  "kernel_type": "notebook"
+}

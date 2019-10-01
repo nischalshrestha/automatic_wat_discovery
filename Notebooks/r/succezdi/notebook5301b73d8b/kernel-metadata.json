@@ -1,0 +1,17 @@
+{
+  "keywords": [],
+  "is_private": false,
+  "competition_sources": [
+    "titanic"
+  ],
+  "dataset_sources": [],
+  "enable_internet": false,
+  "kernel_sources": [],
+  "code_file": "notebook5301b73d8b.irnb",
+  "id": "succezdi/notebook5301b73d8b",
+  "enable_gpu": false,
+  "id_no": 202933,
+  "kernel_type": "notebook",
+  "language": "r",
+  "title": "Notebook5301b73d8b"
+}

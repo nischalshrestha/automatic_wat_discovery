@@ -1,0 +1,17 @@
+{
+  "title": "Notebook907c4d837b",
+  "enable_internet": false,
+  "language": "r",
+  "competition_sources": [
+    "titanic"
+  ],
+  "enable_gpu": false,
+  "kernel_sources": [],
+  "id_no": 201049,
+  "code_file": "notebook907c4d837b.irnb",
+  "kernel_type": "notebook",
+  "keywords": [],
+  "is_private": false,
+  "dataset_sources": [],
+  "id": "vamshi2188/notebook907c4d837b"
+}

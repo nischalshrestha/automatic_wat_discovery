@@ -1,0 +1,17 @@
+{
+  "dataset_sources": [],
+  "code_file": "titanic-competition.ipynb",
+  "competition_sources": [
+    "titanic"
+  ],
+  "id_no": 2033789,
+  "enable_gpu": false,
+  "kernel_sources": [],
+  "is_private": false,
+  "title": "Titanic Competition",
+  "enable_internet": false,
+  "id": "ramoyses/titanic-competition",
+  "language": "python",
+  "kernel_type": "notebook",
+  "keywords": []
+}

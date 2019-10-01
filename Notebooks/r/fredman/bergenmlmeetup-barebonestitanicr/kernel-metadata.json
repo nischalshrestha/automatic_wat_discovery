@@ -1,0 +1,17 @@
+{
+  "keywords": [],
+  "dataset_sources": [],
+  "language": "r",
+  "id_no": 249500,
+  "is_private": false,
+  "competition_sources": [
+    "titanic"
+  ],
+  "kernel_type": "notebook",
+  "code_file": "bergenmlmeetup-barebonestitanicr.irnb",
+  "enable_internet": false,
+  "enable_gpu": false,
+  "id": "fredman/bergenmlmeetup-barebonestitanicr",
+  "title": "BergenMLMeetup BarebonesTitanicR ",
+  "kernel_sources": []
+}

@@ -1,0 +1,61 @@
+{
+  "cells": [
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "_cell_guid": "81550cd3-257b-8afe-a15e-b58ccfb4c5eb"
+      },
+      "outputs": [],
+      "source": [
+        "library(ggplot2) # Data visualization\n",
+        "library(randomForest)\n",
+        "\n",
+        "set.seed(1)\n",
+        "train <- read.csv(\"../input/train.csv\", stringsAsFactors=FALSE)\n",
+        "test  <- read.csv(\"../input/test.csv\",  stringsAsFactors=FALSE)"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "_cell_guid": "b6f84fa7-b07e-336b-98bf-e34c1fad9172"
+      },
+      "outputs": [],
+      "source": [
+        "First, let's look at the data structure:"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "_cell_guid": "5430ce34-d211-51fe-7c23-19895e5e575a"
+      },
+      "outputs": [],
+      "source": [
+        "head(train)"
+      ]
+    }
+  ],
+  "metadata": {
+    "_change_revision": 0,
+    "_is_fork": false,
+    "kernelspec": {
+      "display_name": "R",
+      "language": "R",
+      "name": "ir"
+    },
+    "language_info": {
+      "codemirror_mode": "r",
+      "file_extension": ".r",
+      "mimetype": "text/x-r-source",
+      "name": "R",
+      "pygments_lexer": "r",
+      "version": "3.3.2"
+    }
+  },
+  "nbformat": 4,
+  "nbformat_minor": 0
+}

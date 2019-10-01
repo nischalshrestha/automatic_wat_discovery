@@ -1,0 +1,17 @@
+{
+  "is_private": false,
+  "kernel_sources": [],
+  "code_file": "minor-improvements-to-someone-else-s-solution.ipynb",
+  "dataset_sources": [],
+  "language": "python",
+  "competition_sources": [
+    "titanic"
+  ],
+  "id_no": 211811,
+  "enable_gpu": false,
+  "keywords": [],
+  "id": "evangelize/minor-improvements-to-someone-else-s-solution",
+  "title": "Minor Improvements to Someone Else's Solution",
+  "kernel_type": "notebook",
+  "enable_internet": false
+}

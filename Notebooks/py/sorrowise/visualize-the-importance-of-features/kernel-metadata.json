@@ -1,0 +1,20 @@
+{
+  "enable_internet": false,
+  "competition_sources": [
+    "titanic"
+  ],
+  "title": "Visualize the importance of features",
+  "is_private": false,
+  "dataset_sources": [],
+  "id": "sorrowise/visualize-the-importance-of-features",
+  "kernel_type": "notebook",
+  "keywords": [
+    "data visualization",
+    "random forest"
+  ],
+  "id_no": 2137917,
+  "kernel_sources": [],
+  "code_file": "visualize-the-importance-of-features.ipynb",
+  "enable_gpu": false,
+  "language": "python"
+}

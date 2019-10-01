@@ -1,0 +1,17 @@
+{
+  "enable_gpu": false,
+  "enable_internet": false,
+  "code_file": "temp-4.irnb",
+  "language": "r",
+  "id_no": 174229,
+  "id": "user849017/temp-4",
+  "kernel_type": "notebook",
+  "kernel_sources": [],
+  "is_private": false,
+  "keywords": [],
+  "competition_sources": [
+    "titanic"
+  ],
+  "title": "temp 4",
+  "dataset_sources": []
+}

@@ -1,0 +1,400 @@
+{
+  "cells": [
+    {
+      "cell_type": "markdown",
+      "metadata": {
+        "_cell_guid": "50b9c825-359a-e3e0-cba6-0fbc459d5c4f"
+      },
+      "source": [
+        "Data Exploration in R\n",
+        "===\n",
+        "\n",
+        "Here I try to understand how to use Kaggle kernel by exploring the data."
+      ]
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {
+        "_cell_guid": "a2040b09-8d04-fdb0-b9a1-bc7dca1f2635"
+      },
+      "source": [
+        "The next block is the one automatically inserted. Some info may come useful later. So I'm keeping it."
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "_cell_guid": "1e3f822f-15bc-b60b-522c-823228577545"
+      },
+      "outputs": [],
+      "source": [
+        "# This R environment comes with all of CRAN preinstalled, as well as many other helpful packages\n",
+        "# The environment is defined by the kaggle/rstats docker image: https://github.com/kaggle/docker-rstats\n",
+        "# For example, here's several helpful packages to load in \n",
+        "\n",
+        "library(ggplot2) # Data visualization\n",
+        "library(readr) # CSV file I/O, e.g. the read_csv function\n",
+        "\n",
+        "# Input data files are available in the \"../input/\" directory.\n",
+        "# For example, running this (by clicking run or pressing Shift+Enter) will list the files in the input directory\n",
+        "\n",
+        "system(\"ls ../input\")\n",
+        "\n",
+        "# Any results you write to the current directory are saved as output."
+      ]
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {
+        "_cell_guid": "655f81d1-25c6-04a7-4301-53c66d2e546c"
+      },
+      "source": [
+        "The above block did not print out files in ../input. Let's try another function."
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "_cell_guid": "330fd1cd-7752-80b3-b7f4-69e2f98702f4"
+      },
+      "outputs": [],
+      "source": [
+        "for (filename in list.files(\"../input\", full.names=TRUE)) {\n",
+        "    cat(paste0(filename, \",\\tmode: \", file.mode(filename), \",\\tsize: \", file.size(filename)), \"bytes.\\n\")\n",
+        "}"
+      ]
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {
+        "_cell_guid": "87af3e38-a671-9184-5205-7eba91267364"
+      },
+      "source": [
+        "Surprisingly, all the files have 777 permission. Presumably, \"test.csv\" is the test data, and \"train.csv\" is the training data set. I don't know about the other files. Can anybody write into this directory?\n",
+        "\n",
+        "Anyways, let's load up the training data."
+      ]
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {
+        "_cell_guid": "44077a39-8de2-399d-4af7-bf9666992ece"
+      },
+      "source": [
+        "Feature Construction\n",
+        "==="
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "_cell_guid": "a6a85af7-3a70-977e-2c7c-11f83a7a6e66"
+      },
+      "outputs": [],
+      "source": [
+        "data <- read.csv(\"../input/train.csv\", stringsAsFactors = FALSE)\n",
+        "test_data <- read.csv(\"../input/test.csv\", stringsAsFactors = FALSE)\n",
+        "str(data)"
+      ]
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {
+        "_cell_guid": "e4541f77-6ab1-f747-1daa-470e78b177c3"
+      },
+      "source": [
+        "Get \"title\" (e.g., Mr, Miss) from Name column\n",
+        "---"
+      ]
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {
+        "_cell_guid": "7b8a78d0-1f2c-9b83-20e3-0f952fe1879d"
+      },
+      "source": [
+        "First, let's look at what titles are in the data."
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "_cell_guid": "ec200af6-213f-0077-75b7-ee4e5bf330ba"
+      },
+      "outputs": [],
+      "source": [
+        "library(dplyr)\n",
+        "\n",
+        "get_title <- function(Name) {\n",
+        "    title <- gsub(\"(.*, )|(\\\\..*)\", \"\", Name)\n",
+        "    \n",
+        "    # According to Wikipedia, Mlle is the French-language equivalent of \"miss\".\n",
+        "    title <- ifelse(title == \"Mlle\", \"Miss\", title)\n",
+        "    \n",
+        "    # Again according to Wikipedia, Mme is the French abbreviation for Madame.\n",
+        "    title <- ifelse(title == \"Mme\", \"Mrs\", title)\n",
+        "    \n",
+        "    title\n",
+        "}\n",
+        "\n",
+        "data <- data %>% mutate(title = get_title(Name))\n",
+        "test_data <- test_data %>% mutate(title = get_title(Name))\n",
+        "\n",
+        "data %>% \n",
+        "    group_by(title) %>% summarise(n=n()) %>% \n",
+        "    full_join(test_data %>% group_by(title) %>% summarise(n=n()), by=\"title\") %>% print()"
+      ]
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {
+        "_cell_guid": "83d1c932-aa79-d65a-8e23-0adeac479ab2"
+      },
+      "source": [
+        "Above, \"n.x\" is the number of instances in the training data, and \"n.y\" is the number of instances in the testing data.\n",
+        "\n",
+        "Now substitute the rare titles (< 10 instances) with \"rare\""
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "_cell_guid": "1e14ac17-8bf6-9cf8-96c1-f576e859edcd"
+      },
+      "outputs": [],
+      "source": [
+        "titles <- test_data %>% mutate(Survived=NA) %>% rbind(data) %>% group_by(title) %>% summarise(title_frequency = n())\n",
+        "print(titles)"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "_cell_guid": "24928ddf-bbc2-f924-f7c6-ccb9a025b409"
+      },
+      "outputs": [],
+      "source": [
+        "replace_rare_titles <- function(d, titles) {\n",
+        "    d %>% left_join(titles, by=\"title\") %>%\n",
+        "    mutate(title=ifelse(title_frequency < 10, \"rare\", title))\n",
+        "}\n",
+        "\n",
+        "data <- replace_rare_titles(data, titles)\n",
+        "test_data <- replace_rare_titles(test_data, titles)\n",
+        "\n",
+        "data %>% \n",
+        "    group_by(title) %>% summarise(n=n()) %>% \n",
+        "    full_join(test_data %>% group_by(title) %>% summarise(n=n()), by=\"title\") %>% print()"
+      ]
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {
+        "_cell_guid": "59da3b15-a4ce-7b8c-38a2-5e0324ed9720"
+      },
+      "source": [
+        "Feature Selection\n",
+        "==="
+      ]
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {
+        "_cell_guid": "eda0ae12-23e2-8655-af65-314eff654dca"
+      },
+      "source": [
+        "Does title predict survival?\n",
+        "---"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "_cell_guid": "dfc59eea-01b9-480e-07e5-d2d95590ceda"
+      },
+      "outputs": [],
+      "source": [
+        "data %>% group_by(title) %>% summarise(prob = mean(Survived)) %>% print()"
+      ]
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {
+        "_cell_guid": "47724ad4-4b50-b842-78da-e3ffe11d3956"
+      },
+      "source": [
+        "Does sex?\n",
+        "---"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "_cell_guid": "4c95c1d8-dc1b-134a-b2fd-68813ff2b32d"
+      },
+      "outputs": [],
+      "source": [
+        "data %>% group_by(Sex) %>% summarise(prob = mean(Survived)) %>% print()"
+      ]
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {
+        "_cell_guid": "7679609d-9a34-57b0-b6f1-c7875a911732"
+      },
+      "source": [
+        "Does Fare?\n",
+        "---\n",
+        "\n",
+        "Let's look at mean fare and (95% confidence interval) for those survived and not survived."
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "_cell_guid": "0035528c-9791-9d00-c30a-da9358ae3ef0"
+      },
+      "outputs": [],
+      "source": [
+        "data %>%\n",
+        "    group_by(Survived) %>% summarise(mean_fare = mean(Fare), ci = qnorm(0.975) * sd(Fare) / (n() - 1)) %>%\n",
+        "    print()"
+      ]
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {
+        "_cell_guid": "bc1226e8-26af-df8e-5053-40452763a9e6"
+      },
+      "source": [
+        "Does Age?\n",
+        "---"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "_cell_guid": "46adbe90-53f5-ae22-cda6-3d45c68f27cd"
+      },
+      "outputs": [],
+      "source": [
+        "data %>% \n",
+        "    group_by(Survived) %>% \n",
+        "    summarise(mean_age = mean(Age, na.rm=TRUE), ci = qnorm(0.975) * sd(Age, na.rm=TRUE) / (n() - 1)) %>% print()"
+      ]
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {
+        "_cell_guid": "f1e19118-9b09-92f1-d429-27db0e29455a"
+      },
+      "source": [
+        "Train Model\n",
+        "===\n",
+        "\n",
+        "Let's try logistic regression."
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "_cell_guid": "4e6210e7-ab84-fc0b-ed91-63af430ea36f"
+      },
+      "outputs": [],
+      "source": [
+        "data$title <- as.factor(data$title)\n",
+        "data$Survived <- as.factor(data$Survived)\n",
+        "data$Sex <- as.factor(data$Sex)\n",
+        "str(data)"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "_cell_guid": "8cab6afe-e827-7a21-5b95-e68adba5a2f8"
+      },
+      "outputs": [],
+      "source": [
+        "fm <- glm(Survived ~ title + Sex + Age + Fare, data=data, family=\"binomial\")\n",
+        "summary(fm)"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "_cell_guid": "c06ae954-9592-ae3d-36af-e955545825dd"
+      },
+      "outputs": [],
+      "source": [
+        "test_data$prediction <- predict(fm, newdata=test_data, type=\"response\")\n",
+        "test_data$prediction[is.na(test_data$prediction)] <- as.integer(round(mean(as.numeric(data$Survived))))"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "_cell_guid": "363f47d3-cfda-09ed-6066-0abc4262f87d"
+      },
+      "outputs": [],
+      "source": [
+        "submission <- data.frame(PassengerId = test_data$PassengerId, Survived = as.integer(test_data$prediction > 0.5))"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "_cell_guid": "53a4241c-1bf6-aadc-735c-75352d36b096"
+      },
+      "outputs": [],
+      "source": [
+        "print(head(submission, n=10))\n",
+        "print(nrow(submission))"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "_cell_guid": "7d04154c-3da5-9425-6a02-d647c395eb01"
+      },
+      "outputs": [],
+      "source": [
+        "write.csv(submission, file = './submission_01.csv', row.names = FALSE)"
+      ]
+    }
+  ],
+  "metadata": {
+    "_change_revision": 0,
+    "_is_fork": false,
+    "kernelspec": {
+      "display_name": "R",
+      "language": "R",
+      "name": "ir"
+    },
+    "language_info": {
+      "codemirror_mode": "r",
+      "file_extension": ".r",
+      "mimetype": "text/x-r-source",
+      "name": "R",
+      "pygments_lexer": "r",
+      "version": "3.3.3"
+    }
+  },
+  "nbformat": 4,
+  "nbformat_minor": 0
+}

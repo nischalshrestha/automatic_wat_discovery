@@ -1,0 +1,17 @@
+{
+  "competition_sources": [
+    "titanic"
+  ],
+  "id": "col726/notebooka524806bd9",
+  "kernel_type": "notebook",
+  "enable_internet": false,
+  "is_private": false,
+  "title": "Notebooka524806bd9",
+  "language": "python",
+  "dataset_sources": [],
+  "id_no": 109442,
+  "code_file": "notebooka524806bd9.ipynb",
+  "kernel_sources": [],
+  "enable_gpu": false,
+  "keywords": []
+}

@@ -1,0 +1,17 @@
+{
+  "enable_gpu": false,
+  "keywords": [],
+  "id": "jsnsaji/titanic-classifier",
+  "kernel_sources": [],
+  "language": "python",
+  "kernel_type": "notebook",
+  "is_private": false,
+  "competition_sources": [
+    "titanic"
+  ],
+  "title": "Titanic SVM classifier with Grid Search",
+  "dataset_sources": [],
+  "enable_internet": false,
+  "code_file": "titanic-classifier.ipynb",
+  "id_no": 583267
+}

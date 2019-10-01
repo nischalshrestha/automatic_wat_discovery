@@ -1,0 +1,17 @@
+{
+  "id": "lchp57/age-predict-with-randomforest-in-taitanic",
+  "id_no": 605783,
+  "title": "Age predict with RandomForest in Taitanic",
+  "code_file": "age-predict-with-randomforest-in-taitanic.ipynb",
+  "language": "python",
+  "kernel_type": "notebook",
+  "is_private": false,
+  "enable_gpu": false,
+  "enable_internet": false,
+  "keywords": [],
+  "dataset_sources": [],
+  "kernel_sources": [],
+  "competition_sources": [
+    "titanic"
+  ]
+}

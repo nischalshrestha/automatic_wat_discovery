@@ -1,0 +1,22 @@
+{
+  "competition_sources": [
+    "titanic"
+  ],
+  "dataset_sources": [],
+  "language": "python",
+  "kernel_type": "notebook",
+  "id_no": 521361,
+  "is_private": false,
+  "enable_internet": false,
+  "keywords": [
+    "data cleaning",
+    "machine learning",
+    "classification",
+    "gradient boosting"
+  ],
+  "title": "Prediction with Gradient Boosting classifier",
+  "enable_gpu": false,
+  "kernel_sources": [],
+  "code_file": "prediction-with-gradient-boosting-classifier.ipynb",
+  "id": "beagle01/prediction-with-gradient-boosting-classifier"
+}

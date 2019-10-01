@@ -1,0 +1,17 @@
+{
+  "is_private": false,
+  "code_file": "titanic-data-preparation-and-model-building-in-r.irnb",
+  "competition_sources": [
+    "titanic"
+  ],
+  "id_no": 1248533,
+  "id": "sanjuktamitra1208/titanic-data-preparation-and-model-building-in-r",
+  "enable_internet": false,
+  "keywords": [],
+  "dataset_sources": [],
+  "kernel_sources": [],
+  "kernel_type": "notebook",
+  "enable_gpu": false,
+  "title": "Titanic Data preparation and Model Building in R",
+  "language": "r"
+}

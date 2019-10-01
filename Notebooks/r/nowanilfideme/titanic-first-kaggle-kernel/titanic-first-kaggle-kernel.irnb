@@ -1,0 +1,166 @@
+{
+  "cells": [
+    {
+      "cell_type": "markdown",
+      "metadata": {
+        "_cell_guid": "73cd2753-653c-515e-4a40-ceab17e0eb9d"
+      },
+      "source": [
+        "This is my first Kaggle kernel. Hello world of machine learning! This is not my first machine learning project overall, however."
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "_cell_guid": "338507e9-8c82-a48f-9f7c-ee0167c169d5"
+      },
+      "outputs": [],
+      "source": [
+        "library(ggplot2) # Data visualization\n",
+        "library(readr) # CSV file I/O, e.g. the read_csv function\n",
+        "library(mice) #filling missing values\n",
+        "library(ROCR) #ROC curves\n",
+        "\n",
+        "system(\"ls ../input\")\n",
+        "\n",
+        "TRAIN <- read.csv(\"../input/train.csv\")\n",
+        "TEST  <- read.csv(\"../input/test.csv\")\n",
+        "\n",
+        "features <- c(\"Pclass\",\"Sex\",\"Age\",\"SibSp\",\"Parch\",\"Fare\",\"Embarked\")"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "_cell_guid": "1a2b1d22-83c4-39c5-da47-4f36c9aaaacc"
+      },
+      "outputs": [],
+      "source": [
+        "N.train <- (dim(TRAIN)[1])\n",
+        "pct1 <- 0.9\n",
+        "\n",
+        "set.seed(110)                           #for reproducability\n",
+        "idx1 <- sample(1:N.train, N.train*pct1) #training set\n",
+        "#idx1 <- 1:N.train*pct1                  #reproducable, non-random training set...\n",
+        "idx2 <- setdiff(1:N.train, idx1)        #cv set"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "_cell_guid": "da4f6078-1c2b-eb6a-4da2-4fb766a37495"
+      },
+      "outputs": [],
+      "source": [
+        "#training\n",
+        "D <- TRAIN[,features]\n",
+        "L <- TRAIN$Survived\n",
+        "\n",
+        "log.model <- glm(formula=L[idx1]~.,data=D[idx1,],family=binomial(link=\"logit\"))\n"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "_cell_guid": "a644003f-d8bb-c1f5-d4d2-167ba9863fff"
+      },
+      "outputs": [],
+      "source": [
+        "#cross-validation\n",
+        "L0.predict <- unname(predict(log.model,newdata=D[idx2,],type=\"response\"))\n",
+        "cv.pred <- prediction(L0.predict,L[idx2])\n",
+        "cv.roc <- performance(cv.pred,measure=\"tpr\",x.measure=\"fpr\")\n",
+        "cv.auc <- performance(cv.pred,measure=\"auc\")@y.values[1]\n",
+        "\n",
+        "plot(cv.roc); abline(a=0, b= 1)\n",
+        "cv.auc"
+      ]
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {
+        "_cell_guid": "8068be26-ba0a-28dd-8345-6b6fb3a77ace"
+      },
+      "source": [
+        "Around 0.85-0.9 seems good (in initial test). Let's use the model on our actual test data:"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "_cell_guid": "5630a1f0-27cc-977f-51e0-cccd5b8dbcee"
+      },
+      "outputs": [],
+      "source": [
+        "D1 <- TEST[,features]\n",
+        "L1.predict <- unname(predict(log.model,newdata=D1,type=\"response\"))\n",
+        "summary(L1.predict)"
+      ]
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {
+        "_cell_guid": "41081443-74f3-8d13-fdca-64f8eb452ea9"
+      },
+      "source": [
+        "NA's in the data confuse our logit-model, so lets try to fill in the data."
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "_cell_guid": "3aa24e17-87f3-0060-55b7-0f9f3f87feba"
+      },
+      "outputs": [],
+      "source": [
+        "summary(D1)\n",
+        "\n",
+        "#complete data, because we have missing values for our logit model that will give NA's\n",
+        "\n",
+        "D2.mice<- mice(D1,printFlag=F)\n",
+        "D2 <- complete(D2.mice)\n",
+        "summary(D2)\n",
+        "\n",
+        "L2.predict <- unname(predict(log.model,newdata=D2,type=\"response\"))\n",
+        "summary(L2.predict)\n"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "_cell_guid": "effe40b5-7fef-42f5-e228-d58d83f171b6"
+      },
+      "outputs": [],
+      "source": [
+        "#output\n",
+        "write.csv(cbind(TEST$ID,L2.predict),file=\"output.csv\",row.names=F)"
+      ]
+    }
+  ],
+  "metadata": {
+    "_change_revision": 0,
+    "_is_fork": false,
+    "kernelspec": {
+      "display_name": "R",
+      "language": "R",
+      "name": "ir"
+    },
+    "language_info": {
+      "codemirror_mode": "r",
+      "file_extension": ".r",
+      "mimetype": "text/x-r-source",
+      "name": "R",
+      "pygments_lexer": "r",
+      "version": "3.3.2"
+    }
+  },
+  "nbformat": 4,
+  "nbformat_minor": 0
+}

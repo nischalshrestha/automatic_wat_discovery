@@ -1,0 +1,17 @@
+{
+  "kernel_type": "notebook",
+  "id_no": 1208209,
+  "competition_sources": [
+    "titanic"
+  ],
+  "enable_internet": false,
+  "keywords": [],
+  "language": "python",
+  "id": "ankisaha/titanic",
+  "title": "Titanic",
+  "enable_gpu": false,
+  "dataset_sources": [],
+  "kernel_sources": [],
+  "is_private": false,
+  "code_file": "titanic.ipynb"
+}

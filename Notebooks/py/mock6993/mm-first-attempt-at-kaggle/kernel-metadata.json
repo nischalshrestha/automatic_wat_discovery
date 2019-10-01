@@ -1,0 +1,17 @@
+{
+  "is_private": false,
+  "id": "mock6993/mm-first-attempt-at-kaggle",
+  "language": "python",
+  "enable_internet": false,
+  "code_file": "mm-first-attempt-at-kaggle.ipynb",
+  "enable_gpu": false,
+  "kernel_sources": [],
+  "id_no": 434647,
+  "title": "MM - first attempt at Kaggle ",
+  "keywords": [],
+  "kernel_type": "notebook",
+  "competition_sources": [
+    "titanic"
+  ],
+  "dataset_sources": []
+}

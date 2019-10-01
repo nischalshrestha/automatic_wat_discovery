@@ -1,0 +1,17 @@
+{
+  "competition_sources": [
+    "titanic"
+  ],
+  "title": "Notebooka49ffbd027",
+  "is_private": false,
+  "language": "r",
+  "enable_gpu": false,
+  "kernel_sources": [],
+  "keywords": [],
+  "kernel_type": "notebook",
+  "code_file": "nothing.irnb",
+  "id": "elituan/nothing",
+  "enable_internet": false,
+  "id_no": 105304,
+  "dataset_sources": []
+}

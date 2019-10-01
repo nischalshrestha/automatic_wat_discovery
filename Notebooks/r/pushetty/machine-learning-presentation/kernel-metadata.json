@@ -1,0 +1,17 @@
+{
+  "id_no": 249934,
+  "enable_internet": false,
+  "code_file": "machine-learning-presentation.irnb",
+  "language": "r",
+  "competition_sources": [
+    "titanic"
+  ],
+  "id": "pushetty/machine-learning-presentation",
+  "kernel_type": "notebook",
+  "kernel_sources": [],
+  "is_private": false,
+  "title": "Machine Learning Presentation ",
+  "dataset_sources": [],
+  "keywords": [],
+  "enable_gpu": false
+}

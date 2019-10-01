@@ -1,0 +1,17 @@
+{
+  "language": "python",
+  "competition_sources": [
+    "titanic"
+  ],
+  "enable_internet": false,
+  "keywords": [],
+  "kernel_type": "notebook",
+  "code_file": "impute-missing-age.ipynb",
+  "id_no": 808686,
+  "dataset_sources": [],
+  "id": "jielou/impute-missing-age",
+  "is_private": false,
+  "title": "impute_missing_age",
+  "kernel_sources": [],
+  "enable_gpu": false
+}

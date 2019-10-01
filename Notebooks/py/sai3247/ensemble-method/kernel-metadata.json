@@ -1,0 +1,20 @@
+{
+  "keywords": [
+    "beginner",
+    "classification"
+  ],
+  "kernel_type": "notebook",
+  "code_file": "ensemble-method.ipynb",
+  "enable_internet": false,
+  "dataset_sources": [],
+  "is_private": false,
+  "id": "sai3247/ensemble-method",
+  "language": "python",
+  "kernel_sources": [],
+  "title": "ensemble method",
+  "enable_gpu": false,
+  "competition_sources": [
+    "titanic"
+  ],
+  "id_no": 1221671
+}

@@ -1,0 +1,17 @@
+{
+  "title": "Beginner Keras and Visualization Tutorial \ud55c\uae00\ubc88\uc5ed",
+  "enable_gpu": false,
+  "id_no": 2117045,
+  "code_file": "beginner-keras-and-visualization-tutorial.ipynb",
+  "competition_sources": [
+    "titanic"
+  ],
+  "keywords": [],
+  "id": "jaegohn/beginner-keras-and-visualization-tutorial",
+  "is_private": false,
+  "enable_internet": false,
+  "language": "python",
+  "dataset_sources": [],
+  "kernel_type": "notebook",
+  "kernel_sources": []
+}

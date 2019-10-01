@@ -1,0 +1,17 @@
+{
+  "kernel_sources": [],
+  "enable_internet": false,
+  "enable_gpu": false,
+  "competition_sources": [
+    "titanic"
+  ],
+  "id_no": 587817,
+  "title": "Titanic",
+  "id": "weimingtrue/titanic",
+  "code_file": "titanic.ipynb",
+  "dataset_sources": [],
+  "keywords": [],
+  "language": "python",
+  "kernel_type": "notebook",
+  "is_private": false
+}

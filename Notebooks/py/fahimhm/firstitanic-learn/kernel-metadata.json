@@ -1,0 +1,19 @@
+{
+  "enable_internet": false,
+  "keywords": [
+    "beginner"
+  ],
+  "enable_gpu": false,
+  "is_private": false,
+  "dataset_sources": [],
+  "competition_sources": [
+    "titanic"
+  ],
+  "id_no": 1912226,
+  "language": "python",
+  "code_file": "firstitanic-learn.ipynb",
+  "id": "fahimhm/firstitanic-learn",
+  "kernel_type": "notebook",
+  "title": "firstitanic_learn",
+  "kernel_sources": []
+}

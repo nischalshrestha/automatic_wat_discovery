@@ -1,0 +1,21 @@
+{
+  "dataset_sources": [],
+  "kernel_sources": [],
+  "title": "Titanic Passenger Survival Prediction",
+  "language": "python",
+  "keywords": [
+    "beginner",
+    "deep learning",
+    "neural networks"
+  ],
+  "competition_sources": [
+    "titanic"
+  ],
+  "id": "ritwikbiswas/titanic-passenger-survival-prediction",
+  "code_file": "titanic-passenger-survival-prediction.ipynb",
+  "id_no": 2079856,
+  "kernel_type": "notebook",
+  "is_private": false,
+  "enable_internet": false,
+  "enable_gpu": false
+}

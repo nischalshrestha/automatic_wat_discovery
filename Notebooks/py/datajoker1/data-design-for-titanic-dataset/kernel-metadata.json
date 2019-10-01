@@ -1,0 +1,17 @@
+{
+  "kernel_type": "notebook",
+  "is_private": false,
+  "title": "Data design for Titanic dataset",
+  "enable_gpu": false,
+  "enable_internet": false,
+  "keywords": [],
+  "kernel_sources": [],
+  "competition_sources": [
+    "titanic"
+  ],
+  "language": "python",
+  "code_file": "data-design-for-titanic-dataset.ipynb",
+  "id": "datajoker1/data-design-for-titanic-dataset",
+  "id_no": 208628,
+  "dataset_sources": []
+}

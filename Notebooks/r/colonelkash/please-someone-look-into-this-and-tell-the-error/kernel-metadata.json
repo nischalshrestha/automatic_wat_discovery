@@ -1,0 +1,17 @@
+{
+  "enable_gpu": false,
+  "kernel_type": "notebook",
+  "enable_internet": false,
+  "dataset_sources": [],
+  "competition_sources": [
+    "titanic"
+  ],
+  "title": "Please someone Look into this and tell the ERROR ",
+  "id_no": 1127052,
+  "keywords": [],
+  "is_private": false,
+  "language": "r",
+  "kernel_sources": [],
+  "code_file": "please-someone-look-into-this-and-tell-the-error.irnb",
+  "id": "colonelkash/please-someone-look-into-this-and-tell-the-error"
+}

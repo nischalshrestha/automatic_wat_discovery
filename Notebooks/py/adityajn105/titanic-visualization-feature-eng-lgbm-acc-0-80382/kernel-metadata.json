@@ -1,0 +1,17 @@
+{
+  "keywords": [],
+  "is_private": false,
+  "enable_internet": false,
+  "enable_gpu": false,
+  "id_no": 1356432,
+  "language": "python",
+  "kernel_sources": [],
+  "competition_sources": [
+    "titanic"
+  ],
+  "id": "adityajn105/titanic-visualization-feature-eng-lgbm-acc-0-80382",
+  "code_file": "titanic-visualization-feature-eng-lgbm-acc-0-80382.ipynb",
+  "kernel_type": "notebook",
+  "title": "Titanic:Visualization,Feature Eng,LGBM,Acc:0.80382",
+  "dataset_sources": []
+}

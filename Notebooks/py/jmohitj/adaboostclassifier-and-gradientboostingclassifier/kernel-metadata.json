@@ -1,0 +1,17 @@
+{
+  "competition_sources": [
+    "titanic"
+  ],
+  "id": "jmohitj/adaboostclassifier-and-gradientboostingclassifier",
+  "enable_gpu": true,
+  "title": "AdaBoostClassifier and GradientBoostingClassifier",
+  "is_private": false,
+  "dataset_sources": [],
+  "kernel_type": "notebook",
+  "keywords": [],
+  "kernel_sources": [],
+  "enable_internet": false,
+  "language": "python",
+  "id_no": 987451,
+  "code_file": "adaboostclassifier-and-gradientboostingclassifier.ipynb"
+}

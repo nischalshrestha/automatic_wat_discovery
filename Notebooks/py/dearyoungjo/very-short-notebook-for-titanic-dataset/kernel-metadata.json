@@ -1,0 +1,17 @@
+{
+  "title": "Very Short Notebook for Titanic Dataset",
+  "keywords": [],
+  "enable_gpu": false,
+  "kernel_sources": [],
+  "code_file": "very-short-notebook-for-titanic-dataset.ipynb",
+  "kernel_type": "notebook",
+  "competition_sources": [
+    "titanic"
+  ],
+  "id_no": 325429,
+  "id": "dearyoungjo/very-short-notebook-for-titanic-dataset",
+  "is_private": false,
+  "enable_internet": false,
+  "language": "python",
+  "dataset_sources": []
+}

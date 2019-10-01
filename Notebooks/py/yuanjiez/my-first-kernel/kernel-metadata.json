@@ -1,0 +1,19 @@
+{
+  "id": "yuanjiez/my-first-kernel",
+  "kernel_sources": [],
+  "kernel_type": "notebook",
+  "enable_internet": false,
+  "id_no": 1804860,
+  "title": "my_first_kernel",
+  "code_file": "my-first-kernel.ipynb",
+  "enable_gpu": false,
+  "is_private": false,
+  "keywords": [
+    "beginner"
+  ],
+  "dataset_sources": [],
+  "competition_sources": [
+    "titanic"
+  ],
+  "language": "python"
+}

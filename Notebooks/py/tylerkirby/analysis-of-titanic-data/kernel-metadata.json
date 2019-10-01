@@ -1,0 +1,17 @@
+{
+  "language": "python",
+  "dataset_sources": [],
+  "kernel_type": "notebook",
+  "id_no": 1284254,
+  "title": "Analysis of Titanic Data",
+  "enable_gpu": false,
+  "kernel_sources": [],
+  "id": "tylerkirby/analysis-of-titanic-data",
+  "code_file": "analysis-of-titanic-data.ipynb",
+  "competition_sources": [
+    "titanic"
+  ],
+  "enable_internet": false,
+  "is_private": false,
+  "keywords": []
+}

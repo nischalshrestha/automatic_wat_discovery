@@ -1,0 +1,21 @@
+{
+  "enable_gpu": false,
+  "title": "First classification and exploration kernel",
+  "id": "angelomenezes/first-classification-and-exploration-kernel",
+  "kernel_sources": [],
+  "competition_sources": [
+    "titanic"
+  ],
+  "is_private": false,
+  "keywords": [
+    "beginner",
+    "classification",
+    "feature engineering"
+  ],
+  "dataset_sources": [],
+  "id_no": 1548471,
+  "kernel_type": "notebook",
+  "code_file": "first-classification-and-exploration-kernel.ipynb",
+  "enable_internet": false,
+  "language": "python"
+}

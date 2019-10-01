@@ -1,0 +1,17 @@
+{
+  "kernel_sources": [],
+  "enable_gpu": true,
+  "keywords": [],
+  "language": "python",
+  "id": "vinzzhang/titanic-survival-prediction",
+  "code_file": "titanic-survival-prediction.ipynb",
+  "id_no": 1075051,
+  "enable_internet": false,
+  "is_private": false,
+  "kernel_type": "notebook",
+  "title": "Titanic Survival Prediction",
+  "competition_sources": [
+    "titanic"
+  ],
+  "dataset_sources": []
+}

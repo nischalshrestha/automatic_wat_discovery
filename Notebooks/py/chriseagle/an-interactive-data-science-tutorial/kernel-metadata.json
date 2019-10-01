@@ -1,0 +1,17 @@
+{
+  "id": "chriseagle/an-interactive-data-science-tutorial",
+  "kernel_type": "notebook",
+  "code_file": "an-interactive-data-science-tutorial.ipynb",
+  "is_private": false,
+  "keywords": [],
+  "enable_internet": false,
+  "kernel_sources": [],
+  "competition_sources": [
+    "titanic"
+  ],
+  "enable_gpu": false,
+  "language": "python",
+  "id_no": 230806,
+  "dataset_sources": [],
+  "title": "An Interactive Data Science Tutorial"
+}

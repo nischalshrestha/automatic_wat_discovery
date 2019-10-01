@@ -1,0 +1,17 @@
+{
+  "kernel_type": "notebook",
+  "id": "jayeshbali/titanic-data-science-solutions",
+  "code_file": "titanic-data-science-solutions.ipynb",
+  "enable_internet": false,
+  "kernel_sources": [],
+  "is_private": false,
+  "id_no": 1741622,
+  "language": "python",
+  "dataset_sources": [],
+  "competition_sources": [
+    "titanic"
+  ],
+  "keywords": [],
+  "enable_gpu": false,
+  "title": "Titanic Data Science Solutions"
+}

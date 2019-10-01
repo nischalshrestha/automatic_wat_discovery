@@ -1,0 +1,23 @@
+{
+  "kernel_sources": [],
+  "title": "Titanic, a step-by-step intro to Machine Learning",
+  "keywords": [
+    "covariance and correlation",
+    "beginner",
+    "data visualization",
+    "ensembling",
+    "feature engineering"
+  ],
+  "language": "python",
+  "id_no": 855815,
+  "enable_gpu": false,
+  "enable_internet": false,
+  "id": "ydalat/titanic-a-step-by-step-intro-to-machine-learning",
+  "kernel_type": "notebook",
+  "dataset_sources": [],
+  "competition_sources": [
+    "titanic"
+  ],
+  "code_file": "titanic-a-step-by-step-intro-to-machine-learning.ipynb",
+  "is_private": false
+}

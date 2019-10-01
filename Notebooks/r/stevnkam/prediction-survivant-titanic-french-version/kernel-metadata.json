@@ -1,0 +1,17 @@
+{
+  "competition_sources": [
+    "titanic"
+  ],
+  "enable_internet": false,
+  "kernel_type": "notebook",
+  "id_no": 164511,
+  "language": "r",
+  "kernel_sources": [],
+  "code_file": "prediction-survivant-titanic-french-version.irnb",
+  "is_private": false,
+  "id": "stevnkam/prediction-survivant-titanic-french-version",
+  "dataset_sources": [],
+  "title": "Prediction Survivant Titanic ( French Version)",
+  "enable_gpu": false,
+  "keywords": []
+}

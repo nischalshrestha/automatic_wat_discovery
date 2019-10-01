@@ -1,0 +1,19 @@
+{
+  "is_private": false,
+  "dataset_sources": [],
+  "competition_sources": [
+    "titanic"
+  ],
+  "keywords": [
+    "beginner"
+  ],
+  "title": "Keras (beginner's Code)",
+  "language": "python",
+  "id": "masa39023/keras-beginner-s-code",
+  "enable_internet": false,
+  "kernel_type": "notebook",
+  "enable_gpu": false,
+  "code_file": "keras-beginner-s-code.ipynb",
+  "id_no": 672295,
+  "kernel_sources": []
+}

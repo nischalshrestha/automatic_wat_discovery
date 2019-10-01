@@ -1,0 +1,17 @@
+{
+  "competition_sources": [
+    "titanic"
+  ],
+  "id": "emmanuelol/mi-primer-intento-con-el-titanic",
+  "title": "Mi primer intento con el titanic",
+  "language": "python",
+  "kernel_sources": [],
+  "id_no": 415435,
+  "is_private": false,
+  "code_file": "mi-primer-intento-con-el-titanic.ipynb",
+  "keywords": [],
+  "dataset_sources": [],
+  "enable_internet": false,
+  "enable_gpu": false,
+  "kernel_type": "notebook"
+}

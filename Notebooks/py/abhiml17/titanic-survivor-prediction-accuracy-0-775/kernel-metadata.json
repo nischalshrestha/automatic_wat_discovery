@@ -1,0 +1,19 @@
+{
+  "id": "abhiml17/titanic-survivor-prediction-accuracy-0-775",
+  "title": "Titanic_Survivor_Prediction - Accuracy 0.775",
+  "kernel_sources": [
+    "abhiml17/titanic-survivor-prediction-accuracy-0-775"
+  ],
+  "enable_gpu": false,
+  "kernel_type": "notebook",
+  "language": "python",
+  "dataset_sources": [],
+  "code_file": "titanic-survivor-prediction-accuracy-0-775.ipynb",
+  "enable_internet": false,
+  "keywords": [],
+  "is_private": false,
+  "competition_sources": [
+    "titanic"
+  ],
+  "id_no": 1262882
+}

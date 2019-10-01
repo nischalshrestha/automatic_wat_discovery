@@ -1,0 +1,17 @@
+{
+  "id_no": 1726195,
+  "competition_sources": [
+    "titanic"
+  ],
+  "title": "solution 1.0",
+  "dataset_sources": [],
+  "is_private": false,
+  "code_file": "solution-1-0.ipynb",
+  "enable_gpu": false,
+  "language": "python",
+  "id": "arindamkumar/solution-1-0",
+  "kernel_sources": [],
+  "kernel_type": "notebook",
+  "keywords": [],
+  "enable_internet": false
+}

@@ -1,0 +1,17 @@
+{
+  "kernel_type": "notebook",
+  "enable_internet": false,
+  "kernel_sources": [],
+  "enable_gpu": false,
+  "keywords": [],
+  "code_file": "titaniclvpeiyuan.ipynb",
+  "is_private": false,
+  "id_no": 572006,
+  "title": "\u6cf0\u5766\u5c3c\u514b\u5e78\u5b58\u8005\u9884\u6d4bTitanicLvPeiyuan",
+  "id": "lvpeiyuan/titaniclvpeiyuan",
+  "language": "python",
+  "dataset_sources": [],
+  "competition_sources": [
+    "titanic"
+  ]
+}

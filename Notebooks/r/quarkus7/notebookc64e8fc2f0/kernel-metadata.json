@@ -1,0 +1,17 @@
+{
+  "id_no": 225411,
+  "language": "python",
+  "title": "Notebookc64e8fc2f0",
+  "kernel_type": "notebook",
+  "enable_internet": false,
+  "dataset_sources": [],
+  "enable_gpu": false,
+  "is_private": false,
+  "keywords": [],
+  "code_file": "notebookc64e8fc2f0.ipynb",
+  "id": "quarkus7/notebookc64e8fc2f0",
+  "competition_sources": [
+    "titanic"
+  ],
+  "kernel_sources": []
+}

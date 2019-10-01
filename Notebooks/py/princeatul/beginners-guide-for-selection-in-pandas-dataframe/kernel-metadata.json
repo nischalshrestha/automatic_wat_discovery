@@ -1,0 +1,17 @@
+{
+  "enable_gpu": false,
+  "code_file": "beginners-guide-for-selection-in-pandas-dataframe.ipynb",
+  "id": "princeatul/beginners-guide-for-selection-in-pandas-dataframe",
+  "dataset_sources": [],
+  "id_no": 1594235,
+  "keywords": [],
+  "enable_internet": false,
+  "competition_sources": [
+    "titanic"
+  ],
+  "kernel_sources": [],
+  "kernel_type": "notebook",
+  "language": "python",
+  "title": "Beginners guide for Selection in Pandas DataFrame",
+  "is_private": false
+}

@@ -1,0 +1,17 @@
+{
+  "language": "r",
+  "kernel_sources": [],
+  "is_private": false,
+  "id_no": 256297,
+  "code_file": "titanic-analysis.irnb",
+  "dataset_sources": [],
+  "enable_gpu": false,
+  "title": "Titanic Analysis",
+  "enable_internet": false,
+  "kernel_type": "notebook",
+  "competition_sources": [
+    "titanic"
+  ],
+  "id": "zhangyan0623/titanic-analysis",
+  "keywords": []
+}

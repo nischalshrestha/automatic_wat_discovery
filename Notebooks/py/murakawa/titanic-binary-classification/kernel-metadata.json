@@ -1,0 +1,17 @@
+{
+  "dataset_sources": [],
+  "kernel_type": "notebook",
+  "id": "murakawa/titanic-binary-classification",
+  "code_file": "titanic-binary-classification.ipynb",
+  "competition_sources": [
+    "titanic"
+  ],
+  "id_no": 2073149,
+  "language": "python",
+  "enable_internet": false,
+  "title": "Titanic Binary Classification",
+  "keywords": [],
+  "is_private": false,
+  "kernel_sources": [],
+  "enable_gpu": false
+}

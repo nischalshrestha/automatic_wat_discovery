@@ -1,0 +1,152 @@
+{
+  "cells": [
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "_cell_guid": "e8e71569-ddca-f1c6-d40e-23e135ef8e9c"
+      },
+      "outputs": [],
+      "source": [
+        "Load Data"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "_cell_guid": "5887ebf5-a6e7-7863-0775-34b3e1d58ecb"
+      },
+      "outputs": [],
+      "source": [
+        "# This R environment comes with all of CRAN preinstalled, as well as many other helpful packages\n",
+        "# The environment is defined by the kaggle/rstats docker image: https://github.com/kaggle/docker-rstats\n",
+        "# For example, here's several helpful packages to load in \n",
+        "\n",
+        "library(ggplot2) # Data visualization\n",
+        "library(readr) # CSV file I/O, e.g. the read_csv function\n",
+        "\n",
+        "# Input data files are available in the \"../input/\" directory.\n",
+        "# For example, running this (by clicking run or pressing Shift+Enter) will list the files in the input directory\n",
+        "\n",
+        "system(\"ls ../input\")\n",
+        "\n",
+        "train_data <- read.csv(\"../input/train.csv\")\n",
+        "test_data  <- read.csv(\"../input/test.csv\")\n",
+        "\n",
+        "#Exploring the data\n",
+        "str(train_data)\n",
+        "str(test_data)\n",
+        "# Any results you write to the current directory are saved as output."
+      ]
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {
+        "_cell_guid": "341fcdbe-490b-2ad9-fd3c-00cddda7040d"
+      },
+      "source": [
+        "Imputing missing data:\n"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "_cell_guid": "bf9b6bfc-03c7-aba2-1a39-8fb18d37bfe2"
+      },
+      "outputs": [],
+      "source": [
+        "summary(train_data)\n",
+        "#Age has NA\n",
+        "train_data$Age[is.na(train_data$Age)] <- mean(train_data$Age, na.rm = TRUE)\n",
+        "\n",
+        "\n",
+        "summary(test_data)\n",
+        "#Age and Fare have NA\n",
+        "test_data$Age[is.na(test_data$Age)] <- mean(test_data$Age, na.rm = TRUE)\n",
+        "test_data$Fare[is.na(test_data$Fare)] <- mean(test_data$Fare, na.rm = TRUE)"
+      ]
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {
+        "_cell_guid": "c03101fb-64f6-2d9f-9381-7f432278cde7"
+      },
+      "source": [
+        "Decision Tree implementation"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "_cell_guid": "abcf1789-084f-dbf5-7107-106af1085c39"
+      },
+      "outputs": [],
+      "source": [
+        "library(rpart)\n",
+        "# Load in the packages to build a fancy plot\n",
+        "library(rattle)\n",
+        "library(rpart.plot)\n",
+        "library(RColorBrewer)\n",
+        "\n",
+        "\n",
+        "prop.table(table(train_data$Sex, train_data$Survived), 1)\n",
+        "decision_tree <- rpart(\n",
+        "    Survived  ~ Pclass + Sex + Age + SibSp + Parch + Fare  + Embarked, \n",
+        "    data = train_data , \n",
+        "    method = \"class\" )\n",
+        "\n",
+        "fancyRpartPlot(decision_tree)\n",
+        "#plot(decision_tree)\n",
+        "#text(decision_tree)\n",
+        "\n",
+        "# Make predictions on the test set\n",
+        "decision_tree_prediction <- predict(decision_tree, newdata = test_data, type = \"class\")"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "_cell_guid": "2d2d055d-f5fa-b6a6-402d-c3d71df203f9"
+      },
+      "outputs": [],
+      "source": [
+        "Write solution"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "_cell_guid": "b3f3bc5f-ce29-ccb6-f2d1-aa92c6c359b1"
+      },
+      "outputs": [],
+      "source": [
+        "my_solution <- data.frame(PassengerId = test_data$PassengerId, Survived = decision_tree_prediction)\n",
+        "write.csv(my_solution, file = \"my_solution.csv\", row.names = FALSE)"
+      ]
+    }
+  ],
+  "metadata": {
+    "_change_revision": 0,
+    "_is_fork": false,
+    "kernelspec": {
+      "display_name": "R",
+      "language": "R",
+      "name": "ir"
+    },
+    "language_info": {
+      "codemirror_mode": "r",
+      "file_extension": ".r",
+      "mimetype": "text/x-r-source",
+      "name": "R",
+      "pygments_lexer": "r",
+      "version": "3.3.2"
+    }
+  },
+  "nbformat": 4,
+  "nbformat_minor": 0
+}

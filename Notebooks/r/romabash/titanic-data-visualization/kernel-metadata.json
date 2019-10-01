@@ -1,0 +1,21 @@
+{
+  "id": "romabash/titanic-data-visualization",
+  "is_private": false,
+  "dataset_sources": [],
+  "code_file": "titanic-data-visualization.irnb",
+  "id_no": 674637,
+  "keywords": [
+    "tutorial",
+    "data visualization",
+    "feature engineering"
+  ],
+  "competition_sources": [
+    "titanic"
+  ],
+  "kernel_sources": [],
+  "title": "Titanic Data Visualization",
+  "language": "r",
+  "enable_internet": false,
+  "kernel_type": "notebook",
+  "enable_gpu": false
+}

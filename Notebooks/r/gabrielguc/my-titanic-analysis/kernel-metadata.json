@@ -1,0 +1,21 @@
+{
+  "id": "gabrielguc/my-titanic-analysis",
+  "is_private": false,
+  "enable_internet": false,
+  "dataset_sources": [],
+  "kernel_sources": [],
+  "language": "r",
+  "id_no": 520768,
+  "code_file": "my-titanic-analysis.irnb",
+  "competition_sources": [
+    "titanic"
+  ],
+  "keywords": [
+    "logistic regression",
+    "naive bayes",
+    "neural networks"
+  ],
+  "title": "My Titanic Analysis",
+  "enable_gpu": false,
+  "kernel_type": "notebook"
+}

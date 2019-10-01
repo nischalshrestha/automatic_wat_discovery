@@ -1,0 +1,17 @@
+{
+  "is_private": false,
+  "language": "python",
+  "competition_sources": [
+    "titanic"
+  ],
+  "id": "manuelc/best-model-mixed-classifier",
+  "title": "Best Model: Mixed classifier",
+  "enable_gpu": false,
+  "kernel_type": "notebook",
+  "dataset_sources": [],
+  "kernel_sources": [],
+  "enable_internet": false,
+  "code_file": "best-model-mixed-classifier.ipynb",
+  "id_no": 149633,
+  "keywords": []
+}

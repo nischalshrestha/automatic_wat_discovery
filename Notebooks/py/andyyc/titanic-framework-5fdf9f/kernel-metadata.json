@@ -1,0 +1,17 @@
+{
+  "competition_sources": [
+    "titanic"
+  ],
+  "enable_gpu": false,
+  "enable_internet": false,
+  "is_private": false,
+  "language": "python",
+  "id": "andyyc/titanic-framework-5fdf9f",
+  "keywords": [],
+  "title": " Titanic Framework 5fdf9f",
+  "dataset_sources": [],
+  "kernel_type": "notebook",
+  "code_file": "titanic-framework-5fdf9f.ipynb",
+  "kernel_sources": [],
+  "id_no": 1561017
+}

@@ -1,0 +1,17 @@
+{
+  "enable_internet": false,
+  "competition_sources": [
+    "titanic"
+  ],
+  "id": "nbuhagiar/predicting-survival-with-xgboost",
+  "language": "python",
+  "dataset_sources": [],
+  "kernel_type": "notebook",
+  "id_no": 798528,
+  "keywords": [],
+  "title": "Predicting Survival with XGBoost",
+  "is_private": false,
+  "enable_gpu": false,
+  "code_file": "predicting-survival-with-xgboost.ipynb",
+  "kernel_sources": []
+}

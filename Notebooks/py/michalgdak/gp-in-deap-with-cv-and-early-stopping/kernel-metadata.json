@@ -1,0 +1,17 @@
+{
+  "code_file": "gp-in-deap-with-cv-and-early-stopping.ipynb",
+  "id": "michalgdak/gp-in-deap-with-cv-and-early-stopping",
+  "language": "python",
+  "enable_internet": false,
+  "id_no": 1324576,
+  "kernel_sources": [],
+  "title": "GP in DEAP with CV and early stopping",
+  "is_private": false,
+  "kernel_type": "notebook",
+  "dataset_sources": [],
+  "enable_gpu": false,
+  "keywords": [],
+  "competition_sources": [
+    "titanic"
+  ]
+}

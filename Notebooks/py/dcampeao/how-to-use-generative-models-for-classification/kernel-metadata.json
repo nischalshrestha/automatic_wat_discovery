@@ -1,0 +1,21 @@
+{
+  "is_private": false,
+  "enable_internet": false,
+  "kernel_sources": [],
+  "code_file": "how-to-use-generative-models-for-classification.ipynb",
+  "enable_gpu": false,
+  "language": "python",
+  "dataset_sources": [],
+  "title": "How to use Generative Models for Classification",
+  "keywords": [
+    "tutorial",
+    "beginner",
+    "classification"
+  ],
+  "id": "dcampeao/how-to-use-generative-models-for-classification",
+  "kernel_type": "notebook",
+  "competition_sources": [
+    "titanic"
+  ],
+  "id_no": 1003820
+}

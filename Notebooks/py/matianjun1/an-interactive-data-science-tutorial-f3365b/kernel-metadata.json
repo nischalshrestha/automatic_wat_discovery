@@ -1,0 +1,17 @@
+{
+  "kernel_type": "notebook",
+  "id": "matianjun1/an-interactive-data-science-tutorial-f3365b",
+  "code_file": "an-interactive-data-science-tutorial-f3365b.ipynb",
+  "title": "An Interactive Data Science Tutorial f3365b",
+  "dataset_sources": [],
+  "keywords": [],
+  "enable_gpu": false,
+  "is_private": false,
+  "language": "python",
+  "id_no": 249804,
+  "enable_internet": false,
+  "kernel_sources": [],
+  "competition_sources": [
+    "titanic"
+  ]
+}

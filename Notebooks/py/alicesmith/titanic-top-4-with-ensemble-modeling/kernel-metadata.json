@@ -1,0 +1,17 @@
+{
+  "enable_internet": false,
+  "code_file": "titanic-top-4-with-ensemble-modeling.ipynb",
+  "kernel_sources": [],
+  "title": "Titanic Top 4% with ensemble modeling",
+  "enable_gpu": false,
+  "keywords": [],
+  "is_private": false,
+  "dataset_sources": [],
+  "language": "python",
+  "id_no": 334520,
+  "kernel_type": "notebook",
+  "id": "alicesmith/titanic-top-4-with-ensemble-modeling",
+  "competition_sources": [
+    "titanic"
+  ]
+}

@@ -1,0 +1,17 @@
+{
+  "id_no": 1803402,
+  "kernel_type": "notebook",
+  "dataset_sources": [],
+  "id": "shiyanmelody/titanic-survival-prediction-start-to-end-python",
+  "keywords": [],
+  "enable_internet": false,
+  "competition_sources": [
+    "titanic"
+  ],
+  "is_private": false,
+  "enable_gpu": false,
+  "title": "Titanic Survival Prediction Start to End (Python)",
+  "code_file": "titanic-survival-prediction-start-to-end-python.ipynb",
+  "language": "python",
+  "kernel_sources": []
+}

@@ -1,0 +1,17 @@
+{
+  "keywords": [],
+  "language": "python",
+  "competition_sources": [
+    "titanic"
+  ],
+  "is_private": false,
+  "dataset_sources": [],
+  "enable_gpu": false,
+  "id": "reddd1k/notebookfd4a36a234",
+  "enable_internet": false,
+  "title": "Notebookfd4a36a234",
+  "kernel_sources": [],
+  "code_file": "notebookfd4a36a234.ipynb",
+  "kernel_type": "notebook",
+  "id_no": 246869
+}

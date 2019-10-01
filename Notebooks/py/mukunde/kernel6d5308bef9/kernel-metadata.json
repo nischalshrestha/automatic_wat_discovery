@@ -1,0 +1,23 @@
+{
+  "id_no": 1308561,
+  "id": "mukunde/kernel6d5308bef9",
+  "enable_gpu": false,
+  "keywords": [
+    "automation",
+    "tutorial",
+    "preprocessing",
+    "feature engineering",
+    "binary classification"
+  ],
+  "dataset_sources": [],
+  "kernel_type": "notebook",
+  "language": "python",
+  "kernel_sources": [],
+  "title": "kernel6d5308bef9",
+  "competition_sources": [
+    "titanic"
+  ],
+  "code_file": "kernel6d5308bef9.ipynb",
+  "is_private": false,
+  "enable_internet": false
+}

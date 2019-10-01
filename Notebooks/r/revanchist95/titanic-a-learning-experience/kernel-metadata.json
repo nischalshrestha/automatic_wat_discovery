@@ -1,0 +1,17 @@
+{
+  "kernel_sources": [],
+  "title": "Titanic: A learning Experience",
+  "enable_gpu": false,
+  "competition_sources": [
+    "titanic"
+  ],
+  "is_private": false,
+  "keywords": [],
+  "dataset_sources": [],
+  "language": "r",
+  "kernel_type": "notebook",
+  "code_file": "titanic-a-learning-experience.irnb",
+  "id": "revanchist95/titanic-a-learning-experience",
+  "enable_internet": false,
+  "id_no": 292838
+}

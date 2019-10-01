@@ -1,0 +1,22 @@
+{
+  "is_private": false,
+  "id": "mseusa/titanic-first-attempt",
+  "id_no": 761651,
+  "dataset_sources": [],
+  "enable_gpu": false,
+  "title": "Titanic (First Attempt)",
+  "kernel_sources": [],
+  "language": "python",
+  "competition_sources": [
+    "titanic"
+  ],
+  "kernel_type": "notebook",
+  "enable_internet": false,
+  "code_file": "titanic-first-attempt.ipynb",
+  "keywords": [
+    "beginner",
+    "classification",
+    "feature engineering",
+    "random forest"
+  ]
+}

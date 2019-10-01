@@ -1,0 +1,158 @@
+{
+  "cells": [
+    {
+      "cell_type": "markdown",
+      "metadata": {
+        "_cell_guid": "1a380483-488f-9cfa-bf40-0c7efd51738f"
+      },
+      "source": [
+        "**First go at Kaggle**"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "_cell_guid": "328c444c-8982-2514-2ebd-32b376ec5aa0"
+      },
+      "outputs": [],
+      "source": [
+        "library(dplyr)\n",
+        "library(ggplot2)\n",
+        "library(ROCR)"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "_cell_guid": "bee36ad3-641f-a0dd-b478-38ab2fc6bf1e"
+      },
+      "outputs": [],
+      "source": [
+        "train = read.csv('../input/train.csv')\n",
+        "test = read.csv('../input/test.csv')\n",
+        "\n",
+        "summary(train)"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "_cell_guid": "6562017b-8e3f-c3ee-192f-3a3f4a836976"
+      },
+      "outputs": [],
+      "source": [
+        "train$Age = ifelse(!is.na(train$Age),\n",
+        "                   train$Age,\n",
+        "                   ifelse(train$Sex == 'male', \n",
+        "                          mean(train$Age[train$Sex =='male'],na.rm = TRUE), \n",
+        "                          mean(train$Age[train$Sex == 'female'],na.rm = TRUE)))\n",
+        "\n",
+        "model = glm(Survived ~ Pclass + Sex + Age + SibSp, data = train,\n",
+        "           family = binomial)\n",
+        "summary(model)"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "_cell_guid": "25452feb-b4a1-5ebc-094c-2840f51ebd58"
+      },
+      "outputs": [],
+      "source": [
+        "prediction(predict(model,train,type = 'response') ,train$Survived) %>% \n",
+        "    performance('tpr','fpr') %>%\n",
+        "    plot(colorize = TRUE)"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "_cell_guid": "ea4ba7df-73ee-eeab-6f49-9b144aa7980b"
+      },
+      "outputs": [],
+      "source": [
+        "table(predict(model,train,type = 'response') > 0.41, train$Survived)"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "_cell_guid": "7a633e72-ed2f-ac43-2870-65dc47515229"
+      },
+      "outputs": [],
+      "source": [
+        "summary(test)"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "_cell_guid": "114f6177-328e-4cc4-f75d-86a1923941d5"
+      },
+      "outputs": [],
+      "source": [
+        "test$Age = ifelse(!is.na(test$Age),\n",
+        "                   test$Age,\n",
+        "                   ifelse(test$Sex == 'male', \n",
+        "                          mean(test$Age[test$Sex =='male'],na.rm = TRUE), \n",
+        "                          mean(test$Age[test$Sex == 'female'],na.rm = TRUE)))\n",
+        "summary(test)"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "_cell_guid": "5ecd05b1-e9f2-9fad-17d8-cc0f38426d4b"
+      },
+      "outputs": [],
+      "source": [
+        "test$survived<-predict(model,test, type = 'response')\n",
+        "# set cutoff, >.55 survived, <.55 dead (Credit - HaoleiFang)\n",
+        "cutoff<-.55\n",
+        "sur<-vector()\n",
+        "for(i in 1:nrow(test)){\n",
+        "  if(test$survived[i] < cutoff) {sur[i] = 0} else\n",
+        "  {sur[i] = 1}\n",
+        "}\n",
+        "test$survived<-sur\n",
+        "test$survived"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "_cell_guid": "1aa0fa5d-bf6d-5e1e-52ba-38fe43097116"
+      },
+      "outputs": [],
+      "source": ""
+    }
+  ],
+  "metadata": {
+    "_change_revision": 0,
+    "_is_fork": false,
+    "kernelspec": {
+      "display_name": "R",
+      "language": "R",
+      "name": "ir"
+    },
+    "language_info": {
+      "codemirror_mode": "r",
+      "file_extension": ".r",
+      "mimetype": "text/x-r-source",
+      "name": "R",
+      "pygments_lexer": "r",
+      "version": "3.3.3"
+    }
+  },
+  "nbformat": 4,
+  "nbformat_minor": 0
+}

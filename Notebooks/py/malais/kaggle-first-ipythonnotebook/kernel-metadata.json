@@ -1,0 +1,17 @@
+{
+  "dataset_sources": [],
+  "language": "python",
+  "competition_sources": [
+    "titanic"
+  ],
+  "is_private": false,
+  "title": "Kaggle_First_IpythonNotebook",
+  "kernel_sources": [],
+  "kernel_type": "notebook",
+  "keywords": [],
+  "enable_gpu": false,
+  "id_no": 22224,
+  "code_file": "kaggle-first-ipythonnotebook.ipynb",
+  "id": "malais/kaggle-first-ipythonnotebook",
+  "enable_internet": false
+}

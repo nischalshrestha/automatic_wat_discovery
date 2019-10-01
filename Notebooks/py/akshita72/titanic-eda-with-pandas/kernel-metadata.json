@@ -1,0 +1,17 @@
+{
+  "enable_gpu": false,
+  "competition_sources": [
+    "titanic"
+  ],
+  "kernel_type": "notebook",
+  "enable_internet": false,
+  "code_file": "titanic-eda-with-pandas.ipynb",
+  "kernel_sources": [],
+  "is_private": false,
+  "title": "Titanic EDA with Pandas",
+  "id": "akshita72/titanic-eda-with-pandas",
+  "language": "python",
+  "keywords": [],
+  "dataset_sources": [],
+  "id_no": 1785477
+}

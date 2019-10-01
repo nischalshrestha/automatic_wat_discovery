@@ -1,0 +1,17 @@
+{
+  "code_file": "titanic-try.ipynb",
+  "keywords": [],
+  "kernel_sources": [],
+  "competition_sources": [
+    "titanic"
+  ],
+  "kernel_type": "notebook",
+  "id": "sonarsushant/titanic-try",
+  "title": "Titanic try",
+  "enable_gpu": false,
+  "language": "python",
+  "dataset_sources": [],
+  "id_no": 236727,
+  "enable_internet": false,
+  "is_private": false
+}

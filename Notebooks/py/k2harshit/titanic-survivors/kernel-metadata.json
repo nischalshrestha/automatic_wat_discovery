@@ -1,0 +1,17 @@
+{
+  "enable_gpu": false,
+  "enable_internet": false,
+  "competition_sources": [
+    "titanic"
+  ],
+  "id_no": 351776,
+  "code_file": "titanic-survivors.ipynb",
+  "kernel_type": "notebook",
+  "keywords": [],
+  "title": "Titanic Survivors",
+  "kernel_sources": [],
+  "is_private": false,
+  "id": "k2harshit/titanic-survivors",
+  "dataset_sources": [],
+  "language": "python"
+}

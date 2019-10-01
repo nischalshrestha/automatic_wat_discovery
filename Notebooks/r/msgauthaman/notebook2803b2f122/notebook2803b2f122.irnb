@@ -1,0 +1,464 @@
+{
+  "cells": [
+    {
+      "cell_type": "markdown",
+      "metadata": {
+        "_cell_guid": "ae3d3666-11d3-eed1-2ffd-b29f00bdc83b"
+      },
+      "source": ""
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "_cell_guid": "01926179-541d-139b-ed1a-8bf858ecb426"
+      },
+      "outputs": [],
+      "source": [
+        "# This R environment comes with all of CRAN preinstalled, as well as many other helpful packages\n",
+        "# The environment is defined by the kaggle/rstats docker image: https://github.com/kaggle/docker-rstats\n",
+        "# For example, here's several helpful packages to load in \n",
+        "\n",
+        "library(readr) # CSV file I/O, e.g. the read_csv function\n",
+        "\n",
+        "# Input data files are available in the \"../input/\" directory.\n",
+        "# For example, running this (by clicking run or pressing Shift+Enter) will list the files in the input directory\n",
+        "\n",
+        "train<-read.csv(\"../input/train.csv\")\n",
+        "summary(train)\n",
+        "\n",
+        "# Any results you write to the current directory are saved as output."
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "_cell_guid": "b94b7b70-6f7a-4f55-f232-d039105ce8c4"
+      },
+      "outputs": [],
+      "source": [
+        "#feature identification- Pclass\n",
+        "#No. of ppl survived/Total number of ppl in that class\n",
+        "aggregate(train[,2], list(train[,3]), mean)\n",
+        "aggregate(train[,2], list(train[,3]), length)"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "_cell_guid": "f8698b77-3388-6832-48d8-e96596097611"
+      },
+      "outputs": [],
+      "source": [
+        "\n",
+        "#feature identification- sex\n",
+        "#No. of ppl survived/Total number of ppl in that class\n",
+        "aggregate(train[,2], list(train[,5]), mean)\n",
+        "aggregate(train[,2], list(train[,5]), length)"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "_cell_guid": "8256783a-1014-de5a-488b-5a9f80594972"
+      },
+      "outputs": [],
+      "source": [
+        "#feature identification- age\n",
+        "#No. of ppl survived/Total number of ppl in that class\n",
+        "train$agegroup<-0\n",
+        "train$agegroup[which(train[,6]>20)]<-1\n",
+        "\n",
+        "#train$agegroup<-train[,6]%/%10\n",
+        "\n",
+        "\n",
+        "aggregate(train[,2], list(train$agegroup), mean)\n",
+        "aggregate(train[,2], list(train$agegroup), length)"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "_cell_guid": "4fec1624-6465-0c4b-a666-43fcce2d10fb"
+      },
+      "outputs": [],
+      "source": [
+        "#feature identification- siblings\n",
+        "#No. of ppl survived/Total number of ppl in that class\n",
+        "train$siblingyn<-0\n",
+        "train$siblingyn[which(train[,7]>0)]<-1\n",
+        "aggregate(train[,2], list(train$siblingyn), mean)\n",
+        "aggregate(train[,2], list(train$siblingyn), length)"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "_cell_guid": "0acf194c-c50f-c94c-69a3-347dcf1f88b5"
+      },
+      "outputs": [],
+      "source": [
+        "#feature identification- parent-child\n",
+        "#No. of ppl survived/Total number of ppl in that class\n",
+        "train$parentyn<-0\n",
+        "train$parentyn[which(train[,8]>0)]<-1\n",
+        "aggregate(train[,2], list(train$parentyn), mean)\n",
+        "aggregate(train[,2], list(train$parentyn), length)"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "_cell_guid": "69e5993b-175a-3bf0-f05e-586ac4801d8b"
+      },
+      "outputs": [],
+      "source": [
+        "library(modeest)\n",
+        "\n",
+        "#feature identification- fare\n",
+        "#No. of ppl survived/Total number of ppl in that class\n",
+        "qplot(train$Fare, geom=\"histogram\", binwidth=10) \n",
+        "mlv(train$Fare, method = \"mfv\")"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "_cell_guid": "dc5fab97-f8fb-5790-bdb6-5fb8c90ae9a7"
+      },
+      "outputs": [],
+      "source": [
+        "\n",
+        "#feature identification- fare\n",
+        "#No. of ppl survived/Total number of ppl in that class\n",
+        "train$farediv<-0\n",
+        "train$farediv[which(train[,10]>10)]<-1\n",
+        "train$farediv[which(train[,10]>20)]<-2\n",
+        "train$farediv[which(train[,10]>30)]<-3\n",
+        "\n",
+        "\n",
+        "\n",
+        "aggregate(train[,2], list(train$farediv), mean)\n",
+        "aggregate(train[,2], list(train$farediv), length)"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "_cell_guid": "cb8fc80d-2478-f570-131e-0a56625443fb"
+      },
+      "outputs": [],
+      "source": [
+        "\n",
+        "#feature identification- embarked\n",
+        "#No. of ppl survived/Total number of ppl in that class\n",
+        "\n",
+        "\n",
+        "aggregate(train[,2], list(train[,12]), mean)\n",
+        "aggregate(train[,2], list(train[,12]), length)"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "_cell_guid": "f2e0b652-860d-9139-17dc-d7515efa171b"
+      },
+      "outputs": [],
+      "source": [
+        "#feature identification- embarked\n",
+        "#No. of ppl survived/Total number of ppl in that class\n",
+        "\n",
+        "train$embdiv<-0\n",
+        "train$embdiv[which(train[,12]=='C')]<-1\n",
+        "\n",
+        "aggregate(train[,2], list(train$embdiv), mean)\n",
+        "aggregate(train[,2], list(train$embdiv), length)"
+      ]
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {
+        "_cell_guid": "4e08e36d-bad8-2ef4-4af8-3f58595ca297"
+      },
+      "source": [
+        "Pclass\n",
+        "Group.1\tx=.38\n",
+        "1\t0.6296296\n",
+        "2\t0.4728261\n",
+        "3\t0.2423625\n",
+        "\n",
+        "male-female=.56\n",
+        "Group.1\tx\n",
+        "female\t0.7420382\n",
+        "male\t0.1889081\n",
+        "\n",
+        "sibling- no sibling=.12\n",
+        "Group.1\tx\n",
+        "0\t0.3453947\n",
+        "1\t0.4664311\n",
+        "\n",
+        "parent-child-.17\n",
+        "Group.1\tx\n",
+        "0\t0.3436578\n",
+        "1\t0.5117371\n",
+        "\n",
+        "fare-0-10-20-30=.39\n",
+        "Group.1\tx\n",
+        "0\t0.1994048\n",
+        "1\t0.4245810\n",
+        "2\t0.4436620\n",
+        "3\t0.5811966\n",
+        "\n",
+        "embarked (c)-.21\n",
+        "Group.1\tx\n",
+        "0\t0.3443983\n",
+        "1\t0.5535714\n",
+        "\n",
+        "fare=.39\n",
+        "Group.1\tx\n",
+        "0\t0.1994048\n",
+        "1\t0.4330218\n",
+        "2\t0.5811966"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "_cell_guid": "f033769f-1c93-3d7e-7487-19c0f5700552"
+      },
+      "outputs": [],
+      "source": [
+        "train$farediv<-0\n",
+        "train$farediv[which(train[,10]>10)]<-1\n",
+        "train$farediv[which(train[,10]>30)]<-2\n",
+        "\n",
+        "\n",
+        "\n",
+        "\n",
+        "aggregate(train[,2], list(train$farediv), mean)\n",
+        "aggregate(train[,2], list(train$farediv), length)\n"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "_cell_guid": "009b2a73-1237-252f-276b-b73501307351"
+      },
+      "outputs": [],
+      "source": [
+        "x<-read.csv(\"../input/train.csv\")\n",
+        "\n",
+        "x$psex<-0\n",
+        "x$psex[which(x$Sex=='female')]<-1\n",
+        "\n",
+        "x$pfare<-0\n",
+        "x$pfare[which(x$Fare>10)]<-.6\n",
+        "x$pfare[which(x$Fare>30)]<-1\n",
+        "\n",
+        "\n",
+        "x$ppclass<-0\n",
+        "x$ppclass[which(x$Pclass=='2')]<-.6\n",
+        "x$ppclass[which(x$Pclass=='1')]<-1\n",
+        "\n",
+        "x$pembarked<-0\n",
+        "x$pembarked[which(x$Embarked=='C')]<-1\n",
+        "\n",
+        "x$score<-(x$psex*.56)+(x$pfare*.39)+(x$ppclass*.38)+(x$pembarked*.21)\n",
+        "\n",
+        "#summary(x)\n",
+        "quantile(x$score,c(.25,.61,.75))\n",
+        "#write.csv(x,\"/home/gauthaman/Downloads/soln.csv\")\n",
+        "#aggregate(x[,2], list(x$pembarked), mean)"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "_cell_guid": "ff3ba49a-a96a-34d2-71fe-9c564f80fc18"
+      },
+      "outputs": [],
+      "source": [
+        "#feature identification- siblings\n",
+        "#No. of ppl survived/Total number of ppl in that class\n",
+        "sum(train[,2])"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "_cell_guid": "bbc7b16e-d99b-6bff-ca8f-20cfc01a52de"
+      },
+      "outputs": [],
+      "source": [
+        "#predictor\n",
+        "\n",
+        "library(readr) # CSV file I/O, e.g. the read_csv function\n",
+        "library(rpart)\n",
+        "\n",
+        "x<-read.csv(\"../input/train.csv\")\n",
+        "\n",
+        "x$psex<-0\n",
+        "x$psex[which(x$Sex=='female')]<-1\n",
+        "\n",
+        "x$pfare<-0\n",
+        "x$pfare[which(x$Fare>10)]<-.6\n",
+        "x$pfare[which(x$Fare>30)]<-1\n",
+        "\n",
+        "\n",
+        "x$ppclass<-0\n",
+        "x$ppclass[which(x$Pclass=='2')]<-.6\n",
+        "x$ppclass[which(x$Pclass=='1')]<-1\n",
+        "\n",
+        "x$pembarked<-0\n",
+        "x$pembarked[which(x$Embarked=='C')]<-1\n",
+        "\n",
+        "x$score<-(x$psex*.56)+(x$pfare*.39)+(x$ppclass*.38)+(x$pembarked*.21)\n",
+        "#survive if score>.77\n",
+        "\n",
+        "#aggregate(x[,2], list(x$servpred), mean)\n",
+        "#write.csv(x, file=\"submissiontest.csv\" ,row.names=FALSE)"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "_cell_guid": "052b0493-589b-5c70-b988-d02af22aa728"
+      },
+      "outputs": [],
+      "source": [
+        "#decision tree predictor\n",
+        "\n",
+        "library(readr) # CSV file I/O, e.g. the read_csv function\n",
+        "library(rpart)\n",
+        "\n",
+        "x<-read.csv(\"../input/train.csv\")\n",
+        "\n",
+        "\n",
+        "x$pfare<-0\n",
+        "x$pfare[which(x$Fare>10)]<-.6\n",
+        "x$pfare[which(x$Fare>30)]<-1\n",
+        "\n",
+        "\n",
+        "\n",
+        "#x$score<-(x$psex*.56)+(x$pfare*.39)+(x$ppclass*.38)+(x$pembarked*.21)\n",
+        "fit <- rpart(Survived ~ Sex + Fare + Pclass+SibSp+Parch + Embarked,\n",
+        "               data=x,\n",
+        "               method=\"class\")\n",
+        "#survive if score>.77\n",
+        "\n",
+        "#aggregate(x[,2], list(x$servpred), mean)\n",
+        "#write.csv(x, file=\"submissiontest.csv\" ,row.names=FALSE)"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "_cell_guid": "b0b3f4ac-9b87-acef-2aae-f98a666a0b50"
+      },
+      "outputs": [],
+      "source": [
+        "library(rattle)\n",
+        "library(rpart.plot)\n",
+        "library(RColorBrewer)"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "_cell_guid": "f4da7891-b5c1-3d9d-bece-95cd07445420"
+      },
+      "outputs": [],
+      "source": [
+        "fancyRpartPlot(fit)"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "_cell_guid": "03f9531c-90f8-2ef7-cae3-12babe803b94"
+      },
+      "outputs": [],
+      "source": [
+        "x<-read.csv(\"../input/test.csv\")\n",
+        "\n",
+        "\n",
+        "x$pfare<-0\n",
+        "x$pfare[which(x$Fare>10)]<-.6\n",
+        "x$pfare[which(x$Fare>30)]<-1\n",
+        "\n",
+        "\n",
+        "\n",
+        "Prediction <- predict(fit, x, type = \"class\")\n",
+        "submit <- data.frame(PassengerId = x$PassengerId, Survived = Prediction)\n",
+        "write.csv(submit, file = \"decisiontreeoutput1.csv\", row.names = FALSE)"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "_cell_guid": "65c7f8db-7c9e-a016-2c8d-07c9666e93a1"
+      },
+      "outputs": [],
+      "source": [
+        "fancyRpartPlot(fit)#decision tree straightshoot\n",
+        "\n",
+        "library(readr) # CSV file I/O, e.g. the read_csv function\n",
+        "library(rpart)\n",
+        "\n",
+        "x<-read.csv(\"../input/train.csv\")\n",
+        "\n",
+        "\n",
+        "\n",
+        "\n",
+        "fit <- rpart(Survived ~ Sex + Fare + Pclass+ SibSp + Parch + Embarked+ Age,\n",
+        "               data=x,\n",
+        "               method=\"class\")\n",
+        "\n",
+        "t<-read.csv(\"../input/test.csv\")\n",
+        "\n",
+        "fancyRpartPlot(fit)\n",
+        "\n",
+        "Prediction <- predict(fit, t, type = \"class\")\n",
+        "submit <- data.frame(PassengerId = t$PassengerId, Survived = Prediction)\n",
+        "write.csv(submit, file = \"decisiontreeoutput2.csv\", row.names = FALSE)\n"
+      ]
+    }
+  ],
+  "metadata": {
+    "_change_revision": 0,
+    "_is_fork": false,
+    "kernelspec": {
+      "display_name": "R",
+      "language": "R",
+      "name": "ir"
+    },
+    "language_info": {
+      "codemirror_mode": "r",
+      "file_extension": ".r",
+      "mimetype": "text/x-r-source",
+      "name": "R",
+      "pygments_lexer": "r",
+      "version": "3.3.3"
+    }
+  },
+  "nbformat": 4,
+  "nbformat_minor": 0
+}

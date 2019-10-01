@@ -1,0 +1,17 @@
+{
+  "competition_sources": [
+    "titanic"
+  ],
+  "dataset_sources": [],
+  "enable_gpu": false,
+  "kernel_sources": [],
+  "id": "vraval48/svm-bagging-with-age-prediction",
+  "enable_internet": false,
+  "kernel_type": "notebook",
+  "is_private": false,
+  "language": "python",
+  "code_file": "svm-bagging-with-age-prediction.ipynb",
+  "id_no": 1156482,
+  "keywords": [],
+  "title": "svm bagging with age prediction"
+}

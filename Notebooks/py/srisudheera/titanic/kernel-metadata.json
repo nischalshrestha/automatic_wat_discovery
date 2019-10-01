@@ -1,0 +1,21 @@
+{
+  "id_no": 1343572,
+  "dataset_sources": [],
+  "enable_internet": false,
+  "language": "python",
+  "code_file": "titanic.ipynb",
+  "kernel_sources": [],
+  "keywords": [
+    "beginner",
+    "eda",
+    "classification"
+  ],
+  "is_private": false,
+  "title": "Titanic",
+  "competition_sources": [
+    "titanic"
+  ],
+  "kernel_type": "notebook",
+  "id": "srisudheera/titanic",
+  "enable_gpu": false
+}

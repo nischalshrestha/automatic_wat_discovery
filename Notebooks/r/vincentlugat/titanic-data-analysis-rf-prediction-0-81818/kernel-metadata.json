@@ -1,0 +1,23 @@
+{
+  "title": "Titanic - Data Analysis + RF Prediction 0.81818 ",
+  "is_private": false,
+  "kernel_sources": [],
+  "id": "vincentlugat/titanic-data-analysis-rf-prediction-0-81818",
+  "competition_sources": [
+    "titanic"
+  ],
+  "keywords": [
+    "tutorial",
+    "beginner",
+    "eda",
+    "data visualization",
+    "classification"
+  ],
+  "dataset_sources": [],
+  "enable_gpu": false,
+  "id_no": 244803,
+  "code_file": "titanic-data-analysis-rf-prediction-0-81818.irnb",
+  "language": "r",
+  "kernel_type": "notebook",
+  "enable_internet": false
+}

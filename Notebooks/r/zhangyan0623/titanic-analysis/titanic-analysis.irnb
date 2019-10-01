@@ -1,0 +1,209 @@
+{
+  "cells": [
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "_cell_guid": "3f6507a8-3596-d542-595e-e9f75d48bb90"
+      },
+      "outputs": [],
+      "source": [
+        "# This R environment comes with all of CRAN preinstalled, as well as many other helpful packages\n",
+        "# The environment is defined by the kaggle/rstats docker image: https://github.com/kaggle/docker-rstats\n",
+        "# For example, here's several helpful packages to load in \n",
+        "\n",
+        "library(ggplot2) # Data visualization\n",
+        "library(readr) # CSV file I/O, e.g. the read_csv function\n",
+        "\n",
+        "# Input data files are available in the \"../input/\" directory.\n",
+        "# For example, running this (by clicking run or pressing Shift+Enter) will list the files in the input directory\n",
+        "\n",
+        "system(\"ls ../input\")\n",
+        "\n",
+        "# Any results you write to the current directory are saved as output."
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "_cell_guid": "c0d672b1-bdcb-36cd-b176-e1c0b0c8a967"
+      },
+      "outputs": [],
+      "source": [
+        "library(tidyverse)\n",
+        "library(rpart)\n",
+        "library(rpart.plot) \n",
+        "library(caret)\n",
+        "library(ggplot2)\n",
+        "library(Hmisc)\n",
+        "\n",
+        "#import dataset\n",
+        "train<-read_csv(\"../input/train.csv\") \n",
+        "test<-read_csv(\"../input/test.csv\") "
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "_cell_guid": "a3b4d3a7-4a84-4736-eaa3-a406fbf13db8"
+      },
+      "outputs": [],
+      "source": [
+        "#How dose Embarked impact on the survival or pessengers\n",
+        "ggplot(train, aes(x = Embarked, fill = factor(Survived))) +\n",
+        "  geom_bar(stat='count', position='dodge') +\n",
+        "  labs(x = 'Embarked')"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "_cell_guid": "f65b21be-fcf6-00c9-799b-9f3e29b85084"
+      },
+      "outputs": [],
+      "source": [
+        "#How different the Pclass impact on survial of male & female\n",
+        "ggplot(train,aes(x=Sex,fill=factor(Survived)))+\n",
+        "  geom_bar(position='dodge')+\n",
+        "  facet_grid(.~Pclass)+\n",
+        "  labs(title = \"How Different Pclass impact the survival of male&female passengers\",x = \"Pclass\",y = \"Count\")"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "_cell_guid": "948638d3-1b94-f989-2150-f10d78cea26f"
+      },
+      "outputs": [],
+      "source": [
+        "#Test how dose the family size impact the survival of pessengers\n",
+        "train$FamilySize<-train$SibSp+train$Parch\n",
+        "ggplot(train, aes(x = FamilySize, fill = factor(Survived))) +\n",
+        "  geom_bar(stat='count', position='dodge') +\n",
+        "  scale_x_continuous(breaks=c(1:11)) +\n",
+        "  labs(x = 'Family Size')"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "_cell_guid": "e86320fb-b8fc-99f6-d566-3b112ef16547"
+      },
+      "outputs": [],
+      "source": [
+        "train$Child[train$Age < 16] <- 'Child'\n",
+        "train$Child[train$Age >= 16] <- 'Adult'\n",
+        "\n",
+        "table(train$Child,train$Survived)"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "_cell_guid": "9de2f32f-6fec-e984-32be-58097a0308d2"
+      },
+      "outputs": [],
+      "source": [
+        "#Deal with the missing values\n",
+        "ggplot(train, aes(x=Embarked,y=Fare))+geom_boxplot(aes(fill=factor(Pclass)))\n",
+        "train$Embarked[is.na(train$Embarked)]<-'C'\n",
+        "test[is.na(test$Fare),]\n",
+        "\n",
+        "test1<-test[c(test$Embarked=='S'),] \n",
+        "test2<-test1[c(test1$Pclass==3),]\n",
+        "test3<-test2[complete.cases(test2$Fare),]\n",
+        "test$Fare[is.na(test$Fare)]<-mean(test3$Fare)"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "_cell_guid": "dac35773-492d-d982-8878-12e8efc911df"
+      },
+      "outputs": [],
+      "source": [
+        "#feature engineering\n",
+        "# create title from passenger names\n",
+        "full<-bind_rows(train,test)\n",
+        "full$Child[full$Age < 16] <- 'Child'\n",
+        "full$Child[full$Age >= 16] <- 'Adult'\n",
+        "full$FamilySize<-full$SibSp+full$Parch\n",
+        "full$FsizeD[full$FamilySize == 0] <- 'singleton'\n",
+        "full$FsizeD[full$FamilySize< 4 & full$FamilySize > 0] <- 'small'\n",
+        "full$FsizeD[full$FamilySize >=4 ] <- 'large'\n",
+        "\n",
+        "full$Title <- gsub('(.*, )|(\\\\..*)', '', full$Name)\n",
+        "rare_title <- c('Dona', 'Lady', 'the Countess','Capt', 'Col', 'Don', \n",
+        "                'Dr', 'Major', 'Rev', 'Sir', 'Jonkheer')\n",
+        "full$Title[full$Title == 'Mlle']        <- 'Miss' \n",
+        "full$Title[full$Title == 'Ms']          <- 'Miss'\n",
+        "full$Title[full$Title == 'Mme']         <- 'Mrs' \n",
+        "full$Title[full$Title %in% rare_title]  <- 'Rare Title'\n",
+        "table(full$Sex, full$Title)"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "_cell_guid": "33592880-0039-d6e6-bbe0-18c51550cb12"
+      },
+      "outputs": [],
+      "source": [
+        "#Different combinations of feature\n",
+        "full$Sex <- as.factor(full$Sex)\n",
+        "full$Pclass <- as.factor(full$Pclass)\n",
+        "full$Title<-as.factor(full$Title)\n",
+        "full$Embarked<-as.factor(full$Embarked)\n",
+        "full$FsizeD<-as.factor(full$FsizeD)\n",
+        "\n",
+        "train <- full[1:891,]\n",
+        "test <- full[892:1309,]\n",
+        "\n",
+        "#Bulid our Modeling\n",
+        "fol <- formula(Survived ~Title+ Fare+ Pclass+Age)\n",
+        "model <- rpart(fol, method=\"class\", data=train)"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "_cell_guid": "3cf775e2-0604-9969-6c22-6e590193f7cc"
+      },
+      "outputs": [],
+      "source": [
+        "#Identify the change of the tree\n",
+        "rpart.plot(model,branch=0,branch.type=2,type=1,extra=102,shadow.col=\"pink\",box.col=\"gray\",split.col=\"magenta\",\n",
+        "           main=\"Decision tree for model\")\n",
+        "rpred <- predict(model, newdata=test, type=\"class\")"
+      ]
+    }
+  ],
+  "metadata": {
+    "_change_revision": 0,
+    "_is_fork": false,
+    "kernelspec": {
+      "display_name": "R",
+      "language": "R",
+      "name": "ir"
+    },
+    "language_info": {
+      "codemirror_mode": "r",
+      "file_extension": ".r",
+      "mimetype": "text/x-r-source",
+      "name": "R",
+      "pygments_lexer": "r",
+      "version": "3.4.0"
+    }
+  },
+  "nbformat": 4,
+  "nbformat_minor": 0
+}

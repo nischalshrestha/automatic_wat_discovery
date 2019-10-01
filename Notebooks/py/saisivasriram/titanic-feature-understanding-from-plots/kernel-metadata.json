@@ -1,0 +1,17 @@
+{
+  "kernel_sources": [],
+  "competition_sources": [
+    "titanic"
+  ],
+  "id": "saisivasriram/titanic-feature-understanding-from-plots",
+  "title": "Titanic - Feature understanding from Plots",
+  "dataset_sources": [],
+  "enable_gpu": false,
+  "id_no": 273049,
+  "kernel_type": "notebook",
+  "is_private": false,
+  "code_file": "titanic-feature-understanding-from-plots.ipynb",
+  "language": "python",
+  "enable_internet": false,
+  "keywords": []
+}

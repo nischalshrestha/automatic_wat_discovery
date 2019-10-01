@@ -1,0 +1,17 @@
+{
+  "competition_sources": [
+    "titanic"
+  ],
+  "enable_gpu": false,
+  "language": "r",
+  "kernel_sources": [],
+  "id_no": 128195,
+  "enable_internet": false,
+  "kernel_type": "notebook",
+  "dataset_sources": [],
+  "is_private": false,
+  "code_file": "notebookfeafb02963.irnb",
+  "keywords": [],
+  "id": "changjunzhu/notebookfeafb02963",
+  "title": "Notebook98f39e96e4"
+}

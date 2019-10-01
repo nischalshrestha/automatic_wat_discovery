@@ -1,0 +1,17 @@
+{
+  "id": "shanxingg/titanic-ml-from-disaster",
+  "id_no": 536565,
+  "title": "Titanic-ML-from-Disaster",
+  "code_file": "titanic-ml-from-disaster.ipynb",
+  "language": "python",
+  "kernel_type": "notebook",
+  "is_private": false,
+  "enable_gpu": false,
+  "enable_internet": false,
+  "keywords": [],
+  "dataset_sources": [],
+  "kernel_sources": [],
+  "competition_sources": [
+    "titanic"
+  ]
+}

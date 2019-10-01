@@ -1,0 +1,17 @@
+{
+  "competition_sources": [
+    "titanic"
+  ],
+  "id": "quark6/titanic-work",
+  "enable_gpu": false,
+  "id_no": 138441,
+  "keywords": [],
+  "kernel_sources": [],
+  "dataset_sources": [],
+  "title": "Titanic work",
+  "kernel_type": "notebook",
+  "code_file": "titanic-work.irnb",
+  "is_private": false,
+  "enable_internet": false,
+  "language": "r"
+}

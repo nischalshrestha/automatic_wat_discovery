@@ -1,0 +1,17 @@
+{
+  "competition_sources": [
+    "titanic"
+  ],
+  "keywords": [],
+  "kernel_sources": [],
+  "kernel_type": "notebook",
+  "enable_internet": false,
+  "language": "r",
+  "id": "luigimersico/data-analysis-with-h2o",
+  "title": "Data analysis with H2o ",
+  "id_no": 332500,
+  "dataset_sources": [],
+  "code_file": "data-analysis-with-h2o.irnb",
+  "enable_gpu": false,
+  "is_private": false
+}

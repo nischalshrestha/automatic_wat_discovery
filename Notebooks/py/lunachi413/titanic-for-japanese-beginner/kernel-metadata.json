@@ -1,0 +1,17 @@
+{
+  "is_private": false,
+  "code_file": "titanic-for-japanese-beginner.ipynb",
+  "language": "python",
+  "id": "lunachi413/titanic-for-japanese-beginner",
+  "competition_sources": [
+    "titanic"
+  ],
+  "kernel_sources": [],
+  "dataset_sources": [],
+  "id_no": 1665532,
+  "kernel_type": "notebook",
+  "title": "Titanic For Japanese Beginner",
+  "keywords": [],
+  "enable_internet": false,
+  "enable_gpu": false
+}

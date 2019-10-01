@@ -1,0 +1,17 @@
+{
+  "competition_sources": [
+    "titanic"
+  ],
+  "code_file": "introduction-to-ensembling-stacking-in-python.ipynb",
+  "id": "benjamingatti/introduction-to-ensembling-stacking-in-python",
+  "kernel_type": "notebook",
+  "id_no": 1548508,
+  "is_private": false,
+  "enable_internet": false,
+  "language": "python",
+  "keywords": [],
+  "title": "Introduction to Ensembling/Stacking in Python",
+  "dataset_sources": [],
+  "kernel_sources": [],
+  "enable_gpu": false
+}

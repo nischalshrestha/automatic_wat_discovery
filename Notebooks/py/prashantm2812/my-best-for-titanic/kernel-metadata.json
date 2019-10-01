@@ -1,0 +1,17 @@
+{
+  "language": "python",
+  "title": "My best for Titanic",
+  "id": "prashantm2812/my-best-for-titanic",
+  "code_file": "my-best-for-titanic.ipynb",
+  "dataset_sources": [],
+  "kernel_sources": [],
+  "keywords": [],
+  "competition_sources": [
+    "titanic"
+  ],
+  "id_no": 1308727,
+  "enable_internet": false,
+  "kernel_type": "notebook",
+  "is_private": false,
+  "enable_gpu": true
+}

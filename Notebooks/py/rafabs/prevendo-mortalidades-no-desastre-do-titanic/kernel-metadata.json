@@ -1,0 +1,17 @@
+{
+  "kernel_sources": [],
+  "language": "python",
+  "competition_sources": [
+    "titanic"
+  ],
+  "id_no": 1216832,
+  "keywords": [],
+  "title": "Prevendo Mortalidades no Desastre do Titanic",
+  "is_private": false,
+  "kernel_type": "notebook",
+  "code_file": "prevendo-mortalidades-no-desastre-do-titanic.ipynb",
+  "dataset_sources": [],
+  "id": "rafabs/prevendo-mortalidades-no-desastre-do-titanic",
+  "enable_gpu": false,
+  "enable_internet": false
+}

@@ -1,0 +1,17 @@
+{
+  "language": "python",
+  "id_no": 1528805,
+  "keywords": [],
+  "enable_internet": false,
+  "dataset_sources": [],
+  "kernel_type": "notebook",
+  "id": "engrravijain/titanic-machine-learning-from-disaster",
+  "code_file": "titanic-machine-learning-from-disaster.ipynb",
+  "enable_gpu": true,
+  "kernel_sources": [],
+  "title": "Titanic:_Machine_Learning_from_Disaster",
+  "competition_sources": [
+    "titanic"
+  ],
+  "is_private": false
+}

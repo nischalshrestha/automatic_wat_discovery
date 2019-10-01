@@ -1,0 +1,17 @@
+{
+  "enable_internet": false,
+  "is_private": false,
+  "code_file": "notebook7b30d2dfef.ipynb",
+  "enable_gpu": false,
+  "language": "python",
+  "title": "Notebook7b30d2dfef",
+  "dataset_sources": [],
+  "competition_sources": [
+    "titanic"
+  ],
+  "keywords": [],
+  "id": "srikant22/notebook7b30d2dfef",
+  "kernel_sources": [],
+  "id_no": 226356,
+  "kernel_type": "notebook"
+}

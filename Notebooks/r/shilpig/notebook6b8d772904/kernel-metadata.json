@@ -1,0 +1,17 @@
+{
+  "code_file": "notebook6b8d772904.irnb",
+  "enable_internet": false,
+  "keywords": [],
+  "kernel_type": "notebook",
+  "competition_sources": [
+    "titanic"
+  ],
+  "id_no": 215597,
+  "id": "shilpig/notebook6b8d772904",
+  "dataset_sources": [],
+  "title": "Notebook6b8d772904",
+  "kernel_sources": [],
+  "is_private": false,
+  "language": "r",
+  "enable_gpu": false
+}

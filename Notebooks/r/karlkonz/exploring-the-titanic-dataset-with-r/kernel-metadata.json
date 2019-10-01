@@ -1,0 +1,17 @@
+{
+  "id_no": 215703,
+  "dataset_sources": [],
+  "enable_internet": false,
+  "code_file": "exploring-the-titanic-dataset-with-r.irnb",
+  "title": "Exploring the Titanic dataset with R",
+  "language": "r",
+  "competition_sources": [
+    "titanic"
+  ],
+  "enable_gpu": false,
+  "keywords": [],
+  "is_private": false,
+  "kernel_type": "notebook",
+  "id": "karlkonz/exploring-the-titanic-dataset-with-r",
+  "kernel_sources": []
+}

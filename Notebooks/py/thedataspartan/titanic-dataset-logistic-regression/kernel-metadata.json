@@ -1,0 +1,17 @@
+{
+  "title": "Titanic dataset - Logistic Regression",
+  "kernel_type": "notebook",
+  "keywords": [],
+  "competition_sources": [
+    "titanic"
+  ],
+  "enable_gpu": false,
+  "enable_internet": false,
+  "id_no": 1610707,
+  "id": "thedataspartan/titanic-dataset-logistic-regression",
+  "kernel_sources": [],
+  "code_file": "titanic-dataset-logistic-regression.ipynb",
+  "dataset_sources": [],
+  "is_private": false,
+  "language": "python"
+}

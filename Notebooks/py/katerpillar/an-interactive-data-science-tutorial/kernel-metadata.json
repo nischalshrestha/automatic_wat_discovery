@@ -1,0 +1,17 @@
+{
+  "code_file": "an-interactive-data-science-tutorial.ipynb",
+  "enable_gpu": false,
+  "dataset_sources": [],
+  "id_no": 246789,
+  "keywords": [],
+  "enable_internet": false,
+  "title": "An Interactive Data Science Tutorial",
+  "kernel_type": "notebook",
+  "is_private": false,
+  "competition_sources": [
+    "titanic"
+  ],
+  "language": "python",
+  "id": "katerpillar/an-interactive-data-science-tutorial",
+  "kernel_sources": []
+}

@@ -1,0 +1,23 @@
+{
+  "title": "Emsemble Method Voting : LR , GB, RF, SVC",
+  "kernel_type": "notebook",
+  "keywords": [
+    "ensembling",
+    "feature engineering",
+    "random forest",
+    "logistic regression",
+    "svm"
+  ],
+  "id_no": 1063399,
+  "language": "python",
+  "id": "edmundzhang/emsemble-method-voting-lr-gb-rf-svc",
+  "enable_internet": false,
+  "enable_gpu": false,
+  "is_private": false,
+  "dataset_sources": [],
+  "competition_sources": [
+    "titanic"
+  ],
+  "code_file": "emsemble-method-voting-lr-gb-rf-svc.ipynb",
+  "kernel_sources": []
+}

@@ -1,0 +1,17 @@
+{
+  "enable_internet": false,
+  "title": "Notebook14f2a8f0c4",
+  "id": "elmati/notebook14f2a8f0c4",
+  "id_no": 242190,
+  "keywords": [],
+  "competition_sources": [
+    "titanic"
+  ],
+  "enable_gpu": false,
+  "dataset_sources": [],
+  "kernel_sources": [],
+  "is_private": false,
+  "kernel_type": "notebook",
+  "code_file": "notebook14f2a8f0c4.ipynb",
+  "language": "python"
+}

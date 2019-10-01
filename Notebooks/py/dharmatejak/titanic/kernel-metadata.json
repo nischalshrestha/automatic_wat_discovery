@@ -1,0 +1,17 @@
+{
+  "dataset_sources": [],
+  "code_file": "titanic.ipynb",
+  "title": "Titanic ",
+  "enable_internet": false,
+  "id_no": 2081402,
+  "kernel_type": "notebook",
+  "language": "python",
+  "keywords": [],
+  "id": "dharmatejak/titanic",
+  "enable_gpu": false,
+  "competition_sources": [
+    "titanic"
+  ],
+  "is_private": false,
+  "kernel_sources": []
+}

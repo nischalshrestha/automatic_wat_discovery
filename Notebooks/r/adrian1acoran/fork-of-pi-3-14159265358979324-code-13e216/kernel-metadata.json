@@ -1,0 +1,32 @@
+{
+  "keywords": [],
+  "enable_internet": false,
+  "code_file": "fork-of-pi-3-14159265358979324-code-13e216.irnb",
+  "id": "adrian1acoran/fork-of-pi-3-14159265358979324-code-13e216",
+  "competition_sources": [
+    "titanic",
+    "house-prices-advanced-regression-techniques",
+    "two-sigma-financial-news",
+    "human-protein-atlas-image-classification"
+  ],
+  "kernel_type": "notebook",
+  "kernel_sources": [
+    "mrisdal/quick-dirty-randomforest",
+    "ldfreeman3/a-data-science-framework-to-achieve-99-accuracy",
+    "kanncaa1/data-sciencetutorial-for-beginners",
+    "sudalairajkumar/simple-exploration-baseline-ga-customer-revenue"
+  ],
+  "language": "r",
+  "id_no": 1946428,
+  "enable_gpu": true,
+  "title": "Fork of pi 3.14159265358979324 code 13e216",
+  "is_private": false,
+  "dataset_sources": [
+    "github/github-repos",
+    "pytorch/vgg13bn",
+    "kiva/data-science-for-good-kiva-crowdfunding",
+    "lava18/google-play-store-apps",
+    "bigquery/patents",
+    "adrian1acoran/pi-31415"
+  ]
+}

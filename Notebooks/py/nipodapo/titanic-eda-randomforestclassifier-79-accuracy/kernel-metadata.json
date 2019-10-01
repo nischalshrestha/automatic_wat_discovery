@@ -1,0 +1,17 @@
+{
+  "enable_internet": false,
+  "id_no": 2134376,
+  "language": "python",
+  "keywords": [],
+  "enable_gpu": false,
+  "is_private": false,
+  "id": "nipodapo/titanic-eda-randomforestclassifier-79-accuracy",
+  "kernel_type": "notebook",
+  "competition_sources": [
+    "titanic"
+  ],
+  "code_file": "titanic-eda-randomforestclassifier-79-accuracy.ipynb",
+  "dataset_sources": [],
+  "kernel_sources": [],
+  "title": "Titanic EDA & RandomForestClassifier 79% Accuracy"
+}

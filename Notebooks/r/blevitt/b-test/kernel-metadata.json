@@ -1,0 +1,17 @@
+{
+  "is_private": false,
+  "keywords": [],
+  "kernel_sources": [],
+  "competition_sources": [
+    "titanic"
+  ],
+  "id": "blevitt/b-test",
+  "dataset_sources": [],
+  "enable_gpu": false,
+  "title": "B-Test",
+  "enable_internet": false,
+  "code_file": "b-test.irnb",
+  "id_no": 239557,
+  "language": "r",
+  "kernel_type": "notebook"
+}

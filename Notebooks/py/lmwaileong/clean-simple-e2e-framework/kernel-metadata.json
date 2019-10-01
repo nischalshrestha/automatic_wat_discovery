@@ -1,0 +1,22 @@
+{
+  "code_file": "clean-simple-e2e-framework.ipynb",
+  "kernel_type": "notebook",
+  "enable_internet": false,
+  "enable_gpu": false,
+  "title": "Clean & simple E2E framework",
+  "is_private": false,
+  "keywords": [
+    "tutorial",
+    "beginner",
+    "classification",
+    "feature engineering"
+  ],
+  "id": "lmwaileong/clean-simple-e2e-framework",
+  "kernel_sources": [],
+  "competition_sources": [
+    "titanic"
+  ],
+  "dataset_sources": [],
+  "language": "python",
+  "id_no": 1261786
+}

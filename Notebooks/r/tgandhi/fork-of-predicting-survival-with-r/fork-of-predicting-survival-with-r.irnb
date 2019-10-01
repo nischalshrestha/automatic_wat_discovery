@@ -1,0 +1,146 @@
+{
+  "cells": [
+    {
+      "cell_type": "markdown",
+      "metadata": {
+        "_cell_guid": "919c8d89-da3e-ecf6-0531-8ada669959b0"
+      },
+      "source": [
+        "Preliminary exploration that predicts survival on gender, age, and passenger class"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "_cell_guid": "7dc35c13-1689-664a-d4e6-6822efdc07aa"
+      },
+      "outputs": [],
+      "source": [
+        "# This R environment comes with all of CRAN preinstalled, as well as many other helpful packages\n",
+        "# The environment is defined by the kaggle/rstats docker image: https://github.com/kaggle/docker-rstats\n",
+        "# For example, here's several helpful packages to load in \n",
+        "\n",
+        "library(ggplot2) # Data visualization\n",
+        "library(readr) # CSV file I/O, e.g. the read_csv functionion\n",
+        "library(data.table)\n",
+        "# Input data files are available in the \"../input/\" directory.\n",
+        "# For example, running this (by clicking run or pressing Shift+Enter) will list the files in the input directory\n",
+        "\n",
+        "system(\"ls ../input\")\n",
+        "\n",
+        "# Any results you write to the current directory are saved as output."
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "_cell_guid": "48617a4d-dda4-6b40-dbe5-bf4e3ce8613b"
+      },
+      "outputs": [],
+      "source": [
+        "train<-data.table(read.csv(\"../input/train.csv\"))\n",
+        "test<-data.table(read.csv(\"../input/test.csv\"))"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "_cell_guid": "174bf131-f865-c3a6-ae52-f6d3660f1116"
+      },
+      "outputs": [],
+      "source": [
+        "#miss<-train[grepl(\"Miss\",Name),mean(Age,na.rm=T)]\n",
+        "#master<-train[grep(\"Master\",Name),mean(Age,na.rm=T)]\n",
+        "#mrs<-train[grep(\"Mrs\",Name),mean(Age,na.rm=T)]\n",
+        "#mr<-train[grep(\"Mr\",Name),mean(Age,na.rm=T)]\n",
+        "#train<-train[grepl(\"Miss\",Name) & is.na(Age),Age:=miss]\n",
+        "#train<-train[grepl(\"Master\",Name) & is.na(Age),Age:=master]\n",
+        "#train<-train[grepl(\"Mrs\",Name) & is.na(Age),Age:=mrs]\n",
+        "#train<-train[grepl(\"Mr\",Name) & is.na(Age),Age:=mr]\n"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "_cell_guid": "1be5d266-6c58-9763-fbdf-ef01c4f57969"
+      },
+      "outputs": [],
+      "source": [
+        "train<-train[Sex=='male',gender:=0]\n",
+        "train<-train[Sex=='female',gender:=1]\n",
+        "modelOne<-glm(Survived~gender+Age+Pclass,data=train)"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "_cell_guid": "cd8bfab0-9fe0-32f3-ef28-97d5cd97340a"
+      },
+      "outputs": [],
+      "source": [
+        "\n",
+        "miss<-test[grepl(\"Miss\",Name),mean(Age,na.rm=T)]\n",
+        "master<-test[grep(\"Master\",Name),mean(Age,na.rm=T)]\n",
+        "mrs<-test[grep(\"Mrs\",Name),mean(Age,na.rm=T)]\n",
+        "mr<-test[grep(\"Mr\",Name),mean(Age,na.rm=T)]\n",
+        "test<-test[grepl(\"Miss\",Name) & is.na(Age),Age:=miss]\n",
+        "test<-test[grepl(\"Ms\",Name) & is.na(Age),Age:=miss]\n",
+        "test<-test[grepl(\"Master\",Name) & is.na(Age),Age:=master]\n",
+        "test<-test[grepl(\"Mrs\",Name) & is.na(Age),Age:=mrs]\n",
+        "test<-test[grepl(\"Mr\",Name) & is.na(Age),Age:=mr]\n"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "_cell_guid": "0a1e92d2-7964-606e-bd33-2af0f9e501eb"
+      },
+      "outputs": [],
+      "source": [
+        "test<-test[Sex=='male',gender:=0]\n",
+        "test<-test[Sex=='female',gender:=1]\n",
+        "predictOne<-data.table(predict(modelOne,test))\n",
+        "final<-cbind(test,predictOne)\n",
+        "final<-final[V1<0,Survived:=0]\n",
+        "final<-final[V1>=0,Survived:=1]\n",
+        "final<-final[,.(PassengerId,Survived)]"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "_cell_guid": "c52c8537-94d6-9cd8-4833-5a55dfb7dede"
+      },
+      "outputs": [],
+      "source": [
+        "write.csv(final,\"submissionOne.csv\",row.names=F)"
+      ]
+    }
+  ],
+  "metadata": {
+    "_change_revision": 0,
+    "_is_fork": false,
+    "kernelspec": {
+      "display_name": "R",
+      "language": "R",
+      "name": "ir"
+    },
+    "language_info": {
+      "codemirror_mode": "r",
+      "file_extension": ".r",
+      "mimetype": "text/x-r-source",
+      "name": "R",
+      "pygments_lexer": "r",
+      "version": "3.3.2"
+    }
+  },
+  "nbformat": 4,
+  "nbformat_minor": 0
+}

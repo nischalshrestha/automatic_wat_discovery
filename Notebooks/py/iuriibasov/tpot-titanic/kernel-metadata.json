@@ -1,0 +1,17 @@
+{
+  "title": "TPOT: titanic",
+  "keywords": [],
+  "enable_gpu": false,
+  "enable_internet": false,
+  "dataset_sources": [],
+  "kernel_type": "notebook",
+  "code_file": "tpot-titanic.ipynb",
+  "kernel_sources": [],
+  "id_no": 780274,
+  "id": "iuriibasov/tpot-titanic",
+  "language": "python",
+  "competition_sources": [
+    "titanic"
+  ],
+  "is_private": false
+}

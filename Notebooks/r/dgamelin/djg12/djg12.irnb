@@ -1,0 +1,11 @@
+{"cells":[
+ {
+  "cell_type": "code",
+  "execution_count": null,
+  "metadata": {
+   "collapsed": false
+  },
+  "outputs": [],
+  "source": "\n# This R script will run on our backend. You can write arbitrary code here!\n\n# Many standard libraries are already installed, such as randomForest\nlibrary(randomForest)\n\n# The train and test data is stored in the ../input directory\ntrain <- read.csv(\"../input/train.csv\")\ntest  <- read.csv(\"../input/test.csv\")\n\n# We can inspect the train data. The results of this are printed in the log tab below\nsummary(train)\n\n# Here we will plot the passenger survival by class\ntrain$Survived <- factor(train$Survived, levels=c(1,0))\nlevels(train$Survived) <- c(\"Survived\", \"Died\")\ntrain$Pclass <- as.factor(train$Pclass)\nlevels(train$Pclass) <- c(\"1st Class\", \"2nd Class\", \"3rd Class\")\n\npng(\"1_survival_by_class.png\", width=800, height=600)\nmosaicplot(train$Pclass ~ train$Survived, main=\"Passenger Survival by Class\",\n           color=c(\"#8dd3c7\", \"#fb8072\"), shade=FALSE,  xlab=\"\", ylab=\"\",\n           off=c(0), cex.axis=1.4)\ndev.off()\n\n\n"
+ }
+],"metadata":{"kernelspec":{"display_name":"R","language":"R","name":"ir"}}, "nbformat": 4, "nbformat_minor": 0}

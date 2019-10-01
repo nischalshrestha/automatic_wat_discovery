@@ -1,0 +1,17 @@
+{
+  "id": "somil1992/notebook552586531f",
+  "id_no": 213231,
+  "kernel_type": "notebook",
+  "dataset_sources": [],
+  "enable_internet": false,
+  "competition_sources": [
+    "titanic"
+  ],
+  "keywords": [],
+  "code_file": "notebook552586531f.ipynb",
+  "title": "Notebook552586531f",
+  "language": "python",
+  "kernel_sources": [],
+  "is_private": false,
+  "enable_gpu": false
+}

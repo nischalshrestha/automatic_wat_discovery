@@ -1,0 +1,17 @@
+{
+  "keywords": [],
+  "title": "Where is my output file?",
+  "id_no": 370529,
+  "is_private": false,
+  "kernel_type": "notebook",
+  "id": "szamil/where-is-my-output-file",
+  "code_file": "where-is-my-output-file.ipynb",
+  "kernel_sources": [],
+  "language": "python",
+  "competition_sources": [
+    "titanic"
+  ],
+  "dataset_sources": [],
+  "enable_internet": false,
+  "enable_gpu": false
+}

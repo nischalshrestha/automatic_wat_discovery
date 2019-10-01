@@ -1,0 +1,17 @@
+{
+  "title": "Titanic Solution",
+  "language": "python",
+  "competition_sources": [
+    "titanic"
+  ],
+  "id_no": 507551,
+  "keywords": [],
+  "dataset_sources": [],
+  "kernel_type": "notebook",
+  "code_file": "titanic-solution.ipynb",
+  "kernel_sources": [],
+  "enable_internet": false,
+  "id": "avamsi/titanic-solution",
+  "is_private": false,
+  "enable_gpu": false
+}

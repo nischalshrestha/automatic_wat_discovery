@@ -1,0 +1,17 @@
+{
+  "enable_gpu": false,
+  "code_file": "test1.irnb",
+  "id": "elnazmr/test1",
+  "enable_internet": false,
+  "title": "test1",
+  "kernel_sources": [],
+  "competition_sources": [
+    "titanic"
+  ],
+  "id_no": 204793,
+  "kernel_type": "notebook",
+  "is_private": false,
+  "keywords": [],
+  "language": "r",
+  "dataset_sources": []
+}

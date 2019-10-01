@@ -1,0 +1,21 @@
+{
+  "language": "python",
+  "dataset_sources": [],
+  "id": "uysimty/learn-titanic-survival",
+  "kernel_sources": [],
+  "title": "Learn Titanic Survival",
+  "code_file": "learn-titanic-survival.ipynb",
+  "competition_sources": [
+    "titanic"
+  ],
+  "enable_internet": false,
+  "kernel_type": "notebook",
+  "id_no": 1035434,
+  "enable_gpu": true,
+  "keywords": [
+    "beginner",
+    "data visualization",
+    "classification"
+  ],
+  "is_private": false
+}

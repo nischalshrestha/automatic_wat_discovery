@@ -1,0 +1,17 @@
+{
+  "code_file": "my-approach-to-titanic-competition.ipynb",
+  "kernel_sources": [],
+  "title": "My approach to Titanic competition",
+  "id_no": 290191,
+  "enable_gpu": false,
+  "keywords": [],
+  "kernel_type": "notebook",
+  "language": "python",
+  "is_private": false,
+  "enable_internet": false,
+  "competition_sources": [
+    "titanic"
+  ],
+  "dataset_sources": [],
+  "id": "rafalplis/my-approach-to-titanic-competition"
+}

@@ -1,0 +1,17 @@
+{
+  "title": "TITANIC",
+  "enable_gpu": true,
+  "keywords": [],
+  "id": "jerrinv/titanic",
+  "is_private": false,
+  "dataset_sources": [],
+  "language": "python",
+  "kernel_type": "notebook",
+  "code_file": "titanic.ipynb",
+  "kernel_sources": [],
+  "enable_internet": false,
+  "id_no": 1896282,
+  "competition_sources": [
+    "titanic"
+  ]
+}

@@ -1,0 +1,22 @@
+{
+  "kernel_type": "notebook",
+  "keywords": [
+    "beginner",
+    "data cleaning",
+    "classification",
+    "feature engineering"
+  ],
+  "title": "Random Forest",
+  "code_file": "random-forest.irnb",
+  "id_no": 697119,
+  "language": "r",
+  "enable_gpu": false,
+  "is_private": false,
+  "dataset_sources": [],
+  "id": "willianw/random-forest",
+  "kernel_sources": [],
+  "competition_sources": [
+    "titanic"
+  ],
+  "enable_internet": false
+}

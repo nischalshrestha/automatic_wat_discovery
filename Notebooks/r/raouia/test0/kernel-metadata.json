@@ -1,0 +1,17 @@
+{
+  "title": "test0",
+  "code_file": "test0.irnb",
+  "language": "r",
+  "kernel_type": "notebook",
+  "enable_internet": false,
+  "is_private": false,
+  "dataset_sources": [],
+  "id_no": 255890,
+  "keywords": [],
+  "id": "raouia/test0",
+  "competition_sources": [
+    "titanic"
+  ],
+  "enable_gpu": false,
+  "kernel_sources": []
+}

@@ -1,0 +1,17 @@
+{
+  "is_private": false,
+  "enable_gpu": false,
+  "keywords": [],
+  "kernel_type": "notebook",
+  "dataset_sources": [],
+  "code_file": "titanic-random-forest-3-debugged.ipynb",
+  "enable_internet": false,
+  "id": "bubblride/titanic-random-forest-3-debugged",
+  "language": "python",
+  "competition_sources": [
+    "titanic"
+  ],
+  "title": "titanic, random forest 3 [debugged]",
+  "id_no": 1902829,
+  "kernel_sources": []
+}

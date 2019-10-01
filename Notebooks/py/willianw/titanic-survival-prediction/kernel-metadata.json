@@ -1,0 +1,21 @@
+{
+  "enable_gpu": false,
+  "code_file": "titanic-survival-prediction.ipynb",
+  "enable_internet": false,
+  "kernel_sources": [],
+  "competition_sources": [
+    "titanic"
+  ],
+  "is_private": false,
+  "dataset_sources": [],
+  "keywords": [
+    "learning",
+    "feature engineering",
+    "xgboost"
+  ],
+  "kernel_type": "notebook",
+  "id_no": 800350,
+  "language": "python",
+  "id": "willianw/titanic-survival-prediction",
+  "title": "Titanic Survival Prediction"
+}

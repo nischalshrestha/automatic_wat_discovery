@@ -1,0 +1,17 @@
+{
+  "title": "Titanic Python ",
+  "kernel_type": "notebook",
+  "enable_gpu": false,
+  "language": "python",
+  "dataset_sources": [],
+  "is_private": false,
+  "id_no": 413525,
+  "kernel_sources": [],
+  "competition_sources": [
+    "titanic"
+  ],
+  "enable_internet": false,
+  "keywords": [],
+  "code_file": "titanic-python.ipynb",
+  "id": "hermitmax/titanic-python"
+}

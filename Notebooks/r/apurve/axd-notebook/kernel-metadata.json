@@ -1,0 +1,17 @@
+{
+  "kernel_type": "notebook",
+  "code_file": "axd-notebook.irnb",
+  "kernel_sources": [],
+  "enable_internet": false,
+  "dataset_sources": [],
+  "title": "Notebookede5d68907",
+  "id": "apurve/axd-notebook",
+  "id_no": 191917,
+  "is_private": false,
+  "competition_sources": [
+    "titanic"
+  ],
+  "language": "r",
+  "enable_gpu": false,
+  "keywords": []
+}

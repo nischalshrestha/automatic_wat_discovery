@@ -1,0 +1,20 @@
+{
+  "kernel_sources": [],
+  "competition_sources": [
+    "titanic"
+  ],
+  "kernel_type": "notebook",
+  "title": "Titanic Kernel 79.4% Accuracy",
+  "language": "python",
+  "id": "ospohngellert/titanic-kernel-79-4-accuracy",
+  "keywords": [
+    "data visualization",
+    "feature engineering"
+  ],
+  "id_no": 412482,
+  "code_file": "titanic-kernel-79-4-accuracy.ipynb",
+  "enable_internet": false,
+  "enable_gpu": false,
+  "dataset_sources": [],
+  "is_private": false
+}

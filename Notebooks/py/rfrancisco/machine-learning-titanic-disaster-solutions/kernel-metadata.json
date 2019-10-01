@@ -1,0 +1,17 @@
+{
+  "code_file": "machine-learning-titanic-disaster-solutions.ipynb",
+  "kernel_sources": [],
+  "kernel_type": "notebook",
+  "language": "python",
+  "enable_gpu": false,
+  "id": "rfrancisco/machine-learning-titanic-disaster-solutions",
+  "enable_internet": false,
+  "dataset_sources": [],
+  "id_no": 315112,
+  "competition_sources": [
+    "titanic"
+  ],
+  "keywords": [],
+  "title": "Machine Learning - Titanic Disaster Solutions",
+  "is_private": false
+}

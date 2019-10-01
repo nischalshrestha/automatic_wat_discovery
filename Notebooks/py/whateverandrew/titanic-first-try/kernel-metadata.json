@@ -1,0 +1,17 @@
+{
+  "is_private": false,
+  "code_file": "titanic-first-try.ipynb",
+  "dataset_sources": [],
+  "title": "Titanic First try",
+  "id": "whateverandrew/titanic-first-try",
+  "keywords": [],
+  "kernel_sources": [],
+  "enable_internet": false,
+  "enable_gpu": false,
+  "kernel_type": "notebook",
+  "competition_sources": [
+    "titanic"
+  ],
+  "language": "python",
+  "id_no": 1914931
+}

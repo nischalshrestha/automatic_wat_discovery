@@ -1,0 +1,17 @@
+{
+  "id_no": 167892,
+  "kernel_type": "notebook",
+  "id": "ddmngml/studying-titanic-data-and-creating-features",
+  "language": "python",
+  "title": "Studying Titanic data and creating features",
+  "competition_sources": [
+    "titanic"
+  ],
+  "code_file": "studying-titanic-data-and-creating-features.ipynb",
+  "enable_internet": false,
+  "keywords": [],
+  "kernel_sources": [],
+  "is_private": false,
+  "dataset_sources": [],
+  "enable_gpu": false
+}

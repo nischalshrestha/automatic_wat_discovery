@@ -1,0 +1,17 @@
+{
+  "competition_sources": [
+    "titanic"
+  ],
+  "language": "python",
+  "dataset_sources": [],
+  "enable_internet": false,
+  "kernel_sources": [],
+  "is_private": false,
+  "title": "An Interactive Data Science Tutorial 7db620",
+  "kernel_type": "notebook",
+  "id_no": 238223,
+  "enable_gpu": false,
+  "id": "citybuster/an-interactive-data-science-tutorial-7db620",
+  "keywords": [],
+  "code_file": "an-interactive-data-science-tutorial-7db620.ipynb"
+}

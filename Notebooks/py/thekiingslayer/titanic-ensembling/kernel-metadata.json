@@ -1,0 +1,23 @@
+{
+  "enable_internet": false,
+  "competition_sources": [
+    "titanic"
+  ],
+  "id": "thekiingslayer/titanic-ensembling",
+  "enable_gpu": false,
+  "dataset_sources": [],
+  "title": "Titanic-Ensembling",
+  "is_private": false,
+  "id_no": 863832,
+  "code_file": "titanic-ensembling.ipynb",
+  "kernel_type": "notebook",
+  "language": "python",
+  "kernel_sources": [],
+  "keywords": [
+    "beginner",
+    "advanced",
+    "data visualization",
+    "ensembling",
+    "feature engineering"
+  ]
+}

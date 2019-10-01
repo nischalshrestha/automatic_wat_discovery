@@ -1,0 +1,17 @@
+{
+  "code_file": "fall-in-titanic.ipynb",
+  "is_private": false,
+  "title": "Fall in Titanic",
+  "language": "python",
+  "kernel_type": "notebook",
+  "kernel_sources": [],
+  "enable_gpu": false,
+  "dataset_sources": [],
+  "id": "zhbain/fall-in-titanic",
+  "keywords": [],
+  "id_no": 302787,
+  "competition_sources": [
+    "titanic"
+  ],
+  "enable_internet": false
+}

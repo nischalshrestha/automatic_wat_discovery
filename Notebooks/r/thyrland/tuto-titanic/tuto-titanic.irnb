@@ -1,0 +1,66 @@
+{"cells":[
+ {
+  "cell_type": "code",
+  "execution_count": null,
+  "metadata": {
+   "collapsed": false
+  },
+  "outputs": [],
+  "source": "\n# This R script will run on our backend. You can write arbitrary code here!\n\n# Many standard libraries are already installed, such as randomForest\nlibrary(randomForest)\n\n# The train and test data is stored in the ../input directory\ntrain <- read.csv(\"../input/train.csv\")\ntest  <- read.csv(\"../input/test.csv\")\n\n# We can inspect the train data. The results of this are printed in the log tab below\nstr(train)\n"
+ },
+ {
+  "cell_type": "code",
+  "execution_count": null,
+  "metadata": {
+   "collapsed": false
+  },
+  "outputs": [],
+  "source": "# Likely usefull variables to predict if a passenger survived are: \n# - Pclass\n# - Sex\n# - Age\n# - SibSp\n# - Parch\n# - Fare (even though this one should be stronlgy correlated to \"Cabin\")\n# - Embarked (not sure about this one for the moment though)\n\n# Create logistic regression model to check the most significant variables\nTTCLog = glm(Survived ~ Pclass + Sex + Age + SibSp + Parch + Fare + Embarked, data = train, family = \"binomial\")\nsummary(TTCLog)"
+ },
+ {
+  "cell_type": "markdown",
+  "metadata": {},
+  "source": "It seemed that the most significant variables are Pclass, Sex, Age and SibSp:\n\n* The highest the class the less likely the passenger survived\n* Women also seemed to be more likely to survive\n* The youngest passenger were also more likely to survive\n* Having siblings our spouse doesn't seem to be an asset"
+ },
+ {
+  "cell_type": "code",
+  "execution_count": null,
+  "metadata": {
+   "collapsed": false
+  },
+  "outputs": [],
+  "source": "# Create an optimized logistic regression model using only the most significant variables\nTTCLogOpt = glm(Survived ~ Pclass + Sex + Age + SibSp, data = train, family = \"binomial\")\nsummary(TTCLogOpt)"
+ },
+ {
+  "cell_type": "markdown",
+  "metadata": {},
+  "source": "Now that we've got a model let's try to make some predictions"
+ },
+ {
+  "cell_type": "code",
+  "execution_count": null,
+  "metadata": {
+   "collapsed": false
+  },
+  "outputs": [],
+  "source": "# Make predictions on the testing set\nTTCLogOptPred = predict(TTCLogOpt, newdata = test, type = \"response\")\n"
+ },
+ {
+  "cell_type": "code",
+  "execution_count": null,
+  "metadata": {
+   "collapsed": false
+  },
+  "outputs": [],
+  "source": "str(test)"
+ },
+ {
+  "cell_type": "code",
+  "execution_count": null,
+  "metadata": {
+   "collapsed": false
+  },
+  "outputs": [],
+  "source": ""
+ }
+],"metadata":{"kernelspec":{"display_name":"R","language":"R","name":"ir"}}, "nbformat": 4, "nbformat_minor": 0}

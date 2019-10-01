@@ -1,0 +1,208 @@
+{
+  "cells": [
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "_cell_guid": "93b87b66-ca8d-9af9-17ab-cb9be22cbd66"
+      },
+      "outputs": [],
+      "source": [
+        "# This R environment comes with all of CRAN preinstalled, as well as many other helpful packages\n",
+        "# The environment is defined by the kaggle/rstats docker image: https://github.com/kaggle/docker-rstats\n",
+        "# For example, here's several helpful packages to load in \n",
+        "\n",
+        "library(ggplot2) # Data visualization\n",
+        "library(readr) # CSV file I/O, e.g. the read_csv function\n",
+        "\n",
+        "# Input data files are available in the \"../input/\" directory.\n",
+        "# For example, running this (by clicking run or pressing Shift+Enter) will list the files in the input directory\n",
+        "\n",
+        "system(\"ls ../input\")\n",
+        "\n",
+        "# Any results you write to the current directory are saved as output."
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "_cell_guid": "8ece32f6-08e1-81e1-c189-6f4a35be7c1a"
+      },
+      "outputs": [],
+      "source": [
+        "# Set seed and read input data\n",
+        "set.seed(1)\n",
+        "train <- read.csv(\"../input/train.csv\", stringsAsFactors=FALSE)\n",
+        "test  <- read.csv(\"../input/test.csv\",  stringsAsFactors=FALSE)"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "_cell_guid": "b2239b22-7f6d-f43b-c7c3-b5018274056d"
+      },
+      "outputs": [],
+      "source": [
+        "#inspect data\n",
+        "head(train)\n",
+        "summary(train)"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "_cell_guid": "de67e46b-b5f5-883a-f9d1-2e4383f138f8"
+      },
+      "outputs": [],
+      "source": [
+        "selected_features <- c(\"Pclass\",\"Age\",\"Sex\",\"Parch\",\"SibSp\",\"Fare\",\"Embarked\")\n",
+        "\n",
+        "extractFeatures <- function(data) {\n",
+        "  features <- c(\"Pclass\",\n",
+        "                \"Age\",\n",
+        "                \"Sex\",\n",
+        "                \"Parch\",\n",
+        "                \"SibSp\",\n",
+        "                \"Fare\",\n",
+        "                \"Embarked\")\n",
+        "  fea <- data[,features]\n",
+        "#  fea$Age[is.na(fea$Age)] <- -1\n",
+        "#  fea$Fare[is.na(fea$Fare)] <- median(fea$Fare, na.rm=TRUE)\n",
+        "#  fea$Embarked[fea$Embarked==\"\"] = \"S\"\n",
+        "  fea$Sex      <- as.factor(fea$Sex)\n",
+        "  fea$Embarked <- as.factor(fea$Embarked)\n",
+        "  return(fea)\n",
+        "}"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "_cell_guid": "681f4675-6ee2-0482-fa55-a55d9b5f7a84"
+      },
+      "outputs": [],
+      "source": [
+        "# standard random forest\n",
+        "library(randomForest)\n",
+        "rf <- randomForest(extractFeatures(train), as.factor(train$Survived), ntree=100, importance=TRUE)\n",
+        "\n",
+        "submission <- data.frame(PassengerId = test$PassengerId)\n",
+        "submission$Survived <- predict(rf, extractFeatures(test))\n"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "_cell_guid": "d43b68ea-6f81-5e6d-e1e3-6c60f43ad0e0"
+      },
+      "outputs": [],
+      "source": [
+        "#export predictions\n",
+        "write.csv(submission, file = \"1_random_forest_r_submission.csv\", row.names=FALSE)\n"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "_cell_guid": "c0f646d9-7eb0-d3d4-d494-78cbfd6a34ce"
+      },
+      "outputs": [],
+      "source": [
+        "# H2O implementation\n",
+        "library(h2o)\n",
+        "localH2O <- h2o.init()"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "_cell_guid": "c10e9678-ed57-f3ef-f3e9-5d9fb0265911"
+      },
+      "outputs": [],
+      "source": [
+        "train.hex = h2o.importFile(path = \"../input/train.csv\", destination_frame = \"train.hex\")\n",
+        "test.hex = h2o.importFile(path = \"../input/test.csv\", destination_frame = \"test.hex\")\n",
+        "\n",
+        "train.hex$Survived = h2o.asfactor(train.hex$Survived)\n",
+        "#nrow(train.hex)\n",
+        "#train <- as.data.frame(train.hex)\n",
+        "#str(train)\n",
+        "#train$Survived <- as.factor(train$Survived)\n",
+        "#rain_h2o <- as.h2o(train)\n",
+        "#train.hex <- as.h2o(localH2O,train[,2:ncol(train)])\n",
+        "#test.hex <- as.h2o(localH2O,test[,2:ncol(train)])\n"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "_cell_guid": "9bc806eb-cad3-0816-38c1-2212a381e911"
+      },
+      "outputs": [],
+      "source": [
+        "N_FOLDS = 10\n",
+        "model_rf = h2o.randomForest(x = 3:ncol(train.hex),\n",
+        "                                 y = 2,\n",
+        "                                 training_frame = train.hex,\n",
+        "                                 nfolds = N_FOLDS,\n",
+        "                                 fold_assignment = 'Stratified',\n",
+        "#                             fold_column = 'fold',\n",
+        "                                 model_id = \"rf1\",\n",
+        "                                 keep_cross_validation_predictions = TRUE,\n",
+        "                                 seed = 3345,\n",
+        "                                 balance_classes = FALSE)"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "_cell_guid": "093658b3-4d27-ca04-0540-e5b1000f8a9b"
+      },
+      "outputs": [],
+      "source": [
+        "submission = test$Passengerid\n",
+        "submission$Survived = as.data.frame(h2o.predict(model_rf,test.hex))[,1]\n",
+        "write.csv(submission, file=\"submission.csv\",row.names=FALSE)"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "_cell_guid": "791ef27c-3bab-eee9-8e2e-6877cadf994c"
+      },
+      "outputs": [],
+      "source": [
+        "#done"
+      ]
+    }
+  ],
+  "metadata": {
+    "_change_revision": 0,
+    "_is_fork": false,
+    "kernelspec": {
+      "display_name": "R",
+      "language": "R",
+      "name": "ir"
+    },
+    "language_info": {
+      "codemirror_mode": "r",
+      "file_extension": ".r",
+      "mimetype": "text/x-r-source",
+      "name": "R",
+      "pygments_lexer": "r",
+      "version": "3.3.3"
+    }
+  },
+  "nbformat": 4,
+  "nbformat_minor": 0
+}

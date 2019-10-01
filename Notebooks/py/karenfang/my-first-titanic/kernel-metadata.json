@@ -1,0 +1,17 @@
+{
+  "title": "My first Titanic",
+  "enable_internet": false,
+  "is_private": false,
+  "id_no": 697912,
+  "kernel_type": "notebook",
+  "language": "python",
+  "id": "karenfang/my-first-titanic",
+  "competition_sources": [
+    "titanic"
+  ],
+  "dataset_sources": [],
+  "kernel_sources": [],
+  "keywords": [],
+  "enable_gpu": false,
+  "code_file": "my-first-titanic.ipynb"
+}

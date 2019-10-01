@@ -1,0 +1,17 @@
+{
+  "enable_internet": false,
+  "keywords": [],
+  "competition_sources": [
+    "titanic"
+  ],
+  "kernel_sources": [],
+  "is_private": false,
+  "enable_gpu": false,
+  "dataset_sources": [],
+  "title": "A Classifier of Titanic",
+  "code_file": "a-classifier-of-titanic.ipynb",
+  "language": "python",
+  "id": "wangggong/a-classifier-of-titanic",
+  "kernel_type": "notebook",
+  "id_no": 122397
+}

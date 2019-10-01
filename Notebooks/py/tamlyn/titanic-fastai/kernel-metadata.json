@@ -1,0 +1,17 @@
+{
+  "id": "tamlyn/titanic-fastai",
+  "id_no": 2112757,
+  "is_private": false,
+  "enable_gpu": false,
+  "title": "Titanic FastAI",
+  "keywords": [],
+  "kernel_type": "notebook",
+  "kernel_sources": [],
+  "language": "python",
+  "dataset_sources": [],
+  "competition_sources": [
+    "titanic"
+  ],
+  "code_file": "titanic-fastai.ipynb",
+  "enable_internet": true
+}

@@ -1,0 +1,17 @@
+{
+  "code_file": "projet-apprentissage-statistique.irnb",
+  "is_private": false,
+  "keywords": [],
+  "title": "Projet Apprentissage Statistique",
+  "id": "farrell90/projet-apprentissage-statistique",
+  "enable_internet": false,
+  "language": "r",
+  "kernel_sources": [],
+  "dataset_sources": [],
+  "enable_gpu": false,
+  "competition_sources": [
+    "titanic"
+  ],
+  "kernel_type": "notebook",
+  "id_no": 60572
+}

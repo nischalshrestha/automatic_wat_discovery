@@ -1,0 +1,17 @@
+{
+  "code_file": "titanic.ipynb",
+  "competition_sources": [
+    "titanic"
+  ],
+  "enable_gpu": false,
+  "kernel_sources": [],
+  "title": "Titanic",
+  "language": "python",
+  "keywords": [],
+  "id_no": 109538,
+  "kernel_type": "notebook",
+  "dataset_sources": [],
+  "is_private": false,
+  "enable_internet": false,
+  "id": "jeanineharb/titanic"
+}

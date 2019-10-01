@@ -1,0 +1,17 @@
+{
+  "id_no": 1614871,
+  "code_file": "kernelf9c8381171.ipynb",
+  "enable_gpu": false,
+  "kernel_type": "notebook",
+  "dataset_sources": [],
+  "competition_sources": [
+    "titanic"
+  ],
+  "keywords": [],
+  "title": "kernelf9c8381171",
+  "id": "alainivars/kernelf9c8381171",
+  "enable_internet": false,
+  "kernel_sources": [],
+  "is_private": false,
+  "language": "python"
+}

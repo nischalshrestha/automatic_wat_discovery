@@ -1,0 +1,21 @@
+{
+  "enable_gpu": false,
+  "keywords": [
+    "beginner",
+    "eda",
+    "data visualization"
+  ],
+  "is_private": false,
+  "competition_sources": [
+    "titanic"
+  ],
+  "code_file": "titanic-eda-data-cleaning-and-initial-modelling.ipynb",
+  "title": "Titanic - EDA, data cleaning and initial modelling",
+  "kernel_sources": [],
+  "dataset_sources": [],
+  "id_no": 1902897,
+  "enable_internet": false,
+  "id": "mrblond89/titanic-eda-data-cleaning-and-initial-modelling",
+  "language": "python",
+  "kernel_type": "notebook"
+}

@@ -1,0 +1,17 @@
+{
+  "enable_internet": false,
+  "competition_sources": [
+    "titanic"
+  ],
+  "code_file": "tutoriel-r-gression-logistique.ipynb",
+  "id_no": 1574113,
+  "title": "Tutoriel: R\u00e9gression logistique ",
+  "kernel_type": "notebook",
+  "is_private": false,
+  "id": "lamine16/tutoriel-r-gression-logistique",
+  "dataset_sources": [],
+  "kernel_sources": [],
+  "keywords": [],
+  "enable_gpu": false,
+  "language": "python"
+}

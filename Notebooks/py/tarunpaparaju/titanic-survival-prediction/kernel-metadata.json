@@ -1,0 +1,21 @@
+{
+  "dataset_sources": [],
+  "title": "Titanic Survival Prediction",
+  "competition_sources": [
+    "titanic"
+  ],
+  "kernel_sources": [],
+  "keywords": [
+    "beginner",
+    "classification",
+    "svm"
+  ],
+  "language": "python",
+  "id_no": 1632646,
+  "enable_internet": false,
+  "is_private": false,
+  "kernel_type": "notebook",
+  "enable_gpu": false,
+  "code_file": "titanic-survival-prediction.ipynb",
+  "id": "tarunpaparaju/titanic-survival-prediction"
+}

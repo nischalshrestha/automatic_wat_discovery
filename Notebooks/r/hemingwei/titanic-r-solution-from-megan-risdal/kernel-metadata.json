@@ -1,0 +1,17 @@
+{
+  "title": "Titanic R solution from Megan Risdal",
+  "code_file": "titanic-r-solution-from-megan-risdal.irnb",
+  "keywords": [],
+  "is_private": false,
+  "kernel_type": "notebook",
+  "id": "hemingwei/titanic-r-solution-from-megan-risdal",
+  "enable_gpu": true,
+  "dataset_sources": [],
+  "kernel_sources": [],
+  "language": "r",
+  "competition_sources": [
+    "titanic"
+  ],
+  "id_no": 1380305,
+  "enable_internet": false
+}

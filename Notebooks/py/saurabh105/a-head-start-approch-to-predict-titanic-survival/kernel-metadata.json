@@ -1,0 +1,17 @@
+{
+  "id_no": 1211416,
+  "language": "python",
+  "is_private": false,
+  "code_file": "a-head-start-approch-to-predict-titanic-survival.ipynb",
+  "enable_internet": false,
+  "keywords": [],
+  "id": "saurabh105/a-head-start-approch-to-predict-titanic-survival",
+  "dataset_sources": [],
+  "kernel_type": "notebook",
+  "competition_sources": [
+    "titanic"
+  ],
+  "enable_gpu": false,
+  "kernel_sources": [],
+  "title": "A head start approch to predict titanic survival"
+}

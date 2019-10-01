@@ -1,0 +1,17 @@
+{
+  "language": "python",
+  "keywords": [],
+  "id": "devilishabhirup/notebook6dac3e2286",
+  "enable_internet": false,
+  "competition_sources": [
+    "titanic"
+  ],
+  "dataset_sources": [],
+  "kernel_type": "notebook",
+  "title": "Notebook6dac3e2286",
+  "is_private": false,
+  "code_file": "notebook6dac3e2286.ipynb",
+  "enable_gpu": false,
+  "kernel_sources": [],
+  "id_no": 210511
+}

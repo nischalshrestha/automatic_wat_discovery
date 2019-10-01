@@ -1,0 +1,17 @@
+{
+  "is_private": false,
+  "kernel_sources": [],
+  "keywords": [],
+  "language": "python",
+  "competition_sources": [
+    "titanic"
+  ],
+  "dataset_sources": [],
+  "kernel_type": "notebook",
+  "enable_gpu": false,
+  "id_no": 1344456,
+  "enable_internet": false,
+  "title": "Visualizing Titanic Data",
+  "code_file": "visualizing-titanic-data.ipynb",
+  "id": "ellecf/visualizing-titanic-data"
+}

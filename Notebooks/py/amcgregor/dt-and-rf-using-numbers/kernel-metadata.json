@@ -1,0 +1,17 @@
+{
+  "language": "python",
+  "kernel_type": "notebook",
+  "code_file": "dt-and-rf-using-numbers.ipynb",
+  "dataset_sources": [],
+  "id_no": 2099834,
+  "keywords": [],
+  "enable_internet": false,
+  "title": "DT and RF using numbers",
+  "competition_sources": [
+    "titanic"
+  ],
+  "kernel_sources": [],
+  "enable_gpu": false,
+  "is_private": false,
+  "id": "amcgregor/dt-and-rf-using-numbers"
+}

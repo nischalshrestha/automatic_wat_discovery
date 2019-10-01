@@ -1,0 +1,23 @@
+{
+  "competition_sources": [
+    "titanic"
+  ],
+  "language": "python",
+  "enable_gpu": false,
+  "dataset_sources": [],
+  "is_private": false,
+  "id_no": 2086411,
+  "kernel_sources": [],
+  "enable_internet": false,
+  "id": "bbatista/a-deep-exploration-on-titanic-s-data",
+  "title": "A deep exploration on Titanic's  data! ",
+  "keywords": [
+    "beginner",
+    "eda",
+    "data visualization",
+    "classification",
+    "starter code"
+  ],
+  "kernel_type": "notebook",
+  "code_file": "a-deep-exploration-on-titanic-s-data.ipynb"
+}

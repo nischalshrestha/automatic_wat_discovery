@@ -1,0 +1,17 @@
+{
+  "language": "r",
+  "competition_sources": [
+    "titanic"
+  ],
+  "dataset_sources": [],
+  "title": "Notebookebaac3b999",
+  "kernel_type": "notebook",
+  "kernel_sources": [],
+  "code_file": "notebook9c7eb3f42d.irnb",
+  "id_no": 186820,
+  "enable_internet": false,
+  "id": "dinithidesilva/notebook9c7eb3f42d",
+  "is_private": false,
+  "enable_gpu": false,
+  "keywords": []
+}

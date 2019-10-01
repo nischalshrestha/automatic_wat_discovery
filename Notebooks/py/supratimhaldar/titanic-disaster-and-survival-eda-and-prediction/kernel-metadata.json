@@ -1,0 +1,22 @@
+{
+  "title": "Titanic Disaster and Survival - EDA and Prediction",
+  "kernel_type": "notebook",
+  "kernel_sources": [],
+  "keywords": [
+    "eda",
+    "data cleaning",
+    "data visualization",
+    "feature engineering"
+  ],
+  "code_file": "titanic-disaster-and-survival-eda-and-prediction.ipynb",
+  "enable_gpu": false,
+  "dataset_sources": [],
+  "enable_internet": false,
+  "id_no": 2044023,
+  "language": "python",
+  "competition_sources": [
+    "titanic"
+  ],
+  "is_private": false,
+  "id": "supratimhaldar/titanic-disaster-and-survival-eda-and-prediction"
+}

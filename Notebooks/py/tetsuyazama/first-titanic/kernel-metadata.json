@@ -1,0 +1,17 @@
+{
+  "keywords": [],
+  "id": "tetsuyazama/first-titanic",
+  "kernel_type": "notebook",
+  "title": "First Titanic",
+  "language": "python",
+  "enable_internet": false,
+  "code_file": "first-titanic.ipynb",
+  "dataset_sources": [],
+  "kernel_sources": [],
+  "enable_gpu": false,
+  "id_no": 1949461,
+  "is_private": false,
+  "competition_sources": [
+    "titanic"
+  ]
+}

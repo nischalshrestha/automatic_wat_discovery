@@ -1,0 +1,17 @@
+{
+  "id": "mozianand/mlmodelfirst",
+  "code_file": "mlmodelfirst.ipynb",
+  "language": "python",
+  "id_no": 513375,
+  "dataset_sources": [],
+  "is_private": false,
+  "enable_internet": false,
+  "title": "MLModelFirst",
+  "kernel_type": "notebook",
+  "competition_sources": [
+    "titanic"
+  ],
+  "kernel_sources": [],
+  "enable_gpu": false,
+  "keywords": []
+}

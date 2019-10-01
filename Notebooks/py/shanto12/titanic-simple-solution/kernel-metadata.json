@@ -1,0 +1,17 @@
+{
+  "id_no": 1340956,
+  "is_private": false,
+  "keywords": [],
+  "code_file": "titanic-simple-solution.ipynb",
+  "enable_gpu": false,
+  "language": "python",
+  "enable_internet": true,
+  "id": "shanto12/titanic-simple-solution",
+  "title": "Titanic Simple Solution",
+  "kernel_sources": [],
+  "kernel_type": "notebook",
+  "dataset_sources": [],
+  "competition_sources": [
+    "titanic"
+  ]
+}

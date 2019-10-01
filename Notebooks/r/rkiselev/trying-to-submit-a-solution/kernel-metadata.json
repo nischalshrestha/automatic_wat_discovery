@@ -1,0 +1,17 @@
+{
+  "enable_internet": false,
+  "enable_gpu": false,
+  "dataset_sources": [],
+  "code_file": "trying-to-submit-a-solution.irnb",
+  "competition_sources": [
+    "titanic"
+  ],
+  "language": "r",
+  "id_no": 251720,
+  "is_private": false,
+  "keywords": [],
+  "kernel_sources": [],
+  "id": "rkiselev/trying-to-submit-a-solution",
+  "title": "trying to submit a solution",
+  "kernel_type": "notebook"
+}

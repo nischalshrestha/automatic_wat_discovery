@@ -1,0 +1,19 @@
+{
+  "dataset_sources": [],
+  "id": "wade3han/my-first-machine-learning",
+  "enable_internet": false,
+  "keywords": [
+    "machine learning"
+  ],
+  "language": "python",
+  "kernel_type": "notebook",
+  "code_file": "my-first-machine-learning.ipynb",
+  "id_no": 503830,
+  "competition_sources": [
+    "titanic"
+  ],
+  "kernel_sources": [],
+  "enable_gpu": false,
+  "is_private": false,
+  "title": "My first Machine Learning"
+}

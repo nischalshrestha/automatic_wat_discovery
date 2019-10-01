@@ -1,0 +1,17 @@
+{
+  "kernel_type": "notebook",
+  "id": "dhest12/titanic-24april2018logregexplorer-a",
+  "language": "python",
+  "enable_internet": false,
+  "title": "Titanic_24April2018LogRegExplorer_A",
+  "enable_gpu": false,
+  "keywords": [],
+  "competition_sources": [
+    "titanic"
+  ],
+  "kernel_sources": [],
+  "code_file": "titanic-24april2018logregexplorer-a.ipynb",
+  "id_no": 885982,
+  "is_private": false,
+  "dataset_sources": []
+}

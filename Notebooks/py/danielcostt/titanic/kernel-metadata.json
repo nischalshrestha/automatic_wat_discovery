@@ -1,0 +1,17 @@
+{
+  "is_private": false,
+  "kernel_sources": [],
+  "kernel_type": "notebook",
+  "keywords": [],
+  "enable_internet": false,
+  "language": "python",
+  "enable_gpu": false,
+  "competition_sources": [
+    "titanic"
+  ],
+  "id": "danielcostt/titanic",
+  "id_no": 712993,
+  "title": "Titanic",
+  "code_file": "titanic.ipynb",
+  "dataset_sources": []
+}

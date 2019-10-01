@@ -1,0 +1,17 @@
+{
+  "id_no": 242177,
+  "keywords": [],
+  "title": "Notebook80a444bd9a",
+  "kernel_type": "notebook",
+  "language": "python",
+  "dataset_sources": [],
+  "enable_gpu": false,
+  "competition_sources": [
+    "titanic"
+  ],
+  "code_file": "notebook80a444bd9a.ipynb",
+  "id": "maitree/notebook80a444bd9a",
+  "is_private": false,
+  "kernel_sources": [],
+  "enable_internet": false
+}

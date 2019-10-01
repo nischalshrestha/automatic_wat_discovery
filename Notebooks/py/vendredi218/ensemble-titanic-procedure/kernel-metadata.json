@@ -1,0 +1,19 @@
+{
+  "enable_internet": false,
+  "language": "python",
+  "is_private": false,
+  "kernel_sources": [
+    "vendredi218/featureengineering-titanic-procedure"
+  ],
+  "title": "Ensemble Titanic_procedure",
+  "id_no": 753230,
+  "competition_sources": [
+    "titanic"
+  ],
+  "id": "vendredi218/ensemble-titanic-procedure",
+  "enable_gpu": false,
+  "dataset_sources": [],
+  "kernel_type": "notebook",
+  "keywords": [],
+  "code_file": "ensemble-titanic-procedure.ipynb"
+}

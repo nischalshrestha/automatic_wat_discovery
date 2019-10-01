@@ -1,0 +1,17 @@
+{
+  "code_file": "titanic-in-python-svm.ipynb",
+  "enable_internet": false,
+  "is_private": false,
+  "kernel_sources": [],
+  "id_no": 758989,
+  "title": "Titanic in Python SVM",
+  "dataset_sources": [],
+  "enable_gpu": false,
+  "id": "pliptor/titanic-in-python-svm",
+  "competition_sources": [
+    "titanic"
+  ],
+  "language": "python",
+  "kernel_type": "notebook",
+  "keywords": []
+}

@@ -1,0 +1,21 @@
+{
+  "id_no": 937170,
+  "id": "dlarionov/titanic-xgboost",
+  "language": "python",
+  "dataset_sources": [],
+  "is_private": false,
+  "kernel_type": "notebook",
+  "keywords": [
+    "beginner",
+    "classification",
+    "feature engineering"
+  ],
+  "title": "Titanic xgboost",
+  "competition_sources": [
+    "titanic"
+  ],
+  "kernel_sources": [],
+  "enable_gpu": false,
+  "code_file": "titanic-xgboost.ipynb",
+  "enable_internet": false
+}

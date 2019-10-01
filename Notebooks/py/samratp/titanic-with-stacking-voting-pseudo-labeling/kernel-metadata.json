@@ -1,0 +1,21 @@
+{
+  "language": "python",
+  "kernel_sources": [],
+  "enable_internet": false,
+  "id_no": 554028,
+  "title": "Titanic with Stacking, Voting, Pseudo Labeling",
+  "code_file": "titanic-with-stacking-voting-pseudo-labeling.ipynb",
+  "keywords": [
+    "tutorial",
+    "eda",
+    "classification"
+  ],
+  "enable_gpu": false,
+  "kernel_type": "notebook",
+  "is_private": false,
+  "competition_sources": [
+    "titanic"
+  ],
+  "dataset_sources": [],
+  "id": "samratp/titanic-with-stacking-voting-pseudo-labeling"
+}

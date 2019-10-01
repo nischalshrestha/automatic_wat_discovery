@@ -1,0 +1,17 @@
+{
+  "is_private": false,
+  "id_no": 457636,
+  "keywords": [],
+  "enable_internet": false,
+  "competition_sources": [
+    "titanic"
+  ],
+  "kernel_sources": [],
+  "enable_gpu": false,
+  "language": "python",
+  "dataset_sources": [],
+  "kernel_type": "notebook",
+  "title": "Random Forest e Feature Engineering [pt-BR] - P3",
+  "code_file": "random-forest-e-feature-engineering-pt-br-p3.ipynb",
+  "id": "ebertolo/random-forest-e-feature-engineering-pt-br-p3"
+}

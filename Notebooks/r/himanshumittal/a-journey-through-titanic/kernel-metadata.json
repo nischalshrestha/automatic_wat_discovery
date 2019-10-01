@@ -1,0 +1,17 @@
+{
+  "keywords": [],
+  "language": "r",
+  "enable_internet": false,
+  "code_file": "a-journey-through-titanic.irnb",
+  "title": "A Journey through Titanic",
+  "kernel_sources": [],
+  "kernel_type": "notebook",
+  "competition_sources": [
+    "titanic"
+  ],
+  "id": "himanshumittal/a-journey-through-titanic",
+  "is_private": false,
+  "enable_gpu": false,
+  "id_no": 102620,
+  "dataset_sources": []
+}

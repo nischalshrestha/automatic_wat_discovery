@@ -1,0 +1,17 @@
+{
+  "code_file": "titanic-machine-learning.ipynb",
+  "id_no": 1942194,
+  "id": "cleoaguiar/titanic-machine-learning",
+  "kernel_sources": [],
+  "is_private": false,
+  "competition_sources": [
+    "titanic"
+  ],
+  "kernel_type": "notebook",
+  "keywords": [],
+  "language": "python",
+  "enable_internet": false,
+  "enable_gpu": false,
+  "title": "Titanic: Machine Learning",
+  "dataset_sources": []
+}

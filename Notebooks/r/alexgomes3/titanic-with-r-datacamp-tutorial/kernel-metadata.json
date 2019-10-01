@@ -1,0 +1,17 @@
+{
+  "dataset_sources": [],
+  "kernel_type": "notebook",
+  "competition_sources": [
+    "titanic"
+  ],
+  "enable_internet": false,
+  "kernel_sources": [],
+  "keywords": [],
+  "is_private": false,
+  "enable_gpu": false,
+  "title": "Titanic with R  - Datacamp_tutorial",
+  "id_no": 340428,
+  "language": "r",
+  "id": "alexgomes3/titanic-with-r-datacamp-tutorial",
+  "code_file": "titanic-with-r-datacamp-tutorial.irnb"
+}

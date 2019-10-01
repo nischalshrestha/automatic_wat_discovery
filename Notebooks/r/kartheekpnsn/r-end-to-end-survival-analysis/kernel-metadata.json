@@ -1,0 +1,23 @@
+{
+  "code_file": "r-end-to-end-survival-analysis.irnb",
+  "competition_sources": [
+    "titanic"
+  ],
+  "title": "R: End to End Survival Analysis",
+  "enable_internet": false,
+  "enable_gpu": false,
+  "id_no": 729896,
+  "kernel_sources": [],
+  "kernel_type": "notebook",
+  "language": "r",
+  "id": "kartheekpnsn/r-end-to-end-survival-analysis",
+  "is_private": false,
+  "dataset_sources": [],
+  "keywords": [
+    "beginner",
+    "eda",
+    "data cleaning",
+    "classification",
+    "feature engineering"
+  ]
+}

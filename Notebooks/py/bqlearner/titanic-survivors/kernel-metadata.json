@@ -1,0 +1,17 @@
+{
+  "id_no": 415465,
+  "enable_gpu": false,
+  "language": "python",
+  "is_private": false,
+  "kernel_sources": [],
+  "dataset_sources": [],
+  "kernel_type": "notebook",
+  "code_file": "titanic-survivors.ipynb",
+  "id": "bqlearner/titanic-survivors",
+  "title": "Titanic Survivors",
+  "enable_internet": false,
+  "competition_sources": [
+    "titanic"
+  ],
+  "keywords": []
+}

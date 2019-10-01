@@ -1,0 +1,21 @@
+{
+  "dataset_sources": [],
+  "keywords": [
+    "data cleaning",
+    "data visualization",
+    "machine learning"
+  ],
+  "competition_sources": [
+    "titanic"
+  ],
+  "is_private": false,
+  "language": "python",
+  "enable_internet": false,
+  "kernel_sources": [],
+  "id_no": 526116,
+  "kernel_type": "notebook",
+  "code_file": "5-methods-supervised-learning.ipynb",
+  "enable_gpu": false,
+  "id": "esisram/5-methods-supervised-learning",
+  "title": "5 Methods Supervised Learning"
+}

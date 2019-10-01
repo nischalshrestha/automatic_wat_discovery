@@ -1,0 +1,17 @@
+{
+  "code_file": "notebookb91267222d.irnb",
+  "dataset_sources": [],
+  "keywords": [],
+  "id": "jaehwipark/notebookb91267222d",
+  "is_private": false,
+  "title": "Tutorial Follow-up Test",
+  "competition_sources": [
+    "titanic"
+  ],
+  "enable_internet": false,
+  "id_no": 103251,
+  "kernel_sources": [],
+  "enable_gpu": false,
+  "kernel_type": "notebook",
+  "language": "r"
+}

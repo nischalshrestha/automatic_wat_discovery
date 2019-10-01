@@ -1,0 +1,17 @@
+{
+  "id_no": 1225716,
+  "is_private": false,
+  "competition_sources": [
+    "titanic"
+  ],
+  "kernel_sources": [],
+  "id": "capotinho/trabalho-ce",
+  "title": "Trabalho CE",
+  "language": "python",
+  "enable_gpu": false,
+  "kernel_type": "notebook",
+  "keywords": [],
+  "enable_internet": false,
+  "code_file": "trabalho-ce.ipynb",
+  "dataset_sources": []
+}

@@ -1,0 +1,23 @@
+{
+  "id": "manisood001/titanic-m-l",
+  "id_no": 847197,
+  "kernel_type": "notebook",
+  "dataset_sources": [],
+  "keywords": [
+    "tutorial",
+    "beginner",
+    "eda",
+    "feature engineering",
+    "dailychallenge"
+  ],
+  "enable_internet": false,
+  "title": "Titanic M.L",
+  "is_private": false,
+  "enable_gpu": false,
+  "language": "python",
+  "code_file": "titanic-m-l.ipynb",
+  "kernel_sources": [],
+  "competition_sources": [
+    "titanic"
+  ]
+}

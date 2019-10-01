@@ -1,0 +1,17 @@
+{
+  "kernel_type": "notebook",
+  "id_no": 370784,
+  "enable_internet": false,
+  "enable_gpu": false,
+  "title": "Titanic - First ML Project",
+  "code_file": "titanic-first-ml-project.ipynb",
+  "dataset_sources": [],
+  "language": "python",
+  "competition_sources": [
+    "titanic"
+  ],
+  "is_private": false,
+  "id": "ravikn/titanic-first-ml-project",
+  "kernel_sources": [],
+  "keywords": []
+}

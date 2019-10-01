@@ -1,0 +1,17 @@
+{
+  "enable_gpu": false,
+  "code_file": "empty.irnb",
+  "title": "Empty",
+  "competition_sources": [
+    "titanic"
+  ],
+  "id": "shamo002/empty",
+  "id_no": 103516,
+  "enable_internet": false,
+  "kernel_type": "notebook",
+  "keywords": [],
+  "language": "r",
+  "is_private": false,
+  "kernel_sources": [],
+  "dataset_sources": []
+}

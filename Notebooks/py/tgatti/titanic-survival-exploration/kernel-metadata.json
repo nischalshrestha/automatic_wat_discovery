@@ -1,0 +1,17 @@
+{
+  "competition_sources": [
+    "titanic"
+  ],
+  "title": "Titanic Survival Exploration",
+  "enable_internet": false,
+  "is_private": false,
+  "language": "python",
+  "keywords": [],
+  "kernel_sources": [],
+  "id_no": 91104,
+  "code_file": "titanic-survival-exploration.ipynb",
+  "dataset_sources": [],
+  "enable_gpu": false,
+  "kernel_type": "notebook",
+  "id": "tgatti/titanic-survival-exploration"
+}

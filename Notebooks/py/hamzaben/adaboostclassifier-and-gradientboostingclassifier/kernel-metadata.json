@@ -1,0 +1,21 @@
+{
+  "language": "python",
+  "title": "AdaBoostClassifier and GradientBoostingClassifier",
+  "enable_gpu": true,
+  "kernel_sources": [],
+  "dataset_sources": [],
+  "keywords": [
+    "eda",
+    "classification",
+    "feature engineering"
+  ],
+  "id_no": 985688,
+  "code_file": "adaboostclassifier-and-gradientboostingclassifier.ipynb",
+  "is_private": false,
+  "kernel_type": "notebook",
+  "id": "hamzaben/adaboostclassifier-and-gradientboostingclassifier",
+  "competition_sources": [
+    "titanic"
+  ],
+  "enable_internet": false
+}

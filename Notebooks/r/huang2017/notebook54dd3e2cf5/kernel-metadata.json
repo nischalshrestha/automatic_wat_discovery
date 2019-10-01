@@ -1,0 +1,17 @@
+{
+  "competition_sources": [
+    "titanic"
+  ],
+  "language": "python",
+  "enable_internet": false,
+  "code_file": "notebook54dd3e2cf5.ipynb",
+  "id": "huang2017/notebook54dd3e2cf5",
+  "title": "Notebook54dd3e2cf5",
+  "enable_gpu": false,
+  "kernel_sources": [],
+  "keywords": [],
+  "dataset_sources": [],
+  "kernel_type": "notebook",
+  "is_private": false,
+  "id_no": 203802
+}

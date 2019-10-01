@@ -1,0 +1,17 @@
+{
+  "keywords": [],
+  "competition_sources": [
+    "titanic"
+  ],
+  "kernel_type": "notebook",
+  "id": "kord123/titanic",
+  "kernel_sources": [],
+  "title": "Titanic",
+  "language": "r",
+  "is_private": false,
+  "id_no": 219087,
+  "enable_internet": false,
+  "dataset_sources": [],
+  "enable_gpu": false,
+  "code_file": "titanic.irnb"
+}

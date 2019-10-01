@@ -1,0 +1,23 @@
+{
+  "is_private": false,
+  "dataset_sources": [],
+  "enable_internet": false,
+  "code_file": "titanic-deep-learning-aproach-tensorflow.ipynb",
+  "kernel_type": "notebook",
+  "language": "python",
+  "kernel_sources": [],
+  "enable_gpu": true,
+  "title": "Titanic - Deep Learning aproach (tensorflow)",
+  "competition_sources": [
+    "titanic"
+  ],
+  "id_no": 972273,
+  "id": "dimitreoliveira/titanic-deep-learning-aproach-tensorflow",
+  "keywords": [
+    "tutorial",
+    "data cleaning",
+    "classification",
+    "feature engineering",
+    "deep learning"
+  ]
+}

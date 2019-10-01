@@ -1,0 +1,17 @@
+{
+  "enable_internet": false,
+  "enable_gpu": false,
+  "is_private": false,
+  "language": "python",
+  "competition_sources": [
+    "titanic"
+  ],
+  "dataset_sources": [],
+  "id_no": 363451,
+  "kernel_sources": [],
+  "kernel_type": "notebook",
+  "id": "manvindra/titanic-predict-survival-first-kernel",
+  "title": "Titanic: Predict Survival, First Kernel ",
+  "code_file": "titanic-predict-survival-first-kernel.ipynb",
+  "keywords": []
+}

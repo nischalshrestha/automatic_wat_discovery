@@ -1,0 +1,17 @@
+{
+  "title": "Titanic Data Science Solutions  - Standard Process",
+  "enable_gpu": false,
+  "kernel_sources": [],
+  "competition_sources": [
+    "titanic"
+  ],
+  "is_private": false,
+  "id": "gourment/titanic-data-science-solutions-standard-process",
+  "id_no": 255923,
+  "keywords": [],
+  "code_file": "titanic-data-science-solutions-standard-process.ipynb",
+  "kernel_type": "notebook",
+  "dataset_sources": [],
+  "language": "python",
+  "enable_internet": false
+}

@@ -1,0 +1,21 @@
+{
+  "enable_internet": false,
+  "title": "Simple way to make Titanic prediction",
+  "is_private": false,
+  "id": "wariored/simple-way-to-make-titanic-prediction",
+  "language": "python",
+  "dataset_sources": [],
+  "kernel_type": "notebook",
+  "competition_sources": [
+    "titanic"
+  ],
+  "keywords": [
+    "beginner",
+    "data cleaning",
+    "logistic regression"
+  ],
+  "id_no": 1930090,
+  "kernel_sources": [],
+  "enable_gpu": false,
+  "code_file": "simple-way-to-make-titanic-prediction.ipynb"
+}

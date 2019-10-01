@@ -1,0 +1,20 @@
+{
+  "kernel_type": "notebook",
+  "language": "python",
+  "id_no": 1377047,
+  "keywords": [
+    "data cleaning",
+    "data visualization"
+  ],
+  "is_private": false,
+  "competition_sources": [
+    "titanic"
+  ],
+  "code_file": "would-jack-have-lived.ipynb",
+  "enable_internet": false,
+  "title": "Would Jack have lived",
+  "kernel_sources": [],
+  "id": "sanwal092/would-jack-have-lived",
+  "dataset_sources": [],
+  "enable_gpu": false
+}

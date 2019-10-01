@@ -1,0 +1,17 @@
+{
+  "enable_gpu": false,
+  "kernel_type": "notebook",
+  "language": "python",
+  "kernel_sources": [],
+  "id_no": 202793,
+  "enable_internet": false,
+  "is_private": false,
+  "dataset_sources": [],
+  "keywords": [],
+  "code_file": "titanic-data-analysis-in-r.ipynb",
+  "title": "Titanic Data Analysis in R",
+  "competition_sources": [
+    "titanic"
+  ],
+  "id": "amitjena05/titanic-data-analysis-in-r"
+}

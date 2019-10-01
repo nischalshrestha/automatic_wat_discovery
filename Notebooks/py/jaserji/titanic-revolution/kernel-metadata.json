@@ -1,0 +1,17 @@
+{
+  "code_file": "titanic-revolution.ipynb",
+  "id": "jaserji/titanic-revolution",
+  "enable_gpu": false,
+  "kernel_sources": [],
+  "enable_internet": false,
+  "language": "python",
+  "dataset_sources": [],
+  "competition_sources": [
+    "titanic"
+  ],
+  "keywords": [],
+  "title": "titanic revolution",
+  "kernel_type": "notebook",
+  "is_private": false,
+  "id_no": 1282712
+}

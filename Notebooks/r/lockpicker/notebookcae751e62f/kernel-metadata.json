@@ -1,0 +1,17 @@
+{
+  "is_private": false,
+  "kernel_sources": [],
+  "id_no": 237824,
+  "dataset_sources": [],
+  "language": "python",
+  "enable_gpu": false,
+  "kernel_type": "notebook",
+  "enable_internet": false,
+  "title": "Notebookcae751e62f",
+  "id": "lockpicker/notebookcae751e62f",
+  "competition_sources": [
+    "titanic"
+  ],
+  "code_file": "notebookcae751e62f.ipynb",
+  "keywords": []
+}

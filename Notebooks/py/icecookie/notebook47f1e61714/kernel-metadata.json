@@ -1,0 +1,17 @@
+{
+  "keywords": [],
+  "kernel_sources": [],
+  "code_file": "notebook47f1e61714.ipynb",
+  "id_no": 120175,
+  "enable_gpu": false,
+  "kernel_type": "notebook",
+  "is_private": false,
+  "language": "python",
+  "enable_internet": false,
+  "id": "icecookie/notebook47f1e61714",
+  "title": "Notebook47f1e61714",
+  "dataset_sources": [],
+  "competition_sources": [
+    "titanic"
+  ]
+}

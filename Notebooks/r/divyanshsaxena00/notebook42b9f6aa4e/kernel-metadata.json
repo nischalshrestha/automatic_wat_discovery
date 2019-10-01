@@ -1,0 +1,17 @@
+{
+  "id_no": 119303,
+  "code_file": "notebook42b9f6aa4e.irnb",
+  "kernel_sources": [],
+  "enable_gpu": false,
+  "enable_internet": false,
+  "language": "r",
+  "id": "divyanshsaxena00/notebook42b9f6aa4e",
+  "keywords": [],
+  "dataset_sources": [],
+  "kernel_type": "notebook",
+  "is_private": false,
+  "competition_sources": [
+    "titanic"
+  ],
+  "title": "Notebook42b9f6aa4e"
+}

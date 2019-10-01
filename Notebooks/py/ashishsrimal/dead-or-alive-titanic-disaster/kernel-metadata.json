@@ -1,0 +1,17 @@
+{
+  "kernel_sources": [],
+  "code_file": "dead-or-alive-titanic-disaster.ipynb",
+  "is_private": false,
+  "dataset_sources": [],
+  "title": "Dead or Alive: Titanic Disaster",
+  "enable_gpu": false,
+  "keywords": [],
+  "language": "python",
+  "competition_sources": [
+    "titanic"
+  ],
+  "kernel_type": "notebook",
+  "id_no": 1331223,
+  "enable_internet": false,
+  "id": "ashishsrimal/dead-or-alive-titanic-disaster"
+}

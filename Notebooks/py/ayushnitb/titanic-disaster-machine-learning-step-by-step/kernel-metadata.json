@@ -1,0 +1,20 @@
+{
+  "is_private": false,
+  "enable_gpu": false,
+  "id": "ayushnitb/titanic-disaster-machine-learning-step-by-step",
+  "title": "Titanic Disaster: Machine Learning Step by Step ",
+  "dataset_sources": [],
+  "kernel_type": "notebook",
+  "enable_internet": false,
+  "code_file": "titanic-disaster-machine-learning-step-by-step.ipynb",
+  "id_no": 971811,
+  "competition_sources": [
+    "titanic"
+  ],
+  "kernel_sources": [],
+  "keywords": [
+    "classification",
+    "xgboost"
+  ],
+  "language": "python"
+}

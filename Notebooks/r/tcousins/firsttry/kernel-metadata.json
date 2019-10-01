@@ -1,0 +1,17 @@
+{
+  "is_private": false,
+  "code_file": "firsttry.irnb",
+  "competition_sources": [
+    "titanic"
+  ],
+  "enable_internet": false,
+  "keywords": [],
+  "language": "r",
+  "dataset_sources": [],
+  "kernel_type": "notebook",
+  "enable_gpu": false,
+  "id": "tcousins/firsttry",
+  "kernel_sources": [],
+  "id_no": 88321,
+  "title": "firstTry"
+}

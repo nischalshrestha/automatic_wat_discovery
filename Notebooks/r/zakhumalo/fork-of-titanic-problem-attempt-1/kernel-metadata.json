@@ -1,0 +1,17 @@
+{
+  "id_no": 354382,
+  "dataset_sources": [],
+  "title": "Fork of Titanic Problem: Attempt 1",
+  "enable_gpu": false,
+  "kernel_type": "notebook",
+  "is_private": false,
+  "kernel_sources": [],
+  "id": "zakhumalo/fork-of-titanic-problem-attempt-1",
+  "code_file": "fork-of-titanic-problem-attempt-1.irnb",
+  "competition_sources": [
+    "titanic"
+  ],
+  "language": "r",
+  "keywords": [],
+  "enable_internet": false
+}

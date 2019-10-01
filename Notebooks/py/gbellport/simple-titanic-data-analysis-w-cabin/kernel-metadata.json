@@ -1,0 +1,23 @@
+{
+  "enable_gpu": false,
+  "is_private": false,
+  "code_file": "simple-titanic-data-analysis-w-cabin.ipynb",
+  "id_no": 1882473,
+  "dataset_sources": [],
+  "language": "python",
+  "kernel_type": "notebook",
+  "enable_internet": false,
+  "kernel_sources": [],
+  "title": "Simple Titanic Data Analysis (w/ Cabin)",
+  "competition_sources": [
+    "titanic"
+  ],
+  "id": "gbellport/simple-titanic-data-analysis-w-cabin",
+  "keywords": [
+    "beginner",
+    "data cleaning",
+    "classification",
+    "ensembling",
+    "feature engineering"
+  ]
+}

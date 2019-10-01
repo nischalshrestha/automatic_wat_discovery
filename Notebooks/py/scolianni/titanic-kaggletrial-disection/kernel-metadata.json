@@ -1,0 +1,17 @@
+{
+  "id": "scolianni/titanic-kaggletrial-disection",
+  "id_no": 213458,
+  "competition_sources": [
+    "titanic"
+  ],
+  "is_private": false,
+  "kernel_type": "notebook",
+  "enable_internet": false,
+  "keywords": [],
+  "language": "python",
+  "dataset_sources": [],
+  "enable_gpu": false,
+  "code_file": "titanic-kaggletrial-disection.ipynb",
+  "kernel_sources": [],
+  "title": "Titanic : KaggleTrial - disection"
+}

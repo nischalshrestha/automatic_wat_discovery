@@ -1,0 +1,17 @@
+{
+  "kernel_sources": [],
+  "id_no": 218573,
+  "code_file": "titantic-eda-and-random-forest-model.irnb",
+  "language": "r",
+  "dataset_sources": [],
+  "competition_sources": [
+    "titanic"
+  ],
+  "id": "andypicke/titantic-eda-and-random-forest-model",
+  "enable_gpu": false,
+  "is_private": false,
+  "keywords": [],
+  "title": "Titantic EDA and Random Forest Model",
+  "enable_internet": false,
+  "kernel_type": "notebook"
+}

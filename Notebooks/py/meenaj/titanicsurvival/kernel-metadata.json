@@ -1,0 +1,17 @@
+{
+  "keywords": [],
+  "dataset_sources": [],
+  "id": "meenaj/titanicsurvival",
+  "kernel_type": "notebook",
+  "id_no": 181093,
+  "title": "TitanicSurvival",
+  "language": "python",
+  "is_private": false,
+  "code_file": "titanicsurvival.ipynb",
+  "enable_internet": false,
+  "enable_gpu": false,
+  "competition_sources": [
+    "titanic"
+  ],
+  "kernel_sources": []
+}

@@ -1,0 +1,21 @@
+{
+  "id_no": 994955,
+  "language": "r",
+  "enable_internet": false,
+  "kernel_sources": [],
+  "is_private": false,
+  "dataset_sources": [],
+  "id": "cdeotte/titanic-using-name-only-0-81818",
+  "competition_sources": [
+    "titanic"
+  ],
+  "kernel_type": "notebook",
+  "title": "Titanic using Name only [0.81818]",
+  "keywords": [
+    "tutorial",
+    "data visualization",
+    "feature engineering"
+  ],
+  "code_file": "titanic-using-name-only-0-81818.irnb",
+  "enable_gpu": false
+}

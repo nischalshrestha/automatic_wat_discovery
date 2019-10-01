@@ -1,0 +1,17 @@
+{
+  "code_file": "fork-of-titanic-survival-predictions-beginner.ipynb",
+  "enable_internet": false,
+  "id_no": 2117760,
+  "id": "vishnuvwxyz/fork-of-titanic-survival-predictions-beginner",
+  "kernel_sources": [],
+  "enable_gpu": false,
+  "keywords": [],
+  "title": "Fork of Titanic Survival Predictions (Beginner)",
+  "kernel_type": "notebook",
+  "is_private": false,
+  "dataset_sources": [],
+  "competition_sources": [
+    "titanic"
+  ],
+  "language": "python"
+}

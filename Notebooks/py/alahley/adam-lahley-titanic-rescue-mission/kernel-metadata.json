@@ -1,0 +1,17 @@
+{
+  "title": "Adam Lahley Titanic Rescue MIssion",
+  "language": "python",
+  "kernel_sources": [],
+  "dataset_sources": [],
+  "keywords": [],
+  "is_private": false,
+  "id_no": 357576,
+  "kernel_type": "notebook",
+  "code_file": "adam-lahley-titanic-rescue-mission.ipynb",
+  "enable_internet": false,
+  "id": "alahley/adam-lahley-titanic-rescue-mission",
+  "enable_gpu": false,
+  "competition_sources": [
+    "titanic"
+  ]
+}

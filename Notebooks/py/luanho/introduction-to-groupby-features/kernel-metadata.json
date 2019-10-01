@@ -1,0 +1,17 @@
+{
+  "kernel_type": "notebook",
+  "keywords": [],
+  "is_private": false,
+  "id": "luanho/introduction-to-groupby-features",
+  "code_file": "introduction-to-groupby-features.ipynb",
+  "enable_gpu": false,
+  "kernel_sources": [],
+  "language": "python",
+  "competition_sources": [
+    "titanic"
+  ],
+  "id_no": 1505642,
+  "dataset_sources": [],
+  "title": "Introduction to groupby features",
+  "enable_internet": false
+}

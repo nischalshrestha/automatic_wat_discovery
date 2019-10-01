@@ -1,0 +1,17 @@
+{
+  "kernel_sources": [],
+  "enable_gpu": false,
+  "code_file": "titanic-project.ipynb",
+  "language": "python",
+  "id": "alikhanphysics/titanic-project",
+  "title": "Titanic Project",
+  "competition_sources": [
+    "titanic"
+  ],
+  "is_private": false,
+  "enable_internet": false,
+  "keywords": [],
+  "id_no": 2137266,
+  "dataset_sources": [],
+  "kernel_type": "notebook"
+}

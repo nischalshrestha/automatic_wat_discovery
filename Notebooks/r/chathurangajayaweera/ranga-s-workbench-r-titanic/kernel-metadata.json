@@ -1,0 +1,17 @@
+{
+  "kernel_type": "notebook",
+  "competition_sources": [
+    "titanic"
+  ],
+  "dataset_sources": [],
+  "enable_internet": false,
+  "is_private": false,
+  "id": "chathurangajayaweera/ranga-s-workbench-r-titanic",
+  "language": "r",
+  "code_file": "ranga-s-workbench-r-titanic.irnb",
+  "kernel_sources": [],
+  "id_no": 335129,
+  "title": "ranga's workbench - R - Titanic",
+  "keywords": [],
+  "enable_gpu": false
+}

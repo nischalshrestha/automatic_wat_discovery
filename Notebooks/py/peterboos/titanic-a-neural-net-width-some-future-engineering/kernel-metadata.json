@@ -1,0 +1,17 @@
+{
+  "id": "peterboos/titanic-a-neural-net-width-some-future-engineering",
+  "competition_sources": [
+    "titanic"
+  ],
+  "keywords": [],
+  "enable_internet": false,
+  "code_file": "titanic-a-neural-net-width-some-future-engineering.ipynb",
+  "is_private": false,
+  "kernel_type": "notebook",
+  "id_no": 2053376,
+  "enable_gpu": false,
+  "title": "Titanic a neural net width some future engineering",
+  "dataset_sources": [],
+  "language": "python",
+  "kernel_sources": []
+}

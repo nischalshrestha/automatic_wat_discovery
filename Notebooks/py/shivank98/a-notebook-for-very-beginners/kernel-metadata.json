@@ -1,0 +1,17 @@
+{
+  "enable_internet": false,
+  "code_file": "a-notebook-for-very-beginners.ipynb",
+  "competition_sources": [
+    "titanic"
+  ],
+  "enable_gpu": false,
+  "title": "A notebook for very beginners ",
+  "id": "shivank98/a-notebook-for-very-beginners",
+  "id_no": 331337,
+  "kernel_sources": [],
+  "is_private": false,
+  "language": "python",
+  "dataset_sources": [],
+  "kernel_type": "notebook",
+  "keywords": []
+}

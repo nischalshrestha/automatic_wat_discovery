@@ -1,0 +1,23 @@
+{
+  "id_no": 397093,
+  "enable_gpu": false,
+  "is_private": false,
+  "language": "python",
+  "keywords": [
+    "categorical data",
+    "beginner",
+    "gradient boosting",
+    "random forest",
+    "logistic regression"
+  ],
+  "title": "Simple comparison(Catboost,RF,LR,GB) LB~0.80",
+  "code_file": "simple-comparison-catboost-rf-lr-gb-lb-0-80.ipynb",
+  "enable_internet": false,
+  "dataset_sources": [],
+  "kernel_type": "notebook",
+  "id": "alexstr/simple-comparison-catboost-rf-lr-gb-lb-0-80",
+  "kernel_sources": [],
+  "competition_sources": [
+    "titanic"
+  ]
+}

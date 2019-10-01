@@ -1,0 +1,17 @@
+{
+  "kernel_sources": [],
+  "enable_internet": false,
+  "keywords": [],
+  "enable_gpu": false,
+  "language": "python",
+  "id_no": 1493159,
+  "competition_sources": [
+    "titanic"
+  ],
+  "title": "Titanic Using Random Forests",
+  "id": "kherath/titanic-using-random-forests",
+  "is_private": false,
+  "dataset_sources": [],
+  "code_file": "titanic-using-random-forests.ipynb",
+  "kernel_type": "notebook"
+}

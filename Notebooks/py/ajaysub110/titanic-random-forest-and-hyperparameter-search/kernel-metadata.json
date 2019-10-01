@@ -1,0 +1,22 @@
+{
+  "keywords": [
+    "beginner",
+    "data visualization",
+    "classification",
+    "feature engineering"
+  ],
+  "kernel_type": "notebook",
+  "kernel_sources": [],
+  "id": "ajaysub110/titanic-random-forest-and-hyperparameter-search",
+  "language": "python",
+  "enable_internet": false,
+  "dataset_sources": [],
+  "is_private": false,
+  "title": "Titanic - Random forest and Hyperparameter search",
+  "id_no": 1437747,
+  "code_file": "titanic-random-forest-and-hyperparameter-search.ipynb",
+  "competition_sources": [
+    "titanic"
+  ],
+  "enable_gpu": true
+}

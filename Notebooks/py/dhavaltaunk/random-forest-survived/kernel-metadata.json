@@ -1,0 +1,20 @@
+{
+  "id": "dhavaltaunk/random-forest-survived",
+  "is_private": false,
+  "dataset_sources": [],
+  "id_no": 1787152,
+  "language": "python",
+  "kernel_sources": [],
+  "enable_internet": false,
+  "kernel_type": "notebook",
+  "title": "Random Forest && Survived",
+  "code_file": "random-forest-survived.ipynb",
+  "enable_gpu": true,
+  "competition_sources": [
+    "titanic"
+  ],
+  "keywords": [
+    "random forest",
+    "regression"
+  ]
+}

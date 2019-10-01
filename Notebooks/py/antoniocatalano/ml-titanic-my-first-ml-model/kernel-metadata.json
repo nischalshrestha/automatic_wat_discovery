@@ -1,0 +1,17 @@
+{
+  "title": "ML_Titanic",
+  "keywords": [],
+  "id_no": 1238641,
+  "is_private": false,
+  "kernel_sources": [],
+  "language": "python",
+  "enable_internet": false,
+  "code_file": "ml-titanic-my-first-ml-model.ipynb",
+  "enable_gpu": false,
+  "dataset_sources": [],
+  "id": "antoniocatalano/ml-titanic-my-first-ml-model",
+  "competition_sources": [
+    "titanic"
+  ],
+  "kernel_type": "notebook"
+}

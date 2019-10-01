@@ -1,0 +1,17 @@
+{
+  "kernel_type": "notebook",
+  "kernel_sources": [],
+  "language": "r",
+  "id_no": 187103,
+  "id": "chikane/a-journey-through-titanic",
+  "title": "A Journey through Titanic",
+  "dataset_sources": [],
+  "is_private": false,
+  "code_file": "a-journey-through-titanic.irnb",
+  "keywords": [],
+  "enable_internet": false,
+  "enable_gpu": false,
+  "competition_sources": [
+    "titanic"
+  ]
+}

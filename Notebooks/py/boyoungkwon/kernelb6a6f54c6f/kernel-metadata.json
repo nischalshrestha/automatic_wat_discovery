@@ -1,0 +1,17 @@
+{
+  "keywords": [],
+  "id_no": 1566810,
+  "enable_internet": false,
+  "competition_sources": [
+    "titanic"
+  ],
+  "code_file": "kernelb6a6f54c6f.ipynb",
+  "is_private": false,
+  "enable_gpu": false,
+  "language": "python",
+  "kernel_sources": [],
+  "id": "boyoungkwon/kernelb6a6f54c6f",
+  "dataset_sources": [],
+  "kernel_type": "notebook",
+  "title": "kernelb6a6f54c6f"
+}

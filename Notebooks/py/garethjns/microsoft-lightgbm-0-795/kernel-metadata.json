@@ -1,0 +1,17 @@
+{
+  "id_no": 257968,
+  "enable_gpu": false,
+  "language": "python",
+  "enable_internet": false,
+  "competition_sources": [
+    "titanic"
+  ],
+  "keywords": [],
+  "code_file": "microsoft-lightgbm-0-795.ipynb",
+  "kernel_type": "notebook",
+  "kernel_sources": [],
+  "title": "Microsoft LightGBM (~0.795)",
+  "dataset_sources": [],
+  "is_private": false,
+  "id": "garethjns/microsoft-lightgbm-0-795"
+}

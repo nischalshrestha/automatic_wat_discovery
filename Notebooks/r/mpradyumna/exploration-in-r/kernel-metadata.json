@@ -1,0 +1,17 @@
+{
+  "id_no": 96233,
+  "language": "r",
+  "kernel_type": "notebook",
+  "dataset_sources": [],
+  "competition_sources": [
+    "titanic"
+  ],
+  "code_file": "exploration-in-r.irnb",
+  "enable_internet": false,
+  "enable_gpu": false,
+  "title": "Exploration in R",
+  "keywords": [],
+  "id": "mpradyumna/exploration-in-r",
+  "kernel_sources": [],
+  "is_private": false
+}

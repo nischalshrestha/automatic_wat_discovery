@@ -1,0 +1,17 @@
+{
+  "enable_gpu": false,
+  "dataset_sources": [],
+  "title": "Predict Titanic Survivor",
+  "enable_internet": false,
+  "competition_sources": [
+    "titanic"
+  ],
+  "language": "r",
+  "id_no": 180060,
+  "id": "nitinmukhija/predict-titanic-survivor",
+  "code_file": "predict-titanic-survivor.irnb",
+  "is_private": false,
+  "kernel_type": "notebook",
+  "kernel_sources": [],
+  "keywords": []
+}

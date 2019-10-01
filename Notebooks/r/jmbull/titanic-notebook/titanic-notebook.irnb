@@ -1,0 +1,65 @@
+{
+  "cells": [
+    {
+      "cell_type": "markdown",
+      "metadata": {
+        "_cell_guid": "f4e5d82d-ae67-d811-983b-59f8fb4ca4f7"
+      },
+      "source": [
+        "Here is an introduction to JM Bull's Titanic notebook. This is a modification."
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "_cell_guid": "24119864-3a7b-8ff4-2b34-fb53ed0a1f5d"
+      },
+      "outputs": [],
+      "source": [
+        "# Load packages\n",
+        "library('ggplot2') # visualization"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "_cell_guid": "ad747365-1a83-2b39-72c4-55ac4b7dfb07"
+      },
+      "outputs": [],
+      "source": [
+        "train <- read.csv('../input/train.csv', stringsAsFactors = F)\n",
+        "#test  <- read.csv('../input/test.csv', stringsAsFactors = F)\n",
+        "\n",
+        "str(train)\n",
+        "\n",
+        "message(\"\n",
+        "big ol' gap\n",
+        "\")\n",
+        "\n",
+        "# multiple linear regression\n",
+        "lm(formula = Survived ~ Age + Sex, data = train)"
+      ]
+    }
+  ],
+  "metadata": {
+    "_change_revision": 0,
+    "_is_fork": false,
+    "kernelspec": {
+      "display_name": "R",
+      "language": "R",
+      "name": "ir"
+    },
+    "language_info": {
+      "codemirror_mode": "r",
+      "file_extension": ".r",
+      "mimetype": "text/x-r-source",
+      "name": "R",
+      "pygments_lexer": "r",
+      "version": "3.3.2"
+    }
+  },
+  "nbformat": 4,
+  "nbformat_minor": 0
+}

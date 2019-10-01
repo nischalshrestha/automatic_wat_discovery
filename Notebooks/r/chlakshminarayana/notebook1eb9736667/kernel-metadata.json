@@ -1,0 +1,17 @@
+{
+  "is_private": false,
+  "title": "Notebook1eb9736667",
+  "kernel_sources": [],
+  "id": "chlakshminarayana/notebook1eb9736667",
+  "enable_internet": false,
+  "language": "python",
+  "enable_gpu": false,
+  "code_file": "notebook1eb9736667.ipynb",
+  "competition_sources": [
+    "titanic"
+  ],
+  "dataset_sources": [],
+  "kernel_type": "notebook",
+  "keywords": [],
+  "id_no": 233251
+}

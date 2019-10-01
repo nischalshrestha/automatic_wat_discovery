@@ -1,0 +1,17 @@
+{
+  "id_no": 222098,
+  "kernel_type": "notebook",
+  "kernel_sources": [],
+  "code_file": "notebookbca5dd8c86.ipynb",
+  "competition_sources": [
+    "titanic"
+  ],
+  "is_private": false,
+  "language": "python",
+  "keywords": [],
+  "enable_gpu": false,
+  "title": "Notebookbca5dd8c86",
+  "enable_internet": false,
+  "dataset_sources": [],
+  "id": "tachuelaz/notebookbca5dd8c86"
+}

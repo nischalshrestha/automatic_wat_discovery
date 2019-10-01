@@ -1,0 +1,17 @@
+{
+  "kernel_type": "notebook",
+  "title": "Titanic Submission ",
+  "code_file": "titanic-submission.ipynb",
+  "kernel_sources": [],
+  "id": "conorm97/titanic-submission",
+  "is_private": false,
+  "keywords": [],
+  "dataset_sources": [],
+  "enable_gpu": false,
+  "language": "python",
+  "id_no": 191406,
+  "competition_sources": [
+    "titanic"
+  ],
+  "enable_internet": false
+}

@@ -1,0 +1,19 @@
+{
+  "enable_gpu": false,
+  "competition_sources": [
+    "titanic"
+  ],
+  "dataset_sources": [],
+  "language": "r",
+  "kernel_sources": [],
+  "id": "aliawadh980/1st-code",
+  "keywords": [
+    "beginner"
+  ],
+  "title": "1st code",
+  "kernel_type": "notebook",
+  "code_file": "1st-code.irnb",
+  "id_no": 974862,
+  "is_private": false,
+  "enable_internet": false
+}

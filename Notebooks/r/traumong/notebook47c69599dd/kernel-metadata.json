@@ -1,0 +1,17 @@
+{
+  "enable_gpu": false,
+  "kernel_type": "notebook",
+  "id_no": 233926,
+  "enable_internet": false,
+  "is_private": false,
+  "dataset_sources": [],
+  "kernel_sources": [],
+  "language": "python",
+  "competition_sources": [
+    "titanic"
+  ],
+  "id": "traumong/notebook47c69599dd",
+  "keywords": [],
+  "title": "Notebook47c69599dd",
+  "code_file": "notebook47c69599dd.ipynb"
+}

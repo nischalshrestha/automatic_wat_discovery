@@ -1,0 +1,17 @@
+{
+  "competition_sources": [
+    "titanic"
+  ],
+  "is_private": false,
+  "id_no": 230311,
+  "dataset_sources": [],
+  "language": "r",
+  "enable_gpu": false,
+  "keywords": [],
+  "enable_internet": false,
+  "code_file": "data-exploration-in-r.irnb",
+  "kernel_sources": [],
+  "id": "tkngch/data-exploration-in-r",
+  "kernel_type": "notebook",
+  "title": "Data Exploration in R"
+}

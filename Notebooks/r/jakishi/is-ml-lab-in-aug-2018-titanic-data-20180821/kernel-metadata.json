@@ -1,0 +1,17 @@
+{
+  "enable_gpu": false,
+  "dataset_sources": [],
+  "keywords": [],
+  "language": "r",
+  "competition_sources": [
+    "titanic"
+  ],
+  "is_private": false,
+  "id_no": 1560766,
+  "code_file": "is-ml-lab-in-aug-2018-titanic-data-20180821.irnb",
+  "id": "jakishi/is-ml-lab-in-aug-2018-titanic-data-20180821",
+  "title": "IS ML Lab. in Aug. 2018: Titanic Data 20180821",
+  "kernel_type": "notebook",
+  "kernel_sources": [],
+  "enable_internet": false
+}

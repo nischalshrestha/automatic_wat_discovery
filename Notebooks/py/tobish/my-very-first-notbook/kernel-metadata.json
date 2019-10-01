@@ -1,0 +1,17 @@
+{
+  "competition_sources": [
+    "titanic"
+  ],
+  "language": "python",
+  "code_file": "my-very-first-notbook.ipynb",
+  "title": "My very first notbook",
+  "keywords": [],
+  "is_private": false,
+  "kernel_sources": [],
+  "kernel_type": "notebook",
+  "id_no": 380322,
+  "id": "tobish/my-very-first-notbook",
+  "enable_internet": false,
+  "enable_gpu": false,
+  "dataset_sources": []
+}

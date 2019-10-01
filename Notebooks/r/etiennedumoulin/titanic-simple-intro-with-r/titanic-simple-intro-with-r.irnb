@@ -1,0 +1,688 @@
+{
+  "cells": [
+    {
+      "cell_type": "markdown",
+      "metadata": {
+        "_cell_guid": "17e12e18-2ea7-7b2d-5d84-13cb6c34325b"
+      },
+      "source": [
+        "# Introduction\n",
+        "\n",
+        "In this notebook, I will explore the Titanic dataset as well as review a couple of statistics techniques in R. \n",
+        "\n",
+        " 1. Very Quick Summary\n",
+        " 2. Survival Relationships\n",
+        " 3. Feature Engineering\n",
+        " 4. Missing Values\n",
+        " 5. Predicting with a Random Forest\n",
+        " 6. Submitting\n",
+        "\n",
+        "#Very Quick Summary\n",
+        "\n",
+        "We will start our analysis by loading a couple of useful libraries and the data."
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "_cell_guid": "0e728fa6-6602-f4b5-eb55-feaab3a95ca0"
+      },
+      "outputs": [],
+      "source": [
+        "library(ggplot2)\n",
+        "library(dplyr,warn.conflicts = FALSE)\n",
+        "library(formattable,warn.conflicts = FALSE)\n",
+        "library(rpart,warn.conflicts = FALSE)\n",
+        "library(mice,warn.conflicts = FALSE)\n",
+        "library(randomForest,warn.conflicts = FALSE)\n",
+        "library(caret,warn.conflicts = FALSE)\n",
+        "\n",
+        "tr = read.csv(\"../input/train.csv\")\n",
+        "pr = read.csv(\"../input/test.csv\")\n",
+        "pr$Survived <- NA\n",
+        "mergedData <- rbind(tr,pr)"
+      ]
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {
+        "_cell_guid": "da879559-5ecf-cb69-36c9-10d8c3dea729"
+      },
+      "source": [
+        "Let's display the top lines. It will help us understand our data."
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "_cell_guid": "09dd2f89-6205-4df5-b42f-b8825994d31d"
+      },
+      "outputs": [],
+      "source": [
+        "formattable(head(tr,20))"
+      ]
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {
+        "_cell_guid": "55305317-0ad6-43e3-5bad-4150a9273753"
+      },
+      "source": [
+        "From this table, we can figure out a couple of things out each fields:\n",
+        "\n",
+        "* PassengerId Is a unique integer\n",
+        "* Survived field is either 0 or 1\n",
+        "* Name field is following a pattern with Last Name, title. first name\n",
+        "* Sex is either \"male\" or \"female\" value\n",
+        "* Ticket field doesn't seem to follow a straightforward pattern\n",
+        "* Cabin has a lot of null values\n",
+        "\n",
+        "Note: A simple snapshot helps us understanding what the data is about, but not its quality (null values, inconsistencies etc...).  Let's summarize the data to get a better idea about those issues."
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "_cell_guid": "f6c7ba47-7e2e-0c4a-4d92-7ac4682a0c02"
+      },
+      "outputs": [],
+      "source": [
+        "summary(tr)"
+      ]
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {
+        "_cell_guid": "61a9b4fe-cc2b-e3d4-eaa4-eb0123523743"
+      },
+      "source": [
+        "The summary is a quick way to get a lot of information, such as null values, categories, mean, median and range.  We are particularly looking to assess null values, odd ranges or wide difference between median and mean.\n",
+        "\n",
+        "We have 177 age null values, 2 Embarked null values. Proportions of male female is almost one to two. In the next section, we will relate each feature with Survival. \n",
+        "\n",
+        "#Survival Relationships\n",
+        "\n",
+        "As we want to predict survivability, we are looking for features that correlate with it. Those fields will be more useful to our classification model as long as they are independent from each other. In this section we will relate every numeric and categorical variable (a field with at most 5 choices) to survivability.\n",
+        "\n",
+        "## Pclass"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "_cell_guid": "8e98e275-129f-d3bc-7f27-37c4cecff87f"
+      },
+      "outputs": [],
+      "source": [
+        "trPclass <- tr %>% group_by(Pclass) %>% summarize(cnt=n(),surv=mean(Survived)) %>% arrange(-surv) %>% as.data.frame()\n",
+        "formattable(trPclass)"
+      ]
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {
+        "_cell_guid": "32580402-4136-c026-4640-e48840d94f9a"
+      },
+      "source": [
+        "There are very few class categories, but the survivability ratio between the three of them is very clear and their size is distributed appropriately.\n",
+        "\n",
+        "## Sex"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "_cell_guid": "1753e74c-b529-33b2-18d7-11e2a31ee08e"
+      },
+      "outputs": [],
+      "source": [
+        "trSex <- tr %>% group_by(Sex) %>% summarize(cnt=n(),surv=mean(Survived)) %>% arrange(-surv) %>% as.data.frame()\n",
+        "formattable(trSex)\n"
+      ]
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {
+        "_cell_guid": "753e4b4e-d6fc-4dcf-fb51-cfe8cbbd4915"
+      },
+      "source": [
+        "\n",
+        "Note that there are almost two males for one female. Female has a much better chance of survival.\n",
+        "\n",
+        "## Age"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "_cell_guid": "7eb144ea-86db-d37a-86b2-a3f55dd254d7"
+      },
+      "outputs": [],
+      "source": [
+        "ggplot(subset(tr,!is.na(Age)), aes(x = Age, fill = factor(Survived))) + geom_histogram(bins=15,position = 'dodge')\n"
+      ]
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {
+        "_cell_guid": "19760079-dde0-f31f-8c04-87d0a4b3ad29"
+      },
+      "source": [
+        "You can see in this graph that young children and older people have a higher chance of survival than young adults.\n",
+        "\n",
+        "## Siblings"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "_cell_guid": "e5c7de75-bc0c-1248-3900-7f3d94c3f5bf"
+      },
+      "outputs": [],
+      "source": [
+        "ggplot(tr, aes(x = SibSp, fill = factor(Survived))) + geom_bar(position='dodge')"
+      ]
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {
+        "_cell_guid": "5cc31a43-d47d-d95a-d2f2-49fd336a9ef9"
+      },
+      "source": [
+        "Having one or two sibling improve your overall chance of survival.\n",
+        "\n",
+        "## Parents/Children"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "_cell_guid": "47a460ca-f1f5-a7cb-f31c-1c7811993e74"
+      },
+      "outputs": [],
+      "source": [
+        "ggplot(tr, aes(x = Parch, fill = factor(Survived))) + geom_bar(position='dodge')"
+      ]
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {
+        "_cell_guid": "0623c99a-903d-55a4-c3f0-a4a29d162df5"
+      },
+      "source": [
+        "Small families do have a better chance of survival, it seems to be consistent with the graph about the number of children.\n",
+        "\n",
+        "## Fare"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "_cell_guid": "8342d9e0-b98c-e3b0-e5b2-65ac71fe6626"
+      },
+      "outputs": [],
+      "source": [
+        "ggplot(tr, aes(x = Fare, fill = factor(Survived))) + geom_histogram(bins=15,position='dodge')"
+      ]
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {
+        "_cell_guid": "3d95c908-56f8-7abc-b8a0-900fa44f01a0"
+      },
+      "source": [
+        "\n",
+        "We can note a slight increase of survivability when the ticket fare increases. However as most of the tickets have been bought at a low price. We also probably capture this information with the Pclass field reviewed earlier.\n",
+        "\n",
+        "## Embarked"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "_cell_guid": "cbc2370b-9eaa-c5e6-f94d-485814f69aff"
+      },
+      "outputs": [],
+      "source": [
+        "trEmbarked <- tr %>% group_by(Embarked) %>% summarize(cnt=n(),surv=mean(Survived)) %>% arrange(-surv) %>% as.data.frame()\n",
+        "formattable(trEmbarked)"
+      ]
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {
+        "_cell_guid": "427cafeb-22df-b2a0-0d53-f82a9f721911"
+      },
+      "source": [
+        "\n",
+        "Only three categories and 20% of our population can be classified with a higher chance of survival.\n",
+        "We have two missing values. Embarked is not very predictive on its own.\n",
+        "\n",
+        "#Feature Enginnering\n",
+        "\n",
+        "We've just looked into the raw data. Let's see if we can enrich it with the other string columns.  String variables can be rich, but they should be transformed to categorical or -even better- numerical variables to be useful.\n",
+        "\n",
+        "## Duplications\n",
+        "\n",
+        "For string value, let's start with something standard. We will check if sharing attributes has an effect on survivability.\n",
+        "\n",
+        "### Ticket\n",
+        "\n",
+        "I have noticed that several people are sharing a ticket. \n",
+        "Would sharing a ticket with someone correlate with survivability? We can't have too small bins here as our data is very small. Therefore I aggregate the groups of four or more."
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "_cell_guid": "f106f9e9-4fcf-ec65-f84e-be0b207be383"
+      },
+      "outputs": [],
+      "source": [
+        "t <- table(mergedData$Ticket)\n",
+        "mergedData$sharedTicket <- sapply(mergedData$Ticket,function(x) pmin(t[[x]],4) )\n",
+        "trSharedTicket <- mergedData[!is.na(mergedData$Survived),] %>% group_by(sharedTicket) %>% summarize(cnt=n(),surv=mean(Survived)) %>% arrange(-cnt) %>% as.data.frame()\n",
+        "formattable(trSharedTicket)\n",
+        "t <- NULL"
+      ]
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {
+        "_cell_guid": "ecddfc3b-6925-cda2-ab1e-f84e60b9a00d"
+      },
+      "source": [
+        "Indeed, we can see, that people sharing a ticket has a better chance of survival at the end.\n",
+        "\n",
+        "### Name\n",
+        "\n",
+        "We already have features that captures family such as number of parents,children, siblings etc. However maybe we can identify larger groups including cousins by just looking into the last name. We can't have too small bins here as our data is very small. Therefore I aggregate the groups of four or more."
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "_cell_guid": "fe96cd55-8b21-82ab-e866-d18fc7fdaedb"
+      },
+      "outputs": [],
+      "source": [
+        "mergedData$surname <- gsub(',.*', '', mergedData$Name)\n",
+        "t <- table(mergedData$surname)\n",
+        "mergedData$sharedSurname <- sapply(mergedData$surname,function(x) pmin(t[[x]],4))\n",
+        "trSharedSurname <- mergedData[!is.na(mergedData$Survived),] %>% group_by(sharedSurname) %>% summarize(cnt=n(),surv=mean(Survived)) %>% arrange(-cnt) %>% as.data.frame()\n",
+        "formattable(trSharedSurname)\n",
+        "\n",
+        "mergedData$surname <- NULL\n",
+        "t <- NULL"
+      ]
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {
+        "_cell_guid": "84f71606-32e5-6b43-d53a-f865aa02503c"
+      },
+      "source": [
+        "Sharing your last name with someone, correlate a little bit with survivability, not much though.\n",
+        "\n",
+        "### Cabin\n",
+        "\n",
+        "Does sharing a cabin with someone correlate with survivability?"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "_cell_guid": "7f8d2b39-9017-56b6-aafb-0441bb73c757"
+      },
+      "outputs": [],
+      "source": [
+        "mergedData$sharedCabin <- 'N'\n",
+        "mergedData$Cabin <- as.character(mergedData$Cabin)\n",
+        "mergedData[nchar(mergedData$Cabin) > 0,\"sharedCabin\"] <- duplicated(mergedData[nchar(mergedData$Cabin) > 0,\"Cabin\"])|duplicated(mergedData[nchar(mergedData$Cabin) > 0,\"Cabin\"],fromLast=TRUE)\n",
+        "\n",
+        "trSharedCabin <- mergedData[!is.na(mergedData$Survived),] %>% group_by(sharedCabin) %>% summarize(cnt=n(),surv=mean(Survived)) %>% arrange(-cnt) %>% as.data.frame()\n",
+        "formattable(trSharedCabin)"
+      ]
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {
+        "_cell_guid": "72d7a297-e5b3-aa50-9512-6453305c6dfe"
+      },
+      "source": [
+        "It does. People sharing a cabin, have a good chance of survival, compare to people who don't have a cabin at all.\n",
+        "\n",
+        "## Title\n",
+        "\n",
+        "From the snapshot of data, display at the top,  we can deduce everyone's title is between a comma and a dot. Let's extract this first and see."
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "_cell_guid": "52680bcf-bbf3-76d4-7120-a1f94b16e316"
+      },
+      "outputs": [],
+      "source": [
+        "mergedData$title <- gsub('(.*, )|(\\\\..*)', '', mergedData$Name)\n",
+        "mergedData$title[mergedData$title == \"Ms\"] <- \"Miss\"\n",
+        "mergedData$title[mergedData$title == \"Mlle\"] <- \"Miss\"\n",
+        "mergedData$title[!mergedData$title %in% c(\"Miss\",\"Mrs\",\"Mr\")] <- \"Other\"\n",
+        "\n",
+        "trTitle <- mergedData[!is.na(mergedData$Survived),] %>% group_by(title) %>% summarize(cnt=n(),surv=mean(Survived)) %>% arrange(-surv) %>% as.data.frame()\n",
+        "formattable(trTitle)"
+      ]
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {
+        "_cell_guid": "d894ebb6-ba3a-dc02-d4bd-afb4b2b0642a"
+      },
+      "source": [
+        "It seems to be a quite reasonable feature with a couple category and quite a gap in survivability ratio!"
+      ]
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {
+        "_cell_guid": "e378b627-b341-25f9-71bc-7f93a22fdeca"
+      },
+      "source": [
+        "#Missing Values\n",
+        "\n",
+        "In this section we will take care of the null values in our datasets. We will use two independent method for this. In real life, you would generally choose the best method by evaluating it on a subset of your data.\n",
+        "\n",
+        "## Embarked (rpart)\n",
+        "\n",
+        "Let's look into our null value and use rpart."
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "_cell_guid": "83b8cf21-fa32-0915-0187-555b12faf514"
+      },
+      "outputs": [],
+      "source": [
+        "formattable(subset(mergedData,nchar(as.character(Embarked)) == 0))"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "_cell_guid": "78e579d5-5bdf-5dda-1eea-720e7434d017"
+      },
+      "outputs": [],
+      "source": [
+        "mergedData$Name <- NULL\n",
+        "mergedData$Ticket <- NULL\n",
+        "mergedData$Cabin <- NULL\n",
+        "mergedData$ticketsCnt <- NULL\n",
+        "mergedData$ticketLetter <- NULL\n",
+        "trClean1 <- mergedData\n",
+        "class_emb_mod <- rpart(Embarked ~ . - Survived, data=subset(trClean1,nchar(as.character(Embarked)) > 0), method=\"class\", na.action=na.omit) \n",
+        "emb_pred <- predict(class_emb_mod, subset(trClean1,nchar(as.character(Embarked)) == 0))\n",
+        "trClean1$Embarked[nchar(as.character(trClean1$Embarked)) == 0] <- colnames(emb_pred)[apply(emb_pred, 1, which.max)]"
+      ]
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {
+        "_cell_guid": "9440e312-11e9-53c8-50f1-c5bacc68f9d8"
+      },
+      "source": [
+        "## Age (mice)\n",
+        "\n",
+        "Let's look into our null value and use mice."
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "_cell_guid": "d9e13053-e52c-2bc8-cfb7-5c48879592ba"
+      },
+      "outputs": [],
+      "source": [
+        "formattable(head(subset(tr,is.na(Age))))"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "_cell_guid": "b857dde9-2dd7-bdeb-0576-d2ccebea4caf"
+      },
+      "outputs": [],
+      "source": [
+        "trClean2 <- trClean1\n",
+        "# perform mice imputation, based on random forests\n",
+        "miceMod <- mice(trClean2[,!names(trClean2) %in% \"Survived\"], method=\"rf\",printFlag=FALSE) \n",
+        "# generate the completed data\n",
+        "trClean2[,!names(trClean2) %in% \"Survived\"] <- complete(miceMod)\n",
+        "#anyNA(miceOutput)\n",
+        "head(trClean2)"
+      ]
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {
+        "_cell_guid": "a8d993cb-15c4-1b84-afd5-f99b9a066b1e"
+      },
+      "source": [
+        "#Predicting with a Random Forest\n",
+        "\n",
+        "## Running the Model"
+      ]
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {
+        "_cell_guid": "b31f323c-e170-e390-45cd-9f3bddcd8a7e"
+      },
+      "source": [
+        "Random Forest is probably one of the easiest algorithm you could use and therefore one of the first to try. Your data does not need to be too clean, no normalisation (make all you fields have a mean of zero and standard deviation of one) and orthogonalisation (make all your fields completely independent of each other) required."
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "_cell_guid": "0fc40a49-8442-0e5b-40d5-63cc5e8c0ded"
+      },
+      "outputs": [],
+      "source": [
+        "set.seed(415)\n",
+        "trClean <- trClean2\n",
+        "#lapply(trClean, class)\n",
+        "trClean$Survived <- as.factor(trClean$Survived)\n",
+        "trClean$title <- as.factor(trClean$title)\n",
+        "trClean$sharedCabin <- as.factor(trClean$sharedCabin)\n",
+        "\n",
+        "trRF <- trClean[!is.na(trClean$Survived),]\n",
+        "fit <- randomForest(Survived ~ . - PassengerId,\n",
+        "                      data=trRF, \n",
+        "                      importance=TRUE, \n",
+        "                      ntree=1000)"
+      ]
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {
+        "_cell_guid": "7df21b46-d07b-2774-f90d-80cb359125a4"
+      },
+      "source": [
+        "Let's look into the confusion matrix of our training set. This will give us an estimate how well our algorithm can perform. "
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "_cell_guid": "83cb04df-f0f8-4110-60e6-9b713325faa8"
+      },
+      "outputs": [],
+      "source": [
+        "fit$confusion\n",
+        "\n",
+        "successRate <- (fit$confusion[1,1]+fit$confusion[2,2]) / (fit$confusion[1,1]+fit$confusion[2,2]+fit$confusion[2,1]+fit$confusion[1,2])\n",
+        "print(successRate)"
+      ]
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {
+        "_cell_guid": "9224d0fd-34d0-a33e-76b5-d7fc4dbd0c77"
+      },
+      "source": [
+        "The confusion matrix count for the training set, how many true-negative (top left), false-negative (top right), false-positive (bottom left), true-positive (bottom right).\n",
+        "\n",
+        "In this example false-negative means people that have been predicted as not surviving but that actually survived.\n",
+        "\n",
+        "## Cross-Validation\n",
+        "\n",
+        "Let's just check before going further how our model is doing against over-fitting. We will use a cross-validation. We will split our data into 10 bins, we will train 10 times the model using nine bins, and evaluate each model using one bin. \n",
+        "We are rebuilding our confusion matrix from there."
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "_cell_guid": "ddffc6f6-a09a-2b0f-326d-9cb1e47ee87d"
+      },
+      "outputs": [],
+      "source": [
+        "flds <- createFolds(trRF$PassengerId, k = 10, list = TRUE, returnTrain = FALSE)\n",
+        "#head( trRF[flds[[1]],!names(trRF) %in% c(\"PassengerId\",\"Survived\") ])\n",
+        "conf <- NA\n",
+        "for(i in 1:10){\n",
+        "    fitTest <- randomForest(Survived ~ . - PassengerId,\n",
+        "                      data=trRF[-flds[[1]], ], \n",
+        "                      importance=TRUE, \n",
+        "                      ntree=1000,\n",
+        "                      xtest = trRF[flds[[1]],!names(trRF) %in% c(\"PassengerId\",\"Survived\") ],\n",
+        "                      ytest = trRF[flds[[1]], \"Survived\"])\n",
+        "    if(!is.matrix(conf)){\n",
+        "        conf <- fitTest$test$confusion\n",
+        "    }else{\n",
+        "        conf <- conf + fitTest$test$confusion\n",
+        "    }\n",
+        "}\n",
+        "conf[1,3] <- conf[1,2] /(conf[1,1]+conf[1,2])\n",
+        "conf[2,3] <- conf[2,1] /(conf[2,1]+conf[2,2])\n",
+        "conf"
+      ]
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {
+        "_cell_guid": "d19861ec-fcfd-bc12-d40a-729aba262e36"
+      },
+      "source": [
+        "The performance of our model doesn't seem to drop, which is a good sign. "
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "_cell_guid": "30dccc8b-fcc3-52b3-b893-50c7a9f8d3a0"
+      },
+      "outputs": [],
+      "source": [
+        "varImpPlot(fit)"
+      ]
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {
+        "_cell_guid": "952c718e-d4c7-2aca-e555-6ee358b01141"
+      },
+      "source": [
+        "Let's predict and display the new predicted value."
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "_cell_guid": "60443001-bfd8-a58f-8ade-5be5d8f95219"
+      },
+      "outputs": [],
+      "source": [
+        "prRF <- trClean[is.na(trClean$Survived),]\n",
+        "prediction <- predict(fit, prRF)\n",
+        "prRF$Survived <-prediction\n",
+        "formattable(head(prRF,20))"
+      ]
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {
+        "_cell_guid": "bc10be94-3ea9-84ef-aab9-eea02de16eb4"
+      },
+      "source": [
+        "#Submitting\n",
+        "\n",
+        "We just need to submit now..."
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "_cell_guid": "298d396b-0628-734a-8fea-be1f1136f8d0"
+      },
+      "outputs": [],
+      "source": [
+        "solution <- data.frame(PassengerId = prRF$PassengerId, Survived = prRF$Survived)\n",
+        "write.csv(solution, file = 'output.csv')"
+      ]
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {
+        "_cell_guid": "72ef8ac4-f3b7-2000-94ef-4298862b147b"
+      },
+      "source": [
+        "Thank you for reading until the end. I hope you have had as much fun reading this quick guide as I had writing it."
+      ]
+    }
+  ],
+  "metadata": {
+    "_change_revision": 0,
+    "_is_fork": false,
+    "kernelspec": {
+      "display_name": "R",
+      "language": "R",
+      "name": "ir"
+    },
+    "language_info": {
+      "codemirror_mode": "r",
+      "file_extension": ".r",
+      "mimetype": "text/x-r-source",
+      "name": "R",
+      "pygments_lexer": "r",
+      "version": "3.4.0"
+    }
+  },
+  "nbformat": 4,
+  "nbformat_minor": 0
+}

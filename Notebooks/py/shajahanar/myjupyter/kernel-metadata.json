@@ -1,0 +1,17 @@
+{
+  "id": "shajahanar/myjupyter",
+  "id_no": 754319,
+  "title": "myjupyter",
+  "code_file": "myjupyter.ipynb",
+  "language": "python",
+  "kernel_type": "notebook",
+  "is_private": false,
+  "enable_gpu": false,
+  "enable_internet": false,
+  "keywords": [],
+  "dataset_sources": [],
+  "kernel_sources": [],
+  "competition_sources": [
+    "titanic"
+  ]
+}

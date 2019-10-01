@@ -1,0 +1,17 @@
+{
+  "kernel_sources": [],
+  "is_private": false,
+  "code_file": "titanic-getting-started-with-randomforest.irnb",
+  "enable_internet": false,
+  "dataset_sources": [],
+  "enable_gpu": false,
+  "competition_sources": [
+    "titanic"
+  ],
+  "keywords": [],
+  "kernel_type": "notebook",
+  "title": "Titanic - Getting Started with randomForest",
+  "language": "r",
+  "id": "xxxmatxxx/titanic-getting-started-with-randomforest",
+  "id_no": 413234
+}

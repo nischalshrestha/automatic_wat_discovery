@@ -1,0 +1,23 @@
+{
+  "language": "python",
+  "title": "Titanic - Prediction using Random Forests",
+  "id_no": 1630640,
+  "id": "kanakroy/titanic-prediction-using-random-forests",
+  "code_file": "titanic-prediction-using-random-forests.ipynb",
+  "enable_internet": false,
+  "competition_sources": [
+    "titanic"
+  ],
+  "is_private": false,
+  "dataset_sources": [],
+  "keywords": [
+    "beginner",
+    "eda",
+    "data cleaning",
+    "classification",
+    "feature engineering"
+  ],
+  "kernel_type": "notebook",
+  "kernel_sources": [],
+  "enable_gpu": false
+}

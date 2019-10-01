@@ -1,0 +1,20 @@
+{
+  "code_file": "titanic-data-exploration-starter.ipynb",
+  "dataset_sources": [],
+  "title": "Titanic Data Exploration Starter",
+  "kernel_type": "notebook",
+  "id_no": 424760,
+  "id": "neviadomski/titanic-data-exploration-starter",
+  "keywords": [
+    "eda",
+    "data visualization"
+  ],
+  "kernel_sources": [],
+  "competition_sources": [
+    "titanic"
+  ],
+  "is_private": false,
+  "enable_gpu": false,
+  "language": "python",
+  "enable_internet": false
+}

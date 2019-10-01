@@ -1,0 +1,17 @@
+{
+  "id_no": 1483564,
+  "enable_gpu": false,
+  "kernel_type": "notebook",
+  "kernel_sources": [],
+  "is_private": false,
+  "dataset_sources": [],
+  "id": "wisuta/titanic-competition",
+  "language": "python",
+  "competition_sources": [
+    "titanic"
+  ],
+  "enable_internet": false,
+  "title": "Titanic: Competition",
+  "keywords": [],
+  "code_file": "titanic-competition.ipynb"
+}

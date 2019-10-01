@@ -1,0 +1,17 @@
+{
+  "id": "chesters99/titanic-using-svm-classifier",
+  "language": "python",
+  "enable_internet": false,
+  "enable_gpu": false,
+  "title": "Titanic using SVM Classifier",
+  "keywords": [],
+  "code_file": "titanic-using-svm-classifier.ipynb",
+  "kernel_type": "notebook",
+  "competition_sources": [
+    "titanic"
+  ],
+  "id_no": 116341,
+  "kernel_sources": [],
+  "dataset_sources": [],
+  "is_private": false
+}

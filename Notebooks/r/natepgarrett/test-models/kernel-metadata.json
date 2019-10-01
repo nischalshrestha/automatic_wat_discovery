@@ -1,0 +1,17 @@
+{
+  "is_private": false,
+  "language": "r",
+  "keywords": [],
+  "kernel_type": "notebook",
+  "id_no": 942691,
+  "enable_gpu": false,
+  "id": "natepgarrett/test-models",
+  "competition_sources": [
+    "titanic"
+  ],
+  "kernel_sources": [],
+  "dataset_sources": [],
+  "title": "Test models",
+  "code_file": "test-models.irnb",
+  "enable_internet": false
+}

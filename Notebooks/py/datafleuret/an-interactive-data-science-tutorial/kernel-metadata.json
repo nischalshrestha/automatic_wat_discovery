@@ -1,0 +1,17 @@
+{
+  "enable_internet": false,
+  "id_no": 212746,
+  "keywords": [],
+  "enable_gpu": false,
+  "kernel_type": "notebook",
+  "is_private": false,
+  "id": "datafleuret/an-interactive-data-science-tutorial",
+  "competition_sources": [
+    "titanic"
+  ],
+  "dataset_sources": [],
+  "language": "python",
+  "title": "An Interactive Data Science Tutorial",
+  "kernel_sources": [],
+  "code_file": "an-interactive-data-science-tutorial.ipynb"
+}

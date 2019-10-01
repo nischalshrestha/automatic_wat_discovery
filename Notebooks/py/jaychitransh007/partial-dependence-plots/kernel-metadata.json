@@ -1,0 +1,19 @@
+{
+  "keywords": [],
+  "is_private": false,
+  "kernel_type": "notebook",
+  "dataset_sources": [
+    "dansbecker/melbourne-housing-snapshot"
+  ],
+  "id": "jaychitransh007/partial-dependence-plots",
+  "id_no": 2094287,
+  "enable_gpu": false,
+  "title": "Partial Dependence Plots",
+  "language": "python",
+  "code_file": "partial-dependence-plots.ipynb",
+  "kernel_sources": [],
+  "enable_internet": false,
+  "competition_sources": [
+    "titanic"
+  ]
+}

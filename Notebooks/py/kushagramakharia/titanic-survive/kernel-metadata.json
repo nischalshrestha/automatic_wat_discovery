@@ -1,0 +1,17 @@
+{
+  "id_no": 319836,
+  "title": "Titanic:SURVIVE",
+  "code_file": "titanic-survive.ipynb",
+  "kernel_sources": [],
+  "enable_internet": false,
+  "dataset_sources": [],
+  "language": "python",
+  "enable_gpu": false,
+  "kernel_type": "notebook",
+  "keywords": [],
+  "competition_sources": [
+    "titanic"
+  ],
+  "id": "kushagramakharia/titanic-survive",
+  "is_private": false
+}

@@ -1,0 +1,17 @@
+{
+  "code_file": "titanic-data-science-solutions-test.ipynb",
+  "language": "python",
+  "kernel_type": "notebook",
+  "id": "eivann/titanic-data-science-solutions-test",
+  "id_no": 242982,
+  "dataset_sources": [],
+  "is_private": false,
+  "enable_gpu": false,
+  "competition_sources": [
+    "titanic"
+  ],
+  "enable_internet": false,
+  "keywords": [],
+  "title": "Titanic Data Science Solutions test",
+  "kernel_sources": []
+}

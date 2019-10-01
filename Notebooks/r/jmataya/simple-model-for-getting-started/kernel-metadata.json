@@ -1,0 +1,17 @@
+{
+  "dataset_sources": [],
+  "competition_sources": [
+    "titanic"
+  ],
+  "language": "r",
+  "enable_gpu": false,
+  "keywords": [],
+  "is_private": false,
+  "title": "Simple model for getting started",
+  "code_file": "simple-model-for-getting-started.irnb",
+  "id": "jmataya/simple-model-for-getting-started",
+  "kernel_sources": [],
+  "kernel_type": "notebook",
+  "id_no": 180122,
+  "enable_internet": false
+}

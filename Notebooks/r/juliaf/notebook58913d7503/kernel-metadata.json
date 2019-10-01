@@ -1,0 +1,17 @@
+{
+  "kernel_type": "notebook",
+  "kernel_sources": [],
+  "code_file": "notebook58913d7503.irnb",
+  "id_no": 198151,
+  "language": "r",
+  "dataset_sources": [],
+  "competition_sources": [
+    "titanic"
+  ],
+  "title": "Notebook58913d7503",
+  "enable_internet": false,
+  "enable_gpu": false,
+  "keywords": [],
+  "id": "juliaf/notebook58913d7503",
+  "is_private": false
+}

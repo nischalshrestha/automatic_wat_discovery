@@ -1,0 +1,17 @@
+{
+  "id": "birger/titanic-competition-score-0-8134",
+  "kernel_type": "notebook",
+  "competition_sources": [
+    "titanic"
+  ],
+  "id_no": 292119,
+  "enable_internet": false,
+  "is_private": false,
+  "code_file": "titanic-competition-score-0-8134.irnb",
+  "enable_gpu": false,
+  "kernel_sources": [],
+  "keywords": [],
+  "language": "r",
+  "title": "Titanic Competition; score = 0.8134",
+  "dataset_sources": []
+}

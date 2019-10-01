@@ -1,0 +1,17 @@
+{
+  "enable_internet": false,
+  "kernel_sources": [],
+  "is_private": false,
+  "id": "souravmangla/titanic-script",
+  "enable_gpu": false,
+  "keywords": [],
+  "title": "Titanic_script",
+  "language": "python",
+  "dataset_sources": [],
+  "kernel_type": "notebook",
+  "id_no": 1019686,
+  "code_file": "titanic-script.ipynb",
+  "competition_sources": [
+    "titanic"
+  ]
+}

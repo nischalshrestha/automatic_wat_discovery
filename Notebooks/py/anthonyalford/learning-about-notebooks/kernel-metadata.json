@@ -1,0 +1,17 @@
+{
+  "enable_gpu": false,
+  "enable_internet": false,
+  "keywords": [],
+  "is_private": false,
+  "code_file": "learning-about-notebooks.ipynb",
+  "kernel_type": "notebook",
+  "id_no": 254814,
+  "language": "python",
+  "dataset_sources": [],
+  "title": "Learning about Notebooks",
+  "kernel_sources": [],
+  "competition_sources": [
+    "titanic"
+  ],
+  "id": "anthonyalford/learning-about-notebooks"
+}

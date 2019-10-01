@@ -1,0 +1,17 @@
+{
+  "enable_internet": false,
+  "is_private": false,
+  "kernel_type": "notebook",
+  "id": "kuashok/data-exploration",
+  "dataset_sources": [],
+  "title": "Data Exploration ",
+  "code_file": "data-exploration.irnb",
+  "enable_gpu": false,
+  "keywords": [],
+  "id_no": 200459,
+  "kernel_sources": [],
+  "competition_sources": [
+    "titanic"
+  ],
+  "language": "r"
+}

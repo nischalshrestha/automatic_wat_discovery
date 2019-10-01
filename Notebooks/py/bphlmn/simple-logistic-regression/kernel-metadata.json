@@ -1,0 +1,19 @@
+{
+  "id": "bphlmn/simple-logistic-regression",
+  "dataset_sources": [],
+  "kernel_sources": [],
+  "keywords": [
+    "logistic regression"
+  ],
+  "competition_sources": [
+    "titanic"
+  ],
+  "enable_internet": false,
+  "enable_gpu": false,
+  "language": "python",
+  "is_private": false,
+  "id_no": 461536,
+  "title": "Simple Logistic Regression",
+  "code_file": "simple-logistic-regression.ipynb",
+  "kernel_type": "notebook"
+}

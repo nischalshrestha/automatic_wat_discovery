@@ -1,0 +1,17 @@
+{
+  "kernel_type": "notebook",
+  "id_no": 43733,
+  "language": "r",
+  "competition_sources": [
+    "titanic"
+  ],
+  "title": "LogisticRegression of Titanic",
+  "id": "jaychu/logisticregression-of-titanic",
+  "enable_internet": false,
+  "code_file": "logisticregression-of-titanic.irnb",
+  "dataset_sources": [],
+  "is_private": false,
+  "kernel_sources": [],
+  "enable_gpu": false,
+  "keywords": []
+}

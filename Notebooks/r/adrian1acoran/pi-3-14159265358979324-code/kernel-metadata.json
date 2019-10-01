@@ -1,0 +1,34 @@
+{
+  "id_no": 1921860,
+  "keywords": [
+    "starter code"
+  ],
+  "title": "pi 3.14159265358979324 code",
+  "dataset_sources": [
+    "github/github-repos",
+    "pytorch/vgg13bn",
+    "kiva/data-science-for-good-kiva-crowdfunding",
+    "lava18/google-play-store-apps",
+    "bigquery/patents",
+    "adrian1acoran/pi-31415"
+  ],
+  "enable_gpu": true,
+  "kernel_type": "notebook",
+  "code_file": "pi-3-14159265358979324-code.irnb",
+  "kernel_sources": [
+    "mrisdal/quick-dirty-randomforest",
+    "ldfreeman3/a-data-science-framework-to-achieve-99-accuracy",
+    "kanncaa1/data-sciencetutorial-for-beginners",
+    "sudalairajkumar/simple-exploration-baseline-ga-customer-revenue"
+  ],
+  "language": "r",
+  "competition_sources": [
+    "titanic",
+    "house-prices-advanced-regression-techniques",
+    "two-sigma-financial-news",
+    "human-protein-atlas-image-classification"
+  ],
+  "enable_internet": false,
+  "id": "adrian1acoran/pi-3-14159265358979324-code",
+  "is_private": false
+}

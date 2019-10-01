@@ -1,0 +1,23 @@
+{
+  "kernel_sources": [],
+  "kernel_type": "notebook",
+  "enable_gpu": false,
+  "dataset_sources": [],
+  "keywords": [
+    "tutorial",
+    "eda",
+    "data visualization",
+    "ensembling",
+    "feature engineering"
+  ],
+  "title": "Interpretation and Tuning of Hyperparameters",
+  "id": "anirudh2312/interpretation-and-tuning-of-hyperparameters",
+  "competition_sources": [
+    "titanic"
+  ],
+  "id_no": 1439369,
+  "enable_internet": false,
+  "code_file": "interpretation-and-tuning-of-hyperparameters.ipynb",
+  "language": "python",
+  "is_private": false
+}

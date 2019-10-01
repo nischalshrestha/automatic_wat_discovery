@@ -1,0 +1,17 @@
+{
+  "id_no": 263223,
+  "competition_sources": [
+    "titanic"
+  ],
+  "code_file": "notebooka251de0fc1.ipynb",
+  "is_private": false,
+  "enable_gpu": false,
+  "enable_internet": false,
+  "language": "python",
+  "dataset_sources": [],
+  "title": "Notebooka251de0fc1",
+  "id": "chiragarora001/notebooka251de0fc1",
+  "kernel_sources": [],
+  "kernel_type": "notebook",
+  "keywords": []
+}

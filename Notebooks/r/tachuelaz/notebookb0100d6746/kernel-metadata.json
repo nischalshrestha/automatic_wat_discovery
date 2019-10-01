@@ -1,0 +1,17 @@
+{
+  "competition_sources": [
+    "titanic"
+  ],
+  "is_private": false,
+  "kernel_type": "notebook",
+  "kernel_sources": [],
+  "id_no": 222263,
+  "code_file": "notebookb0100d6746.ipynb",
+  "language": "python",
+  "title": "Notebookb0100d6746",
+  "id": "tachuelaz/notebookb0100d6746",
+  "keywords": [],
+  "enable_internet": false,
+  "dataset_sources": [],
+  "enable_gpu": false
+}

@@ -1,0 +1,17 @@
+{
+  "keywords": [],
+  "language": "r",
+  "id": "lokesharun/titanic",
+  "title": "Titanic ",
+  "enable_internet": false,
+  "kernel_sources": [],
+  "code_file": "titanic.irnb",
+  "dataset_sources": [],
+  "enable_gpu": false,
+  "kernel_type": "notebook",
+  "is_private": false,
+  "competition_sources": [
+    "titanic"
+  ],
+  "id_no": 1378617
+}

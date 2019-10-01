@@ -1,0 +1,19 @@
+{
+  "kernel_type": "notebook",
+  "title": "titanic_pred_michiaki",
+  "id_no": 1792865,
+  "dataset_sources": [],
+  "language": "python",
+  "keywords": [
+    "beginner"
+  ],
+  "code_file": "titanic-pred-michiaki.ipynb",
+  "kernel_sources": [],
+  "id": "michiakiterao/titanic-pred-michiaki",
+  "is_private": false,
+  "enable_internet": false,
+  "enable_gpu": false,
+  "competition_sources": [
+    "titanic"
+  ]
+}

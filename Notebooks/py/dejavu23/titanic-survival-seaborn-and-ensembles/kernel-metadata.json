@@ -1,0 +1,17 @@
+{
+  "language": "python",
+  "title": "Titanic Survival: Seaborn and Ensembles",
+  "is_private": false,
+  "competition_sources": [
+    "titanic"
+  ],
+  "enable_internet": false,
+  "kernel_sources": [],
+  "kernel_type": "notebook",
+  "enable_gpu": false,
+  "keywords": [],
+  "dataset_sources": [],
+  "id_no": 454897,
+  "code_file": "titanic-survival-seaborn-and-ensembles.ipynb",
+  "id": "dejavu23/titanic-survival-seaborn-and-ensembles"
+}

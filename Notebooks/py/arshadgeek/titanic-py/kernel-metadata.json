@@ -1,0 +1,17 @@
+{
+  "id_no": 2116100,
+  "keywords": [],
+  "title": "titanic.py",
+  "language": "python",
+  "id": "arshadgeek/titanic-py",
+  "enable_internet": false,
+  "kernel_sources": [],
+  "dataset_sources": [],
+  "enable_gpu": false,
+  "competition_sources": [
+    "titanic"
+  ],
+  "is_private": false,
+  "kernel_type": "notebook",
+  "code_file": "titanic-py.ipynb"
+}

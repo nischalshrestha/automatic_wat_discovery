@@ -1,0 +1,17 @@
+{
+  "enable_gpu": false,
+  "language": "python",
+  "code_file": "copy-of-titanic-best-working-classifier.ipynb",
+  "title": "Copy of Titanic best working Classifier",
+  "dataset_sources": [],
+  "keywords": [],
+  "kernel_type": "notebook",
+  "kernel_sources": [],
+  "enable_internet": false,
+  "competition_sources": [
+    "titanic"
+  ],
+  "id_no": 197243,
+  "id": "mazurov/copy-of-titanic-best-working-classifier",
+  "is_private": false
+}

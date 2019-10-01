@@ -1,0 +1,17 @@
+{
+  "title": "My first of kaggle",
+  "enable_gpu": false,
+  "language": "r",
+  "kernel_sources": [],
+  "code_file": "my-first-of-kaggle.irnb",
+  "is_private": false,
+  "kernel_type": "notebook",
+  "enable_internet": false,
+  "keywords": [],
+  "id": "gomoku/my-first-of-kaggle",
+  "competition_sources": [
+    "titanic"
+  ],
+  "id_no": 210709,
+  "dataset_sources": []
+}

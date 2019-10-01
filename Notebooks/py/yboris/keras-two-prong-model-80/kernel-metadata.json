@@ -1,0 +1,19 @@
+{
+  "code_file": "keras-two-prong-model-80.ipynb",
+  "kernel_type": "notebook",
+  "dataset_sources": [],
+  "enable_internet": false,
+  "id_no": 1295750,
+  "language": "python",
+  "competition_sources": [
+    "titanic"
+  ],
+  "is_private": false,
+  "title": "Keras two-prong model 80%",
+  "kernel_sources": [],
+  "enable_gpu": false,
+  "keywords": [
+    "deep learning"
+  ],
+  "id": "yboris/keras-two-prong-model-80"
+}

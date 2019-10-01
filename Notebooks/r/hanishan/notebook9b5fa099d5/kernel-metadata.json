@@ -1,0 +1,17 @@
+{
+  "is_private": false,
+  "kernel_type": "notebook",
+  "kernel_sources": [],
+  "keywords": [],
+  "enable_internet": false,
+  "enable_gpu": false,
+  "language": "python",
+  "title": "Notebook9b5fa099d5",
+  "competition_sources": [
+    "titanic"
+  ],
+  "id": "hanishan/notebook9b5fa099d5",
+  "id_no": 228687,
+  "code_file": "notebook9b5fa099d5.ipynb",
+  "dataset_sources": []
+}

@@ -1,0 +1,17 @@
+{
+  "competition_sources": [
+    "titanic"
+  ],
+  "kernel_sources": [],
+  "id": "nnair25/save-me-jack",
+  "title": "\"Save me Jack!\"",
+  "code_file": "save-me-jack.ipynb",
+  "keywords": [],
+  "enable_gpu": false,
+  "kernel_type": "notebook",
+  "enable_internet": false,
+  "id_no": 307856,
+  "language": "python",
+  "dataset_sources": [],
+  "is_private": false
+}

@@ -1,0 +1,23 @@
+{
+  "dataset_sources": [],
+  "id_no": 1778622,
+  "language": "python",
+  "enable_internet": false,
+  "id": "mjbahmani/10-steps-to-become-a-data-scientist",
+  "kernel_sources": [],
+  "kernel_type": "notebook",
+  "is_private": false,
+  "keywords": [
+    "beginner",
+    "eda",
+    "data cleaning",
+    "data visualization",
+    "feature engineering"
+  ],
+  "enable_gpu": false,
+  "code_file": "10-steps-to-become-a-data-scientist.ipynb",
+  "title": "10 Steps to Become a Data Scientist",
+  "competition_sources": [
+    "titanic"
+  ]
+}

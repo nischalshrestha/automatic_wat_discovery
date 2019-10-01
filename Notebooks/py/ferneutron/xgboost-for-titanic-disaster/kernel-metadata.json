@@ -1,0 +1,19 @@
+{
+  "dataset_sources": [],
+  "code_file": "xgboost-for-titanic-disaster.ipynb",
+  "keywords": [
+    "xgboost"
+  ],
+  "enable_internet": false,
+  "enable_gpu": false,
+  "id": "ferneutron/xgboost-for-titanic-disaster",
+  "is_private": false,
+  "id_no": 1652422,
+  "kernel_type": "notebook",
+  "kernel_sources": [],
+  "language": "python",
+  "competition_sources": [
+    "titanic"
+  ],
+  "title": "XGBoost for Titanic Disaster"
+}

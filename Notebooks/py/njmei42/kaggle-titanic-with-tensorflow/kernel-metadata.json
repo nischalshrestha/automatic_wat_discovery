@@ -1,0 +1,19 @@
+{
+  "enable_gpu": false,
+  "competition_sources": [
+    "titanic"
+  ],
+  "dataset_sources": [],
+  "id_no": 789773,
+  "keywords": [
+    "neural networks"
+  ],
+  "is_private": false,
+  "kernel_sources": [],
+  "code_file": "kaggle-titanic-with-tensorflow.ipynb",
+  "title": "Kaggle Titanic with Tensorflow",
+  "language": "python",
+  "kernel_type": "notebook",
+  "id": "njmei42/kaggle-titanic-with-tensorflow",
+  "enable_internet": false
+}

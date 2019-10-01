@@ -1,0 +1,17 @@
+{
+  "id": "mcamack/titanic-survival-prediction-end-to-end-ml-pipeline",
+  "kernel_sources": [],
+  "code_file": "titanic-survival-prediction-end-to-end-ml-pipeline.ipynb",
+  "enable_internet": false,
+  "language": "python",
+  "competition_sources": [
+    "titanic"
+  ],
+  "kernel_type": "notebook",
+  "is_private": false,
+  "id_no": 160895,
+  "keywords": [],
+  "enable_gpu": false,
+  "title": "Titanic Survival Prediction End to End ML Pipeline",
+  "dataset_sources": []
+}

@@ -1,0 +1,17 @@
+{
+  "kernel_sources": [],
+  "keywords": [],
+  "id_no": 1397637,
+  "language": "python",
+  "title": "Titanic : Machine Learning from Disaster",
+  "kernel_type": "notebook",
+  "enable_gpu": false,
+  "code_file": "titanic-machine-learning-from-disaster.ipynb",
+  "id": "liuhaoping/titanic-machine-learning-from-disaster",
+  "enable_internet": false,
+  "dataset_sources": [],
+  "competition_sources": [
+    "titanic"
+  ],
+  "is_private": false
+}

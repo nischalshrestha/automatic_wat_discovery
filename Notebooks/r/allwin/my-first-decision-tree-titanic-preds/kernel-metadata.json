@@ -1,0 +1,17 @@
+{
+  "dataset_sources": [],
+  "id": "allwin/my-first-decision-tree-titanic-preds",
+  "is_private": false,
+  "title": "My first Decision Tree Titanic Preds",
+  "id_no": 145832,
+  "competition_sources": [
+    "titanic"
+  ],
+  "enable_internet": false,
+  "kernel_type": "notebook",
+  "enable_gpu": false,
+  "keywords": [],
+  "language": "r",
+  "code_file": "my-first-decision-tree-titanic-preds.irnb",
+  "kernel_sources": []
+}

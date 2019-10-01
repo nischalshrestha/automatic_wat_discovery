@@ -1,0 +1,17 @@
+{
+  "is_private": false,
+  "enable_internet": false,
+  "id": "gattoni/keras-simple-nn-v-0-1",
+  "language": "python",
+  "kernel_type": "notebook",
+  "enable_gpu": false,
+  "title": "Keras simple NN v 0.1",
+  "kernel_sources": [],
+  "id_no": 927557,
+  "competition_sources": [
+    "titanic"
+  ],
+  "keywords": [],
+  "code_file": "keras-simple-nn-v-0-1.ipynb",
+  "dataset_sources": []
+}

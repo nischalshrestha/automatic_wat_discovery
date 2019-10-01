@@ -1,0 +1,21 @@
+{
+  "id": "liopic/simple-prediction-with-just-age-and-sex-features",
+  "keywords": [
+    "tutorial",
+    "beginner",
+    "decision tree"
+  ],
+  "enable_gpu": false,
+  "kernel_type": "notebook",
+  "dataset_sources": [],
+  "code_file": "simple-prediction-with-just-age-and-sex-features.ipynb",
+  "title": "Simple prediction with just age and sex features",
+  "id_no": 1057020,
+  "enable_internet": false,
+  "kernel_sources": [],
+  "language": "python",
+  "competition_sources": [
+    "titanic"
+  ],
+  "is_private": false
+}

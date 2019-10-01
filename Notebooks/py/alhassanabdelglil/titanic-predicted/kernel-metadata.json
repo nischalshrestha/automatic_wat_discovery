@@ -1,0 +1,17 @@
+{
+  "keywords": [],
+  "enable_internet": false,
+  "enable_gpu": false,
+  "id_no": 1468707,
+  "kernel_type": "notebook",
+  "is_private": false,
+  "kernel_sources": [],
+  "dataset_sources": [],
+  "language": "python",
+  "title": "Titanic: predicted",
+  "competition_sources": [
+    "titanic"
+  ],
+  "id": "alhassanabdelglil/titanic-predicted",
+  "code_file": "titanic-predicted.ipynb"
+}

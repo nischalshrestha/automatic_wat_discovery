@@ -1,0 +1,17 @@
+{
+  "id": "ksintac/notebook23571e233d",
+  "code_file": "notebook23571e233d.ipynb",
+  "id_no": 204778,
+  "enable_gpu": false,
+  "kernel_sources": [],
+  "keywords": [],
+  "title": "Notebook23571e233d",
+  "kernel_type": "notebook",
+  "language": "python",
+  "competition_sources": [
+    "titanic"
+  ],
+  "enable_internet": false,
+  "dataset_sources": [],
+  "is_private": false
+}

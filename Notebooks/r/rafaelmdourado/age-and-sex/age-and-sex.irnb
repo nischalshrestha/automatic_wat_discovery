@@ -1,0 +1,278 @@
+{
+  "cells": [
+    {
+      "cell_type": "markdown",
+      "metadata": {
+        "_cell_guid": "5fcbc367-6b3a-a1c6-9a13-4fda828b15fa"
+      },
+      "source": [
+        "## Simple Linear Model (Age, Sex and Alone) ##\n",
+        "\n",
+        "I want to build a simple linear model, using the features:\n",
+        "\n",
+        " 1. IsFemale (Sex)\n",
+        " 2. IsUnderTen (Age)\n",
+        " 3. IsAlone\n"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "_cell_guid": "003ddfcd-2dd3-a836-e9ec-6b20a8794d39"
+      },
+      "outputs": [],
+      "source": [
+        "try(library('ggplot2') , silent=TRUE)\n",
+        "try(library('dplyr') , silent=TRUE)"
+      ]
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {
+        "_cell_guid": "2aa2c833-070e-a78e-8750-07974f9d51ff"
+      },
+      "source": [
+        "----------\n",
+        "\n",
+        "\n",
+        "## Import the data ##"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "_cell_guid": "014fdca6-6f78-7360-56d5-0b1759d40d5b"
+      },
+      "outputs": [],
+      "source": [
+        "train <- read.csv('../input/train.csv', stringsAsFactors = F)\n",
+        "train$isTrain <- T\n",
+        "test  <- read.csv('../input/test.csv', stringsAsFactors = F)\n",
+        "test$isTrain <- F\n",
+        "\n",
+        "full  <- bind_rows(train, test) # bind training & test data\n",
+        "\n",
+        "# check data\n",
+        "str(full)"
+      ]
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {
+        "_cell_guid": "5a6a84d9-c589-8db8-99a2-08c59a947f68"
+      },
+      "source": [
+        "----------\n",
+        "\n",
+        "\n",
+        "## Let`s take a look in the infants ##\n",
+        "\n",
+        "It looks like if you are under 10, you have a good chance to survive"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "_cell_guid": "f2114b72-4ab2-4c30-638b-a1e4945ca63f"
+      },
+      "outputs": [],
+      "source": [
+        "full$underTen <- F\n",
+        "full$underTen[full$Age < 10 & full$Age > 0] <- T\n",
+        "\n",
+        "ggplot(full[full$isTrain,], aes(x = underTen, fill = factor(Survived))) +\n",
+        "  geom_bar(stat='count', position='dodge') "
+      ]
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {
+        "_cell_guid": "44409f56-6f73-add5-5ecf-6a77623cec49"
+      },
+      "source": [
+        "----------\n",
+        "\n",
+        "\n",
+        "## We know that Rose survives ##\n",
+        "\n",
+        "I feel sorry for jack, but that is what happened"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "_cell_guid": "7e54bb56-66cf-d2bb-fe7a-39f415106a48"
+      },
+      "outputs": [],
+      "source": [
+        "full$isFemale <- F\n",
+        "full$isFemale[full$Sex == \"female\"] <- T\n",
+        "\n",
+        "ggplot(full[full$isTrain,], aes(x = isFemale, fill = factor(Survived))) +\n",
+        "  geom_bar(stat='count', position='dodge') "
+      ]
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {
+        "_cell_guid": "dba45ad7-0430-9dec-d35a-8436bd8229e3"
+      },
+      "source": [
+        "----------\n",
+        "## People die alone ##"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "_cell_guid": "d2423dc5-ace5-93e6-0bba-2000d90da03c"
+      },
+      "outputs": [],
+      "source": [
+        "full$isAlone <- T\n",
+        "full$isAlone[full$Parch > 0] <- F\n",
+        "full$isAlone[full$SibSp > 0] <- F\n",
+        "\n",
+        "ggplot(full[full$isTrain,], aes(x = isAlone, fill = factor(Survived))) +\n",
+        "  geom_bar(stat='count', position='dodge') "
+      ]
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {
+        "_cell_guid": "91c32808-babc-1eb3-c1b6-b57ee8d68b08"
+      },
+      "source": [
+        "----------\n",
+        "\n",
+        "\n",
+        "## Splitting the data ##\n",
+        "\n",
+        "In this way I'll have dataset to train and to test in the end"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "_cell_guid": "aaaf17a9-66e1-25d9-1882-a196fa0b1f52"
+      },
+      "outputs": [],
+      "source": [
+        "set.seed(42)\n",
+        "\n",
+        "totalrows <- nrow(full[full$isTrain,])\n",
+        "trainrows <- sample(c(T,F), totalrows, replace = T, prob = c(0.8, 0.2))\n",
+        "\n",
+        "trainningSet <- full[full$isTrain,][trainrows,]\n",
+        "testingSet <- full[full$isTrain,][!trainrows,]"
+      ]
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {
+        "_cell_guid": "b14e4e0c-6779-1ed6-b323-78c58ed3b696"
+      },
+      "source": [
+        "----------\n",
+        "## Train the Model ##\n",
+        "\n",
+        "This setup the basic linear model with our features"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "_cell_guid": "823dc732-6c9b-7d99-e3b5-da8ecf27bd56"
+      },
+      "outputs": [],
+      "source": [
+        "model <- lm(Survived ~ isFemale + underTen + isAlone, trainningSet)\n",
+        "\n",
+        "summary(model)"
+      ]
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {
+        "_cell_guid": "553b70ff-8ab9-86b0-5147-85c5d0eca022"
+      },
+      "source": [
+        "----------\n",
+        "## Test the Model ##\n",
+        "\n",
+        "Test the model and print the accuracy"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "_cell_guid": "a4a6e890-f718-2a3c-9947-4a74522a338d"
+      },
+      "outputs": [],
+      "source": [
+        "prediction <- predict(model, testingSet)\n",
+        "\n",
+        "pdf <- data.frame(F = testingSet$Survived, P = as.integer(prediction > 0.3))\n",
+        "\n",
+        "table(pdf)\n",
+        "\n",
+        "print(\"Acc\")\n",
+        "nrow(pdf[pdf$P == pdf$F,])/nrow(pdf)"
+      ]
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {
+        "_cell_guid": "609e0dd3-037a-9b0f-b9aa-e3f4f28c9deb"
+      },
+      "source": [
+        "----------\n",
+        "## Generate the Output file ##"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "_cell_guid": "c2dc864e-eade-fc7c-15c9-f8a3b31fc158"
+      },
+      "outputs": [],
+      "source": [
+        "test <- full[892:1309,]\n",
+        "\n",
+        "prediction <- predict(model, test)\n",
+        "\n",
+        "solution <- data.frame(PassengerID = test$PassengerId, Survived = as.integer(prediction > 0.3))\n",
+        "\n",
+        "write.csv(solution, file = 'out.csv', row.names = F)"
+      ]
+    }
+  ],
+  "metadata": {
+    "_change_revision": 0,
+    "_is_fork": false,
+    "kernelspec": {
+      "display_name": "R",
+      "language": "R",
+      "name": "ir"
+    },
+    "language_info": {
+      "codemirror_mode": "r",
+      "file_extension": ".r",
+      "mimetype": "text/x-r-source",
+      "name": "R",
+      "pygments_lexer": "r",
+      "version": "3.4.0"
+    }
+  },
+  "nbformat": 4,
+  "nbformat_minor": 0
+}

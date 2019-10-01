@@ -1,0 +1,17 @@
+{
+  "language": "python",
+  "id": "iamprateek/my-first-submission-of-titanic-survival-problem",
+  "enable_internet": false,
+  "dataset_sources": [],
+  "id_no": 444735,
+  "code_file": "my-first-submission-of-titanic-survival-problem.ipynb",
+  "keywords": [],
+  "title": "My first submission of Titanic Survival problem",
+  "competition_sources": [
+    "titanic"
+  ],
+  "kernel_sources": [],
+  "is_private": false,
+  "kernel_type": "notebook",
+  "enable_gpu": false
+}

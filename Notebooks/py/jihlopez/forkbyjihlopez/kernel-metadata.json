@@ -1,0 +1,17 @@
+{
+  "is_private": false,
+  "competition_sources": [
+    "titanic"
+  ],
+  "enable_internet": false,
+  "dataset_sources": [],
+  "id": "jihlopez/forkbyjihlopez",
+  "keywords": [],
+  "enable_gpu": true,
+  "id_no": 910084,
+  "language": "python",
+  "code_file": "forkbyjihlopez.ipynb",
+  "kernel_sources": [],
+  "kernel_type": "notebook",
+  "title": "ForkByJIHLopez "
+}

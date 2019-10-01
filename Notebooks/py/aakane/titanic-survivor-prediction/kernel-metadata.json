@@ -1,0 +1,17 @@
+{
+  "id_no": 1566078,
+  "id": "aakane/titanic-survivor-prediction",
+  "language": "python",
+  "kernel_type": "notebook",
+  "kernel_sources": [],
+  "competition_sources": [
+    "titanic"
+  ],
+  "title": "Titanic Survivor prediction",
+  "keywords": [],
+  "enable_gpu": false,
+  "dataset_sources": [],
+  "is_private": false,
+  "code_file": "titanic-survivor-prediction.ipynb",
+  "enable_internet": false
+}

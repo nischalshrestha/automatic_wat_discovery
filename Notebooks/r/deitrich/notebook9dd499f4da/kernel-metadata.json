@@ -1,0 +1,17 @@
+{
+  "enable_internet": false,
+  "keywords": [],
+  "kernel_sources": [],
+  "id_no": 213412,
+  "dataset_sources": [],
+  "id": "deitrich/notebook9dd499f4da",
+  "language": "python",
+  "competition_sources": [
+    "titanic"
+  ],
+  "kernel_type": "notebook",
+  "title": "Notebook9dd499f4da",
+  "enable_gpu": false,
+  "code_file": "notebook9dd499f4da.ipynb",
+  "is_private": false
+}

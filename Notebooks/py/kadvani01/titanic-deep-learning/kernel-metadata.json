@@ -1,0 +1,17 @@
+{
+  "is_private": false,
+  "title": "Titanic - Deep Learning",
+  "kernel_type": "notebook",
+  "enable_gpu": true,
+  "enable_internet": false,
+  "competition_sources": [
+    "titanic"
+  ],
+  "kernel_sources": [],
+  "code_file": "titanic-deep-learning.ipynb",
+  "dataset_sources": [],
+  "id_no": 1221032,
+  "id": "kadvani01/titanic-deep-learning",
+  "language": "python",
+  "keywords": []
+}

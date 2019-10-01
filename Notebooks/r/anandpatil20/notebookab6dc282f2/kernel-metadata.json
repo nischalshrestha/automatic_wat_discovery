@@ -1,0 +1,17 @@
+{
+  "is_private": false,
+  "id": "anandpatil20/notebookab6dc282f2",
+  "code_file": "notebookab6dc282f2.irnb",
+  "language": "r",
+  "enable_internet": false,
+  "keywords": [],
+  "enable_gpu": false,
+  "id_no": 273206,
+  "competition_sources": [
+    "titanic"
+  ],
+  "title": "Notebookab6dc282f2",
+  "dataset_sources": [],
+  "kernel_type": "notebook",
+  "kernel_sources": []
+}

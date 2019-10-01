@@ -1,0 +1,21 @@
+{
+  "kernel_sources": [],
+  "enable_gpu": false,
+  "language": "python",
+  "dataset_sources": [
+    "thec03u5/fifa-18-demo-player-dataset",
+    "zynicide/wine-reviews",
+    "lezhili/most-common-wine-scores"
+  ],
+  "code_file": "uni-bi-multi-variate-plotting.ipynb",
+  "keywords": [],
+  "id": "lezhili/uni-bi-multi-variate-plotting",
+  "competition_sources": [
+    "titanic"
+  ],
+  "kernel_type": "notebook",
+  "is_private": false,
+  "title": "Uni- Bi- Multi-Variate Plotting",
+  "id_no": 2093587,
+  "enable_internet": false
+}

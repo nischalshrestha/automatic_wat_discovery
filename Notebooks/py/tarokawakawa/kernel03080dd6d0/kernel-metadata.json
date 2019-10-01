@@ -1,0 +1,17 @@
+{
+  "dataset_sources": [],
+  "language": "python",
+  "title": "kernel03080dd6d0",
+  "enable_internet": false,
+  "is_private": false,
+  "code_file": "kernel03080dd6d0.ipynb",
+  "id": "tarokawakawa/kernel03080dd6d0",
+  "keywords": [],
+  "enable_gpu": true,
+  "kernel_type": "notebook",
+  "kernel_sources": [],
+  "competition_sources": [
+    "titanic"
+  ],
+  "id_no": 1925617
+}

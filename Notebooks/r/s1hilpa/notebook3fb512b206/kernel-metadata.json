@@ -1,0 +1,17 @@
+{
+  "kernel_type": "notebook",
+  "enable_gpu": false,
+  "competition_sources": [
+    "titanic"
+  ],
+  "kernel_sources": [],
+  "keywords": [],
+  "dataset_sources": [],
+  "id": "s1hilpa/notebook3fb512b206",
+  "enable_internet": false,
+  "id_no": 257414,
+  "is_private": false,
+  "code_file": "notebook3fb512b206.ipynb",
+  "language": "python",
+  "title": "Notebook3fb512b206"
+}

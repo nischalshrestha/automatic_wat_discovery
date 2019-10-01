@@ -1,0 +1,17 @@
+{
+  "id_no": 57979,
+  "code_file": "titanic-first-journey.ipynb",
+  "language": "python",
+  "enable_gpu": false,
+  "keywords": [],
+  "enable_internet": false,
+  "competition_sources": [
+    "titanic"
+  ],
+  "kernel_sources": [],
+  "dataset_sources": [],
+  "id": "andreaw/titanic-first-journey",
+  "kernel_type": "notebook",
+  "title": "titanic-first-journey",
+  "is_private": false
+}

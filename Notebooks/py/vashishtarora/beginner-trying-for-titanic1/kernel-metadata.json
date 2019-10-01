@@ -1,0 +1,17 @@
+{
+  "title": "Beginner trying for titanic1",
+  "kernel_sources": [],
+  "language": "python",
+  "enable_gpu": false,
+  "keywords": [],
+  "kernel_type": "notebook",
+  "code_file": "beginner-trying-for-titanic1.ipynb",
+  "enable_internet": false,
+  "dataset_sources": [],
+  "id": "vashishtarora/beginner-trying-for-titanic1",
+  "id_no": 1505983,
+  "competition_sources": [
+    "titanic"
+  ],
+  "is_private": false
+}

@@ -1,0 +1,17 @@
+{
+  "id_no": 314335,
+  "competition_sources": [
+    "titanic"
+  ],
+  "enable_gpu": false,
+  "kernel_type": "notebook",
+  "language": "python",
+  "dataset_sources": [],
+  "kernel_sources": [],
+  "code_file": "team-fork.ipynb",
+  "id": "tquinn35/team-fork",
+  "keywords": [],
+  "is_private": false,
+  "title": "Team Fork",
+  "enable_internet": false
+}

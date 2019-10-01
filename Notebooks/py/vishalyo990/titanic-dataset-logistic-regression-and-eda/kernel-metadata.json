@@ -1,0 +1,23 @@
+{
+  "id_no": 523798,
+  "competition_sources": [
+    "titanic"
+  ],
+  "enable_internet": false,
+  "language": "python",
+  "id": "vishalyo990/titanic-dataset-logistic-regression-and-eda",
+  "dataset_sources": [],
+  "is_private": false,
+  "title": "Titanic_Dataset Logistic Regression and EDA",
+  "keywords": [
+    "tutorial",
+    "beginner",
+    "eda",
+    "data visualization",
+    "logistic regression"
+  ],
+  "enable_gpu": false,
+  "kernel_type": "notebook",
+  "code_file": "titanic-dataset-logistic-regression-and-eda.ipynb",
+  "kernel_sources": []
+}

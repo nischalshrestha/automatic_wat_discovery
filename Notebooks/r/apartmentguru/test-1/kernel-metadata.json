@@ -1,0 +1,17 @@
+{
+  "id": "apartmentguru/test-1",
+  "id_no": 60611,
+  "code_file": "test-1.irnb",
+  "enable_gpu": false,
+  "is_private": false,
+  "enable_internet": false,
+  "kernel_sources": [],
+  "keywords": [],
+  "competition_sources": [
+    "titanic"
+  ],
+  "language": "r",
+  "kernel_type": "notebook",
+  "dataset_sources": [],
+  "title": "Test 1"
+}

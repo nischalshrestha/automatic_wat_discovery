@@ -1,0 +1,17 @@
+{
+  "enable_gpu": false,
+  "id": "fasalmt/titanic-2",
+  "code_file": "titanic-2.ipynb",
+  "id_no": 903196,
+  "title": "Titanic 2",
+  "competition_sources": [
+    "titanic"
+  ],
+  "is_private": false,
+  "dataset_sources": [],
+  "kernel_type": "notebook",
+  "enable_internet": false,
+  "keywords": [],
+  "language": "python",
+  "kernel_sources": []
+}

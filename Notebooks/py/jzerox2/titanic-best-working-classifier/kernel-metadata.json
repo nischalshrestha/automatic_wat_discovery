@@ -1,0 +1,17 @@
+{
+  "keywords": [],
+  "id_no": 762471,
+  "dataset_sources": [],
+  "language": "python",
+  "kernel_sources": [],
+  "id": "jzerox2/titanic-best-working-classifier",
+  "competition_sources": [
+    "titanic"
+  ],
+  "enable_gpu": false,
+  "enable_internet": false,
+  "title": "Titanic best working Classifier",
+  "is_private": false,
+  "kernel_type": "notebook",
+  "code_file": "titanic-best-working-classifier.ipynb"
+}

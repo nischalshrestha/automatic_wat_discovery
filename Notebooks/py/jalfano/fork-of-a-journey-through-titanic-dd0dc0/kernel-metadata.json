@@ -1,0 +1,17 @@
+{
+  "language": "python",
+  "id_no": 213265,
+  "kernel_sources": [],
+  "is_private": false,
+  "code_file": "fork-of-a-journey-through-titanic-dd0dc0.ipynb",
+  "enable_internet": false,
+  "dataset_sources": [],
+  "keywords": [],
+  "competition_sources": [
+    "titanic"
+  ],
+  "kernel_type": "notebook",
+  "id": "jalfano/fork-of-a-journey-through-titanic-dd0dc0",
+  "enable_gpu": false,
+  "title": "Fork of A Journey through Titanic dd0dc0"
+}

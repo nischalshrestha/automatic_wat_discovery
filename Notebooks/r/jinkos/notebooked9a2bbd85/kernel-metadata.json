@@ -1,0 +1,17 @@
+{
+  "enable_gpu": false,
+  "competition_sources": [
+    "titanic"
+  ],
+  "title": "Notebooka0cd1cd568",
+  "code_file": "notebooked9a2bbd85.irnb",
+  "id": "jinkos/notebooked9a2bbd85",
+  "kernel_type": "notebook",
+  "is_private": false,
+  "keywords": [],
+  "enable_internet": false,
+  "id_no": 102150,
+  "language": "r",
+  "dataset_sources": [],
+  "kernel_sources": []
+}

@@ -1,0 +1,17 @@
+{
+  "competition_sources": [
+    "titanic"
+  ],
+  "language": "r",
+  "title": "Notebook7130c65e20",
+  "dataset_sources": [],
+  "is_private": false,
+  "code_file": "notebook7130c65e20.irnb",
+  "keywords": [],
+  "kernel_type": "notebook",
+  "enable_gpu": false,
+  "kernel_sources": [],
+  "id": "myskyer/notebook7130c65e20",
+  "id_no": 221076,
+  "enable_internet": false
+}

@@ -1,0 +1,21 @@
+{
+  "id_no": 2103529,
+  "language": "python",
+  "enable_gpu": false,
+  "keywords": [
+    "beginner",
+    "classification",
+    "random forest"
+  ],
+  "is_private": false,
+  "competition_sources": [
+    "titanic"
+  ],
+  "dataset_sources": [],
+  "id": "sidm2009/titanic-competition",
+  "kernel_sources": [],
+  "kernel_type": "notebook",
+  "enable_internet": false,
+  "title": "Titanic Competition",
+  "code_file": "titanic-competition.ipynb"
+}

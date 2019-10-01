@@ -1,0 +1,17 @@
+{
+  "competition_sources": [
+    "titanic"
+  ],
+  "is_private": false,
+  "keywords": [],
+  "id": "jotham91/titanic-code-2-may-18",
+  "enable_internet": false,
+  "title": "Titanic Code (2 May 18)",
+  "dataset_sources": [],
+  "kernel_sources": [],
+  "language": "python",
+  "id_no": 930858,
+  "code_file": "titanic-code-2-may-18.ipynb",
+  "kernel_type": "notebook",
+  "enable_gpu": false
+}

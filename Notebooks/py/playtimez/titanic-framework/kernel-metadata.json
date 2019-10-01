@@ -1,0 +1,17 @@
+{
+  "kernel_sources": [],
+  "title": " Titanic Framework",
+  "enable_gpu": false,
+  "id_no": 1651319,
+  "code_file": "titanic-framework.ipynb",
+  "keywords": [],
+  "competition_sources": [
+    "titanic"
+  ],
+  "language": "python",
+  "enable_internet": false,
+  "dataset_sources": [],
+  "kernel_type": "notebook",
+  "id": "playtimez/titanic-framework",
+  "is_private": false
+}

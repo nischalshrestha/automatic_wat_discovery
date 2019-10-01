@@ -1,0 +1,17 @@
+{
+  "title": "classification tree ",
+  "code_file": "classification-tree.irnb",
+  "kernel_type": "notebook",
+  "keywords": [],
+  "language": "r",
+  "kernel_sources": [],
+  "competition_sources": [
+    "titanic"
+  ],
+  "dataset_sources": [],
+  "enable_gpu": false,
+  "id_no": 65474,
+  "is_private": false,
+  "id": "claudiu/classification-tree",
+  "enable_internet": false
+}

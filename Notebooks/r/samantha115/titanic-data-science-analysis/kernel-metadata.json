@@ -1,0 +1,17 @@
+{
+  "language": "r",
+  "id": "samantha115/titanic-data-science-analysis",
+  "keywords": [],
+  "dataset_sources": [],
+  "code_file": "titanic-data-science-analysis.irnb",
+  "kernel_type": "notebook",
+  "is_private": false,
+  "competition_sources": [
+    "titanic"
+  ],
+  "id_no": 207798,
+  "title": "Titanic data science analysis ",
+  "enable_gpu": false,
+  "enable_internet": false,
+  "kernel_sources": []
+}

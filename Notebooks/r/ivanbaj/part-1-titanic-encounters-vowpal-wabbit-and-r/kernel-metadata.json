@@ -1,0 +1,17 @@
+{
+  "keywords": [],
+  "enable_internet": false,
+  "is_private": false,
+  "id_no": 157787,
+  "competition_sources": [
+    "titanic"
+  ],
+  "title": "Part 1: Titanic encounters Vowpal Wabbit and R",
+  "dataset_sources": [],
+  "enable_gpu": false,
+  "id": "ivanbaj/part-1-titanic-encounters-vowpal-wabbit-and-r",
+  "code_file": "part-1-titanic-encounters-vowpal-wabbit-and-r.irnb",
+  "language": "r",
+  "kernel_sources": [],
+  "kernel_type": "notebook"
+}

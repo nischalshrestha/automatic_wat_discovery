@@ -1,0 +1,17 @@
+{
+  "language": "r",
+  "id_no": 164327,
+  "code_file": "prediction-about-the-disaster.irnb",
+  "id": "rafaelpr/prediction-about-the-disaster",
+  "title": "Predicting Titanic Survivors",
+  "dataset_sources": [],
+  "is_private": false,
+  "kernel_sources": [],
+  "enable_gpu": false,
+  "kernel_type": "notebook",
+  "keywords": [],
+  "enable_internet": false,
+  "competition_sources": [
+    "titanic"
+  ]
+}

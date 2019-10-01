@@ -1,0 +1,17 @@
+{
+  "competition_sources": [
+    "titanic"
+  ],
+  "id_no": 1631547,
+  "id": "ronchi/project-titanic",
+  "language": "r",
+  "title": "Project Titanic",
+  "kernel_sources": [],
+  "is_private": false,
+  "enable_gpu": false,
+  "kernel_type": "notebook",
+  "code_file": "project-titanic.irnb",
+  "enable_internet": false,
+  "keywords": [],
+  "dataset_sources": []
+}

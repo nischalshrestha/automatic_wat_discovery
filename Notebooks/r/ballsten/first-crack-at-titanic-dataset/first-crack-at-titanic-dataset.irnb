@@ -1,0 +1,58 @@
+{
+  "cells": [
+    {
+      "cell_type": "markdown",
+      "metadata": {
+        "_cell_guid": "8041728d-bc77-35f9-5c7f-0e6932a05753"
+      },
+      "source": [
+        "To start with, I'm just going to ram the training data into a random forest"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "_cell_guid": "2f236a28-10dd-d828-436c-7931006fa07c"
+      },
+      "outputs": [],
+      "source": [
+        "# Load libraries\n",
+        "library(tidyverse)\n",
+        "library(randomForest)\n",
+        "\n",
+        "# load the data files\n",
+        "train <-   read_csv(\"../input/train.csv\")\n",
+        "test <- read_csv(\"../input/test.csv\")"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "_cell_guid": "f6eb703e-2846-5815-0651-c155454e9a53"
+      },
+      "outputs": [],
+      "source": ""
+    }
+  ],
+  "metadata": {
+    "_change_revision": 0,
+    "_is_fork": false,
+    "kernelspec": {
+      "display_name": "R",
+      "language": "R",
+      "name": "ir"
+    },
+    "language_info": {
+      "codemirror_mode": "r",
+      "file_extension": ".r",
+      "mimetype": "text/x-r-source",
+      "name": "R",
+      "pygments_lexer": "r",
+      "version": "3.3.3"
+    }
+  },
+  "nbformat": 4,
+  "nbformat_minor": 0
+}

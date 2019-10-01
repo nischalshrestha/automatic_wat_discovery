@@ -1,0 +1,21 @@
+{
+  "language": "python",
+  "title": "Titanic_pred",
+  "competition_sources": [
+    "titanic"
+  ],
+  "kernel_type": "notebook",
+  "enable_internet": false,
+  "enable_gpu": false,
+  "id": "suryaveer/titanic-pred",
+  "id_no": 499281,
+  "is_private": false,
+  "dataset_sources": [],
+  "keywords": [
+    "tutorial",
+    "beginner",
+    "classification"
+  ],
+  "code_file": "titanic-pred.ipynb",
+  "kernel_sources": []
+}

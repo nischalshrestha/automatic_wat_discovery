@@ -1,0 +1,17 @@
+{
+  "enable_gpu": false,
+  "title": "Yet Another Titanic Dataset Analysis",
+  "code_file": "yet-another-titanic-dataset-analysis.ipynb",
+  "language": "python",
+  "competition_sources": [
+    "titanic"
+  ],
+  "kernel_type": "notebook",
+  "id": "artirj/yet-another-titanic-dataset-analysis",
+  "is_private": false,
+  "keywords": [],
+  "kernel_sources": [],
+  "id_no": 142508,
+  "enable_internet": false,
+  "dataset_sources": []
+}

@@ -1,0 +1,17 @@
+{
+  "keywords": [],
+  "enable_internet": false,
+  "is_private": false,
+  "kernel_type": "notebook",
+  "competition_sources": [
+    "titanic"
+  ],
+  "id": "npat0003/titanic-data-wrangling-and-analysis",
+  "title": "Titanic Data Wrangling and Analysis",
+  "enable_gpu": false,
+  "id_no": 136704,
+  "language": "python",
+  "code_file": "titanic-data-wrangling-and-analysis.ipynb",
+  "dataset_sources": [],
+  "kernel_sources": []
+}

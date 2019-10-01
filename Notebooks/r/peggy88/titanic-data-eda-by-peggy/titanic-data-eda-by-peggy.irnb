@@ -1,0 +1,195 @@
+{
+  "cells": [
+    {
+      "cell_type": "markdown",
+      "metadata": {
+        "_cell_guid": "cfd9ab7b-d72f-560d-06f5-76c17ab5d68b"
+      },
+      "source": [
+        "This is an attempt to explore and analyze the titanic data set. It consists of two csv files, train data and test data respectively. The goal is to explore train data and use it to predict the desired labels for test data."
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "_cell_guid": "1c18a85d-6625-218b-c4b6-28c10362529d"
+      },
+      "outputs": [],
+      "source": [
+        "# This R environment comes with all of CRAN preinstalled, as well as many other helpful packages\n",
+        "# The environment is defined by the kaggle/rstats docker image: https://github.com/kaggle/docker-rstats\n",
+        "# For example, here's several helpful packages to load in \n",
+        "\n",
+        "library(ggplot2) # Data visualization\n",
+        "library(readr) # CSV file I/O, e.g. the read_csv function\n",
+        "\n",
+        "train <- read.csv(\"../input/train.csv\")\n",
+        "test <- read.csv(\"../input/test.csv\")\n",
+        "# View the structure of training dataset\n",
+        "str(train)\n",
+        "# View the structure of test dataset\n",
+        "str(test)"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "_cell_guid": "3452959c-2eb9-464d-c0c9-3e359d6ff580"
+      },
+      "outputs": [],
+      "source": [
+        "#We notice that some features are not of the type they are supposed to be in. \n",
+        "#Hence we observe and transform the data type of the variables accordingly.\n",
+        "\n",
+        "#Convert name feature to character\n",
+        "train$Name <- as.character(train$Name)\n",
+        "test$Name <- as.character(test$Name)\n",
+        "\n",
+        "#Convert Survived and PClass to factor\n",
+        "train$Survived <- as.factor(train$Survived)\n",
+        "train$Pclass <- as.factor(train$Pclass)\n",
+        "\n",
+        "test$Pclass <- as.factor(test$Pclass)\n",
+        "\n",
+        "str(train)"
+      ]
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {
+        "_cell_guid": "1f0687f6-e0ea-cd57-900b-ce3bd54d3818"
+      },
+      "source": [
+        "#EDA Starts"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "_cell_guid": "e5059475-8532-79c7-de0a-25611e6da205"
+      },
+      "outputs": [],
+      "source": [
+        "#Checking how many survived in training data\n",
+        "table(train$Survived)\n"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "_cell_guid": "a03e70cf-b907-9879-81ed-fa2af5f57bf4"
+      },
+      "outputs": [],
+      "source": [
+        "#Checking summary of dataset\n",
+        "summary(train)"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "_cell_guid": "be5acaf1-c50f-efd5-90e7-649e1e6348f6"
+      },
+      "outputs": [],
+      "source": [
+        "plot(train$Sex, train$Survived, col=c(\"red\",\"blue\"))"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "_cell_guid": "9b28dcb5-45b6-4b92-6574-d3e2bbe1e496"
+      },
+      "outputs": [],
+      "source": [
+        "#Check for missing values\n",
+        "colSums(is.na(train))\n",
+        "colSums(is.na(test))\n",
+        "\n",
+        "#We can deal with missing values in many ways. \n",
+        "#since Fare variable is missing only one value in test data, lets fill it\n",
+        "train2 <- train\n",
+        "test2 <- test\n",
+        "test2$Survived <- NA\n",
+        "full <- rbind(train2, test2)\n",
+        "\n",
+        "full[!complete.cases(full$Fare),]\n",
+        "full$Fare[1044] <- median(full$Fare, na.rm = TRUE)\n",
+        "full[!complete.cases(full$Fare),]\n"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "_cell_guid": "e25a3abc-a8f6-4358-9e31-bb63d5054f2e"
+      },
+      "outputs": [],
+      "source": [
+        "#Fill in Age values now\n",
+        "train[is.na(train)] <- median(train$Age, na.rm = TRUE)\n",
+        "test[is.na(test)] <- median(test$Age, na.rm = TRUE)\n",
+        "\n"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "_cell_guid": "4f45f229-9870-1c4c-1bdb-b2aa9c5bf932"
+      },
+      "outputs": [],
+      "source": [
+        "#Lets split the full data into train and test data again\n",
+        "traindata <- full[1:891,]\n",
+        "testdata <- full[892:1309,]\n",
+        "\n",
+        "dim(traindata)\n",
+        "dim(testdata)"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "_cell_guid": "846a18d4-312c-3800-6a56-8fa4b2a727e7"
+      },
+      "outputs": [],
+      "source": [
+        "#Building a classification model to predict survival status of test data\n",
+        "library(rpart)\n",
+        "dt <- rpart(Survived ~ Pclass + Sex + Age + SibSp + Parch + Fare + Embarked, data=traindata, method= \"class\")\n",
+        "prediction <- predict(dt, newdata = testdata, type = \"class\")\n",
+        "\n",
+        "submission <- data.frame(PassengerId = testdata$PassengerId, Survived = prediction)\n",
+        "write.csv(submission, file =  \"gender_submission.csv\", row.names = FALSE)\n",
+        "\n"
+      ]
+    }
+  ],
+  "metadata": {
+    "_change_revision": 0,
+    "_is_fork": false,
+    "kernelspec": {
+      "display_name": "R",
+      "language": "R",
+      "name": "ir"
+    },
+    "language_info": {
+      "codemirror_mode": "r",
+      "file_extension": ".r",
+      "mimetype": "text/x-r-source",
+      "name": "R",
+      "pygments_lexer": "r",
+      "version": "3.4.0"
+    }
+  },
+  "nbformat": 4,
+  "nbformat_minor": 0
+}

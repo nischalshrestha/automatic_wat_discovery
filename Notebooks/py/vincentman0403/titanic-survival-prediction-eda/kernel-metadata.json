@@ -1,0 +1,17 @@
+{
+  "language": "python",
+  "keywords": [],
+  "enable_internet": false,
+  "enable_gpu": false,
+  "title": "Titanic survival prediction - EDA",
+  "competition_sources": [
+    "titanic"
+  ],
+  "kernel_sources": [],
+  "id": "vincentman0403/titanic-survival-prediction-eda",
+  "dataset_sources": [],
+  "kernel_type": "notebook",
+  "id_no": 1255430,
+  "is_private": false,
+  "code_file": "titanic-survival-prediction-eda.ipynb"
+}

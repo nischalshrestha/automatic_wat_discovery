@@ -1,0 +1,17 @@
+{
+  "enable_gpu": false,
+  "id": "ayushidhamija04/titanic-dataset-analysis",
+  "language": "python",
+  "kernel_sources": [],
+  "kernel_type": "notebook",
+  "dataset_sources": [],
+  "id_no": 1918914,
+  "keywords": [],
+  "is_private": false,
+  "title": "Titanic Dataset Analysis",
+  "competition_sources": [
+    "titanic"
+  ],
+  "enable_internet": false,
+  "code_file": "titanic-dataset-analysis.ipynb"
+}

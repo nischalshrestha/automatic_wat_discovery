@@ -1,0 +1,17 @@
+{
+  "competition_sources": [
+    "titanic"
+  ],
+  "enable_internet": false,
+  "language": "python",
+  "keywords": [],
+  "kernel_type": "notebook",
+  "title": "Test1",
+  "id_no": 210312,
+  "enable_gpu": false,
+  "dataset_sources": [],
+  "is_private": false,
+  "id": "rachit9565/test1",
+  "kernel_sources": [],
+  "code_file": "test1.ipynb"
+}

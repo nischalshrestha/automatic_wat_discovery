@@ -1,0 +1,17 @@
+{
+  "language": "python",
+  "kernel_type": "notebook",
+  "enable_internet": false,
+  "is_private": false,
+  "enable_gpu": false,
+  "competition_sources": [
+    "titanic"
+  ],
+  "title": "Titanic Submission",
+  "dataset_sources": [],
+  "id": "alicewaterhouse/titanic-submission",
+  "kernel_sources": [],
+  "keywords": [],
+  "id_no": 2069222,
+  "code_file": "titanic-submission.ipynb"
+}

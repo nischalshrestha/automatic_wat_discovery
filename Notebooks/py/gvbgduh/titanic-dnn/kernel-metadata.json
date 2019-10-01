@@ -1,0 +1,17 @@
+{
+  "kernel_sources": [],
+  "dataset_sources": [],
+  "kernel_type": "notebook",
+  "is_private": false,
+  "id_no": 488367,
+  "enable_internet": false,
+  "id": "gvbgduh/titanic-dnn",
+  "code_file": "titanic-dnn.ipynb",
+  "title": "Titanic_DNN",
+  "enable_gpu": false,
+  "language": "python",
+  "competition_sources": [
+    "titanic"
+  ],
+  "keywords": []
+}

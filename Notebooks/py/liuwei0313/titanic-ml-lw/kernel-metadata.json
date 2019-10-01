@@ -1,0 +1,17 @@
+{
+  "is_private": false,
+  "competition_sources": [
+    "titanic"
+  ],
+  "keywords": [],
+  "id_no": 731930,
+  "code_file": "titanic-ml-lw.ipynb",
+  "dataset_sources": [],
+  "language": "python",
+  "enable_gpu": false,
+  "id": "liuwei0313/titanic-ml-lw",
+  "kernel_sources": [],
+  "kernel_type": "notebook",
+  "title": "Titanic_ml_lw",
+  "enable_internet": false
+}

@@ -1,0 +1,17 @@
+{
+  "id": "timmenk/notebook2a6f08181c",
+  "id_no": 241979,
+  "kernel_type": "notebook",
+  "kernel_sources": [],
+  "title": "Notebook2a6f08181c",
+  "is_private": false,
+  "code_file": "notebook2a6f08181c.irnb",
+  "enable_gpu": false,
+  "language": "r",
+  "dataset_sources": [],
+  "competition_sources": [
+    "titanic"
+  ],
+  "keywords": [],
+  "enable_internet": false
+}

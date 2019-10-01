@@ -1,0 +1,472 @@
+{
+  "cells": [
+    {
+      "cell_type": "markdown",
+      "metadata": {
+        "_cell_guid": "8d0ad881-6ce1-540b-e6ff-08bcd81bcd21"
+      },
+      "source": [
+        "Here is my Initial exploration of data and Feature Engineering"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "_cell_guid": "4b4b96f8-e9cd-c3b4-8a5f-79526a3a7225"
+      },
+      "outputs": [],
+      "source": [
+        "# This R environment comes with all of CRAN preinstalled, as well as many other helpful packages\n",
+        "# The environment is defined by the kaggle/rstats docker image: https://github.com/kaggle/docker-rstats\n",
+        "# For example, here's several helpful packages to load in \n",
+        "packageStartupMessage()\n",
+        "library(plyr)\n",
+        "library(dplyr)\n",
+        "library(ggplot2)\n",
+        "library(DT)\n",
+        "library(randomForest)\n",
+        "library(corrplot)\n",
+        "library(caret)\n",
+        "library(lattice)\n",
+        "\n",
+        "# Input data files are available in the \"../input/\" directory.\n",
+        "# For example, running this (by clicking run or pressing Shift+Enter) will list the files in the input directory\n",
+        "\n",
+        "system(\"ls ../input\")\n",
+        "\n",
+        "# Any results you write to the current directory are saved as output.\n",
+        "mytheme_1 <- function() {\n",
+        "  return(\n",
+        "    theme(\n",
+        "      axis.text.x = element_text(\n",
+        "        angle = 90,\n",
+        "        size = 10,\n",
+        "        vjust = 0.4\n",
+        "      ),\n",
+        "      plot.title = element_text(size = 15, vjust = 2),\n",
+        "      axis.title.x = element_text(size = 12, vjust = -0.35)\n",
+        "    )\n",
+        "  )\n",
+        "}\n",
+        "\n",
+        "mytheme_2 <- function() {\n",
+        "  return(\n",
+        "    theme(\n",
+        "      axis.text.x = element_text(size = 10, vjust = 0.4),\n",
+        "      plot.title = element_text(size = 15, vjust = 2),\n",
+        "      axis.title.x = element_text(size = 12, vjust = -0.35)\n",
+        "    )\n",
+        "  )\n",
+        "}\n"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "_cell_guid": "e4bfdabe-5ba4-5690-2cc1-e6f7032f1bae"
+      },
+      "outputs": [],
+      "source": [
+        "# Exploratory Analysis \n",
+        "\n",
+        "train <- read.csv(\"../input/train.csv\")\n",
+        "test <- read.csv(\"../input/test.csv\")\n",
+        "\n",
+        "\n",
+        "str(train)"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "_cell_guid": "9a94fc9e-c7a8-7e2c-a21c-1c14b8313c7a"
+      },
+      "outputs": [],
+      "source": [
+        "datatable(train)\n",
+        "head(train)"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "_cell_guid": "f3e00450-1bbd-84c2-0354-67d11e87b3ea"
+      },
+      "outputs": [],
+      "source": [
+        "# Univariate analysis - Categorical Variable analysis\n",
+        "train$Survived <- as.factor(train$Survived)\n",
+        "train$Pclass <- as.factor(train$Pclass)\n",
+        "\n",
+        "histogram(train$Survived,  xlab = \"Survived\" )\n",
+        "\n",
+        "prop.table(table(train$Survived))\n",
+        "## Only 38% of population survived in the training data\n",
+        "\n",
+        "histogram(train$Pclass, xlab=\"Passenger Class\")\n",
+        "\n",
+        "prop.table(table(train$Pclass))\n",
+        "## 55% of the population travelled in 3rd Class\n",
+        "\n",
+        "histogram(train$Sex,  xlab = \"Passenger Sex\" )\n",
+        "\n",
+        "prop.table(table(train$Sex))\n",
+        "## 64% of the population are male and 35% of population or female\n",
+        "\n",
+        "levels(train$Embarked)[1] <- \"S\"\n",
+        "\n",
+        "histogram(train$Embarked,  xlab = \"Passenger Embarked\" )\n",
+        "\n",
+        "prop.table(table(train$Embarked))\n"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "_cell_guid": "a3669a80-967d-5f1b-011a-f13e2f039658"
+      },
+      "outputs": [],
+      "source": [
+        "histogram(train$Sex,  xlab = \"Passenger Sex\" )\n",
+        "\n",
+        "prop.table(table(train$Sex))\n",
+        "## 64% of the population are male and 35% of population or female\n"
+      ]
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {
+        "_cell_guid": "c3d0288a-e13f-60b8-64db-205de40edf95"
+      },
+      "source": [
+        "**Numerical variable analysis**"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "_cell_guid": "e0a8791f-5a08-9840-0e3c-6a3d217aaf66"
+      },
+      "outputs": [],
+      "source": [
+        "summary(train$Age)\n",
+        "\n",
+        "histogram(train$Age)"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "_cell_guid": "60b43a31-452e-2650-ee32-d351f425e203"
+      },
+      "outputs": [],
+      "source": [
+        "summary(train$SibSp)\n"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "_cell_guid": "fb671c12-144d-11ad-8016-d8c4e95176de"
+      },
+      "outputs": [],
+      "source": [
+        "summary(train$Fare)\n",
+        "\n",
+        "histogram(train$Fare, xlab=\"Fare\")\n"
+      ]
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {
+        "_cell_guid": "485df6e8-f962-8f68-1dee-337dc468a96a"
+      },
+      "source": [
+        "## Imputing Missing Values ##"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "_cell_guid": "b01ee9ee-1bec-82ac-fbc5-6c20834e7b9d"
+      },
+      "outputs": [],
+      "source": [
+        "test$Pclass <- as.factor(test$Pclass)\n",
+        "\n",
+        "full <- bind_rows(train, test)\n",
+        "\n",
+        "colSums(is.na(full))"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "_cell_guid": "33e63672-b248-eb5b-c6c6-8cfe2b1b01f0"
+      },
+      "outputs": [],
+      "source": [
+        "full$Title <- sapply(full$Name, FUN = function(x) { strsplit(x, split = '[,.]')[[1]][2] } )\n",
+        "\n",
+        "full$Title <- sub(' ', '', full$Title)\n",
+        "\n",
+        "table(full$Title)\n",
+        "\n",
+        "full$Title[full$Title %in% c(\"Mme\", \"Mlle\") ] <- \"Mlle\"\n",
+        "\n",
+        "full$Title[full$Title %in% c('Capt', 'Don', 'Major', 'Sir') ] <- \"Sir\"\n",
+        "\n",
+        "full$Title[full$Title %in% c('Dona', 'Lady', 'the Countess', 'Jonkheer')] <- 'Lady'\n",
+        "\n",
+        "full$Title <- as.factor(full$Title)\n",
+        "\n",
+        "table(full$Title)\n"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "_cell_guid": "76528293-11da-c49c-ce1a-6cb30644e786"
+      },
+      "outputs": [],
+      "source": [
+        "age_by_title <- full %>% group_by(Title) %>% summarise(Age = median(Age, na.rm=T ))\n",
+        "\n",
+        "full[is.na(full$Age) & full$Title == \"Mr\", ]$Age <-age_by_title[age_by_title$Title== \"Mr\", ]$Age\n",
+        "\n",
+        "full[is.na(full$Age) & full$Title == \"Mrs\", ]$Age <-age_by_title[age_by_title$Title== \"Mrs\", ]$Age\n",
+        "\n",
+        "full[is.na(full$Age) & full$Title == \"Miss\", ]$Age <-age_by_title[age_by_title$Title== \"Miss\", ]$Age\n",
+        "\n",
+        "full[is.na(full$Age) & full$Title == \"Master\", ]$Age <-age_by_title[age_by_title$Title== \"Master\", ]$Age\n",
+        "\n",
+        "full[is.na(full$Age) & full$Title == \"Dr\", ]$Age <-age_by_title[age_by_title$Title== \"Dr\", ]$Age\n",
+        "\n",
+        "full[is.na(full$Age) & full$Title == \"Ms\", ]$Age <-age_by_title[age_by_title$Title== \"Ms\", ]$Age\n",
+        "\n",
+        "colSums(is.na(full))\n"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "_cell_guid": "f2c5cab5-730a-5be4-4c4a-261bc6ed3764"
+      },
+      "outputs": [],
+      "source": [
+        "Fare_by_Pclass <- full %>% group_by(Pclass) %>% summarise(median_Fare = median(Fare, na.rm=T) )\n",
+        "\n",
+        "full[is.na(full$Fare),]$Fare <- Fare_by_Pclass[Fare_by_Pclass$Pclass==\"3\", ]$median_Fare\n",
+        "\n",
+        "colSums(is.na(full))\n"
+      ]
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {
+        "_cell_guid": "0dca0925-a05c-625d-4a86-12cfb7e4edae"
+      },
+      "source": [
+        "## Feature Engineering ##"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "_cell_guid": "cd57052e-1f84-df34-89a6-502490211a97"
+      },
+      "outputs": [],
+      "source": [
+        "full$FamilySize <- full$Parch + full$SibSp + 1\n",
+        "\n",
+        "full$Surname <- sapply(full$Name, FUN=function(x) {strsplit(x, split='[,.]')[[1]][1]})\n",
+        "\n",
+        "full$FamilyID <- paste(as.character(full$FamilySize), full$Surname, sep=\"\")\n",
+        "\n",
+        "famIDs <- data.frame(table(full$FamilyID ))\n",
+        "\n",
+        "famIDs <- famIDs[famIDs$Freq <= 2,]\n",
+        "\n",
+        "full$FamilyID <-as.character(full$FamilyID)\n",
+        "\n",
+        "full$FamilyID[full$FamilyID %in% famIDs$Var1] <- 'Small'\n",
+        "\n",
+        "full$FamilyID <- as.factor(full$FamilyID)\n",
+        "\n",
+        "table(full$FamilyID)\n",
+        "\n",
+        "full$isAlone <- ifelse(full$FamilySize == 1, 1,0 )\n",
+        "\n",
+        "full$isCabin <- ifelse(full$Cabin == \"\", 0, 1)\n",
+        "\n",
+        "full$Ticket <- as.character(full$Ticket)\n"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "_cell_guid": "201f3f59-b306-82fa-7b95-f235778862ee"
+      },
+      "outputs": [],
+      "source": [
+        "full$Fare_Category <- NA\n",
+        "\n",
+        "full$Fare_Category <- ifelse(full$Fare <= 50, \"Low\", full$Fare_Category )\n",
+        "full$Fare_Category <- ifelse(full$Fare > 50 & full$Fare <= 150, \"Medium\", full$Fare_Category )\n",
+        "full$Fare_Category <- ifelse(full$Fare > 150, \"High\", full$Fare_Category )\n",
+        "\n",
+        "ggplot(full[1:nrow(train),], aes(Fare_Category, fill=Survived )) +\n",
+        "  geom_bar(stat = \"count\")\n"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "_cell_guid": "a708bbaf-5bbc-c87e-f3d2-0a42a0de787c"
+      },
+      "outputs": [],
+      "source": [
+        "ggplot(full[!is.na(full$Survived),], aes(Age, fill=Survived)) +\n",
+        "  geom_histogram(stat  =\"bin\",bins = 12 )\n"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "_cell_guid": "5ba9d54c-462a-f14e-2b9b-d969ec46a790"
+      },
+      "outputs": [],
+      "source": [
+        "full$Age_Category <- NA\n",
+        "\n",
+        "full$Age_Category <- ifelse(full$Age <= 10, \"Child\", full$Age_Category)\n",
+        "full$Age_Category <- ifelse(full$Age > 10 & full$Age <= 22, \"Tean\", full$Age_Category)\n",
+        "full$Age_Category <- ifelse(full$Age > 22 & full$Age <= 35, \"Adult\", full$Age_Category)\n",
+        "full$Age_Category <- ifelse(full$Age > 35 , \"Aged\", full$Age_Category)\n",
+        "\n",
+        "full$Age_Category <- as.factor(full$Age_Category)\n",
+        "\n",
+        "full$FarePerPerson <- full$Fare/full$FamilySize\n",
+        "\n",
+        "\n",
+        "ggplot(full[!is.na(full$Survived),], aes(Age_Category, fill=Survived)) +\n",
+        "  geom_bar(stat=\"count\")\n"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "_cell_guid": "55843543-bee6-561a-6737-97a1b9b296fd"
+      },
+      "outputs": [],
+      "source": [
+        "ggplot(subset(full[1:nrow(train),], FamilyID != \"Small\" ), aes(FamilyID, fill=Survived)) +\n",
+        "  geom_bar(stat=\"count\") +\n",
+        "  mytheme_1()\n"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "_cell_guid": "a55d04b6-24c7-e0d3-44ee-5c30655d13ec"
+      },
+      "outputs": [],
+      "source": [
+        "ggplot(full[1:nrow(train),], aes(FamilySize, fill=Survived)) +\n",
+        "  geom_bar(stat=\"count\") +\n",
+        "  facet_wrap(~Sex+Pclass, nrow =2)+\n",
+        "  mytheme_1()\n",
+        "# Family Size greater than 6 not survived"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "_cell_guid": "4977df54-6365-0676-bb8e-94f7a0be9b73"
+      },
+      "outputs": [],
+      "source": [
+        "ggplot(full[1:nrow(train),], aes(PassengerId, Age, color=Survived )  ) +\n",
+        "  geom_point() +\n",
+        "  facet_wrap(~Pclass+Title) +\n",
+        "  mytheme_2()\n",
+        "\n",
+        "ggplot(full[1:nrow(train),], aes(PassengerId, Age, color=Survived )  ) +\n",
+        "  geom_point() +\n",
+        "  facet_wrap(~Pclass+Sex) +\n",
+        "  mytheme_2()\n",
+        "# Age above 20 people not survived\n"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "_cell_guid": "eb353f88-d4a7-5e5b-85fd-0624276bcf55"
+      },
+      "outputs": [],
+      "source": [
+        "ggplot(full[1:nrow(train),], aes(PassengerId, Age, color=Survived )  ) +\n",
+        "  geom_point() +\n",
+        "  facet_wrap(~SibSp+Pclass) +\n",
+        "  mytheme_2()\n",
+        "\n",
+        "# SibSp size more than 3 not survived\n"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "_cell_guid": "5ab1d926-20d2-9983-02c9-cc4b795b84af"
+      },
+      "outputs": [],
+      "source": [
+        "ggplot(full[1:nrow(train),], aes(PassengerId, Age, color=Survived )  ) +\n",
+        "  geom_point() +\n",
+        "  facet_wrap(~Parch+Pclass) +\n",
+        "  mytheme_2()\n",
+        "\n",
+        "# Parch size more than 3 not survived\n"
+      ]
+    }
+  ],
+  "metadata": {
+    "_change_revision": 0,
+    "_is_fork": false,
+    "kernelspec": {
+      "display_name": "R",
+      "language": "R",
+      "name": "ir"
+    },
+    "language_info": {
+      "codemirror_mode": "r",
+      "file_extension": ".r",
+      "mimetype": "text/x-r-source",
+      "name": "R",
+      "pygments_lexer": "r",
+      "version": "3.3.3"
+    }
+  },
+  "nbformat": 4,
+  "nbformat_minor": 0
+}

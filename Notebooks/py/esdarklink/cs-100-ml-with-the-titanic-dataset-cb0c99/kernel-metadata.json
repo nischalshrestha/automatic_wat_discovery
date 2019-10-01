@@ -1,0 +1,17 @@
+{
+  "id": "esdarklink/cs-100-ml-with-the-titanic-dataset-cb0c99",
+  "is_private": false,
+  "id_no": 1738971,
+  "kernel_type": "notebook",
+  "kernel_sources": [],
+  "enable_internet": false,
+  "code_file": "cs-100-ml-with-the-titanic-dataset-cb0c99.ipynb",
+  "competition_sources": [
+    "titanic"
+  ],
+  "language": "python",
+  "enable_gpu": true,
+  "keywords": [],
+  "title": "CS 100: ML with the Titanic Dataset cb0c99",
+  "dataset_sources": []
+}

@@ -1,0 +1,17 @@
+{
+  "dataset_sources": [],
+  "competition_sources": [
+    "titanic"
+  ],
+  "id": "rjhere23/predictive-analysis-of-survival-rate-on-titanic",
+  "kernel_type": "notebook",
+  "is_private": false,
+  "code_file": "predictive-analysis-of-survival-rate-on-titanic.irnb",
+  "id_no": 228028,
+  "kernel_sources": [],
+  "enable_gpu": false,
+  "language": "r",
+  "enable_internet": false,
+  "keywords": [],
+  "title": "Predictive Analysis of Survival Rate on Titanic"
+}

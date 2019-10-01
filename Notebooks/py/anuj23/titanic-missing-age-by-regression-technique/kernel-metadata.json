@@ -1,0 +1,17 @@
+{
+  "enable_gpu": true,
+  "is_private": false,
+  "kernel_type": "notebook",
+  "dataset_sources": [],
+  "code_file": "titanic-missing-age-by-regression-technique.ipynb",
+  "id_no": 1842432,
+  "competition_sources": [
+    "titanic"
+  ],
+  "enable_internet": false,
+  "title": "titanic Missing_age by Regression technique",
+  "keywords": [],
+  "language": "python",
+  "kernel_sources": [],
+  "id": "anuj23/titanic-missing-age-by-regression-technique"
+}

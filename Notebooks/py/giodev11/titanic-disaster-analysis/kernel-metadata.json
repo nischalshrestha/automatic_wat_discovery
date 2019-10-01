@@ -1,0 +1,19 @@
+{
+  "competition_sources": [
+    "titanic"
+  ],
+  "title": "Titanic Disaster Analysis",
+  "language": "python",
+  "is_private": false,
+  "id_no": 751359,
+  "enable_gpu": false,
+  "id": "giodev11/titanic-disaster-analysis",
+  "dataset_sources": [],
+  "kernel_type": "notebook",
+  "keywords": [
+    "beginner"
+  ],
+  "kernel_sources": [],
+  "enable_internet": false,
+  "code_file": "titanic-disaster-analysis.ipynb"
+}

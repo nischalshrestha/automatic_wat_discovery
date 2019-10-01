@@ -1,0 +1,19 @@
+{
+  "title": "Short Pandas Tutorial with Missingness Trick",
+  "code_file": "short-pandas-tutorial-with-missingness-trick.ipynb",
+  "id": "michaelabehsera/short-pandas-tutorial-with-missingness-trick",
+  "id_no": 671492,
+  "enable_internet": false,
+  "is_private": false,
+  "kernel_type": "notebook",
+  "dataset_sources": [
+    "kordasg/titanic-dataset"
+  ],
+  "language": "python",
+  "competition_sources": [
+    "titanic"
+  ],
+  "keywords": [],
+  "enable_gpu": false,
+  "kernel_sources": []
+}

@@ -1,0 +1,17 @@
+{
+  "code_file": "first-try.ipynb",
+  "kernel_type": "notebook",
+  "kernel_sources": [],
+  "title": "First Try",
+  "competition_sources": [
+    "titanic"
+  ],
+  "enable_gpu": false,
+  "is_private": false,
+  "enable_internet": false,
+  "dataset_sources": [],
+  "language": "python",
+  "id": "harrypuuter/first-try",
+  "keywords": [],
+  "id_no": 473833
+}

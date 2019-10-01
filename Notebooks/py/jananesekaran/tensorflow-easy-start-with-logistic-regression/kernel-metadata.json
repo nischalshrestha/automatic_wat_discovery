@@ -1,0 +1,20 @@
+{
+  "kernel_sources": [],
+  "id_no": 356222,
+  "enable_gpu": false,
+  "language": "python",
+  "kernel_type": "notebook",
+  "dataset_sources": [],
+  "keywords": [
+    "beginner",
+    "logistic regression"
+  ],
+  "enable_internet": false,
+  "competition_sources": [
+    "titanic"
+  ],
+  "is_private": false,
+  "code_file": "tensorflow-easy-start-with-logistic-regression.ipynb",
+  "title": "TensorFlow - Easy start with Logistic Regression ",
+  "id": "jananesekaran/tensorflow-easy-start-with-logistic-regression"
+}

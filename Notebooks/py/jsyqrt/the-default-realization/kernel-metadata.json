@@ -1,0 +1,17 @@
+{
+  "dataset_sources": [],
+  "keywords": [],
+  "enable_internet": false,
+  "competition_sources": [
+    "titanic"
+  ],
+  "kernel_sources": [],
+  "enable_gpu": false,
+  "id": "jsyqrt/the-default-realization",
+  "kernel_type": "notebook",
+  "title": "the default realization.",
+  "id_no": 228548,
+  "is_private": false,
+  "code_file": "the-default-realization.ipynb",
+  "language": "python"
+}

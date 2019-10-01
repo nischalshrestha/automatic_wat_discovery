@@ -1,0 +1,17 @@
+{
+  "enable_internet": false,
+  "title": "Don't get lost in a forest",
+  "is_private": false,
+  "language": "r",
+  "kernel_type": "notebook",
+  "dataset_sources": [],
+  "kernel_sources": [],
+  "enable_gpu": false,
+  "competition_sources": [
+    "titanic"
+  ],
+  "id_no": 139862,
+  "code_file": "don-t-get-lost-in-a-forest.irnb",
+  "keywords": [],
+  "id": "alanre/don-t-get-lost-in-a-forest"
+}

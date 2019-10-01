@@ -1,0 +1,17 @@
+{
+  "enable_internet": false,
+  "id_no": 363094,
+  "dataset_sources": [],
+  "is_private": false,
+  "kernel_type": "notebook",
+  "language": "r",
+  "kernel_sources": [],
+  "keywords": [],
+  "id": "wassimben/will-they-survive",
+  "competition_sources": [
+    "titanic"
+  ],
+  "code_file": "will-they-survive.irnb",
+  "enable_gpu": false,
+  "title": "Will they survive ? "
+}

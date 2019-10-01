@@ -1,0 +1,17 @@
+{
+  "title": "Notebook9bc559530a",
+  "id_no": 228458,
+  "kernel_type": "notebook",
+  "is_private": false,
+  "code_file": "notebook9bc559530a.ipynb",
+  "enable_internet": false,
+  "kernel_sources": [],
+  "language": "python",
+  "keywords": [],
+  "dataset_sources": [],
+  "id": "chenhj/notebook9bc559530a",
+  "enable_gpu": false,
+  "competition_sources": [
+    "titanic"
+  ]
+}

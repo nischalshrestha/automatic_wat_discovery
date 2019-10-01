@@ -1,0 +1,17 @@
+{
+  "dataset_sources": [],
+  "competition_sources": [
+    "titanic"
+  ],
+  "enable_internet": false,
+  "id": "zhoulingyan0228/titanic-surviver-classification-w-tf-estimator",
+  "is_private": false,
+  "keywords": [],
+  "code_file": "titanic-surviver-classification-w-tf-estimator.ipynb",
+  "id_no": 1238620,
+  "title": "Titanic Surviver Classification (w/ TF estimator)",
+  "kernel_sources": [],
+  "kernel_type": "notebook",
+  "enable_gpu": false,
+  "language": "python"
+}

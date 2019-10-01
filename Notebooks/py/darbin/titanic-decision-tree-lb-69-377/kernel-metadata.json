@@ -1,0 +1,17 @@
+{
+  "is_private": false,
+  "dataset_sources": [],
+  "enable_gpu": false,
+  "kernel_type": "notebook",
+  "language": "python",
+  "kernel_sources": [],
+  "id_no": 1832445,
+  "code_file": "titanic-decision-tree-lb-69-377.ipynb",
+  "competition_sources": [
+    "titanic"
+  ],
+  "keywords": [],
+  "title": "Titanic decision tree LB 69.377",
+  "enable_internet": false,
+  "id": "darbin/titanic-decision-tree-lb-69-377"
+}

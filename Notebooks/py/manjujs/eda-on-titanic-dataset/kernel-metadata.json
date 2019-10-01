@@ -1,0 +1,17 @@
+{
+  "is_private": false,
+  "title": "EDA on Titanic dataset",
+  "kernel_type": "notebook",
+  "competition_sources": [
+    "titanic"
+  ],
+  "enable_internet": false,
+  "language": "python",
+  "enable_gpu": false,
+  "dataset_sources": [],
+  "keywords": [],
+  "code_file": "eda-on-titanic-dataset.ipynb",
+  "id": "manjujs/eda-on-titanic-dataset",
+  "kernel_sources": [],
+  "id_no": 2115322
+}

@@ -1,0 +1,17 @@
+{
+  "id_no": 1053636,
+  "keywords": [],
+  "enable_internet": false,
+  "enable_gpu": false,
+  "id": "brunodeabreu/titanic-challenge-crisp-dm",
+  "kernel_type": "notebook",
+  "kernel_sources": [],
+  "dataset_sources": [],
+  "title": "Titanic challenge - CRISP-DM",
+  "language": "python",
+  "is_private": false,
+  "code_file": "titanic-challenge-crisp-dm.ipynb",
+  "competition_sources": [
+    "titanic"
+  ]
+}

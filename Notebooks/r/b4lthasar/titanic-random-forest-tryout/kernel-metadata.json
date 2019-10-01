@@ -1,0 +1,17 @@
+{
+  "is_private": false,
+  "title": "Titanic Random Forest Tryout",
+  "id_no": 882153,
+  "dataset_sources": [],
+  "enable_gpu": true,
+  "keywords": [],
+  "id": "b4lthasar/titanic-random-forest-tryout",
+  "code_file": "titanic-random-forest-tryout.irnb",
+  "competition_sources": [
+    "titanic"
+  ],
+  "enable_internet": false,
+  "kernel_sources": [],
+  "language": "r",
+  "kernel_type": "notebook"
+}

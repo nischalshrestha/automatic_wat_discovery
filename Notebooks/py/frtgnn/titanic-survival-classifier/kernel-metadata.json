@@ -1,0 +1,23 @@
+{
+  "kernel_sources": [],
+  "competition_sources": [
+    "titanic"
+  ],
+  "title": "Titanic Survival Classifier",
+  "dataset_sources": [],
+  "kernel_type": "notebook",
+  "enable_internet": false,
+  "id": "frtgnn/titanic-survival-classifier",
+  "is_private": false,
+  "id_no": 1995435,
+  "enable_gpu": false,
+  "code_file": "titanic-survival-classifier.ipynb",
+  "keywords": [
+    "beginner",
+    "data cleaning",
+    "random forest",
+    "xgboost",
+    "starter code"
+  ],
+  "language": "python"
+}

@@ -1,0 +1,17 @@
+{
+  "code_file": "titanicnoyatu.ipynb",
+  "id": "hosomi/titanicnoyatu",
+  "dataset_sources": [],
+  "kernel_type": "notebook",
+  "enable_internet": false,
+  "language": "python",
+  "enable_gpu": false,
+  "title": "titanicnoyatu",
+  "is_private": false,
+  "id_no": 1977428,
+  "competition_sources": [
+    "titanic"
+  ],
+  "keywords": [],
+  "kernel_sources": []
+}

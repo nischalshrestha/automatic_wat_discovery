@@ -1,0 +1,17 @@
+{
+  "title": "An Interactive Data Science Tutorial 24ca05",
+  "enable_gpu": false,
+  "code_file": "an-interactive-data-science-tutorial-24ca05.ipynb",
+  "kernel_sources": [],
+  "kernel_type": "notebook",
+  "keywords": [],
+  "is_private": false,
+  "competition_sources": [
+    "titanic"
+  ],
+  "language": "python",
+  "id_no": 253533,
+  "enable_internet": false,
+  "id": "jiexus/an-interactive-data-science-tutorial-24ca05",
+  "dataset_sources": []
+}

@@ -1,0 +1,17 @@
+{
+  "id_no": 1482189,
+  "code_file": "kernel-pclass-sex-age-fare.ipynb",
+  "competition_sources": [
+    "titanic"
+  ],
+  "keywords": [],
+  "is_private": false,
+  "title": "Kernel Pclass-Sex-Age-Fare",
+  "enable_gpu": false,
+  "dataset_sources": [],
+  "enable_internet": false,
+  "id": "sakura0415/kernel-pclass-sex-age-fare",
+  "kernel_sources": [],
+  "language": "python",
+  "kernel_type": "notebook"
+}

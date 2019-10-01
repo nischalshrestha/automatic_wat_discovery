@@ -1,0 +1,17 @@
+{
+  "kernel_sources": [],
+  "enable_internet": false,
+  "title": "First Attempt at Random Forest on Titanic Data",
+  "enable_gpu": false,
+  "keywords": [],
+  "id": "cwkulp/first-attempt-at-random-forest-on-titanic-data",
+  "is_private": false,
+  "dataset_sources": [],
+  "code_file": "first-attempt-at-random-forest-on-titanic-data.ipynb",
+  "competition_sources": [
+    "titanic"
+  ],
+  "kernel_type": "notebook",
+  "id_no": 1350085,
+  "language": "python"
+}

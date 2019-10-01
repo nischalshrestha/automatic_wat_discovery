@@ -1,0 +1,17 @@
+{
+  "is_private": false,
+  "enable_gpu": false,
+  "competition_sources": [
+    "titanic"
+  ],
+  "enable_internet": false,
+  "dataset_sources": [],
+  "code_file": "try-titanic-problem.ipynb",
+  "language": "python",
+  "keywords": [],
+  "kernel_type": "notebook",
+  "kernel_sources": [],
+  "id": "ason1123/try-titanic-problem",
+  "id_no": 225221,
+  "title": "try Titanic problem"
+}

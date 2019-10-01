@@ -1,0 +1,22 @@
+{
+  "title": "Titanic Prediction with SVM",
+  "is_private": false,
+  "language": "python",
+  "enable_internet": false,
+  "competition_sources": [
+    "titanic"
+  ],
+  "id_no": 403063,
+  "enable_gpu": false,
+  "kernel_type": "notebook",
+  "dataset_sources": [],
+  "keywords": [
+    "beginner",
+    "data visualization",
+    "ensembling",
+    "svm"
+  ],
+  "id": "l3r4nd/titanic-prediction-with-svm",
+  "kernel_sources": [],
+  "code_file": "titanic-prediction-with-svm.ipynb"
+}

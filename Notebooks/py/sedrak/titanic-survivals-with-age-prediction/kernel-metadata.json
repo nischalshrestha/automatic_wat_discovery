@@ -1,0 +1,17 @@
+{
+  "enable_internet": false,
+  "id_no": 1880281,
+  "competition_sources": [
+    "titanic"
+  ],
+  "keywords": [],
+  "language": "python",
+  "id": "sedrak/titanic-survivals-with-age-prediction",
+  "dataset_sources": [],
+  "kernel_type": "notebook",
+  "kernel_sources": [],
+  "title": "Titanic survivals with age prediction",
+  "enable_gpu": false,
+  "is_private": false,
+  "code_file": "titanic-survivals-with-age-prediction.ipynb"
+}

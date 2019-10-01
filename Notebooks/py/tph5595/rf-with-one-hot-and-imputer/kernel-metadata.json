@@ -1,0 +1,17 @@
+{
+  "id_no": 1753664,
+  "enable_internet": false,
+  "kernel_type": "notebook",
+  "kernel_sources": [],
+  "enable_gpu": false,
+  "keywords": [],
+  "title": "RF with one-hot and imputer",
+  "dataset_sources": [],
+  "id": "tph5595/rf-with-one-hot-and-imputer",
+  "competition_sources": [
+    "titanic"
+  ],
+  "code_file": "rf-with-one-hot-and-imputer.ipynb",
+  "language": "python",
+  "is_private": false
+}

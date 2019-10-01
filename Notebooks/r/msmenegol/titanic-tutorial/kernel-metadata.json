@@ -1,0 +1,17 @@
+{
+  "is_private": false,
+  "id": "msmenegol/titanic-tutorial",
+  "title": "Titanic Tutorial",
+  "kernel_sources": [],
+  "competition_sources": [
+    "titanic"
+  ],
+  "kernel_type": "notebook",
+  "language": "python",
+  "id_no": 202627,
+  "keywords": [],
+  "code_file": "titanic-tutorial.ipynb",
+  "dataset_sources": [],
+  "enable_gpu": false,
+  "enable_internet": false
+}

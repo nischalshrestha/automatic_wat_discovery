@@ -1,0 +1,17 @@
+{
+  "is_private": false,
+  "title": "kernelbd6d5ae937",
+  "enable_internet": false,
+  "enable_gpu": false,
+  "code_file": "kernelbd6d5ae937.ipynb",
+  "keywords": [],
+  "id_no": 1881104,
+  "id": "dandie/kernelbd6d5ae937",
+  "kernel_sources": [],
+  "competition_sources": [
+    "titanic"
+  ],
+  "kernel_type": "notebook",
+  "language": "python",
+  "dataset_sources": []
+}

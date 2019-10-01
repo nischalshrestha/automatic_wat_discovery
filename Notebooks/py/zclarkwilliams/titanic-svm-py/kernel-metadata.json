@@ -1,0 +1,17 @@
+{
+  "id": "zclarkwilliams/titanic-svm-py",
+  "enable_gpu": false,
+  "code_file": "titanic-svm-py.ipynb",
+  "competition_sources": [
+    "titanic"
+  ],
+  "kernel_sources": [],
+  "id_no": 1375577,
+  "keywords": [],
+  "enable_internet": false,
+  "kernel_type": "notebook",
+  "dataset_sources": [],
+  "is_private": false,
+  "language": "python",
+  "title": "titanic_svm.py"
+}

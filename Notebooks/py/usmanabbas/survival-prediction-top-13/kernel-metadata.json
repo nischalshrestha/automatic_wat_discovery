@@ -1,0 +1,17 @@
+{
+  "id_no": 421871,
+  "is_private": false,
+  "kernel_sources": [],
+  "code_file": "survival-prediction-top-13.ipynb",
+  "enable_gpu": false,
+  "enable_internet": false,
+  "title": "Survival Prediction (Top 13%)",
+  "competition_sources": [
+    "titanic"
+  ],
+  "id": "usmanabbas/survival-prediction-top-13",
+  "language": "python",
+  "dataset_sources": [],
+  "kernel_type": "notebook",
+  "keywords": []
+}

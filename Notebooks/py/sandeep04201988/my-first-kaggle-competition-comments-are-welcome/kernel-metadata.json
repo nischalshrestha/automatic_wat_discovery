@@ -1,0 +1,17 @@
+{
+  "competition_sources": [
+    "titanic"
+  ],
+  "is_private": false,
+  "id_no": 286628,
+  "keywords": [],
+  "enable_gpu": false,
+  "language": "python",
+  "id": "sandeep04201988/my-first-kaggle-competition-comments-are-welcome",
+  "kernel_sources": [],
+  "kernel_type": "notebook",
+  "dataset_sources": [],
+  "enable_internet": false,
+  "code_file": "my-first-kaggle-competition-comments-are-welcome.ipynb",
+  "title": "My First Kaggle Competition(Comments are welcome)"
+}

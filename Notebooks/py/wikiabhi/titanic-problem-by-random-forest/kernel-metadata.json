@@ -1,0 +1,20 @@
+{
+  "id": "wikiabhi/titanic-problem-by-random-forest",
+  "id_no": 754209,
+  "title": "Titanic Problem By Random Forest",
+  "code_file": "titanic-problem-by-random-forest.ipynb",
+  "language": "python",
+  "kernel_type": "notebook",
+  "is_private": false,
+  "enable_gpu": false,
+  "enable_internet": false,
+  "keywords": [
+    "beginner",
+    "random forest"
+  ],
+  "dataset_sources": [],
+  "kernel_sources": [],
+  "competition_sources": [
+    "titanic"
+  ]
+}

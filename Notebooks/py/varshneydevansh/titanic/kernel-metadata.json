@@ -1,0 +1,21 @@
+{
+  "language": "python",
+  "is_private": false,
+  "id_no": 751925,
+  "enable_gpu": false,
+  "id": "varshneydevansh/titanic",
+  "kernel_sources": [],
+  "title": "Titanic",
+  "competition_sources": [
+    "titanic"
+  ],
+  "kernel_type": "notebook",
+  "keywords": [
+    "tutorial",
+    "beginner",
+    "data visualization"
+  ],
+  "code_file": "titanic.ipynb",
+  "enable_internet": false,
+  "dataset_sources": []
+}

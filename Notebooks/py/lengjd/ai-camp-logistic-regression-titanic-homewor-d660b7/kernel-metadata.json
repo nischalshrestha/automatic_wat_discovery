@@ -1,0 +1,17 @@
+{
+  "is_private": false,
+  "title": "AI Camp Logistic Regression Titanic Homewor d660b7",
+  "id": "lengjd/ai-camp-logistic-regression-titanic-homewor-d660b7",
+  "competition_sources": [
+    "titanic"
+  ],
+  "code_file": "ai-camp-logistic-regression-titanic-homewor-d660b7.ipynb",
+  "enable_gpu": false,
+  "id_no": 1632633,
+  "keywords": [],
+  "enable_internet": false,
+  "kernel_sources": [],
+  "kernel_type": "notebook",
+  "language": "python",
+  "dataset_sources": []
+}

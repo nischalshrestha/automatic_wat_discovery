@@ -1,0 +1,17 @@
+{
+  "enable_internet": false,
+  "enable_gpu": false,
+  "kernel_type": "notebook",
+  "is_private": false,
+  "kernel_sources": [],
+  "competition_sources": [
+    "titanic"
+  ],
+  "keywords": [],
+  "code_file": "titanic-sinking-survival-analysis.irnb",
+  "id_no": 173806,
+  "title": "Titanic sinking - Survival Analysis",
+  "language": "r",
+  "id": "rogrezende/titanic-sinking-survival-analysis",
+  "dataset_sources": []
+}

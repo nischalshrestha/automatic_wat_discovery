@@ -1,0 +1,17 @@
+{
+  "title": "First Submission \"Titanic\"",
+  "language": "r",
+  "code_file": "first-submission-titanic.irnb",
+  "id_no": 489416,
+  "kernel_type": "notebook",
+  "enable_internet": false,
+  "keywords": [],
+  "id": "dushyantthakre/first-submission-titanic",
+  "competition_sources": [
+    "titanic"
+  ],
+  "dataset_sources": [],
+  "is_private": false,
+  "kernel_sources": [],
+  "enable_gpu": false
+}

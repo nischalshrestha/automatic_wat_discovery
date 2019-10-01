@@ -1,0 +1,17 @@
+{
+  "title": "Titanic:  Maritime Machine Learning",
+  "competition_sources": [
+    "titanic"
+  ],
+  "enable_gpu": false,
+  "dataset_sources": [],
+  "kernel_type": "notebook",
+  "id_no": 167487,
+  "is_private": false,
+  "keywords": [],
+  "kernel_sources": [],
+  "enable_internet": false,
+  "language": "python",
+  "id": "kefortney/titanic-maritime-machine-learning",
+  "code_file": "titanic-maritime-machine-learning.ipynb"
+}

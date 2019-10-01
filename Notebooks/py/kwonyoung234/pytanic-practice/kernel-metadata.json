@@ -1,0 +1,17 @@
+{
+  "enable_internet": false,
+  "is_private": false,
+  "id_no": 2021579,
+  "kernel_type": "notebook",
+  "language": "python",
+  "kernel_sources": [],
+  "keywords": [],
+  "competition_sources": [
+    "titanic"
+  ],
+  "code_file": "pytanic-practice.ipynb",
+  "enable_gpu": false,
+  "id": "kwonyoung234/pytanic-practice",
+  "title": "Pytanic practice",
+  "dataset_sources": []
+}

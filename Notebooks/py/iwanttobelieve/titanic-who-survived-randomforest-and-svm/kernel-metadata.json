@@ -1,0 +1,20 @@
+{
+  "kernel_type": "notebook",
+  "title": "Titanic - Who survived? - RandomForest and SVM",
+  "enable_gpu": false,
+  "id": "iwanttobelieve/titanic-who-survived-randomforest-and-svm",
+  "language": "python",
+  "is_private": false,
+  "code_file": "titanic-who-survived-randomforest-and-svm.ipynb",
+  "competition_sources": [
+    "titanic"
+  ],
+  "keywords": [
+    "beginner",
+    "random forest"
+  ],
+  "id_no": 1637620,
+  "kernel_sources": [],
+  "enable_internet": false,
+  "dataset_sources": []
+}

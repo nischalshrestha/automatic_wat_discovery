@@ -1,0 +1,20 @@
+{
+  "language": "python",
+  "id": "babinu/scoring-more-than-80-by-doing-svc-on-names-field",
+  "kernel_type": "notebook",
+  "dataset_sources": [],
+  "keywords": [
+    "beginner",
+    "feature engineering"
+  ],
+  "title": "Scoring more than 80% by doing SVC on Names field",
+  "is_private": false,
+  "enable_gpu": false,
+  "competition_sources": [
+    "titanic"
+  ],
+  "enable_internet": false,
+  "kernel_sources": [],
+  "code_file": "scoring-more-than-80-by-doing-svc-on-names-field.ipynb",
+  "id_no": 1415708
+}

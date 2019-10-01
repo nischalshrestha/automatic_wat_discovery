@@ -1,0 +1,17 @@
+{
+  "keywords": [],
+  "competition_sources": [
+    "titanic"
+  ],
+  "kernel_type": "notebook",
+  "title": "Titanic - Machine Learning from Disaster",
+  "is_private": false,
+  "code_file": "titanic-machine-learning-from-disaster.ipynb",
+  "id": "albore/titanic-machine-learning-from-disaster",
+  "enable_gpu": false,
+  "kernel_sources": [],
+  "id_no": 1809373,
+  "dataset_sources": [],
+  "language": "python",
+  "enable_internet": false
+}

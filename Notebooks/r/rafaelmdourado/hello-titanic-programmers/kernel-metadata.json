@@ -1,0 +1,17 @@
+{
+  "enable_internet": false,
+  "id": "rafaelmdourado/hello-titanic-programmers",
+  "language": "r",
+  "kernel_type": "notebook",
+  "id_no": 321354,
+  "code_file": "hello-titanic-programmers.irnb",
+  "keywords": [],
+  "title": "Hello Titanic (Programmers)",
+  "is_private": false,
+  "kernel_sources": [],
+  "enable_gpu": false,
+  "dataset_sources": [],
+  "competition_sources": [
+    "titanic"
+  ]
+}

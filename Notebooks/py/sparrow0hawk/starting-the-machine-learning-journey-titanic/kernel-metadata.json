@@ -1,0 +1,22 @@
+{
+  "dataset_sources": [],
+  "enable_internet": false,
+  "id": "sparrow0hawk/starting-the-machine-learning-journey-titanic",
+  "keywords": [
+    "beginner",
+    "data visualization",
+    "classification",
+    "feature engineering"
+  ],
+  "id_no": 1058030,
+  "code_file": "starting-the-machine-learning-journey-titanic.ipynb",
+  "language": "python",
+  "kernel_type": "notebook",
+  "is_private": false,
+  "title": "Starting the machine learning journey: Titanic ",
+  "kernel_sources": [],
+  "competition_sources": [
+    "titanic"
+  ],
+  "enable_gpu": false
+}

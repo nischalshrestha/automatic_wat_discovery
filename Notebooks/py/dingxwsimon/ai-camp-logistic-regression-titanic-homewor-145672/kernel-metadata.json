@@ -1,0 +1,17 @@
+{
+  "keywords": [],
+  "kernel_type": "notebook",
+  "dataset_sources": [],
+  "id": "dingxwsimon/ai-camp-logistic-regression-titanic-homewor-145672",
+  "kernel_sources": [],
+  "id_no": 1645210,
+  "enable_internet": false,
+  "competition_sources": [
+    "titanic"
+  ],
+  "title": "AI Camp Logistic Regression Titanic Homewor 145672",
+  "language": "python",
+  "code_file": "ai-camp-logistic-regression-titanic-homewor-145672.ipynb",
+  "is_private": false,
+  "enable_gpu": false
+}

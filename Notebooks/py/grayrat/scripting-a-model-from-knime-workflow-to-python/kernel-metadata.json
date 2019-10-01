@@ -1,0 +1,17 @@
+{
+  "is_private": false,
+  "competition_sources": [
+    "titanic"
+  ],
+  "enable_internet": false,
+  "keywords": [],
+  "kernel_sources": [],
+  "kernel_type": "notebook",
+  "code_file": "scripting-a-model-from-knime-workflow-to-python.ipynb",
+  "dataset_sources": [],
+  "language": "python",
+  "enable_gpu": false,
+  "id_no": 278936,
+  "title": "Scripting a Model: From KNIME workflow to Python",
+  "id": "grayrat/scripting-a-model-from-knime-workflow-to-python"
+}

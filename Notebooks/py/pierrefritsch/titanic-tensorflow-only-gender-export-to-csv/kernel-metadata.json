@@ -1,0 +1,17 @@
+{
+  "code_file": "titanic-tensorflow-only-gender-export-to-csv.ipynb",
+  "id_no": 649126,
+  "kernel_sources": [],
+  "is_private": false,
+  "enable_internet": false,
+  "id": "pierrefritsch/titanic-tensorflow-only-gender-export-to-csv",
+  "competition_sources": [
+    "titanic"
+  ],
+  "enable_gpu": false,
+  "kernel_type": "notebook",
+  "title": "Titanic: TensorFlow (only Gender) & Export to CSV",
+  "language": "python",
+  "dataset_sources": [],
+  "keywords": []
+}

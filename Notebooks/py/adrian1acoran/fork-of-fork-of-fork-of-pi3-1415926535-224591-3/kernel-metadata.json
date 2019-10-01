@@ -1,0 +1,26 @@
+{
+  "code_file": "fork-of-fork-of-fork-of-pi3-1415926535-224591-3.ipynb",
+  "enable_internet": true,
+  "is_private": false,
+  "enable_gpu": true,
+  "id": "adrian1acoran/fork-of-fork-of-fork-of-pi3-1415926535-224591-3",
+  "id_no": 1843799,
+  "competition_sources": [
+    "titanic"
+  ],
+  "kernel_type": "notebook",
+  "kernel_sources": [],
+  "title": "Fork of Fork of Fork of Pi3.1415926535... 224591 3",
+  "keywords": [],
+  "language": "python",
+  "dataset_sources": [
+    "pytorch/vgg13bn",
+    "ramamet4/app-store-apple-data-set-10k-apps",
+    "lava18/google-play-store-apps",
+    "crawford/boston-public-schools",
+    "bigquery/patents",
+    "census/total-business-inventories-and-sales-data",
+    "san-francisco/sf-police-calls-for-service-and-incidents",
+    "theworldbank/education-statistics"
+  ]
+}

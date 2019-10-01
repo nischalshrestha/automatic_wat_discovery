@@ -1,0 +1,17 @@
+{
+  "id_no": 1526363,
+  "dataset_sources": [],
+  "enable_gpu": false,
+  "id": "aravindtls/logisticregression-titanicdataset",
+  "title": "LogisticRegression-TitanicDataset",
+  "language": "python",
+  "code_file": "logisticregression-titanicdataset.ipynb",
+  "kernel_sources": [],
+  "is_private": false,
+  "enable_internet": false,
+  "keywords": [],
+  "kernel_type": "notebook",
+  "competition_sources": [
+    "titanic"
+  ]
+}

@@ -1,0 +1,17 @@
+{
+  "enable_gpu": false,
+  "id_no": 320525,
+  "enable_internet": false,
+  "title": "test_notebook_titanic1",
+  "kernel_type": "notebook",
+  "keywords": [],
+  "language": "python",
+  "is_private": false,
+  "kernel_sources": [],
+  "code_file": "test-notebook-titanic1.ipynb",
+  "competition_sources": [
+    "titanic"
+  ],
+  "id": "sandeeprc/test-notebook-titanic1",
+  "dataset_sources": []
+}

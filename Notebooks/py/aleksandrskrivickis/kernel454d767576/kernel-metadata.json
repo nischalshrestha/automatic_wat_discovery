@@ -1,0 +1,17 @@
+{
+  "id_no": 945275,
+  "keywords": [],
+  "enable_internet": false,
+  "id": "aleksandrskrivickis/kernel454d767576",
+  "title": "Kernel135aed8af2",
+  "language": "python",
+  "code_file": "kernel454d767576.ipynb",
+  "kernel_type": "notebook",
+  "kernel_sources": [],
+  "dataset_sources": [],
+  "is_private": false,
+  "enable_gpu": false,
+  "competition_sources": [
+    "titanic"
+  ]
+}

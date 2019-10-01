@@ -1,0 +1,17 @@
+{
+  "is_private": false,
+  "enable_gpu": false,
+  "enable_internet": false,
+  "code_file": "dense-highway-neural-network-for-titanic.ipynb",
+  "keywords": [],
+  "dataset_sources": [],
+  "title": "Dense Highway Neural Network for Titanic",
+  "kernel_sources": [],
+  "kernel_type": "notebook",
+  "competition_sources": [
+    "titanic"
+  ],
+  "language": "python",
+  "id": "l3nnys/dense-highway-neural-network-for-titanic",
+  "id_no": 147016
+}

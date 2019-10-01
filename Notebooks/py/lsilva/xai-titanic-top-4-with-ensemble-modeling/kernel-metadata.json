@@ -1,0 +1,17 @@
+{
+  "language": "python",
+  "kernel_sources": [],
+  "kernel_type": "notebook",
+  "code_file": "xai-titanic-top-4-with-ensemble-modeling.ipynb",
+  "competition_sources": [
+    "titanic"
+  ],
+  "enable_gpu": false,
+  "keywords": [],
+  "dataset_sources": [],
+  "enable_internet": false,
+  "id": "lsilva/xai-titanic-top-4-with-ensemble-modeling",
+  "title": "XAI Titanic Top 4% with ensemble modeling",
+  "id_no": 1887730,
+  "is_private": false
+}

@@ -1,0 +1,17 @@
+{
+  "competition_sources": [
+    "titanic"
+  ],
+  "keywords": [],
+  "id_no": 193009,
+  "id": "vabatista/titanic",
+  "kernel_sources": [],
+  "title": "Titanic",
+  "dataset_sources": [],
+  "is_private": false,
+  "enable_internet": false,
+  "enable_gpu": false,
+  "code_file": "titanic.ipynb",
+  "language": "python",
+  "kernel_type": "notebook"
+}

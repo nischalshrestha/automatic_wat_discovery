@@ -1,0 +1,17 @@
+{
+  "is_private": false,
+  "competition_sources": [
+    "titanic"
+  ],
+  "language": "python",
+  "id": "allieluo/titanic-ninechapter",
+  "enable_internet": false,
+  "code_file": "titanic-ninechapter.ipynb",
+  "kernel_sources": [],
+  "id_no": 1537189,
+  "kernel_type": "notebook",
+  "dataset_sources": [],
+  "keywords": [],
+  "title": "Titanic Ninechapter",
+  "enable_gpu": false
+}

@@ -1,0 +1,17 @@
+{
+  "title": "Automatic feature selection + Voting",
+  "keywords": [],
+  "kernel_type": "notebook",
+  "language": "python",
+  "dataset_sources": [],
+  "id": "igorvyr/automatic-feature-selection-voting",
+  "id_no": 745713,
+  "is_private": false,
+  "kernel_sources": [],
+  "enable_gpu": false,
+  "enable_internet": false,
+  "code_file": "automatic-feature-selection-voting.ipynb",
+  "competition_sources": [
+    "titanic"
+  ]
+}

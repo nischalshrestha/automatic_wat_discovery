@@ -1,0 +1,17 @@
+{
+  "kernel_type": "notebook",
+  "keywords": [],
+  "id_no": 1160857,
+  "competition_sources": [
+    "titanic"
+  ],
+  "id": "pinabertoglia/titanic-influenza-h7n9",
+  "is_private": false,
+  "dataset_sources": [],
+  "enable_gpu": false,
+  "title": "Titanic Influenza H7N9",
+  "kernel_sources": [],
+  "language": "python",
+  "enable_internet": false,
+  "code_file": "titanic-influenza-h7n9.ipynb"
+}

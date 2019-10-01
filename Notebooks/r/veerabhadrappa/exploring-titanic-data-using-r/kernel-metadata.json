@@ -1,0 +1,17 @@
+{
+  "language": "r",
+  "is_private": false,
+  "code_file": "exploring-titanic-data-using-r.irnb",
+  "keywords": [],
+  "competition_sources": [
+    "titanic"
+  ],
+  "id": "veerabhadrappa/exploring-titanic-data-using-r",
+  "dataset_sources": [],
+  "id_no": 229299,
+  "enable_internet": false,
+  "kernel_type": "notebook",
+  "kernel_sources": [],
+  "enable_gpu": false,
+  "title": "Exploring Titanic Data using R"
+}

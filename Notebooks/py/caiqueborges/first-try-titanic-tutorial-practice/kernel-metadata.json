@@ -1,0 +1,21 @@
+{
+  "language": "python",
+  "keywords": [
+    "tutorial",
+    "beginner",
+    "feature engineering"
+  ],
+  "id_no": 987817,
+  "enable_gpu": false,
+  "code_file": "first-try-titanic-tutorial-practice.ipynb",
+  "is_private": false,
+  "competition_sources": [
+    "titanic"
+  ],
+  "enable_internet": false,
+  "kernel_sources": [],
+  "kernel_type": "notebook",
+  "id": "caiqueborges/first-try-titanic-tutorial-practice",
+  "dataset_sources": [],
+  "title": "First try! Titanic Tutorial Practice"
+}

@@ -1,0 +1,20 @@
+{
+  "is_private": false,
+  "title": "Titanic Visualization: Interactive Widgets",
+  "id": "adachowicz/titanic-visualization-interactive-widgets",
+  "id_no": 1411697,
+  "language": "python",
+  "enable_internet": false,
+  "code_file": "titanic-visualization-interactive-widgets.ipynb",
+  "dataset_sources": [],
+  "kernel_sources": [],
+  "competition_sources": [
+    "titanic"
+  ],
+  "kernel_type": "notebook",
+  "keywords": [
+    "beginner",
+    "data visualization"
+  ],
+  "enable_gpu": false
+}

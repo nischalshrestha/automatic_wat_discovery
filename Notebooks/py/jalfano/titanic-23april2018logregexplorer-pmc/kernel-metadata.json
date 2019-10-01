@@ -1,0 +1,17 @@
+{
+  "kernel_sources": [],
+  "competition_sources": [
+    "titanic"
+  ],
+  "language": "python",
+  "kernel_type": "notebook",
+  "is_private": false,
+  "dataset_sources": [],
+  "enable_internet": false,
+  "code_file": "titanic-23april2018logregexplorer-pmc.ipynb",
+  "keywords": [],
+  "enable_gpu": false,
+  "id": "jalfano/titanic-23april2018logregexplorer-pmc",
+  "title": "Titanic_23April2018LogRegExplorer_pmC",
+  "id_no": 896458
+}

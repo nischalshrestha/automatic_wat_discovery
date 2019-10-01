@@ -1,0 +1,143 @@
+{
+  "cells": [
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "_cell_guid": "01173ce4-3059-6c4f-8e46-9aca01612c26"
+      },
+      "outputs": [],
+      "source": [
+        "library(randomForest)\n",
+        "library(ggplot2)\n",
+        "library(readr) # CSV file I/O, e.g. the read_csv function\n",
+        "library(dplyr)\n",
+        "library(mice)\n",
+        "\n",
+        "# Input data files are available in the \"../input/\" directory."
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "_cell_guid": "fa1280c9-b6ae-09bc-0900-eb126b80f83b"
+      },
+      "outputs": [],
+      "source": [
+        "train <- read.csv( \"../input/train.csv\" )\n",
+        "test <- read.csv( \"../input/test.csv\" )\n",
+        "\n",
+        "full <- bind_rows( train, test )\n",
+        "\n",
+        "full$Survived <- factor( full$Survived )"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "_cell_guid": "858077ad-cbb0-b3c8-4992-383ab053af4b"
+      },
+      "outputs": [],
+      "source": [
+        "prop.table( table( full$Sex, full$Survived ) )"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "_cell_guid": "c4621b55-fc92-6f4e-f0cd-696558d73433"
+      },
+      "outputs": [],
+      "source": [
+        "full$IsChild <- \"Adult\"\n",
+        "full$IsChild[train$Age < 18] <- \"Child\"\n",
+        "full$IsChild <- factor(full$IsChild)\n",
+        "\n",
+        "prop.table( table( full$IsChild, full$Survived ) )"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "_cell_guid": "a7ca8bef-c159-dc8f-9f5c-a65946aedcee"
+      },
+      "outputs": [],
+      "source": [
+        "ggplot( full, aes(x = Sex, fill = factor(Survived))) +\n",
+        "    geom_bar(stat='count', position='dodge') +\n",
+        "    labs(x = 'Sex')"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "_cell_guid": "c3c0f430-8e9f-269e-8a72-c33f50cdab90"
+      },
+      "outputs": [],
+      "source": [
+        "md.pattern( full )"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "_cell_guid": "30c93188-33a1-fdbc-7329-61ef490ef1a0"
+      },
+      "outputs": [],
+      "source": [
+        "train <- full[1:891,]\n",
+        "test <- full[892:1309,]\n",
+        "\n",
+        "set.seed(46)\n",
+        "\n",
+        "rf_model <- randomForest( Survived ~ Pclass + Sex +\n",
+        "                                     SibSp + Parch + \n",
+        "                                     IsChild,\n",
+        "                                     data = train )\n",
+        "\n",
+        "plot(rf_model)\n",
+        "legend('topright', colnames(rf_model$err.rate), col=1:3, fill=1:3)"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "_cell_guid": "d494e7cc-e5f5-da3d-dcfa-162c6a1a621e"
+      },
+      "outputs": [],
+      "source": [
+        "prediction <- predict( rf_model, test )\n",
+        "\n",
+        "solution <- data.frame( PassengerId = test$PassengerId, Survived = prediction )\n",
+        "\n",
+        "write.csv( solution, file = 'rf_solution.csv', row.names = F )"
+      ]
+    }
+  ],
+  "metadata": {
+    "_change_revision": 0,
+    "_is_fork": false,
+    "kernelspec": {
+      "display_name": "R",
+      "language": "R",
+      "name": "ir"
+    },
+    "language_info": {
+      "codemirror_mode": "r",
+      "file_extension": ".r",
+      "mimetype": "text/x-r-source",
+      "name": "R",
+      "pygments_lexer": "r",
+      "version": "3.3.1"
+    }
+  },
+  "nbformat": 4,
+  "nbformat_minor": 0
+}

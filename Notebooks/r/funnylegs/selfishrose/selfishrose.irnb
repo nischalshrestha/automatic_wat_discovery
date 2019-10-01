@@ -1,0 +1,105 @@
+{
+  "cells": [
+    {
+      "cell_type": "markdown",
+      "metadata": {
+        "_cell_guid": "daeb2118-e386-b807-fc1c-f0ff9abb65d5"
+      },
+      "source": [
+        "# 1 Introduction\n",
+        "This notebook is my first work as a data analyst. I'm a beginner, and I expect to learn a lot with the community. It's fascinating the problem posed by the Titanic's Dataset. Your feedback is very welcome and very important to me!"
+      ]
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {
+        "_cell_guid": "257d7452-91a2-bc13-d1d9-ff21b4c95461"
+      },
+      "source": [
+        "## Loading the Data and the Packages to start the fun!"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "_cell_guid": "77d6cbff-ee44-770d-5953-7fa5fbe9cbe9"
+      },
+      "outputs": [],
+      "source": [
+        "#Loading packages\n",
+        "library(ggplot2) #visualization\n",
+        "library(ggfortify) #visualization\n",
+        "library(dplyr) #data manipulation\n",
+        "library(psych) #data description"
+      ]
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {
+        "_cell_guid": "54a4a364-e56d-44f7-6570-359eaa779fb9"
+      },
+      "source": [
+        "After loading the packages, let's create some data.frames() to store the data from the .csv files"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "_cell_guid": "23ae70b8-86f4-1d65-dcc5-1543ddda115b"
+      },
+      "outputs": [],
+      "source": [
+        "#importing data\n",
+        "Data <- read.csv('../input/train.csv')\n",
+        "Test <- read.csv('../input/test.csv' )\n",
+        "\n",
+        "#checking data\n",
+        "str(Data)"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "_cell_guid": "f3090ddc-f946-5cf5-cb98-717cb1cd3f51"
+      },
+      "outputs": [],
+      "source": [
+        "head(Data) #View the first rows of the Data\n",
+        "tail(Data) #View the last rows of the Data"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "_cell_guid": "5d6d7a28-5b9d-f59b-c71d-c1126a799c68"
+      },
+      "outputs": [],
+      "source": [
+        "describe(Data)"
+      ]
+    }
+  ],
+  "metadata": {
+    "_change_revision": 0,
+    "_is_fork": false,
+    "kernelspec": {
+      "display_name": "R",
+      "language": "R",
+      "name": "ir"
+    },
+    "language_info": {
+      "codemirror_mode": "r",
+      "file_extension": ".r",
+      "mimetype": "text/x-r-source",
+      "name": "R",
+      "pygments_lexer": "r",
+      "version": "3.3.2"
+    }
+  },
+  "nbformat": 4,
+  "nbformat_minor": 0
+}

@@ -1,0 +1,17 @@
+{
+  "language": "r",
+  "kernel_sources": [],
+  "id": "sriharshabsprasad/notebook19c193364a",
+  "title": "Notebook19c193364a",
+  "kernel_type": "notebook",
+  "competition_sources": [
+    "titanic"
+  ],
+  "enable_gpu": false,
+  "dataset_sources": [],
+  "enable_internet": false,
+  "keywords": [],
+  "is_private": false,
+  "id_no": 193039,
+  "code_file": "notebook19c193364a.irnb"
+}

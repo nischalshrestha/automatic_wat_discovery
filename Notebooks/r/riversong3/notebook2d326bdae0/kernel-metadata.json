@@ -1,0 +1,17 @@
+{
+  "enable_gpu": false,
+  "kernel_sources": [],
+  "title": "Notebook2d326bdae0",
+  "keywords": [],
+  "enable_internet": false,
+  "dataset_sources": [],
+  "id_no": 260533,
+  "language": "python",
+  "code_file": "notebook2d326bdae0.ipynb",
+  "is_private": false,
+  "kernel_type": "notebook",
+  "id": "riversong3/notebook2d326bdae0",
+  "competition_sources": [
+    "titanic"
+  ]
+}

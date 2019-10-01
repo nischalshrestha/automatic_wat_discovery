@@ -1,0 +1,17 @@
+{
+  "language": "python",
+  "enable_gpu": false,
+  "keywords": [],
+  "is_private": false,
+  "kernel_type": "notebook",
+  "competition_sources": [
+    "titanic"
+  ],
+  "title": "1st Kernel",
+  "dataset_sources": [],
+  "kernel_sources": [],
+  "enable_internet": false,
+  "id_no": 1206358,
+  "code_file": "1st-kernel.ipynb",
+  "id": "agenc1/1st-kernel"
+}

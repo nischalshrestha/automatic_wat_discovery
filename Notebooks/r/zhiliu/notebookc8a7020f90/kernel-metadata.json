@@ -1,0 +1,17 @@
+{
+  "is_private": false,
+  "enable_internet": false,
+  "kernel_type": "notebook",
+  "id": "zhiliu/notebookc8a7020f90",
+  "language": "r",
+  "title": "Notebook502a42d0cf",
+  "id_no": 185767,
+  "enable_gpu": false,
+  "kernel_sources": [],
+  "code_file": "notebookc8a7020f90.irnb",
+  "keywords": [],
+  "dataset_sources": [],
+  "competition_sources": [
+    "titanic"
+  ]
+}

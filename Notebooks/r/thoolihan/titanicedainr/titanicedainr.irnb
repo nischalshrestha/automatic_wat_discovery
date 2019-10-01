@@ -1,0 +1,126 @@
+{"cells":[
+ {
+  "cell_type": "code",
+  "execution_count": null,
+  "metadata": {
+   "collapsed": false
+  },
+  "outputs": [],
+  "source": "library(ggplot2) \nlibrary(dplyr) \n\ncol.classes <- c('numeric', #PassengerId\n                 'numeric', #Survived\n                 'numeric', #Pclass\n                 'character', #Name\n                 'factor', #Sex\n                 'numeric', #Age\n                 'integer', #SibSp\n                 'integer', #Parch\n                 'character', #Ticket\n                 'numeric', #Fare\n                 'character', #Cabin\n                 'factor') #Embarked\nd.train.raw <- read.csv('../input/train.csv',  \n                       colClasses = col.classes,\n                       row.names = 1,\n                       header = TRUE)\nsapply(d.train.raw, class)\n"
+ },
+ {
+  "cell_type": "markdown",
+  "metadata": {},
+  "source": "## Turn survived, class into a factor"
+ },
+ {
+  "cell_type": "code",
+  "execution_count": null,
+  "metadata": {
+   "collapsed": false
+  },
+  "outputs": [],
+  "source": "d.train.df <- mutate(d.train.raw,\n                     Class = factor(Pclass, levels = as.character(1:3), labels = \"class\"),\n                     Survived = factor(Survived, levels = c(0, 1), labels = c('No', 'Yes')))\nsummary(select(d.train.df, Class, Survived))"
+ },
+ {
+  "cell_type": "markdown",
+  "metadata": {},
+  "source": "## Extract Title"
+ },
+ {
+  "cell_type": "code",
+  "execution_count": null,
+  "metadata": {
+   "collapsed": false
+  },
+  "outputs": [],
+  "source": "extractTitle <- function(v_names) {\n  pattern <- \",\\\\s*([\\\\w\\\\s]+\\\\.*)\"\n  matches <- regexpr(pattern, v_names, perl = TRUE)\n  res <- regmatches(v_names, matches)\n  res <- substring(res, 3, nchar(res) - 1)\n  res <- factor(res)\n}\nd.train.df$Title <- extractTitle(d.train.df$Name)\nsummary(d.train.df$Title)"
+ },
+ {
+  "cell_type": "markdown",
+  "metadata": {},
+  "source": "## Extract Deck from Cabin"
+ },
+ {
+  "cell_type": "code",
+  "execution_count": null,
+  "metadata": {
+   "collapsed": false
+  },
+  "outputs": [],
+  "source": "d.train.df <- mutate(d.train.df,\n                     Deck = factor(ifelse(nchar(Cabin) > 0, substring(Cabin, 1, 1), \"X\")))\nsummary(d.train.df$Deck)\n                     "
+ },
+ {
+  "cell_type": "markdown",
+  "metadata": {},
+  "source": "## Remove Cabin and Ticket"
+ },
+ {
+  "cell_type": "code",
+  "execution_count": null,
+  "metadata": {
+   "collapsed": false
+  },
+  "outputs": [],
+  "source": "d.train.df <- select(d.train.df, -Name, -Cabin, -Ticket, -Pclass)\nsummary(d.train.df)"
+ },
+ {
+  "cell_type": "markdown",
+  "metadata": {},
+  "source": "## Examine Fare\n"
+ },
+ {
+  "cell_type": "code",
+  "execution_count": null,
+  "metadata": {
+   "collapsed": false
+  },
+  "outputs": [],
+  "source": "ggplot(d.train.df, aes(x = 1, y = Fare)) + geom_boxplot()"
+ },
+ {
+  "cell_type": "code",
+  "execution_count": null,
+  "metadata": {
+   "collapsed": false
+  },
+  "outputs": [],
+  "source": "library(corrgram)\nlibrary(plyr)\nd.train.cf <- mutate(d.train.df,\n                     Survived = as.numeric(Survived),\n                     Sex = as.numeric(Sex),\n                     Class = as.numeric(Class),\n                     Embarked = revalue(Embarked, c(\"C\" = 1, \"Q\" = 2, \"S\" = 3)))\ncorrgram(d.train.cf, upper.panel = panel.pts, lower.panel = panel.shade)"
+ },
+ {
+  "cell_type": "code",
+  "execution_count": null,
+  "metadata": {
+   "collapsed": false
+  },
+  "outputs": [],
+  "source": "library(caret)\n\nsplit <- createDataPartition(d.train.df$Survived, p = .8, list = FALSE)\nd.train.val <- d.train.df[-split, ]\nd.train.train <- d.train.df[split, ]\n\n\ndim(d.train.val)\ndim(d.train.train)"
+ },
+ {
+  "cell_type": "code",
+  "execution_count": null,
+  "metadata": {
+   "collapsed": false
+  },
+  "outputs": [],
+  "source": "suppressWarnings(model <- train(Survived ~ ., \n               data = d.train.train,\n               method = \"svmRadialCost\",\n               preProcess = c('center', 'scale'),\n               trainControl = trainControl(method = 'cv', repeats = 3, p = .8),\n               tuneGrid = data.frame(.C = 5:8/8)))\n\nmodel"
+ },
+ {
+  "cell_type": "code",
+  "execution_count": null,
+  "metadata": {
+   "collapsed": false
+  },
+  "outputs": [],
+  "source": "predicted <- predict(model, select(d.train.val, -Survived))"
+ },
+ {
+  "cell_type": "code",
+  "execution_count": null,
+  "metadata": {
+   "collapsed": false
+  },
+  "outputs": [],
+  "source": "length(predicted)\nlength(d.train.val$Survived)\n#confusionMatrix(predicted, d.train.val$Survived)"
+ }
+],"metadata":{"kernelspec":{"display_name":"R","language":"R","name":"ir"}}, "nbformat": 4, "nbformat_minor": 0}

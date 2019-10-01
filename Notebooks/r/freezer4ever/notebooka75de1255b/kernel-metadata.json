@@ -1,0 +1,17 @@
+{
+  "is_private": false,
+  "title": "Notebooka75de1255b",
+  "enable_internet": false,
+  "dataset_sources": [],
+  "id": "freezer4ever/notebooka75de1255b",
+  "kernel_sources": [],
+  "competition_sources": [
+    "titanic"
+  ],
+  "kernel_type": "notebook",
+  "code_file": "notebooka75de1255b.irnb",
+  "enable_gpu": false,
+  "keywords": [],
+  "id_no": 247874,
+  "language": "r"
+}

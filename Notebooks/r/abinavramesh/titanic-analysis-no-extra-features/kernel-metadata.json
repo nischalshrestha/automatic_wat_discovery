@@ -1,0 +1,23 @@
+{
+  "keywords": [
+    "beginner",
+    "eda",
+    "data visualization",
+    "classification",
+    "starter code"
+  ],
+  "is_private": false,
+  "id": "abinavramesh/titanic-analysis-no-extra-features",
+  "kernel_sources": [],
+  "enable_gpu": false,
+  "competition_sources": [
+    "titanic"
+  ],
+  "language": "r",
+  "dataset_sources": [],
+  "id_no": 1427821,
+  "kernel_type": "notebook",
+  "title": "Titanic Analysis- No extra features",
+  "enable_internet": false,
+  "code_file": "titanic-analysis-no-extra-features.irnb"
+}

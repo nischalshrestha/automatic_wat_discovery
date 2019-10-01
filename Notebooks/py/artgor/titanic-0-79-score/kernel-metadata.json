@@ -1,0 +1,17 @@
+{
+  "kernel_sources": [],
+  "competition_sources": [
+    "titanic"
+  ],
+  "dataset_sources": [],
+  "keywords": [],
+  "id": "artgor/titanic-0-79-score",
+  "kernel_type": "notebook",
+  "enable_gpu": false,
+  "language": "python",
+  "code_file": "titanic-0-79-score.ipynb",
+  "title": "Titanic. ~0.79 score",
+  "id_no": 107602,
+  "is_private": false,
+  "enable_internet": false
+}

@@ -1,0 +1,17 @@
+{
+  "competition_sources": [
+    "titanic"
+  ],
+  "kernel_sources": [],
+  "is_private": false,
+  "keywords": [],
+  "kernel_type": "notebook",
+  "id": "shinjonc/boo-hoo",
+  "enable_gpu": false,
+  "id_no": 1660258,
+  "title": "Boo Hoo",
+  "language": "python",
+  "dataset_sources": [],
+  "enable_internet": false,
+  "code_file": "boo-hoo.ipynb"
+}

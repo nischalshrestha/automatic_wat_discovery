@@ -1,0 +1,17 @@
+{
+  "kernel_sources": [],
+  "dataset_sources": [],
+  "enable_internet": true,
+  "id": "surendrakumar97/kernelb06e0",
+  "competition_sources": [
+    "titanic"
+  ],
+  "keywords": [],
+  "title": "kernelb06e0",
+  "enable_gpu": true,
+  "id_no": 1885287,
+  "code_file": "kernelb06e0.ipynb",
+  "language": "python",
+  "is_private": false,
+  "kernel_type": "notebook"
+}

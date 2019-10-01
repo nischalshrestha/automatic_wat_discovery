@@ -1,0 +1,19 @@
+{
+  "title": "A method to handle ordered categorical features",
+  "id_no": 1056834,
+  "id": "erikalien/a-method-to-handle-ordered-categorical-features",
+  "enable_internet": false,
+  "language": "python",
+  "keywords": [
+    "categorical data"
+  ],
+  "competition_sources": [
+    "titanic"
+  ],
+  "is_private": false,
+  "enable_gpu": false,
+  "code_file": "a-method-to-handle-ordered-categorical-features.ipynb",
+  "dataset_sources": [],
+  "kernel_sources": [],
+  "kernel_type": "notebook"
+}

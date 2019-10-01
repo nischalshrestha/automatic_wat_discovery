@@ -1,0 +1,17 @@
+{
+  "keywords": [],
+  "dataset_sources": [],
+  "language": "python",
+  "id": "mkfwyy/introduction-to-ensembling-stacking-in-pyth-1c5151",
+  "title": "Introduction to Ensembling/Stacking in Pyth 1c5151",
+  "kernel_type": "notebook",
+  "is_private": false,
+  "code_file": "introduction-to-ensembling-stacking-in-pyth-1c5151.ipynb",
+  "enable_gpu": false,
+  "id_no": 217227,
+  "kernel_sources": [],
+  "competition_sources": [
+    "titanic"
+  ],
+  "enable_internet": false
+}

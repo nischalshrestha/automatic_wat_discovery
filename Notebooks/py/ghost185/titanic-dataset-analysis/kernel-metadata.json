@@ -1,0 +1,17 @@
+{
+  "id": "ghost185/titanic-dataset-analysis",
+  "competition_sources": [
+    "titanic"
+  ],
+  "id_no": 2024162,
+  "enable_gpu": true,
+  "title": "Titanic Dataset Analysis",
+  "language": "python",
+  "code_file": "titanic-dataset-analysis.ipynb",
+  "kernel_sources": [],
+  "enable_internet": false,
+  "kernel_type": "notebook",
+  "dataset_sources": [],
+  "keywords": [],
+  "is_private": false
+}

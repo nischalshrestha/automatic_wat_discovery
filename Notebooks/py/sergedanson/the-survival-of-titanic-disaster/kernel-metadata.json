@@ -1,0 +1,19 @@
+{
+  "id_no": 718516,
+  "id": "sergedanson/the-survival-of-titanic-disaster",
+  "is_private": false,
+  "enable_gpu": false,
+  "language": "python",
+  "competition_sources": [
+    "titanic"
+  ],
+  "kernel_sources": [],
+  "kernel_type": "notebook",
+  "enable_internet": false,
+  "title": "The Survival of Titanic disaster  (0.80382) ",
+  "dataset_sources": [],
+  "code_file": "the-survival-of-titanic-disaster.ipynb",
+  "keywords": [
+    "tutorial"
+  ]
+}

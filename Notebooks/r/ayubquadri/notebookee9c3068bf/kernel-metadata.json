@@ -1,0 +1,17 @@
+{
+  "competition_sources": [
+    "titanic"
+  ],
+  "language": "r",
+  "kernel_sources": [],
+  "enable_gpu": false,
+  "id_no": 140269,
+  "code_file": "notebookee9c3068bf.irnb",
+  "title": "Notebookba60ee93b5",
+  "is_private": false,
+  "enable_internet": false,
+  "id": "ayubquadri/notebookee9c3068bf",
+  "keywords": [],
+  "kernel_type": "notebook",
+  "dataset_sources": []
+}

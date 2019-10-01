@@ -1,0 +1,17 @@
+{
+  "competition_sources": [
+    "titanic"
+  ],
+  "language": "python",
+  "code_file": "titanic-ml-for-disaster-using-decision-tree.ipynb",
+  "is_private": false,
+  "kernel_type": "notebook",
+  "id_no": 706010,
+  "id": "tanveerbaba/titanic-ml-for-disaster-using-decision-tree",
+  "kernel_sources": [],
+  "enable_gpu": false,
+  "enable_internet": false,
+  "title": "Titanic ML for Disaster using Decision Tree",
+  "dataset_sources": [],
+  "keywords": []
+}

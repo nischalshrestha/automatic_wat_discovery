@@ -1,0 +1,19 @@
+{
+  "id_no": 417101,
+  "code_file": "titanic-random-forest.irnb",
+  "dataset_sources": [],
+  "kernel_type": "notebook",
+  "is_private": false,
+  "id": "robertoharuo/titanic-random-forest",
+  "language": "r",
+  "enable_gpu": false,
+  "kernel_sources": [],
+  "competition_sources": [
+    "titanic"
+  ],
+  "keywords": [
+    "random forest"
+  ],
+  "enable_internet": false,
+  "title": "Titanic - Random Forest"
+}

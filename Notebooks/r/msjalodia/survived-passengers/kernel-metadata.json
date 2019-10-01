@@ -1,0 +1,17 @@
+{
+  "kernel_type": "notebook",
+  "id": "msjalodia/survived-passengers",
+  "id_no": 217794,
+  "title": "survived passengers",
+  "code_file": "survived-passengers.irnb",
+  "dataset_sources": [],
+  "kernel_sources": [],
+  "enable_gpu": false,
+  "is_private": false,
+  "competition_sources": [
+    "titanic"
+  ],
+  "keywords": [],
+  "language": "r",
+  "enable_internet": false
+}

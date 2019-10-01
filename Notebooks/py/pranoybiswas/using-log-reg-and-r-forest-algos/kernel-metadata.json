@@ -1,0 +1,17 @@
+{
+  "id": "pranoybiswas/using-log-reg-and-r-forest-algos",
+  "id_no": 312844,
+  "title": "Using log reg and R Forest algos",
+  "code_file": "using-log-reg-and-r-forest-algos.ipynb",
+  "language": "python",
+  "kernel_type": "notebook",
+  "is_private": false,
+  "enable_gpu": false,
+  "enable_internet": false,
+  "keywords": [],
+  "dataset_sources": [],
+  "kernel_sources": [],
+  "competition_sources": [
+    "titanic"
+  ]
+}

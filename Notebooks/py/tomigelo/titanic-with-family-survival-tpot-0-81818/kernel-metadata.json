@@ -1,0 +1,17 @@
+{
+  "id": "tomigelo/titanic-with-family-survival-tpot-0-81818",
+  "title": "Titanic with Family Survival + TPOT [0.81818]",
+  "kernel_sources": [],
+  "dataset_sources": [],
+  "enable_internet": false,
+  "code_file": "titanic-with-family-survival-tpot-0-81818.ipynb",
+  "kernel_type": "notebook",
+  "id_no": 1104084,
+  "enable_gpu": false,
+  "competition_sources": [
+    "titanic"
+  ],
+  "language": "python",
+  "is_private": false,
+  "keywords": []
+}

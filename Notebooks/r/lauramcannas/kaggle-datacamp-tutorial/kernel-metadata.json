@@ -1,0 +1,17 @@
+{
+  "title": "Kaggle DataCamp tutorial",
+  "kernel_sources": [],
+  "id_no": 243214,
+  "keywords": [],
+  "enable_internet": false,
+  "kernel_type": "notebook",
+  "competition_sources": [
+    "titanic"
+  ],
+  "enable_gpu": false,
+  "code_file": "kaggle-datacamp-tutorial.irnb",
+  "dataset_sources": [],
+  "language": "r",
+  "is_private": false,
+  "id": "lauramcannas/kaggle-datacamp-tutorial"
+}

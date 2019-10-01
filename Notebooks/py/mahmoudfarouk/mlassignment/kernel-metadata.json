@@ -1,0 +1,17 @@
+{
+  "keywords": [],
+  "dataset_sources": [],
+  "is_private": false,
+  "enable_internet": false,
+  "title": "MLAssignment",
+  "id": "mahmoudfarouk/mlassignment",
+  "code_file": "mlassignment.ipynb",
+  "language": "python",
+  "competition_sources": [
+    "titanic"
+  ],
+  "id_no": 1333474,
+  "kernel_sources": [],
+  "kernel_type": "notebook",
+  "enable_gpu": false
+}

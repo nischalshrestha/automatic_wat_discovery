@@ -1,0 +1,17 @@
+{
+  "id_no": 215948,
+  "id": "shivamtundele/notebook18449caf2f",
+  "enable_internet": false,
+  "keywords": [],
+  "kernel_type": "notebook",
+  "kernel_sources": [],
+  "title": "Notebook18449caf2f",
+  "dataset_sources": [],
+  "is_private": false,
+  "code_file": "notebook18449caf2f.ipynb",
+  "language": "python",
+  "competition_sources": [
+    "titanic"
+  ],
+  "enable_gpu": false
+}

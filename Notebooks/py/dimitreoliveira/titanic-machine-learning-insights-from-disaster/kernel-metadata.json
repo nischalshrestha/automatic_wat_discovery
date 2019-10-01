@@ -1,0 +1,22 @@
+{
+  "title": "Titanic: machine learning insights from disaster",
+  "id": "dimitreoliveira/titanic-machine-learning-insights-from-disaster",
+  "dataset_sources": [],
+  "competition_sources": [
+    "titanic"
+  ],
+  "language": "python",
+  "is_private": false,
+  "code_file": "titanic-machine-learning-insights-from-disaster.ipynb",
+  "enable_gpu": false,
+  "id_no": 1708351,
+  "kernel_sources": [],
+  "keywords": [
+    "tutorial",
+    "beginner",
+    "model diagnosis",
+    "xgboost"
+  ],
+  "kernel_type": "notebook",
+  "enable_internet": false
+}

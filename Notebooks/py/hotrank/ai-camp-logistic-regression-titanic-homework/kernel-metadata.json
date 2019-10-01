@@ -1,0 +1,17 @@
+{
+  "is_private": false,
+  "title": "AI Camp Logistic Regression Titanic Homework",
+  "keywords": [],
+  "kernel_sources": [],
+  "language": "python",
+  "competition_sources": [
+    "titanic"
+  ],
+  "dataset_sources": [],
+  "code_file": "ai-camp-logistic-regression-titanic-homework.ipynb",
+  "kernel_type": "notebook",
+  "enable_internet": false,
+  "enable_gpu": false,
+  "id_no": 1663477,
+  "id": "hotrank/ai-camp-logistic-regression-titanic-homework"
+}

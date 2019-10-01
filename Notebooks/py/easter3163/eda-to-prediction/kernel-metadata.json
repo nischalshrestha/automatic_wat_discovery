@@ -1,0 +1,17 @@
+{
+  "keywords": [],
+  "kernel_type": "notebook",
+  "enable_gpu": false,
+  "enable_internet": false,
+  "dataset_sources": [],
+  "title": "EDA to Prediction",
+  "competition_sources": [
+    "titanic"
+  ],
+  "language": "python",
+  "id": "easter3163/eda-to-prediction",
+  "code_file": "eda-to-prediction.ipynb",
+  "is_private": false,
+  "id_no": 1853347,
+  "kernel_sources": []
+}

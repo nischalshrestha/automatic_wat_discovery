@@ -1,0 +1,20 @@
+{
+  "language": "r",
+  "enable_gpu": false,
+  "dataset_sources": [],
+  "id": "ronaldpaul666/beginner-for-machine-learning-r",
+  "is_private": false,
+  "title": "Beginner for Machine Learning r",
+  "code_file": "beginner-for-machine-learning-r.irnb",
+  "competition_sources": [
+    "titanic"
+  ],
+  "kernel_sources": [],
+  "enable_internet": false,
+  "kernel_type": "notebook",
+  "id_no": 1215291,
+  "keywords": [
+    "data visualization",
+    "decision tree"
+  ]
+}

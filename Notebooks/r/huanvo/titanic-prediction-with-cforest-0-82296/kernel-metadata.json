@@ -1,0 +1,17 @@
+{
+  "enable_internet": false,
+  "id_no": 983439,
+  "title": "Titanic prediction with cforest [0.82296]",
+  "kernel_sources": [],
+  "keywords": [],
+  "competition_sources": [
+    "titanic"
+  ],
+  "is_private": false,
+  "code_file": "titanic-prediction-with-cforest-0-82296.irnb",
+  "id": "huanvo/titanic-prediction-with-cforest-0-82296",
+  "dataset_sources": [],
+  "language": "r",
+  "kernel_type": "notebook",
+  "enable_gpu": false
+}

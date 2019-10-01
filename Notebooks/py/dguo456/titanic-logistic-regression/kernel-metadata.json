@@ -1,0 +1,17 @@
+{
+  "enable_internet": false,
+  "is_private": false,
+  "id": "dguo456/titanic-logistic-regression",
+  "language": "python",
+  "title": "Titanic_Logistic_Regression",
+  "code_file": "titanic-logistic-regression.ipynb",
+  "competition_sources": [
+    "titanic"
+  ],
+  "keywords": [],
+  "enable_gpu": false,
+  "kernel_type": "notebook",
+  "id_no": 1403335,
+  "dataset_sources": [],
+  "kernel_sources": []
+}

@@ -1,0 +1,19 @@
+{
+  "kernel_type": "notebook",
+  "dataset_sources": [],
+  "id_no": 1477811,
+  "is_private": false,
+  "id": "humblediscipulus/titanic-survival-prediction",
+  "enable_gpu": false,
+  "competition_sources": [
+    "titanic"
+  ],
+  "language": "python",
+  "kernel_sources": [],
+  "keywords": [
+    "logistic regression"
+  ],
+  "enable_internet": true,
+  "title": "Titanic_survival_prediction",
+  "code_file": "titanic-survival-prediction.ipynb"
+}

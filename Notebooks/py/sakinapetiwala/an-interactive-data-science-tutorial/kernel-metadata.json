@@ -1,0 +1,17 @@
+{
+  "title": "An Interactive Data Science Tutorial",
+  "code_file": "an-interactive-data-science-tutorial.ipynb",
+  "is_private": false,
+  "id": "sakinapetiwala/an-interactive-data-science-tutorial",
+  "enable_internet": false,
+  "kernel_sources": [],
+  "kernel_type": "notebook",
+  "competition_sources": [
+    "titanic"
+  ],
+  "id_no": 1299746,
+  "dataset_sources": [],
+  "enable_gpu": false,
+  "language": "python",
+  "keywords": []
+}

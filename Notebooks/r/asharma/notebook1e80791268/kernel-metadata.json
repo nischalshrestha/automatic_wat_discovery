@@ -1,0 +1,17 @@
+{
+  "competition_sources": [
+    "titanic"
+  ],
+  "is_private": false,
+  "language": "r",
+  "enable_gpu": false,
+  "kernel_sources": [],
+  "kernel_type": "notebook",
+  "id": "asharma/notebook1e80791268",
+  "enable_internet": false,
+  "title": "Notebookada2e9ca39",
+  "id_no": 107380,
+  "keywords": [],
+  "code_file": "notebook1e80791268.irnb",
+  "dataset_sources": []
+}

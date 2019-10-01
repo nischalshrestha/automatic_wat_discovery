@@ -1,0 +1,17 @@
+{
+  "is_private": false,
+  "enable_internet": false,
+  "kernel_type": "notebook",
+  "code_file": "mytitanicforeducation.ipynb",
+  "competition_sources": [
+    "titanic"
+  ],
+  "title": "myTitanicForEducation",
+  "keywords": [],
+  "kernel_sources": [],
+  "dataset_sources": [],
+  "language": "python",
+  "id": "mnishiki/mytitanicforeducation",
+  "enable_gpu": false,
+  "id_no": 2048882
+}

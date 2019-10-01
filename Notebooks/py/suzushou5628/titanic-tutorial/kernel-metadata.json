@@ -1,0 +1,17 @@
+{
+  "enable_gpu": false,
+  "keywords": [],
+  "is_private": false,
+  "enable_internet": false,
+  "title": "Titanic Tutorial",
+  "language": "python",
+  "code_file": "titanic-tutorial.ipynb",
+  "kernel_sources": [],
+  "id_no": 1766764,
+  "id": "suzushou5628/titanic-tutorial",
+  "dataset_sources": [],
+  "kernel_type": "notebook",
+  "competition_sources": [
+    "titanic"
+  ]
+}

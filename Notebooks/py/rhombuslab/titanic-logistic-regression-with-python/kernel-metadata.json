@@ -1,0 +1,17 @@
+{
+  "enable_internet": false,
+  "id_no": 1477414,
+  "id": "rhombuslab/titanic-logistic-regression-with-python",
+  "code_file": "titanic-logistic-regression-with-python.ipynb",
+  "dataset_sources": [],
+  "enable_gpu": false,
+  "kernel_type": "notebook",
+  "title": "Titanic: logistic regression with python",
+  "kernel_sources": [],
+  "is_private": false,
+  "competition_sources": [
+    "titanic"
+  ],
+  "language": "python",
+  "keywords": []
+}

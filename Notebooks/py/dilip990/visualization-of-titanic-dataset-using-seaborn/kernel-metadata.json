@@ -1,0 +1,23 @@
+{
+  "title": "Visualization of Titanic Dataset using Seaborn",
+  "dataset_sources": [],
+  "kernel_sources": [],
+  "kernel_type": "notebook",
+  "id_no": 1595591,
+  "is_private": false,
+  "enable_internet": false,
+  "enable_gpu": false,
+  "keywords": [
+    "tutorial",
+    "beginner",
+    "eda",
+    "data visualization",
+    "dailychallenge"
+  ],
+  "code_file": "visualization-of-titanic-dataset-using-seaborn.ipynb",
+  "language": "python",
+  "competition_sources": [
+    "titanic"
+  ],
+  "id": "dilip990/visualization-of-titanic-dataset-using-seaborn"
+}

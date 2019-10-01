@@ -1,0 +1,17 @@
+{
+  "keywords": [],
+  "id": "sramml/simple-tutorial-for-beginners",
+  "enable_internet": false,
+  "competition_sources": [
+    "titanic"
+  ],
+  "id_no": 322787,
+  "language": "python",
+  "kernel_sources": [],
+  "kernel_type": "notebook",
+  "enable_gpu": false,
+  "dataset_sources": [],
+  "is_private": false,
+  "code_file": "simple-tutorial-for-beginners.ipynb",
+  "title": "Simple tutorial for Beginners"
+}

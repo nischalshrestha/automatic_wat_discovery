@@ -1,0 +1,17 @@
+{
+  "id_no": 129126,
+  "enable_internet": false,
+  "code_file": "notebooke465a0de61.irnb",
+  "id": "brucialized/notebooke465a0de61",
+  "dataset_sources": [],
+  "kernel_type": "notebook",
+  "keywords": [],
+  "language": "r",
+  "is_private": false,
+  "competition_sources": [
+    "titanic"
+  ],
+  "kernel_sources": [],
+  "title": "Notebook302fce06f6",
+  "enable_gpu": false
+}

@@ -1,0 +1,426 @@
+{
+  "cells": [
+    {
+      "cell_type": "markdown",
+      "metadata": {
+        "_cell_guid": "e82d6329-5944-fef9-0169-cf3fed910391"
+      },
+      "source": [
+        "# Introduction\n",
+        "\n",
+        "While studying [ISLR](http://www-bcf.usc.edu/~gareth/ISL/) I decided it would be nice to apply the R methods described in the Classification chapter to the Titanic Dataset. To have a reference to the methods. In Addition I hope this can help someone in usind those Standard  R methods.\n",
+        "\n",
+        "The goal of this notebook is not to do good predictions but to give an example on how to do classification and what you can achieve with it. A real life example."
+      ]
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {
+        "_cell_guid": "9851b179-3bf5-1d41-98bf-598ce8d0e6f2"
+      },
+      "source": [
+        "Now let's start at loading the data. To find out the separator you have to download the file and open it with a text editor. Is the easiest way. Always get a look at your data file. It helps."
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "_cell_guid": "0e27c745-1e13-cd86-10b4-3f3ef80f3d72"
+      },
+      "outputs": [],
+      "source": [
+        "train <- read.table(\"../input/train.csv\", sep = \",\")\n",
+        "test <- read.table(\"../input/test.csv\", sep = \",\")"
+      ]
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {
+        "_cell_guid": "3bc6a2b4-5485-0fbe-2e39-0a29cf4bfae5"
+      },
+      "source": [
+        "Now let's look at the data. Let's start with `str()`and then let's look in more details at the variables."
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "_cell_guid": "e435ccfe-73b0-f0a4-7797-11c50cb32756"
+      },
+      "outputs": [],
+      "source": [
+        "str(train)"
+      ]
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {
+        "_cell_guid": "0ab7c858-caa7-5b36-f5e9-2c999e1ae508"
+      },
+      "source": [
+        "You will notice that R did not get the column names. They are in the file, but they were not used. The problem was that we used `read.table()`in the wrong way. There is an option `header`that tells R to use the first line for the names. If you don't provide a different value it is `FALSE`. So we will have to set it to `TRUE`. "
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "_cell_guid": "9e3624cf-1d28-59ac-b7a2-edfa40ad7dcb"
+      },
+      "outputs": [],
+      "source": [
+        "train <- read.table(\"../input/train.csv\", sep = \",\", header = TRUE)\n",
+        "test <- read.table (\"../input/test.csv\", sep = \",\", header = TRUE)\n",
+        "str(train)"
+      ]
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {
+        "_cell_guid": "48b5e456-2915-845b-abc7-dc83cc5d4912"
+      },
+      "source": [
+        "Now is much better. Event the data types seems reasonable. Except for the factors. Let's look at them."
+      ]
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {
+        "_cell_guid": "6c765cee-ad88-966b-ae24-fcb37d1b55a7"
+      },
+      "source": [
+        "## Convert data to the correct datatype\n",
+        "\n",
+        "Now the Name ist not a factor, so we need to transform it into simple characters"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "_cell_guid": "04329625-b890-e593-38cc-01a4e400dc73"
+      },
+      "outputs": [],
+      "source": [
+        "train$SurvivedF <- as.factor(train$Survived)\n",
+        "str(train)"
+      ]
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {
+        "_cell_guid": "ddc0d798-ae34-d5d9-53cb-05a18b34d07c"
+      },
+      "source": [
+        "Now this is a classification problem. We have a set of inputs, and our target variable (what we want to predict) is \"Survived\" that can assume the values of 0 (died) and 1 (survived).\n",
+        "\n",
+        "The easiest way of doing classification is to use logistic regression. To do this in R we can use the glm() function with the option `family = binomial`."
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "_cell_guid": "a31a2962-e0d8-b8b8-230c-b46e0f097bb8"
+      },
+      "outputs": [],
+      "source": [
+        "glm.fit <- glm (as.factor(Survived) ~ Pclass + Sex + Age + SibSp + Parch + Fare + Embarked, data = train, family = binomial) \n",
+        "summary(glm.fit)"
+      ]
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {
+        "_cell_guid": "0807d76c-822a-0fe5-483b-ca51f95b6b85"
+      },
+      "source": [
+        "What we can see is that the relevant variables are Pclass, Sexmale, age and SibSp (number of siblings)."
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "_cell_guid": "225361e3-61a4-5d44-ee04-bd8e4dc59b33"
+      },
+      "outputs": [],
+      "source": [
+        "glm.probs <- predict (glm.fit, type = \"response\")\n",
+        "glm.pred <- rep(0, 891) #  891 is the number of observation in the train dataset\n",
+        "glm.pred[glm.probs > 0.5] = 1"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "_cell_guid": "0f5821aa-5a08-8a58-fb7d-3634cb4b3011"
+      },
+      "outputs": [],
+      "source": [
+        "glm.predict <- predict (glm.fit, test, type= \"response\")\n",
+        "\n",
+        "summary(glm.predict)"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "_cell_guid": "56fe1d99-a6a9-b59f-1965-487b893a9652"
+      },
+      "outputs": [],
+      "source": [
+        "table (glm.pred, train$Survived)\n",
+        "mean(glm.pred == train$Survived)"
+      ]
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {
+        "_cell_guid": "7ed99af5-2253-b6e9-16a8-b6e5b71d5cff"
+      },
+      "source": [
+        "52% is not such a great result ;-) Is only slightly better than a random guess (that would give you 50% of accuracy)."
+      ]
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {
+        "_cell_guid": "62012c85-8636-14ba-1ad5-e0368d79fec1"
+      },
+      "source": [
+        "Remember that with the logistic regression we are actually calculating probabilities.\n",
+        "So we need to specify above which cutoff (treshold) are predictions means 1 (Survived). \n",
+        "Above we have chosen a value of 0.5 `glm.pred[glm.probs > 0.5] = 1`. But we can iterate and\n",
+        "check if a different cutoff gives us a better result."
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "_cell_guid": "95beea97-a680-8d81-1b9f-254a9a3bb276"
+      },
+      "outputs": [],
+      "source": [
+        "for (i in seq(0.1,1,0.1)) {\n",
+        "    glm.pred <- rep(0, 891)\n",
+        "    glm.pred[glm.probs > i] = 1\n",
+        "    m <- mean(glm.pred == train$Survived)\n",
+        "    print(paste(i, m, sep =\" <-> \"))\n",
+        "}"
+      ]
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {
+        "_cell_guid": "7739391e-7f20-6ea2-eb68-1e0e7421265e"
+      },
+      "source": [
+        "The highest value seems to be at 1. But let's discuss it. Let's check what proportions we have in our data between 1 and 0"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "_cell_guid": "b1352c30-d689-b931-2a66-ae18783db7d6"
+      },
+      "outputs": [],
+      "source": [
+        "table (train$Survived)"
+      ]
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {
+        "_cell_guid": "c518ce20-57b0-330b-e81f-01804d43c293"
+      },
+      "source": [
+        "Now since `glm.probs`is always < 1 by definition (remember is a probability) we are simply setting *all* our predictions to 1. So if we use this formula\n",
+        "\n",
+        "    mean(glm.pred == train$Survived)\n",
+        "\n",
+        "it will be true in 342 cases over 891 (see the table above). Since glm.pred will always be 1, and train$Survived will onle by 1 in 342 cases. So the above formula will be equal to\n",
+        "\n",
+        "    1-342/891"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "_cell_guid": "f18b10f6-d70e-cb25-787a-9604b07b6cb2"
+      },
+      "outputs": [],
+      "source": [
+        "1-342/891"
+      ]
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {
+        "_cell_guid": "73966b56-86b6-6d53-7d3d-3d5d793765c5"
+      },
+      "source": [
+        "So the numbers we are getting start to make sense. But the method does not really help at all, since we always get less than the proportions of 0 and 1 in our target variable!"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "_cell_guid": "53105996-3072-b0dd-fa42-650251e154c7"
+      },
+      "outputs": [],
+      "source": [
+        "\n",
+        "write.csv(solution, file = 'glm_fit_Solution.csv', row.names = F)prediction <- predict(glm.fit, test, type = \"response\")\n",
+        "\n",
+        "glm.prediction <- rep(0, 418) #  891 is the number of observation in the train dataset\n",
+        "glm.prediction[prediction > 0.5] = 1\n",
+        "\n",
+        "solution <- data.frame(PassengerID = test$PassengerId, Survived = glm.prediction)\n",
+        "\n",
+        "# Write the solution to file\n",
+        "#write.csv(solution, file = 'glm_fit_Solution.csv', row.names = F)"
+      ]
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {
+        "_cell_guid": "42381bfa-7a56-2d04-e794-41a1482931ae"
+      },
+      "source": [
+        "# Submission"
+      ]
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {
+        "_cell_guid": "8bdef1ea-ed2e-d8c7-6bed-ff5a93ea1be0"
+      },
+      "source": [
+        "# Trees (work in progress)"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "_cell_guid": "dcc33c58-c3ce-37f3-590b-19243ff56ba7"
+      },
+      "outputs": [],
+      "source": [
+        "library(tree)"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "_cell_guid": "733a3d63-8a3f-7a3d-507d-122d18be6f5f"
+      },
+      "outputs": [],
+      "source": [
+        "tree.fit <- tree(as.factor(Survived) ~Pclass + Sex + Age + SibSp + Parch + Fare + Embarked, train)\n",
+        "summary(tree.fit)"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "_cell_guid": "d7036cbc-64bb-f776-24ae-2d7d015c8c8b"
+      },
+      "outputs": [],
+      "source": [
+        "tree.pred <- predict (tree.fit, train, type = \"class\")"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "_cell_guid": "bc7230ca-8c99-63c0-fb86-b29b0875cfb4"
+      },
+      "outputs": [],
+      "source": [
+        "table(tree.pred, train$Survived)"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "_cell_guid": "f6a81389-8133-daf9-2f10-b56a358b1561"
+      },
+      "outputs": [],
+      "source": [
+        "prediction <- predict(tree.fit, test,  type= \"class\")\n",
+        "\n",
+        "\n",
+        "# Save the solution to a dataframe with two columns: PassengerId and Survived (prediction)\n",
+        "solution <- data.frame(PassengerID = test$PassengerId, Survived = prediction)\n",
+        "\n",
+        "write.csv(solution, file = 'tree_fit_Solution.csv', row.names = F)"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "_cell_guid": "26335315-2d8e-8a3c-2293-5aa1ffff6271"
+      },
+      "outputs": [],
+      "source": [
+        "head(solution)"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "_cell_guid": "1f31b716-febe-0ee1-8ac3-0a97eb2356d4"
+      },
+      "outputs": [],
+      "source": [
+        ""
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "_cell_guid": "40d649df-7fba-9258-2101-b95485528868"
+      },
+      "outputs": [],
+      "source": [
+        ""
+      ]
+    }
+  ],
+  "metadata": {
+    "_change_revision": 0,
+    "_is_fork": false,
+    "kernelspec": {
+      "display_name": "R",
+      "language": "R",
+      "name": "ir"
+    },
+    "language_info": {
+      "codemirror_mode": "r",
+      "file_extension": ".r",
+      "mimetype": "text/x-r-source",
+      "name": "R",
+      "pygments_lexer": "r",
+      "version": "3.3.3"
+    }
+  },
+  "nbformat": 4,
+  "nbformat_minor": 0
+}

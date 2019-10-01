@@ -1,0 +1,17 @@
+{
+  "kernel_type": "notebook",
+  "keywords": [],
+  "code_file": "pipeline-hyper-tuning-f1-scoring.ipynb",
+  "competition_sources": [
+    "titanic"
+  ],
+  "id_no": 368703,
+  "language": "python",
+  "kernel_sources": [],
+  "title": "Pipeline + Hyper Tuning + F1 scoring",
+  "id": "wangyong101/pipeline-hyper-tuning-f1-scoring",
+  "is_private": false,
+  "enable_internet": false,
+  "dataset_sources": [],
+  "enable_gpu": false
+}

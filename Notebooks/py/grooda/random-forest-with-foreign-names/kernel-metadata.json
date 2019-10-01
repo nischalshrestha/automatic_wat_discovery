@@ -1,0 +1,22 @@
+{
+  "enable_internet": false,
+  "id": "grooda/random-forest-with-foreign-names",
+  "enable_gpu": false,
+  "kernel_sources": [],
+  "keywords": [
+    "tutorial",
+    "data cleaning",
+    "feature engineering",
+    "starter code"
+  ],
+  "is_private": false,
+  "kernel_type": "notebook",
+  "competition_sources": [
+    "titanic"
+  ],
+  "dataset_sources": [],
+  "language": "python",
+  "title": "Random Forest with foreign names",
+  "code_file": "random-forest-with-foreign-names.ipynb",
+  "id_no": 2115021
+}

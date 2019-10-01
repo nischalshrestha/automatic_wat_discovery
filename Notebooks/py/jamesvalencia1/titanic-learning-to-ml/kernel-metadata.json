@@ -1,0 +1,19 @@
+{
+  "keywords": [
+    "beginner"
+  ],
+  "id": "jamesvalencia1/titanic-learning-to-ml",
+  "title": "Titanic: Learning to ML",
+  "code_file": "titanic-learning-to-ml.ipynb",
+  "id_no": 1242882,
+  "dataset_sources": [],
+  "kernel_type": "notebook",
+  "is_private": false,
+  "enable_internet": false,
+  "enable_gpu": false,
+  "competition_sources": [
+    "titanic"
+  ],
+  "kernel_sources": [],
+  "language": "python"
+}

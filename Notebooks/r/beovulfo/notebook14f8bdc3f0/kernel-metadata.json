@@ -1,0 +1,17 @@
+{
+  "keywords": [],
+  "is_private": false,
+  "kernel_sources": [],
+  "competition_sources": [
+    "titanic"
+  ],
+  "enable_gpu": false,
+  "id_no": 246505,
+  "kernel_type": "notebook",
+  "code_file": "notebook14f8bdc3f0.irnb",
+  "dataset_sources": [],
+  "id": "beovulfo/notebook14f8bdc3f0",
+  "enable_internet": false,
+  "language": "r",
+  "title": "Notebook14f8bdc3f0"
+}

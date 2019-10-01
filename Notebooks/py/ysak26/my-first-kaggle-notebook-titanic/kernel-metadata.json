@@ -1,0 +1,17 @@
+{
+  "enable_internet": false,
+  "kernel_type": "notebook",
+  "enable_gpu": false,
+  "keywords": [],
+  "competition_sources": [
+    "titanic"
+  ],
+  "kernel_sources": [],
+  "code_file": "my-first-kaggle-notebook-titanic.irnb",
+  "dataset_sources": [],
+  "language": "r",
+  "title": "My First Kaggle Notebook - Titanic",
+  "id_no": 204401,
+  "id": "ysak26/my-first-kaggle-notebook-titanic",
+  "is_private": false
+}

@@ -1,0 +1,17 @@
+{
+  "id": "leostep/titanic-challenge-final-model",
+  "code_file": "titanic-challenge-final-model.ipynb",
+  "competition_sources": [
+    "titanic"
+  ],
+  "title": "Titanic Challenge Final Model",
+  "enable_gpu": false,
+  "kernel_type": "notebook",
+  "dataset_sources": [],
+  "enable_internet": false,
+  "id_no": 1922785,
+  "keywords": [],
+  "language": "python",
+  "is_private": false,
+  "kernel_sources": []
+}

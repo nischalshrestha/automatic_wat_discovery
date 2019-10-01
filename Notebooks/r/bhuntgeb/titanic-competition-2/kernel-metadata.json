@@ -1,0 +1,17 @@
+{
+  "title": "Titanic Competition 2",
+  "enable_gpu": false,
+  "keywords": [],
+  "enable_internet": false,
+  "id": "bhuntgeb/titanic-competition-2",
+  "code_file": "titanic-competition-2.irnb",
+  "kernel_sources": [],
+  "language": "r",
+  "is_private": false,
+  "dataset_sources": [],
+  "kernel_type": "notebook",
+  "id_no": 1920566,
+  "competition_sources": [
+    "titanic"
+  ]
+}

@@ -1,0 +1,17 @@
+{
+  "id_no": 742332,
+  "enable_internet": false,
+  "keywords": [],
+  "kernel_type": "notebook",
+  "language": "python",
+  "dataset_sources": [],
+  "code_file": "titanic-analysis.ipynb",
+  "enable_gpu": false,
+  "id": "enriquema/titanic-analysis",
+  "is_private": false,
+  "competition_sources": [
+    "titanic"
+  ],
+  "title": "Titanic Analysis",
+  "kernel_sources": []
+}

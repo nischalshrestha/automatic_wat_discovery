@@ -1,0 +1,21 @@
+{
+  "language": "python",
+  "enable_gpu": false,
+  "keywords": [
+    "tutorial",
+    "classification",
+    "dailychallenge"
+  ],
+  "kernel_sources": [],
+  "code_file": "ml-classification-with-titanic-dataset-tutorial.ipynb",
+  "dataset_sources": [],
+  "kernel_type": "notebook",
+  "is_private": false,
+  "id": "jeffreycbw/ml-classification-with-titanic-dataset-tutorial",
+  "title": "ML Classification with Titanic Dataset Tutorial",
+  "competition_sources": [
+    "titanic"
+  ],
+  "enable_internet": false,
+  "id_no": 2143552
+}

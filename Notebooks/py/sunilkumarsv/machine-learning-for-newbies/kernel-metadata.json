@@ -1,0 +1,17 @@
+{
+  "code_file": "machine-learning-for-newbies.ipynb",
+  "keywords": [],
+  "competition_sources": [
+    "titanic"
+  ],
+  "title": "Machine Learning for Newbies",
+  "enable_gpu": false,
+  "enable_internet": false,
+  "id": "sunilkumarsv/machine-learning-for-newbies",
+  "dataset_sources": [],
+  "kernel_sources": [],
+  "language": "python",
+  "id_no": 326991,
+  "kernel_type": "notebook",
+  "is_private": false
+}

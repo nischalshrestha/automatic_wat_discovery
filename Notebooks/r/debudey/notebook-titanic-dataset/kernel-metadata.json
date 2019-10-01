@@ -1,0 +1,17 @@
+{
+  "is_private": false,
+  "enable_internet": false,
+  "kernel_type": "notebook",
+  "enable_gpu": false,
+  "competition_sources": [
+    "titanic"
+  ],
+  "dataset_sources": [],
+  "id_no": 195184,
+  "title": "Notebook_Titanic_dataset",
+  "kernel_sources": [],
+  "id": "debudey/notebook-titanic-dataset",
+  "language": "r",
+  "code_file": "notebook-titanic-dataset.irnb",
+  "keywords": []
+}

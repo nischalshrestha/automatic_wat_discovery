@@ -1,0 +1,17 @@
+{
+  "enable_internet": false,
+  "competition_sources": [
+    "titanic"
+  ],
+  "kernel_sources": [],
+  "language": "python",
+  "id": "petriroi/testing-how-to-run-kernel",
+  "code_file": "testing-how-to-run-kernel.ipynb",
+  "keywords": [],
+  "enable_gpu": false,
+  "kernel_type": "notebook",
+  "dataset_sources": [],
+  "id_no": 199730,
+  "is_private": false,
+  "title": "Testing how to run Kernel"
+}

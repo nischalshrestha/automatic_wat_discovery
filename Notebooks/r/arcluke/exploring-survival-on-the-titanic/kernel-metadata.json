@@ -1,0 +1,17 @@
+{
+  "id": "arcluke/exploring-survival-on-the-titanic",
+  "enable_internet": false,
+  "competition_sources": [
+    "titanic"
+  ],
+  "is_private": false,
+  "enable_gpu": false,
+  "title": "Exploring Survival on the Titanic",
+  "kernel_sources": [],
+  "language": "r",
+  "dataset_sources": [],
+  "code_file": "exploring-survival-on-the-titanic.irnb",
+  "id_no": 93061,
+  "keywords": [],
+  "kernel_type": "notebook"
+}

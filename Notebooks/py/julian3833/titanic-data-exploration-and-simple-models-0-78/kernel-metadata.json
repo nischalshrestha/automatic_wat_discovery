@@ -1,0 +1,17 @@
+{
+  "keywords": [],
+  "dataset_sources": [],
+  "competition_sources": [
+    "titanic"
+  ],
+  "id_no": 440004,
+  "enable_gpu": false,
+  "code_file": "titanic-data-exploration-and-simple-models-0-78.ipynb",
+  "kernel_type": "notebook",
+  "is_private": false,
+  "id": "julian3833/titanic-data-exploration-and-simple-models-0-78",
+  "language": "python",
+  "title": "Titanic: data exploration and simple models (0.78)",
+  "enable_internet": false,
+  "kernel_sources": []
+}

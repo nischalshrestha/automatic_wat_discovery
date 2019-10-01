@@ -1,0 +1,474 @@
+{
+  "cells": [
+    {
+      "cell_type": "markdown",
+      "metadata": {
+        "_cell_guid": "1807fa17-ba50-2dc2-2c9c-17dac973b5f1"
+      },
+      "source": [
+        "**Titanic**\n",
+        "-------"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "_cell_guid": "d0e42919-f0bd-4529-efa4-8c8ccf99305f"
+      },
+      "outputs": [],
+      "source": [
+        "# This R environment comes with all of CRAN preinstalled, as well as many other helpful packages\n",
+        "# The environment is defined by the kaggle/rstats docker image: https://github.com/kaggle/docker-rstats\n",
+        "# For example, here's several helpful packages to load in \n",
+        "# Input data files are available in the \"../input/\" directory.\n",
+        "# For example, running this (by clicking run or pressing Shift+Enter) will list the files in the input directory\n",
+        "# Any results you write to the current directory are saved as output."
+      ]
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {
+        "_cell_guid": "fb0d1dd8-95db-f813-61ff-d03f04ca4196"
+      },
+      "source": [
+        "Loading Packages"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "_cell_guid": "fecfaecc-4bb9-61e3-87c4-786180b540e1"
+      },
+      "outputs": [],
+      "source": [
+        "\n",
+        "library(ggplot2) # Data visualization\n",
+        "library(readr) # CSV file I/O, e.g. the read_csv function\n",
+        "library(randomForest) # classification algorithm\n",
+        "library(dplyr) # Data wrangling\n"
+      ]
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {
+        "_cell_guid": "7f7fcbf7-19ec-0dad-b927-8c73e651d24c"
+      },
+      "source": [
+        "Import and combine Data"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "_cell_guid": "a4a8469e-86d1-e511-1754-51d9c80746d3"
+      },
+      "outputs": [],
+      "source": [
+        "train <- read.csv('../input/train.csv', stringsAsFactors = F)\n",
+        "test  <- read.csv('../input/test.csv', stringsAsFactors = F)\n",
+        "\n",
+        "full  <- bind_rows(train, test) # bind training & test data\n",
+        "\n",
+        "full[which(is.na(full$Survived)),2] <- 0 #addressing NA values due to combining of train and test datasets\n",
+        "\n",
+        "full$Survived <- as.factor(full$Survived)"
+      ]
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {
+        "_cell_guid": "af919377-95b3-4f3f-47fc-65da498838cf"
+      },
+      "source": [
+        "**Metadata information**"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "_cell_guid": "c6e95fb2-6b34-aa68-a0a7-3f293a475878"
+      },
+      "outputs": [],
+      "source": [
+        "\n",
+        "# check data\n",
+        "str(full)"
+      ]
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {
+        "_cell_guid": "26361fde-a292-533a-083c-aa45db841ec8"
+      },
+      "source": [
+        "**First few rows of the dataset**"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "_cell_guid": "38fe9386-79f3-5cf7-97ab-793b28089108"
+      },
+      "outputs": [],
+      "source": [
+        "head(full)"
+      ]
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {
+        "_cell_guid": "ce1813b9-f2c9-3c49-df92-fe606a1d679f"
+      },
+      "source": [
+        "**Survival Rates ( training data) - \n",
+        "549 people persished , 342 survived**"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "_cell_guid": "d85dd55f-6f99-be0d-7d2a-1f5564ea2f92"
+      },
+      "outputs": [],
+      "source": [
+        "ggplot(train , aes(x = Survived)) + geom_bar()\n",
+        "\n",
+        "table(train$Survived)"
+      ]
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {
+        "_cell_guid": "5f394a13-55ac-f67a-db7a-c0483131ac9c"
+      },
+      "source": [
+        "**Missing Values**"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "_cell_guid": "ded0afc1-e3f8-369b-ddc7-e7cc40ece12e"
+      },
+      "outputs": [],
+      "source": [
+        "sapply(full, function(full) sum(is.na(full)))"
+      ]
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {
+        "_cell_guid": "9d281a33-8eb7-5aae-d559-a203e3f10221"
+      },
+      "source": [
+        "Above table shows the number of missing values in each feature. 263 observations are missing in Age and 1 in Fare."
+      ]
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {
+        "_cell_guid": "e332bea3-bb34-3866-ce98-20ce1cfb4c94"
+      },
+      "source": [
+        "Imputing missing value in Fare"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "_cell_guid": "7f468afc-63ad-9bd8-ed6d-3a68f7e31feb"
+      },
+      "outputs": [],
+      "source": [
+        "which(is.na(full$Fare))"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "_cell_guid": "fc959b59-7605-6bc2-6628-5838b65d621f"
+      },
+      "outputs": [],
+      "source": [
+        "full[1044, ]\n",
+        "\n",
+        "thirdclass <- full[full$Pclass == 3 & full$Embarked == 'S' ,  ]\n",
+        "\n",
+        "ggplot(thirdclass , aes(Fare)) + geom_density()\n",
+        "\n",
+        "median(thirdclass$Fare , na.rm = TRUE)\n",
+        "\n",
+        "full$Fare[1044] <- median(thirdclass$Fare , na.rm = TRUE)"
+      ]
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {
+        "_cell_guid": "b3eb0a51-f194-51bd-ccba-933f41508277"
+      },
+      "source": [
+        "Imputing missing values in males Ages"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "_cell_guid": "f3b6ad80-0458-f1be-18e1-4f88943362cd"
+      },
+      "outputs": [],
+      "source": [
+        "Male_Ages <- full[ which(is.na(full$Age)) & full$Sex == 'male' , ]\n",
+        "\n",
+        "median(Male_Ages$Age , na.rm =  TRUE)\n",
+        "\n",
+        "ggplot(Male_Ages , aes(Age)) + geom_density()\n",
+        "\n",
+        "full$Age[is.na(full$Age) == TRUE & full$Sex == 'male'] <- median(Male_Ages$Age , na.rm =  TRUE)"
+      ]
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {
+        "_cell_guid": "81d6b15a-9420-9c33-2c94-e7982b0947cf"
+      },
+      "source": [
+        "**Imputing missing values in females Ages**"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "_cell_guid": "9651748c-2d5e-0c80-da73-7a813b99c069"
+      },
+      "outputs": [],
+      "source": [
+        "Female_Ages <- full[ which(is.na(full$Age)) & full$Sex == 'female' , ]\n",
+        "\n",
+        "median(Female_Ages$Age , na.rm =  TRUE)\n",
+        "\n",
+        "ggplot(Female_Ages , aes(Age)) + geom_density()\n",
+        "\n",
+        "full$Age[is.na(full$Age) == TRUE & full$Sex == 'female'] <- median(Female_Ages$Age , na.rm =  TRUE)"
+      ]
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {
+        "_cell_guid": "73ac7b0b-a5c7-c9ee-c6eb-f1ca61c33fa8"
+      },
+      "source": [
+        "**Passenger Class and Survival**"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "_cell_guid": "34853709-2484-86c5-5858-a379ffa6c04a"
+      },
+      "outputs": [],
+      "source": [
+        "ggplot(train , aes(x = Pclass , fill = factor(Survived))) + geom_bar(width = 0.5)"
+      ]
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {
+        "_cell_guid": "a6128ac4-a576-c2f0-da3c-c2dbb9d5138a"
+      },
+      "source": [
+        "This graph shows that passengers in 3rd class had a low survival rate as compared to 1st class."
+      ]
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {
+        "_cell_guid": "9f7c6fba-c594-fd4f-db5c-23155946186e"
+      },
+      "source": [
+        "**Gender Distribution and survival rate**"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "_cell_guid": "842d3b00-dc8a-04ff-47d8-6377af8ba728"
+      },
+      "outputs": [],
+      "source": [
+        "ggplot(train, aes(Age,fill = factor(Survived))) +\n",
+        "    geom_histogram(binwidth = 5) + facet_grid(.~Sex)"
+      ]
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {
+        "_cell_guid": "3e80b690-5b70-67e2-af0a-393490b0f0fd"
+      },
+      "source": [
+        "This graph shows the age and gender distribution and their survival rate. We see that females had a far more chance to survive as compared to males."
+      ]
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {
+        "_cell_guid": "59fd31af-8cbb-dd93-01a9-461590cfc888"
+      },
+      "source": [
+        "**Split back to Train and test data**"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "_cell_guid": "7e878cae-ab58-a4d6-252c-51b1cd93a5ce"
+      },
+      "outputs": [],
+      "source": [
+        "train <- full[1:891,]\n",
+        "test <- full[892:1309,]"
+      ]
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {
+        "_cell_guid": "b703c9ec-2ed2-bc30-0278-a8f8cae9a820"
+      },
+      "source": [
+        "**Converting to factor variables**"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "_cell_guid": "805e0317-b71b-8241-1a04-c184e4c3699b"
+      },
+      "outputs": [],
+      "source": [
+        "train$Sex <- as.factor(train$Sex)\n",
+        "train$Embarked <- as.factor(train$Embarked)\n",
+        "\n",
+        "\n",
+        "test$Sex <- as.factor(test$Sex)\n",
+        "test$Embarked <- as.factor(test$Embarked)"
+      ]
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {
+        "_cell_guid": "db979c20-9b48-41f2-c0f7-9afac3ba6cf1"
+      },
+      "source": [
+        "**Check if there are any missing Values**\n"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "_cell_guid": "d2421443-c156-8404-63a7-62f1a214cbe7"
+      },
+      "outputs": [],
+      "source": [
+        "sapply(full, function(full) sum(is.na(full)))"
+      ]
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {
+        "_cell_guid": "bbbd2b3e-5190-90f0-2f06-f936c33e48dc"
+      },
+      "source": [
+        "**Random Forest Model**"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "_cell_guid": "4271f8cf-f037-fea9-a97b-260761b70005"
+      },
+      "outputs": [],
+      "source": [
+        "rf_model <- randomForest(factor(Survived) ~ Pclass + Sex + Age + SibSp + Parch + \n",
+        "                                            Fare , data = train )"
+      ]
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {
+        "_cell_guid": "d542fd13-fddf-e2bc-2bd0-2a6119eb06ce"
+      },
+      "source": [
+        "**variable importance**"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "_cell_guid": "ab8312c4-eab1-bae4-033c-0d243fc0aa6f"
+      },
+      "outputs": [],
+      "source": [
+        "round(importance(rf_model), 2)"
+      ]
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {
+        "_cell_guid": "5aa1793a-4a13-d3fc-0203-8ab8e974b379"
+      },
+      "source": [
+        "**Prediction**\n",
+        "----------"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "_cell_guid": "6679f396-1c82-b7f8-a223-9c2f7f2482de"
+      },
+      "outputs": [],
+      "source": [
+        "prediction <- predict(rf_model, test)\n",
+        "\n",
+        "solution <- data.frame(PassengerID = test$PassengerId, Survived = prediction)"
+      ]
+    }
+  ],
+  "metadata": {
+    "_change_revision": 0,
+    "_is_fork": false,
+    "kernelspec": {
+      "display_name": "R",
+      "language": "R",
+      "name": "ir"
+    },
+    "language_info": {
+      "codemirror_mode": "r",
+      "file_extension": ".r",
+      "mimetype": "text/x-r-source",
+      "name": "R",
+      "pygments_lexer": "r",
+      "version": "3.4.0"
+    }
+  },
+  "nbformat": 4,
+  "nbformat_minor": 0
+}

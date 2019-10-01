@@ -1,0 +1,17 @@
+{
+  "enable_internet": false,
+  "dataset_sources": [],
+  "id": "bimbus94/titanic-po-polsku",
+  "kernel_type": "notebook",
+  "is_private": false,
+  "code_file": "titanic-po-polsku.ipynb",
+  "id_no": 1279678,
+  "keywords": [],
+  "kernel_sources": [],
+  "enable_gpu": false,
+  "competition_sources": [
+    "titanic"
+  ],
+  "language": "python",
+  "title": "Titanic po polsku "
+}

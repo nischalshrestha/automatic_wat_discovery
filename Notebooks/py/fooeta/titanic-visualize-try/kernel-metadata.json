@@ -1,0 +1,17 @@
+{
+  "id": "fooeta/titanic-visualize-try",
+  "id_no": 1360678,
+  "kernel_type": "notebook",
+  "is_private": false,
+  "dataset_sources": [],
+  "competition_sources": [
+    "titanic"
+  ],
+  "kernel_sources": [],
+  "enable_gpu": false,
+  "keywords": [],
+  "title": "Titanic visualize try",
+  "enable_internet": false,
+  "code_file": "titanic-visualize-try.ipynb",
+  "language": "python"
+}

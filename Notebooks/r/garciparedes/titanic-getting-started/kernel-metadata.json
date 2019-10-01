@@ -1,0 +1,21 @@
+{
+  "id_no": 483984,
+  "id": "garciparedes/titanic-getting-started",
+  "is_private": false,
+  "keywords": [
+    "tutorial",
+    "beginner",
+    "classification"
+  ],
+  "code_file": "titanic-getting-started.irnb",
+  "language": "r",
+  "dataset_sources": [],
+  "title": "Titanic Getting Started",
+  "kernel_sources": [],
+  "enable_gpu": false,
+  "kernel_type": "notebook",
+  "competition_sources": [
+    "titanic"
+  ],
+  "enable_internet": false
+}

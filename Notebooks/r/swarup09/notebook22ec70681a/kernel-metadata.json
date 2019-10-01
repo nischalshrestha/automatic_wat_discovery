@@ -1,0 +1,17 @@
+{
+  "competition_sources": [
+    "titanic"
+  ],
+  "kernel_type": "notebook",
+  "kernel_sources": [],
+  "enable_gpu": false,
+  "code_file": "notebook22ec70681a.ipynb",
+  "language": "python",
+  "dataset_sources": [],
+  "is_private": false,
+  "enable_internet": false,
+  "id_no": 216643,
+  "title": "Notebook22ec70681a",
+  "id": "swarup09/notebook22ec70681a",
+  "keywords": []
+}

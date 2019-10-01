@@ -1,0 +1,17 @@
+{
+  "competition_sources": [
+    "titanic"
+  ],
+  "enable_internet": false,
+  "title": "Titanic (R)",
+  "language": "r",
+  "is_private": false,
+  "enable_gpu": false,
+  "kernel_type": "notebook",
+  "dataset_sources": [],
+  "kernel_sources": [],
+  "id": "huijunzhao/titanic-r",
+  "keywords": [],
+  "code_file": "titanic-r.irnb",
+  "id_no": 308935
+}

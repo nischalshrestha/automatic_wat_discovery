@@ -1,0 +1,17 @@
+{
+  "kernel_sources": [],
+  "title": "Titanic data set",
+  "enable_gpu": false,
+  "code_file": "titanic-data-set.ipynb",
+  "keywords": [],
+  "is_private": false,
+  "dataset_sources": [],
+  "kernel_type": "notebook",
+  "enable_internet": false,
+  "language": "python",
+  "id": "harshitavemula/titanic-data-set",
+  "competition_sources": [
+    "titanic"
+  ],
+  "id_no": 1390413
+}

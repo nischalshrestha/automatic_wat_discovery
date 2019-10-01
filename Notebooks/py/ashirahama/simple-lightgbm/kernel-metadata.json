@@ -1,0 +1,17 @@
+{
+  "kernel_sources": [],
+  "enable_gpu": false,
+  "dataset_sources": [],
+  "id_no": 2042854,
+  "competition_sources": [
+    "titanic"
+  ],
+  "kernel_type": "notebook",
+  "enable_internet": false,
+  "keywords": [],
+  "language": "python",
+  "is_private": false,
+  "id": "ashirahama/simple-lightgbm",
+  "code_file": "simple-lightgbm.ipynb",
+  "title": "Simple LightGBM"
+}

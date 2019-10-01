@@ -1,0 +1,305 @@
+{
+  "cells": [
+    {
+      "cell_type": "markdown",
+      "metadata": {
+        "_cell_guid": "46d315ef-8cbe-dc84-4fbe-fc32e4e40ac9"
+      },
+      "source": [
+        "# Predict Titanic survival data using random forest / SVM"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "_cell_guid": "a4f7283b-b890-901c-8ab6-a1e7cd1bc99d"
+      },
+      "outputs": [],
+      "source": [
+        "library(Hmisc)\n",
+        "library(\"caret\")\n",
+        "library(\"rpart\")\n",
+        "library(\"tree\")\n",
+        "library(\"e1071\")\n",
+        "library(ggplot2) # Data visualization\n",
+        "library(readr) # CSV file I/O, e.g. the read_csv function\n",
+        "library(randomForest)\n",
+        "set.seed(1)\n",
+        "\n",
+        "# Input data files are available in the \"../input/\" directory.\n",
+        "# For example, running this (by clicking run or pressing Shift+Enter) will list the files in the input directory\n",
+        "\n",
+        "system(\"ls ../input\")\n",
+        "\n",
+        "# Read data\n",
+        "train <- read.csv(\"../input/train.csv\" , stringsAsFactors = FALSE)\n",
+        "test  <- read.csv(\"../input/test.csv\",   stringsAsFactors = FALSE)\n",
+        "\n",
+        "# Any results you write to the current directory are saved as output."
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "_cell_guid": "7f8c812a-d8a6-f924-d722-9ee741403287"
+      },
+      "outputs": [],
+      "source": [
+        "head(train)"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "_cell_guid": "ffc219ea-cfd4-4551-5dc5-8fe159f283c6"
+      },
+      "outputs": [],
+      "source": [
+        "str(train)"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "_cell_guid": "f8b352ee-9fd7-5f1f-42e4-1d38a677b563"
+      },
+      "outputs": [],
+      "source": [
+        "describe(train)"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "_cell_guid": "1337f48f-e3d8-5368-3f69-9cfa47f89b7d"
+      },
+      "outputs": [],
+      "source": [
+        "# A function to extract features\n",
+        "    # Missing data imputation\n",
+        "extractFeatures <- function(data) {\n",
+        "  features <- c(\"Pclass\",\n",
+        "                \"Age\",\n",
+        "                \"Sex\",\n",
+        "                \"Parch\",\n",
+        "                \"SibSp\",\n",
+        "                \"Fare\",\n",
+        "                \"Embarked\")\n",
+        "  fea <- data[,features]\n",
+        "  fea$Age[is.na(fea$Age)] <- -1\n",
+        "  fea$Fare[is.na(fea$Fare)] <- median(fea$Fare, na.rm=TRUE)\n",
+        "  fea$Embarked[fea$Embarked==\"\"] = \"S\"\n",
+        "  fea$Sex      <- as.factor(fea$Sex)\n",
+        "  fea$Embarked <- as.factor(fea$Embarked)\n",
+        "  #fea <- cbind(fea, fea$Age * fea$Age)\n",
+        "    return(fea)\n",
+        "}"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "_cell_guid": "fe159c57-8547-f4af-ccaf-bc5761e55ab3"
+      },
+      "outputs": [],
+      "source": [
+        "summary(extractFeatures(train))"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "_cell_guid": "8ea23467-95ce-2856-59f9-a0b753a48d48"
+      },
+      "outputs": [],
+      "source": [
+        "summary(extractFeatures(test))"
+      ]
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {
+        "_cell_guid": "f85d1f97-e010-1eb5-1669-187ab6aa7fa0"
+      },
+      "source": [
+        "# Fit Ramdon Forests"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "_cell_guid": "a59b1715-febf-e3ce-3722-a7e8dba4bc96"
+      },
+      "outputs": [],
+      "source": [
+        "rf <- randomForest(extractFeatures(train), as.factor(train$Survived), ntree=100, importance=TRUE)\n",
+        "rf"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "_cell_guid": "2b22efbb-ca79-9554-68f1-0e27a881d69d"
+      },
+      "outputs": [],
+      "source": [
+        "# create submission file\n",
+        "submission <- data.frame( PassengerId= test$PassengerId )  # create a dataframe\n",
+        "# using model rf fit on training data to predict test data\n",
+        "submission$Survived <- predict( rf, extractFeatures(test) )  \n",
+        "# write results to CSV file\n",
+        "write.csv(submission, file = \"1_random_forest_r_submission.csv\", row.names=FALSE)\n",
+        "# plot importance of preditors\n",
+        "imp <- importance(rf, type=1 )\n",
+        "imp"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "_cell_guid": "2b723b29-f7b0-63d3-9373-86fbd86af7c5"
+      },
+      "outputs": [],
+      "source": [
+        "# Use ggplot to plot the importance\n",
+        "p <- ggplot(featureImportance, aes(x= reorder(Feature, Importance) , y = Importance) ) +\n",
+        "            geom_bar(stat = \"identity\", fill = \"#52cfff\") +\n",
+        "            coord_flip() +\n",
+        "            theme_light(base_size = 20) +\n",
+        "            xlab(\"\") + \n",
+        "            ylab(\"Importance\")+\n",
+        "            ggtitle(\"Ramdom Forest Feature Importance\\n\") +\n",
+        "            theme(plot.title= element_text(size=18))\n",
+        "           \n",
+        "ggsave(\"2_feature_importance.png\", p)\n",
+        "p"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "_cell_guid": "38070609-ec9c-d8f0-6d99-416dc0b38fad"
+      },
+      "outputs": [],
+      "source": [
+        "print(row.names(imp))\n",
+        "featureImportance <- data.frame(Feature = row.names(imp), Importance = imp[, 1])"
+      ]
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {
+        "_cell_guid": "a17d876c-face-d4b8-047a-1f0bf3c60f53"
+      },
+      "source": [
+        "# Fit classification tree"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "_cell_guid": "eea35468-7cff-1aad-2fb7-eee34de848a0"
+      },
+      "outputs": [],
+      "source": [
+        "# Classification Tree with rpart\n",
+        "library(rpart)\n",
+        "\n",
+        "# grow tree \n",
+        "fol= formula( as.factor(Survived) ~ Pclass + Age + Sex + Parch + SibSp + Fare + Embarked)\n",
+        "fit <- rpart( fol, data=train, method= \"class\")"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "_cell_guid": "9f200ea8-efd6-6f1b-71f6-7291a80c282c"
+      },
+      "outputs": [],
+      "source": [
+        "print(fit)     #print results  \n",
+        "printcp(fit)   #display cp table  \n",
+        "plotcp(fit)    #plot cross-validation results \n",
+        "#rsq.rpart(fit) #plot approximate R-squared and relative error for different splits (2 plots). labels are only appropriate for the \"anova\" method.  \n",
+        "summary(fit)   #detailed results including surrogate splits  "
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "_cell_guid": "c90abc06-2e69-15e0-f778-2a087e6ab5a5"
+      },
+      "outputs": [],
+      "source": [
+        " # plot tree \n",
+        "plot(fit, uniform=TRUE, main=\"Classification Tree\")      #plot decision tree  \n",
+        "text(fit, use.n=FALSE, all=TRUE, cex=.8 )      #label the decision tree plot  "
+      ]
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {
+        "_cell_guid": "bb1c1cfe-c105-0e41-da42-fd894525e5a6"
+      },
+      "source": [
+        "# Train a support vector machine model and compare results."
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "_cell_guid": "90b7f163-45a5-c947-e09e-b8b1f734ac30"
+      },
+      "outputs": [],
+      "source": [
+        "library(e1071) \n",
+        "Survived= train$Survived\n",
+        "train1= cbind(Survived,  extractFeatures(train))\n",
+        "SVMmodel <- svm(fol, data= train1)\n",
+        "\n",
+        "#print(SVMmodel) \n",
+        "summary(SVMmodel) # view results \n",
+        "# create submission file\n",
+        "submSVM <- data.frame( PassengerId= test$PassengerId )  # create a dataframe\n",
+        "# using model rf fit on training data to predict test data\n",
+        "submSVM$Survived <- predict( SVMmodel, extractFeatures(test) )  \n",
+        "# write results to CSV file\n",
+        "write.csv(submSVM, file = \"3_SVM_r_submission.csv\", row.names=FALSE)\n"
+      ]
+    }
+  ],
+  "metadata": {
+    "_change_revision": 0,
+    "_is_fork": false,
+    "kernelspec": {
+      "display_name": "R",
+      "language": "R",
+      "name": "ir"
+    },
+    "language_info": {
+      "codemirror_mode": "r",
+      "file_extension": ".r",
+      "mimetype": "text/x-r-source",
+      "name": "R",
+      "pygments_lexer": "r",
+      "version": "3.3.2"
+    }
+  },
+  "nbformat": 4,
+  "nbformat_minor": 0
+}

@@ -1,0 +1,17 @@
+{
+  "competition_sources": [
+    "titanic"
+  ],
+  "is_private": false,
+  "title": "Titanic - Logistic Regression",
+  "id_no": 260516,
+  "enable_internet": false,
+  "id": "archinul/titanic-logistic-regression",
+  "language": "r",
+  "kernel_sources": [],
+  "enable_gpu": false,
+  "code_file": "titanic-logistic-regression.irnb",
+  "kernel_type": "notebook",
+  "dataset_sources": [],
+  "keywords": []
+}

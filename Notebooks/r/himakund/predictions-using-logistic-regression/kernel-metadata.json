@@ -1,0 +1,17 @@
+{
+  "kernel_sources": [],
+  "code_file": "predictions-using-logistic-regression.irnb",
+  "id": "himakund/predictions-using-logistic-regression",
+  "dataset_sources": [],
+  "kernel_type": "notebook",
+  "id_no": 217524,
+  "is_private": false,
+  "competition_sources": [
+    "titanic"
+  ],
+  "language": "r",
+  "title": "Predictions Using Logistic Regression",
+  "keywords": [],
+  "enable_internet": false,
+  "enable_gpu": false
+}

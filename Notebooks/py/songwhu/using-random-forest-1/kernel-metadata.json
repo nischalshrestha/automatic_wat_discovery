@@ -1,0 +1,17 @@
+{
+  "title": "Using Random Forest",
+  "language": "python",
+  "enable_gpu": false,
+  "kernel_sources": [],
+  "dataset_sources": [],
+  "id_no": 208960,
+  "kernel_type": "notebook",
+  "competition_sources": [
+    "titanic"
+  ],
+  "code_file": "using-random-forest-1.ipynb",
+  "keywords": [],
+  "id": "songwhu/using-random-forest-1",
+  "enable_internet": false,
+  "is_private": false
+}

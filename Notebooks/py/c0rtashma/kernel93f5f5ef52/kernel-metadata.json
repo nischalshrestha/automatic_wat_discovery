@@ -1,0 +1,17 @@
+{
+  "id_no": 1340349,
+  "kernel_sources": [],
+  "enable_internet": false,
+  "language": "python",
+  "id": "c0rtashma/kernel93f5f5ef52",
+  "title": "kernel93f5f5ef52",
+  "is_private": false,
+  "kernel_type": "notebook",
+  "code_file": "kernel93f5f5ef52.ipynb",
+  "dataset_sources": [],
+  "competition_sources": [
+    "titanic"
+  ],
+  "keywords": [],
+  "enable_gpu": true
+}

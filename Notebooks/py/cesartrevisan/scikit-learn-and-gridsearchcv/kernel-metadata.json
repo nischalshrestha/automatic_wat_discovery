@@ -1,0 +1,17 @@
+{
+  "kernel_type": "notebook",
+  "language": "python",
+  "id": "cesartrevisan/scikit-learn-and-gridsearchcv",
+  "competition_sources": [
+    "titanic"
+  ],
+  "enable_internet": false,
+  "id_no": 203975,
+  "enable_gpu": false,
+  "code_file": "scikit-learn-and-gridsearchcv.ipynb",
+  "keywords": [],
+  "dataset_sources": [],
+  "kernel_sources": [],
+  "title": "Scikit-Learn  and GridSearchCV",
+  "is_private": false
+}

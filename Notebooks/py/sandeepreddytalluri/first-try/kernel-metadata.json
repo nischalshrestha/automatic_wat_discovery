@@ -1,0 +1,17 @@
+{
+  "language": "python",
+  "id_no": 1511876,
+  "enable_gpu": false,
+  "code_file": "first-try.ipynb",
+  "enable_internet": false,
+  "kernel_type": "notebook",
+  "title": "first_try",
+  "keywords": [],
+  "competition_sources": [
+    "titanic"
+  ],
+  "kernel_sources": [],
+  "id": "sandeepreddytalluri/first-try",
+  "dataset_sources": [],
+  "is_private": false
+}

@@ -1,0 +1,17 @@
+{
+  "id": "davidfumo/titanic-machine-learning-from-a-disaster",
+  "kernel_sources": [],
+  "dataset_sources": [],
+  "id_no": 113591,
+  "kernel_type": "notebook",
+  "title": "Titanic: Machine Learning from a disaster",
+  "code_file": "titanic-machine-learning-from-a-disaster.ipynb",
+  "is_private": false,
+  "language": "python",
+  "keywords": [],
+  "enable_internet": false,
+  "competition_sources": [
+    "titanic"
+  ],
+  "enable_gpu": false
+}

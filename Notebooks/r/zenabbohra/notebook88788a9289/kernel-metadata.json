@@ -1,0 +1,17 @@
+{
+  "title": "Notebook88788a9289",
+  "dataset_sources": [],
+  "keywords": [],
+  "kernel_sources": [],
+  "kernel_type": "notebook",
+  "language": "r",
+  "competition_sources": [
+    "titanic"
+  ],
+  "is_private": false,
+  "enable_gpu": false,
+  "enable_internet": false,
+  "id": "zenabbohra/notebook88788a9289",
+  "code_file": "notebook88788a9289.irnb",
+  "id_no": 228660
+}

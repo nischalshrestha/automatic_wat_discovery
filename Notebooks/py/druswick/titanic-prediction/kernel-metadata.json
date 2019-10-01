@@ -1,0 +1,17 @@
+{
+  "keywords": [],
+  "competition_sources": [
+    "titanic"
+  ],
+  "id_no": 94208,
+  "dataset_sources": [],
+  "id": "druswick/titanic-prediction",
+  "enable_internet": false,
+  "kernel_sources": [],
+  "kernel_type": "notebook",
+  "is_private": false,
+  "code_file": "titanic-prediction.ipynb",
+  "enable_gpu": false,
+  "language": "python",
+  "title": "Titanic Prediction"
+}

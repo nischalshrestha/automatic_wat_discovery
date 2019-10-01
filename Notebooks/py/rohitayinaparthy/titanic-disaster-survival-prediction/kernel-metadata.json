@@ -1,0 +1,22 @@
+{
+  "language": "python",
+  "enable_gpu": false,
+  "title": "Titanic Disaster Survival Prediction",
+  "is_private": false,
+  "code_file": "titanic-disaster-survival-prediction.ipynb",
+  "enable_internet": false,
+  "dataset_sources": [],
+  "keywords": [
+    "classification",
+    "random forest",
+    "xgboost",
+    "decision tree"
+  ],
+  "competition_sources": [
+    "titanic"
+  ],
+  "kernel_type": "notebook",
+  "id": "rohitayinaparthy/titanic-disaster-survival-prediction",
+  "kernel_sources": [],
+  "id_no": 1420932
+}

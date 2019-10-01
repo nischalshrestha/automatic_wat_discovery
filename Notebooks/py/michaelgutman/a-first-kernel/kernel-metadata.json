@@ -1,0 +1,17 @@
+{
+  "keywords": [],
+  "language": "python",
+  "code_file": "a-first-kernel.ipynb",
+  "kernel_sources": [],
+  "id": "michaelgutman/a-first-kernel",
+  "title": "A first kernel",
+  "id_no": 1438820,
+  "is_private": false,
+  "enable_internet": false,
+  "kernel_type": "notebook",
+  "dataset_sources": [],
+  "enable_gpu": false,
+  "competition_sources": [
+    "titanic"
+  ]
+}

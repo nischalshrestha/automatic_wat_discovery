@@ -1,0 +1,17 @@
+{
+  "enable_internet": false,
+  "title": "Titanic-Survived-Forecast",
+  "id_no": 1019737,
+  "competition_sources": [
+    "titanic"
+  ],
+  "id": "luoyanbin/titanic-survived-forecast",
+  "kernel_type": "notebook",
+  "language": "python",
+  "is_private": false,
+  "dataset_sources": [],
+  "code_file": "titanic-survived-forecast.ipynb",
+  "kernel_sources": [],
+  "enable_gpu": false,
+  "keywords": []
+}

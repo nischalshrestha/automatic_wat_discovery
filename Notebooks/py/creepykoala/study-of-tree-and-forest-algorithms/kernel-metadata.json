@@ -1,0 +1,17 @@
+{
+  "enable_internet": false,
+  "kernel_type": "notebook",
+  "dataset_sources": [],
+  "id_no": 63522,
+  "keywords": [],
+  "code_file": "study-of-tree-and-forest-algorithms.ipynb",
+  "language": "python",
+  "title": "Study of Tree and Forest algorithms",
+  "kernel_sources": [],
+  "enable_gpu": false,
+  "id": "creepykoala/study-of-tree-and-forest-algorithms",
+  "is_private": false,
+  "competition_sources": [
+    "titanic"
+  ]
+}

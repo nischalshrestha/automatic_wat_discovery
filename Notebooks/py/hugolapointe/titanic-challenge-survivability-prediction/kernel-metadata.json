@@ -1,0 +1,17 @@
+{
+  "id_no": 1497206,
+  "enable_internet": false,
+  "enable_gpu": false,
+  "dataset_sources": [],
+  "language": "python",
+  "competition_sources": [
+    "titanic"
+  ],
+  "kernel_sources": [],
+  "title": "Titanic Challenge - Survivability Prediction",
+  "code_file": "titanic-challenge-survivability-prediction.ipynb",
+  "keywords": [],
+  "id": "hugolapointe/titanic-challenge-survivability-prediction",
+  "is_private": false,
+  "kernel_type": "notebook"
+}

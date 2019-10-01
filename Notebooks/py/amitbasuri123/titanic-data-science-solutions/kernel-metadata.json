@@ -1,0 +1,17 @@
+{
+  "id": "amitbasuri123/titanic-data-science-solutions",
+  "id_no": 204171,
+  "is_private": false,
+  "kernel_type": "notebook",
+  "language": "python",
+  "title": "Titanic Data Science Solutions",
+  "enable_gpu": false,
+  "code_file": "titanic-data-science-solutions.ipynb",
+  "dataset_sources": [],
+  "competition_sources": [
+    "titanic"
+  ],
+  "keywords": [],
+  "enable_internet": false,
+  "kernel_sources": []
+}

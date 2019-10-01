@@ -1,0 +1,19 @@
+{
+  "id_no": 1796442,
+  "kernel_type": "notebook",
+  "competition_sources": [
+    "titanic"
+  ],
+  "dataset_sources": [],
+  "enable_gpu": false,
+  "id": "toraaglobal/titanic-random-forest",
+  "is_private": false,
+  "code_file": "titanic-random-forest.ipynb",
+  "enable_internet": false,
+  "kernel_sources": [],
+  "title": "Titanic_Random_Forest",
+  "language": "python",
+  "keywords": [
+    "beginner"
+  ]
+}

@@ -1,0 +1,17 @@
+{
+  "language": "python",
+  "kernel_sources": [],
+  "keywords": [],
+  "id": "jalfano/titanic-24april2018logregexplorer-a",
+  "competition_sources": [
+    "titanic"
+  ],
+  "kernel_type": "notebook",
+  "enable_gpu": false,
+  "is_private": false,
+  "code_file": "titanic-24april2018logregexplorer-a.ipynb",
+  "dataset_sources": [],
+  "title": "Titanic_24April2018LogRegExplorer_A",
+  "enable_internet": false,
+  "id_no": 965649
+}

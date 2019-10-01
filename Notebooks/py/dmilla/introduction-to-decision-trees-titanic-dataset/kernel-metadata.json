@@ -1,0 +1,17 @@
+{
+  "id_no": 191323,
+  "is_private": false,
+  "title": "Introduction to Decision Trees (Titanic dataset)",
+  "enable_gpu": false,
+  "enable_internet": false,
+  "id": "dmilla/introduction-to-decision-trees-titanic-dataset",
+  "code_file": "introduction-to-decision-trees-titanic-dataset.ipynb",
+  "keywords": [],
+  "competition_sources": [
+    "titanic"
+  ],
+  "kernel_type": "notebook",
+  "dataset_sources": [],
+  "kernel_sources": [],
+  "language": "python"
+}

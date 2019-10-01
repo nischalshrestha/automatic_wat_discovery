@@ -1,0 +1,17 @@
+{
+  "kernel_type": "notebook",
+  "id": "pminmin/randomforest",
+  "enable_internet": false,
+  "is_private": false,
+  "id_no": 233445,
+  "language": "python",
+  "dataset_sources": [],
+  "kernel_sources": [],
+  "code_file": "randomforest.ipynb",
+  "competition_sources": [
+    "titanic"
+  ],
+  "enable_gpu": false,
+  "title": "RandomForest",
+  "keywords": []
+}

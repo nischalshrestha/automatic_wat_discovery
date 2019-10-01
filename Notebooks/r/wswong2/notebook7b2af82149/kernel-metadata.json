@@ -1,0 +1,17 @@
+{
+  "language": "python",
+  "is_private": false,
+  "kernel_sources": [],
+  "enable_internet": false,
+  "id": "wswong2/notebook7b2af82149",
+  "code_file": "notebook7b2af82149.ipynb",
+  "dataset_sources": [],
+  "competition_sources": [
+    "titanic"
+  ],
+  "id_no": 237121,
+  "enable_gpu": false,
+  "title": "Notebook7b2af82149",
+  "keywords": [],
+  "kernel_type": "notebook"
+}

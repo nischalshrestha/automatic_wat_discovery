@@ -1,0 +1,17 @@
+{
+  "id_no": 100882,
+  "kernel_type": "notebook",
+  "title": "Notebook2031372abc",
+  "dataset_sources": [],
+  "language": "r",
+  "code_file": "notebookb641d8c49c.irnb",
+  "id": "kosala/notebookb641d8c49c",
+  "is_private": false,
+  "competition_sources": [
+    "titanic"
+  ],
+  "enable_internet": false,
+  "kernel_sources": [],
+  "keywords": [],
+  "enable_gpu": false
+}

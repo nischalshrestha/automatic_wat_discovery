@@ -1,0 +1,17 @@
+{
+  "competition_sources": [
+    "titanic"
+  ],
+  "enable_gpu": false,
+  "id_no": 1364599,
+  "title": "Titanic ",
+  "id": "groveh/titanic",
+  "kernel_sources": [],
+  "is_private": false,
+  "language": "python",
+  "keywords": [],
+  "code_file": "titanic.ipynb",
+  "dataset_sources": [],
+  "kernel_type": "notebook",
+  "enable_internet": false
+}

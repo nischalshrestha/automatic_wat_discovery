@@ -1,0 +1,17 @@
+{
+  "title": "Titanic Notebook",
+  "id": "elisaromondia/titanic-notebook",
+  "code_file": "titanic-notebook.ipynb",
+  "dataset_sources": [],
+  "is_private": false,
+  "enable_gpu": false,
+  "enable_internet": false,
+  "kernel_type": "notebook",
+  "language": "python",
+  "competition_sources": [
+    "titanic"
+  ],
+  "id_no": 1378336,
+  "kernel_sources": [],
+  "keywords": []
+}

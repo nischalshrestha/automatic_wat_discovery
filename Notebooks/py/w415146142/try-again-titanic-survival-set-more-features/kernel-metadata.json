@@ -1,0 +1,17 @@
+{
+  "enable_gpu": false,
+  "language": "python",
+  "id": "w415146142/try-again-titanic-survival-set-more-features",
+  "kernel_sources": [],
+  "competition_sources": [
+    "titanic"
+  ],
+  "kernel_type": "notebook",
+  "dataset_sources": [],
+  "title": "Try again: Titanic Survival: Set more features",
+  "is_private": false,
+  "id_no": 245630,
+  "enable_internet": false,
+  "keywords": [],
+  "code_file": "try-again-titanic-survival-set-more-features.ipynb"
+}

@@ -1,0 +1,17 @@
+{
+  "id_no": 701551,
+  "kernel_sources": [],
+  "dataset_sources": [],
+  "is_private": false,
+  "enable_internet": false,
+  "title": "Titanic: training",
+  "kernel_type": "notebook",
+  "code_file": "titanic-training.ipynb",
+  "id": "plasticgrammer/titanic-training",
+  "language": "python",
+  "enable_gpu": false,
+  "competition_sources": [
+    "titanic"
+  ],
+  "keywords": []
+}

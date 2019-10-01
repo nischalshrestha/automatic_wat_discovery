@@ -1,0 +1,17 @@
+{
+  "language": "python",
+  "is_private": false,
+  "competition_sources": [
+    "titanic"
+  ],
+  "id": "schirmerchad/mlnd-p1-titanic-survival-exploration",
+  "dataset_sources": [],
+  "keywords": [],
+  "kernel_sources": [],
+  "title": "MLND P1 Titanic Survival Exploration",
+  "code_file": "mlnd-p1-titanic-survival-exploration.ipynb",
+  "kernel_type": "notebook",
+  "id_no": 269762,
+  "enable_gpu": false,
+  "enable_internet": false
+}

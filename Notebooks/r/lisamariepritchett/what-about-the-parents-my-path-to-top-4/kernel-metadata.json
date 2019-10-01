@@ -1,0 +1,23 @@
+{
+  "id_no": 885748,
+  "code_file": "what-about-the-parents-my-path-to-top-4.irnb",
+  "language": "r",
+  "enable_gpu": false,
+  "competition_sources": [
+    "titanic"
+  ],
+  "dataset_sources": [],
+  "is_private": false,
+  "kernel_sources": [],
+  "title": "What about the Parents? My Path to Top 4%",
+  "id": "lisamariepritchett/what-about-the-parents-my-path-to-top-4",
+  "keywords": [
+    "beginner",
+    "eda",
+    "data visualization",
+    "feature engineering",
+    "binary classification"
+  ],
+  "kernel_type": "notebook",
+  "enable_internet": false
+}

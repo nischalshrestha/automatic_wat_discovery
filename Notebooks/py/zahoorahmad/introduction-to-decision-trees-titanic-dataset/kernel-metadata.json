@@ -1,0 +1,17 @@
+{
+  "enable_internet": false,
+  "title": "Introduction to Decision Trees (Titanic dataset)",
+  "language": "python",
+  "id": "zahoorahmad/introduction-to-decision-trees-titanic-dataset",
+  "keywords": [],
+  "kernel_type": "notebook",
+  "kernel_sources": [],
+  "enable_gpu": false,
+  "id_no": 898000,
+  "is_private": false,
+  "competition_sources": [
+    "titanic"
+  ],
+  "dataset_sources": [],
+  "code_file": "introduction-to-decision-trees-titanic-dataset.ipynb"
+}

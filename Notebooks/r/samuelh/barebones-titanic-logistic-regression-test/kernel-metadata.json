@@ -1,0 +1,17 @@
+{
+  "kernel_sources": [],
+  "is_private": false,
+  "title": "Barebones Titanic Logistic Regression Test",
+  "enable_internet": false,
+  "keywords": [],
+  "id_no": 537929,
+  "language": "r",
+  "code_file": "barebones-titanic-logistic-regression-test.irnb",
+  "kernel_type": "notebook",
+  "dataset_sources": [],
+  "enable_gpu": false,
+  "id": "samuelh/barebones-titanic-logistic-regression-test",
+  "competition_sources": [
+    "titanic"
+  ]
+}

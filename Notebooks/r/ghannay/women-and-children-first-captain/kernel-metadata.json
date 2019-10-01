@@ -1,0 +1,17 @@
+{
+  "enable_internet": false,
+  "is_private": false,
+  "enable_gpu": false,
+  "kernel_type": "notebook",
+  "competition_sources": [
+    "titanic"
+  ],
+  "dataset_sources": [],
+  "language": "r",
+  "id_no": 1926251,
+  "id": "ghannay/women-and-children-first-captain",
+  "keywords": [],
+  "kernel_sources": [],
+  "code_file": "women-and-children-first-captain.irnb",
+  "title": "\"Women and children first!\" - Captain"
+}

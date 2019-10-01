@@ -1,0 +1,17 @@
+{
+  "code_file": "first-practice.irnb",
+  "language": "r",
+  "is_private": false,
+  "kernel_type": "notebook",
+  "title": "First practice",
+  "dataset_sources": [],
+  "id": "carolyneejs/first-practice",
+  "competition_sources": [
+    "titanic"
+  ],
+  "id_no": 583894,
+  "enable_internet": false,
+  "enable_gpu": false,
+  "kernel_sources": [],
+  "keywords": []
+}

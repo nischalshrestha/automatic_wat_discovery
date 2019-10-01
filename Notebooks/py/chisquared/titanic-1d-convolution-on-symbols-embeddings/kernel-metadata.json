@@ -1,0 +1,17 @@
+{
+  "is_private": false,
+  "id": "chisquared/titanic-1d-convolution-on-symbols-embeddings",
+  "id_no": 117865,
+  "kernel_type": "notebook",
+  "enable_internet": false,
+  "code_file": "titanic-1d-convolution-on-symbols-embeddings.ipynb",
+  "competition_sources": [
+    "titanic"
+  ],
+  "enable_gpu": false,
+  "title": "Titanic: 1d-convolution on symbols embeddings",
+  "keywords": [],
+  "kernel_sources": [],
+  "dataset_sources": [],
+  "language": "python"
+}

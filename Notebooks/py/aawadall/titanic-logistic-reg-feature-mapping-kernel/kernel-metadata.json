@@ -1,0 +1,19 @@
+{
+  "kernel_sources": [],
+  "competition_sources": [
+    "titanic"
+  ],
+  "is_private": false,
+  "enable_gpu": false,
+  "kernel_type": "notebook",
+  "dataset_sources": [],
+  "title": "Titanic - Logistic Reg., feature mapping & kernel",
+  "id": "aawadall/titanic-logistic-reg-feature-mapping-kernel",
+  "language": "python",
+  "id_no": 525856,
+  "code_file": "titanic-logistic-reg-feature-mapping-kernel.ipynb",
+  "keywords": [
+    "beginner"
+  ],
+  "enable_internet": false
+}

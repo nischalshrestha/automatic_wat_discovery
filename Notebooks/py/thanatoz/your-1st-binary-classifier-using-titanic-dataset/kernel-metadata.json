@@ -1,0 +1,17 @@
+{
+  "kernel_type": "notebook",
+  "language": "python",
+  "enable_internet": false,
+  "keywords": [],
+  "is_private": false,
+  "enable_gpu": false,
+  "id": "thanatoz/your-1st-binary-classifier-using-titanic-dataset",
+  "competition_sources": [
+    "titanic"
+  ],
+  "title": "Your 1st binary classifier using Titanic dataset ",
+  "code_file": "your-1st-binary-classifier-using-titanic-dataset.ipynb",
+  "id_no": 1270517,
+  "kernel_sources": [],
+  "dataset_sources": []
+}

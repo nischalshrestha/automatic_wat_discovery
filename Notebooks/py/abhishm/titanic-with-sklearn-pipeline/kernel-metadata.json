@@ -1,0 +1,17 @@
+{
+  "competition_sources": [
+    "titanic"
+  ],
+  "keywords": [],
+  "kernel_type": "notebook",
+  "id": "abhishm/titanic-with-sklearn-pipeline",
+  "enable_gpu": false,
+  "language": "python",
+  "kernel_sources": [],
+  "title": "Titanic with SKlearn Pipeline",
+  "id_no": 227726,
+  "enable_internet": false,
+  "code_file": "titanic-with-sklearn-pipeline.ipynb",
+  "is_private": false,
+  "dataset_sources": []
+}

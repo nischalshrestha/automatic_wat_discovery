@@ -1,0 +1,17 @@
+{
+  "enable_internet": false,
+  "kernel_type": "notebook",
+  "dataset_sources": [],
+  "competition_sources": [
+    "titanic"
+  ],
+  "is_private": false,
+  "id": "syaleandro/titanic-draft",
+  "language": "python",
+  "title": "Titanic Draft",
+  "kernel_sources": [],
+  "id_no": 1815662,
+  "enable_gpu": false,
+  "code_file": "titanic-draft.ipynb",
+  "keywords": []
+}

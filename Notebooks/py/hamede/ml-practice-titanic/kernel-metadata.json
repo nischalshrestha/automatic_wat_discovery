@@ -1,0 +1,17 @@
+{
+  "kernel_type": "notebook",
+  "language": "python",
+  "kernel_sources": [],
+  "enable_gpu": false,
+  "is_private": false,
+  "title": "ML Practice - Titanic ",
+  "enable_internet": false,
+  "keywords": [],
+  "id": "hamede/ml-practice-titanic",
+  "id_no": 763725,
+  "code_file": "ml-practice-titanic.ipynb",
+  "dataset_sources": [],
+  "competition_sources": [
+    "titanic"
+  ]
+}

@@ -1,0 +1,17 @@
+{
+  "competition_sources": [
+    "titanic"
+  ],
+  "language": "r",
+  "title": "Notebooke077598437",
+  "enable_gpu": false,
+  "code_file": "exploring-data.irnb",
+  "keywords": [],
+  "is_private": false,
+  "id": "kawalmaras/exploring-data",
+  "enable_internet": false,
+  "dataset_sources": [],
+  "id_no": 98981,
+  "kernel_sources": [],
+  "kernel_type": "notebook"
+}

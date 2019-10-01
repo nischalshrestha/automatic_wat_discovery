@@ -1,0 +1,17 @@
+{
+  "enable_gpu": false,
+  "dataset_sources": [],
+  "kernel_type": "notebook",
+  "id": "joumanlin/jm-test-1",
+  "id_no": 1655262,
+  "keywords": [],
+  "title": "JM test 1",
+  "is_private": false,
+  "enable_internet": false,
+  "code_file": "jm-test-1.ipynb",
+  "competition_sources": [
+    "titanic"
+  ],
+  "language": "python",
+  "kernel_sources": []
+}

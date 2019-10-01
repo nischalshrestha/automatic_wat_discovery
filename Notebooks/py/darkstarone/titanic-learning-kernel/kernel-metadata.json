@@ -1,0 +1,17 @@
+{
+  "dataset_sources": [],
+  "id_no": 412540,
+  "keywords": [],
+  "enable_gpu": false,
+  "id": "darkstarone/titanic-learning-kernel",
+  "enable_internet": false,
+  "language": "python",
+  "is_private": false,
+  "kernel_sources": [],
+  "title": "Titanic Learning Kernel",
+  "kernel_type": "notebook",
+  "code_file": "titanic-learning-kernel.ipynb",
+  "competition_sources": [
+    "titanic"
+  ]
+}

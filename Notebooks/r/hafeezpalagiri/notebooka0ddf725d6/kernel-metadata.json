@@ -1,0 +1,17 @@
+{
+  "dataset_sources": [],
+  "language": "python",
+  "id_no": 243446,
+  "keywords": [],
+  "id": "hafeezpalagiri/notebooka0ddf725d6",
+  "competition_sources": [
+    "titanic"
+  ],
+  "kernel_sources": [],
+  "enable_internet": false,
+  "enable_gpu": false,
+  "kernel_type": "notebook",
+  "is_private": false,
+  "code_file": "notebooka0ddf725d6.ipynb",
+  "title": "Notebooka0ddf725d6"
+}

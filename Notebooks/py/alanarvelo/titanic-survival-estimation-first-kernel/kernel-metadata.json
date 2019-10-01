@@ -1,0 +1,17 @@
+{
+  "enable_internet": false,
+  "language": "python",
+  "dataset_sources": [],
+  "kernel_sources": [],
+  "is_private": false,
+  "id_no": 415534,
+  "keywords": [],
+  "id": "alanarvelo/titanic-survival-estimation-first-kernel",
+  "title": "Titanic Survival Estimation - First Kernel",
+  "enable_gpu": false,
+  "competition_sources": [
+    "titanic"
+  ],
+  "kernel_type": "notebook",
+  "code_file": "titanic-survival-estimation-first-kernel.ipynb"
+}

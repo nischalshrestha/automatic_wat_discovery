@@ -1,0 +1,23 @@
+{
+  "id_no": 1442156,
+  "competition_sources": [
+    "titanic"
+  ],
+  "title": "Titanic Analysis",
+  "dataset_sources": [],
+  "keywords": [
+    "beginner",
+    "eda",
+    "data cleaning",
+    "data visualization",
+    "binary classification"
+  ],
+  "code_file": "titanic-analysis.ipynb",
+  "is_private": false,
+  "kernel_type": "notebook",
+  "id": "prateekyadav/titanic-analysis",
+  "enable_internet": false,
+  "kernel_sources": [],
+  "enable_gpu": false,
+  "language": "python"
+}

@@ -1,0 +1,17 @@
+{
+  "id": "satheeshrsm/classification-of-passenger",
+  "code_file": "classification-of-passenger.ipynb",
+  "language": "python",
+  "enable_internet": false,
+  "kernel_type": "notebook",
+  "title": "Classification of passenger",
+  "id_no": 1745110,
+  "competition_sources": [
+    "titanic"
+  ],
+  "is_private": false,
+  "kernel_sources": [],
+  "dataset_sources": [],
+  "keywords": [],
+  "enable_gpu": false
+}

@@ -1,0 +1,17 @@
+{
+  "id_no": 224419,
+  "is_private": false,
+  "title": "Notebook7e97cfe221",
+  "dataset_sources": [],
+  "kernel_type": "notebook",
+  "kernel_sources": [],
+  "keywords": [],
+  "language": "python",
+  "enable_internet": false,
+  "enable_gpu": false,
+  "id": "olivepark/notebook7e97cfe221",
+  "code_file": "notebook7e97cfe221.ipynb",
+  "competition_sources": [
+    "titanic"
+  ]
+}

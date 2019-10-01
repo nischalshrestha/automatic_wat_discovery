@@ -1,0 +1,17 @@
+{
+  "title": "Notebook74e97994a3",
+  "id": "astridvandenbrandt/notebook74e97994a3",
+  "language": "python",
+  "competition_sources": [
+    "titanic"
+  ],
+  "is_private": false,
+  "enable_internet": false,
+  "kernel_sources": [],
+  "kernel_type": "notebook",
+  "dataset_sources": [],
+  "enable_gpu": false,
+  "keywords": [],
+  "code_file": "notebook74e97994a3.ipynb",
+  "id_no": 367780
+}

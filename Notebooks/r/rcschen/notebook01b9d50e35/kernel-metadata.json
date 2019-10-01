@@ -1,0 +1,17 @@
+{
+  "keywords": [],
+  "is_private": false,
+  "dataset_sources": [],
+  "id": "rcschen/notebook01b9d50e35",
+  "id_no": 221564,
+  "language": "r",
+  "enable_internet": false,
+  "kernel_sources": [],
+  "competition_sources": [
+    "titanic"
+  ],
+  "code_file": "notebook01b9d50e35.irnb",
+  "title": "Notebook01b9d50e35",
+  "kernel_type": "notebook",
+  "enable_gpu": false
+}

@@ -1,0 +1,17 @@
+{
+  "title": "A clean code is a Happy Code",
+  "id": "bicubico/a-clean-code-is-a-happy-code",
+  "is_private": false,
+  "code_file": "a-clean-code-is-a-happy-code.ipynb",
+  "enable_gpu": false,
+  "competition_sources": [
+    "titanic"
+  ],
+  "id_no": 1163087,
+  "keywords": [],
+  "language": "python",
+  "kernel_sources": [],
+  "dataset_sources": [],
+  "enable_internet": false,
+  "kernel_type": "notebook"
+}

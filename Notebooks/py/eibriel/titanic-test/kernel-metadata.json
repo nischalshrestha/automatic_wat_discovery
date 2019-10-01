@@ -1,0 +1,17 @@
+{
+  "code_file": "titanic-test.ipynb",
+  "enable_internet": false,
+  "dataset_sources": [],
+  "is_private": false,
+  "title": "Titanic - Test",
+  "kernel_type": "notebook",
+  "id": "eibriel/titanic-test",
+  "language": "python",
+  "id_no": 1758749,
+  "keywords": [],
+  "kernel_sources": [],
+  "competition_sources": [
+    "titanic"
+  ],
+  "enable_gpu": false
+}

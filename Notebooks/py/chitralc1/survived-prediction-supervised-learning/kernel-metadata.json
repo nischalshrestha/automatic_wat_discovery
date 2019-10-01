@@ -1,0 +1,21 @@
+{
+  "kernel_type": "notebook",
+  "enable_gpu": false,
+  "title": "Survived Prediction : Supervised Learning ",
+  "is_private": false,
+  "enable_internet": false,
+  "id_no": 554128,
+  "kernel_sources": [],
+  "dataset_sources": [],
+  "id": "chitralc1/survived-prediction-supervised-learning",
+  "language": "python",
+  "competition_sources": [
+    "titanic"
+  ],
+  "keywords": [
+    "beginner",
+    "data visualization",
+    "logistic regression"
+  ],
+  "code_file": "survived-prediction-supervised-learning.ipynb"
+}

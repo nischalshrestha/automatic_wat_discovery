@@ -1,0 +1,17 @@
+{
+  "dataset_sources": [],
+  "kernel_sources": [],
+  "id": "padyue/try-to-get-8-score-using-anything-peng",
+  "kernel_type": "notebook",
+  "language": "python",
+  "id_no": 662012,
+  "enable_internet": false,
+  "is_private": false,
+  "title": "try to get .8 score using anything //Peng",
+  "competition_sources": [
+    "titanic"
+  ],
+  "code_file": "try-to-get-8-score-using-anything-peng.ipynb",
+  "keywords": [],
+  "enable_gpu": false
+}

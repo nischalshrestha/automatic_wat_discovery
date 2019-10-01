@@ -1,0 +1,416 @@
+{
+  "cells": [
+    {
+      "cell_type": "markdown",
+      "metadata": {
+        "_cell_guid": "20460b41-4e5a-53bf-bc13-1f9ab40d1e18"
+      },
+      "source": [
+        "# **Descriptive statistics and exploratory analysis**\n",
+        "\n",
+        "In this first section we will do an exploratory analysis and based on descriptive statistics on the data set to make the first predictive models on the data set. In this Kernel we will do an exploration of the Titanic dataset to get up in the competition to the first 500 positions. It is based on the tutorials of [Michy Alice](https://datascienceplus.com/perform-logistic-regression-in-r/) and [Trevor Stephens](http://trevorstephens.com/kaggle-titanic-tutorial/getting-started-with-r/)  although it offers improvements and some aspects of study.\n",
+        "\n",
+        "## Data Preprocessing"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "_cell_guid": "7d7023c8-78e7-204f-e69a-60843b174a15"
+      },
+      "outputs": [],
+      "source": [
+        "#Load data and libs \n",
+        "\n",
+        "library(Amelia)\n",
+        "library(rattle)\n",
+        "library(rpart.plot)\n",
+        "library(RColorBrewer)\n",
+        "library(rpart)\n",
+        "library(randomForest)\n",
+        "\n",
+        "\n",
+        "titanic <- read.csv(\"../input/train.csv\", header = T, na.strings=c(\"\"))\n",
+        "titanicTest <- read.csv(\"../input/test.csv\", header = T, na.strings=c(\"\"))\n"
+      ]
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {
+        "_cell_guid": "dfcc997e-8aec-cb0f-b330-201c7878484f"
+      },
+      "source": [
+        "The first step will be to preprocess the data, since normally in data science these come with missing values or noise so it will be necessary to solve this problem."
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "_cell_guid": "3ea1c031-c04f-05a5-a86e-975d5284c4d4"
+      },
+      "outputs": [],
+      "source": [
+        "#We can use sapply function to get the n\u00ba of missing values in our dataset\n",
+        "sapply(titanic,function(x) sum(is.na(x)))\n",
+        "    \n",
+        "#missmap help us to get these information in a graph\n",
+        "\n",
+        "missmap(titanic, main = \"Missing values vs observed\")\n",
+        "    "
+      ]
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {
+        "_cell_guid": "52878167-f136-4d72-fff0-75fed459e551"
+      },
+      "source": [
+        "We see how there are 177 with the lost age, 687 with the empty cabin and 2 with the boarding. These points are already useful, since by applying simple logic we can see that the values lost in the age will be an important and decisive factor since according to historical data in the titanic children and women had preference in the access to the boats. Let's now study the variability to see if we can eliminate some variable that is, for example, a unique id that would give us little."
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "_cell_guid": "53fcbec4-743a-6fa8-9655-a316b7d877f9"
+      },
+      "outputs": [],
+      "source": [
+        "sapply(titanic, function(x) length(unique(x)))\n",
+        "    \n",
+        "barplot(table(titanic$Survived),\n",
+        "        names.arg = c(\"Murio\", \"Vivio\"),\n",
+        "        main=\"Survived\", col=\"black\")\n",
+        "\n",
+        "barplot(table(titanic$Pclass), \n",
+        "        names.arg = c(\"Primera\", \"Segunda\", \"Tercera\"),\n",
+        "        main=\"Pclass (clase del viajero)\", col=\"firebrick\")\n",
+        "\n",
+        "barplot(table(titanic$Sex),\n",
+        "        names.arg = c(\"Mujer\", \"Hombre\"),\n",
+        "        main=\"Sex (genero)\", col=\"darkviolet\")\n",
+        "\n",
+        "hist(titanic$Age, main=\"Age\", xlab = NULL, col=\"brown\")\n",
+        "\n",
+        "barplot(table(titanic$SibSp), main=\"SibSp (hijos y esposa a bordo)\", \n",
+        "        col=\"darkblue\")\n",
+        "\n",
+        "barplot(table(titanic$Parch), main=\"Parch (Padres e hijos abordo)\", \n",
+        "        col=\"gray50\")\n",
+        "\n",
+        "hist(titanic$Fare, main=\"Fare (Precio del ticket)\", xlab = NULL, \n",
+        "     col=\"darkgreen\")\n",
+        "\n",
+        "barplot(table(titanic$Embarked), \n",
+        "        names.arg = c(\"Cherbourg\", \"Queenstown\", \"Southampton\"),\n",
+        "        main=\"Embarked (Lugar donde embarc\u00f3)\", col=\"sienna\")\n",
+        "    \n",
+        "    "
+      ]
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {
+        "_cell_guid": "524458da-8b7d-5b12-3da4-5763e525d27c"
+      },
+      "source": [
+        "Directly we see that we have many variables that do not serve us so we can select only a few, a priori, eliminate those we know for sure that serve no purpose. We see clearly that:\n",
+        "\n",
+        " 1. PassengerId is just an id, beacause its variability coincides with the number of samples in the dataset.\n",
+        " 2. With the name exactly the same thing happens.\n",
+        " 3. Cabin is clear candidate to be eliminated because its amount of lost values make it useless\n",
+        " 4. Ticket is the ticket number so it is not relevant so we will eliminate them."
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "_cell_guid": "24ff7a14-6435-2dee-9da7-1763342aea8d"
+      },
+      "outputs": [],
+      "source": [
+        "#We load in titanic2 the data without the columns that we are speak about (-c(columns))\n",
+        "\n",
+        "titanic2 <- titanic[,-c(1,4, 9, 11)]\n",
+        "head(titanic2)\n"
+      ]
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {
+        "_cell_guid": "cdc2936c-0c48-7f82-2ac0-58d10ea8c615"
+      },
+      "source": [
+        "We have eliminated the missing values in Cabin but we still have to do something with Age and Embarked."
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "_cell_guid": "2d4a1969-b956-092b-26f2-2955eaa54100"
+      },
+      "outputs": [],
+      "source": [
+        "#With Age, we can assign the mean value of the other examples\n",
+        "\n",
+        "titanic2$Age[is.na(titanic2$Age)] <- mean(titanic2$Age,na.rm=T)\n",
+        "\n",
+        "#On the other hand, with Embarked, at the moment we can remove the two examples with MV.\n",
+        "titanic2 <- titanic2[!is.na(titanic2$Embarked),]\n",
+        "rownames(titanic2) <- NULL"
+      ]
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {
+        "_cell_guid": "c795edf3-d333-ff08-0af9-cb3ee1febf04"
+      },
+      "source": [
+        "Finally we are going to obtain our logistic regression on the variables to obtain which variables are more related and of greater importance."
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "_cell_guid": "1ea462f8-6d8c-8e2e-0e80-b85d837ced20"
+      },
+      "outputs": [],
+      "source": [
+        "#Train de regression model \n",
+        "\n",
+        "model <- glm(Survived ~.,family=binomial(link='logit'),data=titanic2)\n",
+        "\n",
+        "summary(model)\n",
+        "\n",
+        "#Apply anova test\n",
+        "\n",
+        "anova(model, test=\"Chisq\")"
+      ]
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {
+        "_cell_guid": "be09a126-f4c8-63c1-52e0-52c6ab186eea"
+      },
+      "source": [
+        "According to the previous interpretations we have 3 decisive variables to predict our Survived class, these variables are Pclass, Sex and Age. On the other hand, Sex in the logistic regression tells us with your p-value so low that it will be a very decisive variable, besides, it already tells us that sex = male is directly related to a high probability of perishing in the accident. Let's make our first predictions.\n",
+        "\n",
+        "#Exploratory Analysis of Age, Sex and Pclass:\n",
+        "\n",
+        "First of all we will start to see the distributions among the classes that interest us."
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "_cell_guid": "a704615e-1960-e1c2-8f14-91ed970d7e0b"
+      },
+      "outputs": [],
+      "source": [
+        "#Table is a useful command for this\n",
+        "\n",
+        "table(titanic2$Survived)\n",
+        "\n",
+        "#Tambi\u00e9n podemos verlo en forma de proporci\u00f3n\n",
+        "\n",
+        "prop.table(table(titanic2$Survived))"
+      ]
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {
+        "_cell_guid": "30b2fa0b-f44a-8928-31c0-a0ecc312593b"
+      },
+      "source": [
+        "It seems that 61% of people can not survive the accident so we can assign our predictions that all passengers die and we will get an accuracy of  **0.61** in the classification. But we will continue to improve. If we look at historical data, the titanic was safe before women versus men, so we will study the relationship of this variable with the Survived class."
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "_cell_guid": "2148c4a3-71f0-e096-1754-8677c0c8d522"
+      },
+      "outputs": [],
+      "source": [
+        "prop.table(table(titanic2$Sex, titanic2$Survived),1) "
+      ]
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {
+        "_cell_guid": "5ae05f3e-c745-f46e-f8f6-1a3347540ed6"
+      },
+      "source": [
+        "It seems that 81% of men die and 74% of women survive, so we are going to make a predictive model based on this, in which if you are a man, you die and if you are a woman, you live. For this we have used the Knime tool and a Rule Engine module. Simply with this assumption, we can obtain values of acc in our competition of **0.76555**. Let's now with another important variable, age."
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "_cell_guid": "50985714-dfd5-1af7-c594-ea7d0ea05791"
+      },
+      "outputs": [],
+      "source": [
+        "summary(titanic2$Age)"
+      ]
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {
+        "_cell_guid": "312fe59a-7fdb-01f0-41c5-f904fbc9715c"
+      },
+      "source": [
+        "It is a continuous variable, perhaps if we categorically give it a better result and we can undermine information in a simpler way to understand at least the limited capabilities of a human. Therefore we will create a Child variable, which will take value 0 or 1 depending on whether the person is over 18 years old or not."
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "_cell_guid": "3e6ddcd2-21ec-8962-e26e-3f3e81b0e52b"
+      },
+      "outputs": [],
+      "source": [
+        "titanic2$Child<-0\n",
+        "titanic2$Child[titanic2$Age<18]<-1\n",
+        "\n",
+        "aggregate(Survived ~ Child + Sex, data=titanic2, FUN=function(x) {sum(x)/length(x)})"
+      ]
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {
+        "_cell_guid": "d2d4740e-eb80-3b2b-0582-27ff882245eb"
+      },
+      "source": [
+        "It seems that if you are a woman, you are more likely to survive regardless of whether you are a child or not, but perhaps our presumption of considering a child under 18 is very optimistic ... for historical data, at the time of the Titanic With 18 years old he was already considered an adult, so perhaps a safe value to consider as a child or adult is 14 years."
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "_cell_guid": "ad1600d5-45a9-7b36-9818-bc11d2109025"
+      },
+      "outputs": [],
+      "source": [
+        "titanic2$Child<-0\n",
+        "titanic2$Child[titanic2$Age<14]<-1\n",
+        "\n",
+        "\n",
+        "aggregate(Survived ~ Child + Sex, data=titanic2, FUN=function(x) {sum(x)/length(x)})"
+      ]
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {
+        "_cell_guid": "fcfdccd0-17ef-7037-c4c3-11127252579f"
+      },
+      "source": [
+        "As we can see, we have already managed to fix the number of men who are saved by 56% if these were children so maybe this cut number will be useful in future predictions. At the moment, age does not contribute much more. We will study the variable Pclass and the price of the ticket (Fare) that will undoubtedly be closely linked to this."
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "_cell_guid": "6ad9b78a-0324-f953-6a06-e308f21e18e1"
+      },
+      "outputs": [],
+      "source": [
+        "titanic2$Fare2 <- '30+'\n",
+        "titanic2$Fare2[titanic2$Fare < 30 & titanic2$Fare >= 20] <- '20-30'\n",
+        "titanic2$Fare2[titanic2$Fare < 20 & titanic2$Fare >= 10] <- '10-20'\n",
+        "titanic2$Fare2[titanic2$Fare < 10] <- '<10'"
+      ]
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {
+        "_cell_guid": "0187f0fb-5937-4bd3-abdd-54251a9b85a3"
+      },
+      "source": [
+        "Again we are facing a continuous variable so in 18 what we do is categorize it to be able to treat and manage it better. Let's see how the proportions are with our new variable."
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "_cell_guid": "4afd5f20-db9d-1cb4-c021-d108c23e4890"
+      },
+      "outputs": [],
+      "source": [
+        "aggregate(Survived ~ Fare2 + Pclass + Sex, data=titanic2, FUN=function(x) {sum(x)/length(x)})\n"
+      ]
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {
+        "_cell_guid": "ad105a0e-f061-a78c-ae42-fb8e1720ccdd"
+      },
+      "source": [
+        "We find that there are two groups of women who are certain to perish in the accident. Specifically the third class women with tickets of more than $ 20, so that through a rules of allocation we will make our new model. We will therefore have a **0.77990** of Accuracy.\n",
+        "\n",
+        "We have managed to fine-tune the prediction in some women who would perish in the accident ... but what about men? It would be nice to be able to \"save\" some ... let's see if with the previous Child variable we can fine tune the model.\n",
+        "\n"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "_cell_guid": "d57f625a-177a-3a63-e998-adad8def114f"
+      },
+      "outputs": [],
+      "source": [
+        "aggregate(Survived ~ Child + Fare2 + Pclass + Sex, data=titanic2, FUN=function(x) {sum(x)/length(x)})\n"
+      ]
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {
+        "_cell_guid": "c24f9966-6461-e245-5960-672e9751da61"
+      },
+      "source": [
+        "The result begins to be unmanageable .... with only 4 variables we already have an unmanageable table, so we will have to move towards machine learning models like the decision trees. But first let's look at the previous result for a moment. If you look, there is a group of men in class 2 and under 14 (Child = 1) who safely survives (1.00 ratio) to the accident. Let's make a new prediction based on this. We therefore obtain an Accuracy of **0.78947**."
+      ]
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {
+        "_cell_guid": "198d5763-bab3-b734-005a-150452bfce61"
+      },
+      "source": [
+        ""
+      ]
+    }
+  ],
+  "metadata": {
+    "_change_revision": 0,
+    "_is_fork": false,
+    "kernelspec": {
+      "display_name": "R",
+      "language": "R",
+      "name": "ir"
+    },
+    "language_info": {
+      "codemirror_mode": "r",
+      "file_extension": ".r",
+      "mimetype": "text/x-r-source",
+      "name": "R",
+      "pygments_lexer": "r",
+      "version": "3.3.2"
+    }
+  },
+  "nbformat": 4,
+  "nbformat_minor": 0
+}

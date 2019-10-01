@@ -1,0 +1,22 @@
+{
+  "keywords": [
+    "data visualization",
+    "machine learning",
+    "random forest",
+    "svm"
+  ],
+  "enable_internet": false,
+  "kernel_sources": [],
+  "enable_gpu": false,
+  "kernel_type": "notebook",
+  "id_no": 494547,
+  "dataset_sources": [],
+  "language": "python",
+  "id": "demonlord/titanic-survivor-predictions-and-analysis",
+  "competition_sources": [
+    "titanic"
+  ],
+  "title": "Titanic survivor predictions and analysis",
+  "code_file": "titanic-survivor-predictions-and-analysis.ipynb",
+  "is_private": false
+}

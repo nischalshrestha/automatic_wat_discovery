@@ -1,0 +1,17 @@
+{
+  "id": "nerissajoanne/notebooka08fdbf17f",
+  "id_no": 232830,
+  "dataset_sources": [],
+  "code_file": "notebooka08fdbf17f.ipynb",
+  "kernel_sources": [],
+  "enable_internet": false,
+  "keywords": [],
+  "title": "Notebooka08fdbf17f",
+  "enable_gpu": false,
+  "language": "python",
+  "competition_sources": [
+    "titanic"
+  ],
+  "kernel_type": "notebook",
+  "is_private": false
+}

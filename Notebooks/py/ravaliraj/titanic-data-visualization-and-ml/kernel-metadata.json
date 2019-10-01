@@ -1,0 +1,17 @@
+{
+  "dataset_sources": [],
+  "kernel_sources": [],
+  "keywords": [],
+  "is_private": false,
+  "enable_internet": false,
+  "enable_gpu": false,
+  "competition_sources": [
+    "titanic"
+  ],
+  "language": "python",
+  "id": "ravaliraj/titanic-data-visualization-and-ml",
+  "id_no": 513187,
+  "kernel_type": "notebook",
+  "code_file": "titanic-data-visualization-and-ml.ipynb",
+  "title": "Titanic Data Visualization and ML"
+}

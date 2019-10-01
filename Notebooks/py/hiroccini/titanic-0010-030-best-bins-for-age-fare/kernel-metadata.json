@@ -1,0 +1,17 @@
+{
+  "id": "hiroccini/titanic-0010-030-best-bins-for-age-fare",
+  "id_no": 1733442,
+  "language": "python",
+  "kernel_sources": [],
+  "enable_gpu": false,
+  "keywords": [],
+  "title": "titanic_0010_030_Best_Bins_for_Age_Fare",
+  "dataset_sources": [],
+  "code_file": "titanic-0010-030-best-bins-for-age-fare.ipynb",
+  "competition_sources": [
+    "titanic"
+  ],
+  "enable_internet": false,
+  "kernel_type": "notebook",
+  "is_private": false
+}

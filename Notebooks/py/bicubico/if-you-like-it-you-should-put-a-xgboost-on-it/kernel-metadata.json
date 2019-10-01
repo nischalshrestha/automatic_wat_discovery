@@ -1,0 +1,17 @@
+{
+  "kernel_sources": [],
+  "code_file": "if-you-like-it-you-should-put-a-xgboost-on-it.ipynb",
+  "keywords": [],
+  "title": "If you like it, you should put a XGBoost on it",
+  "id_no": 1162729,
+  "id": "bicubico/if-you-like-it-you-should-put-a-xgboost-on-it",
+  "dataset_sources": [],
+  "enable_gpu": false,
+  "kernel_type": "notebook",
+  "language": "python",
+  "competition_sources": [
+    "titanic"
+  ],
+  "enable_internet": false,
+  "is_private": false
+}

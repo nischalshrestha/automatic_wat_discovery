@@ -1,0 +1,17 @@
+{
+  "title": "Sinking the Titanic",
+  "code_file": "sinking-the-titanic.ipynb",
+  "language": "python",
+  "kernel_sources": [],
+  "enable_internet": false,
+  "keywords": [],
+  "competition_sources": [
+    "titanic"
+  ],
+  "id_no": 1891261,
+  "dataset_sources": [],
+  "enable_gpu": false,
+  "id": "jatintayal/sinking-the-titanic",
+  "is_private": false,
+  "kernel_type": "notebook"
+}

@@ -1,0 +1,22 @@
+{
+  "code_file": "titanic-survival-predictions-data-visualization.ipynb",
+  "enable_internet": false,
+  "dataset_sources": [],
+  "language": "python",
+  "id_no": 1292425,
+  "id": "kadamsushant/titanic-survival-predictions-data-visualization",
+  "keywords": [
+    "tutorial",
+    "beginner",
+    "data visualization",
+    "feature engineering"
+  ],
+  "title": "Titanic survival predictions & data visualization",
+  "competition_sources": [
+    "titanic"
+  ],
+  "is_private": false,
+  "enable_gpu": false,
+  "kernel_type": "notebook",
+  "kernel_sources": []
+}

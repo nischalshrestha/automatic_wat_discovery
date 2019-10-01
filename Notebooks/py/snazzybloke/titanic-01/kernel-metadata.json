@@ -1,0 +1,17 @@
+{
+  "title": "Titanic_01",
+  "id": "snazzybloke/titanic-01",
+  "kernel_sources": [],
+  "id_no": 1384475,
+  "competition_sources": [
+    "titanic"
+  ],
+  "enable_gpu": false,
+  "code_file": "titanic-01.ipynb",
+  "kernel_type": "notebook",
+  "enable_internet": false,
+  "dataset_sources": [],
+  "keywords": [],
+  "is_private": false,
+  "language": "python"
+}

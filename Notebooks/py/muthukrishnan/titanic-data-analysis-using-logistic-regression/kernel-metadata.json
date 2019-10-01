@@ -1,0 +1,17 @@
+{
+  "kernel_sources": [],
+  "dataset_sources": [],
+  "title": "titanic data analysis using logistic regression",
+  "enable_gpu": false,
+  "keywords": [],
+  "competition_sources": [
+    "titanic"
+  ],
+  "id_no": 1676745,
+  "enable_internet": false,
+  "kernel_type": "notebook",
+  "language": "python",
+  "id": "muthukrishnan/titanic-data-analysis-using-logistic-regression",
+  "code_file": "titanic-data-analysis-using-logistic-regression.ipynb",
+  "is_private": false
+}

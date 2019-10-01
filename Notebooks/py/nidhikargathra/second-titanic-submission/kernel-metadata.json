@@ -1,0 +1,17 @@
+{
+  "id_no": 1141072,
+  "enable_gpu": false,
+  "kernel_sources": [],
+  "code_file": "second-titanic-submission.ipynb",
+  "keywords": [],
+  "kernel_type": "notebook",
+  "dataset_sources": [],
+  "id": "nidhikargathra/second-titanic-submission",
+  "title": "Second titanic submission",
+  "competition_sources": [
+    "titanic"
+  ],
+  "is_private": false,
+  "enable_internet": false,
+  "language": "python"
+}

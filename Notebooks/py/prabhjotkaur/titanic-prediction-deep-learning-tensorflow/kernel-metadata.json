@@ -1,0 +1,17 @@
+{
+  "title": "Titanic Prediction: Deep learning(Tensorflow)",
+  "language": "python",
+  "enable_gpu": false,
+  "keywords": [],
+  "dataset_sources": [],
+  "code_file": "titanic-prediction-deep-learning-tensorflow.ipynb",
+  "kernel_sources": [],
+  "kernel_type": "notebook",
+  "competition_sources": [
+    "titanic"
+  ],
+  "id": "prabhjotkaur/titanic-prediction-deep-learning-tensorflow",
+  "is_private": false,
+  "enable_internet": false,
+  "id_no": 741884
+}

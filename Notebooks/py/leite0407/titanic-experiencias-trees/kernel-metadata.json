@@ -1,0 +1,17 @@
+{
+  "code_file": "titanic-experiencias-trees.ipynb",
+  "id_no": 1964403,
+  "kernel_sources": [],
+  "keywords": [],
+  "enable_internet": false,
+  "enable_gpu": true,
+  "competition_sources": [
+    "titanic"
+  ],
+  "dataset_sources": [],
+  "kernel_type": "notebook",
+  "title": "Titanic Experiencias Trees",
+  "is_private": false,
+  "id": "leite0407/titanic-experiencias-trees",
+  "language": "python"
+}

@@ -1,0 +1,17 @@
+{
+  "language": "python",
+  "is_private": false,
+  "id": "llykaggle/notebookb7173f2e69",
+  "title": "Notebookb7173f2e69",
+  "kernel_type": "notebook",
+  "kernel_sources": [],
+  "keywords": [],
+  "code_file": "notebookb7173f2e69.ipynb",
+  "competition_sources": [
+    "titanic"
+  ],
+  "enable_gpu": false,
+  "id_no": 275029,
+  "dataset_sources": [],
+  "enable_internet": false
+}

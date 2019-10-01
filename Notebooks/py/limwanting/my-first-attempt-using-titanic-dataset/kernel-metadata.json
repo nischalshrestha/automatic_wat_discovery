@@ -1,0 +1,17 @@
+{
+  "is_private": false,
+  "keywords": [],
+  "id": "limwanting/my-first-attempt-using-titanic-dataset",
+  "language": "python",
+  "competition_sources": [
+    "titanic"
+  ],
+  "code_file": "my-first-attempt-using-titanic-dataset.ipynb",
+  "dataset_sources": [],
+  "kernel_type": "notebook",
+  "kernel_sources": [],
+  "enable_gpu": false,
+  "title": "My first attempt using Titanic dataset",
+  "enable_internet": false,
+  "id_no": 1827822
+}

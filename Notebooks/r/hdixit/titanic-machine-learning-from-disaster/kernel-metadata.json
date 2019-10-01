@@ -1,0 +1,17 @@
+{
+  "competition_sources": [
+    "titanic"
+  ],
+  "is_private": false,
+  "id": "hdixit/titanic-machine-learning-from-disaster",
+  "id_no": 192487,
+  "kernel_type": "notebook",
+  "keywords": [],
+  "title": "Titanic: Machine Learning from Disaster",
+  "dataset_sources": [],
+  "enable_gpu": false,
+  "language": "r",
+  "kernel_sources": [],
+  "code_file": "titanic-machine-learning-from-disaster.irnb",
+  "enable_internet": false
+}

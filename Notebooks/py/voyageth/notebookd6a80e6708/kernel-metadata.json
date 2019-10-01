@@ -1,0 +1,17 @@
+{
+  "kernel_sources": [],
+  "code_file": "notebookd6a80e6708.ipynb",
+  "kernel_type": "notebook",
+  "dataset_sources": [],
+  "id_no": 150268,
+  "is_private": false,
+  "title": "Notebookd6a80e6708",
+  "enable_gpu": false,
+  "language": "python",
+  "id": "voyageth/notebookd6a80e6708",
+  "enable_internet": false,
+  "keywords": [],
+  "competition_sources": [
+    "titanic"
+  ]
+}

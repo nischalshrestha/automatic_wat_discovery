@@ -1,0 +1,17 @@
+{
+  "language": "python",
+  "competition_sources": [
+    "titanic"
+  ],
+  "kernel_sources": [],
+  "enable_gpu": false,
+  "keywords": [],
+  "kernel_type": "notebook",
+  "id_no": 386233,
+  "title": "titanic-2",
+  "is_private": false,
+  "code_file": "titanic-2.ipynb",
+  "dataset_sources": [],
+  "enable_internet": false,
+  "id": "kivaschenko/titanic-2"
+}

@@ -1,0 +1,17 @@
+{
+  "title": "A Journey through Titanic d8741f",
+  "code_file": "a-journey-through-titanic-d8741f.ipynb",
+  "language": "python",
+  "is_private": false,
+  "enable_internet": false,
+  "keywords": [],
+  "enable_gpu": false,
+  "kernel_type": "notebook",
+  "id": "ninetwo/a-journey-through-titanic-d8741f",
+  "kernel_sources": [],
+  "dataset_sources": [],
+  "id_no": 194285,
+  "competition_sources": [
+    "titanic"
+  ]
+}

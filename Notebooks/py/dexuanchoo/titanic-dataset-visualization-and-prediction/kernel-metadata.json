@@ -1,0 +1,23 @@
+{
+  "id_no": 1640199,
+  "title": "Titanic Dataset: Visualization and Prediction",
+  "enable_internet": false,
+  "code_file": "titanic-dataset-visualization-and-prediction.ipynb",
+  "competition_sources": [
+    "titanic"
+  ],
+  "id": "dexuanchoo/titanic-dataset-visualization-and-prediction",
+  "is_private": false,
+  "dataset_sources": [],
+  "kernel_sources": [],
+  "language": "python",
+  "kernel_type": "notebook",
+  "enable_gpu": false,
+  "keywords": [
+    "beginner",
+    "data cleaning",
+    "data visualization",
+    "classification",
+    "starter code"
+  ]
+}

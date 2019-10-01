@@ -1,0 +1,23 @@
+{
+  "dataset_sources": [],
+  "id_no": 145170,
+  "language": "python",
+  "enable_internet": false,
+  "enable_gpu": false,
+  "kernel_sources": [],
+  "kernel_type": "notebook",
+  "is_private": false,
+  "keywords": [
+    "tutorial",
+    "beginner",
+    "eda",
+    "data visualization",
+    "ensembling"
+  ],
+  "competition_sources": [
+    "titanic"
+  ],
+  "code_file": "titanic-survival-prediction-end-to-end-ml-pipeline.ipynb",
+  "title": "Titanic Survival Prediction End to End ML Pipeline",
+  "id": "poonaml/titanic-survival-prediction-end-to-end-ml-pipeline"
+}

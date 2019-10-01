@@ -1,0 +1,17 @@
+{
+  "dataset_sources": [],
+  "language": "r",
+  "is_private": false,
+  "code_file": "my-first-kernel-titanic-survival-rate.irnb",
+  "title": "My First Kernel - Titanic Survival Rate",
+  "enable_internet": false,
+  "kernel_type": "notebook",
+  "enable_gpu": false,
+  "competition_sources": [
+    "titanic"
+  ],
+  "id_no": 289191,
+  "kernel_sources": [],
+  "id": "nibedita84/my-first-kernel-titanic-survival-rate",
+  "keywords": []
+}

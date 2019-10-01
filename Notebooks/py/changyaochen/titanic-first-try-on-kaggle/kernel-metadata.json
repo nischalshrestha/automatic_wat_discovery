@@ -1,0 +1,17 @@
+{
+  "id": "changyaochen/titanic-first-try-on-kaggle",
+  "code_file": "titanic-first-try-on-kaggle.ipynb",
+  "keywords": [],
+  "dataset_sources": [],
+  "enable_gpu": false,
+  "kernel_sources": [],
+  "kernel_type": "notebook",
+  "language": "python",
+  "is_private": false,
+  "id_no": 173393,
+  "enable_internet": false,
+  "competition_sources": [
+    "titanic"
+  ],
+  "title": "Titanic: first try on Kaggle"
+}

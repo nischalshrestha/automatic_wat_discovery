@@ -1,0 +1,17 @@
+{
+  "id_no": 411804,
+  "competition_sources": [
+    "titanic"
+  ],
+  "is_private": false,
+  "language": "python",
+  "code_file": "my-titanic-attempt-improved-feature-selection.ipynb",
+  "dataset_sources": [],
+  "enable_gpu": false,
+  "kernel_type": "notebook",
+  "keywords": [],
+  "id": "alisonp/my-titanic-attempt-improved-feature-selection",
+  "title": "My titanic attempt :)- Improved feature selection",
+  "kernel_sources": [],
+  "enable_internet": false
+}

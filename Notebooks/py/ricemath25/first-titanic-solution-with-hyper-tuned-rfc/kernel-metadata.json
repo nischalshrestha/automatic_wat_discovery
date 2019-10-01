@@ -1,0 +1,17 @@
+{
+  "kernel_sources": [],
+  "title": "First Titanic Solution with Hyper-tuned RFC",
+  "kernel_type": "notebook",
+  "enable_internet": false,
+  "id_no": 2187429,
+  "is_private": false,
+  "code_file": "first-titanic-solution-with-hyper-tuned-rfc.ipynb",
+  "language": "python",
+  "competition_sources": [
+    "titanic"
+  ],
+  "id": "ricemath25/first-titanic-solution-with-hyper-tuned-rfc",
+  "dataset_sources": [],
+  "keywords": [],
+  "enable_gpu": false
+}

@@ -1,0 +1,19 @@
+{
+  "dataset_sources": [],
+  "kernel_sources": [],
+  "title": "Titanic Challenge ",
+  "language": "python",
+  "keywords": [
+    "beginner"
+  ],
+  "enable_internet": false,
+  "id": "ravikarri/titanic-challenge",
+  "is_private": false,
+  "kernel_type": "notebook",
+  "code_file": "titanic-challenge.ipynb",
+  "enable_gpu": false,
+  "competition_sources": [
+    "titanic"
+  ],
+  "id_no": 554042
+}

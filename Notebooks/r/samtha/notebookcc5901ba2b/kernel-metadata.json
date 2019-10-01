@@ -1,0 +1,17 @@
+{
+  "is_private": false,
+  "dataset_sources": [],
+  "code_file": "notebookcc5901ba2b.ipynb",
+  "kernel_type": "notebook",
+  "enable_gpu": false,
+  "language": "python",
+  "id": "samtha/notebookcc5901ba2b",
+  "title": "Notebookcc5901ba2b",
+  "kernel_sources": [],
+  "id_no": 226203,
+  "keywords": [],
+  "enable_internet": false,
+  "competition_sources": [
+    "titanic"
+  ]
+}

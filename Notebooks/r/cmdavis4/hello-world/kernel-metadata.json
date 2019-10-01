@@ -1,0 +1,17 @@
+{
+  "kernel_sources": [],
+  "language": "r",
+  "enable_internet": false,
+  "competition_sources": [
+    "titanic"
+  ],
+  "title": "Hello, world",
+  "code_file": "hello-world.irnb",
+  "id_no": 238408,
+  "enable_gpu": false,
+  "is_private": false,
+  "keywords": [],
+  "kernel_type": "notebook",
+  "dataset_sources": [],
+  "id": "cmdavis4/hello-world"
+}

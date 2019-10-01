@@ -1,0 +1,17 @@
+{
+  "keywords": [],
+  "kernel_sources": [],
+  "code_file": "titanic-machine-learning-from-disaster-master.ipynb",
+  "kernel_type": "notebook",
+  "competition_sources": [
+    "titanic"
+  ],
+  "enable_gpu": false,
+  "id": "aamir306/titanic-machine-learning-from-disaster-master",
+  "title": "Titanic-Machine-Learning-from-Disaster-master",
+  "is_private": false,
+  "enable_internet": false,
+  "id_no": 1705201,
+  "language": "python",
+  "dataset_sources": []
+}

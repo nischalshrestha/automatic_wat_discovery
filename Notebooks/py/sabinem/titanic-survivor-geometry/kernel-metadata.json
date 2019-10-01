@@ -1,0 +1,17 @@
+{
+  "kernel_sources": [],
+  "dataset_sources": [],
+  "id_no": 416814,
+  "enable_internet": false,
+  "kernel_type": "notebook",
+  "language": "python",
+  "id": "sabinem/titanic-survivor-geometry",
+  "title": "Titanic Survivor Geometry",
+  "enable_gpu": false,
+  "code_file": "titanic-survivor-geometry.ipynb",
+  "keywords": [],
+  "is_private": false,
+  "competition_sources": [
+    "titanic"
+  ]
+}

@@ -1,0 +1,17 @@
+{
+  "dataset_sources": [],
+  "title": "Notebook5ceb2623ed",
+  "kernel_sources": [],
+  "id": "gzevga/notebook5ceb2623ed",
+  "competition_sources": [
+    "titanic"
+  ],
+  "is_private": false,
+  "enable_gpu": false,
+  "enable_internet": false,
+  "id_no": 238805,
+  "keywords": [],
+  "kernel_type": "notebook",
+  "language": "python",
+  "code_file": "notebook5ceb2623ed.ipynb"
+}

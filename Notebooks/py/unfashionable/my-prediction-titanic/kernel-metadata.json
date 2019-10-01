@@ -1,0 +1,17 @@
+{
+  "language": "python",
+  "enable_internet": false,
+  "id_no": 614898,
+  "code_file": "my-prediction-titanic.ipynb",
+  "kernel_sources": [],
+  "kernel_type": "notebook",
+  "title": "my_prediction_titanic",
+  "is_private": false,
+  "keywords": [],
+  "enable_gpu": false,
+  "id": "unfashionable/my-prediction-titanic",
+  "dataset_sources": [],
+  "competition_sources": [
+    "titanic"
+  ]
+}

@@ -1,0 +1,242 @@
+{
+  "cells": [
+    {
+      "cell_type": "markdown",
+      "metadata": {
+        "_cell_guid": "11a5df80-f241-2104-aa67-d4bc19919976"
+      },
+      "source": [
+        "I am very excited about my first contribution to Kaggle!\n",
+        "\n",
+        "I will have a first quick look at missing data, compare different regression approaches and do some feature engineering. \n",
+        "\n",
+        "To start with, I read the data into R, combine train and test set and make sure that all variables are coded correctly."
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "_cell_guid": "2b0c6707-3a0d-1f0b-7e28-27e8350d813e"
+      },
+      "outputs": [],
+      "source": [
+        "#load packages\n",
+        "require(dplyr)\n",
+        "require(plyr)\n",
+        "require(mice)\n",
+        "require(caret)\n",
+        "require(ranger)\n",
+        "require(e1071)\n",
+        "require(xgboost)\n",
+        "require(kernlab)\n",
+        "require(klaR)"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "_cell_guid": "2ac80db6-133d-5e12-2bb3-d72cb91b0335"
+      },
+      "outputs": [],
+      "source": [
+        "#get data\n",
+        "train=read.table('../input/train.csv', sep=',', header=T)\n",
+        "train.stop=nrow(train)\n",
+        "test=read.table('../input/test.csv', sep=',', header=T)\n",
+        "data=bind_rows(train, test)\n",
+        "data$Survived=as.factor(as.character(data$Survived))\n",
+        "data$Pclass=as.factor(as.character(data$Pclass))\n",
+        "data$Embarked=as.factor(as.character(data$Embarked))\n",
+        "data$Cabin=as.factor(as.character(data$Cabin))"
+      ]
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {
+        "_cell_guid": "0f0799ab-0c09-757d-0f90-ce7e13c36397"
+      },
+      "source": [
+        "Let's have a look at how much missing data there is per column. As you can see below it's mostly the age variable, one datapoint for Fare and two for Embarked. In a first instance I will perform a median imputation of Age and Fare (by ticket-class). For the port of embarkation I simply choose the most frequent one."
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "_cell_guid": "160cb50f-439b-eb4b-ee7c-d79ace294010"
+      },
+      "outputs": [],
+      "source": [
+        "data[!is.na(data) & data =='']=NA\n",
+        "colSums(is.na(data))\n",
+        "data[is.na(data$Age),'Age']=median(data$Age, na.rm=T)\n",
+        "data[is.na(data$Fare),'Fare']=tapply(data$Fare, data$Pclass, function(x) median(x, na.rm=T))[data[is.na(data$Fare),'Pclass']]\n",
+        "data[data$Fare==0,'Fare']=tapply(data$Fare, data$Pclass, function(x) median(x, na.rm=T))[data[data$Fare==0,'Pclass']]\n",
+        "data[is.na(data$Embarked),'Embarked']=as.factor(names(which.max(table(na.omit(data$Embarked)))))"
+      ]
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {
+        "_cell_guid": "79fa223d-c645-5229-52db-c5f8f7581d57"
+      },
+      "source": [
+        "I will now run a set of different classification algorithms, ranging from a standard logistic regression to gradient boosting. Each approach will be evaluated using 10-fold cross-validation. To be able to re-use this approach, I put it all in a function."
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "_cell_guid": "a2abeca0-460e-2dd6-0ed3-0c86c682a24b"
+      },
+      "outputs": [],
+      "source": [
+        "# a function that compares different classification methods\n",
+        "compareML <- function(data, formula=Survived~Sex+Age, seed=123, k=10, ...){\n",
+        "  set.seed(seed)\n",
+        "  myControl <- trainControl(method = \"cv\", number = k,repeats = k, verboseIter = FALSE)\n",
+        "  glm_model <- train(formula, data = data, method=\"glm\", family=\"binomial\", trControl = myControl) #logreg\n",
+        "  rf_model <- train(formula, data = data, method = \"ranger\", trControl = myControl, importance = 'impurity') #rf\n",
+        "  glmnet_model <- train(formula, method = \"glmnet\", tuneGrid = expand.grid(alpha = 0:1,lambda = seq(0.0001, 1, length = 20)), data = data, trControl=myControl)  # elastic net\n",
+        "  xgb.grid <- expand.grid(nrounds = 1000, eta = c(0.01,0.05,0.1), max_depth = c(2,4,6,8,10,14), gamma=1, min_child_weight = 7, subsample = 0.8, colsample_bytree = 0.8)\n",
+        "  xgb_model <-train(formula, data=data, method=\"xgbTree\", trControl=myControl,tuneGrid=xgb.grid,verbose=T, metric=\"Kappa\",nthread =1)\n",
+        "  svmLinear_model <-train(formula, data=data, method=\"svmLinear\", trControl=myControl)\n",
+        "  svmRadial_model <-train(formula, data=data, method=\"svmRadial\", trControl=myControl)\n",
+        "  svmPoly_model <-train(formula, data=data, method=\"svmPoly\", trControl=myControl)\n",
+        "  knn_model <-train(formula, data=data, method=\"knn\", trControl=myControl)\n",
+        "  models <- list(svmPoly=svmPoly_model, rf = rf_model, glm = glm_model, glmnet=glmnet_model, xgboost=xgb_model, svmLinear=svmLinear_model, svmRadial=svmRadial_model, knearest=knn_model)\n",
+        "  resampled <- resamples(models)\n",
+        "  return(resampled)\n",
+        "}"
+      ]
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {
+        "_cell_guid": "6d339915-f0f0-9ea7-9e94-39dafd84fabf"
+      },
+      "source": [
+        "I will now extract the training data again and run the classification methods in a first attempt. The model will include all predictor variables except for PassengerID, Name, Ticket and Cabin. These variables assume too many different levels and including them is unlikely to result in any improvements of the prediction. "
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "_cell_guid": "2368362d-6f1b-b46e-62e6-1d0316f0b4c7"
+      },
+      "outputs": [],
+      "source": [
+        "# Run 1 with (most) available variables\n",
+        "train.mod=data[1:train.stop,]\n",
+        "formula=as.formula(Survived~Pclass+Sex+Age+SibSp+Parch+Fare+Embarked)\n",
+        "resampled=suppressWarnings(compareML(train.mod, formula))\n",
+        "dotplot(resampled, metric='Accuracy')\n",
+        "top.run1=max(summary(resampled)$statistics$Accuracy[,'Median'])\n",
+        "print(top.run1)"
+      ]
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {
+        "_cell_guid": "26cd612b-5601-33a1-2371-41d360c215a4"
+      },
+      "source": [
+        "An Accuracy of 86% is pretty encouraging! XGBoost performs best whereas the traditional logistic regression (glm) is located towards the bottom of the list. I will now try to further improve the prediction with some feature engineering."
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "_cell_guid": "d81ee647-994b-933f-d8bd-7655e2dfc355"
+      },
+      "outputs": [],
+      "source": [
+        "# Run 2 with some feature engineering\n",
+        "data$title=gsub('(\\\\..*)|(.*, )', '', data$Name) # Title variable\n",
+        "tmp=count(as.character(data$title))\n",
+        "rare=tmp[tmp$freq<10,1]\n",
+        "data[data$title %in% rare, 'title']='rare'\n",
+        "data$title=as.factor(data$title) \n",
+        "data$deck=as.factor(sapply(as.character(data$Cabin), function(x) strsplit(x,NULL)[[1]][1])) # Deck variable\n",
+        "data[is.na(data[,'deck']),'deck']=names(which.max(table(na.omit(data[,'deck']))))\n",
+        "data$Ticket2=toupper(gsub('( )|([.])|(/)', '', gsub(\"[[:digit:]]\", '', data$Ticket)))\n",
+        "tmp=count(as.character(data$Ticket2))\n",
+        "rare=tmp[tmp$freq<10,1]\n",
+        "data[data$Ticket2 %in% rare, 'Ticket2']='rare'\n",
+        "data$Ticket2=as.factor(data$Ticket2) \n",
+        "train.mod=data[1:train.stop,]\n",
+        "formula=as.formula(Survived~Pclass+Sex+Age+SibSp+Parch+Fare+Embarked+title+deck+Ticket2)\n",
+        "train.mod=data[1:train.stop,]\n",
+        "resampled=suppressWarnings(compareML(train.mod, formula))\n",
+        "dotplot(resampled, metric='Accuracy')\n",
+        "top.run2=max(summary(resampled)$statistics$Accuracy[,'Median'])\n",
+        "print(top.run2)"
+      ]
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {
+        "_cell_guid": "103475e5-cb48-9839-5500-7aa558ddd063"
+      },
+      "source": [
+        "The accuracy of most methods improved notably with those new features. However, the top score, which is still generated by XGboost actually got a little worse.  This may just be due to chance as the difference is well within the confidence interval. \n",
+        "I will now try to improve handling of missing values, for which I used a very crude median imputation so far. Instead I will now use the mice package.  "
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "_cell_guid": "6b055e54-88d4-88fd-4648-03598ba31474"
+      },
+      "outputs": [],
+      "source": [
+        "# Run 3 - mice imputation\n",
+        "data=bind_rows(train, test)\n",
+        "data$Survived=as.factor(as.character(data$Survived))\n",
+        "data$Pclass=as.factor(as.character(data$Pclass))\n",
+        "data$Embarked=as.factor(as.character(data$Embarked))\n",
+        "data$title=gsub('(\\\\..*)|(.*, )', '', data$Name) # Title variable\n",
+        "tmp=count(as.character(data$title))\n",
+        "rare=tmp[tmp$freq<10,1]\n",
+        "data[data$title %in% rare, 'title']='rare'\n",
+        "data$title=as.factor(data$title) \n",
+        "data$deck=as.factor(sapply(as.character(data$Cabin), function(x) strsplit(x,NULL)[[1]][1])) # Deck variable\n",
+        "data.4mice=data[c(\"Pclass\",\"Sex\",\"Age\",\"SibSp\",\"Parch\",\"Fare\",\"Embarked\",\"title\", \"deck\")]\n",
+        "data.mice=complete(mice(data.4mice))\n",
+        "data.imp=cbind(data[,c(\"PassengerId\", \"Survived\",\"Name\", \"Ticket\",\"Cabin\")], data.mice)\n",
+        "#split\n",
+        "train=data.imp[1:train.stop,]\n",
+        "formula=as.formula(Survived~Pclass+Sex+Age+SibSp+Parch+Fare+Embarked+title+deck)\n",
+        "resampled=surpressWarnings(compareML(train, formula))\n",
+        "dotplot(resampled, metric='Accuracy')\n",
+        "top.run4=max(summary(resampled)$statistics$Accuracy[,'Median'])\n",
+        "print(top.run4)"
+      ]
+    }
+  ],
+  "metadata": {
+    "_change_revision": 0,
+    "_is_fork": false,
+    "kernelspec": {
+      "display_name": "R",
+      "language": "R",
+      "name": "ir"
+    },
+    "language_info": {
+      "codemirror_mode": "r",
+      "file_extension": ".r",
+      "mimetype": "text/x-r-source",
+      "name": "R",
+      "pygments_lexer": "r",
+      "version": "3.3.3"
+    }
+  },
+  "nbformat": 4,
+  "nbformat_minor": 0
+}

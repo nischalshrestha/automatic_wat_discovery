@@ -1,0 +1,17 @@
+{
+  "kernel_type": "notebook",
+  "id_no": 109635,
+  "language": "python",
+  "kernel_sources": [],
+  "keywords": [],
+  "enable_gpu": false,
+  "competition_sources": [
+    "titanic"
+  ],
+  "enable_internet": false,
+  "dataset_sources": [],
+  "title": "Notebooke898987e5b",
+  "is_private": false,
+  "id": "mikraig/notebooke898987e5b",
+  "code_file": "notebooke898987e5b.ipynb"
+}

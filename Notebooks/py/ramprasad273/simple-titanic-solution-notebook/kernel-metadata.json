@@ -1,0 +1,23 @@
+{
+  "code_file": "simple-titanic-solution-notebook.ipynb",
+  "is_private": false,
+  "dataset_sources": [],
+  "title": "Simple Titanic Solution Notebook ",
+  "enable_gpu": false,
+  "keywords": [
+    "tutorial",
+    "beginner",
+    "data visualization",
+    "classification",
+    "starter code"
+  ],
+  "kernel_sources": [],
+  "kernel_type": "notebook",
+  "id_no": 1752497,
+  "competition_sources": [
+    "titanic"
+  ],
+  "language": "python",
+  "id": "ramprasad273/simple-titanic-solution-notebook",
+  "enable_internet": false
+}

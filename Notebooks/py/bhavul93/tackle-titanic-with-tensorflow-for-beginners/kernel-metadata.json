@@ -1,0 +1,21 @@
+{
+  "id": "bhavul93/tackle-titanic-with-tensorflow-for-beginners",
+  "id_no": 863345,
+  "title": "Tackle Titanic with Tensorflow for Beginners ",
+  "code_file": "tackle-titanic-with-tensorflow-for-beginners.ipynb",
+  "language": "python",
+  "kernel_type": "notebook",
+  "is_private": false,
+  "enable_gpu": false,
+  "enable_internet": false,
+  "keywords": [
+    "tutorial",
+    "beginner",
+    "classification"
+  ],
+  "dataset_sources": [],
+  "kernel_sources": [],
+  "competition_sources": [
+    "titanic"
+  ]
+}

@@ -1,0 +1,17 @@
+{
+  "id": "junaid388/titanic-machine-learning-insights-from-disaster",
+  "language": "python",
+  "enable_internet": false,
+  "dataset_sources": [],
+  "title": "Titanic: machine learning insights from disaster",
+  "kernel_type": "notebook",
+  "code_file": "titanic-machine-learning-insights-from-disaster.ipynb",
+  "id_no": 1732557,
+  "competition_sources": [
+    "titanic"
+  ],
+  "enable_gpu": false,
+  "is_private": false,
+  "kernel_sources": [],
+  "keywords": []
+}

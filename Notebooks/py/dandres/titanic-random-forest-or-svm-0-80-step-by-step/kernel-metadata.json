@@ -1,0 +1,17 @@
+{
+  "code_file": "titanic-random-forest-or-svm-0-80-step-by-step.ipynb",
+  "kernel_type": "notebook",
+  "language": "python",
+  "is_private": false,
+  "kernel_sources": [],
+  "competition_sources": [
+    "titanic"
+  ],
+  "id": "dandres/titanic-random-forest-or-svm-0-80-step-by-step",
+  "enable_gpu": false,
+  "id_no": 675750,
+  "dataset_sources": [],
+  "keywords": [],
+  "title": "TITANIC-RANDOM FOREST OR SVM 0.80 (STEP BY STEP)",
+  "enable_internet": false
+}

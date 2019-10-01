@@ -1,0 +1,17 @@
+{
+  "language": "python",
+  "dataset_sources": [],
+  "id_no": 203186,
+  "keywords": [],
+  "enable_gpu": false,
+  "enable_internet": false,
+  "is_private": false,
+  "id": "edwardcooper/notebook96ccc4b618",
+  "competition_sources": [
+    "titanic"
+  ],
+  "kernel_sources": [],
+  "title": "Notebook96ccc4b618",
+  "code_file": "notebook96ccc4b618.ipynb",
+  "kernel_type": "notebook"
+}

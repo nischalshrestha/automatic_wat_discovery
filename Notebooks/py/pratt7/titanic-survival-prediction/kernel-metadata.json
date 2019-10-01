@@ -1,0 +1,17 @@
+{
+  "dataset_sources": [],
+  "competition_sources": [
+    "titanic"
+  ],
+  "enable_internet": false,
+  "id": "pratt7/titanic-survival-prediction",
+  "is_private": false,
+  "keywords": [],
+  "language": "python",
+  "enable_gpu": false,
+  "title": "Titanic Survival Prediction",
+  "kernel_type": "notebook",
+  "kernel_sources": [],
+  "code_file": "titanic-survival-prediction.ipynb",
+  "id_no": 1244032
+}

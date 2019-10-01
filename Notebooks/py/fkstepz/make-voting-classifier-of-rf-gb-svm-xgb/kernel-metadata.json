@@ -1,0 +1,17 @@
+{
+  "is_private": false,
+  "kernel_type": "notebook",
+  "keywords": [],
+  "competition_sources": [
+    "titanic"
+  ],
+  "language": "python",
+  "enable_gpu": false,
+  "kernel_sources": [],
+  "dataset_sources": [],
+  "title": "Make Voting Classifier of RF, GB, SVM, XGB",
+  "id_no": 1269725,
+  "code_file": "make-voting-classifier-of-rf-gb-svm-xgb.ipynb",
+  "id": "fkstepz/make-voting-classifier-of-rf-gb-svm-xgb",
+  "enable_internet": false
+}

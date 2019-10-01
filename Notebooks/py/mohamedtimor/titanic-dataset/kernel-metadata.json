@@ -1,0 +1,17 @@
+{
+  "enable_gpu": false,
+  "id_no": 1843046,
+  "competition_sources": [
+    "titanic"
+  ],
+  "id": "mohamedtimor/titanic-dataset",
+  "is_private": false,
+  "keywords": [],
+  "kernel_type": "notebook",
+  "kernel_sources": [],
+  "language": "python",
+  "enable_internet": false,
+  "title": "Titanic dataset",
+  "dataset_sources": [],
+  "code_file": "titanic-dataset.ipynb"
+}

@@ -1,0 +1,21 @@
+{
+  "language": "python",
+  "id_no": 604207,
+  "enable_internet": false,
+  "title": "Best Titanic Survival Prediction  for Beginners.",
+  "kernel_sources": [],
+  "kernel_type": "notebook",
+  "code_file": "best-titanic-survival-prediction-for-beginners.ipynb",
+  "dataset_sources": [],
+  "keywords": [
+    "beginner",
+    "data cleaning",
+    "data visualization"
+  ],
+  "enable_gpu": false,
+  "is_private": false,
+  "id": "vin1234/best-titanic-survival-prediction-for-beginners",
+  "competition_sources": [
+    "titanic"
+  ]
+}

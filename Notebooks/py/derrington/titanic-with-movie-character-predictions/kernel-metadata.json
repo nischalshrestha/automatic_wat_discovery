@@ -1,0 +1,22 @@
+{
+  "language": "python",
+  "enable_gpu": false,
+  "title": "Titanic (with movie character predictions)",
+  "competition_sources": [
+    "titanic"
+  ],
+  "keywords": [],
+  "id_no": 701033,
+  "code_file": "titanic-with-movie-character-predictions.ipynb",
+  "enable_internet": false,
+  "kernel_type": "notebook",
+  "id": "derrington/titanic-with-movie-character-predictions",
+  "dataset_sources": [
+    "derrington/titanic-movie-characters",
+    "derrington/movie-characters",
+    "derrington/movie-test",
+    "derrington/movie-test-with-dummies"
+  ],
+  "is_private": false,
+  "kernel_sources": []
+}

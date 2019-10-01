@@ -1,0 +1,17 @@
+{
+  "code_file": "this-is-my-first-kernel-titanic.ipynb",
+  "id_no": 938280,
+  "language": "python",
+  "id": "twanifuchi/this-is-my-first-kernel-titanic",
+  "dataset_sources": [],
+  "keywords": [],
+  "title": "This is my first kernel - Titanic",
+  "kernel_type": "notebook",
+  "kernel_sources": [],
+  "enable_internet": false,
+  "is_private": false,
+  "competition_sources": [
+    "titanic"
+  ],
+  "enable_gpu": false
+}

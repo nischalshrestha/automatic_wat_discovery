@@ -1,0 +1,17 @@
+{
+  "title": "Titanic Survival using GBM",
+  "kernel_sources": [],
+  "competition_sources": [
+    "titanic"
+  ],
+  "dataset_sources": [],
+  "enable_internet": false,
+  "id_no": 1771168,
+  "keywords": [],
+  "kernel_type": "notebook",
+  "enable_gpu": false,
+  "is_private": false,
+  "language": "r",
+  "id": "sampadab17/titanic-survival-using-gbm",
+  "code_file": "titanic-survival-using-gbm.irnb"
+}

@@ -1,0 +1,17 @@
+{
+  "language": "r",
+  "title": "Notebook2579baab0c",
+  "keywords": [],
+  "enable_internet": false,
+  "id_no": 212023,
+  "is_private": false,
+  "competition_sources": [
+    "titanic"
+  ],
+  "kernel_type": "notebook",
+  "code_file": "notebook2579baab0c.irnb",
+  "dataset_sources": [],
+  "id": "sameerqayyum/notebook2579baab0c",
+  "enable_gpu": false,
+  "kernel_sources": []
+}

@@ -1,0 +1,20 @@
+{
+  "title": "Titanic: Solution (for Absolute Beginner)",
+  "enable_internet": false,
+  "kernel_type": "notebook",
+  "code_file": "titanic-solution-for-absolute-beginner.ipynb",
+  "enable_gpu": false,
+  "dataset_sources": [],
+  "language": "python",
+  "kernel_sources": [],
+  "id_no": 525881,
+  "id": "ajay1216/titanic-solution-for-absolute-beginner",
+  "competition_sources": [
+    "titanic"
+  ],
+  "is_private": false,
+  "keywords": [
+    "beginner",
+    "machine learning"
+  ]
+}

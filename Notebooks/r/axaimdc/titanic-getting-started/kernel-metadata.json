@@ -1,0 +1,17 @@
+{
+  "keywords": [],
+  "enable_internet": false,
+  "dataset_sources": [],
+  "is_private": false,
+  "kernel_type": "notebook",
+  "kernel_sources": [],
+  "code_file": "titanic-getting-started.irnb",
+  "id_no": 329346,
+  "id": "axaimdc/titanic-getting-started",
+  "language": "r",
+  "competition_sources": [
+    "titanic"
+  ],
+  "title": "Titanic Getting Started",
+  "enable_gpu": false
+}

@@ -1,0 +1,17 @@
+{
+  "dataset_sources": [],
+  "code_file": "notebookd055260bb7.ipynb",
+  "kernel_type": "notebook",
+  "kernel_sources": [],
+  "competition_sources": [
+    "titanic"
+  ],
+  "id_no": 230835,
+  "enable_internet": false,
+  "keywords": [],
+  "title": "Notebookd055260bb7",
+  "is_private": false,
+  "id": "psonkar/notebookd055260bb7",
+  "language": "python",
+  "enable_gpu": false
+}

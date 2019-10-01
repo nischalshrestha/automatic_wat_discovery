@@ -1,0 +1,17 @@
+{
+  "is_private": false,
+  "keywords": [],
+  "enable_internet": false,
+  "dataset_sources": [],
+  "id_no": 98035,
+  "enable_gpu": false,
+  "id": "tetevi/notebookc45bb8fe20",
+  "title": "Notebook77e91122b6",
+  "language": "r",
+  "kernel_type": "notebook",
+  "kernel_sources": [],
+  "competition_sources": [
+    "titanic"
+  ],
+  "code_file": "notebookc45bb8fe20.irnb"
+}

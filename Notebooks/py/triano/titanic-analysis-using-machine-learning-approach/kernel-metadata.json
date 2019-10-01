@@ -1,0 +1,19 @@
+{
+  "dataset_sources": [],
+  "keywords": [
+    "classification"
+  ],
+  "title": "Titanic Analysis Using Machine Learning Approach",
+  "id": "triano/titanic-analysis-using-machine-learning-approach",
+  "kernel_sources": [],
+  "id_no": 1772072,
+  "language": "python",
+  "is_private": false,
+  "enable_internet": false,
+  "kernel_type": "notebook",
+  "code_file": "titanic-analysis-using-machine-learning-approach.ipynb",
+  "competition_sources": [
+    "titanic"
+  ],
+  "enable_gpu": false
+}

@@ -1,0 +1,17 @@
+{
+  "id_no": 211577,
+  "dataset_sources": [],
+  "kernel_sources": [],
+  "enable_gpu": false,
+  "is_private": false,
+  "code_file": "notebookaef8b14c2c.ipynb",
+  "keywords": [],
+  "kernel_type": "notebook",
+  "language": "python",
+  "competition_sources": [
+    "titanic"
+  ],
+  "id": "vladsobol/notebookaef8b14c2c",
+  "enable_internet": false,
+  "title": "Notebookaef8b14c2c"
+}

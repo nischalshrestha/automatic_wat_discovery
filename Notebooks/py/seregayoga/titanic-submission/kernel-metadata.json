@@ -1,0 +1,17 @@
+{
+  "is_private": false,
+  "enable_internet": false,
+  "language": "python",
+  "kernel_type": "notebook",
+  "id_no": 431412,
+  "kernel_sources": [],
+  "title": "titanic_submission",
+  "id": "seregayoga/titanic-submission",
+  "dataset_sources": [],
+  "competition_sources": [
+    "titanic"
+  ],
+  "enable_gpu": false,
+  "code_file": "titanic-submission.ipynb",
+  "keywords": []
+}

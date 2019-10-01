@@ -1,0 +1,17 @@
+{
+  "is_private": false,
+  "enable_internet": false,
+  "language": "python",
+  "code_file": "a-journey-through-titanic.ipynb",
+  "dataset_sources": [],
+  "keywords": [],
+  "id_no": 676161,
+  "title": "A Journey through Titanic",
+  "id": "zahoorahmad/a-journey-through-titanic",
+  "enable_gpu": false,
+  "kernel_sources": [],
+  "competition_sources": [
+    "titanic"
+  ],
+  "kernel_type": "notebook"
+}

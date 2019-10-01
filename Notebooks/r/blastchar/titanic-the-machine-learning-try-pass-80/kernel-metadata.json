@@ -1,0 +1,17 @@
+{
+  "competition_sources": [
+    "titanic"
+  ],
+  "enable_gpu": false,
+  "id_no": 645068,
+  "keywords": [],
+  "enable_internet": false,
+  "code_file": "titanic-the-machine-learning-try-pass-80.irnb",
+  "id": "blastchar/titanic-the-machine-learning-try-pass-80",
+  "kernel_type": "notebook",
+  "title": "Titanic The Machine Learning Try Pass 80%",
+  "is_private": false,
+  "language": "r",
+  "dataset_sources": [],
+  "kernel_sources": []
+}

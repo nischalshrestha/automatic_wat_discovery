@@ -1,0 +1,17 @@
+{
+  "language": "r",
+  "is_private": false,
+  "enable_gpu": false,
+  "kernel_type": "notebook",
+  "code_file": "huston-we-have-a-titanic.irnb",
+  "id_no": 207999,
+  "title": "Huston We have a Titanic",
+  "keywords": [],
+  "enable_internet": false,
+  "dataset_sources": [],
+  "kernel_sources": [],
+  "competition_sources": [
+    "titanic"
+  ],
+  "id": "abhinav15feb/huston-we-have-a-titanic"
+}

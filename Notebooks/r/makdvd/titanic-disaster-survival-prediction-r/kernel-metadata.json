@@ -1,0 +1,21 @@
+{
+  "language": "r",
+  "enable_gpu": false,
+  "code_file": "titanic-disaster-survival-prediction-r.irnb",
+  "id_no": 2025155,
+  "is_private": false,
+  "keywords": [
+    "data cleaning",
+    "data visualization",
+    "logistic regression"
+  ],
+  "kernel_type": "notebook",
+  "competition_sources": [
+    "titanic"
+  ],
+  "title": "Titanic Disaster Survival Prediction (R)",
+  "kernel_sources": [],
+  "id": "makdvd/titanic-disaster-survival-prediction-r",
+  "enable_internet": false,
+  "dataset_sources": []
+}

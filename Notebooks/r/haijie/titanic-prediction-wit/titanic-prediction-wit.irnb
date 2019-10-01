@@ -1,0 +1,535 @@
+{
+  "cells": [
+    {
+      "cell_type": "markdown",
+      "metadata": {
+        "_cell_guid": "20b46b56-3dcb-1cf9-2d6a-e2663cc0bbf3"
+      },
+      "source": [
+        "### Reading Data"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "_cell_guid": "f0be1b73-3ec5-b678-5b2c-9d89a0091b4b"
+      },
+      "outputs": [],
+      "source": [
+        "library(dplyr,quietly = T,warn.conflicts = F)\n",
+        "library(lattice,quietly = T,warn.conflicts = F)\n",
+        "library(ggplot2,quietly = T,warn.conflicts = F)\n",
+        "library(corrplot,quietly = T,warn.conflicts = F)\n",
+        "library(MASS,quietly = T,warn.conflicts = F)\n",
+        "library(Matrix,quietly = T,warn.conflicts = F)\n",
+        "library(foreach,quietly = T,warn.conflicts = F)\n",
+        "library(glmnet,quietly = T,warn.conflicts = F)\n",
+        "library(rpart,quietly = T,warn.conflicts = F)\n",
+        "library(randomForest,quietly = T,warn.conflicts = F)\n",
+        "library(klaR,quietly = T,warn.conflicts = F)\n",
+        "library(kernlab,quietly = T,warn.conflicts = F)\n",
+        "library(lda,quietly = T,warn.conflicts = F)\n",
+        "library(caret,quietly = T,warn.conflicts = F)"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "_cell_guid": "bd9262ef-bcc2-4c10-4990-7987b9031a4f"
+      },
+      "outputs": [],
+      "source": [
+        "trainset<-read.csv(\"../input/train.csv\",header = T,sep = \",\",na.strings = c(\"NA\",\"\"))\n",
+        "testset<-read.csv(\"../input/test.csv\",header = T,sep = \",\",na.strings = c(\"NA\",\"\"))"
+      ]
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {
+        "_cell_guid": "8bac4b13-d926-7f59-2938-e6ad1538469d"
+      },
+      "source": [
+        "### Missing Values Treatment"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "_cell_guid": "403f8ec1-cf7a-307a-0b35-edc9dc3a5b4a"
+      },
+      "outputs": [],
+      "source": [
+        "## combine the training and testing for the missing data treatment\n",
+        "data<-rbind(trainset[,-2],testset)\n",
+        "sapply(data,function(x){sum(is.na(x))})"
+      ]
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {
+        "_cell_guid": "2bf26036-bbd9-58f7-0697-95eabf9102e6"
+      },
+      "source": [
+        "We can see that for 1309 observations, the \"age\" variable has 263 missing values, the \"Cabin\" variable has 1014 missing values, and the \"Embarked\" variable has 2 missing values, \"Fare\" has 1. \n",
+        "\n",
+        "### Missing Values imputation"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "_cell_guid": "4e1880a1-3093-f980-df4b-2a4b93615d9c"
+      },
+      "outputs": [],
+      "source": [
+        "table(data$Embarked)\n",
+        "## imputaion NA data for Embarked, \n",
+        "data$Embarked[which(is.na(data$Embarked))]<-\"S\"\n",
+        "## imputaion NA data for Embarked\n",
+        "data$Fare[which(is.na(data$Fare))]<-mean(data$Fare[which(!is.na(data$Fare))])"
+      ]
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {
+        "_cell_guid": "1972852c-df9e-fc49-e2fb-5fcd501d8535"
+      },
+      "source": [
+        "For the 2 Embarked missing values, we will impute the class \"S\" into it, for the raison that \"S\" represent 72% of the embarked port, it's more possible that they are taken this port. \n",
+        "\n",
+        "For the age variable, maybe we can have an approximate age range from the people's titles. "
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "_cell_guid": "d3dd5159-c757-c52e-236e-e2e2e59cfd92"
+      },
+      "outputs": [],
+      "source": [
+        "table(data$Embarked)\n",
+        "## imputaion NA data for Embarked, \n",
+        "data$Embarked[which(is.na(data$Embarked))]<-\"S\"\n",
+        "## imputaion NA data for Embarked\n",
+        "data$Fare[which(is.na(data$Fare))]<-mean(data$Fare[which(!is.na(data$Fare))])"
+      ]
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {
+        "_cell_guid": "19a14e81-1b4e-3cbb-f2c6-544e38a46c29"
+      },
+      "source": [
+        "For the 2 Embarked missing values, we will impute the class \"S\" into it, for the raison that \"S\" represent 72% of the embarked port, it's more possible that they are taken this port. \n",
+        "\n",
+        "For the age variable, maybe we can have an approximate age range from the people's titles. "
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "_cell_guid": "f2098a76-e9de-2703-d732-138cb06bb93e"
+      },
+      "outputs": [],
+      "source": [
+        "data$Name<-as.character(data$Name)\n",
+        "## create a Title variable by picking-up the people's titles\n",
+        "data$Title<-gsub(\"^.+,\",\"\",data$Name)\n",
+        "data$Title<-gsub(\"\\\\..+\",\"\",data$Title)\n",
+        "## table for the people who have missing data in age_variable\n",
+        "table(data[is.na(data$Age),]$Title)"
+      ]
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {
+        "_cell_guid": "3431cc97-12a2-cd6d-5149-0f1f974cf0cf"
+      },
+      "source": [
+        "A solution to impute the age missing values is to insign the mean value for each title (not containing a missing value) "
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "_cell_guid": "560a61dd-e391-6a94-5c87-b7f59b8746c6"
+      },
+      "outputs": [],
+      "source": [
+        "## calcul the mean for the 5 titles\n",
+        "data_sub<-data[!is.na(data$Age),]\n",
+        "meanDr<-mean(data_sub[data_sub$Title==\" Dr\",]$Age)\n",
+        "meanMaster<-mean(data_sub[data_sub$Title==\" Master\",]$Age)\n",
+        "meanMiss<-mean(data_sub[data_sub$Title==\" Miss\",]$Age)\n",
+        "meanMr<-mean(data_sub[data_sub$Title==\" Mr\",]$Age)\n",
+        "meanMrs<-mean(data_sub[data_sub$Title==\" Mrs\",]$Age)\n",
+        "meanMs<-mean(data_sub[data_sub$Title==\" Ms\",]$Age)\n",
+        "## imputation Missing Values to age\n",
+        "data$Age[is.na(data$Age) & data$Title==\" Dr\"]<-meanDr\n",
+        "data$Age[is.na(data$Age) & data$Title==\" Master\"]<-meanMaster\n",
+        "data$Age[is.na(data$Age) & data$Title==\" Miss\"]<-meanMiss\n",
+        "data$Age[is.na(data$Age) & data$Title==\" Mr\"]<-meanMr\n",
+        "data$Age[is.na(data$Age) & data$Title==\" Mrs\"]<-meanMrs\n",
+        "data$Age[is.na(data$Age) & data$Title==\" Ms\"]<-meanMs"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "_cell_guid": "7c29a69f-3dbe-6b16-49a0-036cf103fa0c"
+      },
+      "outputs": [],
+      "source": [
+        "trainset[,-2]<-data[1:891,-12]\n",
+        "testset<-data[892:1309,-12]\n",
+        "\n",
+        "## train set treatment\n",
+        "trainset<-trainset[,c(-1,-4,-9,-11)]\n",
+        "testset<-testset[,c(-1,-3,-8,-10)]\n",
+        "\n",
+        "trainset$Survived<-as.factor(trainset$Survived)"
+      ]
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {
+        "_cell_guid": "19091d6b-2f55-7afc-dac4-bb0cea7368d4"
+      },
+      "source": [
+        "# Exploratory Analysis\n",
+        "\n",
+        "## Unimodel Data Visualizations\n",
+        "\n",
+        "### Passager Survival"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "_cell_guid": "a377acc3-b682-cbdc-d7ea-5b66e96e14b3"
+      },
+      "outputs": [],
+      "source": [
+        "trainset_1<-trainset\n",
+        "## We do some transformations to have a better presentation\n",
+        "trainset_1$Survived<-as.character(trainset_1$Survived)\n",
+        "trainset_1$Survived<-gsub(\"0\",\"Perished\",trainset_1$Survived)\n",
+        "trainset_1$Survived<-gsub(\"1\",\"Survived\",trainset_1$Survived)\n",
+        "trainset_1$Survived<-as.factor(trainset_1$Survived)\n",
+        "percentage_survival<-round(sum(trainset$Survived==1)/nrow(trainset),3)\n",
+        "qplot(Survived,data=trainset_1,main=\"Passager Survival\")"
+      ]
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {
+        "_cell_guid": "b5ad223a-a6a1-2071-9c94-4b2784def3f6"
+      },
+      "source": [
+        "### Gender"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "_cell_guid": "d1ffcd13-f9d8-fc6f-0354-a7913c43fe96"
+      },
+      "outputs": [],
+      "source": [
+        "percentage_man<-round(sum(trainset_1$Sex==\"male\")/nrow(trainset),3)\n",
+        "qplot(Sex,data=trainset_1,fill=Survived)"
+      ]
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {
+        "_cell_guid": "2325ee9d-1987-016f-1698-c379762dc823"
+      },
+      "source": [
+        "We observe that in our training set, there are 65% males, and there are more survival females than survival males. "
+      ]
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {
+        "_cell_guid": "c4dfa2bd-0380-32c3-3724-91a96867dc66"
+      },
+      "source": [
+        "We observe that in our training set, there are 65% males, and there are more survival females than survival males. \n",
+        "\n",
+        "### Age"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "_cell_guid": "313c8aef-513d-be6d-81a5-0f9e37d85ca9"
+      },
+      "outputs": [],
+      "source": [
+        "qplot(Age,data=trainset_1,fill=Survived,binwidth=2)"
+      ]
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {
+        "_cell_guid": "d111c026-50bd-025a-11c7-c2e6abc5da31"
+      },
+      "source": [
+        "### Class"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "_cell_guid": "3cd0dfc1-76d2-7169-929c-2331d73d1b2d"
+      },
+      "outputs": [],
+      "source": [
+        "qplot(Pclass,data=trainset_1,fill=Survived,binwidth=0.5)"
+      ]
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {
+        "_cell_guid": "fffa2c1b-05e0-dec9-e47c-c9c8af870dbf"
+      },
+      "source": [
+        "We can see that there are more people who bought class three ticket, but their survival propotion is low than the other class. \n",
+        "\n",
+        "### Embarked Port"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "_cell_guid": "129f964e-c200-9c5f-9fd1-34e5ebfca92a"
+      },
+      "outputs": [],
+      "source": [
+        "qplot(Embarked,data=trainset_1,fill=Survived)"
+      ]
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {
+        "_cell_guid": "ef1f0922-276a-b2d4-7e30-9be5506c86bf"
+      },
+      "source": [
+        "### Passager siblings"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "_cell_guid": "321da53d-23bd-c07e-d1d3-5537c82b1724"
+      },
+      "outputs": [],
+      "source": [
+        "qplot(SibSp,data=trainset_1,fill=Survived,binwidth=0.5)"
+      ]
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {
+        "_cell_guid": "d93dbc35-fafd-010a-e329-2b40e3f37b08"
+      },
+      "source": [
+        "### Passenger parch"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "_cell_guid": "8507a8ae-0d69-7c69-dbe0-bf0bb969049a"
+      },
+      "outputs": [],
+      "source": [
+        "qplot(Parch,data=trainset_1,fill=Survived,binwidth=0.5)"
+      ]
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {
+        "_cell_guid": "4a6ea492-96f4-eef4-4f66-b9ae9971c3d8"
+      },
+      "source": [
+        "## Multimodel Data Visualization"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "_cell_guid": "8eb21b29-737f-f07a-4df2-cf7fa528e28c"
+      },
+      "outputs": [],
+      "source": [
+        "## we will take off the variables : PassengerId, Name, Cabin, Title \n",
+        "pairs(trainset)"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "_cell_guid": "7c10002e-8a79-b28e-e1cd-9af29fc1f3e2"
+      },
+      "outputs": [],
+      "source": [
+        "library(corrplot)\n",
+        "trainset_2<-trainset\n",
+        "trainset_2$Sex<-as.numeric(trainset_2$Sex)\n",
+        "trainset_2$Embarked<-as.numeric(trainset_2$Embarked)\n",
+        "trainset_2$Survived<-as.numeric(trainset_2$Survived)\n",
+        "\n",
+        "correlations<-cor(trainset_2)\n",
+        "corrplot(correlations,method=\"circle\")"
+      ]
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {
+        "_cell_guid": "00f6f67f-f725-abb1-3263-93a62ec91dee"
+      },
+      "source": [
+        "## Comparaison between multiple regression models"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "_cell_guid": "cfbb9aec-be3a-67bf-8c4c-1c7a99c451f5"
+      },
+      "outputs": [],
+      "source": [
+        "# Binary Classification machine learning\n",
+        "## Run algorithmes using 10-fole cross validation\n",
+        "set.seed(5)\n",
+        "trainControl<-trainControl(method = \"repeatedcv\",number=10,repeats = 3)\n",
+        "metric<-\"Accuracy\"\n",
+        "preprocess<-c(\"BoxCox\")\n",
+        "\n",
+        "## GLMNET regularized Logistic Regression\n",
+        "set.seed(5)\n",
+        "fit.glmnet<-train(Survived~., data=trainset, method=\"glmnet\", preProc=preprocess, metric=metric, trControl=trainControl)\n",
+        "## LDA\n",
+        "set.seed(5)\n",
+        "fit.lda<-train(Survived~., data=trainset, method=\"lda\", preProc=preprocess, metric=metric, trControl=trainControl)\n",
+        "## KNN\n",
+        "set.seed(5)\n",
+        "fit.knn<-train(Survived~., data=trainset, method=\"knn\", preProc=preprocess,metric=metric, trControl=trainControl)\n",
+        "## SVM\n",
+        "set.seed(5)\n",
+        "fit.svm<-train(Survived~., data=trainset, method=\"svmRadial\",preProc=preprocess, metric=metric, trControl=trainControl)\n",
+        "## CART\n",
+        "set.seed(5)\n",
+        "fit.cart<-train(Survived~., data=trainset, method=\"rpart\", preProc=preprocess,metric=metric, trControl=trainControl)\n",
+        "## RF\n",
+        "set.seed(5)\n",
+        "fit.rf<-train(Survived~., data=trainset, method=\"rf\",preProc=preprocess, metric=metric, trControl=trainControl)\n",
+        "\n",
+        "results<-resamples(list(GLM=fit.glmnet, IDA=fit.lda, KNN=fit.knn, CART=fit.cart, SVM=fit.svm,RF=fit.rf))\n",
+        "summary(results)\n",
+        "dotplot(results)"
+      ]
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {
+        "_cell_guid": "325f5d22-78d6-aca3-0020-bbba877f52e2"
+      },
+      "source": [
+        "We can see that model support verctor machine has the best performance, we will try to do the tuning"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "_cell_guid": "1415918b-0fe6-4039-f379-336c0522ee63"
+      },
+      "outputs": [],
+      "source": [
+        "set.seed(5)\n",
+        "grid<-expand.grid(.sigma=c(0.025, 0.05, 0.1, 0.15), .C=seq(1,10,by=1))\n",
+        "fit.svm.tune<-train(Survived~., data=trainset, method=\"svmRadial\",preProc=preprocess, \n",
+        "               tuneGrid=grid,metric=metric, trControl=trainControl)\n",
+        "\n",
+        "print(fit.svm.tune)\n",
+        "plot(fit.svm.tune)"
+      ]
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {
+        "_cell_guid": "8d2e674c-e2f9-b3ab-98d6-9366283bbcb6"
+      },
+      "source": [
+        "We see that SVM was the most accurate wih a score of 0.8298, very similar to our tuned model above. No need to spend time to tune the parameters. \n",
+        "\n",
+        "## Final Model\n",
+        "\n",
+        "After the comparaison, we will choose the SVM model as our final model. "
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "_cell_guid": "29d38324-cc0c-6e63-0736-fa8ed51578b2"
+      },
+      "outputs": [],
+      "source": [
+        "## prediction using SVM model\n",
+        "pred.svm<-predict(fit.svm, testset)"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "_cell_guid": "4ac9d69b-ea44-bd5f-6836-3e0d235205d7"
+      },
+      "outputs": [],
+      "source": [
+        "head(pred.svm)"
+      ]
+    }
+  ],
+  "metadata": {
+    "_change_revision": 0,
+    "_is_fork": false,
+    "kernelspec": {
+      "display_name": "R",
+      "language": "R",
+      "name": "ir"
+    },
+    "language_info": {
+      "codemirror_mode": "r",
+      "file_extension": ".r",
+      "mimetype": "text/x-r-source",
+      "name": "R",
+      "pygments_lexer": "r",
+      "version": "3.4.0"
+    }
+  },
+  "nbformat": 4,
+  "nbformat_minor": 0
+}

@@ -1,0 +1,17 @@
+{
+  "keywords": [],
+  "code_file": "jeder-anfang-ist-schwer.ipynb",
+  "enable_internet": false,
+  "dataset_sources": [],
+  "enable_gpu": false,
+  "id_no": 241563,
+  "kernel_type": "notebook",
+  "id": "javabean68/jeder-anfang-ist-schwer",
+  "competition_sources": [
+    "titanic"
+  ],
+  "is_private": false,
+  "language": "python",
+  "title": "Jeder Anfang ist schwer",
+  "kernel_sources": []
+}

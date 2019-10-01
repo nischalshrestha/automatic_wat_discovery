@@ -1,0 +1,17 @@
+{
+  "kernel_sources": [],
+  "keywords": [],
+  "is_private": false,
+  "enable_internet": false,
+  "kernel_type": "notebook",
+  "competition_sources": [
+    "titanic"
+  ],
+  "id": "pitesatit/notebook5c7c6bc750",
+  "code_file": "notebook5c7c6bc750.ipynb",
+  "title": "Notebook5c7c6bc750",
+  "id_no": 224027,
+  "language": "python",
+  "enable_gpu": false,
+  "dataset_sources": []
+}

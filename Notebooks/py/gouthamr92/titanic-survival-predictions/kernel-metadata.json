@@ -1,0 +1,17 @@
+{
+  "kernel_sources": [],
+  "title": "Titanic_Survival_Predictions",
+  "is_private": false,
+  "keywords": [],
+  "competition_sources": [
+    "titanic"
+  ],
+  "kernel_type": "notebook",
+  "id_no": 1599796,
+  "dataset_sources": [],
+  "language": "python",
+  "enable_internet": false,
+  "enable_gpu": false,
+  "id": "gouthamr92/titanic-survival-predictions",
+  "code_file": "titanic-survival-predictions.ipynb"
+}

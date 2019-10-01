@@ -1,0 +1,19 @@
+{
+  "is_private": false,
+  "kernel_type": "notebook",
+  "keywords": [
+    "classification"
+  ],
+  "competition_sources": [
+    "titanic"
+  ],
+  "id_no": 301442,
+  "enable_gpu": false,
+  "kernel_sources": [],
+  "dataset_sources": [],
+  "id": "chuanguy/titanic-data-processing-with-python-0-813",
+  "code_file": "titanic-data-processing-with-python-0-813.ipynb",
+  "language": "python",
+  "enable_internet": false,
+  "title": "Titanic Data Processing with Python(0.813)"
+}

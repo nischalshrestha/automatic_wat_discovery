@@ -1,0 +1,17 @@
+{
+  "code_file": "model-v2.ipynb",
+  "title": "Model v2",
+  "dataset_sources": [],
+  "enable_gpu": true,
+  "keywords": [],
+  "id_no": 1418489,
+  "language": "python",
+  "competition_sources": [
+    "titanic"
+  ],
+  "is_private": false,
+  "kernel_type": "notebook",
+  "id": "nekojohn/model-v2",
+  "kernel_sources": [],
+  "enable_internet": false
+}

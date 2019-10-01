@@ -1,0 +1,23 @@
+{
+  "code_file": "titanic-survival-eda.irnb",
+  "kernel_type": "notebook",
+  "enable_internet": false,
+  "kernel_sources": [],
+  "id": "nishikantsinha59/titanic-survival-eda",
+  "title": "Titanic Survival EDA",
+  "language": "r",
+  "enable_gpu": false,
+  "id_no": 501223,
+  "is_private": false,
+  "keywords": [
+    "beginner",
+    "eda",
+    "feature engineering",
+    "model comparison",
+    "binary classification"
+  ],
+  "dataset_sources": [],
+  "competition_sources": [
+    "titanic"
+  ]
+}

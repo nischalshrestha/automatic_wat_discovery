@@ -1,0 +1,17 @@
+{
+  "enable_internet": false,
+  "is_private": false,
+  "competition_sources": [
+    "titanic"
+  ],
+  "dataset_sources": [],
+  "enable_gpu": false,
+  "kernel_type": "notebook",
+  "id": "jalfano/titanic-23april2018logregexplorer-amb",
+  "keywords": [],
+  "kernel_sources": [],
+  "id_no": 895894,
+  "language": "python",
+  "title": "Titanic_23April2018LogRegExplorer_amB",
+  "code_file": "titanic-23april2018logregexplorer-amb.ipynb"
+}

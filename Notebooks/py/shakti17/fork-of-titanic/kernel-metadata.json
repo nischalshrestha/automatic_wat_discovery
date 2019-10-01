@@ -1,0 +1,17 @@
+{
+  "id_no": 1262050,
+  "kernel_sources": [],
+  "title": "Fork of Titanic",
+  "competition_sources": [
+    "titanic"
+  ],
+  "is_private": false,
+  "enable_gpu": false,
+  "enable_internet": false,
+  "language": "python",
+  "kernel_type": "notebook",
+  "keywords": [],
+  "dataset_sources": [],
+  "id": "shakti17/fork-of-titanic",
+  "code_file": "fork-of-titanic.ipynb"
+}

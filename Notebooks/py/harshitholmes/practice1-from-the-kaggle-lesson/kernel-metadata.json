@@ -1,0 +1,17 @@
+{
+  "dataset_sources": [],
+  "is_private": false,
+  "code_file": "practice1-from-the-kaggle-lesson.ipynb",
+  "enable_internet": false,
+  "enable_gpu": false,
+  "keywords": [],
+  "competition_sources": [
+    "titanic"
+  ],
+  "title": "Practice1 From the kaggle Lesson ",
+  "kernel_type": "notebook",
+  "language": "python",
+  "id_no": 1697119,
+  "kernel_sources": [],
+  "id": "harshitholmes/practice1-from-the-kaggle-lesson"
+}

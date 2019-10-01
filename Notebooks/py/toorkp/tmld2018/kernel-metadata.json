@@ -1,0 +1,17 @@
+{
+  "id": "toorkp/tmld2018",
+  "id_no": 796396,
+  "title": "TMLD2018",
+  "code_file": "tmld2018.ipynb",
+  "language": "python",
+  "kernel_type": "notebook",
+  "is_private": false,
+  "enable_gpu": false,
+  "enable_internet": false,
+  "keywords": [],
+  "dataset_sources": [],
+  "kernel_sources": [],
+  "competition_sources": [
+    "titanic"
+  ]
+}

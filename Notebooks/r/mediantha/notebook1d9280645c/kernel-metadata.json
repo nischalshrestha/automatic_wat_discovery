@@ -1,0 +1,17 @@
+{
+  "title": "Notebook1d9280645c",
+  "id": "mediantha/notebook1d9280645c",
+  "keywords": [],
+  "competition_sources": [
+    "titanic"
+  ],
+  "code_file": "notebook1d9280645c.ipynb",
+  "enable_gpu": false,
+  "id_no": 206282,
+  "language": "python",
+  "enable_internet": false,
+  "is_private": false,
+  "dataset_sources": [],
+  "kernel_sources": [],
+  "kernel_type": "notebook"
+}

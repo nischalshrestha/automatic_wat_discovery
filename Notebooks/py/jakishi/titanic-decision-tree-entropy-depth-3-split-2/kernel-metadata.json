@@ -1,0 +1,17 @@
+{
+  "enable_gpu": false,
+  "id_no": 1325697,
+  "title": "Titanic decision tree entropy, depth 3, split 2",
+  "id": "jakishi/titanic-decision-tree-entropy-depth-3-split-2",
+  "kernel_sources": [],
+  "kernel_type": "notebook",
+  "code_file": "titanic-decision-tree-entropy-depth-3-split-2.ipynb",
+  "keywords": [],
+  "dataset_sources": [],
+  "enable_internet": false,
+  "language": "python",
+  "is_private": false,
+  "competition_sources": [
+    "titanic"
+  ]
+}

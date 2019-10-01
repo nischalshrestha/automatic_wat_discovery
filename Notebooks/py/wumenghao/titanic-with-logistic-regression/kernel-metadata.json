@@ -1,0 +1,17 @@
+{
+  "keywords": [],
+  "id": "wumenghao/titanic-with-logistic-regression",
+  "kernel_sources": [],
+  "id_no": 2099440,
+  "is_private": false,
+  "enable_internet": false,
+  "title": "Titanic with Logistic Regression",
+  "kernel_type": "notebook",
+  "enable_gpu": false,
+  "language": "python",
+  "competition_sources": [
+    "titanic"
+  ],
+  "code_file": "titanic-with-logistic-regression.ipynb",
+  "dataset_sources": []
+}

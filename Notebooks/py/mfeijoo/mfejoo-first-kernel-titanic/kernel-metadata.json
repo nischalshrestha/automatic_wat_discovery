@@ -1,0 +1,21 @@
+{
+  "enable_internet": false,
+  "enable_gpu": false,
+  "dataset_sources": [],
+  "language": "python",
+  "competition_sources": [
+    "titanic"
+  ],
+  "keywords": [
+    "beginner",
+    "data cleaning",
+    "classification"
+  ],
+  "kernel_type": "notebook",
+  "id_no": 1614686,
+  "kernel_sources": [],
+  "is_private": false,
+  "code_file": "mfejoo-first-kernel-titanic.ipynb",
+  "title": "mfejoo first kernel titanic",
+  "id": "mfeijoo/mfejoo-first-kernel-titanic"
+}

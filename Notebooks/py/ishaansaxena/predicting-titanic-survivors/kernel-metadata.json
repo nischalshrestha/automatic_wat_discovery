@@ -1,0 +1,17 @@
+{
+  "enable_internet": false,
+  "title": "Predicting Titanic Survivors",
+  "code_file": "predicting-titanic-survivors.ipynb",
+  "enable_gpu": false,
+  "id": "ishaansaxena/predicting-titanic-survivors",
+  "language": "python",
+  "competition_sources": [
+    "titanic"
+  ],
+  "keywords": [],
+  "kernel_type": "notebook",
+  "is_private": false,
+  "dataset_sources": [],
+  "kernel_sources": [],
+  "id_no": 1240349
+}

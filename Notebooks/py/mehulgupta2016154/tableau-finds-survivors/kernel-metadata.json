@@ -1,0 +1,17 @@
+{
+  "dataset_sources": [],
+  "code_file": "tableau-finds-survivors.ipynb",
+  "language": "python",
+  "is_private": false,
+  "enable_gpu": false,
+  "title": "TABLEAU  Finds Survivors",
+  "competition_sources": [
+    "titanic"
+  ],
+  "id": "mehulgupta2016154/tableau-finds-survivors",
+  "kernel_type": "notebook",
+  "kernel_sources": [],
+  "keywords": [],
+  "enable_internet": false,
+  "id_no": 1568058
+}

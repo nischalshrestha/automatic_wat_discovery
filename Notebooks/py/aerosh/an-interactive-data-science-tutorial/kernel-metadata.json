@@ -1,0 +1,17 @@
+{
+  "id_no": 237326,
+  "is_private": false,
+  "code_file": "an-interactive-data-science-tutorial.ipynb",
+  "enable_gpu": false,
+  "keywords": [],
+  "id": "aerosh/an-interactive-data-science-tutorial",
+  "title": "An Interactive Data Science Tutorial",
+  "dataset_sources": [],
+  "language": "python",
+  "kernel_sources": [],
+  "competition_sources": [
+    "titanic"
+  ],
+  "kernel_type": "notebook",
+  "enable_internet": false
+}

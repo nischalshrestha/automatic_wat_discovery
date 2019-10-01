@@ -1,0 +1,17 @@
+{
+  "id_no": 577805,
+  "keywords": [],
+  "id": "davinkie/leren-en-beslissen-group-15-competition-entry",
+  "code_file": "leren-en-beslissen-group-15-competition-entry.ipynb",
+  "dataset_sources": [],
+  "enable_gpu": false,
+  "enable_internet": false,
+  "kernel_sources": [],
+  "is_private": false,
+  "title": "Leren en Beslissen Group 15 - Competition Entry",
+  "language": "python",
+  "competition_sources": [
+    "titanic"
+  ],
+  "kernel_type": "notebook"
+}

@@ -1,0 +1,17 @@
+{
+  "competition_sources": [
+    "titanic"
+  ],
+  "enable_internet": false,
+  "kernel_sources": [],
+  "language": "python",
+  "dataset_sources": [],
+  "is_private": false,
+  "enable_gpu": false,
+  "code_file": "titanic-07-27.ipynb",
+  "keywords": [],
+  "kernel_type": "notebook",
+  "title": "Titanic 07.27",
+  "id_no": 1352543,
+  "id": "bigbigdog/titanic-07-27"
+}

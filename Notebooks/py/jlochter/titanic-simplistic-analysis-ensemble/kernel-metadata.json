@@ -1,0 +1,17 @@
+{
+  "keywords": [],
+  "kernel_type": "notebook",
+  "is_private": false,
+  "competition_sources": [
+    "titanic"
+  ],
+  "code_file": "titanic-simplistic-analysis-ensemble.ipynb",
+  "title": "Titanic - Simplistic analysis + Ensemble",
+  "id_no": 1357281,
+  "enable_internet": false,
+  "dataset_sources": [],
+  "id": "jlochter/titanic-simplistic-analysis-ensemble",
+  "kernel_sources": [],
+  "language": "python",
+  "enable_gpu": false
+}

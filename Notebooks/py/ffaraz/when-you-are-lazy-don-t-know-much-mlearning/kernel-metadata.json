@@ -1,0 +1,19 @@
+{
+  "kernel_type": "notebook",
+  "dataset_sources": [],
+  "language": "python",
+  "keywords": [
+    "logistic regression"
+  ],
+  "id": "ffaraz/when-you-are-lazy-don-t-know-much-mlearning",
+  "competition_sources": [
+    "titanic"
+  ],
+  "enable_gpu": false,
+  "title": "When you are Lazy & don't know much MLearning",
+  "kernel_sources": [],
+  "enable_internet": false,
+  "code_file": "when-you-are-lazy-don-t-know-much-mlearning.ipynb",
+  "is_private": false,
+  "id_no": 509527
+}

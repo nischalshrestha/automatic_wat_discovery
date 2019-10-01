@@ -1,0 +1,17 @@
+{
+  "is_private": false,
+  "enable_gpu": false,
+  "code_file": "titanicknn.ipynb",
+  "kernel_type": "notebook",
+  "title": "TitanicKNN",
+  "dataset_sources": [],
+  "id": "ksarafrazi/titanicknn",
+  "id_no": 1965954,
+  "competition_sources": [
+    "titanic"
+  ],
+  "keywords": [],
+  "enable_internet": false,
+  "language": "python",
+  "kernel_sources": []
+}

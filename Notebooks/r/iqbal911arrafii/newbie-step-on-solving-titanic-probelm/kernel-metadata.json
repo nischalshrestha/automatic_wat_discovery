@@ -1,0 +1,17 @@
+{
+  "kernel_type": "notebook",
+  "competition_sources": [
+    "titanic"
+  ],
+  "id_no": 1992741,
+  "language": "r",
+  "title": "Newbie step on solving Titanic Probelm",
+  "kernel_sources": [],
+  "enable_gpu": false,
+  "enable_internet": false,
+  "dataset_sources": [],
+  "code_file": "newbie-step-on-solving-titanic-probelm.irnb",
+  "is_private": false,
+  "id": "iqbal911arrafii/newbie-step-on-solving-titanic-probelm",
+  "keywords": []
+}

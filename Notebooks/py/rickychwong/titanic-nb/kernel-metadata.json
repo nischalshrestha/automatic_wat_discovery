@@ -1,0 +1,17 @@
+{
+  "competition_sources": [
+    "titanic"
+  ],
+  "id": "rickychwong/titanic-nb",
+  "kernel_sources": [],
+  "id_no": 1737006,
+  "enable_gpu": false,
+  "kernel_type": "notebook",
+  "title": "Titanic_nb",
+  "dataset_sources": [],
+  "language": "python",
+  "enable_internet": false,
+  "keywords": [],
+  "is_private": false,
+  "code_file": "titanic-nb.ipynb"
+}

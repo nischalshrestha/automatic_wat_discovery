@@ -1,0 +1,158 @@
+{
+  "cells": [
+    {
+      "cell_type": "markdown",
+      "metadata": {
+        "_cell_guid": "fabb0f5b-0350-ef2a-508c-ca277c16db63"
+      },
+      "source": [
+        "Very Quick Summary"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "_cell_guid": "6f39e10e-674e-4781-a5aa-cdeb7f9fb353"
+      },
+      "outputs": [],
+      "source": [
+        "library(data.table)\n",
+        "\n",
+        "tr = fread(\"../input/train.csv\")\n",
+        "\n",
+        "summary(tr)\n",
+        "print(head(tr))"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "_cell_guid": "620a5d42-b3d3-729b-89a9-59de86e279c0"
+      },
+      "outputs": [],
+      "source": [
+        "Check Numerical and Categorical Variables One Per One vs Survivability (Pclass, Sex, Age, SibSp, Parch, Fare, Embarked)"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "_cell_guid": "cbd658a1-ec34-bb22-de30-1bb6e2160275"
+      },
+      "outputs": [],
+      "source": [
+        "library(ggplot2) # Data visualization\n",
+        "library(dplyr)\n",
+        "library(readr) # CSV file I/O, e.g. the read_csv function\n",
+        "library(data.table)\n",
+        "\n",
+        "tr = read.csv(\"../input/train.csv\")\n",
+        "pr = read.csv(\"../input/test.csv\")\n",
+        "\n",
+        "tr$age_bin <- round(tr$Age/10)\n",
+        "tr$fare_bin <- round(tr$Age/50)\n",
+        "for(i in c(\"Pclass\",\"Sex\",\"age_bin\",\"SibSp\",\"Parch\",\"fare_bin\",\"Embarked\")){\n",
+        "    tmp <- tr\n",
+        "    tmp$V <- tr[,i]\n",
+        "    tmp <- data.table(tmp)\n",
+        "    split <- tmp[,.(cnt=.N,surv=mean(Survived)),.(V)]\n",
+        "    split <- split[order(rank(V))]\n",
+        "    cat(paste(\"#########\",i,\"#########\\n\"))\n",
+        "    print(split)\n",
+        "    cat(\"\\n\")\n",
+        "}\n",
+        "\n"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "_cell_guid": "dd29f412-863b-fe8e-239a-ee8dc89ca348"
+      },
+      "outputs": [],
+      "source": [
+        "To Explore: Name, Ticket, Cabin, Embarked"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "_cell_guid": "ebc063ef-c299-97f7-944c-51cb81c86d2c"
+      },
+      "outputs": [],
+      "source": [
+        "library(ggplot2) # Data visualization\n",
+        "library(dplyr)\n",
+        "library(readr) # CSV file I/O, e.g. the read_csv function\n",
+        "library(data.table)\n",
+        "\n",
+        "tr = read.csv(\"../input/train.csv\")\n",
+        "pr = read.csv(\"../input/test.csv\")\n",
+        "\n",
+        "# Grab title from passenger names\n",
+        "tr$title <- gsub('(.*, )|(\\\\..*)', '', tr$Name)\n",
+        "tr$title[tr$title == \"Ms\"] <- \"Miss\"\n",
+        "tr$title[tr$title == \"Mlle\"] <- \"Miss\"\n",
+        "tr$title[!tr$title %in% c(\"Miss\",\"Mrs\",\"Mr\")] <- \"Other\"\n",
+        "print(table(tr$title))\n",
+        "\n",
+        "tmp <- data.table(tr)\n",
+        "split <- tmp[,.(cnt=.N,surv=mean(Survived)),.(title)]\n",
+        "split <- split[order(rank(title))]\n",
+        "cat(paste(\"#########\",\"title\",\"#########\\n\"))\n",
+        "print(split)\n",
+        "cat(\"\\n\")\n"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "_cell_guid": "6a0238a5-e275-6b5e-cb2b-09feb4f706a3"
+      },
+      "outputs": [],
+      "source": [
+        "library(ggplot2) # Data visualization\n",
+        "library(dplyr)\n",
+        "library(readr) # CSV file I/O, e.g. the read_csv function\n",
+        "library(data.table)\n",
+        "\n",
+        "tr = read.csv(\"../input/train.csv\")\n",
+        "pr = read.csv(\"../input/test.csv\")\n",
+        "#print(head(tr$Ticket,50))\n",
+        "\n",
+        "tr$cabinPos <- nchar(gsub('\\\\d','',tr$Ticket)) > 0\n",
+        "#print(head(tr$cabinPos))\n",
+        "    \n",
+        "split <- tmp[,.(cnt=.N,surv=mean(Survived)),.(cabinPos)]\n",
+        "split <- split[order(rank(cabinPos))]\n",
+        "cat(paste(\"#########\",\"cabinPos\",\"#########\\n\"))\n",
+        "print(split)\n"
+      ]
+    }
+  ],
+  "metadata": {
+    "_change_revision": 0,
+    "_is_fork": false,
+    "kernelspec": {
+      "display_name": "R",
+      "language": "R",
+      "name": "ir"
+    },
+    "language_info": {
+      "codemirror_mode": "r",
+      "file_extension": ".r",
+      "mimetype": "text/x-r-source",
+      "name": "R",
+      "pygments_lexer": "r",
+      "version": "3.4.0"
+    }
+  },
+  "nbformat": 4,
+  "nbformat_minor": 0
+}

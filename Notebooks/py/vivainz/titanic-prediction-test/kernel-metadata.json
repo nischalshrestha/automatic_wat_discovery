@@ -1,0 +1,17 @@
+{
+  "competition_sources": [
+    "titanic"
+  ],
+  "enable_gpu": false,
+  "language": "python",
+  "dataset_sources": [],
+  "enable_internet": false,
+  "keywords": [],
+  "is_private": false,
+  "kernel_type": "notebook",
+  "id": "vivainz/titanic-prediction-test",
+  "kernel_sources": [],
+  "id_no": 1581873,
+  "code_file": "titanic-prediction-test.ipynb",
+  "title": "Titanic Prediction Test"
+}

@@ -1,0 +1,17 @@
+{
+  "language": "r",
+  "enable_gpu": false,
+  "keywords": [],
+  "code_file": "trial-random-forest-with-titanic-dataset.irnb",
+  "kernel_sources": [],
+  "title": "Trial Random Forest with Titanic Dataset",
+  "competition_sources": [
+    "titanic"
+  ],
+  "is_private": false,
+  "enable_internet": false,
+  "id": "nickwong64/trial-random-forest-with-titanic-dataset",
+  "dataset_sources": [],
+  "id_no": 68752,
+  "kernel_type": "notebook"
+}

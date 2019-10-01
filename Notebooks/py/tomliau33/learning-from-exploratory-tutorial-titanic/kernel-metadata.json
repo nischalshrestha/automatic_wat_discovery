@@ -1,0 +1,17 @@
+{
+  "kernel_sources": [],
+  "title": "Learning from Exploratory Tutorial - Titanic ",
+  "competition_sources": [
+    "titanic"
+  ],
+  "enable_internet": false,
+  "id_no": 207853,
+  "code_file": "learning-from-exploratory-tutorial-titanic.ipynb",
+  "language": "python",
+  "keywords": [],
+  "is_private": false,
+  "enable_gpu": false,
+  "kernel_type": "notebook",
+  "dataset_sources": [],
+  "id": "tomliau33/learning-from-exploratory-tutorial-titanic"
+}

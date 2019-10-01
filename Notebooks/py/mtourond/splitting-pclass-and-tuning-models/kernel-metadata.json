@@ -1,0 +1,22 @@
+{
+  "competition_sources": [
+    "titanic"
+  ],
+  "id": "mtourond/splitting-pclass-and-tuning-models",
+  "language": "python",
+  "kernel_type": "notebook",
+  "dataset_sources": [],
+  "is_private": false,
+  "code_file": "splitting-pclass-and-tuning-models.ipynb",
+  "kernel_sources": [],
+  "enable_internet": false,
+  "enable_gpu": false,
+  "title": "Splitting Pclass and Tuning Models",
+  "id_no": 1902660,
+  "keywords": [
+    "beginner",
+    "data visualization",
+    "classification",
+    "feature engineering"
+  ]
+}

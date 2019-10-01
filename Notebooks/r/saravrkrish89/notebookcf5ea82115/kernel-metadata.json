@@ -1,0 +1,17 @@
+{
+  "id_no": 253719,
+  "is_private": false,
+  "kernel_type": "notebook",
+  "id": "saravrkrish89/notebookcf5ea82115",
+  "kernel_sources": [],
+  "code_file": "notebookcf5ea82115.ipynb",
+  "enable_internet": false,
+  "enable_gpu": false,
+  "language": "python",
+  "dataset_sources": [],
+  "title": "Notebookcf5ea82115",
+  "keywords": [],
+  "competition_sources": [
+    "titanic"
+  ]
+}

@@ -1,0 +1,20 @@
+{
+  "language": "python",
+  "code_file": "quick-eda-for-beginners.ipynb",
+  "id": "actuben/quick-eda-for-beginners",
+  "competition_sources": [
+    "titanic"
+  ],
+  "enable_internet": false,
+  "kernel_type": "notebook",
+  "id_no": 747198,
+  "kernel_sources": [],
+  "title": "Quick EDA for beginners ",
+  "dataset_sources": [],
+  "keywords": [
+    "eda",
+    "data visualization"
+  ],
+  "is_private": false,
+  "enable_gpu": false
+}

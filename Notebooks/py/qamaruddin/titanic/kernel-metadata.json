@@ -1,0 +1,23 @@
+{
+  "id": "qamaruddin/titanic",
+  "id_no": 712790,
+  "title": "Titanic",
+  "code_file": "titanic.ipynb",
+  "language": "python",
+  "kernel_type": "notebook",
+  "is_private": false,
+  "enable_gpu": true,
+  "enable_internet": false,
+  "keywords": [
+    "tutorial",
+    "beginner",
+    "data cleaning",
+    "classification",
+    "feature engineering"
+  ],
+  "dataset_sources": [],
+  "kernel_sources": [],
+  "competition_sources": [
+    "titanic"
+  ]
+}

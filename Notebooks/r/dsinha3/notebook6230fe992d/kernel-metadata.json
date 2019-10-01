@@ -1,0 +1,17 @@
+{
+  "kernel_type": "notebook",
+  "id_no": 242632,
+  "enable_internet": false,
+  "dataset_sources": [],
+  "kernel_sources": [],
+  "is_private": false,
+  "id": "dsinha3/notebook6230fe992d",
+  "competition_sources": [
+    "titanic"
+  ],
+  "language": "python",
+  "code_file": "notebook6230fe992d.ipynb",
+  "enable_gpu": false,
+  "keywords": [],
+  "title": "Notebook6230fe992d"
+}

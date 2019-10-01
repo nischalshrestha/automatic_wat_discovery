@@ -1,0 +1,17 @@
+{
+  "language": "r",
+  "kernel_type": "notebook",
+  "kernel_sources": [],
+  "code_file": "notebook4d6c283f41.irnb",
+  "id": "spagadala/notebook4d6c283f41",
+  "dataset_sources": [],
+  "id_no": 95018,
+  "title": "Notebookf24a10a556",
+  "is_private": false,
+  "enable_internet": false,
+  "keywords": [],
+  "enable_gpu": false,
+  "competition_sources": [
+    "titanic"
+  ]
+}

@@ -1,0 +1,21 @@
+{
+  "keywords": [
+    "beginner",
+    "classification",
+    "feature engineering"
+  ],
+  "language": "python",
+  "is_private": false,
+  "code_file": "prediction-of-titanic-disaster.ipynb",
+  "enable_gpu": false,
+  "competition_sources": [
+    "titanic"
+  ],
+  "enable_internet": false,
+  "id_no": 2134480,
+  "id": "manoj83/prediction-of-titanic-disaster",
+  "kernel_type": "notebook",
+  "title": "Prediction of Titanic disaster",
+  "dataset_sources": [],
+  "kernel_sources": []
+}

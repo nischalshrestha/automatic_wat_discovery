@@ -1,0 +1,17 @@
+{
+  "id": "comprakash/learning-ml-in-python-with-titanic-data",
+  "language": "python",
+  "kernel_sources": [],
+  "title": "Learning ML in Python with Titanic data",
+  "id_no": 232793,
+  "code_file": "learning-ml-in-python-with-titanic-data.ipynb",
+  "kernel_type": "notebook",
+  "is_private": false,
+  "keywords": [],
+  "competition_sources": [
+    "titanic"
+  ],
+  "enable_gpu": false,
+  "enable_internet": false,
+  "dataset_sources": []
+}

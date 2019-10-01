@@ -1,0 +1,17 @@
+{
+  "keywords": [],
+  "is_private": false,
+  "kernel_sources": [],
+  "title": "Titanic_EDA",
+  "id_no": 116404,
+  "enable_internet": false,
+  "competition_sources": [
+    "titanic"
+  ],
+  "dataset_sources": [],
+  "language": "r",
+  "code_file": "titanic-eda.irnb",
+  "id": "rpalsaxena/titanic-eda",
+  "enable_gpu": false,
+  "kernel_type": "notebook"
+}

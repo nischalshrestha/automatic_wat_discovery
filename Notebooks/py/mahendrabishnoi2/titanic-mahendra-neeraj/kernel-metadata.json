@@ -1,0 +1,17 @@
+{
+  "enable_internet": false,
+  "id_no": 672337,
+  "dataset_sources": [],
+  "keywords": [],
+  "code_file": "titanic-mahendra-neeraj.ipynb",
+  "competition_sources": [
+    "titanic"
+  ],
+  "id": "mahendrabishnoi2/titanic-mahendra-neeraj",
+  "language": "python",
+  "kernel_type": "notebook",
+  "enable_gpu": false,
+  "is_private": false,
+  "kernel_sources": [],
+  "title": "Titanic: Mahendra Neeraj"
+}

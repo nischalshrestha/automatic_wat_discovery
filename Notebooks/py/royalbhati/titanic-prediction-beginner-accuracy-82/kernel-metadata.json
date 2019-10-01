@@ -1,0 +1,17 @@
+{
+  "enable_gpu": true,
+  "title": "Titanic Prediction : Beginner(accuracy - 82+%)",
+  "id": "royalbhati/titanic-prediction-beginner-accuracy-82",
+  "kernel_type": "notebook",
+  "is_private": false,
+  "code_file": "titanic-prediction-beginner-accuracy-82.ipynb",
+  "language": "python",
+  "kernel_sources": [],
+  "id_no": 1019320,
+  "dataset_sources": [],
+  "enable_internet": false,
+  "keywords": [],
+  "competition_sources": [
+    "titanic"
+  ]
+}

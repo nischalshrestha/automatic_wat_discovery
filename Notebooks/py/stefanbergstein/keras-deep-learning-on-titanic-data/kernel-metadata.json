@@ -1,0 +1,20 @@
+{
+  "title": "Keras Deep Learning on Titanic data",
+  "enable_gpu": false,
+  "kernel_sources": [],
+  "is_private": false,
+  "id": "stefanbergstein/keras-deep-learning-on-titanic-data",
+  "id_no": 497227,
+  "enable_internet": false,
+  "dataset_sources": [],
+  "code_file": "keras-deep-learning-on-titanic-data.ipynb",
+  "language": "python",
+  "keywords": [
+    "beginner",
+    "deep learning"
+  ],
+  "kernel_type": "notebook",
+  "competition_sources": [
+    "titanic"
+  ]
+}

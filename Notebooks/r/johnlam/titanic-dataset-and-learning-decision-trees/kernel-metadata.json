@@ -1,0 +1,17 @@
+{
+  "code_file": "titanic-dataset-and-learning-decision-trees.irnb",
+  "competition_sources": [
+    "titanic"
+  ],
+  "enable_gpu": false,
+  "enable_internet": false,
+  "id_no": 161665,
+  "is_private": false,
+  "kernel_type": "notebook",
+  "language": "r",
+  "dataset_sources": [],
+  "id": "johnlam/titanic-dataset-and-learning-decision-trees",
+  "keywords": [],
+  "kernel_sources": [],
+  "title": "Titanic Dataset and Learning Decision Trees"
+}

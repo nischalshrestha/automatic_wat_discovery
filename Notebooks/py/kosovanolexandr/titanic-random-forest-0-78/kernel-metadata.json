@@ -1,0 +1,17 @@
+{
+  "kernel_sources": [],
+  "competition_sources": [
+    "titanic"
+  ],
+  "is_private": false,
+  "dataset_sources": [],
+  "keywords": [],
+  "code_file": "titanic-random-forest-0-78.ipynb",
+  "id": "kosovanolexandr/titanic-random-forest-0-78",
+  "language": "python",
+  "enable_internet": false,
+  "enable_gpu": false,
+  "id_no": 968049,
+  "kernel_type": "notebook",
+  "title": "Titanic - Random Forest [0.78]"
+}

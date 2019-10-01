@@ -1,0 +1,17 @@
+{
+  "id_no": 220798,
+  "kernel_type": "notebook",
+  "is_private": false,
+  "keywords": [],
+  "title": "One Solution to Titanic Survival Analysis ",
+  "code_file": "one-solution-to-titanic-survival-analysis.irnb",
+  "kernel_sources": [],
+  "competition_sources": [
+    "titanic"
+  ],
+  "enable_internet": false,
+  "dataset_sources": [],
+  "language": "r",
+  "enable_gpu": false,
+  "id": "chuanhuiliu/one-solution-to-titanic-survival-analysis"
+}

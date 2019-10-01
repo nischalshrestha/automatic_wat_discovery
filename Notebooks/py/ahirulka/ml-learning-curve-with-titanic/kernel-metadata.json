@@ -1,0 +1,17 @@
+{
+  "language": "python",
+  "enable_internet": false,
+  "id_no": 1794806,
+  "is_private": false,
+  "dataset_sources": [],
+  "id": "ahirulka/ml-learning-curve-with-titanic",
+  "code_file": "ml-learning-curve-with-titanic.ipynb",
+  "competition_sources": [
+    "titanic"
+  ],
+  "kernel_type": "notebook",
+  "title": "ML_Learning_Curve_with_Titanic",
+  "enable_gpu": false,
+  "kernel_sources": [],
+  "keywords": []
+}

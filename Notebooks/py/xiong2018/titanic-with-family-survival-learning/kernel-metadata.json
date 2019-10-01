@@ -1,0 +1,17 @@
+{
+  "competition_sources": [
+    "titanic"
+  ],
+  "enable_internet": false,
+  "language": "python",
+  "enable_gpu": false,
+  "kernel_sources": [],
+  "title": "Titanic with Family Survival Learning",
+  "code_file": "titanic-with-family-survival-learning.ipynb",
+  "kernel_type": "notebook",
+  "id": "xiong2018/titanic-with-family-survival-learning",
+  "dataset_sources": [],
+  "id_no": 1134101,
+  "is_private": false,
+  "keywords": []
+}

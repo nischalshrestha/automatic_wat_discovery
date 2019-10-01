@@ -1,0 +1,17 @@
+{
+  "competition_sources": [
+    "titanic"
+  ],
+  "id": "mahendrabishnoi2/titanic-last",
+  "kernel_sources": [],
+  "keywords": [],
+  "is_private": false,
+  "enable_gpu": false,
+  "code_file": "titanic-last.ipynb",
+  "language": "python",
+  "dataset_sources": [],
+  "id_no": 1094703,
+  "title": "Titanic Last",
+  "enable_internet": false,
+  "kernel_type": "notebook"
+}

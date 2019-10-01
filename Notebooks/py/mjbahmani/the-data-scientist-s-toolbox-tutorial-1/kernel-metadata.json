@@ -1,0 +1,23 @@
+{
+  "language": "python",
+  "title": "The Data Scientist\u2019s Toolbox Tutorial - 1",
+  "code_file": "the-data-scientist-s-toolbox-tutorial-1.ipynb",
+  "is_private": false,
+  "dataset_sources": [],
+  "kernel_sources": [],
+  "id": "mjbahmani/the-data-scientist-s-toolbox-tutorial-1",
+  "enable_internet": false,
+  "competition_sources": [
+    "titanic"
+  ],
+  "keywords": [
+    "tutorial",
+    "beginner",
+    "data cleaning",
+    "data visualization",
+    "starter code"
+  ],
+  "kernel_type": "notebook",
+  "enable_gpu": false,
+  "id_no": 1890271
+}

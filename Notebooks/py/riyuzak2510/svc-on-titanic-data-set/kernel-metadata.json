@@ -1,0 +1,17 @@
+{
+  "is_private": false,
+  "code_file": "svc-on-titanic-data-set.ipynb",
+  "title": "SVC on Titanic Data set",
+  "competition_sources": [
+    "titanic"
+  ],
+  "keywords": [],
+  "dataset_sources": [],
+  "id_no": 482073,
+  "language": "python",
+  "id": "riyuzak2510/svc-on-titanic-data-set",
+  "enable_gpu": false,
+  "kernel_type": "notebook",
+  "enable_internet": false,
+  "kernel_sources": []
+}

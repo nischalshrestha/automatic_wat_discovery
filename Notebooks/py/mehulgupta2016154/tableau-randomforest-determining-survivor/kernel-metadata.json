@@ -1,0 +1,17 @@
+{
+  "kernel_sources": [],
+  "competition_sources": [
+    "titanic"
+  ],
+  "id": "mehulgupta2016154/tableau-randomforest-determining-survivor",
+  "kernel_type": "notebook",
+  "enable_gpu": false,
+  "code_file": "tableau-randomforest-determining-survivor.ipynb",
+  "id_no": 1210246,
+  "enable_internet": false,
+  "is_private": false,
+  "title": "Tableau & RandomForest Determining Survivor",
+  "keywords": [],
+  "language": "python",
+  "dataset_sources": []
+}

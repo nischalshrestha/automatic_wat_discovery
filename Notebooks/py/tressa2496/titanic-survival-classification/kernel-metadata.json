@@ -1,0 +1,17 @@
+{
+  "id": "tressa2496/titanic-survival-classification",
+  "enable_gpu": false,
+  "kernel_type": "notebook",
+  "kernel_sources": [],
+  "title": "Titanic: survival classification",
+  "is_private": false,
+  "code_file": "titanic-survival-classification.ipynb",
+  "dataset_sources": [],
+  "language": "python",
+  "competition_sources": [
+    "titanic"
+  ],
+  "id_no": 1471043,
+  "keywords": [],
+  "enable_internet": false
+}

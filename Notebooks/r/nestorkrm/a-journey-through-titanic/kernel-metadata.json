@@ -1,0 +1,17 @@
+{
+  "code_file": "a-journey-through-titanic.irnb",
+  "keywords": [],
+  "kernel_sources": [],
+  "id_no": 160544,
+  "is_private": false,
+  "kernel_type": "notebook",
+  "enable_internet": false,
+  "title": "A Journey through Titanic",
+  "language": "r",
+  "competition_sources": [
+    "titanic"
+  ],
+  "id": "nestorkrm/a-journey-through-titanic",
+  "enable_gpu": false,
+  "dataset_sources": []
+}

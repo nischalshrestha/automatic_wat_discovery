@@ -1,0 +1,17 @@
+{
+  "is_private": false,
+  "keywords": [],
+  "kernel_type": "notebook",
+  "kernel_sources": [],
+  "enable_internet": false,
+  "code_file": "notebooke0761c0e71.ipynb",
+  "language": "python",
+  "id_no": 277747,
+  "enable_gpu": false,
+  "title": "Notebooke0761c0e71",
+  "id": "mrmangolo/notebooke0761c0e71",
+  "competition_sources": [
+    "titanic"
+  ],
+  "dataset_sources": []
+}

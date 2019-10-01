@@ -1,0 +1,17 @@
+{
+  "code_file": "titanic-performance-and-hyperparameter.ipynb",
+  "id": "radulfr/titanic-performance-and-hyperparameter",
+  "competition_sources": [
+    "titanic"
+  ],
+  "language": "python",
+  "keywords": [],
+  "enable_internet": false,
+  "is_private": false,
+  "enable_gpu": false,
+  "id_no": 2116967,
+  "title": "Titanic - Performance and Hyperparameter",
+  "kernel_sources": [],
+  "dataset_sources": [],
+  "kernel_type": "notebook"
+}

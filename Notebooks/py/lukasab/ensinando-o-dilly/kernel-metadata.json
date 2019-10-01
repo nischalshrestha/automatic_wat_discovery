@@ -1,0 +1,17 @@
+{
+  "title": "Ensinando o Dilly",
+  "id_no": 1333674,
+  "kernel_sources": [],
+  "id": "lukasab/ensinando-o-dilly",
+  "kernel_type": "notebook",
+  "code_file": "ensinando-o-dilly.ipynb",
+  "keywords": [],
+  "competition_sources": [
+    "titanic"
+  ],
+  "dataset_sources": [],
+  "enable_gpu": false,
+  "enable_internet": false,
+  "language": "python",
+  "is_private": false
+}

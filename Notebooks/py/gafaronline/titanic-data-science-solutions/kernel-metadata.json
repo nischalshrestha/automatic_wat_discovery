@@ -1,0 +1,17 @@
+{
+  "id": "gafaronline/titanic-data-science-solutions",
+  "code_file": "titanic-data-science-solutions.ipynb",
+  "kernel_type": "notebook",
+  "dataset_sources": [],
+  "enable_gpu": true,
+  "keywords": [],
+  "title": "Titanic Data Science Solutions",
+  "is_private": false,
+  "id_no": 1808008,
+  "enable_internet": false,
+  "language": "python",
+  "kernel_sources": [],
+  "competition_sources": [
+    "titanic"
+  ]
+}

@@ -1,0 +1,17 @@
+{
+  "enable_internet": false,
+  "language": "python",
+  "id_no": 446243,
+  "is_private": false,
+  "keywords": [],
+  "competition_sources": [
+    "titanic"
+  ],
+  "id": "pollux751/titanic-dataset-ml-to-predict-survivors",
+  "dataset_sources": [],
+  "title": "Titanic Dataset: ML to predict survivors",
+  "kernel_sources": [],
+  "code_file": "titanic-dataset-ml-to-predict-survivors.ipynb",
+  "kernel_type": "notebook",
+  "enable_gpu": false
+}

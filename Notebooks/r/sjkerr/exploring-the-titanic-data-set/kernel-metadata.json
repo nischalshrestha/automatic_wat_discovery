@@ -1,0 +1,17 @@
+{
+  "title": "Exploring the Titanic Data Set",
+  "enable_internet": false,
+  "id": "sjkerr/exploring-the-titanic-data-set",
+  "competition_sources": [
+    "titanic"
+  ],
+  "is_private": false,
+  "language": "r",
+  "kernel_sources": [],
+  "dataset_sources": [],
+  "keywords": [],
+  "id_no": 675053,
+  "enable_gpu": false,
+  "code_file": "exploring-the-titanic-data-set.irnb",
+  "kernel_type": "notebook"
+}

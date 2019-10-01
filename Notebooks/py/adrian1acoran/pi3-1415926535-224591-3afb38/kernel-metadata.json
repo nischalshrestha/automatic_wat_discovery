@@ -1,0 +1,26 @@
+{
+  "enable_internet": true,
+  "id": "adrian1acoran/pi3-1415926535-224591-3afb38",
+  "language": "python",
+  "title": "Pi3.1415926535... 224591 3afb38",
+  "kernel_sources": [],
+  "code_file": "pi3-1415926535-224591-3afb38.ipynb",
+  "kernel_type": "notebook",
+  "id_no": 1838109,
+  "enable_gpu": true,
+  "is_private": false,
+  "dataset_sources": [
+    "pytorch/vgg13bn",
+    "ramamet4/app-store-apple-data-set-10k-apps",
+    "lava18/google-play-store-apps",
+    "crawford/boston-public-schools",
+    "bigquery/patents",
+    "census/total-business-inventories-and-sales-data",
+    "san-francisco/sf-police-calls-for-service-and-incidents",
+    "theworldbank/education-statistics"
+  ],
+  "competition_sources": [
+    "titanic"
+  ],
+  "keywords": []
+}

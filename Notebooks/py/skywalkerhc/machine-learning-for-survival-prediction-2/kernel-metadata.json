@@ -1,0 +1,17 @@
+{
+  "competition_sources": [
+    "titanic"
+  ],
+  "kernel_type": "notebook",
+  "language": "python",
+  "id_no": 143600,
+  "title": "Machine Learning for Survival Prediction 2",
+  "keywords": [],
+  "is_private": false,
+  "kernel_sources": [],
+  "enable_gpu": false,
+  "id": "skywalkerhc/machine-learning-for-survival-prediction-2",
+  "dataset_sources": [],
+  "code_file": "machine-learning-for-survival-prediction-2.ipynb",
+  "enable_internet": false
+}

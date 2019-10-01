@@ -1,0 +1,17 @@
+{
+  "competition_sources": [
+    "titanic"
+  ],
+  "language": "python",
+  "enable_internet": false,
+  "keywords": [],
+  "enable_gpu": false,
+  "id": "yanfen/an-interactive-data-science-tutorial",
+  "kernel_sources": [],
+  "dataset_sources": [],
+  "is_private": false,
+  "title": "An Interactive Data Science Tutorial",
+  "kernel_type": "notebook",
+  "code_file": "an-interactive-data-science-tutorial.ipynb",
+  "id_no": 259950
+}

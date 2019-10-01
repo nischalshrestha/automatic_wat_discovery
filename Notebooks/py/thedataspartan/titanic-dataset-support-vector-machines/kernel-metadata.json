@@ -1,0 +1,17 @@
+{
+  "language": "python",
+  "is_private": false,
+  "title": "Titanic dataset - Support Vector Machines",
+  "enable_gpu": false,
+  "kernel_type": "notebook",
+  "kernel_sources": [],
+  "id_no": 1612495,
+  "dataset_sources": [],
+  "id": "thedataspartan/titanic-dataset-support-vector-machines",
+  "code_file": "titanic-dataset-support-vector-machines.ipynb",
+  "enable_internet": false,
+  "competition_sources": [
+    "titanic"
+  ],
+  "keywords": []
+}

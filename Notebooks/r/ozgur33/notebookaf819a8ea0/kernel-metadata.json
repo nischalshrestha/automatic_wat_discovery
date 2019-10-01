@@ -1,0 +1,17 @@
+{
+  "enable_gpu": false,
+  "id": "ozgur33/notebookaf819a8ea0",
+  "language": "r",
+  "title": "Notebookaf819a8ea0",
+  "id_no": 237661,
+  "competition_sources": [
+    "titanic"
+  ],
+  "dataset_sources": [],
+  "kernel_type": "notebook",
+  "enable_internet": false,
+  "code_file": "notebookaf819a8ea0.irnb",
+  "is_private": false,
+  "kernel_sources": [],
+  "keywords": []
+}

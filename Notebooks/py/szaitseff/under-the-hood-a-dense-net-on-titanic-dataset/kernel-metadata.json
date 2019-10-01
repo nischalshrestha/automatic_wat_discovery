@@ -1,0 +1,23 @@
+{
+  "id": "szaitseff/under-the-hood-a-dense-net-on-titanic-dataset",
+  "title": "Under the Hood: A Dense Net on Titanic Dataset",
+  "keywords": [
+    "beginner",
+    "data cleaning",
+    "model comparison",
+    "neural networks",
+    "binary classification"
+  ],
+  "is_private": false,
+  "id_no": 1261350,
+  "enable_gpu": false,
+  "language": "python",
+  "enable_internet": false,
+  "dataset_sources": [],
+  "kernel_sources": [],
+  "kernel_type": "notebook",
+  "competition_sources": [
+    "titanic"
+  ],
+  "code_file": "under-the-hood-a-dense-net-on-titanic-dataset.ipynb"
+}

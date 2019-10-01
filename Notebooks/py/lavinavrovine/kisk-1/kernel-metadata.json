@@ -1,0 +1,17 @@
+{
+  "kernel_type": "notebook",
+  "is_private": false,
+  "dataset_sources": [],
+  "id": "lavinavrovine/kisk-1",
+  "enable_gpu": false,
+  "kernel_sources": [],
+  "keywords": [],
+  "code_file": "kisk-1.ipynb",
+  "enable_internet": false,
+  "id_no": 2141721,
+  "language": "python",
+  "competition_sources": [
+    "titanic"
+  ],
+  "title": "KISK_1"
+}

@@ -1,0 +1,17 @@
+{
+  "id": "timbaney1989/another-titanic-kernel",
+  "language": "python",
+  "code_file": "another-titanic-kernel.ipynb",
+  "keywords": [],
+  "kernel_type": "notebook",
+  "enable_gpu": false,
+  "id_no": 306435,
+  "is_private": false,
+  "dataset_sources": [],
+  "enable_internet": false,
+  "title": "Another Titanic Kernel",
+  "kernel_sources": [],
+  "competition_sources": [
+    "titanic"
+  ]
+}

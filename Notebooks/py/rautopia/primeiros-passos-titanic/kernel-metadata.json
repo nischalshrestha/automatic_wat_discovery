@@ -1,0 +1,17 @@
+{
+  "title": "Primeiros passos Titanic",
+  "kernel_sources": [],
+  "language": "python",
+  "competition_sources": [
+    "titanic"
+  ],
+  "enable_gpu": false,
+  "enable_internet": false,
+  "code_file": "primeiros-passos-titanic.ipynb",
+  "id_no": 2055401,
+  "dataset_sources": [],
+  "id": "rautopia/primeiros-passos-titanic",
+  "keywords": [],
+  "is_private": false,
+  "kernel_type": "notebook"
+}

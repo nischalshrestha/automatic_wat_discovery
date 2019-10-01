@@ -1,0 +1,17 @@
+{
+  "enable_gpu": false,
+  "dataset_sources": [],
+  "language": "python",
+  "code_file": "titanic-classification-hw5.ipynb",
+  "keywords": [],
+  "competition_sources": [
+    "titanic"
+  ],
+  "kernel_sources": [],
+  "id": "afetisov/titanic-classification-hw5",
+  "kernel_type": "notebook",
+  "id_no": 470616,
+  "enable_internet": false,
+  "is_private": false,
+  "title": "Titanic classification (hw5)"
+}

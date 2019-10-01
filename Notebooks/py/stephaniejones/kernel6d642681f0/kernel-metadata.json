@@ -1,0 +1,17 @@
+{
+  "id_no": 1567090,
+  "is_private": false,
+  "kernel_type": "notebook",
+  "id": "stephaniejones/kernel6d642681f0",
+  "enable_gpu": false,
+  "enable_internet": false,
+  "kernel_sources": [],
+  "language": "python",
+  "code_file": "kernel6d642681f0.ipynb",
+  "keywords": [],
+  "title": "kernel6d642681f0",
+  "dataset_sources": [],
+  "competition_sources": [
+    "titanic"
+  ]
+}

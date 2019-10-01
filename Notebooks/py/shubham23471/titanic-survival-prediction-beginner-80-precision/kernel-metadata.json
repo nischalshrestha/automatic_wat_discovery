@@ -1,0 +1,23 @@
+{
+  "competition_sources": [
+    "titanic"
+  ],
+  "id_no": 350352,
+  "enable_gpu": false,
+  "enable_internet": false,
+  "title": "Titanic Survival Prediction|Beginner|80% Precision",
+  "kernel_type": "notebook",
+  "kernel_sources": [],
+  "dataset_sources": [],
+  "id": "shubham23471/titanic-survival-prediction-beginner-80-precision",
+  "keywords": [
+    "beginner",
+    "eda",
+    "data cleaning",
+    "data visualization",
+    "feature engineering"
+  ],
+  "is_private": false,
+  "language": "python",
+  "code_file": "titanic-survival-prediction-beginner-80-precision.ipynb"
+}

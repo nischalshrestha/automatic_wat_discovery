@@ -1,0 +1,17 @@
+{
+  "title": "Titanic Survival Accuracy  ",
+  "id": "deyayan9/titanic-survival-accuracy",
+  "is_private": false,
+  "dataset_sources": [],
+  "id_no": 1816383,
+  "code_file": "titanic-survival-accuracy.ipynb",
+  "kernel_sources": [],
+  "competition_sources": [
+    "titanic"
+  ],
+  "language": "python",
+  "keywords": [],
+  "enable_gpu": false,
+  "kernel_type": "notebook",
+  "enable_internet": false
+}

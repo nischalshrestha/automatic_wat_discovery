@@ -1,0 +1,23 @@
+{
+  "dataset_sources": [],
+  "is_private": false,
+  "language": "python",
+  "keywords": [
+    "bayesian statistics",
+    "tutorial",
+    "data visualization",
+    "naive bayes",
+    "starter code"
+  ],
+  "kernel_type": "notebook",
+  "id_no": 1797905,
+  "kernel_sources": [],
+  "competition_sources": [
+    "titanic"
+  ],
+  "enable_internet": false,
+  "title": "Naive Bayes Probabilistic ML - Titanic survival",
+  "id": "dimitreoliveira/naive-bayes-probabilistic-ml-titanic-survival",
+  "code_file": "naive-bayes-probabilistic-ml-titanic-survival.ipynb",
+  "enable_gpu": false
+}

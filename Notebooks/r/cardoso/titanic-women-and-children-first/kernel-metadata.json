@@ -1,0 +1,17 @@
+{
+  "title": "Titanic: Women and Children First!",
+  "code_file": "titanic-women-and-children-first.irnb",
+  "id_no": 90351,
+  "enable_gpu": false,
+  "language": "r",
+  "keywords": [],
+  "kernel_type": "notebook",
+  "kernel_sources": [],
+  "competition_sources": [
+    "titanic"
+  ],
+  "dataset_sources": [],
+  "id": "cardoso/titanic-women-and-children-first",
+  "enable_internet": false,
+  "is_private": false
+}

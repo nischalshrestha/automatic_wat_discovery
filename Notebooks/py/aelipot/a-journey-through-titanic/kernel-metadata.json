@@ -1,0 +1,17 @@
+{
+  "dataset_sources": [],
+  "kernel_sources": [],
+  "id": "aelipot/a-journey-through-titanic",
+  "keywords": [],
+  "title": "My 1st Pytanic script",
+  "code_file": "a-journey-through-titanic.ipynb",
+  "enable_gpu": false,
+  "is_private": false,
+  "competition_sources": [
+    "titanic"
+  ],
+  "id_no": 194215,
+  "language": "python",
+  "kernel_type": "notebook",
+  "enable_internet": false
+}

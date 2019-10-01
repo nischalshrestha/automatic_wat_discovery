@@ -1,0 +1,17 @@
+{
+  "code_file": "titanic-kernel.ipynb",
+  "id_no": 1519137,
+  "dataset_sources": [],
+  "title": "Titanic kernel",
+  "enable_internet": false,
+  "language": "python",
+  "kernel_type": "notebook",
+  "keywords": [],
+  "enable_gpu": false,
+  "id": "bercarucostin/titanic-kernel",
+  "is_private": false,
+  "competition_sources": [
+    "titanic"
+  ],
+  "kernel_sources": []
+}

@@ -1,0 +1,17 @@
+{
+  "enable_internet": false,
+  "id": "slg143/titanic-survived-prediction",
+  "title": "titanic survived prediction",
+  "code_file": "titanic-survived-prediction.ipynb",
+  "kernel_type": "notebook",
+  "id_no": 1267097,
+  "dataset_sources": [],
+  "language": "python",
+  "is_private": false,
+  "enable_gpu": false,
+  "kernel_sources": [],
+  "keywords": [],
+  "competition_sources": [
+    "titanic"
+  ]
+}

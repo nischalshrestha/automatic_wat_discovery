@@ -1,0 +1,17 @@
+{
+  "id": "cleuton/titanic-first-trial-with-keras-tensorflow",
+  "id_no": 381964,
+  "title": "Titanic: First trial with Keras / TensorFlow",
+  "code_file": "titanic-first-trial-with-keras-tensorflow.ipynb",
+  "language": "python",
+  "kernel_type": "notebook",
+  "is_private": false,
+  "enable_gpu": false,
+  "enable_internet": false,
+  "keywords": [],
+  "dataset_sources": [],
+  "kernel_sources": [],
+  "competition_sources": [
+    "titanic"
+  ]
+}

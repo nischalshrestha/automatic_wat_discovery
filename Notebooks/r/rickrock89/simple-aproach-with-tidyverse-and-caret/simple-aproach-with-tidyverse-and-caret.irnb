@@ -1,0 +1,233 @@
+{
+  "cells": [
+    {
+      "cell_type": "markdown",
+      "metadata": {
+        "_cell_guid": "06a7b2b1-edea-9bfa-ad6d-4705a202d125"
+      },
+      "source": [
+        "Package Loads"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "_cell_guid": "3d149a79-aace-ac94-e50e-1bc0791b27e1"
+      },
+      "outputs": [],
+      "source": [
+        "library(tidyverse)\n",
+        "library(caret)\n",
+        "library(randomForest)"
+      ]
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {
+        "_cell_guid": "85737f01-79b0-e0ba-39a7-68ff88f7bcd9"
+      },
+      "source": [
+        "Custons Functions for data prep and descritive analysis"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "_cell_guid": "2de964c7-ff71-6f02-1bc8-6b5cc8ca9b8c"
+      },
+      "outputs": [],
+      "source": [
+        "\n",
+        "SummarY_Vars <-function(VECTOR){\n",
+        "  Exit <- array(-99999,6)\n",
+        "  if(is.numeric(VECTOR))\n",
+        "  {\n",
+        "  Exit[1] <-  min(VECTOR,na.rm=TRUE)\n",
+        "  Exit[2] <-  max(VECTOR,na.rm=TRUE)\n",
+        "  Exit[3] <-  mean(VECTOR,na.rm=TRUE)\n",
+        "  Exit[4] <-  median(VECTOR,na.rm=TRUE)\n",
+        "  Exit[5] <-  sd(VECTOR,na.rm=TRUE)\n",
+        "  Exit[6] <-  sum(is.na(VECTOR))\n",
+        "  }\n",
+        "  return(Exit)\n",
+        "}\n",
+        "\n",
+        "Adj.NA_NUM <- function(VECTOR){\n",
+        "  Exit <- VECTOR\n",
+        "  if(sum(is.na(VECTOR))>0){\n",
+        "    Exit[is.na(Exit)] <- mean(Exit, na.rm=TRUE)\n",
+        "  }\n",
+        "  return(Exit)\n",
+        "}\n",
+        "\n",
+        "Adj.NA_NON_NUM <- function(VECTOR){\n",
+        "  Exit <- VECTOR\n",
+        "  if(sum(is.na(VECTOR))>0){\n",
+        "    \n",
+        "    Exit[is.na(Exit)] <- \"MISSING\"\n",
+        "  }\n",
+        "  return(as.factor(Exit))\n",
+        "}\n",
+        "\n",
+        "\n",
+        "IS_NOT_NUMERIC <- function(VECTOR){\n",
+        "  return(ifelse(is.numeric(VECTOR),FALSE,TRUE))\n",
+        "}\n",
+        "\n",
+        "\n",
+        "Adj_Var <- function(DATA){\n",
+        "  DATA_NUM <- DATA %>% \n",
+        "    purrr::keep(is.numeric) %>% \n",
+        "    purrr::map(Adj.NA_NUM)\n",
+        "  \n",
+        "  DATA_NON_NUM <- DATA %>% \n",
+        "    purrr::keep(IS_NOT_NUMERIC)%>% \n",
+        "    purrr::map(Adj.NA_NON_NUM)%>% \n",
+        "    as_tibble\n",
+        "  \n",
+        "  Exit <- cbind(DATA_NON_NUM,DATA_NUM)\n",
+        "  \n",
+        "  return(Exit)\n",
+        "}"
+      ]
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {
+        "_cell_guid": "68ea1bf7-1f09-7c36-b010-28d9c68b1206"
+      },
+      "source": [
+        "Read Table"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "_cell_guid": "d30c802e-7767-a74e-349d-c256b705bfcd"
+      },
+      "outputs": [],
+      "source": [
+        "Data <- read_delim(\"../input/train.csv\",\",\")\n",
+        "Data.test_out <- read_delim(\"../input/test.csv\",\",\")"
+      ]
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {
+        "_cell_guid": "ee3d6788-1ed9-9296-acb4-21dcd15193e8"
+      },
+      "source": [
+        "Descrive Analysis"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "_cell_guid": "332f878c-951f-6102-551b-f0609029aeb9"
+      },
+      "outputs": [],
+      "source": [
+        "Sum.Vars <- Data %>% \n",
+        "  map(SummarY_Vars) %>% \n",
+        "  as_tibble()\n",
+        "Sum.Vars"
+      ]
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {
+        "_cell_guid": "86c128b7-30c5-4bf3-83d3-6997e69485e4"
+      },
+      "source": [
+        "Split data into train and test"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "_cell_guid": "c641ad22-8009-f4b6-3c79-ff7c1f6c84db"
+      },
+      "outputs": [],
+      "source": [
+        "inTrain <- createDataPartition(y = Data$Survived, p = .7,list = FALSE)\n",
+        "\n",
+        "Data.Train <- Data[inTrain,] \n",
+        "Data.Test <- Data[-inTrain,] \n",
+        "\n",
+        "Data.Train_Adj <- Adj_Var(Data.Train)%>% \n",
+        "  mutate(Survived_F = as.factor(Survived)) %>% \n",
+        "  select(-Survived,-PassengerId,-Name,-Ticket,-Cabin) %>% \n",
+        "  select(Survived_F, everything())\n",
+        "\n",
+        "Data.Test_Adj <- Adj_Var(Data.Test)%>% \n",
+        "  mutate(Survived_F = as.factor(Survived)) %>% \n",
+        "  select(-Survived,-PassengerId,-Name,-Ticket,-Cabin) %>% \n",
+        "  select(Survived_F, everything())\n"
+      ]
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {
+        "_cell_guid": "ca6cb881-c26c-5825-4233-7cf947f915e1"
+      },
+      "source": [
+        "Train random farorest with caret "
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "_cell_guid": "74406b4a-f46a-468b-9dcc-2790aa217403"
+      },
+      "outputs": [],
+      "source": [
+        "cvCtrl <- trainControl(method = \"repeatedcv\",\n",
+        "                       repeats = 2,\n",
+        "                       savePredictions=\"final\")\n",
+        "\n",
+        "RfFit <- train(Survived_F ~ .,\n",
+        "                  data = Data.Train_Adj,\n",
+        "                  method = \"rf\",\n",
+        "                  tuneLength = 2,\n",
+        "                  trControl = cvCtrl)\n"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "_cell_guid": "1fc567be-9f47-5296-ca58-da9b99059e67"
+      },
+      "outputs": [],
+      "source": [
+        "Preds <- predict.train(RfFit,Data.Test_Adj)\n",
+        "confusionMatrix(Preds, Data.Test$Survived)"
+      ]
+    }
+  ],
+  "metadata": {
+    "_change_revision": 0,
+    "_is_fork": false,
+    "kernelspec": {
+      "display_name": "R",
+      "language": "R",
+      "name": "ir"
+    },
+    "language_info": {
+      "codemirror_mode": "r",
+      "file_extension": ".r",
+      "mimetype": "text/x-r-source",
+      "name": "R",
+      "pygments_lexer": "r",
+      "version": "3.4.0"
+    }
+  },
+  "nbformat": 4,
+  "nbformat_minor": 0
+}

@@ -1,0 +1,17 @@
+{
+  "code_file": "fork-of-titantic-gender-class-only.irnb",
+  "enable_internet": false,
+  "kernel_sources": [],
+  "title": "Fork of Titantic- Gender Class Only",
+  "kernel_type": "notebook",
+  "dataset_sources": [],
+  "keywords": [],
+  "id": "tgandhi/fork-of-titantic-gender-class-only",
+  "competition_sources": [
+    "titanic"
+  ],
+  "is_private": false,
+  "enable_gpu": false,
+  "id_no": 171317,
+  "language": "r"
+}

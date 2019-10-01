@@ -1,0 +1,17 @@
+{
+  "kernel_sources": [],
+  "id": "raghavmehta22/titanic-survivor-predictor",
+  "id_no": 1981032,
+  "enable_internet": false,
+  "competition_sources": [
+    "titanic"
+  ],
+  "title": "Titanic Survivor Predictor",
+  "keywords": [],
+  "language": "python",
+  "is_private": false,
+  "code_file": "titanic-survivor-predictor.ipynb",
+  "kernel_type": "notebook",
+  "enable_gpu": false,
+  "dataset_sources": []
+}

@@ -1,0 +1,17 @@
+{
+  "kernel_type": "notebook",
+  "title": "R Logistic Regression - Titanic",
+  "id": "noahbjohnson/r-logistic-regression-titanic",
+  "kernel_sources": [],
+  "enable_gpu": false,
+  "is_private": false,
+  "language": "r",
+  "code_file": "r-logistic-regression-titanic.irnb",
+  "competition_sources": [
+    "titanic"
+  ],
+  "id_no": 679543,
+  "enable_internet": false,
+  "dataset_sources": [],
+  "keywords": []
+}

@@ -1,0 +1,117 @@
+{
+  "cells": [
+    {
+      "cell_type": "markdown",
+      "metadata": {
+        "_cell_guid": "02e4c1e0-14c5-308c-006d-4caceea2e2bc"
+      },
+      "source": [
+        "Running documentation for the Titanic data set."
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "_cell_guid": "ac1499bb-0669-3641-2785-699fb6960d51"
+      },
+      "outputs": [],
+      "source": [
+        "# Import the required libraries\n",
+        "library(dplyr)\n",
+        "library(Hmisc)\n",
+        "library(magrittr)\n",
+        "\n",
+        "options(stringsAsFactors = FALSE)"
+      ]
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {
+        "_cell_guid": "5bee36d1-a2f9-6b33-384c-534f9074bc64"
+      },
+      "source": [
+        "Create a `data.frame` `full` containing both the training and test datasets."
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "_cell_guid": "f08da9ef-03a1-37a9-5c57-2a9b1902d528"
+      },
+      "outputs": [],
+      "source": [
+        "train <- read.csv(\"../input/train.csv\")\n",
+        "test <- read.csv(\"../input/test.csv\")\n",
+        "test$Survived <- NA\n",
+        "dataset <- c(\"train\", \"test\")\n",
+        "n <- c(nrow(train), nrow(test))\n",
+        "full <- rbind(train, test) %>%\n",
+        "    mutate(Dataset = as.factor(rep(dataset, n)),\n",
+        "           Sex = as.factor(Sex),\n",
+        "           Embarked = as.factor(gsub(\"^$\", \"S\", Embarked)))"
+      ]
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {
+        "_cell_guid": "5332dc55-ee11-7523-1983-b41f918530f5"
+      },
+      "source": [
+        "Impute age from the median."
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "_cell_guid": "4d5e0f1b-589b-2a5c-7afe-80882fe150ce"
+      },
+      "outputs": [],
+      "source": [
+        "full %<>% mutate(AgeImp = impute(Age))"
+      ]
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {
+        "_cell_guid": "d2493985-516d-9d0f-54e4-64c8008ea1c1"
+      },
+      "source": [
+        "Interestingly, the fact that a person's cabin has been reported includes information about whether they survived."
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "_cell_guid": "57d770c7-6bc9-f953-7b24-b86b0e655894"
+      },
+      "outputs": [],
+      "source": [
+        "full %<>% mutate(CabinKnown = as.numeric(nchar(Cabin) > 0))\n",
+        "xtabs(~ Survived + CabinKnown, full, subset = Dataset == \"train\")"
+      ]
+    }
+  ],
+  "metadata": {
+    "_change_revision": 0,
+    "_is_fork": false,
+    "kernelspec": {
+      "display_name": "R",
+      "language": "R",
+      "name": "ir"
+    },
+    "language_info": {
+      "codemirror_mode": "r",
+      "file_extension": ".r",
+      "mimetype": "text/x-r-source",
+      "name": "R",
+      "pygments_lexer": "r",
+      "version": "3.3.3"
+    }
+  },
+  "nbformat": 4,
+  "nbformat_minor": 0
+}

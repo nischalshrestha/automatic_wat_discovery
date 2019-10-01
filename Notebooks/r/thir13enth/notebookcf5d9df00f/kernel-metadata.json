@@ -1,0 +1,17 @@
+{
+  "dataset_sources": [],
+  "is_private": false,
+  "title": "Notebookcf5d9df00f",
+  "kernel_type": "notebook",
+  "kernel_sources": [],
+  "id_no": 204229,
+  "competition_sources": [
+    "titanic"
+  ],
+  "enable_internet": false,
+  "id": "thir13enth/notebookcf5d9df00f",
+  "code_file": "notebookcf5d9df00f.irnb",
+  "enable_gpu": false,
+  "keywords": [],
+  "language": "r"
+}

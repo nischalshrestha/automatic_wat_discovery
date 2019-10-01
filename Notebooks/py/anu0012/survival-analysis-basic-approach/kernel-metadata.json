@@ -1,0 +1,23 @@
+{
+  "id": "anu0012/survival-analysis-basic-approach",
+  "title": "Survival Analysis Basic Approach",
+  "code_file": "survival-analysis-basic-approach.ipynb",
+  "enable_gpu": false,
+  "enable_internet": false,
+  "keywords": [
+    "beginner",
+    "eda",
+    "data cleaning",
+    "data visualization",
+    "feature engineering"
+  ],
+  "competition_sources": [
+    "titanic"
+  ],
+  "dataset_sources": [],
+  "kernel_type": "notebook",
+  "is_private": false,
+  "language": "python",
+  "kernel_sources": [],
+  "id_no": 459782
+}

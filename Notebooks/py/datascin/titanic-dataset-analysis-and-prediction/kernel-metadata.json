@@ -1,0 +1,17 @@
+{
+  "keywords": [],
+  "title": "Titanic Dataset Analysis and Prediction",
+  "kernel_type": "notebook",
+  "language": "python",
+  "enable_internet": false,
+  "id": "datascin/titanic-dataset-analysis-and-prediction",
+  "is_private": false,
+  "competition_sources": [
+    "titanic"
+  ],
+  "code_file": "titanic-dataset-analysis-and-prediction.ipynb",
+  "kernel_sources": [],
+  "enable_gpu": false,
+  "id_no": 1896951,
+  "dataset_sources": []
+}

@@ -1,0 +1,17 @@
+{
+  "is_private": false,
+  "id": "farconada/titanic-third-round-stacking",
+  "competition_sources": [
+    "titanic"
+  ],
+  "kernel_sources": [],
+  "enable_gpu": false,
+  "language": "python",
+  "code_file": "titanic-third-round-stacking.ipynb",
+  "title": "Titanic third round: stacking",
+  "kernel_type": "notebook",
+  "enable_internet": false,
+  "keywords": [],
+  "id_no": 721970,
+  "dataset_sources": []
+}

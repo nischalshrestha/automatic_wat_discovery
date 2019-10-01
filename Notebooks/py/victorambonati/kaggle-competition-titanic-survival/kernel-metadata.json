@@ -1,0 +1,17 @@
+{
+  "keywords": [],
+  "dataset_sources": [],
+  "id": "victorambonati/kaggle-competition-titanic-survival",
+  "language": "python",
+  "id_no": 131046,
+  "enable_internet": false,
+  "competition_sources": [
+    "titanic"
+  ],
+  "code_file": "kaggle-competition-titanic-survival.ipynb",
+  "kernel_sources": [],
+  "is_private": false,
+  "title": "Kaggle Competition: Titanic survival",
+  "enable_gpu": false,
+  "kernel_type": "notebook"
+}

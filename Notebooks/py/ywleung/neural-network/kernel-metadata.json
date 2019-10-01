@@ -1,0 +1,21 @@
+{
+  "title": "Neural Network",
+  "kernel_sources": [],
+  "competition_sources": [
+    "titanic"
+  ],
+  "dataset_sources": [],
+  "id": "ywleung/neural-network",
+  "id_no": 1795077,
+  "kernel_type": "notebook",
+  "code_file": "neural-network.ipynb",
+  "enable_internet": false,
+  "enable_gpu": true,
+  "language": "python",
+  "is_private": false,
+  "keywords": [
+    "beginner",
+    "classification",
+    "deep learning"
+  ]
+}

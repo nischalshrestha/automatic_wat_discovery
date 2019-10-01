@@ -1,0 +1,17 @@
+{
+  "language": "python",
+  "kernel_type": "notebook",
+  "kernel_sources": [],
+  "is_private": false,
+  "code_file": "titanic-in-r.ipynb",
+  "enable_gpu": false,
+  "competition_sources": [
+    "titanic"
+  ],
+  "keywords": [],
+  "title": "Titanic in R",
+  "id_no": 276374,
+  "enable_internet": false,
+  "id": "evjrob/titanic-in-r",
+  "dataset_sources": []
+}

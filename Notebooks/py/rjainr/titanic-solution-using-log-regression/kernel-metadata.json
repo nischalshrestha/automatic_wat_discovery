@@ -1,0 +1,17 @@
+{
+  "enable_internet": false,
+  "competition_sources": [
+    "titanic"
+  ],
+  "is_private": false,
+  "enable_gpu": false,
+  "keywords": [],
+  "kernel_type": "notebook",
+  "id": "rjainr/titanic-solution-using-log-regression",
+  "title": "Titanic solution using log regression",
+  "id_no": 1415569,
+  "language": "python",
+  "code_file": "titanic-solution-using-log-regression.ipynb",
+  "dataset_sources": [],
+  "kernel_sources": []
+}

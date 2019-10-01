@@ -1,0 +1,17 @@
+{
+  "competition_sources": [
+    "titanic"
+  ],
+  "is_private": false,
+  "enable_internet": false,
+  "kernel_sources": [],
+  "dataset_sources": [],
+  "language": "python",
+  "id": "tvanesse/my-first-attempt-at-titanic",
+  "kernel_type": "notebook",
+  "id_no": 172692,
+  "keywords": [],
+  "enable_gpu": false,
+  "code_file": "my-first-attempt-at-titanic.ipynb",
+  "title": "My first attempt at Titanic"
+}

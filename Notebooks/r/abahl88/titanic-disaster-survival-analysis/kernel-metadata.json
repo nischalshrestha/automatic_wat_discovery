@@ -1,0 +1,17 @@
+{
+  "is_private": false,
+  "id_no": 268632,
+  "kernel_type": "notebook",
+  "enable_gpu": false,
+  "kernel_sources": [],
+  "id": "abahl88/titanic-disaster-survival-analysis",
+  "dataset_sources": [],
+  "code_file": "titanic-disaster-survival-analysis.irnb",
+  "enable_internet": false,
+  "title": "Titanic Disaster Survival Analysis ",
+  "language": "r",
+  "competition_sources": [
+    "titanic"
+  ],
+  "keywords": []
+}

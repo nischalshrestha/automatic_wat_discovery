@@ -1,0 +1,17 @@
+{
+  "is_private": false,
+  "title": "Titanic: Exploratory Data Analysis",
+  "kernel_type": "notebook",
+  "keywords": [],
+  "dataset_sources": [],
+  "enable_gpu": false,
+  "id": "richardpberry/titanic-exploratory-data-analysis",
+  "language": "python",
+  "code_file": "titanic-exploratory-data-analysis.ipynb",
+  "kernel_sources": [],
+  "competition_sources": [
+    "titanic"
+  ],
+  "enable_internet": false,
+  "id_no": 1367302
+}

@@ -1,0 +1,17 @@
+{
+  "title": "Titanic - with SVM",
+  "keywords": [],
+  "competition_sources": [
+    "titanic"
+  ],
+  "kernel_type": "notebook",
+  "id": "abhigrover/titanic-with-svm",
+  "is_private": false,
+  "kernel_sources": [],
+  "code_file": "titanic-with-svm.ipynb",
+  "dataset_sources": [],
+  "language": "python",
+  "enable_gpu": false,
+  "id_no": 744401,
+  "enable_internet": false
+}

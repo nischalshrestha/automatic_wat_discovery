@@ -1,0 +1,17 @@
+{
+  "title": "Getting started with Titanic",
+  "keywords": [],
+  "is_private": false,
+  "enable_internet": false,
+  "kernel_sources": [],
+  "id_no": 1645995,
+  "id": "pallabee/getting-started-with-titanic",
+  "competition_sources": [
+    "titanic"
+  ],
+  "dataset_sources": [],
+  "code_file": "getting-started-with-titanic.ipynb",
+  "enable_gpu": false,
+  "kernel_type": "notebook",
+  "language": "python"
+}

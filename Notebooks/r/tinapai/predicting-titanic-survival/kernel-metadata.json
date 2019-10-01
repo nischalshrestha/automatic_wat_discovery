@@ -1,0 +1,17 @@
+{
+  "is_private": false,
+  "id": "tinapai/predicting-titanic-survival",
+  "enable_gpu": false,
+  "competition_sources": [
+    "titanic"
+  ],
+  "kernel_sources": [],
+  "dataset_sources": [],
+  "keywords": [],
+  "id_no": 186343,
+  "kernel_type": "notebook",
+  "title": "Predicting Titanic Survival",
+  "language": "r",
+  "enable_internet": false,
+  "code_file": "predicting-titanic-survival.irnb"
+}

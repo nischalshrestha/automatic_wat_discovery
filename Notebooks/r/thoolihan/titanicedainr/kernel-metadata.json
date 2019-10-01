@@ -1,0 +1,17 @@
+{
+  "is_private": false,
+  "competition_sources": [
+    "titanic"
+  ],
+  "language": "r",
+  "kernel_type": "notebook",
+  "title": "TitanicEDAinR",
+  "id_no": 73480,
+  "enable_internet": false,
+  "keywords": [],
+  "dataset_sources": [],
+  "id": "thoolihan/titanicedainr",
+  "code_file": "titanicedainr.irnb",
+  "enable_gpu": false,
+  "kernel_sources": []
+}

@@ -1,0 +1,23 @@
+{
+  "id_no": 1913868,
+  "language": "python",
+  "keywords": [
+    "eda",
+    "data cleaning",
+    "data visualization",
+    "classification",
+    "feature engineering"
+  ],
+  "code_file": "titanic-tutorial-for-beginners.ipynb",
+  "competition_sources": [
+    "titanic"
+  ],
+  "kernel_sources": [],
+  "kernel_type": "notebook",
+  "is_private": false,
+  "dataset_sources": [],
+  "enable_internet": false,
+  "id": "andredanielvolschenk/titanic-tutorial-for-beginners",
+  "enable_gpu": false,
+  "title": "Titanic: Tutorial for beginners"
+}

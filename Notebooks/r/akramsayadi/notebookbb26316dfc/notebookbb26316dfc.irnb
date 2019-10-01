@@ -1,0 +1,175 @@
+{
+  "metadata": {
+    "kernelspec": {
+      "display_name": "R",
+      "language": "R",
+      "name": "ir"
+    },
+    "language_info": {
+      "codemirror_mode": "r",
+      "file_extension": ".r",
+      "mimetype": "text/x-r-source",
+      "name": "R",
+      "pygments_lexer": "r",
+      "version": "3.3.2"
+    }
+  },
+  "nbformat": 4,
+  "nbformat_minor": 0,
+  "cells": [
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "_cell_guid": "47122d46-ae12-0d42-b298-aa5bdc615582",
+        "_active": true
+      },
+      "outputs": [],
+      "source": "# Load packages\nlibrary('ggplot2') # visualization\nlibrary('ggthemes') # visualization\nlibrary('scales') # visualization\nlibrary('dplyr') # data manipulation\nlibrary('mice') # imputation\nlibrary('randomForest') # classification algorithm",
+      "execution_state": "idle"
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "_cell_guid": "edc33690-d40a-469c-3cc9-f8362f2f7c08",
+        "_active": false
+      },
+      "outputs": [],
+      "source": "train <- read.csv('../input/train.csv', stringsAsFactors = F)\ntest  <- read.csv('../input/test.csv', stringsAsFactors = F)\n\nfull  <- bind_rows(train, test) # bind training & test data\n\n# check data\nstr(full)",
+      "execution_state": "idle"
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "_cell_guid": "4f5548b5-2517-964f-b582-289c61337642",
+        "_active": false
+      },
+      "outputs": [],
+      "source": "# Grab title from passenger names\nfull$Title <- gsub('(.*, )|(\\\\..*)', '', full$Name)\n\n# Show title counts by sex\ntable(full$Sex, full$Title)",
+      "execution_state": "idle"
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "_cell_guid": "7905eeb7-613e-25ac-a4f0-6d820b962463",
+        "_active": false
+      },
+      "outputs": [],
+      "source": "# Titles with very low cell counts to be combined to \"rare\" level\nrare_title <- c('Dona', 'Lady', 'the Countess','Capt', 'Col', 'Don', \n                'Dr', 'Major', 'Rev', 'Sir', 'Jonkheer')\n\n# Also reassign mlle, ms, and mme accordingly\nfull$Title[full$Title == 'Mlle']        <- 'Miss' \nfull$Title[full$Title == 'Ms']          <- 'Miss'\nfull$Title[full$Title == 'Mme']         <- 'Mrs' \nfull$Title[full$Title %in% rare_title]  <- 'Rare Title'\n\n# Show title counts by sex again\ntable(full$Sex, full$Title)",
+      "execution_state": "idle"
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "_cell_guid": "01590e7e-6719-f33a-9ac6-01e48fc15e7e",
+        "_active": false
+      },
+      "outputs": [],
+      "source": "# Finally, grab surname from passenger name\nfull$Surname <- sapply(full$Name,  \n                      function(x) strsplit(x, split = '[,.]')[[1]][1])",
+      "execution_state": "idle"
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "_cell_guid": "b184ce28-3e07-8a5c-ad6f-9b775578bf5e",
+        "_active": false
+      },
+      "outputs": [],
+      "source": "cat(paste('We have <b>', nlevels(factor(full$Surname)), '</b> unique surnames. I would be interested to infer ethnicity based on surname --- another time.'))",
+      "execution_state": "idle"
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "_cell_guid": "aea05260-b832-1385-a746-49f88b37596c",
+        "_active": false
+      },
+      "outputs": [],
+      "source": "# Create a family size variable including the passenger themselves\nfull$Fsize <- full$SibSp + full$Parch + 1\n\n# Create a family variable \nfull$Family <- paste(full$Surname, full$Fsize, sep='_')",
+      "execution_state": "idle"
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "_cell_guid": "4769a0c4-f346-cad1-1547-f0891ec19f28",
+        "_active": false
+      },
+      "outputs": [],
+      "source": "# Use ggplot2 to visualize the relationship between family size & survival\nggplot(full[1:891,], aes(x = Fsize, fill = factor(Survived))) +\n  geom_bar(stat='count', position='dodge') +\n  scale_x_continuous(breaks=c(1:11)) +\n  labs(x = 'Family Size') +\n  theme_few()",
+      "execution_state": "idle"
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "_cell_guid": "4c424f92-0368-3925-faba-9f8f513ab87c",
+        "_active": false
+      },
+      "outputs": [],
+      "source": "# This variable appears to have a lot of missing values\nfull$Cabin[1:28]# Discretize family size\nfull$FsizeD[full$Fsize == 1] <- 'singleton'\nfull$FsizeD[full$Fsize < 5 & full$Fsize > 1] <- 'small'\nfull$FsizeD[full$Fsize > 4] <- 'large'\n\n# Show family size by survival using a mosaic plot\nmosaicplot(table(full$FsizeD, full$Survived), main='Family Size by Survival', shade=TRUE)",
+      "execution_state": "idle"
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "_cell_guid": "8b100998-4172-27fb-efb1-4d620f766016",
+        "_active": false
+      },
+      "outputs": [],
+      "source": "# This variable appears to have a lot of missing values\nfull$Cabin[1:28]",
+      "execution_state": "idle"
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "_cell_guid": "e56c860f-c0da-e482-0498-1a9d4bdc132f",
+        "_active": false
+      },
+      "outputs": [],
+      "source": "# The first character is the deck. For example:\nstrsplit(full$Cabin[4], NULL)[[1]]",
+      "execution_state": "idle"
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "_cell_guid": "e33a3ae9-e016-8a02-720e-06e4d7453a0a",
+        "_active": false
+      },
+      "outputs": [],
+      "source": "# Create a Deck variable. Get passenger deck A - F:\nfull$Deck<-factor(sapply(full$Cabin, function(x) strsplit(x, NULL)[[1]][1]))",
+      "execution_state": "idle"
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "_cell_guid": "88b0bba6-2352-2b86-0991-bb29c5dfde26",
+        "_active": false
+      },
+      "outputs": [],
+      "source": "# Passengers 62 and 830 are missing Embarkment\nfull[c(62, 830), 'Embarked']",
+      "execution_state": "idle"
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "_cell_guid": "6c574d79-6e4b-a973-878d-b495d49977d5",
+        "_active": false
+      },
+      "outputs": [],
+      "source": "cat(paste('We will infer their values for **embarkment** based on present data that we can imagine may be relevant: **passenger class** and **fare**. We see that they paid<b> $', full[c(62, 830), 'Fare'][[1]][1], '</b>and<b> $', full[c(62, 830), 'Fare'][[1]][2], '</b>respectively and their classes are<b>', full[c(62, 830), 'Pclass'][[1]][1], '</b>and<b>', full[c(62, 830), 'Pclass'][[1]][2], '</b>. So from where did they embark?'))",
+      "execution_state": "idle"
+    }
+  ]
+}

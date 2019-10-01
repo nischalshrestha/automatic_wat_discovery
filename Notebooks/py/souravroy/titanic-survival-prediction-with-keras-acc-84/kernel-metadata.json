@@ -1,0 +1,17 @@
+{
+  "keywords": [],
+  "title": "Titanic Survival Prediction with Keras (Acc-.84)",
+  "code_file": "titanic-survival-prediction-with-keras-acc-84.ipynb",
+  "enable_internet": false,
+  "competition_sources": [
+    "titanic"
+  ],
+  "kernel_type": "notebook",
+  "id_no": 263380,
+  "id": "souravroy/titanic-survival-prediction-with-keras-acc-84",
+  "language": "python",
+  "kernel_sources": [],
+  "enable_gpu": false,
+  "dataset_sources": [],
+  "is_private": false
+}

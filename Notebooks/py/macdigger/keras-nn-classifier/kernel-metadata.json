@@ -1,0 +1,17 @@
+{
+  "language": "python",
+  "kernel_sources": [],
+  "competition_sources": [
+    "titanic"
+  ],
+  "title": "keras-nn classifier",
+  "keywords": [],
+  "enable_gpu": false,
+  "enable_internet": false,
+  "kernel_type": "notebook",
+  "id_no": 263592,
+  "code_file": "keras-nn-classifier.ipynb",
+  "dataset_sources": [],
+  "is_private": false,
+  "id": "macdigger/keras-nn-classifier"
+}

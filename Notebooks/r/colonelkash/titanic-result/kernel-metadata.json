@@ -1,0 +1,17 @@
+{
+  "title": "Titanic Result",
+  "id_no": 1090738,
+  "enable_internet": false,
+  "competition_sources": [
+    "titanic"
+  ],
+  "code_file": "titanic-result.irnb",
+  "language": "r",
+  "is_private": false,
+  "id": "colonelkash/titanic-result",
+  "dataset_sources": [],
+  "kernel_sources": [],
+  "kernel_type": "notebook",
+  "enable_gpu": false,
+  "keywords": []
+}

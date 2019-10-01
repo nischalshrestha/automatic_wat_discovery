@@ -1,0 +1,17 @@
+{
+  "kernel_type": "notebook",
+  "id_no": 446490,
+  "keywords": [],
+  "dataset_sources": [],
+  "title": "Titanic: Machine Learning from Disaster - Beginner",
+  "competition_sources": [
+    "titanic"
+  ],
+  "code_file": "titanic-machine-learning-from-disaster-beginner.ipynb",
+  "is_private": false,
+  "kernel_sources": [],
+  "enable_gpu": false,
+  "id": "amarpreetsingh/titanic-machine-learning-from-disaster-beginner",
+  "enable_internet": false,
+  "language": "python"
+}

@@ -1,0 +1,17 @@
+{
+  "kernel_sources": [],
+  "is_private": false,
+  "competition_sources": [
+    "titanic"
+  ],
+  "enable_internet": false,
+  "kernel_type": "notebook",
+  "language": "python",
+  "title": "Titanic dataset analysis",
+  "enable_gpu": false,
+  "id": "gar283/titanic-dataset-analysis",
+  "dataset_sources": [],
+  "keywords": [],
+  "code_file": "titanic-dataset-analysis.ipynb",
+  "id_no": 661135
+}

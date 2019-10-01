@@ -1,0 +1,23 @@
+{
+  "id": "samsonqian/titanic-guide-with-sklearn-and-eda",
+  "is_private": false,
+  "code_file": "titanic-guide-with-sklearn-and-eda.ipynb",
+  "competition_sources": [
+    "titanic"
+  ],
+  "kernel_type": "notebook",
+  "dataset_sources": [],
+  "id_no": 1370221,
+  "enable_gpu": false,
+  "kernel_sources": [],
+  "title": "Titanic: Guide with sklearn and EDA",
+  "language": "python",
+  "enable_internet": false,
+  "keywords": [
+    "beginner",
+    "data cleaning",
+    "data visualization",
+    "classification",
+    "feature engineering"
+  ]
+}

@@ -1,0 +1,17 @@
+{
+  "id_no": 1837929,
+  "dataset_sources": [],
+  "competition_sources": [
+    "titanic"
+  ],
+  "enable_internet": false,
+  "is_private": false,
+  "kernel_type": "notebook",
+  "keywords": [],
+  "id": "llcmolal/titanic-by-a-beginner",
+  "enable_gpu": false,
+  "language": "python",
+  "kernel_sources": [],
+  "code_file": "titanic-by-a-beginner.ipynb",
+  "title": "Titanic by a beginner"
+}

@@ -1,0 +1,21 @@
+{
+  "kernel_type": "notebook",
+  "id": "fcostartistican/titanic-in-r-few-words-a-lot-of-plots",
+  "dataset_sources": [],
+  "language": "r",
+  "enable_gpu": false,
+  "enable_internet": false,
+  "id_no": 373844,
+  "kernel_sources": [],
+  "is_private": false,
+  "keywords": [
+    "tutorial",
+    "eda",
+    "data visualization"
+  ],
+  "competition_sources": [
+    "titanic"
+  ],
+  "title": "Titanic in R, few words, a lot of Plots",
+  "code_file": "titanic-in-r-few-words-a-lot-of-plots.irnb"
+}

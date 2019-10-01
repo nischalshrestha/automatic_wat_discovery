@@ -1,0 +1,20 @@
+{
+  "language": "python",
+  "id_no": 1239203,
+  "title": "Titanic survival prediction - 0.8(Top 16%)",
+  "kernel_sources": [],
+  "kernel_type": "notebook",
+  "dataset_sources": [],
+  "is_private": false,
+  "id": "vincentman0403/titanic-survival-prediction-0-8-top-16",
+  "enable_internet": false,
+  "enable_gpu": false,
+  "keywords": [
+    "beginner",
+    "binary classification"
+  ],
+  "code_file": "titanic-survival-prediction-0-8-top-16.ipynb",
+  "competition_sources": [
+    "titanic"
+  ]
+}

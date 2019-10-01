@@ -1,0 +1,17 @@
+{
+  "is_private": false,
+  "id_no": 445147,
+  "id": "nickzylove/ensemble-for-titanic",
+  "enable_internet": false,
+  "competition_sources": [
+    "titanic"
+  ],
+  "kernel_type": "notebook",
+  "title": "Ensemble for Titanic",
+  "dataset_sources": [],
+  "keywords": [],
+  "code_file": "ensemble-for-titanic.ipynb",
+  "enable_gpu": false,
+  "language": "python",
+  "kernel_sources": []
+}

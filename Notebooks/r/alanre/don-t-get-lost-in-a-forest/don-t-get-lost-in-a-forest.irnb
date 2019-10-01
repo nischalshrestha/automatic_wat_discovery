@@ -1,0 +1,560 @@
+{
+  "cells": [
+    {
+      "cell_type": "markdown",
+      "metadata": {
+        "_cell_guid": "cad46fb5-90f7-d22c-ce2c-4ba80c7d16f3"
+      },
+      "source": [
+        "## Intro\n",
+        "\n",
+        "This notebook is a full working implementation for the [\"Don't get lost in a forest\" post on rDisorder][1], please refer to it for more context and a better explanation of what we are doing.\n",
+        "\n",
+        "You can run it and check results, if you want to experiment a bit with code you can fork this notebook. The code is [on Github][2] as well if you prefer.\n",
+        "\n",
+        "\n",
+        "\n",
+        "\n",
+        "  [1]: http://www.rdisorder.eu/2016/12/18/dont-get-lost-in-a-forest/\n",
+        "  [2]: https://alanmarazzi.github.io/trees-forest/"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "_cell_guid": "12233868-0d89-2ac7-3385-2bdd11502002"
+      },
+      "outputs": [],
+      "source": [
+        "library(FFTrees)\n",
+        "library(party)\n",
+        "library(randomForest)\n",
+        "library(gbm)\n",
+        "library(dplyr)\n",
+        "library(intubate)"
+      ]
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {
+        "_cell_guid": "7d3caf11-99cc-ea95-0088-6aa3c391751d"
+      },
+      "source": [
+        "After loading required packages we can load the dataset directly from Kaggle datasets and take a look at the structure of the data."
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "_cell_guid": "569b6c58-5daa-653c-5eb2-26fbe3b00c03"
+      },
+      "outputs": [],
+      "source": [
+        "titanic <- read.csv(\"../input/train.csv\", stringsAsFactors = FALSE)\n",
+        "str(titanic)"
+      ]
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {
+        "_cell_guid": "7677bef5-97fa-1f5a-674b-cb1507546131"
+      },
+      "source": [
+        "The first thing that pops out is that columns names aren't lower case. We also want to convert 'sex' and 'embarked' to factors."
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "_cell_guid": "397a03be-de79-f505-ded9-4a0552a850c7"
+      },
+      "outputs": [],
+      "source": [
+        "names(titanic) <- tolower(names(titanic))\n",
+        "titanic$sex <- as.factor(titanic$sex)\n",
+        "titanic$embarked <- as.factor(titanic$embarked)"
+      ]
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {
+        "_cell_guid": "8dd4693d-a8d9-5abc-9228-aaa26f3d737d"
+      },
+      "source": [
+        "Let's take a look at the *age* variable."
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "_cell_guid": "5b020cb2-7336-5fc0-b706-ca7704e28a57"
+      },
+      "outputs": [],
+      "source": [
+        "ggplot2::ggplot(titanic, ggplot2::aes(age)) +\n",
+        "    ggplot2::geom_density(fill = \"blue\", alpha = .6)"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "_cell_guid": "ac955974-d772-ed1a-c05e-5c95fabbba7b"
+      },
+      "outputs": [],
+      "source": [
+        "mean(is.na(titanic$age))"
+      ]
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {
+        "_cell_guid": "d99d62c5-26d5-ebe2-d4f6-6dc1e12901f5"
+      },
+      "source": [
+        "Substitute NAs in the age variable using a linear regression."
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "_cell_guid": "eb39d394-b1da-1636-1d4e-047eee1c460b"
+      },
+      "outputs": [],
+      "source": [
+        "age_prediction <- lm(age ~ survived + pclass + fare, data = titanic)\n",
+        "summary(age_prediction)"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "_cell_guid": "a125a175-62b4-244b-4e3d-f4489ae4f89c"
+      },
+      "outputs": [],
+      "source": [
+        "titanic$age[is.na(titanic$age)] <- predict(age_prediction,\n",
+        "    newdata = titanic[is.na(titanic$age),])\n",
+        "\n",
+        "# Check NAs in age\n",
+        "sum(is.na(titanic$age))"
+      ]
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {
+        "_cell_guid": "2147c67d-5cc7-f199-6ff3-2f266794cfe1"
+      },
+      "source": [
+        "## Logistic Regression Benchmark\n",
+        "\n",
+        "We will use logistic regression as a benchmark for other models"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "_cell_guid": "4d144fc6-338d-277d-8bad-7b7aff16f3b2"
+      },
+      "outputs": [],
+      "source": [
+        "logi <- titanic %>% \n",
+        "    select(survived, pclass, sex, age, sibsp) %>% \n",
+        "    ntbt_glm(survived ~ ., family = binomial)\n",
+        "\n",
+        "summary(logi)"
+      ]
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {
+        "_cell_guid": "bfca6e83-bd0f-72c6-414e-64223bd5995f"
+      },
+      "source": [
+        "Test prediction power on training data."
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "_cell_guid": "f42085ea-0ab5-c4e9-23cf-16c0742e21c3"
+      },
+      "outputs": [],
+      "source": [
+        "logi_pred <- predict(logi, type = \"response\")\n",
+        "survivors_logi <- rep(0, nrow(titanic))\n",
+        "survivors_logi[logi_pred > .5] <- 1\n",
+        "table(model = survivors_logi, real = titanic$survived)"
+      ]
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {
+        "_cell_guid": "8a3aa7cb-a5a4-1a89-7f90-41545ecacda3"
+      },
+      "source": [
+        "Now load test data and predict who survived on test data."
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "_cell_guid": "77a6dcc9-9d1b-6745-d153-273eaac48efb"
+      },
+      "outputs": [],
+      "source": [
+        "test <- read.csv(\"../input/test.csv\", \n",
+        "    stringsAsFactors = FALSE, \n",
+        "    na.strings = \"\")\n",
+        "\n",
+        "names(test) <- tolower(names(test))\n",
+        "test$sex <- as.factor(test$sex)\n",
+        "\n",
+        "test_logi_pred <- predict(logi, test, type = \"response\")\n",
+        "surv_test_logi <- data.frame(PassengerId = test$passengerid, \n",
+        "    Survived = rep(0, nrow(test)))\n",
+        "\n",
+        "surv_test_logi$Survived[test_logi_pred > .5] <- 1\n",
+        "table(surv_test_logi$Survived)"
+      ]
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {
+        "_cell_guid": "098ddf91-1101-d67f-fde3-a88a2479d984"
+      },
+      "source": [
+        "## Fast and Frugal Trees\n",
+        "\n",
+        "These decision trees are very simple, but can be pretty tough to beat."
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "_cell_guid": "09a1726c-3576-c253-c59a-590872c7cdef"
+      },
+      "outputs": [],
+      "source": [
+        "fftitanic <- titanic %>% \n",
+        "    select(age, pclass, sex, sibsp, fare, survived) %>% \n",
+        "    ntbt(FFTrees, survived ~ .)\n",
+        "\n",
+        "# Plotting of the best tree\n",
+        "plot(fftitanic, \n",
+        "     main = \"Titanic\", \n",
+        "     decision.names = c(\"Not Survived\", \"Survived\"))"
+      ]
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {
+        "_cell_guid": "ecb730c6-460a-4485-609b-72bad83b8be2"
+      },
+      "source": [
+        "The model is so simple we can build a predictor out of 4 *ifelse* statements. Building a checklist from this model will feel like a breeze."
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "_cell_guid": "23bad98a-80ea-24bf-fe94-24f922c798be"
+      },
+      "outputs": [],
+      "source": [
+        "ffpred <- ifelse(test$sex != \"male\", 1,\n",
+        "                 ifelse(test$pclass > 2, 0,\n",
+        "                        ifelse(test$fare < 26.96, 0,\n",
+        "                               ifelse(test$age >= 21.36, 0, 1))))"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "_cell_guid": "ff019ca1-5edb-3d78-d9ba-355782a910d1"
+      },
+      "outputs": [],
+      "source": [
+        "# FFTree doesn't deal with NAs, I assign a 0 to them\n",
+        "ffpred[is.na(ffpred)] <- 0\n",
+        "ffpred <- data.frame(PassengerId = test$passengerid, Survived = ffpred)"
+      ]
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {
+        "_cell_guid": "b120e67f-e62f-5358-b65e-6ad63d6a5558"
+      },
+      "source": [
+        "## Inferential Trees\n",
+        "\n",
+        "Recursive inferential trees can be good and have a lot of parameters to control the result. The *party* package is full of functions and controls."
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "_cell_guid": "402057fe-a43a-3eb9-adfc-de78896b543b"
+      },
+      "outputs": [],
+      "source": [
+        "partyTitanic <- titanic %>% \n",
+        "    select(age, pclass, sex, sibsp, fare, survived) %>% \n",
+        "    ntbt(ctree, as.factor(survived) ~ .)\n",
+        "\n",
+        "# Plot the resulting tree\n",
+        "plot(partyTitanic, main = \"Titanic prediction\", type = \"simple\",\n",
+        "     inner_panel = node_inner(partyTitanic, \n",
+        "                              pval = FALSE),\n",
+        "     terminal_panel = node_terminal(partyTitanic,\n",
+        "                                    abbreviate = TRUE,\n",
+        "                                    digits = 1,\n",
+        "                                    fill = \"white\"))"
+      ]
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {
+        "_cell_guid": "7a759799-e488-3160-3442-f49665696732"
+      },
+      "source": [
+        "Training set result"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "_cell_guid": "def1dc3b-e996-bc2c-35de-c8d562cc445e"
+      },
+      "outputs": [],
+      "source": [
+        "train_party <- Predict(partyTitanic)\n",
+        "table(tree = train_party, real = titanic$survived)"
+      ]
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {
+        "_cell_guid": "d00176c0-6662-ecea-e90b-16b4fa9ce70e"
+      },
+      "source": [
+        "Prediction of test set"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "_cell_guid": "da7e589d-84cf-1fe6-3a64-5a714d7d5207"
+      },
+      "outputs": [],
+      "source": [
+        "party_pred <- Predict(partyTitanic, newdata = test)\n",
+        "party_pred <- as.numeric(party_pred) - 1\n",
+        "party_pred <- data.frame(PassengerId = test$passengerid, \n",
+        "                         Survived = party_pred)"
+      ]
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {
+        "_cell_guid": "c70ab50f-9a8d-02fd-904f-96f84dddb522"
+      },
+      "source": [
+        "## Bagging\n",
+        "\n",
+        "We grow many trees on different bootstraps of the training set."
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "_cell_guid": "ac634cbd-4c00-0216-f4b1-65e11f42b495"
+      },
+      "outputs": [],
+      "source": [
+        "set.seed(123)\n",
+        "\n",
+        "# Bagging model building\n",
+        "titanic_bag <- titanic %>% \n",
+        "    select(survived, age, pclass, sex, sibsp, fare, parch) %>% \n",
+        "    ntbt_randomForest(as.factor(survived) ~ ., mtry = 6)\n",
+        "\n",
+        "# Bagging and Random Forest don't deal with NAs\n",
+        "test$age[is.na(test$age)] <- median(test$age, na.rm = TRUE)\n",
+        "\n",
+        "# The usual test set prediction\n",
+        "bag_pred <- predict(titanic_bag, test)\n",
+        "\n",
+        "# Check if there are NAs in prediction and substitute them\n",
+        "sum(is.na(bag_pred))"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "_cell_guid": "4ca4d9b8-4919-a79b-ca2a-fb51e0341346"
+      },
+      "outputs": [],
+      "source": [
+        "bag_pred[is.na(bag_pred)] <- 1\n",
+        "bag_pred <- data.frame(PassengerId = test$passengerid, \n",
+        "                       Survived = bag_pred, \n",
+        "                       row.names = 1:length(bag_pred))"
+      ]
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {
+        "_cell_guid": "3068481e-703c-557e-16de-de1b23a834ea"
+      },
+      "source": [
+        "## Random Forest\n",
+        "\n",
+        "Basically the same as bagging, but we limit the number of predictors every tree can use"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "_cell_guid": "a0adb609-cfcb-9f41-5f50-1fda45d87285"
+      },
+      "outputs": [],
+      "source": [
+        "set.seed(456)\n",
+        "\n",
+        "# Random Forest model building\n",
+        "titanic_rf <- titanic %>% \n",
+        "    select(survived, age, pclass, sex, sibsp, fare, parch) %>% \n",
+        "    ntbt_randomForest(as.factor(survived) ~ ., mtry = 3, ntree = 5000)\n",
+        "\n",
+        "# Prediction\n",
+        "rf_pred <- predict(titanic_rf, test)\n",
+        "rf_pred[is.na(rf_pred)] <- 1\n",
+        "rf_pred <- data.frame(PassengerId = test$passengerid, Survived = rf_pred, row.names = 1:nrow(test))\n",
+        "\n",
+        "plot(titanic_rf)"
+      ]
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {
+        "_cell_guid": "3bc32f36-29d1-b402-c552-9e88d58b1cbd"
+      },
+      "source": [
+        "## Random Forest - bis\n",
+        "\n",
+        "The party package implementation of random Forest."
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "_cell_guid": "d593d36c-25d9-6560-7167-db2199d57270"
+      },
+      "outputs": [],
+      "source": [
+        "set.seed(415)\n",
+        "\n",
+        "# Use the cforest function from party package\n",
+        "titanic_rf_party <- titanic %>% \n",
+        "    select(survived, age, pclass, sex, sibsp, fare, parch) %>% \n",
+        "    ntbt(cforest, as.factor(survived) ~ ., \n",
+        "            controls = cforest_unbiased(ntree = 5000, mtry = 3))\n",
+        "\n",
+        "# Prediction of the test set\n",
+        "rf_party_pred <- predict(titanic_rf_party, \n",
+        "                         test, \n",
+        "                         OOB = TRUE, \n",
+        "                         type = \"response\")\n",
+        "rf_party_pred <- data.frame(PassengerId = test$passengerid, \n",
+        "                            Survived = rf_party_pred)"
+      ]
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {
+        "_cell_guid": "db91bbc6-5166-8702-1209-158cbf9f8a3c"
+      },
+      "source": [
+        "## Boosting\n",
+        "\n",
+        "Learn more slowly by growing subsequent trees."
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "_cell_guid": "40369e14-1b67-9b83-f102-7c223bc1b64d"
+      },
+      "outputs": [],
+      "source": [
+        "set.seed(999)\n",
+        "\n",
+        "# Boosting model building\n",
+        "titanic_boost <- titanic %>% \n",
+        "    select(survived, age, pclass, sex, sibsp, fare, parch) %>% \n",
+        "    ntbt(gbm, survived ~ .,\n",
+        "         distribution = \"bernoulli\",\n",
+        "         n.trees = 5000,\n",
+        "         interaction.depth = 3)\n",
+        "\n",
+        "# Boosting prediction\n",
+        "boost_pred <- predict(titanic_boost, test, n.trees = 5000, type = \"response\")\n",
+        "test_boost <- rep(0, nrow(test))\n",
+        "test_boost[boost_pred >= .5] <- 1\n",
+        "test_boost <- data.frame(PassengerId = test$passengerid,\n",
+        "                         Survived = test_boost)"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "_cell_guid": "97794615-04d5-7e35-aff6-cacdd4c5b36b"
+      },
+      "outputs": [],
+      "source": [
+        ""
+      ]
+    }
+  ],
+  "metadata": {
+    "_change_revision": 0,
+    "_is_fork": false,
+    "kernelspec": {
+      "display_name": "R",
+      "language": "R",
+      "name": "ir"
+    },
+    "language_info": {
+      "codemirror_mode": "r",
+      "file_extension": ".r",
+      "mimetype": "text/x-r-source",
+      "name": "R",
+      "pygments_lexer": "r",
+      "version": "3.3.2"
+    }
+  },
+  "nbformat": 4,
+  "nbformat_minor": 0
+}

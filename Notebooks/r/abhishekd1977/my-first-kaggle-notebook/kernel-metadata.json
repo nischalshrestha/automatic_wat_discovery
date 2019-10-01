@@ -1,0 +1,17 @@
+{
+  "title": "My First Kaggle Notebook",
+  "id_no": 248123,
+  "language": "r",
+  "id": "abhishekd1977/my-first-kaggle-notebook",
+  "kernel_sources": [],
+  "dataset_sources": [],
+  "enable_internet": false,
+  "keywords": [],
+  "code_file": "my-first-kaggle-notebook.irnb",
+  "kernel_type": "notebook",
+  "is_private": false,
+  "competition_sources": [
+    "titanic"
+  ],
+  "enable_gpu": false
+}

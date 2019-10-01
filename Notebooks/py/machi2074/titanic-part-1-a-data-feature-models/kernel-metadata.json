@@ -1,0 +1,17 @@
+{
+  "id_no": 223163,
+  "kernel_type": "notebook",
+  "enable_gpu": false,
+  "dataset_sources": [],
+  "competition_sources": [
+    "titanic"
+  ],
+  "title": "Titanic - Part 1-a: Data, Feature, Models",
+  "kernel_sources": [],
+  "enable_internet": false,
+  "code_file": "titanic-part-1-a-data-feature-models.ipynb",
+  "language": "python",
+  "keywords": [],
+  "id": "machi2074/titanic-part-1-a-data-feature-models",
+  "is_private": false
+}

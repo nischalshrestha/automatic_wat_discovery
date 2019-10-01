@@ -1,0 +1,20 @@
+{
+  "language": "python",
+  "code_file": "testing-different-models-with-titanic-dataa.ipynb",
+  "enable_gpu": false,
+  "title": "Testing Different Models with Titanic Dataa",
+  "id_no": 1885539,
+  "dataset_sources": [],
+  "enable_internet": false,
+  "id": "mustafanafees/testing-different-models-with-titanic-dataa",
+  "kernel_type": "notebook",
+  "keywords": [
+    "data cleaning",
+    "classification"
+  ],
+  "is_private": false,
+  "kernel_sources": [],
+  "competition_sources": [
+    "titanic"
+  ]
+}

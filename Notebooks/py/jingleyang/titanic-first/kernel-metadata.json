@@ -1,0 +1,17 @@
+{
+  "title": "titanic_first",
+  "id": "jingleyang/titanic-first",
+  "kernel_type": "notebook",
+  "kernel_sources": [],
+  "is_private": false,
+  "language": "python",
+  "dataset_sources": [],
+  "competition_sources": [
+    "titanic"
+  ],
+  "keywords": [],
+  "enable_gpu": false,
+  "id_no": 140388,
+  "code_file": "titanic-first.ipynb",
+  "enable_internet": false
+}

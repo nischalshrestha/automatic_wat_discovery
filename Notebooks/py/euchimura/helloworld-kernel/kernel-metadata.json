@@ -1,0 +1,17 @@
+{
+  "competition_sources": [
+    "titanic"
+  ],
+  "kernel_sources": [],
+  "id_no": 983990,
+  "code_file": "helloworld-kernel.ipynb",
+  "keywords": [],
+  "enable_gpu": false,
+  "is_private": false,
+  "id": "euchimura/helloworld-kernel",
+  "language": "python",
+  "enable_internet": false,
+  "kernel_type": "notebook",
+  "dataset_sources": [],
+  "title": "HelloWorld-Kernel"
+}

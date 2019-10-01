@@ -1,0 +1,17 @@
+{
+  "language": "python",
+  "keywords": [],
+  "kernel_sources": [],
+  "kernel_type": "notebook",
+  "dataset_sources": [],
+  "competition_sources": [
+    "titanic"
+  ],
+  "enable_internet": false,
+  "is_private": false,
+  "enable_gpu": false,
+  "title": "Onde est\u00e1 o meu arquivo de sa\u00edda?",
+  "code_file": "onde-est-o-meu-arquivo-de-sa-da.ipynb",
+  "id": "rautopia/onde-est-o-meu-arquivo-de-sa-da",
+  "id_no": 2093394
+}

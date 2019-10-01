@@ -1,0 +1,142 @@
+{
+  "cells": [
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "_cell_guid": "c799c306-90d2-161a-bfdc-477dc792a74f"
+      },
+      "outputs": [],
+      "source": [
+        "# This R environment comes with all of CRAN preinstalled, as well as many other helpful packages\n",
+        "# The environment is defined by the kaggle/rstats docker image: https://github.com/kaggle/docker-rstats\n",
+        "# For example, here's several helpful packages to load in \n",
+        "\n",
+        "library(ggplot2) # Data visualization\n",
+        "library(readr) # CSV file I/O, e.g. the read_csv function\n",
+        "library(ggthemes)\n",
+        "library(dplyr)\n",
+        "library(mice)\n",
+        "library(scales)\n",
+        "library(randomForest)\n",
+        "\n",
+        "# Input data files are available in the \"../input/\" directory.\n",
+        "# For example, running this (by clicking run or pressing Shift+Enter) will list the files in the input directory\n",
+        "\n",
+        "system(\"ls ../input\")\n",
+        "\n",
+        "# Any results you write to the current directory are saved as output."
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "_cell_guid": "ccf0ce9e-6bbb-733c-5f01-de141463fb6e"
+      },
+      "outputs": [],
+      "source": [
+        "train <- read.csv('../input/train.csv', stringsAsFactors = F)\n",
+        "test <- read.csv('../input/test.csv', stringsAsFactors = F)\n",
+        "\n",
+        "str(train)\n",
+        "str(test)\n"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "_cell_guid": "12328dd2-67bd-6a44-f8cf-6ec3627639f1"
+      },
+      "outputs": [],
+      "source": [
+        "full <- bind_rows(train,test) #bind_rows doesn't need same amount of variables, auto-adds and fills with NA\n",
+        "\n",
+        "str(full)"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "_cell_guid": "ba860468-516e-349e-10e6-6e54ce45ffab"
+      },
+      "outputs": [],
+      "source": [
+        "full$Title <- gsub('(.*, )|(\\\\..*)', '', full$Name)\n",
+        "\n",
+        "#creates new variable title, by using gsub, which takes Name by identifying patterns\n",
+        "#after it finds the surname, and what's after the period of the title, it replaces with what's left\n",
+        "#in this case, that is the title\n",
+        "\n",
+        "table(full$Sex, full$Title)"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "_cell_guid": "667bf9be-92f5-5466-72a6-0aeaf0f192c9"
+      },
+      "outputs": [],
+      "source": [
+        "rare <- c('Dona', 'Lady', 'the Countess', 'Capt', 'Col', 'Don', 'Dr', 'Major', 'Rev', 'Sir', 'Jonkheer') \n",
+        "\n",
+        "full$Title[full$Title == 'Mlle'] <- 'Miss'\n",
+        "full$Title[full$Title == 'Ms'] <- 'Miss'\n",
+        "full$Title[full$Title == 'Mme'] <- 'Mrs'\n",
+        "full$Title[full$Title %in% rare] <- 'Rare Title'\n",
+        "\n",
+        "table(full$Sex, full$Title)"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "_cell_guid": "6d34aad7-109d-9fc6-9d53-3f729d993060"
+      },
+      "outputs": [],
+      "source": [
+        "full$Fam.size <- full$SibSp + full$Parch + 1\n",
+        "\n",
+        "full$Family <- paste(full$Surname, full$Fam.size, sep='.....')\n",
+        "\n",
+        "ggplot(full[1:891,], aes(x = Fam.size, fill = factor(Survived))) +\n",
+        "      geom_bar(stat = 'count', position = 'dodge') +\n",
+        "      scale_x_continuous(breaks=c(1:11)) +\n",
+        "      labs(x = 'Family Size') +\n",
+        "      theme_few()"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "_cell_guid": "6af1bea4-09a8-6816-9576-854ecd87292a"
+      },
+      "outputs": [],
+      "source": ""
+    }
+  ],
+  "metadata": {
+    "_change_revision": 0,
+    "_is_fork": false,
+    "kernelspec": {
+      "display_name": "R",
+      "language": "R",
+      "name": "ir"
+    },
+    "language_info": {
+      "codemirror_mode": "r",
+      "file_extension": ".r",
+      "mimetype": "text/x-r-source",
+      "name": "R",
+      "pygments_lexer": "r",
+      "version": "3.3.3"
+    }
+  },
+  "nbformat": 4,
+  "nbformat_minor": 0
+}

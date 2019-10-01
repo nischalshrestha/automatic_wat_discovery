@@ -1,0 +1,17 @@
+{
+  "title": "Scikit-Learn ML from Start to Finish",
+  "competition_sources": [
+    "titanic"
+  ],
+  "kernel_sources": [],
+  "kernel_type": "notebook",
+  "enable_internet": false,
+  "keywords": [],
+  "is_private": false,
+  "enable_gpu": false,
+  "id": "cooshal/scikit-learn-ml-from-start-to-finish",
+  "dataset_sources": [],
+  "language": "python",
+  "id_no": 219366,
+  "code_file": "scikit-learn-ml-from-start-to-finish.ipynb"
+}

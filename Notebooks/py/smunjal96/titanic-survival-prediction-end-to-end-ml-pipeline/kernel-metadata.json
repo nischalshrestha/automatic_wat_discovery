@@ -1,0 +1,17 @@
+{
+  "enable_gpu": false,
+  "id_no": 210433,
+  "kernel_type": "notebook",
+  "title": "Titanic Survival Prediction End to End ML Pipeline",
+  "keywords": [],
+  "dataset_sources": [],
+  "id": "smunjal96/titanic-survival-prediction-end-to-end-ml-pipeline",
+  "is_private": false,
+  "language": "python",
+  "code_file": "titanic-survival-prediction-end-to-end-ml-pipeline.ipynb",
+  "competition_sources": [
+    "titanic"
+  ],
+  "enable_internet": false,
+  "kernel_sources": []
+}

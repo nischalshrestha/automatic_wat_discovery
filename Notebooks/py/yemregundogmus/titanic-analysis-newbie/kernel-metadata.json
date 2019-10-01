@@ -1,0 +1,17 @@
+{
+  "kernel_sources": [],
+  "kernel_type": "notebook",
+  "title": "Titanic Analysis(Newbie)",
+  "is_private": false,
+  "id": "yemregundogmus/titanic-analysis-newbie",
+  "dataset_sources": [],
+  "keywords": [],
+  "competition_sources": [
+    "titanic"
+  ],
+  "code_file": "titanic-analysis-newbie.ipynb",
+  "id_no": 818064,
+  "enable_gpu": false,
+  "language": "python",
+  "enable_internet": false
+}

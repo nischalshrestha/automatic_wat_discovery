@@ -1,0 +1,17 @@
+{
+  "code_file": "notebook39b954edd3.irnb",
+  "enable_gpu": false,
+  "enable_internet": false,
+  "id_no": 224881,
+  "is_private": false,
+  "kernel_type": "notebook",
+  "competition_sources": [
+    "titanic"
+  ],
+  "title": "Notebook39b954edd3",
+  "id": "guangtufan/notebook39b954edd3",
+  "dataset_sources": [],
+  "keywords": [],
+  "language": "r",
+  "kernel_sources": []
+}

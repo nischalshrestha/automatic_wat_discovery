@@ -1,0 +1,22 @@
+{
+  "is_private": false,
+  "enable_internet": false,
+  "enable_gpu": false,
+  "id": "kmahsan/using-naive-bayes",
+  "kernel_type": "notebook",
+  "competition_sources": [
+    "titanic"
+  ],
+  "title": "Using Naive Bayes ",
+  "keywords": [
+    "tutorial",
+    "classification",
+    "feature engineering",
+    "naive bayes"
+  ],
+  "code_file": "using-naive-bayes.ipynb",
+  "id_no": 702260,
+  "kernel_sources": [],
+  "dataset_sources": [],
+  "language": "python"
+}

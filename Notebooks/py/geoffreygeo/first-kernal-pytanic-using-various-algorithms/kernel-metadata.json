@@ -1,0 +1,23 @@
+{
+  "code_file": "first-kernal-pytanic-using-various-algorithms.ipynb",
+  "kernel_sources": [],
+  "language": "python",
+  "keywords": [
+    "tutorial",
+    "beginner",
+    "eda",
+    "data cleaning",
+    "data visualization"
+  ],
+  "is_private": false,
+  "enable_gpu": false,
+  "dataset_sources": [],
+  "id_no": 1030886,
+  "id": "geoffreygeo/first-kernal-pytanic-using-various-algorithms",
+  "competition_sources": [
+    "titanic"
+  ],
+  "title": "First Kernal,Pytanic using various Algorithms ",
+  "kernel_type": "notebook",
+  "enable_internet": false
+}

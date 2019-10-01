@@ -1,0 +1,17 @@
+{
+  "is_private": false,
+  "kernel_type": "notebook",
+  "title": "Titanic with Python",
+  "code_file": "notebook6b7f424ee9.irnb",
+  "enable_gpu": false,
+  "competition_sources": [
+    "titanic"
+  ],
+  "id_no": 97676,
+  "enable_internet": false,
+  "language": "r",
+  "id": "andybega/notebook6b7f424ee9",
+  "keywords": [],
+  "kernel_sources": [],
+  "dataset_sources": []
+}

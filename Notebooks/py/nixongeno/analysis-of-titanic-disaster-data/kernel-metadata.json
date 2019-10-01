@@ -1,0 +1,23 @@
+{
+  "language": "python",
+  "competition_sources": [
+    "titanic"
+  ],
+  "code_file": "analysis-of-titanic-disaster-data.ipynb",
+  "kernel_sources": [],
+  "dataset_sources": [],
+  "kernel_type": "notebook",
+  "is_private": false,
+  "enable_internet": false,
+  "enable_gpu": false,
+  "id": "nixongeno/analysis-of-titanic-disaster-data",
+  "keywords": [
+    "tutorial",
+    "beginner",
+    "data visualization",
+    "preprocessing",
+    "feature engineering"
+  ],
+  "title": " Analysis of Titanic Disaster Data",
+  "id_no": 567955
+}

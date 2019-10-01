@@ -1,0 +1,17 @@
+{
+  "dataset_sources": [],
+  "id": "pengchengchen/my-first-submission",
+  "kernel_type": "notebook",
+  "enable_gpu": false,
+  "keywords": [],
+  "is_private": false,
+  "kernel_sources": [],
+  "enable_internet": false,
+  "title": "My first submission",
+  "code_file": "my-first-submission.ipynb",
+  "id_no": 166651,
+  "competition_sources": [
+    "titanic"
+  ],
+  "language": "python"
+}

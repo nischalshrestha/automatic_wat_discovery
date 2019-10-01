@@ -1,0 +1,17 @@
+{
+  "competition_sources": [
+    "titanic"
+  ],
+  "title": "Titanic Machine Learning Problem",
+  "kernel_type": "notebook",
+  "id": "calldebanjan0/titanic-machine-learning-problem",
+  "id_no": 1502131,
+  "is_private": false,
+  "enable_gpu": false,
+  "code_file": "titanic-machine-learning-problem.ipynb",
+  "dataset_sources": [],
+  "kernel_sources": [],
+  "keywords": [],
+  "language": "python",
+  "enable_internet": false
+}

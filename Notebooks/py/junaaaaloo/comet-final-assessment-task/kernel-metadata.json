@@ -1,0 +1,17 @@
+{
+  "kernel_sources": [],
+  "is_private": false,
+  "enable_gpu": false,
+  "title": "COMET - Final Assessment Task",
+  "id": "junaaaaloo/comet-final-assessment-task",
+  "kernel_type": "notebook",
+  "code_file": "comet-final-assessment-task.ipynb",
+  "id_no": 297356,
+  "keywords": [],
+  "enable_internet": false,
+  "competition_sources": [
+    "titanic"
+  ],
+  "language": "python",
+  "dataset_sources": []
+}

@@ -1,0 +1,928 @@
+{
+  "cells": [
+    {
+      "cell_type": "markdown",
+      "metadata": {
+        "_cell_guid": "9e7dc5c9-c8e8-f945-cbd7-42469f36fee7"
+      },
+      "source": [
+        "Below, read and then combine the rows of the test and train data to make a complete data set (full). Finally, we get an overall glimpse of the combined data:"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "_cell_guid": "83ea9deb-2eda-c02d-6ebe-d8db36d5b994"
+      },
+      "outputs": [],
+      "source": [
+        "library('ggplot2') # visualization\n",
+        "library('ggthemes') # visualization\n",
+        "library('scales') # visualization\n",
+        "library('dplyr') # data manipulation\n",
+        "library('mice') # imputation\n",
+        "library('randomForest')\n",
+        "\n",
+        "# The train and test data is stored in the ../input directory\n",
+        "train <- read.csv(\"../input/train.csv\", stringsAsFactors = F)\n",
+        "test  <- read.csv(\"../input/test.csv\", stringsAsFactors = F)\n",
+        "combined  <- bind_rows(train, test) # bind training & test data\n",
+        "# We can inspect the train data. The results of this are printed in the log tab below\n",
+        "#-----------------------------------------\n",
+        "str(combined)"
+      ]
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {
+        "_cell_guid": "b3c3fa3e-a03c-b355-7b12-96509f76a1be"
+      },
+      "source": [
+        "I output a snapshot of the training data. We see there's a total of 12 variables and 1309 rows of data. We already see an NA in the **Age** variable. This will need to be investigated further, for there could be more in that variable as well as in other variables. The meaning of the variable names are shown below:\n",
+        "\n",
+        "***VARIABLE DESCRIPTIONS:***\n",
+        "\n",
+        " 1. survival   --     Survival \n",
+        "                (0 = No; 1 = Yes)\n",
+        " 2. pclass     --     Passenger Class\n",
+        "                (1 = 1st; 2 = 2nd; 3 = 3rd)\n",
+        " 3. name     --       Name\n",
+        " 4. sex      --       Sex\n",
+        " 5. age       --      Age\n",
+        " 6. sibsp      --     Number of Siblings/Spouses Aboard\n",
+        " 7. parch      --     Number of Parents/Children Aboard\n",
+        " 8. ticket     --     Ticket Number\n",
+        " 9. fare       --     Passenger Fare\n",
+        " 10. cabin     --      Cabin\n",
+        " 11. embarked  --   Port of Embarkation\n",
+        "                (C = Cherbourg; Q = Queenstown; S = Southampton)\n",
+        "\n",
+        "\n",
+        "***SPECIAL NOTES:***\n",
+        "Pclass is a proxy for socio-economic status (SES)\n",
+        " 1st ~ Upper; 2nd ~ Middle; 3rd ~ Lower\n",
+        "\n",
+        "Age is in Years; Fractional if Age less than One (1)\n",
+        " If the Age is Estimated, it is in the form xx.5\n",
+        "\n",
+        "With respect to the family relation variables (i.e. sibsp and parch)\n",
+        "some relations were ignored.  The following are the definitions used\n",
+        "for sibsp and parch.\n",
+        "\n",
+        "***Sibling***:  Brother, Sister, Stepbrother, or Stepsister of Passenger Aboard Titanic\n",
+        "\n",
+        "***Spouse***:   Husband or Wife of Passenger Aboard Titanic (Mistresses and Fiances Ignored)\n",
+        "\n",
+        "***Parent***:   Mother or Father of Passenger Aboard Titanic\n",
+        "\n",
+        "***Child***:    Son, Daughter, Stepson, or Stepdaughter of Passenger Aboard Titanic\n",
+        "\n",
+        "Other family relatives excluded from this study include cousins,\n",
+        "nephews/nieces, aunts/uncles, and in-laws.  Some children travelled\n",
+        "only with a nanny, therefore parch=0 for them.  As well, some\n",
+        "travelled with very close friends or neighbors in a village, however,\n",
+        "the definitions do not support such relations.\n",
+        "\n",
+        "--------------------------------------------------------------------------------------------------------------------------------------"
+      ]
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {
+        "_cell_guid": "550a8f7b-df81-039f-7a12-47c25d7b95f5"
+      },
+      "source": [
+        "We will now start to look for relationships. First, we will check to see if there is any relationship between **sex** and the number of people who survived. Before we do this though, we need to make sure that all the cells are filled for that variable. Sometimes, a cell might have a blank (\"\") instead of NA. We will fill all the blanks in the excel file with NA."
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "_cell_guid": "99ba134f-50bb-806e-b88d-ee195d4178e9"
+      },
+      "outputs": [],
+      "source": [
+        "combined[combined==\"\"]<-NA"
+      ]
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {
+        "_cell_guid": "9f2fbcc1-b3fb-0e1a-284c-3df8f1e3a782"
+      },
+      "source": [
+        "Now that all the blank cells have NA, whenever we are working with a particular variable, we can easily check for empty cells corresponding to that variable before we proceed with any sort of analysis. "
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "_cell_guid": "f8f483d9-838d-1022-0640-dabb6cfae1f2"
+      },
+      "outputs": [],
+      "source": [
+        "sum(is.na(combined$Sex))"
+      ]
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {
+        "_cell_guid": "68441cc4-6699-5bc2-495d-00403940c04f"
+      },
+      "source": [
+        "No empty cells, great! Let's now check to see if there is a relationship between **Sex** and number of people who survived:"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "_cell_guid": "ecf031fd-d234-4420-e4bf-b78145229200"
+      },
+      "outputs": [],
+      "source": [
+        "#amount of male compared to female\n",
+        "ggplot(combined[1:891,], aes(x = Sex, fill = factor(Survived))) +\n",
+        "  geom_bar(stat='count', position='dodge') +\n",
+        "  scale_x_discrete(breaks=c('female','male')) +\n",
+        "  labs(x = 'Sex') +\n",
+        "  theme_few()"
+      ]
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {
+        "_cell_guid": "5b955cde-8b09-d03f-e588-68f70ca480bd"
+      },
+      "source": [
+        "Seems like there is such a relationship. It seems more females survived, even though there were more males than females. Now let's see if there's a relationship between the **Embarked** and the amount of people who survived. Again, before we do this, let's see if there are any empty cells in **Embarked**:"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "_cell_guid": "06d439f7-4a07-a6f4-e8ea-b6b528f82df4"
+      },
+      "outputs": [],
+      "source": [
+        "sum(is.na(combined$Embarked))"
+      ]
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {
+        "_cell_guid": "c223dacd-aa0e-d206-c46c-0acb65651cab"
+      },
+      "source": [
+        "Seems like we got 2 empty cells. We'll have to do some work to fill those in. We'll have to make an educated guess, but we need to know what their **passengerId** s are:"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "_cell_guid": "e76d0e69-3e90-fc79-74a0-e59cf1a30a04"
+      },
+      "outputs": [],
+      "source": [
+        "filter(combined, is.na(Embarked))"
+      ]
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {
+        "_cell_guid": "e144f42d-aac4-c69b-417d-871f5a5febb4"
+      },
+      "source": [
+        "Cool, so we see that they are **62** and **830**. From the table above, we see that they payed **$80** and they are both of **class 1**. Let's do a box plot of **Fare** as a function of **Embarked** for each class."
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "_cell_guid": "d326c469-28a6-9d5b-a2b0-d62b6e0a408f"
+      },
+      "outputs": [],
+      "source": [
+        "# Get rid of our missing passenger IDs\n",
+        "embark_fare <- combined %>%\n",
+        "  filter(PassengerId != 62 & PassengerId != 830)\n",
+        "\n",
+        "# Use ggplot2 to visualize embarkment, passenger class, & median fare\n",
+        "ggplot(embark_fare, aes(x = Embarked, y = Fare, fill = factor(Pclass))) +\n",
+        "  geom_boxplot() +\n",
+        "  geom_hline(aes(yintercept=80), \n",
+        "    colour='red', linetype='dashed', lwd=2) +\n",
+        "  scale_y_continuous(labels=dollar_format()) +\n",
+        "  theme_few()"
+      ]
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {
+        "_cell_guid": "ade4ac4a-80ff-c0d4-4f5a-d9852e927c85"
+      },
+      "source": [
+        "The red box is for 1st class and the red dotted line represents **$80$**, and as you can see, the red box at **C** best engulfs the red line, so both passengers most likely embarked from **C**. We can thus fill in the embarkment information:"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "_cell_guid": "4914a0e4-7e58-64ea-1e63-be1b35f4c5e9"
+      },
+      "outputs": [],
+      "source": [
+        "# Since their fare was $80 for 1st class, they most likely embarked from 'C'\n",
+        "combined$Embarked[c(62, 830)] <- 'C'"
+      ]
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {
+        "_cell_guid": "136d0922-47b2-68ac-0807-4c20e6e47472"
+      },
+      "source": [
+        "Now we can check if ones survival depends on where you embarked from:"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "_cell_guid": "19645632-a1f2-b10e-f288-cc920d449482"
+      },
+      "outputs": [],
+      "source": [
+        "#amount of male compared to female\n",
+        "ggplot(combined[1:891,], aes(x = Embarked, fill = factor(Survived))) +\n",
+        "  geom_bar(stat='count', position='dodge') +\n",
+        "  scale_x_discrete(breaks=c('C','Q','S')) +\n",
+        "  labs(x = 'Embarked') +\n",
+        "  theme_few()"
+      ]
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {
+        "_cell_guid": "6594035d-6a67-474a-93dd-4a4c91363d54"
+      },
+      "source": [
+        "As you can see, you stand a better chance if you embarked from **C**. Now what about passenger class? Does survival dependent on **Pclass**? Let's find out, but as usual, we'll check to make sure there's no blank space:"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "_cell_guid": "b10b28b2-7d25-c81b-58ee-bf77f3001836"
+      },
+      "outputs": [],
+      "source": [
+        "sum(is.na(combined$Pclass))"
+      ]
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {
+        "_cell_guid": "1414838d-9032-dd75-3100-d66545c64172"
+      },
+      "source": [
+        "Ok, so we don't have any blank space, let's now see how things look for **Pclass**:"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "_cell_guid": "c9e4958b-9e7d-d9f2-3bfa-f1a69e3e1078"
+      },
+      "outputs": [],
+      "source": [
+        "#amount of male compared to female\n",
+        "ggplot(combined[1:891,], aes(x = Pclass, fill = factor(Survived))) +\n",
+        "  geom_bar(stat='count', position='dodge') +\n",
+        "  scale_x_continuous(breaks=c(1:3)) +\n",
+        "  labs(x = 'Passenger Class') +\n",
+        "  theme_few()"
+      ]
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {
+        "_cell_guid": "6fb63467-8d67-e80e-4f7f-2291c1764e5e"
+      },
+      "source": [
+        "As you can see, if you boarded 1st class, you stood a better chance of survival. Now it wouldn't be a bad idea to look at the whole family and see if larger families tend to survive compared with smaller families. We'll have to create a family variable:"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "_cell_guid": "c877eadb-0b67-4505-f276-094b0fc1e2f6"
+      },
+      "outputs": [],
+      "source": [
+        "# Create a family size variable\n",
+        "combined$FamSize <- combined$SibSp + combined$Parch + 1"
+      ]
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {
+        "_cell_guid": "01546118-85b3-9ff2-9f6d-987e8b289c4a"
+      },
+      "source": [
+        "Now let's do a plot to find out the effect of family size:"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "_cell_guid": "db0251ba-642f-7a49-6374-e6b0075d9b5b"
+      },
+      "outputs": [],
+      "source": [
+        "# Use ggplot2 to visualize the relationship between family size & survival\n",
+        "ggplot(combined[1:891,], aes(x = FamSize, fill = factor(Survived))) +\n",
+        "  geom_bar(stat='count', position='dodge') +\n",
+        "  scale_x_continuous(breaks=c(1:11)) +\n",
+        "  labs(x = 'Family Size') +\n",
+        "  theme_few()"
+      ]
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {
+        "_cell_guid": "d5828aa5-3315-2460-b658-576ac20dc3d5"
+      },
+      "source": [
+        "We can see that a family size of **2** to **4** stood a better chance of survival. Below or above were less likely to survive. Hence, if your family is too small (size **1**), then you would probably have died, too large (bigger than **4**), then you probably would have died. \n",
+        "\n",
+        "Next we'll check the survival information in relation to the **Fare**. We first have to check to see if there is any empty cell again:"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "_cell_guid": "801de4eb-e668-dfd8-7f58-7e935469345b"
+      },
+      "outputs": [],
+      "source": [
+        "sum(is.na(combined$Fare))"
+      ]
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {
+        "_cell_guid": "4f5dfdb5-6318-9fbc-86d3-81e6ead1b264"
+      },
+      "source": [
+        "We see that only 1 is empty. So let's see which one that is:"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "_cell_guid": "93f2fcde-7565-f692-d972-4e149b2eebb0"
+      },
+      "outputs": [],
+      "source": [
+        "filter(combined, is.na(Fare))"
+      ]
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {
+        "_cell_guid": "1e90a85e-2459-15c4-dfb7-50f0c5f8d4de"
+      },
+      "source": [
+        "Now let's do some work to rectify this. We observe from the above table that it is a **class 3** passenger entering from embarkment **S**. We will use this information to look at other passengers in the same class and embarkment:"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "_cell_guid": "074232f6-a873-b35f-d8fa-67b6f74e9171"
+      },
+      "outputs": [],
+      "source": [
+        "ggplot(combined[combined$Pclass == '3' & combined$Embarked == 'S', ], \n",
+        "  aes(x = Fare)) +\n",
+        "  geom_density(fill = '#99d6ff', alpha=0.4) + \n",
+        "  geom_vline(aes(xintercept=median(Fare, na.rm=T)),\n",
+        "    colour='red', linetype='dashed', lwd=1) +\n",
+        "  scale_x_continuous(labels=dollar_format()) +\n",
+        "  theme_few()"
+      ]
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {
+        "_cell_guid": "2adc7bfd-e4e4-fb18-1493-09c6125c1cbf"
+      },
+      "source": [
+        "The red dotted line above is at the median given below:"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "_cell_guid": "9cd2f95d-e60e-3db7-0541-25268cc32cb7"
+      },
+      "outputs": [],
+      "source": [
+        "median(combined[combined$Pclass == '3' & combined$Embarked == 'S', ]$Fare, na.rm = TRUE)"
+      ]
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {
+        "_cell_guid": "6244c37e-239c-dde5-246b-6c98c4b99ce1"
+      },
+      "source": [
+        "We'll use this for **1044**:"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "_cell_guid": "c3faa87d-c6d7-23be-a47f-e00038f7e985"
+      },
+      "outputs": [],
+      "source": [
+        "# Replace missing fare value with median fare for class/embarkment\n",
+        "combined$Fare[1044] <- median(combined[combined$Pclass == '3' & combined$Embarked == 'S', ]$Fare, na.rm = TRUE)"
+      ]
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {
+        "_cell_guid": "2771e964-9d3e-cab2-d880-760dbfa7d83e"
+      },
+      "source": [
+        "Now we'll visualize the data for **Fare**:"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "_cell_guid": "865b0b79-9ed6-39f3-0c70-57cca39ea337"
+      },
+      "outputs": [],
+      "source": [
+        "# Use ggplot2 to visualize the relationship between fare & survival\n",
+        "# First we'll look at the relationship between age & survival\n",
+        "ggplot(combined[1:891,], aes(Fare, fill = factor(Survived))) + \n",
+        "  geom_histogram(binwidth = 6) + \n",
+        "  facet_grid(.~Sex) + \n",
+        "  theme_few()"
+      ]
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {
+        "_cell_guid": "2f204c69-aaf1-7371-ce3c-36e35c865b3e"
+      },
+      "source": [
+        "If you were female, it seems your chances of survival would be better the more you pay, but if you were male, the result reverses - your chances of survival were less the more you payed. Now what about age? Let's first see if there are any missing ages:"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "_cell_guid": "796c4187-7e23-0954-402f-858a50844b05"
+      },
+      "outputs": [],
+      "source": [
+        "sum(is.na(combined$Age))"
+      ]
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {
+        "_cell_guid": "cc645725-195b-6009-59d5-f10d20aa8c45"
+      },
+      "source": [
+        "Yes there are, **263** in fact. Let's try to make an educated guess of the missing values. We'll have to do some work for this. We'll be doing some predictions of the ages based on some other variables. We'll do this two ways - **mice** and **rpart**, and then we'll see if there was much of a difference. First we'll start with **mice**, so we need to call the **mice** package. We'll use certain variables in the imputation. We'll have to create some of these variables:"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "_cell_guid": "fb57fe72-4dc4-b394-2ee6-40a33ff5f033"
+      },
+      "outputs": [],
+      "source": [
+        "# Grab title from passenger names\n",
+        "combined$Title <- gsub('(.*, )|(\\\\..*)', '', combined$Name)\n",
+        "\n",
+        "# Titles with very low cell counts to be combined to \"rare\" level\n",
+        "rare_title <- c('Dona', 'Lady', 'the Countess','Capt', 'Col', 'Don', \n",
+        "                'Dr', 'Major', 'Rev', 'Sir', 'Jonkheer')\n",
+        "\n",
+        "# Also reassign mlle, ms, and mme accordingly\n",
+        "combined$Title[combined$Title == 'Mlle']        <- 'Miss' \n",
+        "combined$Title[combined$Title == 'Ms']          <- 'Miss'\n",
+        "combined$Title[combined$Title == 'Mme']         <- 'Mrs' \n",
+        "combined$Title[combined$Title %in% rare_title]  <- 'Rare_Title'\n",
+        "\n",
+        "# Show title counts by sex again\n",
+        "table(combined$Sex, combined$Title)"
+      ]
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {
+        "_cell_guid": "85c9c818-d899-a184-0e7d-2fe359988a3d"
+      },
+      "source": [
+        "Basically, what is done here is that the title of each person are looked at and grouped. The ones that are in small amounts are grouped as rare, while the others are grouped according to how their title translates across languages. For example, 'Mlle' is 'Miss' in English, etc. The next thing we do is to get all the **Surnames** and create a family variable:"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "_cell_guid": "0cf75c76-b666-bdff-5db2-4300cedaa66e"
+      },
+      "outputs": [],
+      "source": [
+        "# Finally, grab surname from passenger name\n",
+        "\n",
+        "combined$Surname <- sapply(combined$Name,  \n",
+        "                      function(x) strsplit(x, split = '[,.]')[[1]][1])"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "_cell_guid": "9b64170b-7a61-657a-44b1-6ab620f48485"
+      },
+      "outputs": [],
+      "source": [
+        "# Create a family variable \n",
+        "combined$Fam <- paste(combined$Surname, combined$FamSize, sep='_')"
+      ]
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {
+        "_cell_guid": "84ab0c79-8cff-cab3-32ef-32180044d111"
+      },
+      "source": [
+        "Here we make another variable that contains information about the family size. We have 3 categories: *singleton* (only 1 member), *small* (< 5 members but > 1 member) and *large* (> 4 members)."
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "_cell_guid": "46e22ded-78f8-d41f-f5d1-2c0c1f7b4535"
+      },
+      "outputs": [],
+      "source": [
+        "# Discretize family size\n",
+        "combined$Fam_SizeD[combined$FamSize == 1] <- 'single'\n",
+        "combined$Fam_SizeD[combined$FamSize < 5 & combined$FamSize > 1] <- 'small'\n",
+        "combined$Fam_SizeD[combined$FamSize > 4] <- 'large'"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "_cell_guid": "8769b6da-3b60-4e5b-59a9-31a1c2ee28e4"
+      },
+      "outputs": [],
+      "source": [
+        "# Make variables factors into factors\n",
+        "factor_vars <- c('PassengerId','Pclass','Sex','Embarked',\n",
+        "                 'Title','Surname','Fam','Fam_SizeD')\n",
+        "\n",
+        "combined[factor_vars] <- lapply(combined[factor_vars], function(x) as.factor(x))\n",
+        "\n",
+        "# Set a random seed\n",
+        "set.seed(129)\n",
+        "\n",
+        "# Perform mice imputation, excluding certain less-than-useful variables:\n",
+        "mice_mod <- mice(combined[, !names(combined) %in% c('PassengerId','Name','Ticket','Cabin','Fam','Surname','Survived')], method='rf') "
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "_cell_guid": "b5089184-f8d1-89a7-9aed-b8f47247a4f3"
+      },
+      "outputs": [],
+      "source": [
+        "# Save the complete output \n",
+        "mice_output <- complete(mice_mod)"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "_cell_guid": "fd6531ef-0b45-f994-9d86-cdccaf5b7697"
+      },
+      "outputs": [],
+      "source": [
+        "# Plot age distributions\n",
+        "par(mfrow=c(1,2))\n",
+        "hist(combined$Age, freq=F, main='Age: Original Data', \n",
+        "  col='darkgreen', ylim=c(0,0.04))\n",
+        "hist(mice_output$Age, freq=F, main='Age: MICE Output', \n",
+        "  col='lightgreen', ylim=c(0,0.04))"
+      ]
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {
+        "_cell_guid": "56c1ea2e-ab90-0686-5131-385c55e78a40"
+      },
+      "source": [
+        "We'll now replace the missing age values:"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "_cell_guid": "936c436b-24ca-d8d3-46f9-69875c5672eb"
+      },
+      "outputs": [],
+      "source": [
+        "# Replace Age variable from the mice model.\n",
+        "combined$Age <- mice_output$Age\n",
+        "\n",
+        "# Show new number of missing Age values\n",
+        "sum(is.na(combined$Age))"
+      ]
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {
+        "_cell_guid": "f8ec28f0-8707-8651-6936-d82aabed3664"
+      },
+      "source": [
+        "Now, we'll look at the relationship between age and survival and how this varies with sex:"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "_cell_guid": "0353f809-3dc0-74ad-f7ba-4c5847a43320"
+      },
+      "outputs": [],
+      "source": [
+        "# First we'll look at the relationship between age & survival\n",
+        "ggplot(combined[1:891,], aes(Age, fill = factor(Survived))) + \n",
+        "  geom_histogram(binwidth=2) + \n",
+        "  facet_grid(.~Sex) + \n",
+        "  theme_few()"
+      ]
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {
+        "_cell_guid": "cc9c0b7d-bb85-e5c2-104d-029aaed5e52d"
+      },
+      "source": [
+        "Notice mid-age women were more likely to survive than mid-age men. We're now going to split the data back into the training and test set:"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "_cell_guid": "d9258ba5-17a4-6fcd-4a68-40fc7ae79aec"
+      },
+      "outputs": [],
+      "source": [
+        "# Split the data back into a train set and a test set\n",
+        "train <- combined[1:891,]\n",
+        "test <- combined[892:1309,]"
+      ]
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {
+        "_cell_guid": "c3a7db18-b556-e0f4-e53b-8e587a049557"
+      },
+      "source": [
+        "Next, we'll create the column *status*, which gives information on whether or not an individual is a child or adult:"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "_cell_guid": "48f5793d-f93c-2497-2940-3093f6585637"
+      },
+      "outputs": [],
+      "source": [
+        "# Create the column child, and indicate whether child or adult\n",
+        "combined$Status[combined$Age < 18] <- 'Child'\n",
+        "combined$Status[combined$Age >= 18] <- 'Adult'\n",
+        "\n",
+        "# Show counts\n",
+        "table(combined$Status, combined$Survived)"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "_cell_guid": "9efcbded-559a-8348-48a8-bc970d43ca4f"
+      },
+      "outputs": [],
+      "source": [
+        "# Adding Mother variable\n",
+        "combined$Mother <- 'Not Mother'\n",
+        "combined$Mother[combined$Sex == 'female' & combined$Parch > 0 & combined$Age > 18 & combined$Title != 'Miss'] <- 'Mother'\n",
+        "\n",
+        "# Show counts\n",
+        "table(combined$Mother, combined$Survived)"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "_cell_guid": "b7691360-cb46-df27-4394-210f1545e8a7"
+      },
+      "outputs": [],
+      "source": [
+        "# Finish by factorizing our two new factor variables\n",
+        "combined$Status  <- factor(combined$Status)\n",
+        "combined$Mother <- factor(combined$Mother)"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "_cell_guid": "618a639f-2341-256d-eb16-3c60b8a7b2da"
+      },
+      "outputs": [],
+      "source": [
+        "md.pattern(combined)"
+      ]
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {
+        "_cell_guid": "4ef04c00-117f-0f43-9816-cf6ef5c2e181"
+      },
+      "source": [
+        "We will now build the random forest model and do a plot of errors as a function of the number of trees to see how effective the model is:"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "_cell_guid": "4cc9436b-ad3b-05e3-ef8f-8b859e0ef2de"
+      },
+      "outputs": [],
+      "source": [
+        "# Set a random seed\n",
+        "set.seed(1000)\n",
+        "\n",
+        "# Build the model (note: not all possible variables are used)\n",
+        "RanFor_model <- randomForest(factor(Survived) ~ Pclass + Sex + Age + SibSp + Parch + \n",
+        "                                            Fare + Embarked + Title + \n",
+        "                                            Fam_SizeD,\n",
+        "                                            data = train,\n",
+        "                                            ntree = 900,\n",
+        "                                            mtry = 6,\n",
+        "                                            nodesize = 0.01 * nrow(test))\n",
+        "\n",
+        "# Show model error\n",
+        "plot(RanFor_model, ylim=c(0,0.36))\n",
+        "legend('bottomleft',colnames(RanFor_model$err.rate), col=1:3, fill=1:3, bty='n', lty=1:3, cex=0.8)"
+      ]
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {
+        "_cell_guid": "79fbb207-a72e-0b48-edbc-77f0e1e893de"
+      },
+      "source": [
+        "The error plot above shows that we can predict deaths better than survivors."
+      ]
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {
+        "_cell_guid": "2da92a83-9c67-231d-60b1-82afd028c8ed"
+      },
+      "source": [
+        "It's a good idea to see which variables, of those used to predict the model, had the most impact on the model:"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "_cell_guid": "0ea39dd8-996d-4a5b-6faf-68cf5eb45910"
+      },
+      "outputs": [],
+      "source": [
+        "# Get importance\n",
+        "importance <- importance(RanFor_model)\n",
+        "varImportance <- data.frame(Variables = row.names(importance), \n",
+        "                            Importance = round(importance[ ,'MeanDecreaseGini'],2))\n",
+        "\n",
+        "# Create a rank variable based on importance\n",
+        "rankImportance <- varImportance %>%\n",
+        "  mutate(Rank = paste0('#',dense_rank(desc(Importance))))\n",
+        "\n",
+        "# Use ggplot2 to visualize the relative importance of variables\n",
+        "ggplot(rankImportance, aes(x = reorder(Variables, Importance), \n",
+        "    y = Importance, fill = Importance)) +\n",
+        "  geom_bar(stat='identity') + \n",
+        "  geom_text(aes(x = Variables, y = 0.5, label = Rank),\n",
+        "    hjust=0, vjust=0.55, size = 4, colour = 'red') +\n",
+        "  labs(x = 'Variables') +\n",
+        "  coord_flip() + \n",
+        "  theme_few()"
+      ]
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {
+        "_cell_guid": "6bebc120-61b7-528c-abcb-1a7faaf6f681"
+      },
+      "source": [
+        "It seems the **Title** variable had the most impact. I expected it to have much impact, but I expected **Pclass**, **Fair** and **Title** to be tailing each other more closely. I expect these variables to be more tightly correlated. I expected passenger class, fare and age to be tailing each other in importance pretty closely and this is what I see. I must admit though that I expected passenger class to be leading sex. I figured, if you are in a more prestigious class, then you would have more tools available to help save yourself. The fare I expected to be tightly correlated with the class, so a more prestigious class would cost more. As for the age, I would expect younger people to be healthier, and should thus be a good predictor of survival. "
+      ]
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {
+        "_cell_guid": "fddb6f7e-dee7-e95f-a686-4041a6dcd3e3"
+      },
+      "source": [
+        "Now we output a csv file with the predictions:"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "_cell_guid": "7fc40d99-c56d-9456-6794-b96fa4f6f6e5"
+      },
+      "outputs": [],
+      "source": [
+        "# Predict using the test set\n",
+        "prediction <- predict(RanFor_model, test)\n",
+        "\n",
+        "# Save the solution to a dataframe with two columns: PassengerId and Survived (prediction)\n",
+        "solution <- data.frame(PassengerID = test$PassengerId, Survived = prediction)\n",
+        "\n",
+        "# Write the solution to file\n",
+        "write.csv(solution, file = 'RanFor_Solution.csv', row.names = F)"
+      ]
+    }
+  ],
+  "metadata": {
+    "_change_revision": 0,
+    "_is_fork": false,
+    "kernelspec": {
+      "display_name": "R",
+      "language": "R",
+      "name": "ir"
+    },
+    "language_info": {
+      "codemirror_mode": "r",
+      "file_extension": ".r",
+      "mimetype": "text/x-r-source",
+      "name": "R",
+      "pygments_lexer": "r",
+      "version": "3.3.2"
+    }
+  },
+  "nbformat": 4,
+  "nbformat_minor": 0
+}

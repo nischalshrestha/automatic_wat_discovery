@@ -1,0 +1,17 @@
+{
+  "language": "python",
+  "enable_gpu": false,
+  "dataset_sources": [],
+  "kernel_type": "notebook",
+  "id_no": 703245,
+  "id": "ekam123/titanic-workflow",
+  "keywords": [],
+  "title": "titanic_workflow",
+  "is_private": false,
+  "code_file": "titanic-workflow.ipynb",
+  "competition_sources": [
+    "titanic"
+  ],
+  "kernel_sources": [],
+  "enable_internet": false
+}

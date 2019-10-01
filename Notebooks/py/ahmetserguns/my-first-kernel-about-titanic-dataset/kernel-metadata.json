@@ -1,0 +1,17 @@
+{
+  "code_file": "my-first-kernel-about-titanic-dataset.ipynb",
+  "title": "My First Kernel about Titanic dataset",
+  "competition_sources": [
+    "titanic"
+  ],
+  "is_private": false,
+  "enable_gpu": false,
+  "keywords": [],
+  "id": "ahmetserguns/my-first-kernel-about-titanic-dataset",
+  "dataset_sources": [],
+  "id_no": 1288323,
+  "language": "python",
+  "enable_internet": false,
+  "kernel_sources": [],
+  "kernel_type": "notebook"
+}

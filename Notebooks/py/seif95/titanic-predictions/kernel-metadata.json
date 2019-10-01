@@ -1,0 +1,22 @@
+{
+  "is_private": false,
+  "language": "python",
+  "kernel_sources": [],
+  "kernel_type": "notebook",
+  "dataset_sources": [],
+  "enable_gpu": false,
+  "competition_sources": [
+    "titanic"
+  ],
+  "code_file": "titanic-predictions.ipynb",
+  "id_no": 1447705,
+  "keywords": [
+    "beginner",
+    "data cleaning",
+    "preprocessing",
+    "feature engineering"
+  ],
+  "title": "Titanic_predictions",
+  "id": "seif95/titanic-predictions",
+  "enable_internet": false
+}

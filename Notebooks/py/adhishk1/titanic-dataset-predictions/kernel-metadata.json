@@ -1,0 +1,23 @@
+{
+  "is_private": false,
+  "id": "adhishk1/titanic-dataset-predictions",
+  "competition_sources": [
+    "titanic"
+  ],
+  "kernel_type": "notebook",
+  "id_no": 1987958,
+  "title": "Titanic Dataset Predictions",
+  "keywords": [
+    "beginner",
+    "data cleaning",
+    "data visualization",
+    "classification",
+    "feature engineering"
+  ],
+  "code_file": "titanic-dataset-predictions.ipynb",
+  "dataset_sources": [],
+  "language": "python",
+  "enable_internet": false,
+  "enable_gpu": false,
+  "kernel_sources": []
+}

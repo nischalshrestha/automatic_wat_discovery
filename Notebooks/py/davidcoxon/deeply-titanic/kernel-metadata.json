@@ -1,0 +1,21 @@
+{
+  "enable_internet": false,
+  "kernel_type": "notebook",
+  "id_no": 998653,
+  "dataset_sources": [],
+  "kernel_sources": [],
+  "is_private": false,
+  "enable_gpu": false,
+  "code_file": "deeply-titanic.ipynb",
+  "competition_sources": [
+    "titanic"
+  ],
+  "language": "python",
+  "title": "Deeply Titanic",
+  "keywords": [
+    "classification",
+    "feature engineering",
+    "deep learning"
+  ],
+  "id": "davidcoxon/deeply-titanic"
+}

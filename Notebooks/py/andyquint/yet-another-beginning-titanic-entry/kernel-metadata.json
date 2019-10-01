@@ -1,0 +1,17 @@
+{
+  "keywords": [],
+  "code_file": "yet-another-beginning-titanic-entry.ipynb",
+  "enable_internet": false,
+  "kernel_sources": [],
+  "enable_gpu": false,
+  "title": "Yet Another Beginning Titanic Entry",
+  "dataset_sources": [],
+  "competition_sources": [
+    "titanic"
+  ],
+  "id_no": 141798,
+  "id": "andyquint/yet-another-beginning-titanic-entry",
+  "is_private": false,
+  "kernel_type": "notebook",
+  "language": "python"
+}

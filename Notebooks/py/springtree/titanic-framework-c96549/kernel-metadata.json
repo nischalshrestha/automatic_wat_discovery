@@ -1,0 +1,17 @@
+{
+  "title": " Titanic Framework c96549",
+  "id": "springtree/titanic-framework-c96549",
+  "is_private": false,
+  "enable_internet": false,
+  "competition_sources": [
+    "titanic"
+  ],
+  "dataset_sources": [],
+  "id_no": 1536081,
+  "enable_gpu": false,
+  "kernel_sources": [],
+  "keywords": [],
+  "kernel_type": "notebook",
+  "code_file": "titanic-framework-c96549.ipynb",
+  "language": "python"
+}

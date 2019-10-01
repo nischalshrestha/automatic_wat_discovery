@@ -1,0 +1,20 @@
+{
+  "title": "Standard Approach for Kaggle",
+  "id_no": 941625,
+  "kernel_type": "notebook",
+  "enable_gpu": false,
+  "kernel_sources": [],
+  "keywords": [
+    "tutorial",
+    "beginner"
+  ],
+  "id": "sishihara/standard-approach-for-kaggle",
+  "competition_sources": [
+    "titanic"
+  ],
+  "is_private": false,
+  "code_file": "standard-approach-for-kaggle.ipynb",
+  "dataset_sources": [],
+  "enable_internet": false,
+  "language": "python"
+}

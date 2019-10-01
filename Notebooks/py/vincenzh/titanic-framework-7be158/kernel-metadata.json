@@ -1,0 +1,17 @@
+{
+  "is_private": false,
+  "title": " Titanic Framework 7be158",
+  "enable_internet": false,
+  "kernel_type": "notebook",
+  "language": "python",
+  "enable_gpu": false,
+  "code_file": "titanic-framework-7be158.ipynb",
+  "dataset_sources": [],
+  "kernel_sources": [],
+  "keywords": [],
+  "competition_sources": [
+    "titanic"
+  ],
+  "id_no": 1559215,
+  "id": "vincenzh/titanic-framework-7be158"
+}

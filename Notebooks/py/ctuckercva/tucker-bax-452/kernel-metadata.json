@@ -1,0 +1,17 @@
+{
+  "title": "Tucker BAX 452",
+  "language": "python",
+  "dataset_sources": [],
+  "code_file": "tucker-bax-452.ipynb",
+  "kernel_type": "notebook",
+  "id": "ctuckercva/tucker-bax-452",
+  "kernel_sources": [],
+  "enable_gpu": false,
+  "is_private": false,
+  "keywords": [],
+  "competition_sources": [
+    "titanic"
+  ],
+  "enable_internet": false,
+  "id_no": 532838
+}

@@ -1,0 +1,17 @@
+{
+  "enable_internet": false,
+  "is_private": false,
+  "competition_sources": [
+    "titanic"
+  ],
+  "kernel_type": "notebook",
+  "dataset_sources": [],
+  "title": "Titanic dataset",
+  "code_file": "titanic-dataset.ipynb",
+  "kernel_sources": [],
+  "id_no": 1176436,
+  "id": "biswajee/titanic-dataset",
+  "keywords": [],
+  "enable_gpu": false,
+  "language": "python"
+}

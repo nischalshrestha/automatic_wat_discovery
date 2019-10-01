@@ -1,0 +1,19 @@
+{
+  "code_file": "try-on-titanic.ipynb",
+  "enable_gpu": false,
+  "dataset_sources": [],
+  "enable_internet": false,
+  "kernel_sources": [],
+  "is_private": false,
+  "id_no": 1245711,
+  "id": "figarrikeisha/try-on-titanic",
+  "title": "Try on! Titanic",
+  "kernel_type": "notebook",
+  "keywords": [
+    "beginner"
+  ],
+  "language": "python",
+  "competition_sources": [
+    "titanic"
+  ]
+}

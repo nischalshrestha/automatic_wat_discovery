@@ -1,0 +1,356 @@
+{
+  "cells": [
+    {
+      "cell_type": "markdown",
+      "metadata": {
+        "_cell_guid": "7095f355-23fb-cb92-4fae-7caebdac4f19"
+      },
+      "source": [
+        "\n",
+        "# Exploring Titanic Survival Rates\n",
+        "\n",
+        "This file tests the notebook environment and serves as a practice for a competition submission.\n",
+        "\n",
+        "## Loading and Setting Up of the data"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "_cell_guid": "feed1bf4-28b4-0cdb-120c-697f1ac96241"
+      },
+      "outputs": [],
+      "source": [
+        "#include libraries\n",
+        "library(ggplot2) #library for producing plots\n",
+        "\n",
+        "system(\"ls ../input\")\n",
+        "#load the training data:\n",
+        "df=read.csv(\"../input/train.csv\",stringsAsFactors=FALSE) \n",
+        "\n",
+        "#Display a summary of all the variables and their type\n",
+        "str(df)\n"
+      ]
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {
+        "_cell_guid": "0a1ffb11-a4ba-6500-1ba1-d04ef643e9de"
+      },
+      "source": [
+        "The previous code used the \"stringsAsFactors = FALSE\" argument so that I get to set up the variables myself. This actually forces the user to look at the content of each variable. Now to set up some factor variables:"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "_cell_guid": "848cd147-0f7f-c9d2-54be-f3f4ab017bf2"
+      },
+      "outputs": [],
+      "source": [
+        "#Change the survived variable to make summary tables prettier:\n",
+        "df$Survived=factor(df$Survived, \n",
+        "                   levels=c(0,1),\n",
+        "                   labels =c(\"died\",\"lived\"))\n"
+      ]
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {
+        "_cell_guid": "9702fcd2-604f-4a5a-83d7-c2367de02111"
+      },
+      "source": [
+        "## Effect of Gender on Survival\n",
+        "This section will explore how the gender affects the mortality:"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "_cell_guid": "e7166ca8-8323-0ea6-91c1-a9a4bcca9666"
+      },
+      "outputs": [],
+      "source": [
+        "df$Sex=factor(df$Sex) #change the gender variable to a factor\n",
+        "table(df$Survived,df$Sex) #See a summary mortality by gender"
+      ]
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {
+        "_cell_guid": "f7a992c7-1d29-106f-d705-29dc1813a09a"
+      },
+      "source": [
+        "The above table shows that 1 in 4 women died and 4 in 5 men died. This means that the gender has a real effect on survival chances and  will be used as one of the inputs into our system."
+      ]
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {
+        "_cell_guid": "dd4c236e-43c7-c13d-9ba1-527fee9e4c50"
+      },
+      "source": [
+        "## Effect of Age on Survival\n",
+        "This section will examine the survival rates based on the age. It makes sense that kids are more likely to survive. But what about the elderly? Let's explore the age groups and the survival percentage of each group."
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "_cell_guid": "e0ab9574-5656-76e7-4f0c-1a1674b46fe3"
+      },
+      "outputs": [],
+      "source": [
+        "options(repr.plot.width=5, repr.plot.height=3)#Plot size Options\n",
+        "\n",
+        "#Determine age distribution\n",
+        "age_range=cut(df$Age, seq(0,100,10)) #Sub-divide the ange range into 10 year sections\n",
+        "qplot(age_range, xlab=\"Age Range\", main=\"Age distribution on the Titanic\") #plot age distributon\n",
+        "\n",
+        "#Determine survival percentage:\n",
+        "ggplot(df, aes(x=Age, fill=Survived))+\n",
+        "  geom_histogram(binwidth = 5,position=\"fill\")+\n",
+        "  ggtitle(\"Survival percentage amongst the age groups\")\n",
+        "\n",
+        "#check percentage of unknown age passengers:\n",
+        "print(\"Survival rate of passengers who's age is unknown:\")\n",
+        "table(df$Survived[is.na(df$Age)]) \n",
+        "\n",
+        "#Replace the missing age entries with the average age\n",
+        "df$Age[is.na(df$Age)]=mean(df$Age, na.rm=TRUE)"
+      ]
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {
+        "_cell_guid": "398d1f37-ff7f-1125-8ddf-540f795dd989"
+      },
+      "source": [
+        "The above graphs show that the survival percentage is highly dependent on age. Younger passengers have a higher survival rate. Elderly passengers for not. There are also over 150 entries that do not have an age value and of those only about 1 in 3 survived. At the end the age is replaced with the average age, which is one strategy to deal with missing values. This seemed appropriate since the survival chances of the missing value people were in the range of the average age as well."
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "_cell_guid": "2d9a6153-e668-9254-58ec-33c99b17f715"
+      },
+      "outputs": [],
+      "source": [
+        "## Embark Location\n",
+        "The next step is to examine/clean the embark location "
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "_cell_guid": "c4959689-4681-ca9b-cc67-7429915e0865"
+      },
+      "outputs": [],
+      "source": [
+        "#Explore embark location\n",
+        "df$Embarked[df$Embarked==\"\"]=\"S\" #replace missing values with majority (S), highest chance of being right\n",
+        "df$Embarked=factor(df$Embarked, levels=c(\"S\",\"C\",\"Q\")) #Set as factor in order of S->C->Q\n",
+        "table(df$Survived,df$Embarked) #show summary table of survival chances"
+      ]
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {
+        "_cell_guid": "e95065e4-e3e0-8e81-8af5-5ff0f37d86b1"
+      },
+      "source": [
+        "The Titanic moved from Southampton to Cherbourg to Queenstown. No apparent trend is visible, but there could be one, where people from certain cities are placed into certain locations on the ship (but I won't spend time researching this). The embark location will be used in the model."
+      ]
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {
+        "_cell_guid": "5ae91cba-2387-7583-198b-6a0e03c4124e"
+      },
+      "source": [
+        "## Family Relationships\n",
+        "This section explores the likelyhood of survival if there is family aboard. It makes sense, since survivors may not have wanted to separate families."
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "_cell_guid": "564ca8a2-e2da-b9c3-3f98-15e400678480"
+      },
+      "outputs": [],
+      "source": [
+        "print(\"Survival of people who have parents/children aboard\")\n",
+        "table(df$Survived,df$Parch) #parent children\n",
+        "\n",
+        "print(\"Survival of people who have siblings/spouses aboard\")\n",
+        "table(df$Survived,df$SibSp) #siblings/spouse"
+      ]
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {
+        "_cell_guid": "b85f17e5-560e-e908-5758-3c379285acef"
+      },
+      "source": [
+        "It appares that people who had no family has a 1 in 3 survival chance. People with 1 family member about a 1 in 2. Once the number of family members increases though, the chance of dieing increases again."
+      ]
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {
+        "_cell_guid": "554958fd-be14-18e0-7257-e84362ca9044"
+      },
+      "source": [
+        "## Passenger class and Fare\n",
+        "There should be a difference in between how many people survived depending on how much they paid and what class they were in. A histogram shows that the distribution of the fare is exponential. We will take the log of the fare to create something that looks more like a normal distribution."
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "_cell_guid": "4301da80-4add-ab4f-a283-9e6a3da0e7bb"
+      },
+      "outputs": [],
+      "source": [
+        "print(\"Survival rate against class\")\n",
+        "table(df$Survived,df$Pclass) #Summary of passenger vs. class\n",
+        "\n",
+        "#Show the histogram of the log-fare\n",
+        "hist(log(df$Fare)) #histogram, which looks more normal than the skewed Fare distribution\n",
+        "\n",
+        "#Some values have Fare=0, this is not good for the log-fare, so we change these values with\n",
+        "#the mean of the log-fare\n",
+        "df$Fare[df$Fare==0] = mean(log( df$Fare[df$Fare>0])  )\n",
+        "df$logfare=log(df$Fare)\n",
+        "\n",
+        "#Show the survival as a function of log Fare\n",
+        "ggplot(df, aes(x=log(Fare), fill=Survived))+\n",
+        "  geom_histogram(binwidth = 0.5,position=\"fill\")+\n",
+        "  ggtitle(\"Survival likelyhood vs. log-fare\")\n"
+      ]
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {
+        "_cell_guid": "75903434-7df8-e40a-c566-e66da9f354c0"
+      },
+      "source": [
+        "AS the log-fare increases, so did people's survival chances."
+      ]
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {
+        "_cell_guid": "a7a06299-a35d-d05f-9587-a7185578f07c"
+      },
+      "source": ""
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {
+        "_cell_guid": "27c42552-5e6a-85d6-ce7d-8b2cbc8a6af3"
+      },
+      "source": [
+        "## Variable summary\n",
+        "The take away is: the more money you have, the younger you are, the more family you have (but not too much), the more likely you are to live."
+      ]
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {
+        "_cell_guid": "269b7284-cf74-2606-4fb8-bdd35f87d2ec"
+      },
+      "source": [
+        "# Model Training and Data\n",
+        "Now it is time to divide the dataset into training and testing data."
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "_cell_guid": "9fdb7858-f53d-880b-92a0-b85edf72285e"
+      },
+      "outputs": [],
+      "source": [
+        "library(caret) #\n",
+        "library(e1071)\n",
+        "set.seed(3456) #set a seed for reproducible results\n",
+        "\n",
+        "trainIndex <- createDataPartition(df$Survived, p = .8,list=FALSE)\n",
+        "df_train=df[trainIndex,]\n",
+        "df_test=df[-trainIndex,]"
+      ]
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {
+        "_cell_guid": "e924a263-7c84-2e51-dcca-9570aa0bee81"
+      },
+      "source": [
+        "Now it is time to train a model to the data:"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "_cell_guid": "db433002-e213-15c0-cd25-08bada1fd27b"
+      },
+      "outputs": [],
+      "source": [
+        "model.t=train(Survived~Sex+Age+Embarked+logfare+Pclass+SibSp+Parch,\n",
+        "              data=df_train,\n",
+        "              method='glm') #use a generalized linear model"
+      ]
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {
+        "_cell_guid": "91a4f9de-3d7d-fc25-adeb-8c9a05b615be"
+      },
+      "source": [
+        "Now that the model is trained, it is time to predict the data"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "_cell_guid": "d6c8c4f7-c1f4-059e-8e81-d5afd1fd955e"
+      },
+      "outputs": [],
+      "source": [
+        "newval=predict(model.t, newdata=df_test)\n",
+        "confusionMatrix(newval, df_test$Survived)"
+      ]
+    }
+  ],
+  "metadata": {
+    "_change_revision": 0,
+    "_is_fork": false,
+    "kernelspec": {
+      "display_name": "R",
+      "language": "R",
+      "name": "ir"
+    },
+    "language_info": {
+      "codemirror_mode": "r",
+      "file_extension": ".r",
+      "mimetype": "text/x-r-source",
+      "name": "R",
+      "pygments_lexer": "r",
+      "version": "3.3.2"
+    }
+  },
+  "nbformat": 4,
+  "nbformat_minor": 0
+}

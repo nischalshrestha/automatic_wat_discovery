@@ -1,0 +1,17 @@
+{
+  "enable_internet": false,
+  "code_file": "notebook25542cced7.ipynb",
+  "keywords": [],
+  "is_private": false,
+  "language": "python",
+  "kernel_type": "notebook",
+  "competition_sources": [
+    "titanic"
+  ],
+  "title": "Notebook25542cced7",
+  "id": "punkfood/notebook25542cced7",
+  "kernel_sources": [],
+  "enable_gpu": false,
+  "id_no": 258467,
+  "dataset_sources": []
+}

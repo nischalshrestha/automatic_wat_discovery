@@ -1,0 +1,23 @@
+{
+  "is_private": false,
+  "language": "python",
+  "kernel_sources": [],
+  "id": "tarunpaparaju/titanic-survival-prediction-deep-nn",
+  "kernel_type": "notebook",
+  "enable_internet": false,
+  "enable_gpu": false,
+  "code_file": "titanic-survival-prediction-deep-nn.ipynb",
+  "keywords": [
+    "beginner",
+    "preprocessing",
+    "deep learning",
+    "neural networks",
+    "binary classification"
+  ],
+  "dataset_sources": [],
+  "competition_sources": [
+    "titanic"
+  ],
+  "title": "Titanic Survival Prediction : Deep NN",
+  "id_no": 1898014
+}

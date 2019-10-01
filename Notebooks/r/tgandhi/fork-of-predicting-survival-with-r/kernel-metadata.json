@@ -1,0 +1,17 @@
+{
+  "language": "r",
+  "is_private": false,
+  "kernel_type": "notebook",
+  "title": "Fork of Predicting Survival With R",
+  "id_no": 170763,
+  "enable_internet": false,
+  "kernel_sources": [],
+  "code_file": "fork-of-predicting-survival-with-r.irnb",
+  "competition_sources": [
+    "titanic"
+  ],
+  "keywords": [],
+  "dataset_sources": [],
+  "id": "tgandhi/fork-of-predicting-survival-with-r",
+  "enable_gpu": false
+}

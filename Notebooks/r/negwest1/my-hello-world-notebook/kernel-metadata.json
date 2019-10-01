@@ -1,0 +1,17 @@
+{
+  "id": "negwest1/my-hello-world-notebook",
+  "keywords": [],
+  "enable_gpu": false,
+  "language": "r",
+  "is_private": false,
+  "kernel_sources": [],
+  "title": "My Hello World Notebook",
+  "dataset_sources": [],
+  "kernel_type": "notebook",
+  "enable_internet": false,
+  "code_file": "my-hello-world-notebook.irnb",
+  "competition_sources": [
+    "titanic"
+  ],
+  "id_no": 162654
+}

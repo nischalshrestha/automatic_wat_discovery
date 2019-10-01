@@ -1,0 +1,17 @@
+{
+  "enable_internet": false,
+  "id": "sophieg/quick-pandas-string-manipulation",
+  "title": "Quick pandas string manipulation",
+  "is_private": false,
+  "kernel_type": "notebook",
+  "kernel_sources": [],
+  "id_no": 351654,
+  "dataset_sources": [],
+  "keywords": [],
+  "competition_sources": [
+    "titanic"
+  ],
+  "language": "python",
+  "code_file": "quick-pandas-string-manipulation.ipynb",
+  "enable_gpu": false
+}

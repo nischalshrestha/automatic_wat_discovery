@@ -1,0 +1,17 @@
+{
+  "id": "tomfarmer/test-titanic-data-notebook",
+  "title": "Test Titanic Data Notebook",
+  "language": "python",
+  "is_private": false,
+  "dataset_sources": [],
+  "code_file": "test-titanic-data-notebook.ipynb",
+  "enable_gpu": false,
+  "competition_sources": [
+    "titanic"
+  ],
+  "enable_internet": false,
+  "id_no": 227314,
+  "kernel_type": "notebook",
+  "kernel_sources": [],
+  "keywords": []
+}

@@ -1,0 +1,17 @@
+{
+  "keywords": [],
+  "id_no": 1351356,
+  "language": "python",
+  "dataset_sources": [],
+  "enable_internet": false,
+  "enable_gpu": false,
+  "is_private": false,
+  "id": "jakerumbles/titanicsurvivalpredictor",
+  "kernel_sources": [],
+  "code_file": "titanicsurvivalpredictor.ipynb",
+  "competition_sources": [
+    "titanic"
+  ],
+  "kernel_type": "notebook",
+  "title": "TitanicSurvivalPredictor"
+}

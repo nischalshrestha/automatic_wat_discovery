@@ -1,0 +1,17 @@
+{
+  "keywords": [],
+  "competition_sources": [
+    "titanic"
+  ],
+  "id": "colladete/over-0-8-with-votingclassifier",
+  "code_file": "over-0-8-with-votingclassifier.ipynb",
+  "title": "Over 0.8 with VotingClassifier",
+  "is_private": false,
+  "kernel_type": "notebook",
+  "id_no": 270421,
+  "enable_gpu": false,
+  "language": "python",
+  "dataset_sources": [],
+  "kernel_sources": [],
+  "enable_internet": false
+}

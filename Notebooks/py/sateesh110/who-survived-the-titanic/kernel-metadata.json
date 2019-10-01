@@ -1,0 +1,17 @@
+{
+  "is_private": false,
+  "id_no": 1867117,
+  "enable_internet": false,
+  "id": "sateesh110/who-survived-the-titanic",
+  "language": "python",
+  "kernel_type": "notebook",
+  "code_file": "who-survived-the-titanic.ipynb",
+  "competition_sources": [
+    "titanic"
+  ],
+  "title": "Who Survived the Titanic?",
+  "kernel_sources": [],
+  "keywords": [],
+  "dataset_sources": [],
+  "enable_gpu": false
+}

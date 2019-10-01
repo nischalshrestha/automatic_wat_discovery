@@ -1,0 +1,17 @@
+{
+  "dataset_sources": [],
+  "title": "Tatanic(Top4%_with_RandomForest)",
+  "language": "python",
+  "competition_sources": [
+    "titanic"
+  ],
+  "id": "john850512/tatanic-top4-with-randomforest",
+  "code_file": "tatanic-top4-with-randomforest.ipynb",
+  "enable_internet": true,
+  "is_private": false,
+  "kernel_sources": [],
+  "keywords": [],
+  "enable_gpu": true,
+  "kernel_type": "notebook",
+  "id_no": 1460593
+}

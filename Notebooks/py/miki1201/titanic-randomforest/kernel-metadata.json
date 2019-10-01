@@ -1,0 +1,17 @@
+{
+  "code_file": "titanic-randomforest.ipynb",
+  "enable_gpu": false,
+  "kernel_sources": [],
+  "keywords": [],
+  "dataset_sources": [],
+  "kernel_type": "notebook",
+  "title": "Kernelfb5dceae37",
+  "id_no": 866744,
+  "enable_internet": false,
+  "competition_sources": [
+    "titanic"
+  ],
+  "id": "miki1201/titanic-randomforest",
+  "is_private": false,
+  "language": "python"
+}

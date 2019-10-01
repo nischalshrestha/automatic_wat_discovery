@@ -1,0 +1,17 @@
+{
+  "enable_gpu": false,
+  "title": "Titanic Solutions ed327a + one hot encoding",
+  "competition_sources": [
+    "titanic"
+  ],
+  "is_private": false,
+  "kernel_sources": [],
+  "language": "python",
+  "dataset_sources": [],
+  "keywords": [],
+  "enable_internet": false,
+  "code_file": "titanic-solutions-ed327a-one-hot-encoding.ipynb",
+  "id_no": 519507,
+  "id": "jf2333/titanic-solutions-ed327a-one-hot-encoding",
+  "kernel_type": "notebook"
+}

@@ -1,0 +1,17 @@
+{
+  "id_no": 279762,
+  "kernel_type": "notebook",
+  "id": "vaiduoklele/notebook44fc1aa9ed",
+  "is_private": false,
+  "kernel_sources": [],
+  "dataset_sources": [],
+  "enable_internet": false,
+  "keywords": [],
+  "competition_sources": [
+    "titanic"
+  ],
+  "code_file": "notebook44fc1aa9ed.irnb",
+  "enable_gpu": false,
+  "title": "Notebook44fc1aa9ed",
+  "language": "r"
+}

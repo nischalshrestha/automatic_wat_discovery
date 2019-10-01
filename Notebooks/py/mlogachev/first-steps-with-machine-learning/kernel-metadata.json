@@ -1,0 +1,17 @@
+{
+  "id_no": 303780,
+  "keywords": [],
+  "competition_sources": [
+    "titanic"
+  ],
+  "dataset_sources": [],
+  "id": "mlogachev/first-steps-with-machine-learning",
+  "title": "First steps with Machine Learning",
+  "kernel_type": "notebook",
+  "enable_internet": false,
+  "code_file": "first-steps-with-machine-learning.ipynb",
+  "enable_gpu": false,
+  "is_private": false,
+  "kernel_sources": [],
+  "language": "python"
+}

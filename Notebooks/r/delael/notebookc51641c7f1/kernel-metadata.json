@@ -1,0 +1,17 @@
+{
+  "keywords": [],
+  "competition_sources": [
+    "titanic"
+  ],
+  "enable_gpu": false,
+  "kernel_sources": [],
+  "id_no": 247137,
+  "enable_internet": false,
+  "id": "delael/notebookc51641c7f1",
+  "language": "python",
+  "kernel_type": "notebook",
+  "is_private": false,
+  "title": "Notebookc51641c7f1",
+  "dataset_sources": [],
+  "code_file": "notebookc51641c7f1.ipynb"
+}

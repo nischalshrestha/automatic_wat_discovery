@@ -1,0 +1,22 @@
+{
+  "dataset_sources": [],
+  "enable_gpu": false,
+  "language": "python",
+  "competition_sources": [
+    "titanic"
+  ],
+  "kernel_sources": [],
+  "id": "bulentsiyah/keras-deep-learning-to-solve-titanic",
+  "title": "Keras-Deep Learning to Solve Titanic",
+  "is_private": false,
+  "id_no": 1697814,
+  "enable_internet": false,
+  "kernel_type": "notebook",
+  "code_file": "keras-deep-learning-to-solve-titanic.ipynb",
+  "keywords": [
+    "beginner",
+    "deep learning",
+    "dnn",
+    "starter code"
+  ]
+}

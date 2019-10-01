@@ -1,0 +1,17 @@
+{
+  "competition_sources": [
+    "titanic"
+  ],
+  "kernel_sources": [],
+  "language": "python",
+  "kernel_type": "notebook",
+  "is_private": false,
+  "enable_gpu": false,
+  "enable_internet": false,
+  "id_no": 401672,
+  "keywords": [],
+  "code_file": "titanic-1.ipynb",
+  "id": "michmzr/titanic-1",
+  "dataset_sources": [],
+  "title": "Titanic #1"
+}

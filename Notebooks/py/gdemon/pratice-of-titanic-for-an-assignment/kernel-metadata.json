@@ -1,0 +1,17 @@
+{
+  "competition_sources": [
+    "titanic"
+  ],
+  "language": "python",
+  "keywords": [],
+  "dataset_sources": [],
+  "is_private": false,
+  "kernel_sources": [],
+  "kernel_type": "notebook",
+  "id_no": 1398238,
+  "title": "pratice of Titanic for an assignment",
+  "code_file": "pratice-of-titanic-for-an-assignment.ipynb",
+  "enable_gpu": false,
+  "enable_internet": false,
+  "id": "gdemon/pratice-of-titanic-for-an-assignment"
+}

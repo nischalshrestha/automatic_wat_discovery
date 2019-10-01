@@ -1,0 +1,17 @@
+{
+  "kernel_sources": [],
+  "id_no": 521123,
+  "title": "Introduction to Ensembling/Stacking in Python",
+  "enable_gpu": false,
+  "keywords": [],
+  "dataset_sources": [],
+  "is_private": false,
+  "id": "alberto33/introduction-to-ensembling-stacking-in-python",
+  "language": "python",
+  "kernel_type": "notebook",
+  "code_file": "introduction-to-ensembling-stacking-in-python.ipynb",
+  "enable_internet": false,
+  "competition_sources": [
+    "titanic"
+  ]
+}

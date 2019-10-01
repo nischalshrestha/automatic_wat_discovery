@@ -1,0 +1,17 @@
+{
+  "code_file": "deep-diving-titanic-dataset.ipynb",
+  "language": "python",
+  "dataset_sources": [],
+  "id": "rajanigutta/deep-diving-titanic-dataset",
+  "is_private": false,
+  "id_no": 421090,
+  "kernel_type": "notebook",
+  "title": "Deep diving Titanic dataset",
+  "enable_gpu": false,
+  "enable_internet": false,
+  "keywords": [],
+  "competition_sources": [
+    "titanic"
+  ],
+  "kernel_sources": []
+}

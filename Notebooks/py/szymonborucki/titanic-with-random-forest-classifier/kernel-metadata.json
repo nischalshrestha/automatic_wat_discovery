@@ -1,0 +1,17 @@
+{
+  "code_file": "titanic-with-random-forest-classifier.ipynb",
+  "enable_internet": false,
+  "kernel_sources": [],
+  "enable_gpu": false,
+  "competition_sources": [
+    "titanic"
+  ],
+  "language": "python",
+  "dataset_sources": [],
+  "title": "titanic with random forest classifier",
+  "kernel_type": "notebook",
+  "is_private": false,
+  "keywords": [],
+  "id": "szymonborucki/titanic-with-random-forest-classifier",
+  "id_no": 1378707
+}

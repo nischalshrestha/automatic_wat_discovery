@@ -1,0 +1,17 @@
+{
+  "id_no": 2072026,
+  "title": "Titanic_Challenge_By_Jessner",
+  "enable_internet": false,
+  "code_file": "titanic-challenge-by-jessner.ipynb",
+  "keywords": [],
+  "id": "jessner/titanic-challenge-by-jessner",
+  "kernel_sources": [],
+  "competition_sources": [
+    "titanic"
+  ],
+  "enable_gpu": false,
+  "language": "python",
+  "dataset_sources": [],
+  "is_private": false,
+  "kernel_type": "notebook"
+}

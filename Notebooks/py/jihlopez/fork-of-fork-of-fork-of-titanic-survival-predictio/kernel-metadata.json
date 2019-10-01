@@ -1,0 +1,17 @@
+{
+  "enable_gpu": true,
+  "id": "jihlopez/fork-of-fork-of-fork-of-titanic-survival-predictio",
+  "language": "python",
+  "code_file": "fork-of-fork-of-fork-of-titanic-survival-predictio.ipynb",
+  "title": "Fork of Fork of Fork of Titanic Survival Predictio",
+  "competition_sources": [
+    "titanic"
+  ],
+  "dataset_sources": [],
+  "is_private": false,
+  "kernel_sources": [],
+  "kernel_type": "notebook",
+  "keywords": [],
+  "id_no": 908651,
+  "enable_internet": false
+}

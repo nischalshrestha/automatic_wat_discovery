@@ -1,0 +1,17 @@
+{
+  "kernel_sources": [],
+  "kernel_type": "notebook",
+  "code_file": "titanic-passengers-dataset.ipynb",
+  "is_private": false,
+  "dataset_sources": [],
+  "keywords": [],
+  "competition_sources": [
+    "titanic"
+  ],
+  "enable_gpu": false,
+  "language": "python",
+  "id": "lcqueiroz/titanic-passengers-dataset",
+  "title": "Titanic passengers dataset",
+  "enable_internet": false,
+  "id_no": 554811
+}

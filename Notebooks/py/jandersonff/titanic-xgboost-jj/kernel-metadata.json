@@ -1,0 +1,17 @@
+{
+  "competition_sources": [
+    "titanic"
+  ],
+  "code_file": "titanic-xgboost-jj.ipynb",
+  "keywords": [],
+  "title": "Titanic xgboost JJ",
+  "is_private": false,
+  "kernel_sources": [],
+  "enable_internet": false,
+  "dataset_sources": [],
+  "enable_gpu": false,
+  "kernel_type": "notebook",
+  "id_no": 311481,
+  "id": "jandersonff/titanic-xgboost-jj",
+  "language": "python"
+}

@@ -1,0 +1,17 @@
+{
+  "competition_sources": [
+    "titanic"
+  ],
+  "id_no": 1894545,
+  "title": "This is Laura's Notebook - Titanic Version",
+  "kernel_type": "notebook",
+  "id": "lauraholland/this-is-laura-s-notebook-titanic-version",
+  "enable_gpu": false,
+  "is_private": false,
+  "enable_internet": false,
+  "keywords": [],
+  "language": "python",
+  "dataset_sources": [],
+  "kernel_sources": [],
+  "code_file": "this-is-laura-s-notebook-titanic-version.ipynb"
+}

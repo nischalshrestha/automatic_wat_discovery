@@ -1,0 +1,17 @@
+{
+  "kernel_sources": [],
+  "code_file": "notebook8a95ec97d7.ipynb",
+  "keywords": [],
+  "title": "Notebook8a95ec97d7",
+  "dataset_sources": [],
+  "enable_gpu": false,
+  "kernel_type": "notebook",
+  "enable_internet": false,
+  "competition_sources": [
+    "titanic"
+  ],
+  "id": "pccw1996/notebook8a95ec97d7",
+  "is_private": false,
+  "id_no": 232357,
+  "language": "python"
+}

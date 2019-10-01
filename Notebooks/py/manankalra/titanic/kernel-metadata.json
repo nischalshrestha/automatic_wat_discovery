@@ -1,0 +1,17 @@
+{
+  "id_no": 443734,
+  "kernel_type": "notebook",
+  "dataset_sources": [],
+  "kernel_sources": [],
+  "title": "titanic",
+  "competition_sources": [
+    "titanic"
+  ],
+  "keywords": [],
+  "enable_internet": false,
+  "enable_gpu": false,
+  "language": "python",
+  "code_file": "titanic.ipynb",
+  "id": "manankalra/titanic",
+  "is_private": false
+}

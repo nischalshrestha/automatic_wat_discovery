@@ -1,0 +1,17 @@
+{
+  "kernel_sources": [],
+  "kernel_type": "notebook",
+  "id_no": 253381,
+  "language": "python",
+  "competition_sources": [
+    "titanic"
+  ],
+  "enable_gpu": false,
+  "dataset_sources": [],
+  "keywords": [],
+  "enable_internet": false,
+  "id": "junjunjun/notebook5c6f7e9a79",
+  "title": "Notebook5c6f7e9a79",
+  "is_private": false,
+  "code_file": "notebook5c6f7e9a79.ipynb"
+}

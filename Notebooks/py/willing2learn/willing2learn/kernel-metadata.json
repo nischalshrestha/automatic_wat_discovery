@@ -1,0 +1,17 @@
+{
+  "competition_sources": [
+    "titanic"
+  ],
+  "enable_internet": false,
+  "dataset_sources": [],
+  "title": "Willing2learn",
+  "language": "python",
+  "id_no": 1508838,
+  "code_file": "willing2learn.ipynb",
+  "kernel_sources": [],
+  "id": "willing2learn/willing2learn",
+  "is_private": false,
+  "keywords": [],
+  "enable_gpu": false,
+  "kernel_type": "notebook"
+}

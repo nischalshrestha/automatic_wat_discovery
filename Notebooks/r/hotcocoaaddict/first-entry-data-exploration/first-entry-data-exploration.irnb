@@ -1,0 +1,123 @@
+{
+  "cells": [
+    {
+      "cell_type": "markdown",
+      "metadata": {
+        "_cell_guid": "231dd9c7-db42-e7b2-a4f0-baeefd73bf2f"
+      },
+      "source": [
+        "I am new to data science and Kaggle! This code shows a few methods used during data exploration."
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "_cell_guid": "7fb38bd4-e1c4-7d04-2c7f-09234b4ee1ab"
+      },
+      "outputs": [],
+      "source": [
+        "# Dataset: Titanic (Kaggle)\n",
+        "# Purpose: Data Exploration \n",
+        "# Jessica Leighton\n",
+        "# 12/31/16 - 1/2/16\n",
+        "\n",
+        "#install.packages(\"ggplot2\")\n",
+        "library('ggplot2')\n",
+        "\n",
+        "#Step 1: read in data set, check out variables\n",
+        "\n",
+        "#to find pathway, go in terminal\n",
+        "#could also used setwd(\"~/Downloads\") to set working directory\n",
+        "train <- read.csv(\"~/Downloads/train.csv\")\n",
+        "test <- read.csv(\"~/Downloads/test.csv\")\n",
+        "variable.names(train)\n",
+        "str(train)\n",
+        "variable.names(test)\n",
+        "\n",
+        "# train has extra binary column \"Survive\"\n",
+        "# create empty vector of int 0's as dummy to make columns equal\n",
+        "# stitch empty vector onto test\n",
+        "empty <- as.integer(matrix(0, nrow = 418))\n",
+        "test[\"Survived\"] <- empty\n",
+        "str(test)\n",
+        "\n",
+        "# alternatively, test$Survived <- rep(0, 418) does the same thing\n",
+        "?rep # rep repeats(element, many times)\n",
+        "\n",
+        "# set-up if doing feature engineering later\n",
+        "# source: https://www.kaggle.com/mrisdal/titanic/exploring-survival-on-the-titanic\n",
+        "# combine test and train, changes must be consistent across both \n",
+        "full <- rbind(test, train)\n",
+        "\n",
+        "# a few ways to look at variables:\n",
+        "str(full) # method that displays structure of an object str=structure\n",
+        "summary(full) #only shows 5 number summary, not useful for qualitative\n",
+        "variable.names(full) # lists only variable names\n",
+        "# Variables include: class, name, sex, age, # sib, # parent, ticket, fare, cabin\n",
+        "\n",
+        "# how many survived? as count and percent\n",
+        "?prop.table\n",
+        "table(train$Survived) #calculates count of 0's and 1's as a table\n",
+        "prop.table(table(train$Survived)) # converts above to decimal\n",
+        "\n",
+        "# how many females survived vrs males?\n",
+        "table(train$Sex, train$Survived)\n",
+        "# note: cor(train$Survived, train$Sex) does not work; inputs must be numeric\n",
+        "prop.table(table(train$Sex, train$Survived))\n",
+        "# shows 52% of passengers were males who did not survive\n",
+        "# shows 26% of passengers were females who did survive\n",
+        "\n",
+        "# source: trevorstephens github\n",
+        "# https://github.com/trevorstephens/titanic/blob/master/Tutorial2.R\n",
+        "summary(train$Age)\n",
+        "train$Child <- 0\n",
+        "train$Child[train$Age < 18] <- 1\n",
+        "  #creates a binary for child/not.child, set to 1 if child =true\n",
+        "?aggregate \n",
+        "aggregate(Survived ~ Child + Sex, data= train, FUN = sum)\n",
+        "195+38+86+23\n",
+        "  #Since total survived = 342, breaks down survivors by child/not.child, M/F\n",
+        "  #FUN details how to compute summary statistics\n",
+        "aggregate(Survived ~ Child + Sex, data= train, FUN = length)\n",
+        "259+55+519+58\n",
+        "  #Since total data set = 891, breaks down whole passenger list child/not, M/F\n",
+        "aggregate(Survived ~ Child + Sex, data=train, FUN = function(x) {sum(x)/length(x)})\n",
+        "  # Using sum (survivors) and length (total), finds percent of each\n",
+        "\n",
+        "\n",
+        "# understanding aggregate FUN=length, source: \n",
+        "# https://www.r-bloggers.com/aggregate-a-powerful-tool-for-data-frame-in-r/\n",
+        "values <- data.frame(value = c(\"a\", \"a\", \"a\", \"a\", \"a\", \"b\", \"b\", \"b\", \n",
+        "                               \"c\", \"c\", \"c\", \"c\"))\n",
+        "aggregate(x = values, by = list(unique.values = values$value), \n",
+        "                               FUN = length)\n",
+        "# using data frame \"values\", lists number of occurances of each unique value\n",
+        "\n",
+        "\n",
+        "savehistory()\n",
+        "quit()\n",
+        "\n"
+      ]
+    }
+  ],
+  "metadata": {
+    "_change_revision": 0,
+    "_is_fork": false,
+    "kernelspec": {
+      "display_name": "R",
+      "language": "R",
+      "name": "ir"
+    },
+    "language_info": {
+      "codemirror_mode": "r",
+      "file_extension": ".r",
+      "mimetype": "text/x-r-source",
+      "name": "R",
+      "pygments_lexer": "r",
+      "version": "3.3.2"
+    }
+  },
+  "nbformat": 4,
+  "nbformat_minor": 0
+}

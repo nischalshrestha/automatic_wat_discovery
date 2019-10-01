@@ -1,0 +1,17 @@
+{
+  "title": "Missing values that you can't miss in Titanic",
+  "enable_internet": false,
+  "dataset_sources": [],
+  "competition_sources": [
+    "titanic"
+  ],
+  "keywords": [],
+  "kernel_sources": [],
+  "code_file": "missing-values-that-you-can-t-miss-in-titanic.irnb",
+  "language": "r",
+  "kernel_type": "notebook",
+  "enable_gpu": false,
+  "id": "makarevich/missing-values-that-you-can-t-miss-in-titanic",
+  "id_no": 168402,
+  "is_private": false
+}

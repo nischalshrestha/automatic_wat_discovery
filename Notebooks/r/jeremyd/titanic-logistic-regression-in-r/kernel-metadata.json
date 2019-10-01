@@ -1,0 +1,17 @@
+{
+  "title": "Titanic - Logistic Regression in R",
+  "id_no": 299867,
+  "competition_sources": [
+    "titanic"
+  ],
+  "code_file": "titanic-logistic-regression-in-r.irnb",
+  "language": "r",
+  "dataset_sources": [],
+  "id": "jeremyd/titanic-logistic-regression-in-r",
+  "is_private": false,
+  "enable_internet": false,
+  "kernel_sources": [],
+  "kernel_type": "notebook",
+  "keywords": [],
+  "enable_gpu": false
+}

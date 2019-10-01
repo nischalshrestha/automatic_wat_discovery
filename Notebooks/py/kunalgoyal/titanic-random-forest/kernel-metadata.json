@@ -1,0 +1,17 @@
+{
+  "id": "kunalgoyal/titanic-random-forest",
+  "is_private": false,
+  "language": "python",
+  "code_file": "titanic-random-forest.ipynb",
+  "enable_gpu": false,
+  "enable_internet": false,
+  "kernel_type": "notebook",
+  "kernel_sources": [],
+  "competition_sources": [
+    "titanic"
+  ],
+  "keywords": [],
+  "title": "titanic random forest",
+  "id_no": 802877,
+  "dataset_sources": []
+}

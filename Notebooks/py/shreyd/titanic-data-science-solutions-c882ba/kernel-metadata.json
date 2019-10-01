@@ -1,0 +1,17 @@
+{
+  "enable_gpu": false,
+  "kernel_type": "notebook",
+  "language": "python",
+  "id_no": 201311,
+  "is_private": false,
+  "kernel_sources": [],
+  "enable_internet": false,
+  "keywords": [],
+  "competition_sources": [
+    "titanic"
+  ],
+  "code_file": "titanic-data-science-solutions-c882ba.ipynb",
+  "title": "Titanic Data Science Solutions c882ba",
+  "id": "shreyd/titanic-data-science-solutions-c882ba",
+  "dataset_sources": []
+}

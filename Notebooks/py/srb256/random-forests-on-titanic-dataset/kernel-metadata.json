@@ -1,0 +1,17 @@
+{
+  "code_file": "random-forests-on-titanic-dataset.ipynb",
+  "id": "srb256/random-forests-on-titanic-dataset",
+  "enable_gpu": false,
+  "title": "Random Forests on Titanic Dataset",
+  "enable_internet": false,
+  "kernel_type": "notebook",
+  "keywords": [],
+  "id_no": 1396359,
+  "is_private": false,
+  "dataset_sources": [],
+  "kernel_sources": [],
+  "competition_sources": [
+    "titanic"
+  ],
+  "language": "python"
+}

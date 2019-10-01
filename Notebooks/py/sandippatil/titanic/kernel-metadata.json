@@ -1,0 +1,17 @@
+{
+  "enable_gpu": false,
+  "code_file": "titanic.ipynb",
+  "competition_sources": [
+    "titanic"
+  ],
+  "keywords": [],
+  "id": "sandippatil/titanic",
+  "kernel_type": "notebook",
+  "enable_internet": false,
+  "kernel_sources": [],
+  "language": "python",
+  "id_no": 375546,
+  "is_private": false,
+  "dataset_sources": [],
+  "title": "Titanic"
+}

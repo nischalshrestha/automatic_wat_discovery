@@ -1,0 +1,17 @@
+{
+  "code_file": "hello-titanic.irnb",
+  "language": "r",
+  "keywords": [],
+  "enable_internet": false,
+  "id_no": 321361,
+  "dataset_sources": [],
+  "is_private": false,
+  "title": "Hello Titanic",
+  "kernel_sources": [],
+  "kernel_type": "notebook",
+  "competition_sources": [
+    "titanic"
+  ],
+  "id": "lucasantevere/hello-titanic",
+  "enable_gpu": false
+}

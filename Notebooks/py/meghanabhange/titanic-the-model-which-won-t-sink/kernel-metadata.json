@@ -1,0 +1,17 @@
+{
+  "competition_sources": [
+    "titanic"
+  ],
+  "language": "python",
+  "code_file": "titanic-the-model-which-won-t-sink.ipynb",
+  "enable_internet": false,
+  "id_no": 1135088,
+  "is_private": false,
+  "kernel_type": "notebook",
+  "enable_gpu": false,
+  "id": "meghanabhange/titanic-the-model-which-won-t-sink",
+  "dataset_sources": [],
+  "title": "Titanic: The model which won't sink. ",
+  "keywords": [],
+  "kernel_sources": []
+}

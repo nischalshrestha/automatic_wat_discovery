@@ -1,0 +1,23 @@
+{
+  "dataset_sources": [],
+  "language": "python",
+  "keywords": [
+    "beginner",
+    "feature engineering",
+    "random forest",
+    "logistic regression",
+    "decision tree"
+  ],
+  "id_no": 543500,
+  "code_file": "predicting-titanic-survivors.ipynb",
+  "enable_internet": false,
+  "id": "bismillahkani/predicting-titanic-survivors",
+  "competition_sources": [
+    "titanic"
+  ],
+  "is_private": false,
+  "kernel_sources": [],
+  "kernel_type": "notebook",
+  "enable_gpu": false,
+  "title": "Predicting Titanic Survivors"
+}

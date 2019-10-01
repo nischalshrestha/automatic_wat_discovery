@@ -1,0 +1,17 @@
+{
+  "id": "akramsayadi/notebook9ec1232969",
+  "enable_internet": false,
+  "enable_gpu": false,
+  "language": "r",
+  "id_no": 178145,
+  "kernel_sources": [],
+  "is_private": false,
+  "keywords": [],
+  "title": "Notebook9ec1232969",
+  "dataset_sources": [],
+  "competition_sources": [
+    "titanic"
+  ],
+  "kernel_type": "notebook",
+  "code_file": "notebook9ec1232969.irnb"
+}

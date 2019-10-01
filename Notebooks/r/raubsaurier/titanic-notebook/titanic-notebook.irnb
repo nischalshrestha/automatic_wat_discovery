@@ -1,0 +1,178 @@
+{
+  "metadata": {
+    "kernelspec": {
+      "display_name": "R",
+      "language": "R",
+      "name": "ir"
+    },
+    "language_info": {
+      "codemirror_mode": "r",
+      "file_extension": ".r",
+      "mimetype": "text/x-r-source",
+      "name": "R",
+      "pygments_lexer": "r",
+      "version": "3.3.2"
+    }
+  },
+  "nbformat": 4,
+  "nbformat_minor": 0,
+  "cells": [
+    {
+      "cell_type": "markdown",
+      "metadata": {
+        "_cell_guid": "54725a04-9d82-a30e-bbf4-781b27dc6551",
+        "_active": false
+      },
+      "source": null,
+      "execution_count": null,
+      "outputs": [],
+      "execution_state": "idle"
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "_cell_guid": "38ac0774-0ddc-9d9d-90fb-6788c493fdc8",
+        "_active": false
+      },
+      "outputs": [],
+      "source": "# Load packages\nlibrary('ggplot2') # visualization\nlibrary('ggthemes') # visualization\nlibrary('scales') # visualization\nlibrary('dplyr') # data manipulation\nlibrary('mice') # imputation\nlibrary('randomForest') # classification algorithm\n\ntrain <- read.csv('../input/train.csv', stringsAsFactors = F)\ntest  <- read.csv('../input/test.csv', stringsAsFactors = F)\n\nall_data  <- bind_rows(train, test) #use dpylr's bind_rows when columns aren't the same across datasets\n\nstr(all_data) #check the structure of the data ",
+      "execution_state": "idle"
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "_cell_guid": "54c0e17e-03e4-5bd2-557c-47b4123a0b73",
+        "_active": false
+      },
+      "outputs": [],
+      "source": "# Grab title from passenger names\nall_data$Title <- gsub('(.*, )|(\\\\..*)', '', all_data$Name)\n\ntable(all_data$Sex, all_data$Title)",
+      "execution_state": "idle"
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "_cell_guid": "40d39a2f-9f55-5ce2-0f57-b6fb69e1dfcc",
+        "_active": false
+      },
+      "outputs": [],
+      "source": "#create a variable that indicates family size \n\nall_data$Fam_Size = all_data$SibSp + all_data$Parch + 1\n\nggplot(all_data[1:891,], aes(x = Fam_Size, fill = factor(Survived))) +\n  geom_bar(stat='count', position='dodge') +\n  scale_x_continuous(breaks=c(1:11)) +\n  labs(x = 'Family Size') +\n  theme_few()",
+      "execution_state": "idle"
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "_cell_guid": "2742b1ee-c781-7e0b-1b30-58228e381929",
+        "_active": false
+      },
+      "outputs": [],
+      "source": "#What about survival by gender? \nggplot(all_data[1:891,], aes(x = Sex, fill = factor(Survived))) +\n  geom_bar(stat='count') +\n  labs(x = 'Gender') \n\n##The Cabin variable appears to have missing values: \n#is.na(all_data$Cabin)\n#We'll deal with that later...\n\n\n    \n    ",
+      "execution_state": "idle"
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "_cell_guid": "335b928c-7c33-fbc2-6798-ab2acba6c78b",
+        "_active": false
+      },
+      "outputs": [],
+      "source": "all_data[c(62, 830), 'Pclass']\n\n# Create a Deck variable. Get passenger deck A - F:\nall_data$Deck<-factor(sapply(all_data$Cabin, function(x) strsplit(x, NULL)[[1]][1]))\n    \nall_data$Deck[2]",
+      "execution_state": "idle"
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "_cell_guid": "27489e64-7769-c5a6-e6f4-6c1692e1f487",
+        "_active": false
+      },
+      "outputs": [],
+      "source": "embark_fare <- all_data %>%\n  filter(PassengerId != 62 & PassengerId != 830)",
+      "execution_state": "idle"
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "_cell_guid": "e4012b0d-25ef-2d0a-6809-b1531facc078",
+        "_active": false,
+        "collapsed": false
+      },
+      "outputs": [],
+      "source": "embark_fare <- all_data %>%\n  filter(PassengerId != 62 & PassengerId != 830)\n\nggplot(embark_fare, aes(x = Embarked, y = Fare, fill = factor(Pclass))) +\n  geom_boxplot() +\n  geom_hline(aes(yintercept=80),\n    colour='red', linetype='dashed', lwd=2) +\n  scale_y_continuous(labels=dollar_format()) +\n  theme_few()\n# %>% takes the value on the left and pass it to the right as an argument \nembark_fare <- all_data %>%\n    filter(PassengerId != 62 & PassengerId != 830)",
+      "execution_state": "idle"
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "_cell_guid": "2feb1cf5-15c8-d886-58d2-1afd7b379860",
+        "_active": false
+      },
+      "outputs": [],
+      "source": "all_data$Embarked[c(62, 830)] <- 'C'",
+      "execution_state": "idle"
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "_cell_guid": "504681cf-ee86-7ed7-351a-42b387d7899a",
+        "_active": false
+      },
+      "outputs": [],
+      "source": "#Passenger 1044 has NA for fare, survived, and deck \nall_data[1044,]\n\n#1044 was in 3rd class and embarked from \"S\". ",
+      "execution_state": "idle"
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "_cell_guid": "4f49b57e-028a-66f2-0c98-51342d8fb0a5",
+        "_active": false
+      },
+      "outputs": [],
+      "source": "sum(is.na(all_data$Age))",
+      "execution_state": "idle"
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "_cell_guid": "6b5c47a6-293e-5bf8-01f7-bfcac95c9db7",
+        "_active": false
+      },
+      "outputs": [],
+      "source": "#Visualizing the variables with missing observations \nlibrary(VIM)\naggr_plot <- aggr(all_data, col=c('cornflower blue','red'), numbers=TRUE, sortVars=TRUE, labels=names(all_data), cex.axis=.7, gap=3, ylab=c(\"Histogram of missing data\",\"Pattern\"))",
+      "execution_state": "idle"
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "_cell_guid": "e4ca96a4-c810-d415-ae03-63cf9d566af8",
+        "_active": false,
+        "collapsed": false
+      },
+      "outputs": [],
+      "source": "d <- density(na.omit(all_data$Age))\nplot(d)\n#The Age variable appears to be left skewed. \n#However, we should be careful about assigning a potential distribution to data just by graphing its density. ",
+      "execution_state": "idle"
+    },
+    {
+      "metadata": {
+        "_cell_guid": "d524db1b-b5b7-fea1-6258-69f5eedb79d4",
+        "_active": true,
+        "collapsed": false
+      },
+      "source": "x <- as.vector(all_data$Age)\nstr(x)\n",
+      "execution_count": null,
+      "cell_type": "code",
+      "outputs": [],
+      "execution_state": "idle"
+    }
+  ]
+}

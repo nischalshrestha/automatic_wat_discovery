@@ -1,0 +1,17 @@
+{
+  "keywords": [],
+  "enable_gpu": false,
+  "kernel_sources": [],
+  "id": "bikashg3/an-interactive-data-science-tutorial",
+  "enable_internet": false,
+  "kernel_type": "notebook",
+  "is_private": false,
+  "competition_sources": [
+    "titanic"
+  ],
+  "id_no": 280472,
+  "code_file": "an-interactive-data-science-tutorial.ipynb",
+  "title": "An Interactive Data Science Tutorial",
+  "dataset_sources": [],
+  "language": "python"
+}

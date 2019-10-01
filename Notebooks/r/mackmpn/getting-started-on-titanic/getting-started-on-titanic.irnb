@@ -1,0 +1,60 @@
+{
+  "cells": [
+    {
+      "cell_type": "markdown",
+      "metadata": {
+        "_cell_guid": "bf614346-962b-310f-a14a-f5bc858dafe0"
+      },
+      "source": [
+        "Reading Data"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "_cell_guid": "ab71d75b-197d-957d-8ce8-fd384b9e483b"
+      },
+      "outputs": [],
+      "source": [
+        "# Set working directory and import datafiles\n",
+        "setwd(\"~/Kaggle/Titanic\")\n",
+        "train <- read.csv(\"train.csv\")\n",
+        "test <- read.csv(\"test.csv\")\n",
+        "\n",
+        "# Examine structure of dataframe\n",
+        "str(train)\n",
+        "\n",
+        "# Look at number of people who survived\n",
+        "table(train$Survived)\n",
+        "prop.table(table(train$Survived))\n",
+        "\n",
+        "# Create new column in test set with our prediction that everyone dies\n",
+        "test$Survived <- rep(0, 418)\n",
+        "\n",
+        "# Create submission dataframe and output to file\n",
+        "submit <- data.frame(PassengerId = test$PassengerId, Survived = test$Survived)\n",
+        "write.csv(submit, file = \"theyallperish.csv\", row.names = FALSE)"
+      ]
+    }
+  ],
+  "metadata": {
+    "_change_revision": 0,
+    "_is_fork": false,
+    "kernelspec": {
+      "display_name": "R",
+      "language": "R",
+      "name": "ir"
+    },
+    "language_info": {
+      "codemirror_mode": "r",
+      "file_extension": ".r",
+      "mimetype": "text/x-r-source",
+      "name": "R",
+      "pygments_lexer": "r",
+      "version": "3.3.1"
+    }
+  },
+  "nbformat": 4,
+  "nbformat_minor": 0
+}

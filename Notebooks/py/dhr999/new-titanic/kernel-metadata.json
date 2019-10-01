@@ -1,0 +1,17 @@
+{
+  "is_private": false,
+  "kernel_sources": [],
+  "enable_internet": false,
+  "language": "python",
+  "title": "New Titanic",
+  "enable_gpu": false,
+  "competition_sources": [
+    "titanic"
+  ],
+  "kernel_type": "notebook",
+  "code_file": "new-titanic.ipynb",
+  "dataset_sources": [],
+  "id_no": 1239579,
+  "id": "dhr999/new-titanic",
+  "keywords": []
+}

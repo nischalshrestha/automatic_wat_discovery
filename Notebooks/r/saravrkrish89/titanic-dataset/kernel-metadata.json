@@ -1,0 +1,17 @@
+{
+  "id_no": 256056,
+  "code_file": "titanic-dataset.ipynb",
+  "competition_sources": [
+    "titanic"
+  ],
+  "language": "python",
+  "title": "Titanic DataSet",
+  "is_private": false,
+  "enable_internet": false,
+  "keywords": [],
+  "kernel_type": "notebook",
+  "id": "saravrkrish89/titanic-dataset",
+  "kernel_sources": [],
+  "enable_gpu": false,
+  "dataset_sources": []
+}

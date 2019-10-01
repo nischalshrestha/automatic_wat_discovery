@@ -1,0 +1,17 @@
+{
+  "code_file": "titanic-prediction-tf2.ipynb",
+  "id_no": 823781,
+  "enable_internet": false,
+  "kernel_sources": [],
+  "enable_gpu": false,
+  "dataset_sources": [],
+  "language": "python",
+  "id": "mshadoufa/titanic-prediction-tf2",
+  "keywords": [],
+  "competition_sources": [
+    "titanic"
+  ],
+  "is_private": false,
+  "kernel_type": "notebook",
+  "title": "Titanic prediction (TF2)"
+}

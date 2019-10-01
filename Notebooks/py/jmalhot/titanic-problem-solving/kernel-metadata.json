@@ -1,0 +1,17 @@
+{
+  "id_no": 367011,
+  "enable_internet": false,
+  "language": "python",
+  "id": "jmalhot/titanic-problem-solving",
+  "dataset_sources": [],
+  "enable_gpu": false,
+  "kernel_sources": [],
+  "title": "Titanic Problem Solving",
+  "kernel_type": "notebook",
+  "code_file": "titanic-problem-solving.ipynb",
+  "competition_sources": [
+    "titanic"
+  ],
+  "keywords": [],
+  "is_private": false
+}

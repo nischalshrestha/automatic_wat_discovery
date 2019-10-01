@@ -1,0 +1,17 @@
+{
+  "id": "jfgobin/titanic-survival-rate",
+  "competition_sources": [
+    "titanic"
+  ],
+  "id_no": 150590,
+  "dataset_sources": [],
+  "kernel_type": "notebook",
+  "code_file": "titanic-survival-rate.ipynb",
+  "kernel_sources": [],
+  "language": "python",
+  "is_private": false,
+  "enable_internet": false,
+  "keywords": [],
+  "enable_gpu": false,
+  "title": "Titanic Survival Rate"
+}

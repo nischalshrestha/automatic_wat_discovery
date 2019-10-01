@@ -1,0 +1,23 @@
+{
+  "id": "pmarcelino/data-analysis-and-feature-extraction-with-python",
+  "competition_sources": [
+    "titanic"
+  ],
+  "enable_internet": false,
+  "code_file": "data-analysis-and-feature-extraction-with-python.ipynb",
+  "dataset_sources": [],
+  "enable_gpu": false,
+  "title": "Data analysis and feature extraction with Python",
+  "kernel_type": "notebook",
+  "language": "python",
+  "kernel_sources": [],
+  "id_no": 831877,
+  "is_private": false,
+  "keywords": [
+    "tutorial",
+    "beginner",
+    "eda",
+    "data visualization",
+    "feature engineering"
+  ]
+}

@@ -1,0 +1,17 @@
+{
+  "language": "python",
+  "id_no": 500727,
+  "kernel_type": "notebook",
+  "id": "sttzschoppe/my-first-steps-decision-tree",
+  "enable_internet": false,
+  "dataset_sources": [],
+  "code_file": "my-first-steps-decision-tree.ipynb",
+  "title": "My First Steps (Decision Tree)",
+  "enable_gpu": false,
+  "kernel_sources": [],
+  "competition_sources": [
+    "titanic"
+  ],
+  "is_private": false,
+  "keywords": []
+}

@@ -1,0 +1,17 @@
+{
+  "id": "darshnreddy/travelling-with-titanic-first-attempt",
+  "is_private": false,
+  "dataset_sources": [],
+  "kernel_sources": [],
+  "language": "python",
+  "enable_gpu": false,
+  "kernel_type": "notebook",
+  "id_no": 1428380,
+  "enable_internet": false,
+  "keywords": [],
+  "code_file": "travelling-with-titanic-first-attempt.ipynb",
+  "title": "Travelling with Titanic - First attempt",
+  "competition_sources": [
+    "titanic"
+  ]
+}

@@ -1,0 +1,17 @@
+{
+  "kernel_sources": [],
+  "is_private": false,
+  "dataset_sources": [],
+  "enable_internet": false,
+  "code_file": "tensorflow.ipynb",
+  "enable_gpu": false,
+  "id_no": 97220,
+  "language": "python",
+  "id": "rahenri/tensorflow",
+  "keywords": [],
+  "title": "Tensorflow",
+  "competition_sources": [
+    "titanic"
+  ],
+  "kernel_type": "notebook"
+}

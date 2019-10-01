@@ -1,0 +1,17 @@
+{
+  "kernel_type": "notebook",
+  "competition_sources": [
+    "titanic"
+  ],
+  "code_file": "model-v3-dt.ipynb",
+  "id_no": 1422867,
+  "id": "nekojohn/model-v3-dt",
+  "title": "Model v3 - DT",
+  "keywords": [],
+  "is_private": false,
+  "kernel_sources": [],
+  "language": "python",
+  "enable_gpu": true,
+  "dataset_sources": [],
+  "enable_internet": false
+}

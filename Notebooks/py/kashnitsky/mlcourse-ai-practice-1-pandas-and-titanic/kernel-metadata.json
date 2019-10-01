@@ -1,0 +1,17 @@
+{
+  "enable_gpu": false,
+  "competition_sources": [
+    "titanic"
+  ],
+  "id_no": 2063590,
+  "code_file": "mlcourse-ai-practice-1-pandas-and-titanic.ipynb",
+  "dataset_sources": [],
+  "kernel_sources": [],
+  "kernel_type": "notebook",
+  "language": "python",
+  "title": "[mlcourse.ai] Practice 1. Pandas and Titanic",
+  "is_private": false,
+  "keywords": [],
+  "enable_internet": false,
+  "id": "kashnitsky/mlcourse-ai-practice-1-pandas-and-titanic"
+}

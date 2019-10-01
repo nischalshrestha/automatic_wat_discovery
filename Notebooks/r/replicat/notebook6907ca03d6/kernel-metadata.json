@@ -1,0 +1,17 @@
+{
+  "title": "Notebooka816f1ffef",
+  "code_file": "notebook6907ca03d6.irnb",
+  "id": "replicat/notebook6907ca03d6",
+  "competition_sources": [
+    "titanic"
+  ],
+  "enable_internet": false,
+  "kernel_sources": [],
+  "enable_gpu": false,
+  "dataset_sources": [],
+  "keywords": [],
+  "kernel_type": "notebook",
+  "id_no": 179835,
+  "language": "r",
+  "is_private": false
+}

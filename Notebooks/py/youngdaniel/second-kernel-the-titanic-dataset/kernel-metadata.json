@@ -1,0 +1,19 @@
+{
+  "title": "Second Kernel: The Titanic Dataset",
+  "enable_gpu": false,
+  "id": "youngdaniel/second-kernel-the-titanic-dataset",
+  "keywords": [
+    "starter code"
+  ],
+  "enable_internet": false,
+  "competition_sources": [
+    "titanic"
+  ],
+  "id_no": 1686185,
+  "kernel_type": "notebook",
+  "is_private": false,
+  "kernel_sources": [],
+  "language": "python",
+  "dataset_sources": [],
+  "code_file": "second-kernel-the-titanic-dataset.ipynb"
+}

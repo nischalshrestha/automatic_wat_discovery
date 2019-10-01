@@ -1,0 +1,333 @@
+{
+  "cells": [
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "_cell_guid": "8f499028-2bcf-558b-b8e8-5974f223203c"
+      },
+      "outputs": [],
+      "source": [
+        "# This R environment comes with all of CRAN preinstalled, as well as many other helpful packages\n",
+        "# The environment is defined by the kaggle/rstats docker image: https://github.com/kaggle/docker-rstats\n",
+        "# For example, here's several helpful packages to load in \n",
+        "\n",
+        "# Input data files are available in the \"../input/\" directory.\n",
+        "# For example, running this (by clicking run or pressing Shift+Enter) will list the files in the input directory\n",
+        "\n",
+        "#system(\"ls ../input\")\n",
+        "\n",
+        "# Any results you write to the current directory are saved as output.\n",
+        "\n",
+        "# My first attempt at writing a kernel in Kaggle. I have chosen the notebook approach... why? well\n",
+        "# just as an experiment. Here I will try to analyze the Titanic dataset and improve the prediction\n",
+        "# accuracy and overall score in steps.\n",
+        "\n",
+        "library(dplyr)\n",
+        "library(rpart)\n",
+        "library(randomForest)\n",
+        "library(MASS)\n",
+        "library(mice)"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "_cell_guid": "68acf041-b06c-3af9-1d42-c99a2e3f9b5c"
+      },
+      "outputs": [],
+      "source": [
+        "# Read the training and test data\n",
+        "train.data <- read.csv(\"../input/train.csv\", stringsAsFactors = F)\n",
+        "test.data <- read.csv(\"../input/test.csv\", stringsAsFactors = F)\n",
+        "\n",
+        "dim(train.data)\n",
+        "str(train.data)\n",
+        "dim(test.data)\n",
+        "str(test.data)"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "_cell_guid": "6eba2188-b776-d949-b845-bffb521f602d"
+      },
+      "outputs": [],
+      "source": [
+        "# Clean the title\n",
+        "rare_title <- c('Dona', 'Lady', 'the Countess','Capt', 'Col', 'Don', 'Dr', 'Major', 'Rev', 'Sir', 'Jonkheer')\n",
+        "\n",
+        "train.data$Title <- gsub('(.*, )|(\\\\..*)', '', train.data$Name)\n",
+        "train.data$Title[train.data$Title == 'Mlle']        <- 'Miss' \n",
+        "train.data$Title[train.data$Title == 'Ms']          <- 'Miss'\n",
+        "train.data$Title[train.data$Title == 'Mme']         <- 'Mrs' \n",
+        "train.data$Title[train.data$Title %in% rare_title]  <- 'Rare Title'\n",
+        "train.data$FamilySize <- train.data$SibSp + train.data$Parch + 1\n",
+        "\n",
+        "test.data$Title <- gsub('(.*, )|(\\\\..*)', '', test.data$Name)\n",
+        "test.data$Title[test.data$Title == 'Mlle']        <- 'Miss' \n",
+        "test.data$Title[test.data$Title == 'Ms']          <- 'Miss'\n",
+        "test.data$Title[test.data$Title == 'Mme']         <- 'Mrs' \n",
+        "test.data$Title[test.data$Title %in% rare_title]  <- 'Rare Title'\n",
+        "test.data$FamilySize <- test.data$SibSp + test.data$Parch + 1"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "_cell_guid": "11cd72c8-5722-0d23-135e-a6d935c2c0cf"
+      },
+      "outputs": [],
+      "source": [
+        "# Merge the datasets\n",
+        "traintest.data <- bind_rows(train.data, test.data)\n",
+        "\n",
+        "dim(traintest.data)\n",
+        "str(traintest.data)"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "_cell_guid": "e352a459-9be8-3e3c-4539-c2ea1ca3fad5"
+      },
+      "outputs": [],
+      "source": [
+        "# Some bar plot to analyze the data\n",
+        "barplot(table(train.data$Survived, train.data$Sex), col=c(\"Red\", \"Green\"), legend=c(\"Dead\", \"Alive\"), main=\"Survival By Gender\")\n",
+        "barplot(table(train.data$Survived, train.data$Age), col=c(\"Red\", \"Green\"), legend=c(\"Dead\", \"Alive\"), main=\"Survival By Age\")\n",
+        "barplot(table(train.data$Survived, train.data$Embarked), col=c(\"Red\", \"Green\"), legend=c(\"Dead\", \"Alive\"), main=\"Survival By Embarked\")\n",
+        "barplot(table(train.data$Survived, train.data$Pclass), col=c(\"Red\", \"Green\"), legend=c(\"Dead\", \"Alive\"), main=\"Survival By Class\")\n",
+        "barplot(table(train.data$Survived, train.data$Title), col=c(\"Red\", \"Green\"), legend=c(\"Dead\", \"Alive\"), main=\"Survival By Title\")\n",
+        "barplot(table(train.data$Survived, train.data$FamilySize), col=c(\"Red\", \"Green\"), legend=c(\"Dead\", \"Alive\"), main=\"Survival By Family Size\")"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "_cell_guid": "f4646969-256a-a85c-627f-ce991cc45145"
+      },
+      "outputs": [],
+      "source": [
+        "# Solution 1\n",
+        "# Just enter random values for the survival\n",
+        "test.data$SurvivedRandom <- rbinom(418, 1, 0.5)\n",
+        "final.data <- data.frame(PassengerId = test.data$PassengerId, Survived = test.data$SurvivedRandom)\n",
+        "write.csv(final.data, file=\"Output_Random.csv\", row.names = FALSE)"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "_cell_guid": "b57759a5-6549-c42d-e18a-9ecab0ccabe4"
+      },
+      "outputs": [],
+      "source": [
+        "# Solution 2\n",
+        "# Only females survive. This is based on the gender based survival graph shown above\n",
+        "test.data$SurvivedGender <- 0\n",
+        "test.data$SurvivedGender[test.data$Sex == \"female\"] <- 1\n",
+        "test.data$SurvivedGender[test.data$Sex == \"female\"] <- 1\n",
+        "final.data <- data.frame(PassengerId = test.data$PassengerId, Survived = test.data$SurvivedGender)\n",
+        "write.csv(final.data, file=\"Output_Gender.csv\", row.names = FALSE)"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "_cell_guid": "3315c9d5-c2ce-1062-f474-0facef2abf2d"
+      },
+      "outputs": [],
+      "source": [
+        "# Update missing values for fare, embarkment and age. Use rpart for age computation\n",
+        "colSums(is.na(test.data))\n",
+        "traintest.data$Fare[1044] <- median(traintest.data$Fare, na.rm = TRUE)\n",
+        "traintest.data$Embarked[c(62, 830)] <- 'C'\n",
+        "predicted_age <- rpart(Age ~ Pclass + Sex + SibSp + Parch + Fare + Embarked, data = traintest.data[!is.na(traintest.data$Age),], method = \"anova\")\n",
+        "# predicted_age\n",
+        "traintest.data$Age[is.na(traintest.data$Age)] <- predict(predicted_age, traintest.data[is.na(traintest.data$Age),])\n",
+        "colSums(is.na(traintest.data))"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "_cell_guid": "5adcdbe8-aafd-18cd-dc42-75106fe68f2b"
+      },
+      "outputs": [],
+      "source": [
+        "# Solution 3... use rpart to compute survival\n",
+        "train.data1 <- traintest.data[1:891,]\n",
+        "test.data1 <- traintest.data[892:1309,]\n",
+        "predicted_survival <- rpart(Survived ~ Pclass + Sex + Age + SibSp + Parch + Fare + Embarked + Title + FamilySize, data = train.data1, method = \"class\")\n",
+        "rpart_prediction <- predict(predicted_survival, newdata = test.data1, type = \"class\")\n",
+        "final.data <- data.frame(PassengerId = test.data1$PassengerId, Survived = rpart_prediction)\n",
+        "write.csv(final.data, file=\"Output_RPart.csv\", row.names = FALSE)"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "_cell_guid": "149d3143-fab8-ed0c-c097-a20c948c5986"
+      },
+      "outputs": [],
+      "source": [
+        "# Solution 4... use randomforest to compute survival\n",
+        "train.data2 <- traintest.data[1:891,]\n",
+        "test.data2 <- traintest.data[892:1309,]\n",
+        "train.data2$Title <- factor(train.data2$Title)\n",
+        "train.data2$Sex <- factor(train.data2$Sex)\n",
+        "train.data2$Survived <- factor(train.data$Survived)\n",
+        "train.data2$Survived <- factor(train.data2$Survived)\n",
+        "train.data2$Embarked <- factor(train.data2$Embarked)\n",
+        "test.data2$Title <- factor(test.data2$Title)\n",
+        "test.data2$Sex <- factor(test.data2$Sex)\n",
+        "test.data2$Survived <- factor(test.data2$Survived)\n",
+        "test.data2$Embarked <- factor(test.data2$Embarked)\n",
+        "predicted_survival <- randomForest(factor(Survived) ~ Pclass + Sex + Age + SibSp + Parch + Fare + Title + Embarked + FamilySize, data = train.data2)\n",
+        "rf_prediction <- predict(predicted_survival, test.data2)\n",
+        "final.data <- data.frame(PassengerId = test.data2$PassengerId, Survived = rf_prediction)\n",
+        "write.csv(final.data, file=\"Output_RF.csv\", row.names = FALSE)"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "_cell_guid": "8a41f0d8-b02f-3885-04a7-8cc51226bf1c"
+      },
+      "outputs": [],
+      "source": [
+        "# Solution 5... use randomforest to compute survival + some simple feature engineering\n",
+        "traintest.data$Child[traintest.data$Age < 18] <- 'Child'\n",
+        "traintest.data$Child[traintest.data$Age >= 18] <- 'Adult'\n",
+        "traintest.data$Mother <- 'Not Mother'\n",
+        "traintest.data$Mother[traintest.data$Sex == 'female' & traintest.data$Parch > 0 & traintest.data$Age > 18 & traintest.data$Title != 'Miss'] <- 'Mother'\n",
+        "traintest.data$FamilySizeCategory[traintest.data$FamilySize == 1] <- 'Single'\n",
+        "traintest.data$FamilySizeCategory[traintest.data$FamilySize > 1] <- 'Small'\n",
+        "traintest.data$FamilySizeCategory[traintest.data$FamilySize > 4] <- 'Large'\n",
+        "\n",
+        "train.data3 <- traintest.data[1:891,]\n",
+        "test.data3 <- traintest.data[892:1309,]\n",
+        "train.data3$Title <- factor(train.data3$Title)\n",
+        "train.data3$Sex <- factor(train.data3$Sex)\n",
+        "train.data3$Survived <- factor(train.data3$Survived)\n",
+        "train.data3$Embarked <- factor(train.data3$Embarked)\n",
+        "train.data3$Child <- factor(train.data3$Child)\n",
+        "train.data3$Mother <- factor(train.data3$Mother)\n",
+        "train.data3$FamilySizeCategory <- factor(train.data3$FamilySizeCategory)\n",
+        "test.data3$Title <- factor(test.data3$Title)\n",
+        "test.data3$Sex <- factor(test.data3$Sex)\n",
+        "test.data3$Survived <- factor(test.data3$Survived)\n",
+        "test.data3$Embarked <- factor(test.data3$Embarked)\n",
+        "test.data3$Child <- factor(test.data3$Child)\n",
+        "test.data3$Mother <- factor(test.data3$Mother)\n",
+        "test.data3$FamilySizeCategory <- factor(test.data3$FamilySizeCategory)\n",
+        "predicted_survival <- randomForest(factor(Survived) ~ Pclass + Sex + Age + SibSp + Parch + Fare + Title + Embarked + FamilySizeCategory + Child + Mother, data = train.data3)\n",
+        "rf_prediction <- predict(predicted_survival, test.data3)\n",
+        "final.data3 <- data.frame(PassengerId = test.data2$PassengerId, Survived = rf_prediction)\n",
+        "write.csv(final.data3, file=\"Output_RF_FE1.csv\", row.names = FALSE)"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "_cell_guid": "45b75327-2059-6c32-3a93-e69c277549f4"
+      },
+      "outputs": [],
+      "source": [
+        "# Solution 6... compute age using MICE & use Surname... still use RandomForest\n",
+        "train.data <- read.csv(\"../input/train.csv\", stringsAsFactors = F)\n",
+        "test.data <- read.csv(\"../input/test.csv\", stringsAsFactors = F)\n",
+        "rare_title <- c('Dona', 'Lady', 'the Countess','Capt', 'Col', 'Don', 'Dr', 'Major', 'Rev', 'Sir', 'Jonkheer')\n",
+        "train.data$Title <- gsub('(.*, )|(\\\\..*)', '', train.data$Name)\n",
+        "train.data$Title[train.data$Title == 'Mlle']        <- 'Miss' \n",
+        "train.data$Title[train.data$Title == 'Ms']          <- 'Miss'\n",
+        "train.data$Title[train.data$Title == 'Mme']         <- 'Mrs' \n",
+        "train.data$Title[train.data$Title %in% rare_title]  <- 'Rare Title'\n",
+        "train.data$FamilySize <- train.data$SibSp + train.data$Parch + 1\n",
+        "test.data$Title <- gsub('(.*, )|(\\\\..*)', '', test.data$Name)\n",
+        "test.data$Title[test.data$Title == 'Mlle']        <- 'Miss' \n",
+        "test.data$Title[test.data$Title == 'Ms']          <- 'Miss'\n",
+        "test.data$Title[test.data$Title == 'Mme']         <- 'Mrs' \n",
+        "test.data$Title[test.data$Title %in% rare_title]  <- 'Rare Title'\n",
+        "test.data$FamilySize <- test.data$SibSp + test.data$Parch + 1\n",
+        "traintest.data <- bind_rows(train.data, test.data)\n",
+        "traintest.data <- bind_rows(train.data, test.data)\n",
+        "traintest.data$Fare[1044] <- median(traintest.data$Fare, na.rm = TRUE)\n",
+        "traintest.data$Embarked[c(62, 830)] <- 'C'\n",
+        "traintest.data$Child[traintest.data$Age < 18] <- 'Child'\n",
+        "traintest.data$Child[traintest.data$Age >= 18] <- 'Adult'\n",
+        "traintest.data$Mother <- 'Not Mother'\n",
+        "traintest.data$Mother[traintest.data$Sex == 'female' & traintest.data$Parch > 0 & traintest.data$Age > 18 & traintest.data$Title != 'Miss'] <- 'Mother'\n",
+        "traintest.data$FamilySizeCategory[traintest.data$FamilySize == 1] <- 'Single'\n",
+        "traintest.data$FamilySizeCategory[traintest.data$FamilySize > 1] <- 'Small'\n",
+        "traintest.data$FamilySizeCategory[traintest.data$FamilySize > 4] <- 'Large'\n",
+        "traintest.data$Surname <- sapply(traintest.data$Name, function(x) strsplit(x, split = '[,.]')[[1]][1])\n",
+        "traintestcopy <- traintest.data\n",
+        "factor_vars <- c('PassengerId','Pclass','Sex','Embarked','Title','Surname','FamilySizeCategory')\n",
+        "full.data <- traintest.data\n",
+        "full.data[factor_vars] <- lapply(full.data[factor_vars], function(x) as.factor(x))\n",
+        "set.seed(123)\n",
+        "mice_mod <- mice(full.data[, !names(full.data) %in% c('PassengerId','Name','Ticket','Cabin','Family','Surname','Survived')], method='rf')\n",
+        "mice_output <- complete(mice_mod)\n",
+        "full.data$Age <- mice_output$Age\n",
+        "\n",
+        "full.data$Child[full.data$Age < 18] <- 'Child'\n",
+        "full.data$Child[full.data$Age >= 18] <- 'Adult'\n",
+        "\n",
+        "train.data3 <- full.data[1:891,]\n",
+        "test.data3 <- full.data[892:1309,]\n",
+        "train.data3$Title <- factor(train.data3$Title)\n",
+        "train.data3$Sex <- factor(train.data3$Sex)\n",
+        "train.data3$Survived <- factor(train.data3$Survived)\n",
+        "train.data3$Embarked <- factor(train.data3$Embarked)\n",
+        "train.data3$Child <- factor(train.data3$Child)\n",
+        "train.data3$Mother <- factor(train.data3$Mother)\n",
+        "train.data3$FamilySizeCategory <- factor(train.data3$FamilySizeCategory)\n",
+        "train.data3$Surname <- factor(train.data3$Surname)\n",
+        "test.data3$Title <- factor(test.data3$Title)\n",
+        "test.data3$Sex <- factor(test.data3$Sex)\n",
+        "test.data3$Survived <- factor(test.data3$Survived)\n",
+        "test.data3$Embarked <- factor(test.data3$Embarked)\n",
+        "test.data3$Child <- factor(test.data3$Child)\n",
+        "test.data3$Mother <- factor(test.data3$Mother)\n",
+        "test.data3$FamilySizeCategory <- factor(test.data3$FamilySizeCategory)\n",
+        "test.data3$Surname <- factor(test.data3$Surname)\n",
+        "predicted_survival <- randomForest(factor(Survived) ~ Pclass + Sex + Age + SibSp + Parch + Fare + Title + Embarked + FamilySizeCategory + Child + Mother, data = train.data3)\n",
+        "rf_prediction <- predict(predicted_survival, test.data3)\n",
+        "final.data3 <- data.frame(PassengerId = test.data2$PassengerId, Survived = rf_prediction)\n",
+        "write.csv(final.data3, file=\"Output_RF_MICE.csv\", row.names = FALSE)"
+      ]
+    }
+  ],
+  "metadata": {
+    "_change_revision": 0,
+    "_is_fork": false,
+    "kernelspec": {
+      "display_name": "R",
+      "language": "R",
+      "name": "ir"
+    },
+    "language_info": {
+      "codemirror_mode": "r",
+      "file_extension": ".r",
+      "mimetype": "text/x-r-source",
+      "name": "R",
+      "pygments_lexer": "r",
+      "version": "3.3.2"
+    }
+  },
+  "nbformat": 4,
+  "nbformat_minor": 0
+}

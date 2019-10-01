@@ -1,0 +1,17 @@
+{
+  "competition_sources": [
+    "titanic"
+  ],
+  "enable_internet": false,
+  "is_private": false,
+  "language": "python",
+  "kernel_sources": [],
+  "id_no": 1190564,
+  "id": "hughguo/2nd-of-titanic-anlayze",
+  "keywords": [],
+  "enable_gpu": false,
+  "title": "2nd of Titanic  Anlayze",
+  "kernel_type": "notebook",
+  "code_file": "2nd-of-titanic-anlayze.ipynb",
+  "dataset_sources": []
+}

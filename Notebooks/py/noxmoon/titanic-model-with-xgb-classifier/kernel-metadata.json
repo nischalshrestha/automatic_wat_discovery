@@ -1,0 +1,17 @@
+{
+  "kernel_sources": [],
+  "language": "python",
+  "code_file": "titanic-model-with-xgb-classifier.ipynb",
+  "is_private": false,
+  "keywords": [],
+  "kernel_type": "notebook",
+  "competition_sources": [
+    "titanic"
+  ],
+  "id": "noxmoon/titanic-model-with-xgb-classifier",
+  "id_no": 898246,
+  "enable_internet": false,
+  "enable_gpu": false,
+  "title": "Titanic model with XGB classifier",
+  "dataset_sources": []
+}

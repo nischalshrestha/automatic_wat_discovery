@@ -1,0 +1,17 @@
+{
+  "kernel_sources": [],
+  "is_private": false,
+  "id_no": 223623,
+  "enable_gpu": false,
+  "kernel_type": "notebook",
+  "code_file": "notebook75bccea98a.irnb",
+  "keywords": [],
+  "id": "lululavignel/notebook75bccea98a",
+  "enable_internet": false,
+  "competition_sources": [
+    "titanic"
+  ],
+  "title": "Notebook75bccea98a",
+  "dataset_sources": [],
+  "language": "r"
+}

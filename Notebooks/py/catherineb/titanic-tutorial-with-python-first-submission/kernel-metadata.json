@@ -1,0 +1,17 @@
+{
+  "title": "Titanic - tutorial with python - first submission",
+  "competition_sources": [
+    "titanic"
+  ],
+  "kernel_sources": [],
+  "kernel_type": "notebook",
+  "enable_internet": false,
+  "id_no": 161470,
+  "code_file": "titanic-tutorial-with-python-first-submission.ipynb",
+  "is_private": false,
+  "language": "python",
+  "id": "catherineb/titanic-tutorial-with-python-first-submission",
+  "dataset_sources": [],
+  "enable_gpu": false,
+  "keywords": []
+}

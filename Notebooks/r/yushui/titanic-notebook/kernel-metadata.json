@@ -1,0 +1,17 @@
+{
+  "dataset_sources": [],
+  "keywords": [],
+  "language": "r",
+  "id": "yushui/titanic-notebook",
+  "title": "Titanic Notebook",
+  "id_no": 222170,
+  "competition_sources": [
+    "titanic"
+  ],
+  "kernel_type": "notebook",
+  "is_private": false,
+  "enable_gpu": false,
+  "enable_internet": false,
+  "code_file": "titanic-notebook.irnb",
+  "kernel_sources": []
+}

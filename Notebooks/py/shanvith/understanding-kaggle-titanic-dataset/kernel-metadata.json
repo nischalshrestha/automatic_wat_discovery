@@ -1,0 +1,17 @@
+{
+  "competition_sources": [
+    "titanic"
+  ],
+  "dataset_sources": [],
+  "is_private": false,
+  "enable_gpu": false,
+  "kernel_sources": [],
+  "enable_internet": false,
+  "id_no": 1255522,
+  "id": "shanvith/understanding-kaggle-titanic-dataset",
+  "language": "python",
+  "title": "Understanding Kaggle - Titanic Dataset",
+  "code_file": "understanding-kaggle-titanic-dataset.ipynb",
+  "kernel_type": "notebook",
+  "keywords": []
+}

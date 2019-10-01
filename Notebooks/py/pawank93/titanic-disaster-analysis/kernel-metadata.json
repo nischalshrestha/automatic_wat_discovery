@@ -1,0 +1,17 @@
+{
+  "is_private": false,
+  "language": "python",
+  "keywords": [],
+  "dataset_sources": [],
+  "kernel_sources": [],
+  "id": "pawank93/titanic-disaster-analysis",
+  "kernel_type": "notebook",
+  "id_no": 1832832,
+  "competition_sources": [
+    "titanic"
+  ],
+  "enable_gpu": false,
+  "code_file": "titanic-disaster-analysis.ipynb",
+  "enable_internet": false,
+  "title": "Titanic_Disaster_Analysis"
+}

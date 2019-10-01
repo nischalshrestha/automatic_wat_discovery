@@ -1,0 +1,17 @@
+{
+  "kernel_type": "notebook",
+  "code_file": "notebook1ad85cbf91.ipynb",
+  "is_private": false,
+  "language": "python",
+  "id_no": 335275,
+  "enable_gpu": false,
+  "keywords": [],
+  "dataset_sources": [],
+  "competition_sources": [
+    "titanic"
+  ],
+  "title": "Notebook1ad85cbf91",
+  "id": "thejoker07/notebook1ad85cbf91",
+  "enable_internet": false,
+  "kernel_sources": []
+}

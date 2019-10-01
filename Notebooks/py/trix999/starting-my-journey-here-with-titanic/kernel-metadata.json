@@ -1,0 +1,17 @@
+{
+  "enable_gpu": false,
+  "language": "python",
+  "dataset_sources": [],
+  "code_file": "starting-my-journey-here-with-titanic.ipynb",
+  "id_no": 244095,
+  "kernel_sources": [],
+  "is_private": false,
+  "id": "trix999/starting-my-journey-here-with-titanic",
+  "enable_internet": false,
+  "competition_sources": [
+    "titanic"
+  ],
+  "keywords": [],
+  "kernel_type": "notebook",
+  "title": "Starting my journey here with...Titanic"
+}

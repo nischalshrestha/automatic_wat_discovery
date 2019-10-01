@@ -1,0 +1,21 @@
+{
+  "dataset_sources": [],
+  "kernel_type": "notebook",
+  "id": "jicksy/titanic-data-analysis-beginner-friendly",
+  "language": "python",
+  "is_private": false,
+  "code_file": "titanic-data-analysis-beginner-friendly.ipynb",
+  "kernel_sources": [],
+  "id_no": 1626294,
+  "keywords": [
+    "tutorial",
+    "beginner",
+    "starter code"
+  ],
+  "enable_gpu": false,
+  "competition_sources": [
+    "titanic"
+  ],
+  "enable_internet": false,
+  "title": "Titanic Data Analysis - Beginner Friendly"
+}

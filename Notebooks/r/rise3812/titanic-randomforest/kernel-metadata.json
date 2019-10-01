@@ -1,0 +1,17 @@
+{
+  "language": "r",
+  "enable_gpu": false,
+  "code_file": "titanic-randomforest.irnb",
+  "is_private": false,
+  "kernel_type": "notebook",
+  "kernel_sources": [],
+  "id": "rise3812/titanic-randomforest",
+  "enable_internet": false,
+  "title": "titanic_randomforest",
+  "competition_sources": [
+    "titanic"
+  ],
+  "keywords": [],
+  "dataset_sources": [],
+  "id_no": 42772
+}

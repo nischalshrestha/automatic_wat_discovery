@@ -1,0 +1,17 @@
+{
+  "enable_internet": false,
+  "keywords": [],
+  "language": "r",
+  "dataset_sources": [],
+  "kernel_sources": [],
+  "enable_gpu": false,
+  "kernel_type": "notebook",
+  "code_file": "the-titanic-using-knn.irnb",
+  "title": "The Titanic..using knn",
+  "competition_sources": [
+    "titanic"
+  ],
+  "is_private": false,
+  "id": "djohnbar/the-titanic-using-knn",
+  "id_no": 1332884
+}

@@ -1,0 +1,11 @@
+{"cells":[
+ {
+  "cell_type": "code",
+  "execution_count": null,
+  "metadata": {
+   "collapsed": false
+  },
+  "outputs": [],
+  "source": "library(randomForest)\nlibrary(caret)\n\n#load the dataset\ntraining <- read.csv(\"../input/train.csv\")\ntesting  <- read.csv(\"../input/test.csv\")\n\nhead(training)\ndim(training)\ndim(testing)\nnames(training)\nprop.table(table(training$Sex, training$Survived), 1)\nsummary(training$Age)\n\n#Partition the training set for training and testing\nset.seed(1010)\ninTrain <- createDataPartition(y=training$Survived, p=0.70, list=FALSE)\ntrain1  <- training[inTrain,]\ntrain2  <- training[-inTrain,]\ndim(train1)\ndim(train2)\n\n\n#Remove near zero covariates from train1 and train2\nnzv_cols <- nearZeroVar(train1)\nif(length(nzv_cols) > 0) {\n  train1 <- train1[, -nzv_cols]\n  train2 <- train2[, -nzv_cols]\n}\ndim(train1)\ndim(train2)\n\n#Calculate the missing values in train1, train2 and testing dataset\ntrain1$Age[is.na(train1$Age)] <- median(train1$Age, na.rm=TRUE)\ntrain1$Fare[is.na(train1$Fare)] <- median(train1$Fare, na.rm=TRUE)\ntrain1$Survived <- as.factor(train1$Survived)\n\ntrain2$Age[is.na(train2$Age)] <- median(train2$Age, na.rm=TRUE)\ntrain2$Fare[is.na(train2$Fare)] <- median(train2$Fare, na.rm=TRUE)\ntrain2$Survived <- as.factor(train2$Survived)\n\ntesting$Age[is.na(testing$Age)] <- median(testing$Age, na.rm=TRUE)\ntesting$Fare[is.na(testing$Fare)] <- median(testing$Fare, na.rm=TRUE)\n\n\n#Check the accurary and gini graphs to see which factors is important\nset.seed(1010)\nfitModel <- randomForest(Survived~Sex + Age + Pclass + Fare,\n                         data=train1, importance=TRUE, ntree=100)\nvarImpPlot(fitModel)\n\n#Predict with the test set\npredictions <- predict(fitModel, newdata=train2)\nconfusionMat <- confusionMatrix(predictions, train2$Survived)\nconfusionMat\n\n#Predict with testing set for submission\ntestPredictions <- predict(fitModel, newdata=testing)\n\n#Create submission file to kaggle\nsubmit <- data.frame(PassengerId = testing$PassengerId, Survived = testPredictions)\nwrite.csv(submit, file = \"titanic.csv\", row.names = FALSE)\n"
+ }
+],"metadata":{"kernelspec":{"display_name":"R","language":"R","name":"ir"}}, "nbformat": 4, "nbformat_minor": 0}

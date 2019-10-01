@@ -1,0 +1,17 @@
+{
+  "language": "r",
+  "keywords": [],
+  "competition_sources": [
+    "titanic"
+  ],
+  "kernel_sources": [],
+  "id_no": 100960,
+  "kernel_type": "notebook",
+  "enable_gpu": false,
+  "id": "akrishna1/notebook739075d14b",
+  "code_file": "notebook739075d14b.irnb",
+  "dataset_sources": [],
+  "title": "Notebook739075d14b",
+  "is_private": false,
+  "enable_internet": false
+}

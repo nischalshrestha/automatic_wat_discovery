@@ -1,0 +1,17 @@
+{
+  "title": "#1-Test",
+  "enable_gpu": false,
+  "id_no": 214848,
+  "kernel_sources": [],
+  "kernel_type": "notebook",
+  "is_private": false,
+  "keywords": [],
+  "code_file": "1-test.ipynb",
+  "language": "python",
+  "id": "deheng/1-test",
+  "enable_internet": false,
+  "dataset_sources": [],
+  "competition_sources": [
+    "titanic"
+  ]
+}

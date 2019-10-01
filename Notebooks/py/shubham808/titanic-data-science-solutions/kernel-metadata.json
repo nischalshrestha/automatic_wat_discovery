@@ -1,0 +1,17 @@
+{
+  "enable_gpu": false,
+  "dataset_sources": [],
+  "enable_internet": false,
+  "kernel_type": "notebook",
+  "is_private": false,
+  "keywords": [],
+  "code_file": "titanic-data-science-solutions.ipynb",
+  "competition_sources": [
+    "titanic"
+  ],
+  "title": "Titanic Data Science Solutions",
+  "id": "shubham808/titanic-data-science-solutions",
+  "language": "python",
+  "kernel_sources": [],
+  "id_no": 257961
+}

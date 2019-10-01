@@ -1,0 +1,17 @@
+{
+  "code_file": "quick-random-forest-and-comparison-with-trees.irnb",
+  "enable_gpu": false,
+  "enable_internet": false,
+  "kernel_sources": [],
+  "kernel_type": "notebook",
+  "is_private": false,
+  "competition_sources": [
+    "titanic"
+  ],
+  "id_no": 106959,
+  "title": "Quick Random Forest and comparison with trees",
+  "keywords": [],
+  "id": "miguelrayon/quick-random-forest-and-comparison-with-trees",
+  "language": "r",
+  "dataset_sources": []
+}

@@ -1,0 +1,17 @@
+{
+  "language": "python",
+  "kernel_sources": [],
+  "id_no": 128732,
+  "id": "jortola/a-journey-through-titanic",
+  "dataset_sources": [],
+  "title": "A Journey through Titanic",
+  "keywords": [],
+  "enable_internet": false,
+  "enable_gpu": false,
+  "is_private": false,
+  "code_file": "a-journey-through-titanic.ipynb",
+  "kernel_type": "notebook",
+  "competition_sources": [
+    "titanic"
+  ]
+}

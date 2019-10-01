@@ -1,0 +1,17 @@
+{
+  "kernel_sources": [],
+  "id": "xalphahelix/titanic-survival-ensembling-model",
+  "keywords": [],
+  "competition_sources": [
+    "titanic"
+  ],
+  "is_private": false,
+  "enable_internet": false,
+  "kernel_type": "notebook",
+  "dataset_sources": [],
+  "language": "python",
+  "id_no": 682682,
+  "code_file": "titanic-survival-ensembling-model.ipynb",
+  "enable_gpu": false,
+  "title": "Titanic Survival Ensembling Model"
+}

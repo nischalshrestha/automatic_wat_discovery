@@ -1,0 +1,17 @@
+{
+  "language": "python",
+  "enable_internet": false,
+  "dataset_sources": [],
+  "keywords": [],
+  "title": "Titanic aula 1",
+  "code_file": "titanic-aula-1.ipynb",
+  "is_private": false,
+  "id_no": 712985,
+  "kernel_sources": [],
+  "competition_sources": [
+    "titanic"
+  ],
+  "kernel_type": "notebook",
+  "id": "paulohncaixeta/titanic-aula-1",
+  "enable_gpu": false
+}

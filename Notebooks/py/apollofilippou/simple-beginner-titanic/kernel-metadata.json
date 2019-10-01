@@ -1,0 +1,23 @@
+{
+  "dataset_sources": [],
+  "keywords": [
+    "beginner",
+    "eda",
+    "data visualization",
+    "classification",
+    "starter code"
+  ],
+  "id_no": 2039388,
+  "enable_gpu": false,
+  "id": "apollofilippou/simple-beginner-titanic",
+  "is_private": false,
+  "kernel_sources": [],
+  "enable_internet": false,
+  "kernel_type": "notebook",
+  "title": "Simple Beginner Titanic",
+  "language": "python",
+  "competition_sources": [
+    "titanic"
+  ],
+  "code_file": "simple-beginner-titanic.ipynb"
+}

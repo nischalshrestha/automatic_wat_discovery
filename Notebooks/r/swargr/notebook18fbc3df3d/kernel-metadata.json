@@ -1,0 +1,17 @@
+{
+  "code_file": "notebook18fbc3df3d.ipynb",
+  "is_private": false,
+  "enable_internet": false,
+  "kernel_type": "notebook",
+  "keywords": [],
+  "kernel_sources": [],
+  "competition_sources": [
+    "titanic"
+  ],
+  "enable_gpu": false,
+  "id_no": 217639,
+  "title": "Notebook18fbc3df3d",
+  "dataset_sources": [],
+  "id": "swargr/notebook18fbc3df3d",
+  "language": "python"
+}

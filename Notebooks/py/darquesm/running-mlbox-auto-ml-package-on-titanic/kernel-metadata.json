@@ -1,0 +1,17 @@
+{
+  "id": "darquesm/running-mlbox-auto-ml-package-on-titanic",
+  "is_private": false,
+  "language": "python",
+  "kernel_type": "notebook",
+  "enable_internet": false,
+  "kernel_sources": [],
+  "code_file": "running-mlbox-auto-ml-package-on-titanic.ipynb",
+  "keywords": [],
+  "competition_sources": [
+    "titanic"
+  ],
+  "title": "Running \"MLBox\" auto-ML package on Titanic",
+  "enable_gpu": false,
+  "dataset_sources": [],
+  "id_no": 321996
+}

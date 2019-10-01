@@ -1,0 +1,17 @@
+{
+  "title": "TitanicSurvivors_R",
+  "dataset_sources": [],
+  "kernel_type": "notebook",
+  "kernel_sources": [],
+  "enable_gpu": false,
+  "id": "jns2292/titanicsurvivors-r",
+  "id_no": 84004,
+  "code_file": "titanicsurvivors-r.irnb",
+  "enable_internet": false,
+  "competition_sources": [
+    "titanic"
+  ],
+  "is_private": false,
+  "keywords": [],
+  "language": "r"
+}

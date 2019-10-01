@@ -1,0 +1,17 @@
+{
+  "kernel_type": "notebook",
+  "language": "python",
+  "code_file": "titanic-dataset-naive-bayes.ipynb",
+  "title": "Titanic dataset - Naive Bayes",
+  "is_private": false,
+  "keywords": [],
+  "kernel_sources": [],
+  "enable_internet": false,
+  "dataset_sources": [],
+  "competition_sources": [
+    "titanic"
+  ],
+  "id_no": 1611275,
+  "id": "thedataspartan/titanic-dataset-naive-bayes",
+  "enable_gpu": false
+}

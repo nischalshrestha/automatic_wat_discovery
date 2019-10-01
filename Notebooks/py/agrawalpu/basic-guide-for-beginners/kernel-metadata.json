@@ -1,0 +1,22 @@
+{
+  "kernel_sources": [],
+  "is_private": false,
+  "keywords": [
+    "tutorial",
+    "beginner",
+    "classification",
+    "feature engineering"
+  ],
+  "language": "python",
+  "id": "agrawalpu/basic-guide-for-beginners",
+  "enable_gpu": false,
+  "id_no": 741968,
+  "enable_internet": false,
+  "dataset_sources": [],
+  "code_file": "basic-guide-for-beginners.ipynb",
+  "kernel_type": "notebook",
+  "competition_sources": [
+    "titanic"
+  ],
+  "title": "Basic guide for beginners"
+}

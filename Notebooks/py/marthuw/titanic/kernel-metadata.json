@@ -1,0 +1,17 @@
+{
+  "language": "python",
+  "kernel_type": "notebook",
+  "competition_sources": [
+    "titanic"
+  ],
+  "dataset_sources": [],
+  "id_no": 618963,
+  "enable_gpu": false,
+  "kernel_sources": [],
+  "is_private": false,
+  "keywords": [],
+  "title": "Titanic",
+  "code_file": "titanic.ipynb",
+  "enable_internet": false,
+  "id": "marthuw/titanic"
+}

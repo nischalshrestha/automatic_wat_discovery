@@ -1,0 +1,17 @@
+{
+  "title": "Notebook29f3e77680",
+  "enable_gpu": false,
+  "id": "paperplane/notebook29f3e77680",
+  "enable_internet": false,
+  "kernel_type": "notebook",
+  "language": "python",
+  "keywords": [],
+  "competition_sources": [
+    "titanic"
+  ],
+  "code_file": "notebook29f3e77680.ipynb",
+  "is_private": false,
+  "id_no": 205135,
+  "dataset_sources": [],
+  "kernel_sources": []
+}

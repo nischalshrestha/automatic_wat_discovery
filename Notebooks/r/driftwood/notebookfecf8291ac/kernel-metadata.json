@@ -1,0 +1,17 @@
+{
+  "kernel_sources": [],
+  "dataset_sources": [],
+  "title": "Notebookfecf8291ac",
+  "language": "python",
+  "enable_gpu": false,
+  "keywords": [],
+  "kernel_type": "notebook",
+  "enable_internet": false,
+  "is_private": false,
+  "id_no": 201904,
+  "competition_sources": [
+    "titanic"
+  ],
+  "id": "driftwood/notebookfecf8291ac",
+  "code_file": "notebookfecf8291ac.ipynb"
+}

@@ -1,0 +1,17 @@
+{
+  "keywords": [],
+  "is_private": false,
+  "id": "elmati/notebookef55704e72",
+  "title": "Notebookef55704e72",
+  "competition_sources": [
+    "titanic"
+  ],
+  "kernel_type": "notebook",
+  "kernel_sources": [],
+  "language": "python",
+  "enable_internet": false,
+  "enable_gpu": false,
+  "code_file": "notebookef55704e72.ipynb",
+  "dataset_sources": [],
+  "id_no": 243169
+}

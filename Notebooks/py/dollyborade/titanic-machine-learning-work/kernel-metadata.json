@@ -1,0 +1,23 @@
+{
+  "language": "python",
+  "id": "dollyborade/titanic-machine-learning-work",
+  "enable_gpu": false,
+  "id_no": 1735402,
+  "title": "Titanic - Machine Learning Work",
+  "is_private": false,
+  "kernel_type": "notebook",
+  "competition_sources": [
+    "titanic"
+  ],
+  "enable_internet": false,
+  "kernel_sources": [],
+  "keywords": [
+    "libraries",
+    "data visualization",
+    "classification",
+    "feature engineering",
+    "binary classification"
+  ],
+  "code_file": "titanic-machine-learning-work.ipynb",
+  "dataset_sources": []
+}

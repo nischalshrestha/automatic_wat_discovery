@@ -1,0 +1,17 @@
+{
+  "is_private": false,
+  "competition_sources": [
+    "titanic"
+  ],
+  "language": "r",
+  "title": "Titanic: enhancing the training data and KIS",
+  "id_no": 365767,
+  "code_file": "titanic-enhancing-the-training-data-and-kis.irnb",
+  "kernel_type": "notebook",
+  "enable_internet": false,
+  "enable_gpu": false,
+  "id": "hisnibs/titanic-enhancing-the-training-data-and-kis",
+  "dataset_sources": [],
+  "kernel_sources": [],
+  "keywords": []
+}

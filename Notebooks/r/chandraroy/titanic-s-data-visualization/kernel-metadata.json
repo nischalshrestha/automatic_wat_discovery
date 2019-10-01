@@ -1,0 +1,20 @@
+{
+  "keywords": [
+    "beginner",
+    "data visualization"
+  ],
+  "kernel_type": "notebook",
+  "enable_internet": false,
+  "id": "chandraroy/titanic-s-data-visualization",
+  "enable_gpu": false,
+  "code_file": "titanic-s-data-visualization.irnb",
+  "title": "Titanic's Data Visualization",
+  "id_no": 499681,
+  "language": "r",
+  "competition_sources": [
+    "titanic"
+  ],
+  "is_private": false,
+  "kernel_sources": [],
+  "dataset_sources": []
+}

@@ -1,0 +1,17 @@
+{
+  "kernel_type": "notebook",
+  "kernel_sources": [],
+  "language": "r",
+  "dataset_sources": [],
+  "id_no": 109584,
+  "title": "Notebook38d1604057",
+  "enable_internet": false,
+  "code_file": "notebook38d1604057.irnb",
+  "enable_gpu": false,
+  "id": "prates/notebook38d1604057",
+  "competition_sources": [
+    "titanic"
+  ],
+  "keywords": [],
+  "is_private": false
+}

@@ -1,0 +1,17 @@
+{
+  "title": "Log Reg ",
+  "language": "python",
+  "is_private": false,
+  "competition_sources": [
+    "titanic"
+  ],
+  "enable_gpu": false,
+  "id": "omersen99/log-reg",
+  "enable_internet": false,
+  "id_no": 1903229,
+  "keywords": [],
+  "dataset_sources": [],
+  "kernel_type": "notebook",
+  "code_file": "log-reg.ipynb",
+  "kernel_sources": []
+}

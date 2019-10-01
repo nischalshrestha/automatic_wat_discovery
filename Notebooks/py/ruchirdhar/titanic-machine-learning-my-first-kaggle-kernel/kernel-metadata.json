@@ -1,0 +1,17 @@
+{
+  "code_file": "titanic-machine-learning-my-first-kaggle-kernel.ipynb",
+  "kernel_type": "notebook",
+  "kernel_sources": [],
+  "competition_sources": [
+    "titanic"
+  ],
+  "id_no": 925604,
+  "keywords": [],
+  "id": "ruchirdhar/titanic-machine-learning-my-first-kaggle-kernel",
+  "dataset_sources": [],
+  "is_private": false,
+  "title": "Titanic: Machine Learning - My First Kaggle Kernel",
+  "language": "python",
+  "enable_gpu": false,
+  "enable_internet": false
+}

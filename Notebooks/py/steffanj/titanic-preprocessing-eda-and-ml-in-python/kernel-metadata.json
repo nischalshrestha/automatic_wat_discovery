@@ -1,0 +1,17 @@
+{
+  "enable_internet": false,
+  "is_private": false,
+  "keywords": [],
+  "title": "Titanic - preprocessing, EDA and ML in Python",
+  "kernel_type": "notebook",
+  "dataset_sources": [],
+  "enable_gpu": false,
+  "language": "python",
+  "id": "steffanj/titanic-preprocessing-eda-and-ml-in-python",
+  "kernel_sources": [],
+  "id_no": 233334,
+  "competition_sources": [
+    "titanic"
+  ],
+  "code_file": "titanic-preprocessing-eda-and-ml-in-python.ipynb"
+}

@@ -1,0 +1,17 @@
+{
+  "id": "sdufour/trying-neural-network",
+  "kernel_sources": [],
+  "id_no": 247693,
+  "keywords": [],
+  "language": "python",
+  "dataset_sources": [],
+  "is_private": false,
+  "competition_sources": [
+    "titanic"
+  ],
+  "enable_gpu": false,
+  "enable_internet": false,
+  "kernel_type": "notebook",
+  "title": "Trying neural network",
+  "code_file": "trying-neural-network.ipynb"
+}

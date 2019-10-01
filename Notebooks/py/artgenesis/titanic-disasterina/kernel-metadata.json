@@ -1,0 +1,17 @@
+{
+  "dataset_sources": [],
+  "kernel_sources": [],
+  "kernel_type": "notebook",
+  "id": "artgenesis/titanic-disasterina",
+  "id_no": 712986,
+  "competition_sources": [
+    "titanic"
+  ],
+  "title": "TITANIC DISASTERINA",
+  "enable_gpu": false,
+  "enable_internet": false,
+  "is_private": false,
+  "code_file": "titanic-disasterina.ipynb",
+  "language": "python",
+  "keywords": []
+}

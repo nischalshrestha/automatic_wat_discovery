@@ -1,0 +1,17 @@
+{
+  "title": "Introduction to Ensembling/Stacking in Python",
+  "enable_gpu": false,
+  "id": "sporelax/introduction-to-ensembling-stacking-in-python",
+  "code_file": "introduction-to-ensembling-stacking-in-python.ipynb",
+  "competition_sources": [
+    "titanic"
+  ],
+  "id_no": 210760,
+  "dataset_sources": [],
+  "is_private": false,
+  "enable_internet": false,
+  "keywords": [],
+  "kernel_type": "notebook",
+  "language": "python",
+  "kernel_sources": []
+}

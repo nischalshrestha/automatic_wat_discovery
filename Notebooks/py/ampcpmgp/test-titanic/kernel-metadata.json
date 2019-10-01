@@ -1,0 +1,17 @@
+{
+  "keywords": [],
+  "competition_sources": [
+    "titanic"
+  ],
+  "title": "test titanic",
+  "kernel_type": "notebook",
+  "id": "ampcpmgp/test-titanic",
+  "dataset_sources": [],
+  "is_private": false,
+  "code_file": "test-titanic.ipynb",
+  "id_no": 1239373,
+  "enable_internet": false,
+  "language": "python",
+  "enable_gpu": false,
+  "kernel_sources": []
+}

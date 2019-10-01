@@ -1,0 +1,17 @@
+{
+  "title": "learn python",
+  "dataset_sources": [],
+  "language": "python",
+  "enable_gpu": false,
+  "kernel_type": "notebook",
+  "id": "bhavyateja92/learn-python",
+  "enable_internet": false,
+  "id_no": 2181005,
+  "competition_sources": [
+    "titanic"
+  ],
+  "keywords": [],
+  "is_private": false,
+  "kernel_sources": [],
+  "code_file": "learn-python.ipynb"
+}

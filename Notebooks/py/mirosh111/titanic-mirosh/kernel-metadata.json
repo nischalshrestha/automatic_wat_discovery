@@ -1,0 +1,17 @@
+{
+  "kernel_sources": [],
+  "title": "Titanic_mirosh",
+  "id_no": 1833262,
+  "code_file": "titanic-mirosh.ipynb",
+  "keywords": [],
+  "language": "python",
+  "is_private": false,
+  "competition_sources": [
+    "titanic"
+  ],
+  "id": "mirosh111/titanic-mirosh",
+  "dataset_sources": [],
+  "kernel_type": "notebook",
+  "enable_internet": false,
+  "enable_gpu": false
+}

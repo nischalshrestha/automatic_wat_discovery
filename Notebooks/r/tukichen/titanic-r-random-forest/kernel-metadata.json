@@ -1,0 +1,17 @@
+{
+  "dataset_sources": [],
+  "enable_gpu": false,
+  "kernel_type": "notebook",
+  "is_private": false,
+  "id_no": 185354,
+  "enable_internet": false,
+  "keywords": [],
+  "code_file": "titanic-r-random-forest.irnb",
+  "title": "Titanic R -Random Forest",
+  "id": "tukichen/titanic-r-random-forest",
+  "kernel_sources": [],
+  "language": "r",
+  "competition_sources": [
+    "titanic"
+  ]
+}

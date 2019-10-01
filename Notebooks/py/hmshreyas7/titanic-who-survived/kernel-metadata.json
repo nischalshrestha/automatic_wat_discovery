@@ -1,0 +1,23 @@
+{
+  "title": "Titanic: Who Survived?",
+  "enable_internet": false,
+  "dataset_sources": [],
+  "kernel_type": "notebook",
+  "id": "hmshreyas7/titanic-who-survived",
+  "id_no": 2139758,
+  "kernel_sources": [],
+  "language": "python",
+  "competition_sources": [
+    "titanic"
+  ],
+  "is_private": false,
+  "keywords": [
+    "categorical data",
+    "tutorial",
+    "beginner",
+    "classification",
+    "svm"
+  ],
+  "enable_gpu": false,
+  "code_file": "titanic-who-survived.ipynb"
+}

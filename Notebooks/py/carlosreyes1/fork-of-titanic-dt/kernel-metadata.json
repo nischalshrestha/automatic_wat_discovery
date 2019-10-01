@@ -1,0 +1,17 @@
+{
+  "is_private": false,
+  "enable_internet": false,
+  "code_file": "fork-of-titanic-dt.ipynb",
+  "title": "Fork of Titanic_DT",
+  "language": "python",
+  "keywords": [],
+  "competition_sources": [
+    "titanic"
+  ],
+  "kernel_type": "notebook",
+  "kernel_sources": [],
+  "id": "carlosreyes1/fork-of-titanic-dt",
+  "dataset_sources": [],
+  "id_no": 687204,
+  "enable_gpu": false
+}

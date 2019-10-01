@@ -1,0 +1,17 @@
+{
+  "competition_sources": [
+    "titanic"
+  ],
+  "id_no": 1288482,
+  "code_file": "first-kernel-about-titanic-database.ipynb",
+  "keywords": [],
+  "is_private": false,
+  "id": "govindra/first-kernel-about-titanic-database",
+  "enable_gpu": false,
+  "enable_internet": false,
+  "kernel_type": "notebook",
+  "kernel_sources": [],
+  "language": "python",
+  "title": "First Kernel about Titanic database",
+  "dataset_sources": []
+}

@@ -1,0 +1,17 @@
+{
+  "dataset_sources": [],
+  "keywords": [],
+  "competition_sources": [
+    "titanic"
+  ],
+  "code_file": "notebook359149a203.ipynb",
+  "enable_internet": false,
+  "id_no": 229133,
+  "kernel_sources": [],
+  "is_private": false,
+  "language": "python",
+  "kernel_type": "notebook",
+  "title": "Notebook359149a203",
+  "enable_gpu": false,
+  "id": "wessonmo/notebook359149a203"
+}

@@ -1,0 +1,17 @@
+{
+  "kernel_sources": [],
+  "kernel_type": "notebook",
+  "dataset_sources": [],
+  "title": "AI Camp Logistic Regression\u9884\u6d4bTitanic\u4e58\u5ba2\u9003\u751f",
+  "is_private": false,
+  "code_file": "ai-camp-logistic-regression-titanic.ipynb",
+  "enable_internet": false,
+  "competition_sources": [
+    "titanic"
+  ],
+  "language": "python",
+  "id_no": 1650393,
+  "keywords": [],
+  "id": "serenetu/ai-camp-logistic-regression-titanic",
+  "enable_gpu": false
+}

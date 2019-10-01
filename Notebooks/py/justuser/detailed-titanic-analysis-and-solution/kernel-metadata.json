@@ -1,0 +1,22 @@
+{
+  "code_file": "detailed-titanic-analysis-and-solution.ipynb",
+  "id": "justuser/detailed-titanic-analysis-and-solution",
+  "kernel_type": "notebook",
+  "id_no": 391781,
+  "is_private": false,
+  "title": "Detailed Titanic Analysis and Solution",
+  "competition_sources": [
+    "titanic"
+  ],
+  "enable_internet": false,
+  "enable_gpu": false,
+  "dataset_sources": [],
+  "kernel_sources": [],
+  "language": "python",
+  "keywords": [
+    "beginner",
+    "data visualization",
+    "feature engineering",
+    "xgboost"
+  ]
+}

@@ -1,0 +1,17 @@
+{
+  "competition_sources": [
+    "titanic"
+  ],
+  "title": "Predicting Survival on the Titanic",
+  "language": "python",
+  "code_file": "predicting-survival-on-the-titanic.ipynb",
+  "kernel_type": "notebook",
+  "is_private": false,
+  "kernel_sources": [],
+  "enable_internet": false,
+  "dataset_sources": [],
+  "keywords": [],
+  "id": "meenaj/predicting-survival-on-the-titanic",
+  "enable_gpu": false,
+  "id_no": 89828
+}

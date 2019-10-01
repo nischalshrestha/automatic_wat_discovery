@@ -1,0 +1,21 @@
+{
+  "kernel_sources": [],
+  "enable_internet": false,
+  "id": "mahendermahi77/beginner-prediction-using-logistic-regression",
+  "code_file": "beginner-prediction-using-logistic-regression.ipynb",
+  "dataset_sources": [],
+  "kernel_type": "notebook",
+  "enable_gpu": false,
+  "competition_sources": [
+    "titanic"
+  ],
+  "id_no": 480941,
+  "language": "python",
+  "is_private": false,
+  "title": "Beginner Prediction using Logistic Regression",
+  "keywords": [
+    "beginner",
+    "eda",
+    "logistic regression"
+  ]
+}

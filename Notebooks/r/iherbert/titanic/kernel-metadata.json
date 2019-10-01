@@ -1,0 +1,17 @@
+{
+  "id": "iherbert/titanic",
+  "kernel_sources": [],
+  "is_private": false,
+  "enable_gpu": false,
+  "kernel_type": "notebook",
+  "keywords": [],
+  "language": "r",
+  "enable_internet": false,
+  "dataset_sources": [],
+  "competition_sources": [
+    "titanic"
+  ],
+  "title": "Titanic",
+  "code_file": "titanic.irnb",
+  "id_no": 1534567
+}

@@ -1,0 +1,17 @@
+{
+  "enable_internet": false,
+  "kernel_sources": [],
+  "code_file": "titanic.irnb",
+  "language": "r",
+  "keywords": [],
+  "is_private": false,
+  "id": "harleypellowe/titanic",
+  "dataset_sources": [],
+  "title": "Titanic",
+  "enable_gpu": false,
+  "kernel_type": "notebook",
+  "id_no": 205606,
+  "competition_sources": [
+    "titanic"
+  ]
+}

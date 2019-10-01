@@ -1,0 +1,17 @@
+{
+  "kernel_sources": [],
+  "code_file": "notebook361f4c28ea.irnb",
+  "enable_internet": false,
+  "id_no": 262130,
+  "enable_gpu": false,
+  "keywords": [],
+  "id": "stepman/notebook361f4c28ea",
+  "competition_sources": [
+    "titanic"
+  ],
+  "language": "r",
+  "dataset_sources": [],
+  "title": "Notebook361f4c28ea",
+  "kernel_type": "notebook",
+  "is_private": false
+}

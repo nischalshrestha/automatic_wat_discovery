@@ -1,0 +1,20 @@
+{
+  "id_no": 2005724,
+  "id": "manishrai/titanic-eda",
+  "language": "r",
+  "kernel_type": "notebook",
+  "code_file": "titanic-eda.irnb",
+  "title": "Titanic_EDA",
+  "is_private": false,
+  "kernel_sources": [],
+  "enable_internet": false,
+  "enable_gpu": false,
+  "keywords": [
+    "beginner",
+    "starter code"
+  ],
+  "dataset_sources": [],
+  "competition_sources": [
+    "titanic"
+  ]
+}

@@ -1,0 +1,17 @@
+{
+  "enable_gpu": false,
+  "keywords": [],
+  "is_private": false,
+  "language": "r",
+  "dataset_sources": [],
+  "kernel_sources": [],
+  "code_file": "initial-eda-and-lm-on-titanic-dataset.irnb",
+  "title": "Initial EDA and LM on Titanic dataset",
+  "competition_sources": [
+    "titanic"
+  ],
+  "kernel_type": "notebook",
+  "id": "xuhuiz0918/initial-eda-and-lm-on-titanic-dataset",
+  "id_no": 534881,
+  "enable_internet": false
+}

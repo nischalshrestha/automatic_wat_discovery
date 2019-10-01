@@ -1,0 +1,17 @@
+{
+  "kernel_type": "notebook",
+  "dataset_sources": [],
+  "is_private": false,
+  "code_file": "titanic-top-4-with-ensemble-modeling.ipynb",
+  "keywords": [],
+  "id": "shuoshi/titanic-top-4-with-ensemble-modeling",
+  "enable_gpu": false,
+  "competition_sources": [
+    "titanic"
+  ],
+  "title": "Titanic Top 4% with ensemble modeling",
+  "kernel_sources": [],
+  "language": "python",
+  "id_no": 1983143,
+  "enable_internet": false
+}

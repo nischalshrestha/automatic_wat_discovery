@@ -1,0 +1,17 @@
+{
+  "id": "marcelstrike/cs-100-ml-with-the-titanic-dataset-2435c5",
+  "is_private": false,
+  "enable_internet": false,
+  "dataset_sources": [],
+  "language": "python",
+  "id_no": 400749,
+  "kernel_type": "notebook",
+  "competition_sources": [
+    "titanic"
+  ],
+  "code_file": "cs-100-ml-with-the-titanic-dataset-2435c5.ipynb",
+  "kernel_sources": [],
+  "title": "CS 100: ML with the Titanic Dataset 2435c5",
+  "enable_gpu": false,
+  "keywords": []
+}

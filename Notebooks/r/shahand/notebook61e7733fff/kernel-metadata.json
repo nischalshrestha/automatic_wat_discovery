@@ -1,0 +1,17 @@
+{
+  "enable_gpu": false,
+  "title": "Notebook61e7733fff",
+  "kernel_type": "notebook",
+  "is_private": false,
+  "id": "shahand/notebook61e7733fff",
+  "code_file": "notebook61e7733fff.ipynb",
+  "kernel_sources": [],
+  "id_no": 222937,
+  "keywords": [],
+  "dataset_sources": [],
+  "language": "python",
+  "enable_internet": false,
+  "competition_sources": [
+    "titanic"
+  ]
+}

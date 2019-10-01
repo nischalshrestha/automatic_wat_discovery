@@ -1,0 +1,17 @@
+{
+  "language": "python",
+  "enable_gpu": false,
+  "keywords": [],
+  "enable_internet": false,
+  "code_file": "a-complete-guide-for-binary-classification-problem.ipynb",
+  "id_no": 1372039,
+  "title": "A Complete Guide for Binary Classification Problem",
+  "kernel_sources": [],
+  "dataset_sources": [],
+  "id": "yiidtw/a-complete-guide-for-binary-classification-problem",
+  "is_private": false,
+  "kernel_type": "notebook",
+  "competition_sources": [
+    "titanic"
+  ]
+}

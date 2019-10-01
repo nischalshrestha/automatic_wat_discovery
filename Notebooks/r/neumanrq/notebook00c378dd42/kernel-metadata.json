@@ -1,0 +1,17 @@
+{
+  "enable_gpu": false,
+  "kernel_sources": [],
+  "keywords": [],
+  "dataset_sources": [],
+  "competition_sources": [
+    "titanic"
+  ],
+  "kernel_type": "notebook",
+  "is_private": false,
+  "enable_internet": false,
+  "id_no": 226607,
+  "id": "neumanrq/notebook00c378dd42",
+  "code_file": "notebook00c378dd42.irnb",
+  "language": "r",
+  "title": "Notebook00c378dd42"
+}

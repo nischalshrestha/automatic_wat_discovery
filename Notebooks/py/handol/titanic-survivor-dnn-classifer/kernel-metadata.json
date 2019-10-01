@@ -1,0 +1,17 @@
+{
+  "code_file": "titanic-survivor-dnn-classifer.ipynb",
+  "competition_sources": [
+    "titanic"
+  ],
+  "is_private": false,
+  "language": "python",
+  "id": "handol/titanic-survivor-dnn-classifer",
+  "enable_internet": false,
+  "kernel_sources": [],
+  "title": "Titanic Survivor DNN Classifer",
+  "keywords": [],
+  "enable_gpu": true,
+  "dataset_sources": [],
+  "kernel_type": "notebook",
+  "id_no": 1411116
+}

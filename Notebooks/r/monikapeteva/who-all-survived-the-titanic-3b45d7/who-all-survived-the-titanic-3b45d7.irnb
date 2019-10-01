@@ -1,0 +1,470 @@
+{
+  "cells": [
+    {
+      "cell_type": "markdown",
+      "metadata": {
+        "_cell_guid": "e7466c59-efeb-e9f3-0ba2-c5aa0adc8e7d"
+      },
+      "source": [
+        "Thanks to Kaggle and my fellow authors. While trying to solve this problem, I did refer to other notebooks as well and I must tell you that those are all of real help. Got a chance to learn new things. Happy to publish my first Kaggle Notebook. My Predictive Algorithm is giving ~85% accurate results. I'm exploring various methodologies to increase the accuracy % even more."
+      ]
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {
+        "_cell_guid": "d1ccbcb7-83de-9875-774c-2bd0799283e5"
+      },
+      "source": [
+        "**Table of Contents:**\n",
+        "\n",
+        "**1.\tIntroduction**   \n",
+        "      1.1   Understanding the problem   \n",
+        "      1.2  Objective   \n",
+        "             1.3   Understanding available Data   \n",
+        "             1.4   Solution Approach   \n",
+        "  \n",
+        "**2.\tData Munging and Exploratory Analysis**  \n",
+        "        2.1\tCleansing  \n",
+        "        2.2\tExploratory Analysis based on discrete and continuous variables.  \n",
+        "  \n",
+        "**3.     Model building using Train data**  \n",
+        "        3.1\tBuild Model  \n",
+        "        3.2\tTrain Model  \n",
+        "        3.3\tEvaluate Model  \n",
+        "  \n",
+        "**4.    Execute and publish Results**  \n",
+        "  "
+      ]
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {
+        "_cell_guid": "fc59379e-8c18-da4b-a89b-f8585f0a0aab"
+      },
+      "source": [
+        "-------------------------------------------------------------------------------------------------------------------------------"
+      ]
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {
+        "_cell_guid": "af9521dd-4f2a-2841-04b5-a58625f17864"
+      },
+      "source": [
+        "**1. Introduction:**   \n",
+        "As we all know that one of the most tragic accidents that had ever happened in the history of human life is sinking of the Titanic. Still researchers and enthusiasts are working on Titanic simulation models to predict, how and what had happened. But one thing is true. Out of 2224, 722 passengers were able to survive the Titanic. As the project title it self says that it is all about predicting the passenger's survival on the Titanic. Taking a real life event in order to test our Machine Learning skills is quite interesting. Thanks to Kaggle.\n",
+        "\n",
+        " **1.1) Understanding the Problem:**  \n",
+        "Part of this problem, we are supplied with 1309 passenger details out of which 891 passengers are part of 'train' dataset where in we know the survival of all the passengers. Where as we have 418 records in 'test' dataset for which we need to predict the survival of the passengers. \n",
+        "\n",
+        "**1.2) Objective:**   \n",
+        "By choosing the right *Machine Learning algorithm* in order to solve the problem, and to *create a model*, *train* and *evaluate* it to predict passenger's survival who are part of 'test' dataset.     \n",
+        "\n",
+        "**1.3) Understand available data:**   "
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "_cell_guid": "b60278cc-67cd-e18b-0007-9da153355405"
+      },
+      "outputs": [],
+      "source": [
+        "#Environment Setup and loading .csv data files into R data frames.\n",
+        "#Install and Load requied R packages and Libraries. Kaggle notebook is a pre-loaded env.\n",
+        "library(ggplot2)\n",
+        "library(readr) \n",
+        "system(\"ls ../input\")\n",
+        "#import test and training datasets/load .csv files in this case\n",
+        "train <- read.csv('../input/train.csv', stringsAsFactors = F)\n",
+        "test <- read.csv('../input/test.csv', stringsAsFactors = F)\n",
+        "#set a default value to Test$survived column as the value needs to be predicted part of our ML algoritham \n",
+        "test$Survived <- NA\n",
+        "#Combine bth train and test dataset.\n",
+        "allData <- rbind(train,test)\n",
+        "#preview sample data along with header\n",
+        "head(allData, n= 3)"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "_cell_guid": "7883bef8-6beb-d487-adc9-a7bdbfe0253d"
+      },
+      "outputs": [],
+      "source": [
+        "#Checking staructure of the dataset.\n",
+        "str(allData)"
+      ]
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {
+        "_cell_guid": "9f626bde-2639-5058-ce9f-7fa54b7f6815"
+      },
+      "source": [
+        "**Observations:**    \n",
+        "    By looking at about structure of the dataset, it is quite evident to make below observations.  \n",
+        "    Total# Records: 1309  \n",
+        "    Total# Columns (Variables): 12  \n",
+        "    Columns holding missing data: Age, Fare  \n",
+        "    Columns holding Null / improper Data: Cabin, Embarked"
+      ]
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {
+        "_cell_guid": "5ae1ac87-be45-1d6b-a922-445868dc190a"
+      },
+      "source": [
+        "**Data Dictionary:**  \n",
+        "![all 12 columns ][1]\n",
+        "\n",
+        "\n",
+        "  [1]: https://preview.ibb.co/mhP6Fk/data_dictionary_titanic.png"
+      ]
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {
+        "_cell_guid": "b42ec885-565d-b264-4d98-3a4def86ed64"
+      },
+      "source": [
+        "**1.4) Solution Approach**  \n",
+        "After all, survival is all about fighting against death. Many factors play a role in there(spontaneity, intelligence, knowledge, physical fitness e.t.c.) But here we are provided with only 12 parameters based on which we need to make a prediction. So we have to consider all the other parameters are equal and consistent across the passengers. By looking at the data dictionary and by drawing few comparison charts, it makes sense to make conclusion saying: Age, Gender, Cabin, Embarked and Family members do have an influence on the survival rate. **Please see below comparison graphs for better understanding**.   \n",
+        "\n",
+        "**Choosing the correct set of variables:**   We need to predict 'Survived' field hence it is our  Dependent/Response Variable. Variables which can influence Survival are as Independent/Feature Variables: Age, Gender, Cabin, Embarked, SibSp & Parch; Fare and Family Names can be considered as semi feature variables as it may help us in finding Cabins.  \n",
+        "  \n",
+        "**Finding the correct algorithm:** As our objective here is to  find the Survival of a passenger which is binary in nature (Survived or Died), I would prefer to categorize this problem under \"Two Variable Classification\". Decision Tree and Random Forest are two popular mechanisms available out of which I would like to choose Random Forest as our prediction is based on multiple Independent variables  \n",
+        " "
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "_cell_guid": "db336727-484a-3b3a-b907-c27bc9eea70d"
+      },
+      "outputs": [],
+      "source": [
+        "# Multiple plot function\n",
+        "#\n",
+        "# ggplot objects can be passed in ..., or to plotlist (as a list of ggplot objects)\n",
+        "# - cols:   Number of columns in layout\n",
+        "# - layout: A matrix specifying the layout. If present, 'cols' is ignored.\n",
+        "#\n",
+        "# If the layout is something like matrix(c(1,2,3,3), nrow=2, byrow=TRUE),\n",
+        "# then plot 1 will go in the upper left, 2 will go in the upper right, and\n",
+        "# 3 will go all the way across the bottom.\n",
+        "#\n",
+        "multiplot <- function(..., plotlist=NULL, file, cols=1, layout=NULL) {\n",
+        "  library(grid)\n",
+        "\n",
+        "  # Make a list from the ... arguments and plotlist\n",
+        "  plots <- c(list(...), plotlist)\n",
+        "\n",
+        "  numPlots = length(plots)\n",
+        "\n",
+        "  # If layout is NULL, then use 'cols' to determine layout\n",
+        "  if (is.null(layout)) {\n",
+        "    # Make the panel\n",
+        "    # ncol: Number of columns of plots\n",
+        "    # nrow: Number of rows needed, calculated from # of cols\n",
+        "    layout <- matrix(seq(1, cols * ceiling(numPlots/cols)),\n",
+        "                    ncol = cols, nrow = ceiling(numPlots/cols))\n",
+        "  }\n",
+        "\n",
+        " if (numPlots==1) {\n",
+        "    print(plots[[1]])\n",
+        "\n",
+        "  } else {\n",
+        "    # Set up the page\n",
+        "    grid.newpage()\n",
+        "    pushViewport(viewport(layout = grid.layout(nrow(layout), ncol(layout))))\n",
+        "\n",
+        "    # Make each plot, in the correct location\n",
+        "    for (i in 1:numPlots) {\n",
+        "      # Get the i,j matrix positions of the regions that contain this subplot\n",
+        "      matchidx <- as.data.frame(which(layout == i, arr.ind = TRUE))\n",
+        "\n",
+        "      print(plots[[i]], vp = viewport(layout.pos.row = matchidx$row,\n",
+        "                                      layout.pos.col = matchidx$col))\n",
+        "    }\n",
+        "  }\n",
+        "}\n",
+        "\n",
+        "genderImpact <- data.frame(table(allData$Sex, allData$Survived))\n",
+        "names(genderImpact) <- c(\"Sex\",\"Survived\",\"Count\")\n",
+        "sexVsSurvivedGraph <- ggplot(genderImpact, aes(x=Sex, y=Count, fill=Survived))\n",
+        "p1 <- sexVsSurvivedGraph + geom_bar(stat = \"identity\")\n",
+        "\n",
+        "pClassImpact <- data.frame(table(allData$Pclass, allData$Survived))\n",
+        "names(pClassImpact) <- c(\"Pclass\",\"Survived\",\"Count\")\n",
+        "pClassVsSurvivedGraph <- ggplot(pClassImpact, aes(x=Pclass, y=Count, fill=Survived))\n",
+        "p2 <- pClassVsSurvivedGraph + geom_bar(stat = \"identity\")\n",
+        "\n",
+        "sibSpImpact <- data.frame(table(allData$SibSp+allData$Parch, allData$Survived))\n",
+        "names(sibSpImpact) <- c(\"FamilyMembers\",\"Survived\",\"Count\")\n",
+        "sibSpVsSurvivedGraph <- ggplot(sibSpImpact, aes(x=FamilyMembers, y=Count, fill=Survived))\n",
+        "p3 <- sibSpVsSurvivedGraph + geom_bar(stat = \"identity\")\n",
+        "\n",
+        "ageImpact <- data.frame(Age=allData$Age, Survived=allData$Survived)\n",
+        "p4 <- ggplot(ageImpact, aes(Age,fill = factor(Survived))) + geom_histogram()\n",
+        "\n",
+        "embarkedImpact <- data.frame(table(allData$Survived, allData$Embarked))\n",
+        "names(embarkedImpact) <- c(\"Survived\",\"Embarked\",\"Count\")\n",
+        "embarkVsSurvivedGraph <- ggplot(embarkedImpact, aes(x=Embarked, y=Count, fill=Survived))\n",
+        "p5 <- embarkVsSurvivedGraph + geom_bar(stat = \"identity\")\n",
+        "\n",
+        "cabinImpact <- data.frame(table(allData$Survived, substr(allData$Cabin,0,1)))\n",
+        "names(cabinImpact) <- c(\"Survived\",\"Cabin\",\"Count\")\n",
+        "cabinVsSurvivedGraph <- ggplot(cabinImpact, aes(x=Cabin, y=Count, fill=Survived))\n",
+        "p6 <- cabinVsSurvivedGraph + geom_bar(stat=\"identity\")\n",
+        "\n",
+        "multiplot(p1, p2, p3, p4, p5, p6, cols=2)"
+      ]
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {
+        "_cell_guid": "13456b91-84bb-1aba-72e7-ab9e5a04e49a"
+      },
+      "source": [
+        "By looking at above comparison graphs, we can certainly make below observations:    \n",
+        "  \n",
+        "**1) Females Survival rate is more compared to Males**  \n",
+        "  \n",
+        "**2) Age is impacting survival especially ranges between 0 to 20 & 60 to 80**  \n",
+        "  \n",
+        "**3) 1st class passengers had a better survival rate.**  \n",
+        "  \n",
+        "**4) Embarked at Cherbourg is having better survival rate compared to other two**  \n",
+        "  \n",
+        "**5) Families tend either to die or survive together(bigger the family lesser the survival)**  \n",
+        "  \n",
+        "**6) Passengers in Cabin - B,C,D &E are having better survival rate where as for Cabin-T, it is null**.  \n",
+        "  \n",
+        "-----------------------------------------------------------------------------------------------------------------------------"
+      ]
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {
+        "_cell_guid": "550b3e63-f3eb-9075-4c8b-9daf59cd1e1a"
+      },
+      "source": [
+        "**2) Data Munging:**  \n",
+        "  \n",
+        "**2.1) Data Cleansing:**  \n",
+        "  \n",
+        "After exploring the survival stats against each independent variable, it is quite evident that, missing values in these variables may impact the result hence it is advisable to fill the data gaps by taking random samples from the existing data. I would like to Fill Age with random sample as we really do not have a control on it, but for Embarked and Cabin, I can depend on Family Name / Family member count as it makes sense to assume 'families tend to stay together'  \n",
+        "  \n",
+        "**2.2) We have kinda completed exploratory analysis in our previous step itself**.    \n",
+        "  "
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "_cell_guid": "a651453c-e1ec-a518-d0b2-526f9a22ad4d"
+      },
+      "outputs": [],
+      "source": [
+        "# Fill Age Column\n",
+        "age <- allData$Age\n",
+        "n = length(age)\n",
+        "    # replace missing value with a random sample from raw data\n",
+        "set.seed(123)\n",
+        "for(i in 1:n){\n",
+        "  if(is.na(age[i])){\n",
+        "    age[i] = sample(na.omit(allData$Age),1)\n",
+        "  }\n",
+        "}"
+      ]
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {
+        "_cell_guid": "91f3370c-48b0-15a2-95ce-9c734e87fc64"
+      },
+      "source": [
+        "**3) Building & Training a Model:**  \n",
+        "  \n",
+        "As depicted above, we choose Dependent / Response Variable (Y) as Survived and Independent Variables / Features (X) as age, cabin, family , Pclass, Sex , Embarked  \n",
+        "  \n",
+        "**more parameters we can consider here, I'll enhance it later in the upcoming version of the solution**.  \n",
+        "  "
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "_cell_guid": "853285d5-448d-2ad9-530f-65ba7832c5e1"
+      },
+      "outputs": [],
+      "source": [
+        "# response variable\n",
+        "f.survived = train$Survived\n",
+        "t.survived = test$Survived\n",
+        "# feature\n",
+        "# 1. age\n",
+        "f.age = age[1:891]    # for training\n",
+        "t.age = age[892:1309]  # for testing\n",
+        "# 2. cabin\n",
+        "f.cabin = substr(allData$Cabin,0,1)[1:891]\n",
+        "t.cabin = substr(allData$Cabin,0,1)[892:1309]\n",
+        "# 3. family\n",
+        "family <- allData$SibSp + allData$Parch\n",
+        "f.family = family[1:891]\n",
+        "t.family = family[892:1309]\n",
+        "# 4. plcass\n",
+        "f.pclass = train$Pclass\n",
+        "t.pclass = test$Pclass\n",
+        "# 5. sex\n",
+        "f.sex = train$Sex\n",
+        "t.sex = test$Sex\n",
+        "# 6. embarked\n",
+        "f.embarked = allData$Embarked[1:891]\n",
+        "t.embarked = allData$Embarked[892:1309]\n",
+        "\n",
+        "# construct training data frame\n",
+        "new_train = data.frame(survived = f.survived, age = f.age, sex = f.sex, \n",
+        "       embarked = f.embarked ,family = f.family ,cabin =  f.cabin, pclass= f.pclass)\n",
+        "\n",
+        "# random forest\n",
+        "library('randomForest')\n",
+        "\n",
+        "set.seed(123)\n",
+        "fit_rf <- randomForest(factor(survived) ~ age +  sex + embarked + family \n",
+        "                 + cabin + pclass,data = new_train)\n",
+        "\n",
+        "    # predicted result of regression\n",
+        "rf.fitted = predict(fit_rf)\n",
+        "ans_rf = rep(NA,891)\n",
+        "for(i in 1:891){\n",
+        "  ans_rf[i] = as.integer(rf.fitted[[i]]) - 1\n",
+        "}\n",
+        "    # check result\n",
+        "mean(ans_rf == train$Survived)\n",
+        "table(ans_rf)"
+      ]
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {
+        "_cell_guid": "be4a5947-1b0b-b166-f280-07008d17b9a3"
+      },
+      "source": [
+        "**3.2) Model Evaluation:**   \n",
+        "  "
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "_cell_guid": "b5144c8d-c7b7-907e-775b-3ad5be1b4613"
+      },
+      "outputs": [],
+      "source": [
+        "# Random Forest\n",
+        "a = sum(ans_rf ==1 & f.survived == 1)\n",
+        "b = sum(ans_rf ==1 & f.survived == 0)\n",
+        "c = sum(ans_rf ==0 & f.survived == 1)\n",
+        "d = sum(ans_rf ==0 & f.survived == 0)\n",
+        "data.frame(a,b,c,d)"
+      ]
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {
+        "_cell_guid": "a9806b2b-a6e9-007e-1c86-b3aeb81d5fdd"
+      },
+      "source": [
+        "**4) Prediction:**  \n",
+        "  "
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "_cell_guid": "2836644f-4e41-715f-8229-d455d307292f"
+      },
+      "outputs": [],
+      "source": [
+        "# Test dataFrame\n",
+        "test_data_set <- data.frame(survived = t.survived, age = t.age, sex = t.sex, embarked = t.embarked, \n",
+        "                            family = t.family, cabin =  t.cabin, pclass = t.pclass)\n",
+        "# make prediction\n",
+        "\n",
+        "levels(test_data_set$survived) <- levels(new_train$survived)\n",
+        "\n",
+        "levels(test_data_set$age) <- levels(new_train$age)\n",
+        "\n",
+        "levels(test_data_set$sex) <- levels(new_train$sex)\n",
+        "\n",
+        "levels(test_data_set$embarked) <- levels(new_train$embarked)\n",
+        "\n",
+        "levels(test_data_set$family) <- levels(new_train$family)\n",
+        "\n",
+        "levels(test_data_set$cabin) <- levels(new_train$cabin)\n",
+        "\n",
+        "levels(test_data_set$pclass) <- levels(new_train$pclass)\n",
+        "\n",
+        "rf_predict = predict(fit_rf,newdata = test_data_set )\n",
+        "ans_rf_predict = rep(NA,418)\n",
+        "for(i in 1:418){\n",
+        "  ans_rf_predict[i] = as.integer(rf_predict[[i]]) - 1\n",
+        "}\n",
+        "table(ans_rf_predict)"
+      ]
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {
+        "_cell_guid": "6b890e15-0688-3086-508d-bf321038d773"
+      },
+      "source": [
+        "**SUBMIT RESULT:**  \n",
+        "  "
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "_cell_guid": "15ca24f7-2a02-145f-2871-81ae992eb5c7"
+      },
+      "outputs": [],
+      "source": [
+        "# create .csv file with predictions\n",
+        "endResult<-data.frame(PassengerId = test$PassengerId, Survived = ans_rf_predict)\n",
+        "write.csv(endResult,file = \"SurvivingTheTitanicResult.csv\",row.names = F)"
+      ]
+    }
+  ],
+  "metadata": {
+    "_change_revision": 0,
+    "_is_fork": false,
+    "kernelspec": {
+      "display_name": "R",
+      "language": "R",
+      "name": "ir"
+    },
+    "language_info": {
+      "codemirror_mode": "r",
+      "file_extension": ".r",
+      "mimetype": "text/x-r-source",
+      "name": "R",
+      "pygments_lexer": "r",
+      "version": "3.3.3"
+    }
+  },
+  "nbformat": 4,
+  "nbformat_minor": 0
+}

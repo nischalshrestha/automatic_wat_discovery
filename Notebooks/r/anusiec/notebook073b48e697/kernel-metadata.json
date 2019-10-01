@@ -1,0 +1,17 @@
+{
+  "competition_sources": [
+    "titanic"
+  ],
+  "title": "Notebook073b48e697",
+  "keywords": [],
+  "kernel_sources": [],
+  "id_no": 240765,
+  "kernel_type": "notebook",
+  "dataset_sources": [],
+  "enable_gpu": false,
+  "language": "python",
+  "id": "anusiec/notebook073b48e697",
+  "enable_internet": false,
+  "code_file": "notebook073b48e697.ipynb",
+  "is_private": false
+}

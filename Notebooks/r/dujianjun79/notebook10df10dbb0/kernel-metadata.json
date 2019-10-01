@@ -1,0 +1,17 @@
+{
+  "is_private": false,
+  "enable_internet": false,
+  "code_file": "notebook10df10dbb0.ipynb",
+  "title": "Notebook10df10dbb0",
+  "kernel_sources": [],
+  "competition_sources": [
+    "titanic"
+  ],
+  "id": "dujianjun79/notebook10df10dbb0",
+  "language": "python",
+  "id_no": 245924,
+  "keywords": [],
+  "kernel_type": "notebook",
+  "dataset_sources": [],
+  "enable_gpu": false
+}

@@ -1,0 +1,19 @@
+{
+  "code_file": "partial-dependence-plots.ipynb",
+  "id_no": 1257913,
+  "language": "python",
+  "enable_internet": false,
+  "keywords": [],
+  "id": "syedmohammedarshadzaidi/partial-dependence-plots",
+  "kernel_type": "notebook",
+  "enable_gpu": false,
+  "kernel_sources": [],
+  "competition_sources": [
+    "titanic"
+  ],
+  "is_private": false,
+  "title": "Partial Dependence Plots",
+  "dataset_sources": [
+    "dansbecker/melbourne-housing-snapshot"
+  ]
+}

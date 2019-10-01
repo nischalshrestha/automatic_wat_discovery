@@ -1,0 +1,17 @@
+{
+  "id": "stylusfrost/notebookad9bbef977",
+  "dataset_sources": [],
+  "language": "python",
+  "enable_gpu": false,
+  "is_private": false,
+  "id_no": 97740,
+  "keywords": [],
+  "enable_internet": false,
+  "kernel_type": "notebook",
+  "kernel_sources": [],
+  "code_file": "notebookad9bbef977.ipynb",
+  "competition_sources": [
+    "titanic"
+  ],
+  "title": "Notebookad9bbef977"
+}

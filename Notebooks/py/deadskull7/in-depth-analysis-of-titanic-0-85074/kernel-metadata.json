@@ -1,0 +1,21 @@
+{
+  "enable_internet": false,
+  "enable_gpu": false,
+  "title": "In-depth analysis of Titanic [0.85074]",
+  "is_private": false,
+  "kernel_sources": [],
+  "keywords": [
+    "tutorial",
+    "beginner",
+    "data visualization"
+  ],
+  "competition_sources": [
+    "titanic"
+  ],
+  "id_no": 670019,
+  "kernel_type": "notebook",
+  "id": "deadskull7/in-depth-analysis-of-titanic-0-85074",
+  "code_file": "in-depth-analysis-of-titanic-0-85074.ipynb",
+  "dataset_sources": [],
+  "language": "python"
+}

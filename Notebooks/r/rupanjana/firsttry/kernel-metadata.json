@@ -1,0 +1,17 @@
+{
+  "dataset_sources": [],
+  "id": "rupanjana/firsttry",
+  "enable_internet": false,
+  "title": "Firsttry",
+  "enable_gpu": false,
+  "keywords": [],
+  "id_no": 109984,
+  "code_file": "firsttry.irnb",
+  "competition_sources": [
+    "titanic"
+  ],
+  "kernel_sources": [],
+  "kernel_type": "notebook",
+  "language": "r",
+  "is_private": false
+}

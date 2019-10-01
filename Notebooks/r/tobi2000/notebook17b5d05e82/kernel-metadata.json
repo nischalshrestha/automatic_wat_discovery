@@ -1,0 +1,17 @@
+{
+  "is_private": false,
+  "code_file": "notebook17b5d05e82.ipynb",
+  "enable_gpu": false,
+  "kernel_type": "notebook",
+  "kernel_sources": [],
+  "language": "python",
+  "competition_sources": [
+    "titanic"
+  ],
+  "enable_internet": false,
+  "id_no": 201216,
+  "dataset_sources": [],
+  "id": "tobi2000/notebook17b5d05e82",
+  "title": "Notebook17b5d05e82",
+  "keywords": []
+}

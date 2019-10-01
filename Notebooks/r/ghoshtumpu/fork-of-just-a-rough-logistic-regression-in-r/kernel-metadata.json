@@ -1,0 +1,17 @@
+{
+  "title": "Fork of Just a rough logistic regression in R",
+  "code_file": "fork-of-just-a-rough-logistic-regression-in-r.irnb",
+  "enable_internet": false,
+  "is_private": false,
+  "language": "r",
+  "keywords": [],
+  "kernel_sources": [],
+  "enable_gpu": false,
+  "id": "ghoshtumpu/fork-of-just-a-rough-logistic-regression-in-r",
+  "id_no": 205119,
+  "competition_sources": [
+    "titanic"
+  ],
+  "kernel_type": "notebook",
+  "dataset_sources": []
+}

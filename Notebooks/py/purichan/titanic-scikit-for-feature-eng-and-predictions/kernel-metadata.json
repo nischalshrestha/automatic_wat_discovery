@@ -1,0 +1,21 @@
+{
+  "is_private": false,
+  "keywords": [
+    "beginner",
+    "classification",
+    "feature engineering"
+  ],
+  "id": "purichan/titanic-scikit-for-feature-eng-and-predictions",
+  "language": "python",
+  "enable_gpu": false,
+  "kernel_type": "notebook",
+  "enable_internet": false,
+  "dataset_sources": [],
+  "id_no": 1451619,
+  "kernel_sources": [],
+  "competition_sources": [
+    "titanic"
+  ],
+  "code_file": "titanic-scikit-for-feature-eng-and-predictions.ipynb",
+  "title": "Titanic : Scikit for feature eng and predictions"
+}

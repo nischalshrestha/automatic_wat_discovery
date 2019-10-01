@@ -1,0 +1,17 @@
+{
+  "id": "luthra/my-first-notebook",
+  "id_no": 332751,
+  "title": "My First Notebook",
+  "code_file": "my-first-notebook.ipynb",
+  "language": "python",
+  "kernel_type": "notebook",
+  "is_private": false,
+  "enable_gpu": false,
+  "enable_internet": false,
+  "keywords": [],
+  "dataset_sources": [],
+  "kernel_sources": [],
+  "competition_sources": [
+    "titanic"
+  ]
+}

@@ -1,0 +1,17 @@
+{
+  "id_no": 426124,
+  "code_file": "that-sinking-feeling.ipynb",
+  "kernel_sources": [],
+  "id": "dangermc/that-sinking-feeling",
+  "enable_internet": false,
+  "competition_sources": [
+    "titanic"
+  ],
+  "language": "python",
+  "is_private": false,
+  "dataset_sources": [],
+  "keywords": [],
+  "enable_gpu": false,
+  "kernel_type": "notebook",
+  "title": "That Sinking Feeling"
+}

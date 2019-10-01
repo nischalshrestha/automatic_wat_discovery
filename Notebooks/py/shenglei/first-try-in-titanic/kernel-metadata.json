@@ -1,0 +1,17 @@
+{
+  "dataset_sources": [],
+  "competition_sources": [
+    "titanic"
+  ],
+  "enable_internet": false,
+  "id": "shenglei/first-try-in-titanic",
+  "is_private": false,
+  "kernel_sources": [],
+  "kernel_type": "notebook",
+  "enable_gpu": false,
+  "code_file": "first-try-in-titanic.ipynb",
+  "language": "python",
+  "keywords": [],
+  "id_no": 298642,
+  "title": "First Try in Titanic"
+}

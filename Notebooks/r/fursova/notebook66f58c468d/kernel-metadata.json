@@ -1,0 +1,17 @@
+{
+  "enable_gpu": false,
+  "competition_sources": [
+    "titanic"
+  ],
+  "id": "fursova/notebook66f58c468d",
+  "kernel_sources": [],
+  "title": "Notebook66f58c468d",
+  "id_no": 214878,
+  "dataset_sources": [],
+  "is_private": false,
+  "code_file": "notebook66f58c468d.irnb",
+  "language": "r",
+  "kernel_type": "notebook",
+  "enable_internet": false,
+  "keywords": []
+}

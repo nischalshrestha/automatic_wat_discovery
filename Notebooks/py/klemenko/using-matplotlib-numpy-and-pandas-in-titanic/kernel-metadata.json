@@ -1,0 +1,17 @@
+{
+  "title": "Using matplotlib, numpy and pandas in Titanic ",
+  "keywords": [],
+  "kernel_sources": [],
+  "dataset_sources": [],
+  "competition_sources": [
+    "titanic"
+  ],
+  "id": "klemenko/using-matplotlib-numpy-and-pandas-in-titanic",
+  "kernel_type": "notebook",
+  "id_no": 461327,
+  "is_private": false,
+  "code_file": "using-matplotlib-numpy-and-pandas-in-titanic.ipynb",
+  "enable_internet": false,
+  "language": "python",
+  "enable_gpu": false
+}

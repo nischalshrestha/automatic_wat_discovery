@@ -1,0 +1,17 @@
+{
+  "id": "akramsayadi/notebookdc679e4cc7",
+  "competition_sources": [
+    "titanic"
+  ],
+  "dataset_sources": [],
+  "language": "r",
+  "is_private": false,
+  "enable_internet": false,
+  "kernel_type": "notebook",
+  "keywords": [],
+  "enable_gpu": false,
+  "code_file": "notebookdc679e4cc7.irnb",
+  "id_no": 178833,
+  "kernel_sources": [],
+  "title": "Notebook1b5cd9f4db"
+}

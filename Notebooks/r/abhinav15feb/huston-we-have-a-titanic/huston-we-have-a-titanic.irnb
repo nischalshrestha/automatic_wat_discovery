@@ -1,0 +1,162 @@
+{
+  "cells": [
+    {
+      "cell_type": "markdown",
+      "metadata": {
+        "_cell_guid": "0cea1345-065f-deaa-8f48-8abecd479a76"
+      },
+      "source": ""
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "_cell_guid": "806c2d7a-a60f-72c8-41c5-67e1be6d4d99"
+      },
+      "outputs": [],
+      "source": [
+        "library('ggplot2')\n",
+        "library('ggthemes')\n",
+        "library('scales')\n",
+        "library('dplyr')\n",
+        "library('mice')"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "_cell_guid": "8a2acdc4-9129-4a9e-7d8c-ad7a29d55725"
+      },
+      "outputs": [],
+      "source": [
+        "trains <- read.csv('../input/train.csv',stringsAsFactors=FALSE)\n",
+        "test <- read.csv('../input/test.csv',stringsAsFactors=FALSE)\n",
+        "full <- bind_rows(trains,test)"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "_cell_guid": "7ff05429-d146-ad13-eecc-0b8838548f09"
+      },
+      "outputs": [],
+      "source": [
+        "full$Status<- (ifelse((full$Survived=='1'), 'Survived',ifelse((full$Survived=='0'),'Dead','Not known')))\n",
+        "table(full$Status,full$Sex)"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "_cell_guid": "99f59cfc-1cb3-5cf7-d471-fb77016943f2"
+      },
+      "outputs": [],
+      "source": [
+        "#table(full$Status,full$Age)\n",
+        "full$AgeCategory <- ifelse(full$Age<5,'Baby',ifelse(full$Age<18,'Child',ifelse(full$Age<60,'Adult','Sr.Citizen')))\n",
+        "table(full$Status,full$AgeCategory)"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "_cell_guid": "79fb681a-13a9-0f9b-d469-97e59d8bd47f"
+      },
+      "outputs": [],
+      "source": ""
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "_cell_guid": "8185eed6-05d0-c085-3f4c-8ad661e546f4"
+      },
+      "outputs": [],
+      "source": [
+        "full$Title <- gsub('(.*,)|(\\\\..*)' ,'', full$Name)\n",
+        "table(full$Survived,full$Title)"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "_cell_guid": "acb60b61-c60f-a9d0-4956-a8332a850609"
+      },
+      "outputs": [],
+      "source": [
+        "RareTitles <-c('Capt','Col','Dona','Dr','Jonkheer','Lady','Major','Sir','the Countess')\n",
+        "full$Title[full$Title == 'Mlle']        <- 'Miss' \n",
+        "full$Title[full$Title == 'Ms']          <- 'Miss'\n",
+        "full$Title[full$Title == 'Mme']         <- 'Mrs' \n",
+        "full$RareTitle<- full$Title\n",
+        "full$RareTitle[full$Title %in% RareTitles]  <- 'Rare Title'\n",
+        "table(full$Survived,full$RareTitle)"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "_cell_guid": "75554aa5-b917-3af6-b16c-b7d1cc88f0bb"
+      },
+      "outputs": [],
+      "source": [
+        "rare_title <- c('Dona', 'Lady', 'the Countess','Capt', 'Col', 'Don', \n",
+        "                'Dr', 'Major', 'Rev', 'Sir', 'Jonkheer')\n",
+        "\n",
+        "# Also reassign mlle, ms, and mme accordingly\n",
+        "full$Title[full$Title == 'Mlle']        <- 'Miss' \n",
+        "full$Title[full$Title == 'Ms']          <- 'Miss'\n",
+        "full$Title[full$Title == 'Mme']         <- 'Mrs' \n",
+        "# Show title counts by sex again\n",
+        "#table(full$Sex, full$RTitle\n",
+        "full$Title[full$Title %in% rare_title]  <- 'Rare Title'\n",
+        "\n",
+        "# Show title counts by sex again\n",
+        "table(full$Sex, full$Title)"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "_cell_guid": "34223476-35ba-c7ab-9b1a-db72b110dc69"
+      },
+      "outputs": [],
+      "source": ""
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "_cell_guid": "9603bf67-cabb-a534-02bd-bb38289336a9"
+      },
+      "outputs": [],
+      "source": ""
+    }
+  ],
+  "metadata": {
+    "_change_revision": 0,
+    "_is_fork": false,
+    "kernelspec": {
+      "display_name": "R",
+      "language": "R",
+      "name": "ir"
+    },
+    "language_info": {
+      "codemirror_mode": "r",
+      "file_extension": ".r",
+      "mimetype": "text/x-r-source",
+      "name": "R",
+      "pygments_lexer": "r",
+      "version": "3.3.3"
+    }
+  },
+  "nbformat": 4,
+  "nbformat_minor": 0
+}

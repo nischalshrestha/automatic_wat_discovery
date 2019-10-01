@@ -1,0 +1,17 @@
+{
+  "kernel_type": "notebook",
+  "title": "Who all survived the Titanic 3b45d7",
+  "competition_sources": [
+    "titanic"
+  ],
+  "enable_gpu": false,
+  "keywords": [],
+  "enable_internet": false,
+  "kernel_sources": [],
+  "language": "r",
+  "is_private": false,
+  "code_file": "who-all-survived-the-titanic-3b45d7.irnb",
+  "id_no": 235993,
+  "id": "monikapeteva/who-all-survived-the-titanic-3b45d7",
+  "dataset_sources": []
+}

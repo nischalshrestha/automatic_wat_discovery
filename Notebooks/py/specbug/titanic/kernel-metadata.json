@@ -1,0 +1,17 @@
+{
+  "is_private": false,
+  "id": "specbug/titanic",
+  "id_no": 2115694,
+  "title": "Titanic",
+  "dataset_sources": [],
+  "competition_sources": [
+    "titanic"
+  ],
+  "enable_gpu": false,
+  "language": "python",
+  "enable_internet": false,
+  "kernel_type": "notebook",
+  "keywords": [],
+  "code_file": "titanic.ipynb",
+  "kernel_sources": []
+}

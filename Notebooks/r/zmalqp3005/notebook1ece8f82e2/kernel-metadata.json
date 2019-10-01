@@ -1,0 +1,17 @@
+{
+  "id_no": 224506,
+  "kernel_type": "notebook",
+  "kernel_sources": [],
+  "id": "zmalqp3005/notebook1ece8f82e2",
+  "keywords": [],
+  "is_private": false,
+  "title": "Notebook1ece8f82e2",
+  "code_file": "notebook1ece8f82e2.ipynb",
+  "enable_gpu": false,
+  "language": "python",
+  "competition_sources": [
+    "titanic"
+  ],
+  "enable_internet": false,
+  "dataset_sources": []
+}

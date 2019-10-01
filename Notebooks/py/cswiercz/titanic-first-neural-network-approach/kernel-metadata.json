@@ -1,0 +1,17 @@
+{
+  "id_no": 100521,
+  "keywords": [],
+  "dataset_sources": [],
+  "code_file": "titanic-first-neural-network-approach.ipynb",
+  "kernel_sources": [],
+  "is_private": false,
+  "competition_sources": [
+    "titanic"
+  ],
+  "title": "Titanic - First Neural Network Approach",
+  "id": "cswiercz/titanic-first-neural-network-approach",
+  "language": "python",
+  "kernel_type": "notebook",
+  "enable_gpu": false,
+  "enable_internet": false
+}

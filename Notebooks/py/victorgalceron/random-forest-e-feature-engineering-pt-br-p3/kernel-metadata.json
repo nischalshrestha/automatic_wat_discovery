@@ -1,0 +1,17 @@
+{
+  "kernel_type": "notebook",
+  "id_no": 485841,
+  "dataset_sources": [],
+  "keywords": [],
+  "language": "python",
+  "code_file": "random-forest-e-feature-engineering-pt-br-p3.ipynb",
+  "title": "Random Forest e Feature Engineering [pt-BR] - P3",
+  "enable_internet": false,
+  "is_private": false,
+  "competition_sources": [
+    "titanic"
+  ],
+  "enable_gpu": false,
+  "id": "victorgalceron/random-forest-e-feature-engineering-pt-br-p3",
+  "kernel_sources": []
+}

@@ -1,0 +1,17 @@
+{
+  "kernel_type": "notebook",
+  "title": " Titanic Framework Rachel",
+  "language": "python",
+  "enable_gpu": false,
+  "id_no": 1559931,
+  "kernel_sources": [],
+  "keywords": [],
+  "code_file": "titanic-framework-rachel.ipynb",
+  "id": "rachelzhong/titanic-framework-rachel",
+  "enable_internet": false,
+  "competition_sources": [
+    "titanic"
+  ],
+  "dataset_sources": [],
+  "is_private": false
+}

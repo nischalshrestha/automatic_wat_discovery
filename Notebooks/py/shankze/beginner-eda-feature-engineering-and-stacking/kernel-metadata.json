@@ -1,0 +1,21 @@
+{
+  "code_file": "beginner-eda-feature-engineering-and-stacking.ipynb",
+  "enable_internet": false,
+  "kernel_sources": [],
+  "competition_sources": [
+    "titanic"
+  ],
+  "dataset_sources": [],
+  "kernel_type": "notebook",
+  "is_private": false,
+  "language": "python",
+  "id_no": 1826176,
+  "id": "shankze/beginner-eda-feature-engineering-and-stacking",
+  "title": "Beginner - EDA, Feature Engineering and Stacking",
+  "enable_gpu": false,
+  "keywords": [
+    "beginner",
+    "eda",
+    "feature engineering"
+  ]
+}

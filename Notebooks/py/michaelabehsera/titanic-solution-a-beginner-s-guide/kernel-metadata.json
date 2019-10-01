@@ -1,0 +1,17 @@
+{
+  "id": "michaelabehsera/titanic-solution-a-beginner-s-guide",
+  "competition_sources": [
+    "titanic"
+  ],
+  "dataset_sources": [],
+  "is_private": false,
+  "kernel_sources": [],
+  "kernel_type": "notebook",
+  "title": "Titanic Solution: A Beginner's Guide",
+  "language": "python",
+  "enable_internet": false,
+  "enable_gpu": false,
+  "id_no": 553343,
+  "code_file": "titanic-solution-a-beginner-s-guide.ipynb",
+  "keywords": []
+}

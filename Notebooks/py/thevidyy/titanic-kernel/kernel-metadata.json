@@ -1,0 +1,17 @@
+{
+  "title": "Titanic Kernel",
+  "kernel_type": "notebook",
+  "is_private": false,
+  "keywords": [],
+  "enable_gpu": false,
+  "enable_internet": false,
+  "id": "thevidyy/titanic-kernel",
+  "language": "python",
+  "id_no": 247176,
+  "competition_sources": [
+    "titanic"
+  ],
+  "dataset_sources": [],
+  "kernel_sources": [],
+  "code_file": "titanic-kernel.ipynb"
+}

@@ -1,0 +1,17 @@
+{
+  "code_file": "titanic.ipynb",
+  "competition_sources": [
+    "titanic"
+  ],
+  "title": "Titanic",
+  "kernel_sources": [],
+  "enable_gpu": false,
+  "dataset_sources": [],
+  "id_no": 100150,
+  "keywords": [],
+  "kernel_type": "notebook",
+  "is_private": false,
+  "enable_internet": false,
+  "language": "python",
+  "id": "makboc/titanic"
+}

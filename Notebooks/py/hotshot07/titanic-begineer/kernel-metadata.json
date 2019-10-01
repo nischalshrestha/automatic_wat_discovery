@@ -1,0 +1,17 @@
+{
+  "is_private": false,
+  "title": "Titanic Begineer",
+  "id": "hotshot07/titanic-begineer",
+  "competition_sources": [
+    "titanic"
+  ],
+  "enable_gpu": false,
+  "dataset_sources": [],
+  "kernel_sources": [],
+  "id_no": 1449198,
+  "code_file": "titanic-begineer.ipynb",
+  "language": "python",
+  "keywords": [],
+  "kernel_type": "notebook",
+  "enable_internet": false
+}

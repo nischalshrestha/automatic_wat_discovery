@@ -1,0 +1,17 @@
+{
+  "id_no": 218631,
+  "competition_sources": [
+    "titanic"
+  ],
+  "kernel_sources": [],
+  "kernel_type": "notebook",
+  "is_private": false,
+  "title": "Notebook4b2a047782",
+  "enable_gpu": false,
+  "language": "r",
+  "enable_internet": false,
+  "keywords": [],
+  "dataset_sources": [],
+  "id": "unnat5/notebook4b2a047782",
+  "code_file": "notebook4b2a047782.irnb"
+}

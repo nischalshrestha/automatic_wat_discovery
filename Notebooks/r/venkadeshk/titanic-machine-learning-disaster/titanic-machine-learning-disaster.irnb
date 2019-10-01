@@ -1,0 +1,104 @@
+{
+  "cells": [
+    {
+      "cell_type": "markdown",
+      "metadata": {
+        "_cell_guid": "7a0b9e6e-293c-e639-9cc3-843b05ac751e"
+      },
+      "source": [
+        "TITANIC Machine Learning Disaster"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "_cell_guid": "6c401409-e12c-e9fa-aca8-af537cbc2dff"
+      },
+      "outputs": [],
+      "source": [
+        "# This R environment comes with all of CRAN preinstalled, as well as many other helpful packages\n",
+        "# The environment is defined by the kaggle/rstats docker image: https://github.com/kaggle/docker-rstats\n",
+        "# For example, here's several helpful packages to load in \n",
+        "\n",
+        "library(ggplot2) # Data visualization\n",
+        "library(readr) # CSV file I/O, e.g. the read_csv function\n",
+        "\n",
+        "# Input data files are available in the \"../input/\" directory.\n",
+        "# For example, running this (by clicking run or pressing Shift+Enter) will list the files in the input directory\n",
+        "\n",
+        "system(\"ls ../input\")\n",
+        "\n",
+        "# Any results you write to the current directory are saved as output."
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "_cell_guid": "181a5267-9f12-dce2-d4a2-d1586f19c77a"
+      },
+      "outputs": [],
+      "source": [
+        "#read the data\n",
+        "#na.strings=c(\"\") is used to each missing values coded as NAs.\n",
+        "raw.data<-read.csv(\"train.csv\",header = T, na.strings = c(\"\"))\n",
+        "#str() function is used to know the structure of our data\n",
+        "str(raw.data)\n",
+        "#summary() function is used to know the summary of each variables\n",
+        "summary(raw.data)\n",
+        "#sapply used to find any missing and unique values in data\n",
+        "sapply(raw.data,function(x) sum(is.na(x)))\n",
+        "sapply(raw.data,function(x) length(unique(x)))\n",
+        "#Amelia package is used to know how the missing values mixed in data\n",
+        "install.packages(\"Amelia\",dependencies = T)\n",
+        "library(Amelia)\n",
+        "missmap(raw.data,main = \"Missing Values VS Observed\")\n",
+        "#the variable cabin and passengerId is neglegible.\n",
+        "#subset() function usedto select the relevant columns only\n",
+        "data<-subset(raw.data,select = c(2,3,5,6,7,8,10,12))\n",
+        "#data$Age missing values are replaced by the mean of data$Age\n",
+        "data$Age[is.na(data$Age)]<-mean(data$Age,na.rm = T)\n",
+        "#treating missing values in Embarked variable\n",
+        "data<-data[!is.na(data$Embarked),]\n",
+        "rownames(data)<-NULL\n",
+        "#MODEL FITTING\n",
+        "#split the data into two sets\n",
+        "train<-data[1:800,]\n",
+        "test<-data[801:889,]\n",
+        "#fitting the model\n",
+        "model<-glm(Survived~.,family =binomial(link=logit),data = train)\n",
+        "summary(model)\n",
+        "#Prediction of model\n",
+        "fitted.results<-predict(model,newdata = subset(test,select = c(2,3,4,5,6,7,8)),type = 'response')\n",
+        "fitted.results<-ifelse(fitted.results>0.5,1,0)\n",
+        "\n",
+        " #getting the ROC curve \n",
+        "library(ROCR)\n",
+        "p<-predict(model,newdata = subset(test),select=c(2,3,4,5,6,7,8),type = 'response')\n",
+        "pr<-prediction(p,test$Survived)\n",
+        "prf<-performance(pr,measure = \"tpr\",x.measure = \"fpr\")\n",
+        "plot(prf)"
+      ]
+    }
+  ],
+  "metadata": {
+    "_change_revision": 0,
+    "_is_fork": false,
+    "kernelspec": {
+      "display_name": "R",
+      "language": "R",
+      "name": "ir"
+    },
+    "language_info": {
+      "codemirror_mode": "r",
+      "file_extension": ".r",
+      "mimetype": "text/x-r-source",
+      "name": "R",
+      "pygments_lexer": "r",
+      "version": "3.3.3"
+    }
+  },
+  "nbformat": 4,
+  "nbformat_minor": 0
+}

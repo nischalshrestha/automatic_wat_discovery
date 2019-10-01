@@ -1,0 +1,21 @@
+{
+  "is_private": false,
+  "enable_internet": false,
+  "keywords": [
+    "beginner",
+    "data cleaning",
+    "classification"
+  ],
+  "dataset_sources": [],
+  "id": "ralo44/titanic-machine-learning-from",
+  "enable_gpu": false,
+  "competition_sources": [
+    "titanic"
+  ],
+  "kernel_sources": [],
+  "language": "python",
+  "id_no": 1598434,
+  "kernel_type": "notebook",
+  "code_file": "titanic-machine-learning-from.ipynb",
+  "title": "Titanic :Machine Learning from..."
+}

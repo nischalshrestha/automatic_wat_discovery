@@ -1,0 +1,17 @@
+{
+  "title": "Titanic Disaster - A Genetic Algorithm approach",
+  "id": "mibmiranda/titanic-disaster-a-genetic-algorithm-approach",
+  "language": "python",
+  "id_no": 255679,
+  "code_file": "titanic-disaster-a-genetic-algorithm-approach.ipynb",
+  "is_private": false,
+  "kernel_type": "notebook",
+  "enable_gpu": false,
+  "keywords": [],
+  "kernel_sources": [],
+  "competition_sources": [
+    "titanic"
+  ],
+  "enable_internet": false,
+  "dataset_sources": []
+}

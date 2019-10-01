@@ -1,0 +1,17 @@
+{
+  "enable_gpu": false,
+  "code_file": "dhc-titanic-random-forests-80.ipynb",
+  "id": "danielhanchen/dhc-titanic-random-forests-80",
+  "kernel_sources": [],
+  "title": "DHC: Titanic - Random Forests (>80%)",
+  "enable_internet": false,
+  "keywords": [],
+  "language": "python",
+  "id_no": 211024,
+  "dataset_sources": [],
+  "kernel_type": "notebook",
+  "competition_sources": [
+    "titanic"
+  ],
+  "is_private": false
+}

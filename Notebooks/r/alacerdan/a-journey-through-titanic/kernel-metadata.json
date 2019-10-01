@@ -1,0 +1,17 @@
+{
+  "is_private": false,
+  "title": "A Journey through Titanic",
+  "kernel_sources": [],
+  "competition_sources": [
+    "titanic"
+  ],
+  "id": "alacerdan/a-journey-through-titanic",
+  "enable_internet": false,
+  "enable_gpu": false,
+  "language": "r",
+  "id_no": 94242,
+  "keywords": [],
+  "kernel_type": "notebook",
+  "code_file": "a-journey-through-titanic.irnb",
+  "dataset_sources": []
+}

@@ -1,0 +1,23 @@
+{
+  "id": "vikasbz/titanic-survivors-using-python",
+  "is_private": false,
+  "title": "Titanic Survivors using Python",
+  "kernel_type": "notebook",
+  "code_file": "titanic-survivors-using-python.ipynb",
+  "language": "python",
+  "kernel_sources": [],
+  "keywords": [
+    "tutorial",
+    "beginner",
+    "eda",
+    "classification",
+    "feature engineering"
+  ],
+  "enable_internet": false,
+  "competition_sources": [
+    "titanic"
+  ],
+  "dataset_sources": [],
+  "id_no": 715277,
+  "enable_gpu": false
+}

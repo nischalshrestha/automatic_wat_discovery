@@ -1,0 +1,17 @@
+{
+  "enable_gpu": false,
+  "id_no": 206163,
+  "id": "kujo21/notebookf4581f52c9",
+  "title": "Notebookf4581f52c9",
+  "kernel_sources": [],
+  "keywords": [],
+  "dataset_sources": [],
+  "kernel_type": "notebook",
+  "is_private": false,
+  "competition_sources": [
+    "titanic"
+  ],
+  "code_file": "notebookf4581f52c9.ipynb",
+  "enable_internet": false,
+  "language": "python"
+}

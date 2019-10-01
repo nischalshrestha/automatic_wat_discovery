@@ -1,0 +1,21 @@
+{
+  "kernel_sources": [],
+  "enable_gpu": false,
+  "language": "python",
+  "id_no": 2159932,
+  "title": "Titanic",
+  "id": "jarpit83/titanic",
+  "enable_internet": false,
+  "code_file": "titanic.ipynb",
+  "is_private": false,
+  "competition_sources": [
+    "titanic"
+  ],
+  "kernel_type": "notebook",
+  "dataset_sources": [],
+  "keywords": [
+    "beginner",
+    "data visualization",
+    "classification"
+  ]
+}

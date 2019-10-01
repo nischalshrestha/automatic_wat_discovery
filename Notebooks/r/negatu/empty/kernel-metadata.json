@@ -1,0 +1,17 @@
+{
+  "id": "negatu/empty",
+  "kernel_sources": [],
+  "language": "r",
+  "title": "Empty",
+  "code_file": "empty.irnb",
+  "dataset_sources": [],
+  "competition_sources": [
+    "titanic"
+  ],
+  "id_no": 166457,
+  "enable_gpu": false,
+  "keywords": [],
+  "is_private": false,
+  "kernel_type": "notebook",
+  "enable_internet": false
+}

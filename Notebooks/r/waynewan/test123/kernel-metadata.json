@@ -1,0 +1,17 @@
+{
+  "kernel_sources": [],
+  "id_no": 52573,
+  "is_private": false,
+  "enable_gpu": false,
+  "competition_sources": [
+    "titanic"
+  ],
+  "language": "r",
+  "code_file": "test123.irnb",
+  "id": "waynewan/test123",
+  "enable_internet": false,
+  "keywords": [],
+  "dataset_sources": [],
+  "title": "test123",
+  "kernel_type": "notebook"
+}

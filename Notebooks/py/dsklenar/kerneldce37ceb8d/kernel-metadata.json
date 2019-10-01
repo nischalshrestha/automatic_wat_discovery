@@ -1,0 +1,17 @@
+{
+  "dataset_sources": [],
+  "competition_sources": [
+    "titanic"
+  ],
+  "title": "kerneldce37ceb8d",
+  "kernel_type": "notebook",
+  "language": "python",
+  "code_file": "kerneldce37ceb8d.ipynb",
+  "enable_internet": false,
+  "kernel_sources": [],
+  "keywords": [],
+  "enable_gpu": false,
+  "id_no": 1982900,
+  "is_private": false,
+  "id": "dsklenar/kerneldce37ceb8d"
+}

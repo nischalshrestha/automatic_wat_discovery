@@ -1,0 +1,17 @@
+{
+  "kernel_sources": [],
+  "is_private": false,
+  "kernel_type": "notebook",
+  "enable_gpu": false,
+  "title": "My Titanic Project ",
+  "keywords": [],
+  "dataset_sources": [],
+  "language": "python",
+  "code_file": "my-titanic-project.ipynb",
+  "id": "rubychang/my-titanic-project",
+  "competition_sources": [
+    "titanic"
+  ],
+  "id_no": 1336433,
+  "enable_internet": false
+}

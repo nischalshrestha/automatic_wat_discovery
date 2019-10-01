@@ -1,0 +1,17 @@
+{
+  "id": "chenroot/a-journey-through-titanic",
+  "language": "python",
+  "competition_sources": [
+    "titanic"
+  ],
+  "enable_internet": false,
+  "kernel_sources": [],
+  "kernel_type": "notebook",
+  "id_no": 119586,
+  "keywords": [],
+  "code_file": "a-journey-through-titanic.ipynb",
+  "title": "A Journey through Titanic",
+  "dataset_sources": [],
+  "is_private": false,
+  "enable_gpu": false
+}

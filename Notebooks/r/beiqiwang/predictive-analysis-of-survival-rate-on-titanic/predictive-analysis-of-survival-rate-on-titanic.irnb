@@ -1,0 +1,1192 @@
+{
+  "cells": [
+    {
+      "cell_type": "markdown",
+      "metadata": {
+        "_cell_guid": "b8aaab93-e8bc-d65b-a92a-86dee88c7aaa"
+      },
+      "source": [
+        "Predictive Analysis of Survival Rate on Titanic\n",
+        "===============================================\n",
+        "\n",
+        "This is a predictive machine learning project using ```R``` based on Kaggle competition: [Titanic: Machine Learning from Disaster](https://www.kaggle.com/c/titanic). \n",
+        "\n",
+        "----------\n",
+        "**Content**\n",
+        "\n",
+        "1. Introduction\n",
+        "\n",
+        "      1.1 Objective\n",
+        "\n",
+        "      1.2 Data Understanding\n",
+        "\n",
+        "2. Data Preparation and Exploratory Analysis\n",
+        "\n",
+        "      2.1 Data Cleaning\n",
+        "\n",
+        "      2.2 Exploratory Analysis and Data Processing\n",
+        "\n",
+        "3. Modeling\n",
+        "\n",
+        "      3.1 Feature Engineering\n",
+        "\n",
+        "      3.2 Model Training\n",
+        "\n",
+        "      3.3 Model  Evaluation\n",
+        "\n",
+        "4. Prediction\n",
+        "\n",
+        "----------"
+      ]
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {
+        "_cell_guid": "0b00cc1c-ee80-9adc-b834-d21a8e3696e7"
+      },
+      "source": [
+        "## 1. Introduction\n",
+        "\n",
+        "### 1.1 Objective\n",
+        "\n",
+        "The sinking of the RMS Titanic is one of the most infamous shipwrecks in history.  On April 15, 1912, during her maiden voyage, the Titanic sank after colliding with an iceberg, killing 1502 out of 2224 passengers and crew. This sensational tragedy shocked the international community and led to better safety regulations for ships.\n",
+        "\n",
+        "One of the reasons that the shipwreck led to such loss of life was that there were not enough lifeboats for the passengers and crew. Although there was some element of luck involved in surviving the sinking, some groups of people were more likely to survive than others, such as women, children, and the upper-class.\n",
+        "\n",
+        "In this challenge, we are going to complete the analysis of what sorts of people were likely to survive.\n",
+        "\n",
+        "### 1.2 Data Understanding\n",
+        "\n",
+        "To download data, click [here][1]\n",
+        "\n",
+        "\n",
+        "  [1]: https://www.kaggle.com/c/titanic/data\n",
+        "\n",
+        "The data has been split into two groups:\n",
+        "\n",
+        "* training set (train.csv)\n",
+        "* test set (test.csv)\n",
+        "\n",
+        "The training set is used to build machine learning models. For the training set, we provide the outcome (also known as the \u201cground truth\u201d) for each passenger. Your model will be based on \u201cfeatures\u201d like passengers\u2019 gender and class. You can also use feature engineering to create new features.\n",
+        "\n",
+        "The test set should be used to see how well your model performs on unseen data. For the test set, we do not provide the ground truth for each passenger. It is your job to predict these outcomes. For each passenger in the test set, use the model you trained to predict whether or not they survived the sinking of the Titanic.\n",
+        "\n",
+        "**Data Dictionary**\n",
+        "\n",
+        "| Variable  |  Definition | Key  |   \n",
+        "|-----------|-------------|---------|\n",
+        "| survival  |  Survival   |  0 = No, 1 = Yes |  \n",
+        "|  pclass\t |  Ticket class |  1 = 1st, 2 = 2nd, 3 = 3rd |  \n",
+        "|  sex |  Sex |   |   \n",
+        "|  Age |   Age in years |   |  \n",
+        "|  sibsp |  # of siblings / spouses aboard the Titanic |   |   \n",
+        "| parch  | # of parents / children aboard the Titanic  |   |   \n",
+        "|  ticket | Ticket number  |   |  \n",
+        "|  fare | Passenger fare  |   |   \n",
+        "| cabin  |  Cabin number  |   |   \n",
+        "| embarked  | Port of Embarkation  |C = Cherbourg, Q = Queenstown, S = Southampton   |   \n",
+        "\n",
+        "**Variable Notes**\n",
+        "\n",
+        "pclass: A proxy for socio-economic status (SES)\n",
+        "1st = Upper\n",
+        "2nd = Middle\n",
+        "3rd = Lower\n",
+        "\n",
+        "age: Age is fractional if less than 1. If the age is estimated, is it in the form of xx.5\n",
+        "\n",
+        "sibsp: The dataset defines family relations in this way...\n",
+        "Sibling = brother, sister, stepbrother, stepsister\n",
+        "Spouse = husband, wife (mistresses and fianc\u00e9s were ignored)\n",
+        "\n",
+        "parch: The dataset defines family relations in this way...\n",
+        "Parent = mother, father\n",
+        "Child = daughter, son, stepdaughter, stepson\n",
+        "Some children travelled only with a nanny, therefore parch=0 for them.\n",
+        "\n",
+        "First, let's load the data and take a look at it."
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "_cell_guid": "69b351c0-653e-457d-37ec-cad7583b25bd"
+      },
+      "outputs": [],
+      "source": [
+        "library('dplyr') # data manipulation\n",
+        "library('ggplot2') # Data Visualization\n",
+        "library('ggthemes') # Data Visualization\n",
+        "\n",
+        "options(warn = -1)\n",
+        "# load train.csv\n",
+        "train <- read.csv('../input/train.csv', stringsAsFactors = F)\n",
+        "# load test.csv\n",
+        "test  <- read.csv('../input/test.csv', stringsAsFactors = F)\n",
+        "# combine them as a whole\n",
+        "test$Survived <- NA\n",
+        "full <- rbind(train,test)"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "_cell_guid": "508bc8d8-9936-a894-27e3-e791b0b73f2b"
+      },
+      "outputs": [],
+      "source": [
+        "# show first several rows of the data\n",
+        "head(full)"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "_cell_guid": "95b81b55-4cdc-efba-f035-bbed5470d495"
+      },
+      "outputs": [],
+      "source": [
+        "\n",
+        "# check the data\n",
+        "str(full)"
+      ]
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {
+        "_cell_guid": "fff0d340-9540-1d72-c194-85beced3abbe"
+      },
+      "source": [
+        "We've got a sense of our variables, their class type, and the first few observations of each. We know we're working with 1309 observations of 12 variables. In which 891 observations are from train data set, and 418 observations are from test data set. When separate the variables by type, we have ordinal variable **PassengerId**, lable variable **Name** and **Ticket**, numeric variables such as **Age**, **SibSp**, **Parch**, **Fare**, and categorical variables like **Survived** ,**Pclass**, **Sex** ,**Cabin**, and  **Embarked**. \n",
+        "\n",
+        "## 2. Data Preparation and Exploratory Analysis\n",
+        "\n",
+        "### 2.1 Data Cleaning\n",
+        "\n",
+        "From the data set, we notice that there are missing values in **Age**, **Cabin** ,**Fare** and **Embarked** column. We are going to replace missing values in Age with a random sample from existing ages. For Cabin, since cabin number makes little sense to the result, we are going to create a new Cabin column to indicate how many cabins the passenger has. \n",
+        " \n",
+        "**Age:**"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "_cell_guid": "22c3765a-9e39-33ca-2202-3c73a1861b3b"
+      },
+      "outputs": [],
+      "source": [
+        "# Process Age Column\n",
+        "\n",
+        "    # create a new data set age\n",
+        "age <- full$Age\n",
+        "n = length(age)\n",
+        "    # replace missing value with a random sample from raw data\n",
+        "set.seed(123)\n",
+        "for(i in 1:n){\n",
+        "  if(is.na(age[i])){\n",
+        "    age[i] = sample(na.omit(full$Age),1)\n",
+        "  }\n",
+        "}\n",
+        "    # check effect\n",
+        "par(mfrow=c(1,2))\n",
+        "hist(full$Age, freq=F, main='Before Replacement', \n",
+        "  col='lightblue', ylim=c(0,0.04),xlab = \"age\")\n",
+        "hist(age, freq=F, main='After Replacement', \n",
+        "  col='darkblue', ylim=c(0,0.04))"
+      ]
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {
+        "_cell_guid": "4a5afddf-dde3-3279-e06d-8e9046ef8426"
+      },
+      "source": [
+        "We can see from the histograms above that there is not much significant change of age distribution, which means the replacement is appropriate. Next we are going to process Cabin Column. We are going to create a new Cabin column to indicate how many cabins the passenger has.  \n",
+        "\n",
+        "**Cabin:**"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "_cell_guid": "8b4e16ac-d9e1-6606-4bf1-2f9bba5e5b31"
+      },
+      "outputs": [],
+      "source": [
+        "# Process Cabin Column to show number of cabins passenger has\n",
+        "cabin <- full$Cabin\n",
+        "n = length(cabin)\n",
+        "for(i in 1:n){\n",
+        "  if(nchar(cabin[i]) == 0){\n",
+        "    cabin[i] = 0\n",
+        "  } else{\n",
+        "    s = strsplit(cabin[i],\" \")\n",
+        "    cabin[i] = length(s[[1]])\n",
+        "  }\n",
+        "} \n",
+        "table(cabin)"
+      ]
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {
+        "_cell_guid": "1106d6b8-bed4-b54e-7d5f-de0ca6489db2"
+      },
+      "source": [
+        "**Fare:**"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "_cell_guid": "4e8ac393-b638-5b58-2ad4-82b63c49a584"
+      },
+      "outputs": [],
+      "source": [
+        "# process fare column\n",
+        "\n",
+        "# check missing\n",
+        "full$PassengerId[is.na(full$Fare)]"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "_cell_guid": "fc9aaf9d-b717-6981-fb6a-700c77ad9a8f"
+      },
+      "outputs": [],
+      "source": [
+        "full[1044,]"
+      ]
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {
+        "_cell_guid": "8b5a1544-9401-a374-985b-296e807ad94a"
+      },
+      "source": [
+        "The passenger has feature value Pclass = 3 and Embarked =S. We then check the fare distribution of the same feature value."
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "_cell_guid": "e4a475d5-851e-6d0e-e714-2d440d0bf885"
+      },
+      "outputs": [],
+      "source": [
+        "ggplot(full[full$Pclass == '3' & full$Embarked == 'S', ], \n",
+        "  aes(x = Fare)) +\n",
+        "  geom_density(fill = '#99d6ff', alpha=0.4) + \n",
+        "  geom_vline(aes(xintercept=median(Fare, na.rm=T)),\n",
+        "    colour='red', linetype='dashed', lwd=1)"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "_cell_guid": "fe0c2d76-0054-2cad-ed2a-93ab4549f9a1"
+      },
+      "outputs": [],
+      "source": [
+        "\n",
+        "# we can see that fare is clustered around mode. we just repace the missing value with \n",
+        "# median fare of according Pclass and Embarked\n",
+        "\n",
+        "full$Fare[1044] <- median(full[full$Pclass == '3' & full$Embarked == 'S', ]$Fare, na.rm = TRUE)\n"
+      ]
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {
+        "_cell_guid": "48239084-8e99-9ed5-1707-a5ef993535e3"
+      },
+      "source": [
+        "**Embarked**"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "_cell_guid": "c7fbad94-37ab-b3a1-3ff3-55e847a7d11c"
+      },
+      "outputs": [],
+      "source": [
+        "# process embarked column\n",
+        "embarked <- full$Embarked\n",
+        "n = length(embarked)\n",
+        "for(i in 1:n){\n",
+        "  if(embarked[i] != \"S\" && embarked[i] != \"C\" && embarked[i] != \"Q\"){\n",
+        "    embarked[i] = \"S\"\n",
+        "  }\n",
+        "}\n",
+        "table(embarked)"
+      ]
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {
+        "_cell_guid": "a5023b4d-679d-37f3-40ea-c13a1a0f2787"
+      },
+      "source": [
+        "### 2.1 Exploratory Analysis and Data Processing\n",
+        "\n",
+        "As our objective is to figure out  what features would influence the survival, we are going to go deep into the data to explore the relationship between each attribute and survival.\n",
+        "\n",
+        "**Age** v.s **Survival**"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "_cell_guid": "58e59c58-c036-a9bd-56d1-85c33a1a9e79"
+      },
+      "outputs": [],
+      "source": [
+        "# number of survivals and nonsurvivals across different age\n",
+        "d <- data.frame(Age = age[1:891], Survived = train$Survived)\n",
+        "ggplot(d, aes(Age,fill = factor(Survived))) +\n",
+        "    geom_histogram()"
+      ]
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {
+        "_cell_guid": "ff976b0a-4ed2-4334-e011-cb1f142c715b"
+      },
+      "source": [
+        "From the histogram, it seems that kids with very young age have a respectively higher survival rate, and elder people have a respectively lower survival rate. To verify it, I create a bar chart to show the relationship between survival rate and age intervals."
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "_cell_guid": "591a1c4a-cc6f-01e4-0f3d-75dd7502e079"
+      },
+      "outputs": [],
+      "source": [
+        "# create bar chart to show relationship between survival rate and age intervals\n",
+        "cuts <- cut(d$Age,hist(d$Age,10,plot = F)$breaks)\n",
+        "rate <- tapply(d$Survived,cuts,mean)\n",
+        "d2 <- data.frame(age = names(rate),rate)\n",
+        "barplot(d2$rate, xlab = \"age\",ylab = \"survival rate\")"
+      ]
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {
+        "_cell_guid": "b5d3f871-0f84-593e-cb41-887fd20df38e"
+      },
+      "source": [
+        "We can see clearly from the bar chart above that **survival rate decreases as age increases**. Kids below 10 years old have a higher survival rate above 0.5, people who's age is between 10 to 60 have a relatively constant survival rate around 0.4, and elder people above 60 years old has a lower survival rate around 0.2.\n",
+        "\n",
+        "\n",
+        "----------\n",
+        "\n",
+        "\n",
+        "**Sex** v.s **Survival**"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "_cell_guid": "6f8b16dc-f3c4-d8fc-979c-6ccc6a9035d9"
+      },
+      "outputs": [],
+      "source": [
+        "# create histgram to show effect of Sex on survival\n",
+        "ggplot(train, aes(Sex,fill = factor(Survived))) +\n",
+        "    geom_histogram(stat = \"count\")"
+      ]
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {
+        "_cell_guid": "3a086536-3610-39cf-120e-e71c1d14dd7c"
+      },
+      "source": [
+        "We can see from the histogram above that **female's survival rate is greater than male's**."
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "_cell_guid": "392f5a52-831a-168e-ecaf-adf9241a6b5b"
+      },
+      "outputs": [],
+      "source": [
+        "# calculate survival rate\n",
+        "tapply(train$Survived,train$Sex,mean)"
+      ]
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {
+        "_cell_guid": "f26e3f6e-930c-eaff-5134-4d9e7daafaba"
+      },
+      "source": [
+        "The survival rate of female is 0.74, while the survival rate of male is 0.19.\n",
+        "\n",
+        "\n",
+        "----------\n",
+        "\n",
+        "**Name** v.s. **Survival**\n",
+        "\n",
+        "We also notice that title of surname is a meaningful feature. "
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "_cell_guid": "fe0e9e9b-bf72-ae79-ae32-8c2921aefad8"
+      },
+      "outputs": [],
+      "source": [
+        "# extract title from Name \n",
+        "# (here I process full data set but only plot title vs survival in train \n",
+        "#    data set because there is no survival value for test data set)\n",
+        "n = length(full$Survived)\n",
+        "title = rep(NA,n)\n",
+        "for (i in 1:n){\n",
+        "  lastname = strsplit(full$Name[i],\", \")[[1]][2]\n",
+        "  title[i] = strsplit(lastname,\". \")[[1]][1]\n",
+        "}\n",
+        "\n",
+        "# make a histogram of title v.s survival\n",
+        "d <- data.frame(title = title[1:891],Survived = train$Survived)\n",
+        "ggplot(d, aes(title,fill = factor(Survived))) +\n",
+        "    geom_histogram(stat = \"count\")"
+      ]
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {
+        "_cell_guid": "4c738c6c-1cad-846b-9972-493a71af6dc5"
+      },
+      "source": [
+        "To see clearly the survival rate for each group, we also make a table."
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "_cell_guid": "4ce80ee5-b81f-fa1b-bf2b-71d8854954d6"
+      },
+      "outputs": [],
+      "source": [
+        "# count of title\n",
+        "table(title)"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "_cell_guid": "860a7969-50ce-93ac-0e32-3c7a8f6124bf"
+      },
+      "outputs": [],
+      "source": [
+        "# survival rate\n",
+        "tapply(d$Survived,d$title,mean)"
+      ]
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {
+        "_cell_guid": "53e7f380-901b-6512-6c10-4832243e9a06"
+      },
+      "source": [
+        "We can see from the table, survival rates of females with Miss and Mrs title are close to the average survival rate for female group calculated in last section. Survival rates of males with Master are higher than the average male group. Titles like Col, Rev, Dr etc. also have influence on the survival.  \n",
+        "\n",
+        "Since number of  each rare title is much smaller than the majorities, we replace these rare titles to 'Rare'."
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "_cell_guid": "5b498b31-6795-faaa-99d5-9a8644a1549b"
+      },
+      "outputs": [],
+      "source": [
+        "# replace rare titles to 'Rare'\n",
+        "title[title != 'Mr' & title != 'Miss' & title != 'Mrs' & title != 'Master'] <- 'Rare'\n",
+        "table(title)"
+      ]
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {
+        "_cell_guid": "83691531-8517-173b-6e1d-450e62d540f0"
+      },
+      "source": [
+        "\n",
+        "----------\n",
+        "\n",
+        "\n",
+        "**Pclass** v.s. **Survival**"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "_cell_guid": "58704fae-ff99-309f-768f-d78fa4038324"
+      },
+      "outputs": [],
+      "source": [
+        "# make a histogram\n",
+        "ggplot(train, aes(Pclass,fill = factor(Survived))) +\n",
+        "    geom_histogram(stat = \"count\")"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "_cell_guid": "b97f386f-0e8d-4204-f0ee-a25f736a53b1"
+      },
+      "outputs": [],
+      "source": [
+        "# calculate survival rate\n",
+        "tapply(train$Survived,train$Pclass,mean)"
+      ]
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {
+        "_cell_guid": "261ddce1-86bd-3482-87e2-b3aec8519ce3"
+      },
+      "source": [
+        "From the histogram and table, we notice that **Pclass = 1 group has the highest survival rate, then is Pclass = 2 group, and Pclass = 3  group has the lowest survival rate within these three groups**.\n",
+        "\n",
+        "\n",
+        "----------\n",
+        "\n",
+        "**Family Size** v.s. **Survival**\n",
+        "\n",
+        "We first check SibSp and Parch column separately."
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "_cell_guid": "080312a2-ca22-15aa-e3de-d91f883cffed"
+      },
+      "outputs": [],
+      "source": [
+        "# histogram of Parch\n",
+        "ggplot(train, aes(Parch,fill = factor(Survived))) +\n",
+        "    geom_histogram(stat = \"count\")"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "_cell_guid": "5114d917-316f-97fe-888b-924cfe2aba48"
+      },
+      "outputs": [],
+      "source": [
+        "# histogram of SibSp\n",
+        "ggplot(train, aes(SibSp,fill = factor(Survived))) +\n",
+        "    geom_histogram(stat = \"count\")"
+      ]
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {
+        "_cell_guid": "02cbf12a-5cb7-8391-0806-35e784247661"
+      },
+      "source": [
+        "We can see that they have similar trend, then we decide to combine them together to construct a column named family."
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "_cell_guid": "3b7bae2f-6385-51f1-9f3a-adf200e74fd3"
+      },
+      "outputs": [],
+      "source": [
+        "# combine SibSp and Parch \n",
+        "family <- full$SibSp + full$Parch\n",
+        "d <- data.frame(family = family[1:891],Survived = train$Survived)\n",
+        "ggplot(d, aes(family,fill = factor(Survived))) +\n",
+        "    geom_histogram(stat = \"count\")"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "_cell_guid": "963c35a2-b4fb-3af9-aa2a-380759205dd5"
+      },
+      "outputs": [],
+      "source": [
+        "tapply(d$Survived,d$family,mean)"
+      ]
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {
+        "_cell_guid": "c36dc79a-16ab-b11f-0f1f-4ce1a3403c67"
+      },
+      "source": [
+        "We can see that **the survival rate increases as the family size increases from 0 to 3. When family size becomes greater than 3, survival rate decrease dramatically.** \n",
+        "\n",
+        "\n",
+        "----------\n",
+        "\n",
+        "**Cabin** v.s. **Survival**"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "_cell_guid": "e52425c5-db2a-7fa1-de1d-bba8071020d9"
+      },
+      "outputs": [],
+      "source": [
+        "# create histogram\n",
+        "d <- data.frame(Cabin = cabin[1:891],Survived = train$Survived)\n",
+        "ggplot(d, aes(Cabin,fill = factor(Survived))) +\n",
+        "    geom_histogram(stat = \"count\")"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "_cell_guid": "d70ffb4e-bc1f-546f-e584-11703328b350"
+      },
+      "outputs": [],
+      "source": [
+        "# calculate survival rate\n",
+        "tapply(d$Survived,d$Cabin,mean)"
+      ]
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {
+        "_cell_guid": "f16f5d70-0a8b-892a-bf64-803ad5e9c4b2"
+      },
+      "source": [
+        "We notice that **passenger who has no cabin has a lower survival rate, and passenger who has one or more cabins has higher survival rate.**\n",
+        "\n",
+        "\n",
+        "----------\n",
+        "\n",
+        "**Fare** v.s. **Survival**"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "_cell_guid": "8461cbe9-da59-ca36-cb15-e2ff51580ffd"
+      },
+      "outputs": [],
+      "source": [
+        "# make a histogram\n",
+        "ggplot(train, aes(Fare,fill = factor(Survived))) +\n",
+        "    geom_histogram()"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "_cell_guid": "d0998202-b220-288a-23d9-4353caaf3739"
+      },
+      "outputs": [],
+      "source": [
+        "# calculate\n",
+        "cuts <- cut(train$Fare,hist(train$Fare,10,plot = F)$breaks)\n",
+        "rate <- tapply(train$Survived,cuts,mean)\n",
+        "d <- data.frame(fare = names(rate),rate)\n",
+        "barplot(d$rate, xlab = \"fare\",ylab = \"survival rate\")"
+      ]
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {
+        "_cell_guid": "98f1cb7b-ffbf-b706-e5a2-04b3a5279794"
+      },
+      "source": [
+        "We notice that **Passengers who's fare is lower than 50 has a relatively lower survival rate. Passengers who's fare is extremely high (500-550) have very high survival rate.**\n",
+        "\n",
+        "\n",
+        "----------\n",
+        "\n",
+        "**Embarked** v.s. **Survival**"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "_cell_guid": "485a95c8-a765-f2ee-7d3b-d3046414fbd8"
+      },
+      "outputs": [],
+      "source": [
+        "# make histogram\n",
+        "d <- data.frame(Embarked = embarked[1:891], Survived = train$Survived)\n",
+        "ggplot(d, aes(Embarked,fill = factor(Survived))) +\n",
+        "    geom_histogram(stat = \"count\")"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "_cell_guid": "0b135060-3233-af3b-8d38-52a0c7e0f574"
+      },
+      "outputs": [],
+      "source": [
+        "# make table\n",
+        "tapply(train$Survived,train$Embarked,mean)"
+      ]
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {
+        "_cell_guid": "bcff166b-d4b7-40a6-ca54-6679e053525d"
+      },
+      "source": [
+        "We notice that Embarked C group has a relatively higher survival rate than other 2 groups.\n",
+        "\n",
+        "## 3. Modeling\n",
+        "\n",
+        "### 3.1 Feature Engineering\n",
+        "\n",
+        "In this section, we are going to prepare features used for training and predicting. We first choose our features that have significant effect on survival according to the exploratory process above. Here we choose Survived column as response variable, age (after filling), title, Pclass, Sex, family size, Fare, cabin(cabin count), Embarked these 8 column as features. \n",
+        "\n",
+        "| Response Variable (Y)  |  Features (X)  |   \n",
+        "|-----------|-------------|---------|-----------|-------------|---------|-----------|-------------|---------|\n",
+        "| Survived  |  age ,fare, cabin , title  , family , Pclass,   Sex ,  Embarked  | "
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "_cell_guid": "650eb18f-6dc6-a9fb-554d-7a96e773477c"
+      },
+      "outputs": [],
+      "source": [
+        "# response variable\n",
+        "f.survived = train$Survived"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "_cell_guid": "2100f3fb-766a-3428-2b0c-a38da5ef8758"
+      },
+      "outputs": [],
+      "source": [
+        "# feature\n",
+        "# 1. age\n",
+        "f.age = age[1:891]    # for training\n",
+        "t.age = age[892:1309]  # for testing"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "_cell_guid": "782bb765-61d4-3242-d94d-90f7bb7eafd5"
+      },
+      "outputs": [],
+      "source": [
+        "# 2. fare\n",
+        "f.fare = full$Fare[1:891]\n",
+        "t.fare = full$Fare[892:1309]"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "_cell_guid": "b05e3eae-bb88-8994-82d3-99f58c7b6c44"
+      },
+      "outputs": [],
+      "source": [
+        "# 3. cabin\n",
+        "f.cabin = cabin[1:891]\n",
+        "t.cabin = cabin[892:1309]\n",
+        "\n",
+        "# 4. title\n",
+        "f.title = title[1:891]\n",
+        "t.title = title[892:1309]\n",
+        "\n",
+        "# 5. family\n",
+        "family <- full$SibSp + full$Parch\n",
+        "f.family = family[1:891]\n",
+        "t.family = family[892:1309]\n",
+        "\n",
+        "# 6. plcass\n",
+        "f.pclass = train$Pclass\n",
+        "t.pclass = test$Pclass\n",
+        "\n",
+        "# 7. sex\n",
+        "f.sex = train$Sex\n",
+        "t.sex = test$Sex\n",
+        "\n",
+        "# 8. embarked\n",
+        "f.embarked = embarked[1:891]\n",
+        "t.embarked = embarked[892:1309]"
+      ]
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {
+        "_cell_guid": "930a4066-5c2c-c668-028d-6a3eb32fb971"
+      },
+      "source": [
+        "### 3.2 Model Training\n",
+        "\n",
+        "We tried to build basic learners using common machine learning model such as Logistic Regression, Decision Tree, Random Forest, SVM. "
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "_cell_guid": "5a3f7e8f-2670-ff21-e195-2fc4e8709976"
+      },
+      "outputs": [],
+      "source": [
+        "# construct training data frame\n",
+        "new_train = data.frame(survived = f.survived, age = f.age, fare = f.fare , sex = f.sex, \n",
+        "       embarked = f.embarked ,family = f.family ,title = f.title ,cabin =  f.cabin, pclass= f.pclass)"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "_cell_guid": "5f2e8a0a-28f7-7bde-b1f6-10e1cf733f17"
+      },
+      "outputs": [],
+      "source": [
+        "# logistic regression\n",
+        "fit_logit <- glm(factor(survived) ~ age + fare + sex + embarked + family \n",
+        "                 + title + cabin + pclass,data = new_train,family = binomial)\n",
+        "    # predicted result of regression\n",
+        "ans_logit = rep(NA,891)\n",
+        "for(i in 1:891){\n",
+        "  ans_logit[i] = round(fit_logit$fitted.values[[i]],0)\n",
+        "}\n",
+        "    # check result\n",
+        "mean(ans_logit == train$Survived)\n",
+        "table(ans_logit)"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "_cell_guid": "ad588eca-2298-2de9-d5cd-a7639769c2d6"
+      },
+      "outputs": [],
+      "source": [
+        "# random forest\n",
+        "library('randomForest')\n",
+        "\n",
+        "set.seed(123)\n",
+        "fit_rf <- randomForest(factor(survived) ~ age + fare + sex + embarked + family \n",
+        "                 + title + cabin + pclass,data = new_train)\n",
+        "\n",
+        "    # predicted result of regression\n",
+        "rf.fitted = predict(fit_rf)\n",
+        "ans_rf = rep(NA,891)\n",
+        "for(i in 1:891){\n",
+        "  ans_rf[i] = as.integer(rf.fitted[[i]]) - 1\n",
+        "}\n",
+        "    # check result\n",
+        "mean(ans_rf == train$Survived)\n",
+        "table(ans_rf)\n"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "_cell_guid": "3197d122-2f53-aef8-26f6-3589d79aaa9c"
+      },
+      "outputs": [],
+      "source": [
+        "# decision tree\n",
+        "library(rpart)\n",
+        "\n",
+        "fit_dt <- rpart(factor(survived) ~ age + fare + sex + embarked + family \n",
+        "                 + title + cabin + pclass,data = new_train)\n",
+        "\n",
+        "    # predicted result of regression\n",
+        "dt.fitted = predict(fit_dt)\n",
+        "ans_dt = rep(NA,891)\n",
+        "for(i in 1:891){\n",
+        "  if(dt.fitted[i,1] >= dt.fitted[i,2] ){\n",
+        "    ans_dt[i] = 0\n",
+        "  } else{\n",
+        "    ans_dt[i] = 1\n",
+        "  }\n",
+        "}\n",
+        "    # check result\n",
+        "mean(ans_dt == train$Survived)\n",
+        "table(ans_dt)\n"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "_cell_guid": "4a83c377-c6df-7f50-4040-1b3cfac6a21c"
+      },
+      "outputs": [],
+      "source": [
+        "# svm\n",
+        "library(e1071)\n",
+        "\n",
+        "fit_svm <- svm(factor(survived) ~ age + fare + sex + embarked + family \n",
+        "                 + title + cabin + pclass,data = new_train)\n",
+        "\n",
+        "    # predicted result of regression\n",
+        "svm.fitted = predict(fit_svm)\n",
+        "ans_svm = rep(NA,891)\n",
+        "for(i in 1:891){\n",
+        "  ans_svm[i] = as.integer(svm.fitted[[i]]) - 1\n",
+        "}\n",
+        "    # check result\n",
+        "mean(ans_svm == train$Survived)\n",
+        "table(ans_svm)\n"
+      ]
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {
+        "_cell_guid": "ac7df3f8-2963-66f9-3181-c979b1df21ed"
+      },
+      "source": [
+        "### 3.3 Model  Evaluation\n",
+        "\n",
+        "We built 4 basic learner in last section. Then we are going to evaluate model accuracy using ```Confusion Matrix```.\n",
+        "\n",
+        "![enter image description here][1]\n",
+        "\n",
+        "\n",
+        "  [1]: http://i64.tinypic.com/24lvbrk.png\n",
+        "\n",
+        "**Logistic Regression:**"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "_cell_guid": "42bdd8ef-350c-08ff-1893-e5e11a0e3ae7"
+      },
+      "outputs": [],
+      "source": [
+        "# logistic\n",
+        "a = sum(ans_logit ==1 & f.survived == 1)\n",
+        "b = sum(ans_logit ==1 & f.survived == 0)\n",
+        "c = sum(ans_logit ==0 & f.survived == 1)\n",
+        "d = sum(ans_logit ==0 & f.survived == 0)\n",
+        "data.frame(a,b,c,d)"
+      ]
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {
+        "_cell_guid": "dead3196-7c75-a4c5-b22a-7e8f3a5e0c93"
+      },
+      "source": [
+        "\n",
+        "![enter image description here][1]\n",
+        "\n",
+        "\n",
+        "  [1]: http://i66.tinypic.com/b8tm69.png\n",
+        "\n",
+        "**Random Forest:**"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "_cell_guid": "67bd50c1-d7d2-8b05-655e-1296ca52a627"
+      },
+      "outputs": [],
+      "source": [
+        "# Random Forest\n",
+        "a = sum(ans_rf ==1 & f.survived == 1)\n",
+        "b = sum(ans_rf ==1 & f.survived == 0)\n",
+        "c = sum(ans_rf ==0 & f.survived == 1)\n",
+        "d = sum(ans_rf ==0 & f.survived == 0)\n",
+        "data.frame(a,b,c,d)"
+      ]
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {
+        "_cell_guid": "1ca8eb25-ae5f-0c93-1208-c0f4fb27c222"
+      },
+      "source": [
+        "![enter image description here][1]\n",
+        "\n",
+        "\n",
+        "  [1]: http://i67.tinypic.com/2saxr8k.png\n",
+        "\n",
+        "**Decision Tree:**\n"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "_cell_guid": "0a87dfd8-e396-bfb6-2504-c8880df4229d"
+      },
+      "outputs": [],
+      "source": [
+        "# Decision Tree\n",
+        "a = sum(ans_dt ==1 & f.survived == 1)\n",
+        "b = sum(ans_dt ==1 & f.survived == 0)\n",
+        "c = sum(ans_dt ==0 & f.survived == 1)\n",
+        "d = sum(ans_dt ==0 & f.survived == 0)\n",
+        "data.frame(a,b,c,d)"
+      ]
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {
+        "_cell_guid": "105585fe-daab-b2e6-785e-401c12164423"
+      },
+      "source": [
+        "![enter image description here][1]\n",
+        "\n",
+        "\n",
+        "  [1]: http://i68.tinypic.com/qravl3.png\n",
+        "\n",
+        "**SVM:**"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "_cell_guid": "a25439e0-af5b-453c-dc6b-0557298991b1"
+      },
+      "outputs": [],
+      "source": [
+        "# SVM\n",
+        "a = sum(ans_svm ==1 & f.survived == 1)\n",
+        "b = sum(ans_svm ==1 & f.survived == 0)\n",
+        "c = sum(ans_svm ==0 & f.survived == 1)\n",
+        "d = sum(ans_svm ==0 & f.survived == 0)\n",
+        "data.frame(a,b,c,d)"
+      ]
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {
+        "_cell_guid": "df7536f5-8617-2c48-b2b7-411b6005f224"
+      },
+      "source": [
+        "![enter image description here][1]\n",
+        "\n",
+        "\n",
+        "  [1]: http://i64.tinypic.com/2lsxx8o.png\n",
+        "\n",
+        "From matrix above, we can see that all models predict non-survival better than survival. And both logistic regression and SVM work well for training data set. Here, logistic regression has accuracy = 0.837, SVM has accuracy = 0.836.\n"
+      ]
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {
+        "_cell_guid": "856291da-f1fa-83f0-07a0-96f9bde8e7e3"
+      },
+      "source": [
+        "\n",
+        "\n",
+        "## 4. Prediction\n",
+        "\n",
+        "Since we got models that have reasonable predictive power, we can perform them to our test data set to make prediction. Here we choose SVM to perform prediction as an example."
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "_cell_guid": "20df1629-f8da-9046-ae4e-12e427d11892"
+      },
+      "outputs": [],
+      "source": [
+        "# construct testing data frame\n",
+        "test_data_set <- data.frame(age = t.age, fare = t.fare, sex = t.sex, embarked = t.embarked, \n",
+        "                            family = t.family, title = t.title,cabin =  t.cabin, pclass = t.pclass)\n",
+        "# make prediction\n",
+        "svm_predict = predict(fit_svm,newdata = test_data_set )\n",
+        "ans_svm_predict = rep(NA,418)\n",
+        "for(i in 1:418){\n",
+        "  ans_svm_predict[i] = as.integer(svm_predict[[i]]) - 1\n",
+        "}\n",
+        "table(ans_svm_predict)\n"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "_cell_guid": "21d41f7e-a0e4-34c1-0262-bbc2fcc4ab13"
+      },
+      "outputs": [],
+      "source": [
+        "# create a csv file for submittion\n",
+        "d<-data.frame(PassengerId = test$PassengerId, Survived = ans_svm_predict)\n",
+        "write.csv(d,file = \"TitanicResult.csv\",row.names = F)"
+      ]
+    }
+  ],
+  "metadata": {
+    "_change_revision": 0,
+    "_is_fork": false,
+    "kernelspec": {
+      "display_name": "R",
+      "language": "R",
+      "name": "ir"
+    },
+    "language_info": {
+      "codemirror_mode": "r",
+      "file_extension": ".r",
+      "mimetype": "text/x-r-source",
+      "name": "R",
+      "pygments_lexer": "r",
+      "version": "3.3.3"
+    }
+  },
+  "nbformat": 4,
+  "nbformat_minor": 0
+}

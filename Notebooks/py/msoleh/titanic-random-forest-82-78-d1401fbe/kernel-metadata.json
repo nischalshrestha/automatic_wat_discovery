@@ -1,0 +1,17 @@
+{
+  "id": "msoleh/titanic-random-forest-82-78-d1401fbe",
+  "enable_internet": false,
+  "code_file": "titanic-random-forest-82-78-d1401fbe.ipynb",
+  "kernel_sources": [],
+  "keywords": [],
+  "competition_sources": [
+    "titanic"
+  ],
+  "language": "python",
+  "kernel_type": "notebook",
+  "dataset_sources": [],
+  "id_no": 179116,
+  "enable_gpu": false,
+  "title": "Titanic Random Forest: 82.78% d1401fbe",
+  "is_private": false
+}

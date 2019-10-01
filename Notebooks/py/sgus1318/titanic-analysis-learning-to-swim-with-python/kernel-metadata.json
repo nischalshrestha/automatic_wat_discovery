@@ -1,0 +1,22 @@
+{
+  "is_private": false,
+  "dataset_sources": [],
+  "title": "Titanic Analysis_Learning to Swim with Python",
+  "kernel_type": "notebook",
+  "competition_sources": [
+    "titanic"
+  ],
+  "id": "sgus1318/titanic-analysis-learning-to-swim-with-python",
+  "keywords": [
+    "beginner",
+    "random forest",
+    "logistic regression",
+    "decision tree"
+  ],
+  "language": "python",
+  "code_file": "titanic-analysis-learning-to-swim-with-python.ipynb",
+  "enable_internet": false,
+  "enable_gpu": false,
+  "id_no": 528605,
+  "kernel_sources": []
+}

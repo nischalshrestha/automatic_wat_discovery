@@ -1,0 +1,17 @@
+{
+  "id": "naotopimra/first-submit",
+  "id_no": 349971,
+  "title": "first_submit",
+  "code_file": "first-submit.ipynb",
+  "language": "python",
+  "kernel_type": "notebook",
+  "is_private": false,
+  "enable_gpu": false,
+  "enable_internet": false,
+  "keywords": [],
+  "dataset_sources": [],
+  "kernel_sources": [],
+  "competition_sources": [
+    "titanic"
+  ]
+}

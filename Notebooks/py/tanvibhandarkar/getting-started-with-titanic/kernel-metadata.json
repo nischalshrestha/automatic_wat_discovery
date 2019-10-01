@@ -1,0 +1,21 @@
+{
+  "id": "tanvibhandarkar/getting-started-with-titanic",
+  "code_file": "getting-started-with-titanic.ipynb",
+  "title": "Getting Started with Titanic",
+  "is_private": false,
+  "language": "python",
+  "keywords": [
+    "beginner",
+    "data visualization",
+    "classification"
+  ],
+  "enable_internet": false,
+  "id_no": 323820,
+  "dataset_sources": [],
+  "kernel_type": "notebook",
+  "competition_sources": [
+    "titanic"
+  ],
+  "kernel_sources": [],
+  "enable_gpu": false
+}

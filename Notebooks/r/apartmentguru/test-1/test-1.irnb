@@ -1,0 +1,115 @@
+{"cells":[
+ {
+  "cell_type": "code",
+  "execution_count": null,
+  "metadata": {
+   "collapsed": false
+  },
+  "outputs": [],
+  "source": "# Check out my package\nlibrary('ggplot2') # visualization\nlibrary('ggthemes') # visualization\nlibrary('scales') # visualization\nlibrary('dplyr') # data manipulation\nlibrary('mice') # imputation\nlibrary('randomForest') # classification algorithm"
+ },
+ {
+  "cell_type": "code",
+  "execution_count": null,
+  "metadata": {
+   "collapsed": false
+  },
+  "outputs": [],
+  "source": "train <- read.csv('../input/train.csv', stringsAsFactors = F)\ntest  <- read.csv('../input/test.csv', stringsAsFactors = F)\n\nfull  <- bind_rows(train, test) # bind training & test data\n\n\nstr(full)"
+ },
+ {
+  "cell_type": "code",
+  "execution_count": null,
+  "metadata": {
+   "collapsed": false
+  },
+  "outputs": [],
+  "source": "head(train)\n"
+ },
+ {
+  "cell_type": "code",
+  "execution_count": null,
+  "metadata": {
+   "collapsed": false
+  },
+  "outputs": [],
+  "source": "head(test)\n"
+ },
+ {
+  "cell_type": "code",
+  "execution_count": null,
+  "metadata": {
+   "collapsed": false
+  },
+  "outputs": [],
+  "source": "table(train[,c(\"Survived\", \"Pclass\")])\n"
+ },
+ {
+  "cell_type": "code",
+  "execution_count": null,
+  "metadata": {
+   "collapsed": false
+  },
+  "outputs": [],
+  "source": "library(fields)\nbplot.xy(train$Survived, train$Age)"
+ },
+ {
+  "cell_type": "code",
+  "execution_count": null,
+  "metadata": {
+   "collapsed": false
+  },
+  "outputs": [],
+  "source": "summary(train$Age)"
+ },
+ {
+  "cell_type": "code",
+  "execution_count": null,
+  "metadata": {
+   "collapsed": false
+  },
+  "outputs": [],
+  "source": "bplot.xy(train$Survived, train$Fare)\n"
+ },
+ {
+  "cell_type": "markdown",
+  "metadata": {},
+  "source": "#H \nSummary Statistics "
+ },
+ {
+  "cell_type": "code",
+  "execution_count": null,
+  "metadata": {
+   "collapsed": false
+  },
+  "outputs": [],
+  "source": "summary(train$Fare)\n"
+ },
+ {
+  "cell_type": "code",
+  "execution_count": null,
+  "metadata": {
+   "collapsed": false
+  },
+  "outputs": [],
+  "source": "# Convert Survived to Factor\ntrain$Survived <- factor(train$Survived)\n# Set a random seed (so you will get the same results as me)\nset.seed(42)\n# Train the model using a \"random forest\" algorithm\nmodel <- train(Survived ~ Pclass + Sex + SibSp +   \n                          Embarked + Parch + Fare, # Survived is a function of the variables we decided to include\n                          data = train, # Use the trainSet dataframe as the training data\n                          method = \"rf\",# Use the \"random forest\" algorithm\n                          trControl = trainControl(method = \"cv\", # Use cross-validation\n                                                   number = 5) # Use 5 folds for cross-validation\n               )"
+ },
+ {
+  "cell_type": "code",
+  "execution_count": null,
+  "metadata": {
+   "collapsed": false
+  },
+  "outputs": [],
+  "source": "model # This is where the good stuff starts to happen :)\n"
+ },
+ {
+  "cell_type": "code",
+  "execution_count": null,
+  "metadata": {
+   "collapsed": false
+  },
+  "outputs": [],
+  "source": "# Convert Survived to Factor\ntrainSet$Survived <- factor(trainSet$Survived)\n# Set a random seed (so you will get the same results as me)\nset.seed(42)\n# Train the model using a \"random forest\" algorithm\nmodel <- train(Survived ~ Pclass + Sex + SibSp +   \n                          Embarked + Parch + Fare, # Survived is a function of the variables we decided to include\n                          data = trainSet, # Use the trainSet dataframe as the training data\n                          method = \"rf\",# Use the \"random forest\" algorithm\n                          trControl = trainControl(method = \"cv\", # Use cross-validation\n                                                   number = 5) # Use 5 folds for cross-validation\n               )"
+ }
+],"metadata":{"kernelspec":{"display_name":"R","language":"R","name":"ir"}}, "nbformat": 4, "nbformat_minor": 0}

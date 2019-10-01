@@ -1,0 +1,17 @@
+{
+  "id": "lin538x/titanic-survival-prediction-end-to-end-ml-pipeline",
+  "id_no": 173115,
+  "kernel_type": "notebook",
+  "is_private": false,
+  "dataset_sources": [],
+  "code_file": "titanic-survival-prediction-end-to-end-ml-pipeline.irnb",
+  "kernel_sources": [],
+  "language": "r",
+  "keywords": [],
+  "competition_sources": [
+    "titanic"
+  ],
+  "enable_gpu": false,
+  "title": "Titanic Survival Prediction End to End ML Pipeline",
+  "enable_internet": false
+}

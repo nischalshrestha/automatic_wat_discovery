@@ -1,0 +1,17 @@
+{
+  "enable_internet": false,
+  "dataset_sources": [],
+  "code_file": "notebooke8eb396a2c.ipynb",
+  "kernel_type": "notebook",
+  "id": "jmaessen2017/notebooke8eb396a2c",
+  "competition_sources": [
+    "titanic"
+  ],
+  "id_no": 206240,
+  "title": "Notebooke8eb396a2c",
+  "keywords": [],
+  "enable_gpu": false,
+  "kernel_sources": [],
+  "language": "python",
+  "is_private": false
+}

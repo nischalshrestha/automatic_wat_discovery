@@ -1,0 +1,17 @@
+{
+  "code_file": "notebook662adb31a2.ipynb",
+  "id_no": 203860,
+  "dataset_sources": [],
+  "kernel_type": "notebook",
+  "enable_internet": false,
+  "id": "kaneroy/notebook662adb31a2",
+  "kernel_sources": [],
+  "competition_sources": [
+    "titanic"
+  ],
+  "is_private": false,
+  "title": "Notebook662adb31a2",
+  "language": "python",
+  "enable_gpu": false,
+  "keywords": []
+}

@@ -1,0 +1,20 @@
+{
+  "is_private": false,
+  "kernel_sources": [],
+  "title": "Basic Neural Network with Numpy & Titanic",
+  "enable_gpu": false,
+  "code_file": "basic-neural-network-with-numpy-titanic.ipynb",
+  "id_no": 670321,
+  "keywords": [
+    "beginner",
+    "neural networks"
+  ],
+  "language": "python",
+  "enable_internet": false,
+  "kernel_type": "notebook",
+  "dataset_sources": [],
+  "competition_sources": [
+    "titanic"
+  ],
+  "id": "grailfinder/basic-neural-network-with-numpy-titanic"
+}

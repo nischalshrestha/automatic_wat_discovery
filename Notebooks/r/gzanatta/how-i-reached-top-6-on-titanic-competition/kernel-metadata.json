@@ -1,0 +1,22 @@
+{
+  "dataset_sources": [],
+  "language": "r",
+  "code_file": "how-i-reached-top-6-on-titanic-competition.irnb",
+  "competition_sources": [
+    "titanic"
+  ],
+  "enable_gpu": false,
+  "id": "gzanatta/how-i-reached-top-6-on-titanic-competition",
+  "kernel_type": "notebook",
+  "enable_internet": false,
+  "is_private": false,
+  "kernel_sources": [],
+  "title": "How I reached top 6% on Titanic Competition",
+  "id_no": 1364893,
+  "keywords": [
+    "tutorial",
+    "beginner",
+    "classification",
+    "feature engineering"
+  ]
+}

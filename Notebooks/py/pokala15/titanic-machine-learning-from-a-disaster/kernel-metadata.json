@@ -1,0 +1,17 @@
+{
+  "code_file": "titanic-machine-learning-from-a-disaster.ipynb",
+  "enable_gpu": false,
+  "language": "python",
+  "dataset_sources": [],
+  "title": "titanic: machine learning from a disaster",
+  "competition_sources": [
+    "titanic"
+  ],
+  "enable_internet": false,
+  "id_no": 2151000,
+  "kernel_sources": [],
+  "id": "pokala15/titanic-machine-learning-from-a-disaster",
+  "kernel_type": "notebook",
+  "keywords": [],
+  "is_private": false
+}

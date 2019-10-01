@@ -1,0 +1,17 @@
+{
+  "is_private": false,
+  "keywords": [],
+  "kernel_sources": [],
+  "enable_gpu": false,
+  "enable_internet": false,
+  "title": "Predicting Survival on the Titanic",
+  "id_no": 217719,
+  "kernel_type": "notebook",
+  "id": "mikearango/predicting-survival-on-the-titanic",
+  "dataset_sources": [],
+  "code_file": "predicting-survival-on-the-titanic.ipynb",
+  "competition_sources": [
+    "titanic"
+  ],
+  "language": "python"
+}

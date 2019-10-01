@@ -1,0 +1,17 @@
+{
+  "enable_internet": false,
+  "enable_gpu": false,
+  "kernel_sources": [],
+  "id": "gintro/bayesian-network-approach-using-libpgm",
+  "competition_sources": [
+    "titanic"
+  ],
+  "code_file": "bayesian-network-approach-using-libpgm.ipynb",
+  "dataset_sources": [],
+  "id_no": 289788,
+  "is_private": false,
+  "language": "python",
+  "kernel_type": "notebook",
+  "title": "Bayesian network approach using libpgm",
+  "keywords": []
+}

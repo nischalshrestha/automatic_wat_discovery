@@ -1,0 +1,17 @@
+{
+  "id_no": 197471,
+  "enable_gpu": false,
+  "keywords": [],
+  "kernel_type": "notebook",
+  "competition_sources": [
+    "titanic"
+  ],
+  "language": "python",
+  "code_file": "notebook154b60d325.ipynb",
+  "dataset_sources": [],
+  "is_private": false,
+  "id": "yangjiulang/notebook154b60d325",
+  "enable_internet": false,
+  "kernel_sources": [],
+  "title": "Notebook154b60d325"
+}

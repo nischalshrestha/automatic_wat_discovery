@@ -1,0 +1,17 @@
+{
+  "keywords": [],
+  "enable_gpu": true,
+  "language": "python",
+  "kernel_type": "notebook",
+  "title": "Titanic with XGBoost",
+  "is_private": false,
+  "competition_sources": [
+    "titanic"
+  ],
+  "kernel_sources": [],
+  "enable_internet": false,
+  "id": "panjapolps/titanic-with-xgboost",
+  "id_no": 2019860,
+  "dataset_sources": [],
+  "code_file": "titanic-with-xgboost.ipynb"
+}

@@ -1,0 +1,17 @@
+{
+  "competition_sources": [
+    "titanic"
+  ],
+  "language": "python",
+  "kernel_type": "notebook",
+  "enable_gpu": false,
+  "id_no": 230433,
+  "keywords": [],
+  "is_private": false,
+  "title": "Titanic Random Forest: 82.78%",
+  "code_file": "titanic-random-forest-82-78.ipynb",
+  "enable_internet": false,
+  "id": "omanekodie/titanic-random-forest-82-78",
+  "dataset_sources": [],
+  "kernel_sources": []
+}

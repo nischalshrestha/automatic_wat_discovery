@@ -1,0 +1,17 @@
+{
+  "dataset_sources": [],
+  "id": "sudeep88/titanic-survivors-classification-using-pca",
+  "is_private": false,
+  "id_no": 331321,
+  "enable_gpu": false,
+  "kernel_type": "notebook",
+  "language": "python",
+  "keywords": [],
+  "competition_sources": [
+    "titanic"
+  ],
+  "kernel_sources": [],
+  "title": "Titanic survivors classification using PCA",
+  "enable_internet": false,
+  "code_file": "titanic-survivors-classification-using-pca.ipynb"
+}

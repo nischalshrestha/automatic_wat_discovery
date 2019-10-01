@@ -1,0 +1,17 @@
+{
+  "enable_internet": false,
+  "enable_gpu": false,
+  "is_private": false,
+  "title": "Notebook1a7a07f1f2",
+  "id_no": 237792,
+  "kernel_type": "notebook",
+  "keywords": [],
+  "code_file": "notebook1a7a07f1f2.ipynb",
+  "id": "victorwhz/notebook1a7a07f1f2",
+  "dataset_sources": [],
+  "competition_sources": [
+    "titanic"
+  ],
+  "kernel_sources": [],
+  "language": "python"
+}

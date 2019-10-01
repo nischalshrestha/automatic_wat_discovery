@@ -1,0 +1,17 @@
+{
+  "id": "adrian1acoran/fork-of-a-data-science-framework-to-achiev-08bbcb",
+  "dataset_sources": [],
+  "language": "python",
+  "code_file": "fork-of-a-data-science-framework-to-achiev-08bbcb.ipynb",
+  "keywords": [],
+  "kernel_sources": [],
+  "is_private": false,
+  "enable_internet": false,
+  "id_no": 1978657,
+  "kernel_type": "notebook",
+  "enable_gpu": false,
+  "title": "Fork of A Data Science Framework: To Achiev 08bbcb",
+  "competition_sources": [
+    "titanic"
+  ]
+}

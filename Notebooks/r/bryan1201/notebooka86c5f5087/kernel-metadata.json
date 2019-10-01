@@ -1,0 +1,17 @@
+{
+  "kernel_type": "notebook",
+  "enable_gpu": false,
+  "id_no": 174018,
+  "title": "Notebooka86c5f5087",
+  "id": "bryan1201/notebooka86c5f5087",
+  "competition_sources": [
+    "titanic"
+  ],
+  "dataset_sources": [],
+  "kernel_sources": [],
+  "keywords": [],
+  "enable_internet": false,
+  "language": "r",
+  "is_private": false,
+  "code_file": "notebooka86c5f5087.irnb"
+}

@@ -1,0 +1,17 @@
+{
+  "language": "python",
+  "dataset_sources": [],
+  "keywords": [],
+  "id": "lucablaq/titanic-test",
+  "is_private": false,
+  "competition_sources": [
+    "titanic"
+  ],
+  "kernel_type": "notebook",
+  "id_no": 1524014,
+  "enable_internet": false,
+  "title": "Titanic Test",
+  "enable_gpu": false,
+  "kernel_sources": [],
+  "code_file": "titanic-test.ipynb"
+}

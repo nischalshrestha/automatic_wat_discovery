@@ -1,0 +1,17 @@
+{
+  "keywords": [],
+  "is_private": false,
+  "language": "python",
+  "kernel_sources": [],
+  "kernel_type": "notebook",
+  "dataset_sources": [],
+  "competition_sources": [
+    "titanic"
+  ],
+  "title": "Titanic Survival Prediction",
+  "enable_internet": false,
+  "code_file": "titanic-survival-prediction.ipynb",
+  "id": "singhsatwinder/titanic-survival-prediction",
+  "id_no": 1414791,
+  "enable_gpu": false
+}

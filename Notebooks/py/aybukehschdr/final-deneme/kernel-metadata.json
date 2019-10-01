@@ -1,0 +1,17 @@
+{
+  "keywords": [],
+  "id": "aybukehschdr/final-deneme",
+  "kernel_type": "notebook",
+  "is_private": false,
+  "id_no": 155130,
+  "enable_internet": false,
+  "kernel_sources": [],
+  "title": "Final_Deneme",
+  "competition_sources": [
+    "titanic"
+  ],
+  "language": "python",
+  "code_file": "final-deneme.ipynb",
+  "enable_gpu": false,
+  "dataset_sources": []
+}

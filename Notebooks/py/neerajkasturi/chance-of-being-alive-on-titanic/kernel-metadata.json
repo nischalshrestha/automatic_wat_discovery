@@ -1,0 +1,17 @@
+{
+  "competition_sources": [
+    "titanic"
+  ],
+  "keywords": [],
+  "dataset_sources": [],
+  "kernel_sources": [],
+  "is_private": false,
+  "id_no": 416227,
+  "kernel_type": "notebook",
+  "enable_internet": false,
+  "language": "python",
+  "title": "Chance of being alive on Titanic",
+  "enable_gpu": false,
+  "id": "neerajkasturi/chance-of-being-alive-on-titanic",
+  "code_file": "chance-of-being-alive-on-titanic.ipynb"
+}

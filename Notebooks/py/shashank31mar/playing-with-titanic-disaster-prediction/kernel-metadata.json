@@ -1,0 +1,17 @@
+{
+  "competition_sources": [
+    "titanic"
+  ],
+  "enable_internet": false,
+  "keywords": [],
+  "is_private": false,
+  "code_file": "playing-with-titanic-disaster-prediction.ipynb",
+  "id": "shashank31mar/playing-with-titanic-disaster-prediction",
+  "kernel_sources": [],
+  "id_no": 433010,
+  "language": "python",
+  "dataset_sources": [],
+  "enable_gpu": false,
+  "title": "Playing with Titanic Disaster Prediction",
+  "kernel_type": "notebook"
+}

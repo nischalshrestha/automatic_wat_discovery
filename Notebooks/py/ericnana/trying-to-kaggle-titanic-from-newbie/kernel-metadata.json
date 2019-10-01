@@ -1,0 +1,17 @@
+{
+  "title": "Trying to Kaggle Titanic from Newbie ",
+  "language": "python",
+  "dataset_sources": [],
+  "id_no": 97928,
+  "keywords": [],
+  "is_private": false,
+  "enable_gpu": false,
+  "code_file": "trying-to-kaggle-titanic-from-newbie.ipynb",
+  "kernel_sources": [],
+  "id": "ericnana/trying-to-kaggle-titanic-from-newbie",
+  "enable_internet": false,
+  "competition_sources": [
+    "titanic"
+  ],
+  "kernel_type": "notebook"
+}

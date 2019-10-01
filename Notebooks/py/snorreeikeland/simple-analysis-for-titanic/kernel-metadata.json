@@ -1,0 +1,20 @@
+{
+  "title": "Simple Analysis for Titanic",
+  "competition_sources": [
+    "titanic"
+  ],
+  "is_private": false,
+  "keywords": [
+    "beginner",
+    "eda"
+  ],
+  "enable_internet": false,
+  "enable_gpu": false,
+  "id_no": 481342,
+  "code_file": "simple-analysis-for-titanic.ipynb",
+  "language": "python",
+  "kernel_type": "notebook",
+  "kernel_sources": [],
+  "dataset_sources": [],
+  "id": "snorreeikeland/simple-analysis-for-titanic"
+}

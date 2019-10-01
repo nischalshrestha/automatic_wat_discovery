@@ -1,0 +1,17 @@
+{
+  "kernel_sources": [],
+  "id": "dmdale/logistic-regression",
+  "kernel_type": "notebook",
+  "title": "Logistic Regression",
+  "keywords": [],
+  "enable_gpu": false,
+  "enable_internet": false,
+  "id_no": 139440,
+  "code_file": "logistic-regression.irnb",
+  "is_private": false,
+  "language": "r",
+  "dataset_sources": [],
+  "competition_sources": [
+    "titanic"
+  ]
+}

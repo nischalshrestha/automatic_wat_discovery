@@ -1,0 +1,17 @@
+{
+  "title": "My First simple R Kernel",
+  "enable_gpu": false,
+  "language": "r",
+  "enable_internet": false,
+  "is_private": false,
+  "id_no": 445736,
+  "code_file": "my-first-simple-r-kernel.irnb",
+  "id": "rtintor/my-first-simple-r-kernel",
+  "keywords": [],
+  "kernel_type": "notebook",
+  "kernel_sources": [],
+  "dataset_sources": [],
+  "competition_sources": [
+    "titanic"
+  ]
+}

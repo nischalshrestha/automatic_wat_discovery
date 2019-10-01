@@ -1,0 +1,17 @@
+{
+  "kernel_sources": [],
+  "code_file": "titanic-notebook.irnb",
+  "is_private": false,
+  "enable_internet": false,
+  "language": "r",
+  "title": "Titanic Notebook",
+  "competition_sources": [
+    "titanic"
+  ],
+  "enable_gpu": false,
+  "dataset_sources": [],
+  "id": "rajiv1990/titanic-notebook",
+  "keywords": [],
+  "kernel_type": "notebook",
+  "id_no": 168348
+}

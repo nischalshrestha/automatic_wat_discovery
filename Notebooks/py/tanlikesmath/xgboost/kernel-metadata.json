@@ -1,0 +1,17 @@
+{
+  "title": "xgboost",
+  "kernel_type": "notebook",
+  "code_file": "xgboost.ipynb",
+  "keywords": [],
+  "id": "tanlikesmath/xgboost",
+  "competition_sources": [
+    "titanic"
+  ],
+  "enable_internet": false,
+  "enable_gpu": false,
+  "kernel_sources": [],
+  "dataset_sources": [],
+  "language": "python",
+  "id_no": 91440,
+  "is_private": false
+}

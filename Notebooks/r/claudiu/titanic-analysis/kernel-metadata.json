@@ -1,0 +1,17 @@
+{
+  "enable_internet": false,
+  "code_file": "titanic-analysis.R",
+  "kernel_sources": [],
+  "keywords": [],
+  "is_private": false,
+  "id_no": 65995,
+  "language": "r",
+  "dataset_sources": [],
+  "competition_sources": [
+    "titanic"
+  ],
+  "kernel_type": "script",
+  "id": "claudiu/titanic-analysis",
+  "title": "Titanic Analysis",
+  "enable_gpu": false
+}

@@ -1,0 +1,17 @@
+{
+  "id_no": 312922,
+  "keywords": [],
+  "code_file": "beginners-guide-to-titanic-disaster.ipynb",
+  "kernel_type": "notebook",
+  "enable_gpu": false,
+  "dataset_sources": [],
+  "is_private": false,
+  "title": "Beginners guide to Titanic Disaster.",
+  "kernel_sources": [],
+  "id": "aradhya0510/beginners-guide-to-titanic-disaster",
+  "language": "python",
+  "enable_internet": false,
+  "competition_sources": [
+    "titanic"
+  ]
+}

@@ -1,0 +1,23 @@
+{
+  "title": "Machine Learning with Apache Spark",
+  "keywords": [
+    "tutorial",
+    "beginner",
+    "eda",
+    "classification",
+    "feature engineering"
+  ],
+  "competition_sources": [
+    "titanic"
+  ],
+  "id_no": 1471118,
+  "enable_gpu": false,
+  "kernel_sources": [],
+  "kernel_type": "notebook",
+  "id": "lpdataninja/machine-learning-with-apache-spark",
+  "code_file": "machine-learning-with-apache-spark.ipynb",
+  "language": "python",
+  "dataset_sources": [],
+  "is_private": false,
+  "enable_internet": false
+}

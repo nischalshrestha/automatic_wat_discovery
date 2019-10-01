@@ -1,0 +1,19 @@
+{
+  "id": "ishansoni/titanic-survival-exploration",
+  "id_no": 1063695,
+  "title": "Titanic Survival Exploration.",
+  "code_file": "titanic-survival-exploration.ipynb",
+  "language": "python",
+  "kernel_type": "notebook",
+  "is_private": false,
+  "enable_gpu": false,
+  "enable_internet": false,
+  "keywords": [
+    "beginner"
+  ],
+  "dataset_sources": [],
+  "kernel_sources": [],
+  "competition_sources": [
+    "titanic"
+  ]
+}

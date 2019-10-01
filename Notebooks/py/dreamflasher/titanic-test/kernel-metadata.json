@@ -1,0 +1,17 @@
+{
+  "title": "titanic_test",
+  "code_file": "titanic-test.ipynb",
+  "language": "python",
+  "id": "dreamflasher/titanic-test",
+  "enable_gpu": false,
+  "kernel_type": "notebook",
+  "id_no": 96602,
+  "enable_internet": false,
+  "keywords": [],
+  "kernel_sources": [],
+  "competition_sources": [
+    "titanic"
+  ],
+  "dataset_sources": [],
+  "is_private": false
+}

@@ -1,0 +1,17 @@
+{
+  "competition_sources": [
+    "titanic"
+  ],
+  "dataset_sources": [],
+  "is_private": false,
+  "id": "rubel20/notebook",
+  "enable_gpu": false,
+  "title": "Notebook",
+  "code_file": "notebook.irnb",
+  "kernel_sources": [],
+  "id_no": 219948,
+  "kernel_type": "notebook",
+  "language": "r",
+  "keywords": [],
+  "enable_internet": false
+}

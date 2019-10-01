@@ -1,0 +1,274 @@
+{
+  "cells": [
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "_cell_guid": "f660f24c-0286-0052-27a4-7127eac86623"
+      },
+      "outputs": [],
+      "source": [
+        "print(list.files(\"../input\"))"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "_cell_guid": "5eabfacb-4bfa-47cb-372f-14fb32b7198a"
+      },
+      "outputs": [],
+      "source": [
+        "input_df <- read.csv(\"../input/train.csv\")\n",
+        "train_df <- input_df[1:500, ]\n",
+        "val_df <- input_df[501:891, ]\n",
+        "\n",
+        "test_df <- read.csv(\"../input/test.csv\")"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "_cell_guid": "0daee50f-0334-5b7a-431b-b06a9be8f496"
+      },
+      "outputs": [],
+      "source": [
+        "nrow(train_df)\n",
+        "head(train_df)"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "_cell_guid": "8f88e8aa-bbe5-d44c-846d-2b7bf67a338a"
+      },
+      "outputs": [],
+      "source": [
+        "library(mice)"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "_cell_guid": "5170c0bc-a6ab-502e-ed9d-caf29c6643cb"
+      },
+      "outputs": [],
+      "source": [
+        "my_mids <- mice(train_df)"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "_cell_guid": "859a34ab-dc62-5108-8211-840c9a02802a"
+      },
+      "outputs": [],
+      "source": [
+        "my_glm <- glm(Survived ~ Age + Pclass + Sex + SibSp + Parch + Fare,\n",
+        "              data = train_df, family = \"binomial\")"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "_cell_guid": "eccafee5-c00d-b8b7-d3ef-782c88a65b23"
+      },
+      "outputs": [],
+      "source": [
+        "summary(my_glm)"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "_cell_guid": "b97dbef2-6552-29cb-fbbd-0969deafa8fc"
+      },
+      "outputs": [],
+      "source": [
+        "glm_predictions <- predict(my_glm, newdata = val_df, type = \"response\")\n",
+        "val_df$pred_survived <- as.numeric(glm_predictions > .5)\n",
+        "val_df$pred_survived <- ifelse(is.na(val_df$pred_survived), 0, val_df$pred_survived)\n",
+        "\n",
+        "#print(glm_predictions)\n",
+        "print(val_df$pred_survived)\n",
+        "val_df[val_df$PassengerId == 503, ]\n",
+        "\n",
+        "\n",
+        "\n",
+        "got_right <- with(val_df, pred_survived == Survived)\n",
+        "got_wrong <- with(val_df, pred_survived != Survived)\n",
+        "\n",
+        "n_right <- sum(got_right, na.rm = TRUE)\n",
+        "n_wrong <- sum(got_wrong, na.rm = TRUE)\n",
+        "accuracy <- n_right / (n_right + n_wrong)\n",
+        "cat(\"accuracy: \", accuracy, \"\\n\")\n",
+        "\n",
+        "\n"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "_cell_guid": "2d794ab0-144d-694e-9f94-16edfb2247da"
+      },
+      "outputs": [],
+      "source": [
+        "submission_df <- test_df[, c(\"PassengerId\", \"Survived\")]\n",
+        "write.csv(submission_df, \"submission.csv\", row.names = FALSE)\n",
+        "print(list.files())"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "_cell_guid": "ecea7a43-4916-eb44-1fd7-2e1753e7a697"
+      },
+      "outputs": [],
+      "source": [
+        "print(list.files(\"../input\"))"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "_cell_guid": "a040e7cb-e6ca-50f5-d668-ceb0e15a71b2"
+      },
+      "outputs": [],
+      "source": [
+        "input_df <- read.csv(\"../input/train.csv\")[, c(\"Survived\", \"Pclass\", \"Sex\", \"Age\", \"SibSp\", \"Parch\")]\n",
+        "train_df <- input_df[1:500, ]\n",
+        "val_df <- input_df[501:891, ]\n",
+        "\n",
+        "test_df <- read.csv(\"../input/test.csv\")"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "_cell_guid": "1d8f1043-b0c9-82f6-9b56-9330ef64adba"
+      },
+      "outputs": [],
+      "source": [
+        "nrow(train_df)\n",
+        "head(train_df)\n",
+        "summary(train_df)"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "_cell_guid": "5fd1abcf-8471-38fc-653a-7dc323ccdc4a"
+      },
+      "outputs": [],
+      "source": [
+        "library(mice)"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "_cell_guid": "0e14a42f-18bc-41d1-e676-96a6d979af26"
+      },
+      "outputs": [],
+      "source": [
+        "my_mids <- mice(train_df, m = 1, maxiter = 25)"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "_cell_guid": "5c20b05c-4a7a-d0e8-0e7e-da0e57601100"
+      },
+      "outputs": [],
+      "source": [
+        "my_glm <- glm(Survived ~ Age + Pclass + Sex + SibSp + Parch + Fare,\n",
+        "              data = train_df, family = \"binomial\")"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "_cell_guid": "739c788b-b8e7-0d8e-0974-5d0ef45ab5ef"
+      },
+      "outputs": [],
+      "source": [
+        "summary(my_glm)"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "_cell_guid": "72c53522-4d71-5090-e921-d22b6664a148"
+      },
+      "outputs": [],
+      "source": [
+        "glm_predictions <- predict(my_glm, newdata = val_df, type = \"response\")\n",
+        "val_df$pred_survived <- as.numeric(glm_predictions > .5)\n",
+        "val_df$pred_survived <- ifelse(is.na(val_df$pred_survived), 0, val_df$pred_survived)\n",
+        "\n",
+        "#print(glm_predictions)\n",
+        "print(val_df$pred_survived)\n",
+        "val_df[val_df$PassengerId == 503, ]\n",
+        "\n",
+        "\n",
+        "\n",
+        "got_right <- with(val_df, pred_survived == Survived)\n",
+        "got_wrong <- with(val_df, pred_survived != Survived)\n",
+        "\n",
+        "n_right <- sum(got_right, na.rm = TRUE)\n",
+        "n_wrong <- sum(got_wrong, na.rm = TRUE)\n",
+        "accuracy <- n_right / (n_right + n_wrong)\n",
+        "cat(\"accuracy: \", accuracy, \"\\n\")\n",
+        "\n",
+        "\n"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "_cell_guid": "16b30c52-80e9-5486-d06a-4e000c0c059e"
+      },
+      "outputs": [],
+      "source": [
+        "submission_df <- test_df[, c(\"PassengerId\", \"Survived\")]\n",
+        "write.csv(submission_df, \"submission.csv\", row.names = FALSE)\n",
+        "print(list.files())"
+      ]
+    }
+  ],
+  "metadata": {
+    "_change_revision": 0,
+    "_is_fork": false,
+    "kernelspec": {
+      "display_name": "R",
+      "language": "R",
+      "name": "ir"
+    },
+    "language_info": {
+      "codemirror_mode": "r",
+      "file_extension": ".r",
+      "mimetype": "text/x-r-source",
+      "name": "R",
+      "pygments_lexer": "r",
+      "version": "3.3.3"
+    }
+  },
+  "nbformat": 4,
+  "nbformat_minor": 0
+}

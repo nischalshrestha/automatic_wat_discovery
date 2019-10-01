@@ -1,0 +1,17 @@
+{
+  "id_no": 510743,
+  "id": "liranz10z/final-project",
+  "kernel_type": "notebook",
+  "dataset_sources": [],
+  "keywords": [],
+  "kernel_sources": [],
+  "title": "Final Project",
+  "enable_gpu": false,
+  "enable_internet": false,
+  "competition_sources": [
+    "titanic"
+  ],
+  "code_file": "final-project.ipynb",
+  "is_private": false,
+  "language": "python"
+}

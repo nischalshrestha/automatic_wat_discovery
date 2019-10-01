@@ -1,0 +1,17 @@
+{
+  "id_no": 120976,
+  "is_private": false,
+  "kernel_type": "notebook",
+  "code_file": "notebook78bf217270.ipynb",
+  "enable_gpu": false,
+  "enable_internet": false,
+  "language": "python",
+  "title": "Gradient boosting",
+  "keywords": [],
+  "competition_sources": [
+    "titanic"
+  ],
+  "dataset_sources": [],
+  "id": "ekchim/notebook78bf217270",
+  "kernel_sources": []
+}

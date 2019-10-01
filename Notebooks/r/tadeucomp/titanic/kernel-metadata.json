@@ -1,0 +1,17 @@
+{
+  "code_file": "titanic.irnb",
+  "competition_sources": [
+    "titanic"
+  ],
+  "dataset_sources": [],
+  "enable_gpu": false,
+  "is_private": false,
+  "kernel_sources": [],
+  "id_no": 200831,
+  "kernel_type": "notebook",
+  "language": "r",
+  "id": "tadeucomp/titanic",
+  "title": "Titanic",
+  "enable_internet": false,
+  "keywords": []
+}

@@ -1,0 +1,19 @@
+{
+  "kernel_sources": [],
+  "keywords": [
+    "beginner"
+  ],
+  "title": " Predict Titanic Survivors",
+  "id_no": 1406087,
+  "code_file": "predict-titanic-survivors.ipynb",
+  "competition_sources": [
+    "titanic"
+  ],
+  "enable_internet": false,
+  "kernel_type": "notebook",
+  "is_private": false,
+  "enable_gpu": false,
+  "language": "python",
+  "id": "sanikamal/predict-titanic-survivors",
+  "dataset_sources": []
+}

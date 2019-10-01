@@ -1,0 +1,20 @@
+{
+  "language": "r",
+  "enable_internet": false,
+  "keywords": [
+    "classification",
+    "model diagnosis"
+  ],
+  "code_file": "titanic-on-the-rocks-with-a-lime.irnb",
+  "dataset_sources": [],
+  "competition_sources": [
+    "titanic"
+  ],
+  "enable_gpu": false,
+  "id_no": 379168,
+  "is_private": false,
+  "id": "countryboy/titanic-on-the-rocks-with-a-lime",
+  "title": "Titanic on the ROCks with a LIME",
+  "kernel_sources": [],
+  "kernel_type": "notebook"
+}

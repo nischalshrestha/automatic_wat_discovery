@@ -1,0 +1,17 @@
+{
+  "code_file": "notebookabb5d2eb11.irnb",
+  "kernel_sources": [],
+  "enable_gpu": false,
+  "competition_sources": [
+    "titanic"
+  ],
+  "is_private": false,
+  "dataset_sources": [],
+  "keywords": [],
+  "title": "Notebookabb5d2eb11",
+  "language": "r",
+  "kernel_type": "notebook",
+  "enable_internet": false,
+  "id_no": 202298,
+  "id": "knt001/notebookabb5d2eb11"
+}

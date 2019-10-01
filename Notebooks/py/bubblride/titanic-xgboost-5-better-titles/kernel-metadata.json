@@ -1,0 +1,17 @@
+{
+  "enable_internet": false,
+  "kernel_sources": [],
+  "title": "titanic, xgboost 5, better titles",
+  "id": "bubblride/titanic-xgboost-5-better-titles",
+  "keywords": [],
+  "code_file": "titanic-xgboost-5-better-titles.ipynb",
+  "competition_sources": [
+    "titanic"
+  ],
+  "language": "python",
+  "enable_gpu": true,
+  "dataset_sources": [],
+  "id_no": 1910368,
+  "is_private": false,
+  "kernel_type": "notebook"
+}

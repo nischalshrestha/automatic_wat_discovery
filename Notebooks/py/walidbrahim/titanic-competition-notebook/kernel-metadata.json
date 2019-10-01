@@ -1,0 +1,17 @@
+{
+  "dataset_sources": [],
+  "competition_sources": [
+    "titanic"
+  ],
+  "is_private": false,
+  "title": "Titanic Competition Notebook",
+  "language": "r",
+  "kernel_sources": [],
+  "enable_internet": false,
+  "code_file": "titanic-competition-notebook.irnb",
+  "id": "walidbrahim/titanic-competition-notebook",
+  "enable_gpu": false,
+  "id_no": 279608,
+  "kernel_type": "notebook",
+  "keywords": []
+}

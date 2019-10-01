@@ -1,0 +1,17 @@
+{
+  "competition_sources": [
+    "titanic"
+  ],
+  "id_no": 2006582,
+  "id": "rajesh1158/logistic-regression-on-titanic-data-set",
+  "dataset_sources": [],
+  "language": "python",
+  "kernel_type": "notebook",
+  "enable_internet": false,
+  "is_private": false,
+  "code_file": "logistic-regression-on-titanic-data-set.ipynb",
+  "keywords": [],
+  "kernel_sources": [],
+  "enable_gpu": false,
+  "title": "Logistic Regression on Titanic data set"
+}

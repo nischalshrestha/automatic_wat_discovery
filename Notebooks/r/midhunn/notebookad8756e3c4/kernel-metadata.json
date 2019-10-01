@@ -1,0 +1,17 @@
+{
+  "kernel_sources": [],
+  "kernel_type": "notebook",
+  "dataset_sources": [],
+  "competition_sources": [
+    "titanic"
+  ],
+  "enable_gpu": false,
+  "code_file": "notebookad8756e3c4.ipynb",
+  "enable_internet": false,
+  "language": "python",
+  "id": "midhunn/notebookad8756e3c4",
+  "id_no": 206447,
+  "title": "Notebookad8756e3c4",
+  "is_private": false,
+  "keywords": []
+}

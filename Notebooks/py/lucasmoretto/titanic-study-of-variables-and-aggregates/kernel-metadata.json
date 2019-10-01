@@ -1,0 +1,22 @@
+{
+  "enable_internet": false,
+  "enable_gpu": false,
+  "keywords": [
+    "beginner",
+    "data cleaning",
+    "data visualization",
+    "classification"
+  ],
+  "dataset_sources": [],
+  "is_private": false,
+  "id": "lucasmoretto/titanic-study-of-variables-and-aggregates",
+  "kernel_sources": [],
+  "competition_sources": [
+    "titanic"
+  ],
+  "kernel_type": "notebook",
+  "code_file": "titanic-study-of-variables-and-aggregates.ipynb",
+  "id_no": 1922269,
+  "title": "Titanic: Study of Variables and Aggregates",
+  "language": "python"
+}

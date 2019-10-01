@@ -1,0 +1,17 @@
+{
+  "enable_gpu": false,
+  "title": "Basic Analysis & Prediction of survival in python",
+  "language": "python",
+  "competition_sources": [
+    "titanic"
+  ],
+  "keywords": [],
+  "enable_internet": false,
+  "dataset_sources": [],
+  "id": "saikiranc/basic-analysis-prediction-of-survival-in-python",
+  "code_file": "basic-analysis-prediction-of-survival-in-python.ipynb",
+  "kernel_type": "notebook",
+  "is_private": false,
+  "kernel_sources": [],
+  "id_no": 348721
+}

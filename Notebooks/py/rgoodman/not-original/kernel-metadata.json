@@ -1,0 +1,17 @@
+{
+  "id_no": 158989,
+  "id": "rgoodman/not-original",
+  "kernel_type": "notebook",
+  "title": "Not Original",
+  "language": "python",
+  "enable_internet": false,
+  "enable_gpu": false,
+  "code_file": "not-original.ipynb",
+  "keywords": [],
+  "dataset_sources": [],
+  "competition_sources": [
+    "titanic"
+  ],
+  "is_private": false,
+  "kernel_sources": []
+}

@@ -1,0 +1,17 @@
+{
+  "enable_internet": false,
+  "kernel_type": "notebook",
+  "title": "Notebookeef6279682",
+  "id_no": 229511,
+  "keywords": [],
+  "language": "r",
+  "competition_sources": [
+    "titanic"
+  ],
+  "is_private": false,
+  "id": "giorgiop2it/notebookeef6279682",
+  "enable_gpu": false,
+  "code_file": "notebookeef6279682.irnb",
+  "kernel_sources": [],
+  "dataset_sources": []
+}

@@ -1,0 +1,17 @@
+{
+  "title": "Titanic Experiencias",
+  "kernel_type": "notebook",
+  "kernel_sources": [],
+  "language": "python",
+  "dataset_sources": [],
+  "is_private": false,
+  "keywords": [],
+  "id": "leite0407/titanic-experiencias",
+  "enable_gpu": false,
+  "id_no": 1936897,
+  "code_file": "titanic-experiencias.ipynb",
+  "competition_sources": [
+    "titanic"
+  ],
+  "enable_internet": false
+}

@@ -1,0 +1,17 @@
+{
+  "enable_internet": false,
+  "is_private": false,
+  "kernel_sources": [],
+  "id_no": 2105241,
+  "competition_sources": [
+    "titanic"
+  ],
+  "kernel_type": "notebook",
+  "id": "rafaelcavalcante/nano-degree-udacity-eda-and-random-forest",
+  "language": "python",
+  "enable_gpu": false,
+  "title": "Nano Degree Udacity - EDA and Random Forest",
+  "code_file": "nano-degree-udacity-eda-and-random-forest.ipynb",
+  "keywords": [],
+  "dataset_sources": []
+}

@@ -1,0 +1,21 @@
+{
+  "keywords": [
+    "classification",
+    "ensembling",
+    "feature engineering"
+  ],
+  "id": "kueipo/super-guide-eda-of-titanic-updated-tree-digraph",
+  "title": "Super Guide EDA of Titanic (Updated: Tree digraph)",
+  "competition_sources": [
+    "titanic"
+  ],
+  "language": "python",
+  "kernel_sources": [],
+  "is_private": false,
+  "id_no": 355833,
+  "enable_gpu": false,
+  "code_file": "super-guide-eda-of-titanic-updated-tree-digraph.ipynb",
+  "enable_internet": false,
+  "kernel_type": "notebook",
+  "dataset_sources": []
+}

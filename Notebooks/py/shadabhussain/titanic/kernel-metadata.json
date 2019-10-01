@@ -1,0 +1,23 @@
+{
+  "title": "Titanic ",
+  "code_file": "titanic.ipynb",
+  "id_no": 2071534,
+  "enable_internet": false,
+  "language": "python",
+  "kernel_type": "notebook",
+  "competition_sources": [
+    "titanic"
+  ],
+  "is_private": false,
+  "kernel_sources": [],
+  "id": "shadabhussain/titanic",
+  "keywords": [
+    "beginner",
+    "eda",
+    "data cleaning",
+    "data visualization",
+    "classification"
+  ],
+  "dataset_sources": [],
+  "enable_gpu": false
+}

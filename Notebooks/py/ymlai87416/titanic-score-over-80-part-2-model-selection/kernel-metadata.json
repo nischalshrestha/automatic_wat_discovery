@@ -1,0 +1,19 @@
+{
+  "id": "ymlai87416/titanic-score-over-80-part-2-model-selection",
+  "id_no": 311850,
+  "title": "Titanic: score over 80% - part 2 model selection",
+  "code_file": "titanic-score-over-80-part-2-model-selection.ipynb",
+  "language": "python",
+  "kernel_type": "notebook",
+  "is_private": false,
+  "enable_gpu": false,
+  "enable_internet": false,
+  "keywords": [],
+  "dataset_sources": [
+    "ymlai87416/cleansedtitanicdataset"
+  ],
+  "kernel_sources": [],
+  "competition_sources": [
+    "titanic"
+  ]
+}

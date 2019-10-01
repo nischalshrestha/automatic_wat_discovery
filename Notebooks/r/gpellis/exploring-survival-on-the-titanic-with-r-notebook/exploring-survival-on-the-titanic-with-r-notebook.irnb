@@ -1,0 +1,584 @@
+{
+  "cells": [
+    {
+      "cell_type": "markdown",
+      "metadata": {
+        "_cell_guid": "7e83c40e-b6bf-d5ae-afcc-a980dd67a49a"
+      },
+      "source": [
+        "# Introduction \n",
+        "\n",
+        "This notebook is based on Megan L. Risdal's awesome R script. I started by forking that kernel and then ported it over to a notebook. As these are my first exposure to both R and Kaggle, you can pretty mush just assume that anything that works is Megan's and anything that is broken or doesn't make sense is mine. \n",
+        "\n",
+        "There are three parts to this script:\n",
+        "\n",
+        " - Feature engineering\n",
+        " - Missing value imputation\n",
+        " - Prediction!"
+      ]
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {
+        "_cell_guid": "5f58a6d5-9098-b210-3b46-bd77895d9e80"
+      },
+      "source": [
+        "## Load and check data "
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "_cell_guid": "8573516d-3bef-fc24-0dcf-f0f0028713f7"
+      },
+      "outputs": [],
+      "source": [
+        "# Load packages\n",
+        "library('ggplot2') # visualization\n",
+        "library('ggthemes') # visualization\n",
+        "library('scales') # visualization\n",
+        "library('dplyr') # data manipulation\n",
+        "library('mice') # imputation\n",
+        "library('randomForest') # classification algorithm"
+      ]
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {
+        "_cell_guid": "367828f6-0574-f684-ca24-3529834f12bf"
+      },
+      "source": [
+        "Now that our packages are loaded, let's read in and take a peek at the data."
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "_cell_guid": "d2991add-89c4-0584-dc88-c3f1c366b2f6"
+      },
+      "outputs": [],
+      "source": [
+        "train <- read.csv('../input/train.csv', stringsAsFactors = F)\n",
+        "test  <- read.csv('../input/test.csv', stringsAsFactors = F)\n",
+        "\n",
+        "full  <- bind_rows(train, test) # bind training & test data\n",
+        "\n",
+        "# check data\n",
+        "str(full)"
+      ]
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {
+        "_cell_guid": "0a91728b-8f52-279a-0840-67e649ab2b87"
+      },
+      "source": [
+        "We've got a sense of our variables, their class type, and the first few observations of each. We know we're working with 1309 observations of 12 variables. To make things a bit more explicit since a couple of the variable names aren't 100% illuminating, here's what we've got to deal with:\n",
+        "\n",
+        "```\n",
+        "Variable Name | Description\n",
+        "--------------|-------------\n",
+        "Survived      | Survived (1) or died (0)\n",
+        "Pclass        | Passenger's class\n",
+        "Name          | Passenger's name\n",
+        "Sex           | Passenger's sex\n",
+        "Age           | Passenger's age\n",
+        "SibSp         | Number of siblings/spouses aboard\n",
+        "Parch         | Number of parents/children aboard\n",
+        "Ticket        | Ticket number\n",
+        "Fare          | Fare\n",
+        "Cabin         | Cabin\n",
+        "Embarked      | Port of embarkation\n",
+        "```"
+      ]
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {
+        "_cell_guid": "849ad92b-2b2b-2031-f2a7-89507cf97c9b"
+      },
+      "source": [
+        "# Feature Engineering \n",
+        "\n",
+        "##What's in a name?\n",
+        "\n",
+        "The first variable which catches my attention is **passenger name** because we can break it down into additional meaningful variables which can feed predictions or be used in the creation of additional new variables. For instance, **passenger title** is contained within the passenger name variable and we can use **surname** to represent families. Let's do some **feature engineering**!\n"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "_cell_guid": "3f0ec56e-8d6e-366c-71cc-3e38c0fd49b7"
+      },
+      "outputs": [],
+      "source": [
+        "# Grab title from passenger names\n",
+        "full$Title <- gsub('(.*, )|(\\\\..*)', '', full$Name)\n",
+        "\n",
+        "# Show title counts by sex\n",
+        "table(full$Sex, full$Title)\n",
+        "\n",
+        "# Titles with very low cell counts to be combined to \"rare\" level\n",
+        "rare_title <- c('Dona', 'Lady', 'the Countess','Capt', 'Col', 'Don', \n",
+        "                'Dr', 'Major', 'Rev', 'Sir', 'Jonkheer')\n",
+        "\n",
+        "# Also reassign mlle, ms, and mme accordingly\n",
+        "full$Title[full$Title == 'Mlle']        <- 'Miss' \n",
+        "full$Title[full$Title == 'Ms']          <- 'Miss'\n",
+        "full$Title[full$Title == 'Mme']         <- 'Mrs' \n",
+        "full$Title[full$Title %in% rare_title]  <- 'Rare Title'\n",
+        "\n",
+        "# Show title counts by sex again\n",
+        "table(full$Sex, full$Title)\n",
+        "\n",
+        "# Finally, grab surname from passenger name\n",
+        "full$Surname <- sapply(full$Name,  \n",
+        "                      function(x) strsplit(x, split = '[,.]')[[1]][1])"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "_cell_guid": "e573ce28-ce84-9583-125e-8cf708125143"
+      },
+      "outputs": [],
+      "source": [
+        "cat(paste('We have <b>', nlevels(factor(full$Surname)), '</b> unique surnames. I would be interested to infer ethnicity based on surname --- another time.'))"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "_cell_guid": "72a994e0-75b0-a689-894d-cc532e05ce70"
+      },
+      "outputs": [],
+      "source": [
+        "## Do families sink or swim together?\n",
+        "\n",
+        "#Now that we've taken care of splitting passenger name into some new variables, we can take it a step further and make some new family variables. First we're going to make a **family size** variable based on number of siblings/spouse(s) (maybe someone has more than one spouse?) and number of children/parents. \n",
+        "\n",
+        "#```{r}\n",
+        "# Create a family size variable including the passenger themselves\n",
+        "full$Fsize <- full$SibSp + full$Parch + 1\n",
+        "\n",
+        "# Create a family variable \n",
+        "full$Family <- paste(full$Surname, full$Fsize, sep='_')\n",
+        "#```"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "_cell_guid": "a635a627-7673-14d5-9da5-737b7cdf0678"
+      },
+      "outputs": [],
+      "source": [
+        "\n",
+        "\n",
+        "#What does our family size variable look like? To help us understand how it may relate to survival, let's plot it among the training data.\n",
+        "\n",
+        "#```{r, message=FALSE, warning=FALSE}\n",
+        "# Use ggplot2 to visualize the relationship between family size & survival\n",
+        "ggplot(full[1:891,], aes(x = Fsize, fill = factor(Survived))) +\n",
+        "  geom_bar(stat='count', position='dodge') +\n",
+        "  scale_x_continuous(breaks=c(1:11)) +\n",
+        "  labs(x = 'Family Size') +\n",
+        "  theme_few()\n",
+        "#```"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "_cell_guid": "f4ed0174-9e9a-d0e9-4ba7-e81782153e59"
+      },
+      "outputs": [],
+      "source": [
+        "\n",
+        "\n",
+        "#Ah hah. We can see that there's a survival penalty to singletons and those with family sizes above 4. We can collapse this variable into three levels which will be helpful since there are comparatively fewer large families. Let's create a **discretized family size** variable.\n",
+        "\n",
+        "#```{r}\n",
+        "# Discretize family size\n",
+        "full$FsizeD[full$Fsize == 1] <- 'singleton'\n",
+        "full$FsizeD[full$Fsize < 5 & full$Fsize > 1] <- 'small'\n",
+        "full$FsizeD[full$Fsize > 4] <- 'large'\n",
+        "\n",
+        "# Show family size by survival using a mosaic plot\n",
+        "mosaicplot(table(full$FsizeD, full$Survived), main='Family Size by Survival', shade=TRUE)\n",
+        "#```"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "_cell_guid": "b542ddce-778b-9c6b-e458-6981dbb047ab"
+      },
+      "outputs": [],
+      "source": [
+        "\n",
+        "\n",
+        "#The mosaic plot shows that we preserve our rule that there's a survival penalty among singletons and large families, but a benefit for passengers in small families. I want to do something further with our age variable, but `r sum(is.na(full$Age))` rows have missing age values, so we will have to wait until after we address missingness.\n",
+        "\n",
+        "## Treat a few more variables ...\n",
+        "\n",
+        "#What's left? There's probably some potentially useful information in the **passenger cabin** variable including about their **deck**. Let's take a look.\n",
+        "\n",
+        "#```{r}\n",
+        "# This variable appears to have a lot of missing values\n",
+        "full$Cabin[1:28]\n",
+        "\n",
+        "# The first character is the deck. For example:\n",
+        "strsplit(full$Cabin[2], NULL)[[1]]\n",
+        "\n",
+        "# Create a Deck variable. Get passenger deck A - F:\n",
+        "full$Deck<-factor(sapply(full$Cabin, function(x) strsplit(x, NULL)[[1]][1]))\n",
+        "#```"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "_cell_guid": "3e377fdf-ef06-a31d-6040-c67217b5945c"
+      },
+      "outputs": [],
+      "source": [
+        "\n",
+        "\n",
+        "#There's more that likely could be done here including looking into cabins with multiple rooms listed (e.g., row 28: \"C23 C25 C27\"), but given the sparseness of the column we'll stop here.\n",
+        "\n",
+        "# Missingness\n",
+        "\n",
+        "# we're ready to start exploring missing data and rectifying it through imputation. There are a number of different ways we could go about doing this. Given the small size of the dataset, we probably should not opt for deleting either entire observations (rows) or variables (columns) containing missing values. We're left with the option of either replacing missing values with a sensible values given the distribution of the data, e.g., the mean, median or mode. Finally, we could go with prediction. We'll use both of the two latter methods and I'll rely on some data visualization to guide our decisions.\n",
+        "\n",
+        "## Sensible value imputation\n",
+        "\n",
+        "#```{r}\n",
+        "# Passengers 62 and 830 are missing Embarkment\n",
+        "full[c(62, 830), 'Embarked']\n",
+        "#```\n",
+        "\n",
+        "#```{r results='asis'}\n",
+        "cat(paste('We will infer their values for **embarkment** based on present data that we can imagine may be relevant: **passenger class** and **fare**. We see that they paid<b> $', full[c(62, 830), 'Fare'][[1]][1], '</b>and<b> $', full[c(62, 830), 'Fare'][[1]][2], '</b>respectively and their classes are<b>', full[c(62, 830), 'Pclass'][[1]][1], '</b>and<b>', full[c(62, 830), 'Pclass'][[1]][2], '</b>. So from where did they embark?'))\n",
+        "#```\n",
+        "\n",
+        "#```{r, message=FALSE, warning=FALSE}\n",
+        "# Get rid of our missing passenger IDs\n",
+        "embark_fare <- full %>%\n",
+        "  filter(PassengerId != 62 & PassengerId != 830)\n",
+        "\n",
+        "# Use ggplot2 to visualize embarkment, passenger class, & median fare\n",
+        "ggplot(embark_fare, aes(x = Embarked, y = Fare, fill = factor(Pclass))) +\n",
+        "  geom_boxplot() +\n",
+        "  geom_hline(aes(yintercept=80), \n",
+        "    colour='red', linetype='dashed', lwd=2) +\n",
+        "  scale_y_continuous(labels=dollar_format()) +\n",
+        "  theme_few()\n",
+        "#```\n",
+        "\n",
+        "#Voil\u00e0! The median fare for a first class passenger departing from Charbourg ('C') coincides nicely with the $80 paid by our embarkment-deficient passengers. I think we can safely replace the NA values with 'C'.\n",
+        "\n",
+        "#```{r}\n",
+        "# Since their fare was $80 for 1st class, they most likely embarked from 'C'\n",
+        "full$Embarked[c(62, 830)] <- 'C'\n",
+        "#```"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "_cell_guid": "8c234d5a-291d-143b-df07-88bd9f36a081"
+      },
+      "outputs": [],
+      "source": [
+        "\n",
+        "\n",
+        "#We're close to fixing the handful of NA values here and there. Passenger on row 1044 has an NA Fare value.\n",
+        "\n",
+        "#```{r, message=FALSE, warning=FALSE}\n",
+        "# Show row 1044\n",
+        "full[1044, ]\n",
+        "#```\n",
+        "\n",
+        "#This is a third class passenger who departed from Southampton ('S'). Let's visualize Fares among all others sharing their class and embarkment (n = `r nrow(full[full$Pclass == '3' & full$Embarked == 'S', ]) - 1`).\n",
+        "\n",
+        "#```{r, message=FALSE, warning=FALSE}\n",
+        "ggplot(full[full$Pclass == '3' & full$Embarked == 'S', ], \n",
+        "  aes(x = Fare)) +\n",
+        "  geom_density(fill = '#99d6ff', alpha=0.4) + \n",
+        "  geom_vline(aes(xintercept=median(Fare, na.rm=T)),\n",
+        "    colour='red', linetype='dashed', lwd=1) +\n",
+        "  scale_x_continuous(labels=dollar_format()) +\n",
+        "  theme_few()\n",
+        "#```"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "_cell_guid": "8a7e7ed9-61d0-b491-d4e2-411cdfed668f"
+      },
+      "outputs": [],
+      "source": [
+        "\n",
+        "\n",
+        "#From this visualization, it seems quite reasonable to replace the NA Fare value with median for their class and embarkment which is $`r  median(full[full$Pclass == '3' & full$Embarked == 'S', ]$Fare, na.rm = TRUE)`.\n",
+        "\n",
+        "#```{r}\n",
+        "# Replace missing fare value with median fare for class/embarkment\n",
+        "full$Fare[1044] <- median(full[full$Pclass == '3' & full$Embarked == 'S', ]$Fare, na.rm = TRUE)\n",
+        "#```\n",
+        "\n"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "_cell_guid": "6b9022ad-47fd-bf06-6573-4fe655383361"
+      },
+      "outputs": [],
+      "source": [
+        "\n",
+        "## Predictive imputation\n",
+        "\n",
+        "#Finally, as we noted earlier, there are quite a few missing **Age** values in our data. We are going to get a bit more fancy in imputing missing age values. Why? Because we can. We will create a model predicting ages based on other variables.\n",
+        "\n",
+        "#```{r}\n",
+        "# Show number of missing Age values\n",
+        "sum(is.na(full$Age))\n",
+        "#```\n",
+        "\n",
+        "#We could definitely use `rpart` (recursive partitioning for regression) to predict missing ages, but I'm going to use the `mice` package for this task just for something different. You can read more about multiple imputation using chained equations in r [here](http://www.jstatsoft.org/article/view/v045i03/v45i03.pdf) (PDF). Since we haven't done it yet, I'll first factorize the factor variables and then perform mice imputation.\n",
+        "\n",
+        "#```{r, message=FALSE, warning=FALSE}\n",
+        "# Make variables factors into factors\n",
+        "factor_vars <- c('PassengerId','Pclass','Sex','Embarked',\n",
+        "                 'Title','Surname','Family','FsizeD')\n",
+        "\n",
+        "full[factor_vars] <- lapply(full[factor_vars], function(x) as.factor(x))\n",
+        "\n",
+        "# Set a random seed\n",
+        "set.seed(129)\n",
+        "\n",
+        "# Perform mice imputation, excluding certain less-than-useful variables:\n",
+        "mice_mod <- mice(full[, !names(full) %in% c('PassengerId','Name','Ticket','Cabin','Family','Surname','Survived')], method='rf') \n",
+        "\n",
+        "# Save the complete output \n",
+        "mice_output <- complete(mice_mod)\n",
+        "#```\n",
+        "\n",
+        "#Let's compare the results we get with the original distribution of passenger ages to ensure that nothing has gone completely awry.\n",
+        "\n",
+        "#```{r}\n",
+        "# Plot age distributions\n",
+        "par(mfrow=c(1,2))\n",
+        "hist(full$Age, freq=F, main='Age: Original Data', \n",
+        "  col='darkgreen', ylim=c(0,0.04))\n",
+        "hist(mice_output$Age, freq=F, main='Age: MICE Output', \n",
+        "  col='lightgreen', ylim=c(0,0.04))\n",
+        "#```\n",
+        "\n",
+        "#Things look good, so let's replace our age vector in the original data with the output from the `mice` model.\n",
+        "\n",
+        "#```{r}\n",
+        "# Replace Age variable from the mice model.\n",
+        "full$Age <- mice_output$Age\n",
+        "\n",
+        "# Show new number of missing Age values\n",
+        "sum(is.na(full$Age))\n",
+        "#```\n",
+        "\n",
+        "#We've finished imputing values for all variables that we care about for now! Now that we have a complete Age variable, there are just a few finishing touches I'd like to make. We can use Age to do just a bit more feature engineering ...\n",
+        "\n"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "_cell_guid": "f06b8206-9499-c7d0-663c-f9f12f4f3634"
+      },
+      "outputs": [],
+      "source": [
+        "\n",
+        "## Feature Engineering: Round 2\n",
+        "\n",
+        "#Now that we know everyone's age, we can create a couple of new age-dependent variables: **Child** and **Mother**. A child will simply be someone under 18 years of age and a mother is a passenger who is 1) female, 2) is over 18, 3) has more than 0 children (no kidding!), and 4) does not have the title 'Miss'.\n",
+        "\n",
+        "#```{r, message=FALSE, warning=FALSE}\n",
+        "# First we'll look at the relationship between age & survival\n",
+        "ggplot(full[1:891,], aes(Age, fill = factor(Survived))) + \n",
+        "  geom_histogram() + \n",
+        "  # I include Sex since we know (a priori) it's a significant predictor\n",
+        "  facet_grid(.~Sex) + \n",
+        "  theme_few()\n",
+        "\n",
+        "# Create the column child, and indicate whether child or adult\n",
+        "full$Child[full$Age < 18] <- 'Child'\n",
+        "full$Child[full$Age >= 18] <- 'Adult'\n",
+        "\n",
+        "# Show counts\n",
+        "table(full$Child, full$Survived)\n",
+        "#```\n",
+        "\n",
+        "#Looks like being a child doesn't hurt, but it's not going to necessarily save you either! We will finish off our feature engineering by creating the **Mother** variable. Maybe we can hope that mothers are more likely to have survived on the Titanic.\n",
+        "#\n",
+        "#```{r}\n",
+        "# Adding Mother variable\n",
+        "full$Mother <- 'Not Mother'\n",
+        "full$Mother[full$Sex == 'female' & full$Parch > 0 & full$Age > 18 & full$Title != 'Miss'] <- 'Mother'\n",
+        "\n",
+        "# Show counts\n",
+        "table(full$Mother, full$Survived)\n",
+        "\n",
+        "# Finish by factorizing our two new factor variables\n",
+        "full$Child  <- factor(full$Child)\n",
+        "full$Mother <- factor(full$Mother)\n",
+        "#```\n",
+        "\n",
+        "#All of the variables we care about should be taken care of and there should be no missing data. I'm going to double check just to be sure:\n",
+        "\n",
+        "#```{r}\n",
+        "md.pattern(full)\n",
+        "#```\n",
+        "\n",
+        "#Wow! We have finally finished treating all of the relevant missing values in the Titanic dataset which has included some fancy imputation with `mice`. We have also successfully created several new variables which we hope will help us build a model which reliably predicts survival. \n",
+        "\n",
+        "\n"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "_cell_guid": "ed3b8302-a4fe-b950-9495-c10b3bead419"
+      },
+      "outputs": [],
+      "source": [
+        "\n",
+        "# Prediction\n",
+        "\n",
+        "#At last we're ready to predict who survives among passengers of the Titanic based on variables that we carefully curated and treated for missing values. For this, we will rely on the `randomForest` classification algorithm; we spent all that time on imputation, after all.\n",
+        "\n",
+        "## Split into training & test sets\n",
+        "\n",
+        "#Our first step is to split the data back into the original test and training sets.\n",
+        "\n",
+        "#```{r}\n",
+        "# Split the data back into a train set and a test set\n",
+        "train <- full[1:891,]\n",
+        "test <- full[892:1309,]\n",
+        "#```\n",
+        "\n",
+        "## Building the model \n",
+        "\n",
+        "#We then build our model using `randomForest` on the training set.\n",
+        "\n",
+        "#```{r}\n",
+        "# Set a random seed\n",
+        "set.seed(754)\n",
+        "\n",
+        "# Build the model (note: not all possible variables are used)\n",
+        "rf_model <- randomForest(factor(Survived) ~ Pclass + Sex + Age + SibSp + Parch + \n",
+        "                                            Fare + Embarked + Title + \n",
+        "                                            FsizeD + Child + Mother,\n",
+        "                                            data = train)\n",
+        "\n",
+        "# Show model error\n",
+        "plot(rf_model, ylim=c(0,0.36))\n",
+        "legend('topright', colnames(rf_model$err.rate), col=1:3, fill=1:3)\n",
+        "#```\n",
+        "\n",
+        "#The black line shows the overall error rate which falls below 20%. The red and green lines show the error rate for 'died' and 'survived' respectively. We can see that right now we're much more successful predicting death than we are survival. What does that say about me, I wonder?\n",
+        "\n",
+        "## Variable importance\n",
+        "\n",
+        "#Let's look at relative variable importance by plotting the mean decrease in Gini calculated across all trees.\n",
+        "\n",
+        "#```{r, message=FALSE, warning=FALSE}\n",
+        "# Get importance\n",
+        "importance    <- importance(rf_model)\n",
+        "varImportance <- data.frame(Variables = row.names(importance), \n",
+        "                            Importance = round(importance[ ,'MeanDecreaseGini'],2))\n",
+        "\n",
+        "# Create a rank variable based on importance\n",
+        "rankImportance <- varImportance %>%\n",
+        "  mutate(Rank = paste0('#',dense_rank(desc(Importance))))\n",
+        "\n",
+        "# Use ggplot2 to visualize the relative importance of variables\n",
+        "ggplot(rankImportance, aes(x = reorder(Variables, Importance), \n",
+        "    y = Importance, fill = Importance)) +\n",
+        "  geom_bar(stat='identity') + \n",
+        "  geom_text(aes(x = Variables, y = 0.5, label = Rank),\n",
+        "    hjust=0, vjust=0.55, size = 4, colour = 'red') +\n",
+        "  labs(x = 'Variables') +\n",
+        "  coord_flip() + \n",
+        "  theme_few()\n",
+        "#```\n",
+        "\n",
+        "#Whoa, glad we made our title variable! It has the highest relative importance out of all of our predictor variables. I think I'm most surprised to see that passenger class fell to `r rankImportance[rankImportance$Variable == 'Pclass', ]$Rank`, but maybe that's just bias coming from watching the movie Titanic too many times as a kid.\n",
+        "\n",
+        "## Prediction!\n",
+        "\n",
+        "#We're ready for the final step --- making our prediction! When we finish here, we could iterate through the preceding steps making tweaks as we go or fit the data using different models or use different combinations of variables to achieve better predictions. But this is a good starting (and stopping) point for me now.\n",
+        "\n",
+        "#```{r}\n",
+        "# Predict using the test set\n",
+        "prediction <- predict(rf_model, test)\n",
+        "\n",
+        "# Save the solution to a dataframe with two columns: PassengerId and Survived (prediction)\n",
+        "solution <- data.frame(PassengerID = test$PassengerId, Survived = prediction)\n",
+        "\n",
+        "# Write the solution to file\n",
+        "write.csv(solution, file = 'rf_mod_Solution.csv', row.names = F)\n",
+        "#```\n",
+        "\n",
+        "# Conclusion\n",
+        "\n",
+        "#Thank you for taking the time to read through my first exploration of a Kaggle dataset. I look forward to doing more. Again, this newbie welcomes comments and suggestions!\n",
+        "\n",
+        "#---"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "_cell_guid": "58335e4d-283c-a4cc-1a7a-d123175fea58"
+      },
+      "outputs": [],
+      "source": ""
+    }
+  ],
+  "metadata": {
+    "_change_revision": 0,
+    "_is_fork": false,
+    "kernelspec": {
+      "display_name": "R",
+      "language": "R",
+      "name": "ir"
+    },
+    "language_info": {
+      "codemirror_mode": "r",
+      "file_extension": ".r",
+      "mimetype": "text/x-r-source",
+      "name": "R",
+      "pygments_lexer": "r",
+      "version": "3.3.1"
+    }
+  },
+  "nbformat": 4,
+  "nbformat_minor": 0
+}

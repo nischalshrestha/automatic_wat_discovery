@@ -1,0 +1,17 @@
+{
+  "is_private": false,
+  "dataset_sources": [],
+  "enable_gpu": false,
+  "enable_internet": false,
+  "id_no": 2086716,
+  "competition_sources": [
+    "titanic"
+  ],
+  "title": "Simplest imaginable decision-tree model",
+  "kernel_type": "notebook",
+  "language": "python",
+  "code_file": "simplest-imaginable-decision-tree-model.ipynb",
+  "kernel_sources": [],
+  "keywords": [],
+  "id": "neuronq/simplest-imaginable-decision-tree-model"
+}

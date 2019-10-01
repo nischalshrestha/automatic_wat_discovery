@@ -1,0 +1,17 @@
+{
+  "enable_internet": false,
+  "code_file": "practice-titanic-dataset.ipynb",
+  "dataset_sources": [],
+  "language": "python",
+  "kernel_sources": [],
+  "is_private": false,
+  "keywords": [],
+  "kernel_type": "notebook",
+  "enable_gpu": false,
+  "title": "Practice: Titanic Dataset",
+  "id_no": 676852,
+  "id": "zihtumreth/practice-titanic-dataset",
+  "competition_sources": [
+    "titanic"
+  ]
+}

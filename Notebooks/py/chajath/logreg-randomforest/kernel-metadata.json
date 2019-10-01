@@ -1,0 +1,17 @@
+{
+  "id": "chajath/logreg-randomforest",
+  "language": "python",
+  "code_file": "logreg-randomforest.ipynb",
+  "title": "Logreg, RandomForest",
+  "is_private": false,
+  "kernel_sources": [],
+  "keywords": [],
+  "enable_internet": false,
+  "competition_sources": [
+    "titanic"
+  ],
+  "enable_gpu": false,
+  "kernel_type": "notebook",
+  "id_no": 994807,
+  "dataset_sources": []
+}

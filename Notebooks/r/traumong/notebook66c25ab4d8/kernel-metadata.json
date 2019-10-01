@@ -1,0 +1,17 @@
+{
+  "enable_internet": false,
+  "id_no": 233909,
+  "title": "Notebook66c25ab4d8",
+  "dataset_sources": [],
+  "enable_gpu": false,
+  "competition_sources": [
+    "titanic"
+  ],
+  "id": "traumong/notebook66c25ab4d8",
+  "code_file": "notebook66c25ab4d8.ipynb",
+  "is_private": false,
+  "kernel_sources": [],
+  "kernel_type": "notebook",
+  "language": "python",
+  "keywords": []
+}

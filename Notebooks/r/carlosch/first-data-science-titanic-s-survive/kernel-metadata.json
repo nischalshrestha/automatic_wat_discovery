@@ -1,0 +1,17 @@
+{
+  "id": "carlosch/first-data-science-titanic-s-survive",
+  "enable_gpu": false,
+  "language": "r",
+  "is_private": false,
+  "code_file": "first-data-science-titanic-s-survive.irnb",
+  "title": "First Data Science: titanic's survive",
+  "id_no": 141532,
+  "competition_sources": [
+    "titanic"
+  ],
+  "enable_internet": false,
+  "dataset_sources": [],
+  "kernel_sources": [],
+  "keywords": [],
+  "kernel_type": "notebook"
+}

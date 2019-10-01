@@ -1,0 +1,17 @@
+{
+  "language": "python",
+  "is_private": false,
+  "title": "Titanic - Random Forest",
+  "code_file": "titanic-random-forest.ipynb",
+  "keywords": [],
+  "competition_sources": [
+    "titanic"
+  ],
+  "kernel_sources": [],
+  "dataset_sources": [],
+  "enable_gpu": false,
+  "id_no": 1783180,
+  "id": "sachat/titanic-random-forest",
+  "enable_internet": false,
+  "kernel_type": "notebook"
+}

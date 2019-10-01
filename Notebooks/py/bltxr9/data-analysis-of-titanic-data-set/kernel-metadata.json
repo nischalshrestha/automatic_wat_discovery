@@ -1,0 +1,17 @@
+{
+  "id": "bltxr9/data-analysis-of-titanic-data-set",
+  "competition_sources": [
+    "titanic"
+  ],
+  "enable_gpu": false,
+  "kernel_type": "notebook",
+  "language": "python",
+  "dataset_sources": [],
+  "kernel_sources": [],
+  "enable_internet": false,
+  "keywords": [],
+  "code_file": "data-analysis-of-titanic-data-set.ipynb",
+  "is_private": false,
+  "id_no": 330414,
+  "title": " Data Analysis of Titanic Data Set"
+}

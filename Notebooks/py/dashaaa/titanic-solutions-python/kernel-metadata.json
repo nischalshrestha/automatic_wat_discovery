@@ -1,0 +1,19 @@
+{
+  "kernel_sources": [],
+  "id": "dashaaa/titanic-solutions-python",
+  "competition_sources": [
+    "titanic"
+  ],
+  "enable_internet": false,
+  "is_private": false,
+  "keywords": [],
+  "title": "Titanic Solutions - Python",
+  "enable_gpu": false,
+  "dataset_sources": [
+    "mahdijavid/datacamptraining"
+  ],
+  "id_no": 269692,
+  "code_file": "titanic-solutions-python.ipynb",
+  "kernel_type": "notebook",
+  "language": "python"
+}

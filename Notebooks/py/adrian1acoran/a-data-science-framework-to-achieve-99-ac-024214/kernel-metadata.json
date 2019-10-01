@@ -1,0 +1,17 @@
+{
+  "enable_gpu": false,
+  "is_private": false,
+  "enable_internet": false,
+  "id_no": 2002007,
+  "language": "python",
+  "kernel_sources": [],
+  "title": "A Data Science Framework: To Achieve 99% Ac 024214",
+  "keywords": [],
+  "id": "adrian1acoran/a-data-science-framework-to-achieve-99-ac-024214",
+  "code_file": "a-data-science-framework-to-achieve-99-ac-024214.ipynb",
+  "dataset_sources": [],
+  "kernel_type": "notebook",
+  "competition_sources": [
+    "titanic"
+  ]
+}

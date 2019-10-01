@@ -1,0 +1,17 @@
+{
+  "is_private": false,
+  "enable_gpu": false,
+  "id_no": 287228,
+  "code_file": "using-logistic-regression-for-the-titanic-problem.ipynb",
+  "dataset_sources": [],
+  "competition_sources": [
+    "titanic"
+  ],
+  "enable_internet": false,
+  "title": "Using Logistic Regression for the Titanic problem",
+  "language": "python",
+  "keywords": [],
+  "kernel_type": "notebook",
+  "id": "twistedchurro/using-logistic-regression-for-the-titanic-problem",
+  "kernel_sources": []
+}

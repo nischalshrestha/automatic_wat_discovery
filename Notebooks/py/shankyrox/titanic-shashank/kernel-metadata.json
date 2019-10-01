@@ -1,0 +1,17 @@
+{
+  "id_no": 1629655,
+  "enable_gpu": false,
+  "keywords": [],
+  "is_private": false,
+  "id": "shankyrox/titanic-shashank",
+  "kernel_type": "notebook",
+  "enable_internet": false,
+  "kernel_sources": [],
+  "title": "Titanic Shashank",
+  "code_file": "titanic-shashank.ipynb",
+  "dataset_sources": [],
+  "competition_sources": [
+    "titanic"
+  ],
+  "language": "python"
+}

@@ -1,0 +1,17 @@
+{
+  "kernel_type": "notebook",
+  "enable_internet": false,
+  "competition_sources": [
+    "titanic"
+  ],
+  "enable_gpu": false,
+  "title": "A Journey through Titanic",
+  "code_file": "a-journey-through-titanic.ipynb",
+  "kernel_sources": [],
+  "dataset_sources": [],
+  "keywords": [],
+  "id_no": 187975,
+  "is_private": false,
+  "language": "python",
+  "id": "adityaecdrid/a-journey-through-titanic"
+}

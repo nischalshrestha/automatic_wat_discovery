@@ -1,0 +1,17 @@
+{
+  "enable_gpu": false,
+  "id_no": 217888,
+  "id": "incoherance/titanic-tutorial",
+  "dataset_sources": [],
+  "kernel_type": "notebook",
+  "keywords": [],
+  "language": "r",
+  "title": "Titanic Tutorial",
+  "kernel_sources": [],
+  "competition_sources": [
+    "titanic"
+  ],
+  "code_file": "titanic-tutorial.irnb",
+  "enable_internet": false,
+  "is_private": false
+}

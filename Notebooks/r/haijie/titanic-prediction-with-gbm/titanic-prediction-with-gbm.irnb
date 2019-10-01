@@ -1,0 +1,332 @@
+{
+  "cells": [
+    {
+      "cell_type": "markdown",
+      "metadata": {
+        "_cell_guid": "bef05762-f601-0787-8eba-6d288a7cdc1e"
+      },
+      "source": [
+        "## Read Data set"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "_cell_guid": "54f24c32-2808-7ae2-a5a8-cc573ce66759"
+      },
+      "outputs": [],
+      "source": [
+        "library(lattice,quietly = T)\n",
+        "library(ggplot2,quietly = T)\n",
+        "library(plyr,quietly = T)\n",
+        "library(dplyr,quietly = T)\n",
+        "library(foreach,quietly = T)\n",
+        "library(iterators,quietly = T)\n",
+        "library(parallel,quietly = T)\n",
+        "library(survival,quietly = T)\n",
+        "library(splines,quietly = T)\n",
+        "\n",
+        "library(corrplot,quietly = T)\n",
+        "library(doParallel,quietly = T)\n",
+        "library(gbm,quietly = T)\n",
+        "library(pROC,quietly = T)\n",
+        "library(xgboost,quietly = T)\n",
+        "library(caret,quietly = T)"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "_cell_guid": "7e207eee-9476-b6ae-9fe2-295ed47c9790"
+      },
+      "outputs": [],
+      "source": [
+        "trainset<-read.csv(\"../input/train.csv\",header = T,sep = \",\",na.strings = c(\"NA\",\"\"))\n",
+        "testset<-read.csv(\"../input/test.csv\",header = T,sep = \",\",na.strings = c(\"NA\",\"\"))"
+      ]
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {
+        "_cell_guid": "e4185f33-ef19-c9e6-b81d-91199b972825"
+      },
+      "source": [
+        "### Missing Values Treatment"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "_cell_guid": "9ac54d44-a865-1fed-b136-36df90765f18"
+      },
+      "outputs": [],
+      "source": [
+        "## combine the training and testing for the missing data treatment\n",
+        "data<-rbind(trainset[,-2],testset)\n",
+        "sapply(data,function(x){sum(is.na(x))})"
+      ]
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {
+        "_cell_guid": "9f468808-fbff-e13a-69f3-70f86ca09893"
+      },
+      "source": [
+        "We can see that for 1309 observations, the \"age\" variable has 263 missing values, the \"Cabin\" variable has 1014 missing values, and the \"Embarked\" variable has 2 missing values, \"Fare\" has 1. "
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "_cell_guid": "86f82d81-3779-9180-732b-d86eae3de9ce"
+      },
+      "outputs": [],
+      "source": [
+        "table(data$Embarked)\n",
+        "## imputaion NA data for Embarked, \n",
+        "data$Embarked[which(is.na(data$Embarked))]<-\"S\"\n",
+        "## imputaion NA data for Embarked\n",
+        "data$Fare[which(is.na(data$Fare))]<-mean(data$Fare[which(!is.na(data$Fare))])"
+      ]
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {
+        "_cell_guid": "bf430aab-c52e-627c-c476-e9dacf391518"
+      },
+      "source": [
+        "For the 2 Embarked missing values, we will impute the class \"S\" into it, for the raison that \"S\" represent 72% of the embarked port, it's more possible that they are taken this port. \n",
+        "\n",
+        "For the age variable, maybe we can have an approximate age range from the people's titles. "
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "_cell_guid": "787c6cb8-b04b-a853-8586-b5b1dc99f0ab"
+      },
+      "outputs": [],
+      "source": [
+        "data$Name<-as.character(data$Name)\n",
+        "## create a Title variable by picking-up the people's titles\n",
+        "data$Title<-gsub(\"^.+,\",\"\",data$Name)\n",
+        "data$Title<-gsub(\"\\\\..+\",\"\",data$Title)\n",
+        "## table for the people who have missing data in age_variable\n",
+        "table(data[is.na(data$Age),]$Title)"
+      ]
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {
+        "_cell_guid": "aaa25566-1321-1a29-00c5-7fc208d3892e"
+      },
+      "source": [
+        "A solution to impute the age missing values is to insign the mean value for each title (not containing a missing value) "
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "_cell_guid": "acb1ad2e-e885-f0c8-7f3f-2796197d3d6c"
+      },
+      "outputs": [],
+      "source": [
+        "## calcul the mean for the 5 titles\n",
+        "data_sub<-data[!is.na(data$Age),]\n",
+        "meanDr<-mean(data_sub[data_sub$Title==\" Dr\",]$Age)\n",
+        "meanMaster<-mean(data_sub[data_sub$Title==\" Master\",]$Age)\n",
+        "meanMiss<-mean(data_sub[data_sub$Title==\" Miss\",]$Age)\n",
+        "meanMr<-mean(data_sub[data_sub$Title==\" Mr\",]$Age)\n",
+        "meanMrs<-mean(data_sub[data_sub$Title==\" Mrs\",]$Age)\n",
+        "meanMs<-mean(data_sub[data_sub$Title==\" Ms\",]$Age)\n",
+        "## imputation Missing Values to age\n",
+        "data$Age[is.na(data$Age) & data$Title==\" Dr\"]<-meanDr\n",
+        "data$Age[is.na(data$Age) & data$Title==\" Master\"]<-meanMaster\n",
+        "data$Age[is.na(data$Age) & data$Title==\" Miss\"]<-meanMiss\n",
+        "data$Age[is.na(data$Age) & data$Title==\" Mr\"]<-meanMr\n",
+        "data$Age[is.na(data$Age) & data$Title==\" Mrs\"]<-meanMrs\n",
+        "data$Age[is.na(data$Age) & data$Title==\" Ms\"]<-meanMs"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "_cell_guid": "d35cbb74-e9ec-f163-171c-a99600c3e9b4"
+      },
+      "outputs": [],
+      "source": [
+        "trainset[,-2]<-data[1:891,-12]\n",
+        "testset<-data[892:1309,-12]"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "_cell_guid": "e336b49a-f383-446a-9379-11bca74cbd20"
+      },
+      "outputs": [],
+      "source": [
+        "## training set treatment\n",
+        "trainset<-trainset[,c(-1,-4,-9,-11)]\n",
+        "\n",
+        "trainset$Survived[trainset$Survived==0]<-\"Perished\"\n",
+        "trainset$Survived[trainset$Survived==1]<-\"Survived\"\n",
+        "levels(trainset$Survived)<-c(\"Perished\",\"Survived\")\n",
+        "\n",
+        "Xtrainset<-trainset[,-1]\n",
+        "Ytrainset<-trainset[,1]\n",
+        "\n",
+        "## test set treatment\n",
+        "Xtestset<-testset[,c(-1,-3,-8,-10)]\n",
+        "\n",
+        "##  as.numeric pour les variables\n",
+        "Xtrainset$Sex<-as.numeric(Xtrainset$Sex)\n",
+        "Xtrainset$Embarked<-as.numeric(Xtrainset$Embarked)\n",
+        "\n",
+        "Xtestset$Sex<-as.numeric(Xtestset$Sex)\n",
+        "Xtestset$Embarked<-as.numeric(Xtestset$Embarked)"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "_cell_guid": "cd749551-7325-7b0c-ed6f-81e7dd2283d2"
+      },
+      "outputs": [],
+      "source": [
+        "### Generalized bosted regression medel (BGM)\n",
+        "# Set up training control\n",
+        "ctrl <- trainControl(method = \"repeatedcv\",   # 10fold cross validation\n",
+        "                     number = 5,\t# do 5 repititions of cv\n",
+        "                     summaryFunction=twoClassSummary,\t# Use AUC to pick the best model\n",
+        "                     classProbs=TRUE,\n",
+        "                     allowParallel = TRUE)\n",
+        " \n",
+        "\n",
+        "# Use the expand.grid to specify the search space\t\n",
+        "# Note that the default search grid selects multiple values of each tuning parameter\n",
+        " \n",
+        "grid <- expand.grid(interaction.depth=c(1,2), # Depth of variable interactions\n",
+        "                    n.trees=c(10,20),\t        # Num trees to fit\n",
+        "                    shrinkage=c(0.01,0.1),\t\t# Try 2 values for learning rate \n",
+        "                    n.minobsinnode = 20)\n",
+        "#\t\t\t\t\t\t\t\t\t\t\t\n",
+        "set.seed(1951)  # set the seed\n",
+        "\n",
+        "# Set up to do parallel processing   \n",
+        "registerDoParallel(4)\t\t# Registrer a parallel backend for train\n",
+        "getDoParWorkers()\n",
+        " \n",
+        "gbm.tune <- train(x=Xtrainset,y=trainset$Survived,\n",
+        "                              method = \"gbm\",\n",
+        "                              metric = \"ROC\",\n",
+        "                              trControl = ctrl,\n",
+        "                              tuneGrid=grid,\n",
+        "                              verbose=FALSE)"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "_cell_guid": "3a7c030f-812d-2bea-eca5-4b1749030131"
+      },
+      "outputs": [],
+      "source": [
+        "# Look at the tuning results\n",
+        "# Note that ROC was the performance criterion used to select the optimal model.   \n",
+        "\n",
+        "gbm.tune$bestTune\n",
+        "plot(gbm.tune)  \t\t# Plot the performance of the training models"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "_cell_guid": "536e37fc-86ee-aee6-0098-54cddaa7f1bc"
+      },
+      "outputs": [],
+      "source": [
+        "res <- gbm.tune$results\n",
+        "res"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "_cell_guid": "a5d01464-2ef2-c99a-3e76-d88e97102d30"
+      },
+      "outputs": [],
+      "source": [
+        "### GBM Model Predictions and Performance\n",
+        "# Make predictions using the test data set\n",
+        "gbm.pred <- predict(gbm.tune,Xtestset)\n",
+        "head(gbm.pred)"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "_cell_guid": "69f82e5a-fb55-2703-076b-32547c8f3c55"
+      },
+      "outputs": [],
+      "source": [
+        "rValues <- resamples(gbm=gbm.tune)\n",
+        "rValues$values\n",
+        "summary(rValues)"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "_cell_guid": "c8fd0139-657d-a773-f336-906754ffa6ba"
+      },
+      "outputs": [],
+      "source": [
+        "bwplot(rValues,metric=\"ROC\",main=\"GBM Accuracy\")\t# boxplot\n",
+        "dotplot(rValues,metric=\"ROC\",main=\"GBM Accuracy\")\t# dotplot"
+      ]
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {
+        "_cell_guid": "4b8c96b3-7f67-74ee-6e03-81c5fae3a612"
+      },
+      "source": [
+        "XGBooting has a better accuracy."
+      ]
+    }
+  ],
+  "metadata": {
+    "_change_revision": 0,
+    "_is_fork": false,
+    "kernelspec": {
+      "display_name": "R",
+      "language": "R",
+      "name": "ir"
+    },
+    "language_info": {
+      "codemirror_mode": "r",
+      "file_extension": ".r",
+      "mimetype": "text/x-r-source",
+      "name": "R",
+      "pygments_lexer": "r",
+      "version": "3.4.0"
+    }
+  },
+  "nbformat": 4,
+  "nbformat_minor": 0
+}

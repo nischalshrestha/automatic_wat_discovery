@@ -1,0 +1,17 @@
+{
+  "enable_internet": false,
+  "kernel_sources": [],
+  "keywords": [],
+  "language": "python",
+  "code_file": "titanic-solution-attempt-4.ipynb",
+  "id_no": 1481810,
+  "is_private": false,
+  "kernel_type": "notebook",
+  "competition_sources": [
+    "titanic"
+  ],
+  "title": "Titanic Solution Attempt #4",
+  "dataset_sources": [],
+  "enable_gpu": false,
+  "id": "deepanshkhurana/titanic-solution-attempt-4"
+}

@@ -1,0 +1,17 @@
+{
+  "competition_sources": [
+    "titanic"
+  ],
+  "kernel_sources": [],
+  "kernel_type": "notebook",
+  "id": "cesarisadog/x3cc-abc",
+  "language": "r",
+  "title": "x3cc - ABC",
+  "is_private": false,
+  "keywords": [],
+  "id_no": 1583953,
+  "dataset_sources": [],
+  "code_file": "x3cc-abc.irnb",
+  "enable_gpu": false,
+  "enable_internet": false
+}

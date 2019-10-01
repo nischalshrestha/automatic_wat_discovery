@@ -1,0 +1,421 @@
+{
+  "cells": [
+    {
+      "cell_type": "markdown",
+      "metadata": {
+        "_cell_guid": "9a39c008-4490-43fc-da48-cfde48502088"
+      },
+      "source": [
+        "**Read data and load relevant libraries.** This script will use the Boruta package to downselect the important variables and will also use Caret's random forest interface for training. "
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "_cell_guid": "1b85f58f-31e8-05a2-6720-b6fa1f713ac2"
+      },
+      "outputs": [],
+      "source": [
+        "# contains R code to:\n",
+        "# -read in Kaggle's Titanic data csv files\n",
+        "# -clean, analyze and standardize dataset\n",
+        "# -apply Boruta package to downselect important variables\n",
+        "# -train data using Caret's random forest interface\n",
+        "# -make predictions on test data \n",
+        "# -write out test predictions to csv file\n",
+        "\n",
+        "# read data\n",
+        "train.df <- read.csv(\"../input/train.csv\", header = TRUE, na.strings = \"\")\n",
+        "test.df <- read.csv(\"../input/test.csv\", header = TRUE, na.strings = \"\")\n",
+        "\n",
+        "# load libraries\n",
+        "suppressPackageStartupMessages({\n",
+        "    library(plyr)\n",
+        "    library(lattice)\n",
+        "    library(ggplot2)\n",
+        "    library(ranger)\n",
+        "    library(randomForest)\n",
+        "    library(caret) \n",
+        "    library(Boruta)\n",
+        "})"
+      ]
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {
+        "_cell_guid": "d16c91c1-a46a-9fbd-b232-a6967a724ce0"
+      },
+      "source": [
+        "**Scrub and standardize data.** Creating a few additional features, which seem to have explanatory power. Extracting the Cabin Letter is particularly interesting because the Cabin NA's seem to be a statistically significant binary feature. "
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "_cell_guid": "964147ed-edd5-0728-8d40-927263dbcb2b"
+      },
+      "outputs": [],
+      "source": [
+        "# merge to simplify data standardization\n",
+        "combined.df <- rbind(train.df, \n",
+        "                     cbind(test.df, Survived = rep(NA, nrow(test.df))))  \n",
+        "\n",
+        "# adjust data classes\n",
+        "combined.df$Survived <- as.factor(combined.df$Survived) \n",
+        "combined.df$Pclass <- as.factor(combined.df$Pclass)  \n",
+        "combined.df$Name <- as.character(combined.df$Name)  # adjust for string split\n",
+        "\n",
+        "# create new FamilySize feature \n",
+        "combined.df$FamilySize <- combined.df$SibSp + combined.df$Parch + 1\n",
+        "\n",
+        "# create CabinLetter variable by extracting letters from Cabin\n",
+        "combined.df$CabinLetter <- substring(combined.df$Cabin, 1, 1)\n",
+        "combined.df$CabinLetter <- ifelse(is.na(combined.df$CabinLetter), \"None\",  \n",
+        "                                  combined.df$CabinLetter)\n",
+        "combined.df$CabinLetter <- as.factor(combined.df$CabinLetter) \n",
+        "\n",
+        "# extract Titles from Name \n",
+        "combined.df$Title <- sapply(combined.df$Name, \n",
+        "                            FUN = function(x) {strsplit(x, split = '[,.]')[[1]][2]})\n",
+        "combined.df$Title <- sub(\" \", \"\", combined.df$Title)  # clean up Title spacing\n",
+        "\n",
+        "# consolidate Titles into higher-level categories\n",
+        "combined.df$TitleGroup <- combined.df$Title   \n",
+        "combined.df$TitleGroup[which(combined.df$Title %in% c(\"Rev\"))] <- \"MrRev\" \n",
+        "\n",
+        "combined.df$TitleGroup[which(combined.df$Title %in% c(\"Capt\", \n",
+        "                                                      \"Col\", \n",
+        "                                                      \"Major\",\n",
+        "                                                      \"Don\", \n",
+        "                                                      \"Jonkheer\", \n",
+        "                                                      \"Sir\"))] <- \"MrSpec\" \n",
+        "\n",
+        "combined.df$TitleGroup[which(combined.df$Title %in% c(\"Dona\", \n",
+        "                                                      \"Lady\", \n",
+        "                                                      \"Mme\", \n",
+        "                                                      \"the Countess\"))] <- \"MrsSpec\"\n",
+        "\n",
+        "combined.df$TitleGroup[which(combined.df$Title %in% c(\"Mlle\", \n",
+        "                                                      \"Ms\"))] <- \"Miss\"\n",
+        "\n",
+        "combined.df$TitleGroup[which(combined.df$Title == \"Dr\" & \n",
+        "                             combined.df$Sex == \"female\")] <- \"MrsSpec\"\n",
+        "\n",
+        "combined.df$TitleGroup[which(combined.df$Title == \"Dr\" & \n",
+        "                             combined.df$Sex == \"male\")] <- \"MrSpec\"\n",
+        "\n",
+        "# create new Surname variable; can this be useful?\n",
+        "combined.df$Surname <- sapply(combined.df$Name, \n",
+        "                              function(x) strsplit(x, split = '[,.]')[[1]][1])\n",
+        "\n",
+        "# transform new Title features into factor classes\n",
+        "combined.df$Title <- as.factor(combined.df$Title)\n",
+        "combined.df$TitleGroup <- as.factor(combined.df$TitleGroup)\n",
+        "combined.df$Surname <- as.factor(combined.df$Surname)"
+      ]
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {
+        "_cell_guid": "4241fdfe-411f-e33c-2226-4c71e8f14a73"
+      },
+      "source": [
+        "**Impute missing values.** Using OLS model to impute Age NAs; it seems to be a solid approach. Applying median values for one Fare and two Embarked NAs. "
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "_cell_guid": "f68ee490-9db2-51dd-1366-3999be331ec6"
+      },
+      "outputs": [],
+      "source": [
+        "# impute values for 2 Embarked NAs; assigning 'C' given $80 Fare is median value for 'C'\n",
+        "combined.df$Embarked[c(62, 830)] <- 'C'\n",
+        "\n",
+        "# impute values for 1 Fare NA; assigning median fare for 3rd class/'S' embarkment\n",
+        "combined.df$Fare[1044] <- median(combined.df[combined.df$Pclass == '3' \n",
+        "                                             & combined.df$Embarked == 'S', ]$Fare, \n",
+        "                                 na.rm = TRUE)\n",
+        "\n",
+        "# impute values for Age NAs via OLS model fit\n",
+        "lmAge.fit <- lm((Age ~ Pclass + TitleGroup + SibSp + Parch), data = combined.df)  \n",
+        "\n",
+        "# assign imputed Age values to NAs \n",
+        "for(i in 1:nrow(combined.df)) {\n",
+        "  if(is.na(combined.df[i, \"Age\"])) {\n",
+        "    combined.df[i, \"Age\"] <- predict(lmAge.fit, newdata = combined.df[i, ])  \n",
+        "  }\n",
+        "}"
+      ]
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {
+        "_cell_guid": "bff9de50-7705-0fca-b351-a1b8eed2e5a4"
+      },
+      "source": [
+        "**Transform factor variables to standardized dummy structure.** Using the dummyVars function to transform factors into more sparse dummy structure. Merging new, standardized dummies with all the other variables in a new dataframe. "
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "_cell_guid": "72cbc157-641b-5502-9ee6-036b03644b9f"
+      },
+      "outputs": [],
+      "source": [
+        "# transform factor variables to standardized dummy structure\n",
+        "dummyTrnsfrm <- dummyVars(\" ~ Pclass + Sex + Embarked + CabinLetter + TitleGroup\", \n",
+        "                          data = combined.df, \n",
+        "                          fullRank = T)  # set to avoid perfect collinearity \n",
+        "dummyData.df <- data.frame(predict(dummyTrnsfrm, newdata = combined.df))  \n",
+        "combinedTrnsfrm.df <- cbind(combined.df, dummyData.df)  # merge dummies with all variables"
+      ]
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {
+        "_cell_guid": "928671dc-3647-1d1f-203f-a652b716007c"
+      },
+      "source": [
+        "**Finalize dataframe cleanup.** Removing variables that are not needed in training the explanatory models. Specifically removing the non-transformed, duplicate dummy variables as well as the character string variables."
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "_cell_guid": "e67d42cd-0423-2265-e29a-289b8fe5abae"
+      },
+      "outputs": [],
+      "source": [
+        "# clean up newly standardized dataset; remove unnecessary variables\n",
+        "combinedTrnsfrm.df  <- subset(combinedTrnsfrm.df, \n",
+        "                              select = -c(Pclass,  # dummyVars transform\n",
+        "                                          Sex,  # dummyVars transform\n",
+        "                                          Embarked,  # dummyVars transform\n",
+        "                                          CabinLetter,  # dummyVars transform\n",
+        "                                          TitleGroup,  # dummyVars transform\n",
+        "                                          Title,  # TitleGroup instead\n",
+        "                                          Cabin,  # CabinLetter extract\n",
+        "                                          Ticket,  # not using\n",
+        "                                          Surname,  # not using\n",
+        "                                          Name))  # not using\n",
+        "\n",
+        "# break combinedTrnsfrm.df back into train.df and test.df  \n",
+        "train.df <- combinedTrnsfrm.df[which(!is.na(combinedTrnsfrm.df$Survived)), ]\n",
+        "test.df <- data.frame(combinedTrnsfrm.df[which(is.na(combinedTrnsfrm.df$Survived)), ], \n",
+        "                      row.names = NULL)\n",
+        "\n",
+        "# adjust factor form\n",
+        "levels(train.df$Survived) <- make.names(levels(factor(train.df$Survived)))  "
+      ]
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {
+        "_cell_guid": "0c21f6fc-0030-61dd-4173-715dc6001a28"
+      },
+      "source": [
+        "**Apply Boruta package to downselect important explanatory variables.** Printing out the formula with the variables selected by Boruta and plotting the variable importance. "
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "_cell_guid": "d609eb19-ac2d-b56b-75e0-afcd70f42375"
+      },
+      "outputs": [],
+      "source": [
+        "##############################\n",
+        "# Variable Importance & Downselect\n",
+        "##############################\n",
+        "\n",
+        "# run the Boruta package and downselect variables\n",
+        "set.seed(10)\n",
+        "borutaAttr <- Boruta(Survived ~ . - PassengerId, \n",
+        "                     data = train.df, \n",
+        "                     maxRuns = 200, \n",
+        "                     doTrace = 0)\n",
+        "borutaVars <- getSelectedAttributes(borutaAttr)\n",
+        "boruta.formula <- formula(paste(\"Survived ~ \", \n",
+        "                                paste(borutaVars, collapse = \" + \")))\n",
+        "print(boruta.formula)\n",
+        "\n",
+        "plot(borutaAttr, \n",
+        "     whichShadow = c(FALSE, FALSE, FALSE), \n",
+        "     cex.axis = .7, \n",
+        "     las = 2, \n",
+        "     boxwex = 0.6, \n",
+        "     xlab = \"\", main = \"Variable Importance\")"
+      ]
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {
+        "_cell_guid": "856ea84a-599b-173e-1396-233a270c56b2"
+      },
+      "source": [
+        "**Set random forest parameter controls.** Setting twoClassSummary for binary prediction output and using repeatedcv parameters for K\u2013fold cross\u2013validation. "
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "_cell_guid": "ec65a015-9eef-94c9-6ae9-070f07df2cdc"
+      },
+      "outputs": [],
+      "source": [
+        "##############################\n",
+        "# Parameter Controls\n",
+        "##############################\n",
+        "\n",
+        "# set general control pararameters\n",
+        "fitControl = trainControl(method = \"repeatedcv\",\n",
+        "                          classProbs = TRUE,\n",
+        "                          number = 10,\n",
+        "                          repeats = 5, \n",
+        "                          index = createResample(train.df$Survived, 50),\n",
+        "                          summaryFunction = twoClassSummary,\n",
+        "                          verboseIter = FALSE)"
+      ]
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {
+        "_cell_guid": "1ffc0711-1618-4b49-1803-22f17bbf4931"
+      },
+      "source": [
+        "**Run random forest model.** Using Caret interface and pulling the CV parameters above. Tune length sensitivity returned a final mtry value = 4, and OOB estimate of  error rate: ~ 17%. "
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "_cell_guid": "31fae4ef-786b-82b7-0885-5c7007163cec"
+      },
+      "outputs": [],
+      "source": [
+        "##############################\n",
+        "# Random Forest \n",
+        "##############################\n",
+        "\n",
+        "set.seed(110)\n",
+        "rfBoruta.fit <- train(boruta.formula, \n",
+        "                      data = train.df, \n",
+        "                      trControl = fitControl,\n",
+        "                      tuneLength = 4,  # final value was mtry = 4\n",
+        "                      method = \"rf\",\n",
+        "                      metric = \"ROC\")\n",
+        "print(rfBoruta.fit$finalModel) "
+      ]
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {
+        "_cell_guid": "c2a9bdc9-3fa3-8472-daf4-9e3a3aaa44aa"
+      },
+      "source": [
+        "**Generate predictions on train and test data.** Generating the raw predictions for simplicity but can toggle type to \"prob\" to draw ROC curves, etc. "
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "_cell_guid": "4454e4b6-0cab-2ec6-aa72-c8aea8565b68"
+      },
+      "outputs": [],
+      "source": [
+        "##############################\n",
+        "# Predictions\n",
+        "##############################\n",
+        "\n",
+        "# generate predictions on train data\n",
+        "# trainYhat.df <- cbind(train.df[1:2]) \n",
+        "# trainYhat.df$rf.boruta <- predict(rfBoruta.fit, newdata = train.df, type = \"raw\")\n",
+        "\n",
+        "# generate predictions on test data\n",
+        "# testYhat.df <- cbind(test.df[1]) \n",
+        "# testYhat.df$rf.boruta <- predict(rfBoruta.fit, newdata = test.df, type = \"raw\")"
+      ]
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {
+        "_cell_guid": "3e0c97f5-04b7-d4b7-a218-0cc25e09de5a"
+      },
+      "source": [
+        "**Extract test predictions for submission.** Sending the test predictions to a new dataframe aligned with the submission rules and formats. "
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "_cell_guid": "01fdc20b-27df-6876-b9f0-1bc0261e7910"
+      },
+      "outputs": [],
+      "source": [
+        "##############################\n",
+        "# Submission\n",
+        "##############################\n",
+        "\n",
+        "# extract test predictions and bind relevant vectors per Kaggle submission rules\n",
+        "# testYhat.df$submit <- testYhat.df$rf.boruta  # select the prediction to submit \n",
+        "# testSubmission.df <- data.frame(cbind(testYhat.df$PassengerId, \n",
+        "#                                       testYhat.df$submit)) \n",
+        "# colnames(testSubmission.df) <- c(\"PassengerId\", \"Survived\")\n",
+        "# testSubmission.df$Survived <- ifelse(testSubmission.df$Survived == 1, 0, 1)  \n",
+        "\n",
+        "# save csv file for submission\n",
+        "# write.csv(testSubmission.df, \n",
+        "#           \"~/Submissions/testSubmission_v5.csv\", \n",
+        "#           row.names = FALSE)"
+      ]
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {
+        "_cell_guid": "553279e9-7d43-dfb2-300a-9dc0c95c1f28"
+      },
+      "source": [
+        "**Notes on follow-up work.**\n",
+        "\n",
+        "- Are there other features/interactions that can be created?\n",
+        "\n",
+        "- Is there a better method for imputing Age NAs?\n",
+        "- The TitleGroup assignments look okay, but could they be improved?\n",
+        "- Boruta package seemed to outperform RFE for feature selection. Other methods to try?\n",
+        "- RandomForest appears to outperform (untuned) XGBoost. What other models/tuning params may be better?"
+      ]
+    }
+  ],
+  "metadata": {
+    "_change_revision": 0,
+    "_is_fork": false,
+    "kernelspec": {
+      "display_name": "R",
+      "language": "R",
+      "name": "ir"
+    },
+    "language_info": {
+      "codemirror_mode": "r",
+      "file_extension": ".r",
+      "mimetype": "text/x-r-source",
+      "name": "R",
+      "pygments_lexer": "r",
+      "version": "3.3.2"
+    }
+  },
+  "nbformat": 4,
+  "nbformat_minor": 0
+}

@@ -1,0 +1,17 @@
+{
+  "code_file": "test-titanic.ipynb",
+  "language": "python",
+  "enable_internet": false,
+  "kernel_type": "notebook",
+  "competition_sources": [
+    "titanic"
+  ],
+  "enable_gpu": false,
+  "dataset_sources": [],
+  "kernel_sources": [],
+  "is_private": false,
+  "title": "Test Titanic",
+  "id": "luantruong210/test-titanic",
+  "keywords": [],
+  "id_no": 217947
+}

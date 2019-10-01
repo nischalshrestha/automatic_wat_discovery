@@ -1,0 +1,23 @@
+{
+  "title": "Simple yet Effective Titanic solution ",
+  "enable_gpu": false,
+  "kernel_sources": [],
+  "is_private": false,
+  "code_file": "simple-yet-effective-titanic-solution.irnb",
+  "kernel_type": "notebook",
+  "keywords": [
+    "tutorial",
+    "beginner",
+    "data visualization",
+    "classification",
+    "feature engineering"
+  ],
+  "competition_sources": [
+    "titanic"
+  ],
+  "id": "lashkare/simple-yet-effective-titanic-solution",
+  "language": "r",
+  "id_no": 858441,
+  "enable_internet": false,
+  "dataset_sources": []
+}

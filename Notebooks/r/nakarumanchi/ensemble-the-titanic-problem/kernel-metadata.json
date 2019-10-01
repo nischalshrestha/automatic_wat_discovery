@@ -1,0 +1,17 @@
+{
+  "id_no": 107299,
+  "title": "Ensemble the Titanic Problem",
+  "enable_internet": false,
+  "keywords": [],
+  "id": "nakarumanchi/ensemble-the-titanic-problem",
+  "is_private": false,
+  "code_file": "ensemble-the-titanic-problem.irnb",
+  "enable_gpu": false,
+  "competition_sources": [
+    "titanic"
+  ],
+  "kernel_sources": [],
+  "kernel_type": "notebook",
+  "language": "r",
+  "dataset_sources": []
+}

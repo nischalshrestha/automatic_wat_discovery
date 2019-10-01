@@ -1,0 +1,17 @@
+{
+  "kernel_type": "notebook",
+  "code_file": "exploratory-data-analysis-on-the-titanic-dataset.ipynb",
+  "enable_gpu": false,
+  "language": "python",
+  "keywords": [],
+  "dataset_sources": [],
+  "id_no": 328808,
+  "enable_internet": false,
+  "competition_sources": [
+    "titanic"
+  ],
+  "title": "Exploratory Data Analysis on the Titanic Dataset",
+  "kernel_sources": [],
+  "id": "aselad/exploratory-data-analysis-on-the-titanic-dataset",
+  "is_private": false
+}

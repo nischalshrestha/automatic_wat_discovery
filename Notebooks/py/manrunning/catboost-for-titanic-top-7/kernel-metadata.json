@@ -1,0 +1,17 @@
+{
+  "is_private": false,
+  "dataset_sources": [],
+  "title": "Catboost for Titanic(top 7%)",
+  "enable_internet": false,
+  "enable_gpu": false,
+  "id": "manrunning/catboost-for-titanic-top-7",
+  "kernel_sources": [],
+  "language": "python",
+  "id_no": 322634,
+  "competition_sources": [
+    "titanic"
+  ],
+  "keywords": [],
+  "kernel_type": "notebook",
+  "code_file": "catboost-for-titanic-top-7.ipynb"
+}

@@ -1,0 +1,17 @@
+{
+  "enable_gpu": false,
+  "dataset_sources": [],
+  "title": "Survival Prediction using Logistic Regression",
+  "competition_sources": [
+    "titanic"
+  ],
+  "keywords": [],
+  "is_private": false,
+  "id_no": 1525426,
+  "code_file": "survival-prediction-using-logistic-regression.irnb",
+  "language": "r",
+  "enable_internet": false,
+  "kernel_type": "notebook",
+  "kernel_sources": [],
+  "id": "ecosaptarshi/survival-prediction-using-logistic-regression"
+}

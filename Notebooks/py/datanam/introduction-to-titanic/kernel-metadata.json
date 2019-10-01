@@ -1,0 +1,17 @@
+{
+  "enable_internet": false,
+  "kernel_sources": [],
+  "code_file": "introduction-to-titanic.ipynb",
+  "enable_gpu": false,
+  "is_private": false,
+  "keywords": [],
+  "title": "Introduction to Titanic",
+  "id": "datanam/introduction-to-titanic",
+  "language": "python",
+  "kernel_type": "notebook",
+  "competition_sources": [
+    "titanic"
+  ],
+  "id_no": 812659,
+  "dataset_sources": []
+}

@@ -1,0 +1,17 @@
+{
+  "id": "alicewaterhouse/first-titanic-submission",
+  "enable_gpu": false,
+  "is_private": false,
+  "keywords": [],
+  "kernel_sources": [],
+  "code_file": "first-titanic-submission.ipynb",
+  "kernel_type": "notebook",
+  "id_no": 1977624,
+  "title": "First Titanic Submission",
+  "enable_internet": false,
+  "language": "python",
+  "competition_sources": [
+    "titanic"
+  ],
+  "dataset_sources": []
+}

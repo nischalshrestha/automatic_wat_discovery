@@ -1,0 +1,17 @@
+{
+  "language": "python",
+  "competition_sources": [
+    "titanic"
+  ],
+  "kernel_type": "notebook",
+  "title": "sss33",
+  "kernel_sources": [],
+  "dataset_sources": [],
+  "enable_gpu": true,
+  "enable_internet": false,
+  "is_private": false,
+  "keywords": [],
+  "code_file": "sss33.ipynb",
+  "id_no": 1014940,
+  "id": "yumengshan/sss33"
+}

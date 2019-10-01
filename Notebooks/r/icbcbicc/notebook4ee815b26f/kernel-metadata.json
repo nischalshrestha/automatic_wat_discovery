@@ -1,0 +1,17 @@
+{
+  "keywords": [],
+  "is_private": false,
+  "id_no": 175739,
+  "competition_sources": [
+    "titanic"
+  ],
+  "enable_internet": false,
+  "kernel_type": "notebook",
+  "language": "r",
+  "code_file": "notebook4ee815b26f.irnb",
+  "dataset_sources": [],
+  "enable_gpu": false,
+  "id": "icbcbicc/notebook4ee815b26f",
+  "kernel_sources": [],
+  "title": "Notebook6f1ff44343"
+}

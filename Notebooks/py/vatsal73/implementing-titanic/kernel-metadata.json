@@ -1,0 +1,19 @@
+{
+  "title": "implementing titanic",
+  "language": "python",
+  "enable_internet": false,
+  "id_no": 1736314,
+  "keywords": [
+    "beginner"
+  ],
+  "id": "vatsal73/implementing-titanic",
+  "kernel_sources": [],
+  "competition_sources": [
+    "titanic"
+  ],
+  "is_private": false,
+  "code_file": "implementing-titanic.ipynb",
+  "kernel_type": "notebook",
+  "dataset_sources": [],
+  "enable_gpu": false
+}

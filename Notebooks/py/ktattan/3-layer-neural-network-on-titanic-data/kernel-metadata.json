@@ -1,0 +1,17 @@
+{
+  "competition_sources": [
+    "titanic"
+  ],
+  "code_file": "3-layer-neural-network-on-titanic-data.ipynb",
+  "enable_internet": false,
+  "kernel_sources": [],
+  "language": "python",
+  "dataset_sources": [],
+  "id": "ktattan/3-layer-neural-network-on-titanic-data",
+  "is_private": false,
+  "title": "3 layer Neural Network on Titanic Data",
+  "id_no": 487589,
+  "enable_gpu": false,
+  "kernel_type": "notebook",
+  "keywords": []
+}

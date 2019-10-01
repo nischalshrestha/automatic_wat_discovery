@@ -1,0 +1,17 @@
+{
+  "dataset_sources": [],
+  "kernel_type": "notebook",
+  "enable_internet": false,
+  "enable_gpu": false,
+  "kernel_sources": [],
+  "id": "jlemains/titanic-competition",
+  "code_file": "titanic-competition.ipynb",
+  "language": "python",
+  "title": "Titanic competition",
+  "competition_sources": [
+    "titanic"
+  ],
+  "keywords": [],
+  "id_no": 1125795,
+  "is_private": false
+}

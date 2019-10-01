@@ -1,0 +1,21 @@
+{
+  "competition_sources": [
+    "titanic"
+  ],
+  "is_private": false,
+  "id_no": 1322026,
+  "enable_internet": false,
+  "title": "titanic python with visualization",
+  "dataset_sources": [],
+  "code_file": "titanic-python-with-visualization.ipynb",
+  "id": "nidhihedao/titanic-python-with-visualization",
+  "kernel_sources": [],
+  "kernel_type": "notebook",
+  "language": "python",
+  "keywords": [
+    "tutorial",
+    "data visualization",
+    "feature engineering"
+  ],
+  "enable_gpu": false
+}

@@ -1,0 +1,17 @@
+{
+  "kernel_type": "notebook",
+  "code_file": "a-journey-through-titanic.irnb",
+  "id_no": 109444,
+  "is_private": false,
+  "enable_internet": false,
+  "keywords": [],
+  "enable_gpu": false,
+  "competition_sources": [
+    "titanic"
+  ],
+  "id": "lucyq228/a-journey-through-titanic",
+  "kernel_sources": [],
+  "language": "r",
+  "dataset_sources": [],
+  "title": "A Journey through Titanic"
+}

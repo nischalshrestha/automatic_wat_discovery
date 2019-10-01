@@ -1,0 +1,17 @@
+{
+  "dataset_sources": [],
+  "keywords": [],
+  "language": "python",
+  "title": "Trying out Keras (0.77990 Accuracy)",
+  "id_no": 232493,
+  "kernel_sources": [],
+  "enable_internet": false,
+  "id": "nprice/trying-out-keras-0-77990-accuracy",
+  "competition_sources": [
+    "titanic"
+  ],
+  "is_private": false,
+  "code_file": "trying-out-keras-0-77990-accuracy.ipynb",
+  "enable_gpu": false,
+  "kernel_type": "notebook"
+}

@@ -1,0 +1,17 @@
+{
+  "kernel_type": "notebook",
+  "competition_sources": [
+    "titanic"
+  ],
+  "is_private": false,
+  "keywords": [],
+  "language": "python",
+  "code_file": "titanic-notebook-vol-2-adding-improvements.ipynb",
+  "title": "Titanic Notebook Vol. 2 - adding improvements",
+  "kernel_sources": [],
+  "enable_internet": false,
+  "id_no": 210447,
+  "id": "scolianni/titanic-notebook-vol-2-adding-improvements",
+  "enable_gpu": false,
+  "dataset_sources": []
+}

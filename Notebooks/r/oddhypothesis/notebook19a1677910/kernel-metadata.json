@@ -1,0 +1,17 @@
+{
+  "kernel_sources": [],
+  "competition_sources": [
+    "titanic"
+  ],
+  "language": "r",
+  "id": "oddhypothesis/notebook19a1677910",
+  "id_no": 134090,
+  "is_private": false,
+  "enable_internet": false,
+  "title": "Notebook19a1677910",
+  "enable_gpu": false,
+  "code_file": "notebook19a1677910.irnb",
+  "keywords": [],
+  "kernel_type": "notebook",
+  "dataset_sources": []
+}

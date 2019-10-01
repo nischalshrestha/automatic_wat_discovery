@@ -1,0 +1,17 @@
+{
+  "title": "Titanic Survival",
+  "kernel_sources": [],
+  "enable_gpu": false,
+  "id": "ravihela/titanic-survival",
+  "is_private": false,
+  "competition_sources": [
+    "titanic"
+  ],
+  "language": "r",
+  "enable_internet": false,
+  "dataset_sources": [],
+  "kernel_type": "notebook",
+  "code_file": "titanic-survival.irnb",
+  "keywords": [],
+  "id_no": 1022956
+}

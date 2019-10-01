@@ -1,0 +1,23 @@
+{
+  "language": "python",
+  "title": "Solu\u00e7\u00e3o simplificada utilizando MLP (PT-BR)",
+  "code_file": "solu-o-simplificada-utilizando-mlp-pt-br.ipynb",
+  "id": "renangomes/solu-o-simplificada-utilizando-mlp-pt-br",
+  "keywords": [
+    "tutorial",
+    "beginner",
+    "classification",
+    "deep learning",
+    "neural networks"
+  ],
+  "enable_gpu": false,
+  "is_private": false,
+  "dataset_sources": [],
+  "competition_sources": [
+    "titanic"
+  ],
+  "kernel_type": "notebook",
+  "enable_internet": false,
+  "kernel_sources": [],
+  "id_no": 927375
+}

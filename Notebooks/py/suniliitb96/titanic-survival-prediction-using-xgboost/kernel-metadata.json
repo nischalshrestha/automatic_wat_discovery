@@ -1,0 +1,17 @@
+{
+  "enable_gpu": false,
+  "competition_sources": [
+    "titanic"
+  ],
+  "title": "Titanic Survival Prediction using XGBoost",
+  "enable_internet": false,
+  "kernel_sources": [],
+  "keywords": [],
+  "language": "python",
+  "dataset_sources": [],
+  "code_file": "titanic-survival-prediction-using-xgboost.ipynb",
+  "id": "suniliitb96/titanic-survival-prediction-using-xgboost",
+  "id_no": 1574471,
+  "kernel_type": "notebook",
+  "is_private": false
+}

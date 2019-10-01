@@ -1,0 +1,17 @@
+{
+  "id_no": 98689,
+  "keywords": [],
+  "dataset_sources": [],
+  "id": "balakesavan/titanicbalakesavan20160921",
+  "enable_gpu": false,
+  "language": "r",
+  "competition_sources": [
+    "titanic"
+  ],
+  "kernel_type": "notebook",
+  "title": "TitanicBalaKesavan20160921",
+  "code_file": "titanicbalakesavan20160921.irnb",
+  "enable_internet": false,
+  "kernel_sources": [],
+  "is_private": false
+}

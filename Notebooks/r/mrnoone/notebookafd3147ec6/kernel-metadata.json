@@ -1,0 +1,17 @@
+{
+  "kernel_sources": [],
+  "id": "mrnoone/notebookafd3147ec6",
+  "code_file": "notebookafd3147ec6.irnb",
+  "language": "r",
+  "title": "Notebook89f6e7fdb0",
+  "keywords": [],
+  "competition_sources": [
+    "titanic"
+  ],
+  "id_no": 173988,
+  "enable_gpu": false,
+  "dataset_sources": [],
+  "is_private": false,
+  "kernel_type": "notebook",
+  "enable_internet": false
+}

@@ -1,0 +1,17 @@
+{
+  "dataset_sources": [],
+  "kernel_type": "notebook",
+  "competition_sources": [
+    "titanic"
+  ],
+  "title": "Notebookb66ed30382",
+  "is_private": false,
+  "id": "smnndrs/notebookb66ed30382",
+  "code_file": "notebookb66ed30382.irnb",
+  "id_no": 219362,
+  "enable_internet": false,
+  "kernel_sources": [],
+  "language": "r",
+  "keywords": [],
+  "enable_gpu": false
+}

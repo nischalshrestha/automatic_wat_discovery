@@ -1,0 +1,17 @@
+{
+  "enable_gpu": false,
+  "kernel_type": "notebook",
+  "enable_internet": false,
+  "competition_sources": [
+    "titanic"
+  ],
+  "language": "r",
+  "keywords": [],
+  "kernel_sources": [],
+  "dataset_sources": [],
+  "id_no": 247871,
+  "code_file": "predictive-analysis-of-survival-rate-on-tit-0f01a0.irnb",
+  "is_private": false,
+  "title": "Predictive Analysis of Survival Rate on Tit 0f01a0",
+  "id": "freezer4ever/predictive-analysis-of-survival-rate-on-tit-0f01a0"
+}

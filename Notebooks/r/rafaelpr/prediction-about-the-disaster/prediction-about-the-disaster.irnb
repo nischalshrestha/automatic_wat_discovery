@@ -1,0 +1,140 @@
+{
+  "cells": [
+    {
+      "cell_type": "markdown",
+      "metadata": {
+        "_cell_guid": "674f102b-3467-7e42-907d-4503fba9a852"
+      },
+      "source": [
+        "**1 - Load packages**"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "_cell_guid": "e7af39b1-afb0-12e6-55ed-75211e67731f"
+      },
+      "outputs": [],
+      "source": [
+        "# loading packages\n",
+        "library(ggplot2) # Data visualization\n",
+        "library(readr) # CSV file I/O, e.g. the read_csv function\n",
+        "library(rattle) \n",
+        "library(rpart.plot)\n",
+        "library(RColorBrewer)"
+      ]
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {
+        "_cell_guid": "544cb02b-984e-dfc4-bc56-cd716ff62227"
+      },
+      "source": [
+        "**2 - Load Data sets**"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "_cell_guid": "37c6c2e4-8771-0ce0-ecfa-6bd9a511fcb0"
+      },
+      "outputs": [],
+      "source": [
+        "# Input data files are available in the \"../input/\" directory.\n",
+        "#First of all, We need to import train and test sets:\n",
+        "train <- read.csv(\"../input/train.csv\") \n",
+        "test <- read.csv(\"../input/test.csv\")"
+      ]
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {
+        "_cell_guid": "7bbb7c22-7712-d267-1c21-c5c6f28719b6"
+      },
+      "source": [
+        "**3 - Count survivors**"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "_cell_guid": "8e9e421a-eb0a-f9f7-e3b0-a49886df8dba"
+      },
+      "outputs": [],
+      "source": [
+        "#How many people survived the disaster with the Titanic? \n",
+        "table(train$Survived)\n",
+        "prop.table(table(train$Survived))\n",
+        "\n",
+        "#How many people survived the disaster with the Titanic by gender?\n",
+        "table(train$Sex, train$Survived)\n",
+        "prop.table(table(train$Sex, train$Survived), 1)"
+      ]
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {
+        "_cell_guid": "d7e80f74-aeef-c537-5076-23829df0f7ad"
+      },
+      "source": [
+        "**4 - Build a decision tree**"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "_cell_guid": "7b5dfcaf-9621-eb9f-b395-8daad8bbfca5"
+      },
+      "outputs": [],
+      "source": [
+        "#Build the decision tree\n",
+        "library(rpart)\n",
+        "my_tree <- rpart(Survived ~ Pclass + Sex + Age + SibSp + Parch + Fare + Embarked, data = train, method = \"class\")\n",
+        "plot(my_tree)\n",
+        "text(my_tree)\n",
+        "\n",
+        "#Plotting the decision tree\n",
+        "fancyRpartPlot(my_tree)"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "_cell_guid": "8c30bd80-a760-d155-33c5-6aa112706c63"
+      },
+      "outputs": [],
+      "source": [
+        "#Make predictions on the test set\n",
+        "prediction <- predict(my_tree, newdata = test, type = \"class\")\n",
+        "\n",
+        "#Write the data.frame\n",
+        "my_solution <- data.frame(PassengerId = test$PassengerId, Survived = prediction)\n",
+        "write.csv(my_solution, file = \"rribeiro1_titanic_solution_v2.csv\", row.names = FALSE)"
+      ]
+    }
+  ],
+  "metadata": {
+    "_change_revision": 0,
+    "_is_fork": false,
+    "kernelspec": {
+      "display_name": "R",
+      "language": "R",
+      "name": "ir"
+    },
+    "language_info": {
+      "codemirror_mode": "r",
+      "file_extension": ".r",
+      "mimetype": "text/x-r-source",
+      "name": "R",
+      "pygments_lexer": "r",
+      "version": "3.3.2"
+    }
+  },
+  "nbformat": 4,
+  "nbformat_minor": 0
+}

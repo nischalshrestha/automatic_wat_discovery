@@ -1,0 +1,17 @@
+{
+  "keywords": [],
+  "enable_internet": false,
+  "title": "RandomForest, Feature eng, Imputation - Titanic",
+  "competition_sources": [
+    "titanic"
+  ],
+  "is_private": false,
+  "id_no": 167165,
+  "dataset_sources": [],
+  "language": "python",
+  "kernel_type": "notebook",
+  "kernel_sources": [],
+  "code_file": "randomforest-feature-eng-imputation-titanic.ipynb",
+  "enable_gpu": false,
+  "id": "jaeyoonpark/randomforest-feature-eng-imputation-titanic"
+}

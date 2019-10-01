@@ -1,0 +1,22 @@
+{
+  "is_private": false,
+  "keywords": [
+    "tutorial",
+    "data visualization",
+    "feature engineering",
+    "random forest"
+  ],
+  "title": "Titanic for Beginners.",
+  "enable_internet": false,
+  "kernel_type": "notebook",
+  "competition_sources": [
+    "titanic"
+  ],
+  "id": "rjainr/titanic-for-beginners",
+  "code_file": "titanic-for-beginners.ipynb",
+  "language": "python",
+  "id_no": 1677667,
+  "kernel_sources": [],
+  "dataset_sources": [],
+  "enable_gpu": false
+}

@@ -1,0 +1,17 @@
+{
+  "id_no": 1773265,
+  "code_file": "kernel927f469063.ipynb",
+  "kernel_sources": [],
+  "is_private": false,
+  "competition_sources": [
+    "titanic"
+  ],
+  "id": "rajeevsingh/kernel927f469063",
+  "kernel_type": "notebook",
+  "keywords": [],
+  "enable_internet": false,
+  "enable_gpu": false,
+  "dataset_sources": [],
+  "title": "kernel927f469063",
+  "language": "python"
+}

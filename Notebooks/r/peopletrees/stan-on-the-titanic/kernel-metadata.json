@@ -1,0 +1,17 @@
+{
+  "id": "peopletrees/stan-on-the-titanic",
+  "dataset_sources": [],
+  "id_no": 1026332,
+  "kernel_sources": [],
+  "code_file": "stan-on-the-titanic.irnb",
+  "keywords": [],
+  "competition_sources": [
+    "titanic"
+  ],
+  "enable_gpu": false,
+  "enable_internet": false,
+  "title": "Stan on the titanic",
+  "language": "r",
+  "is_private": false,
+  "kernel_type": "notebook"
+}

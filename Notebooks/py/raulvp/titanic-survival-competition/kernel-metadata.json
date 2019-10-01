@@ -1,0 +1,17 @@
+{
+  "enable_internet": false,
+  "id": "raulvp/titanic-survival-competition",
+  "competition_sources": [
+    "titanic"
+  ],
+  "title": "Titanic Survival Competition",
+  "is_private": false,
+  "dataset_sources": [],
+  "enable_gpu": false,
+  "code_file": "titanic-survival-competition.ipynb",
+  "kernel_sources": [],
+  "keywords": [],
+  "kernel_type": "notebook",
+  "id_no": 703915,
+  "language": "python"
+}

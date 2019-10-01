@@ -1,0 +1,23 @@
+{
+  "kernel_sources": [],
+  "keywords": [
+    "beginner",
+    "eda",
+    "data cleaning",
+    "classification",
+    "dailychallenge"
+  ],
+  "dataset_sources": [],
+  "id_no": 1886841,
+  "is_private": false,
+  "kernel_type": "notebook",
+  "code_file": "titanic-machine-learning-with-fastai.ipynb",
+  "title": "Titanic Machine Learning with FastAI",
+  "language": "python",
+  "enable_internet": false,
+  "id": "ranjanhunt/titanic-machine-learning-with-fastai",
+  "enable_gpu": false,
+  "competition_sources": [
+    "titanic"
+  ]
+}

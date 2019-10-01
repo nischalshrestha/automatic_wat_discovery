@@ -1,0 +1,17 @@
+{
+  "kernel_type": "notebook",
+  "keywords": [],
+  "language": "python",
+  "enable_gpu": false,
+  "dataset_sources": [],
+  "title": "Notebooka4e4f921aa",
+  "competition_sources": [
+    "titanic"
+  ],
+  "enable_internet": false,
+  "kernel_sources": [],
+  "code_file": "notebooka4e4f921aa.ipynb",
+  "id_no": 219613,
+  "is_private": false,
+  "id": "scottwhite/notebooka4e4f921aa"
+}

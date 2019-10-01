@@ -1,0 +1,17 @@
+{
+  "language": "python",
+  "id_no": 953219,
+  "title": "Titanic Disaster: Machine Learning Step by Step ",
+  "kernel_sources": [],
+  "competition_sources": [
+    "titanic"
+  ],
+  "keywords": [],
+  "is_private": false,
+  "dataset_sources": [],
+  "code_file": "titanic-disaster-machine-learning-step-by-step.ipynb",
+  "kernel_type": "notebook",
+  "enable_internet": false,
+  "enable_gpu": false,
+  "id": "khouloudz/titanic-disaster-machine-learning-step-by-step"
+}

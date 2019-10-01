@@ -1,0 +1,17 @@
+{
+  "id_no": 2122980,
+  "language": "python",
+  "enable_gpu": false,
+  "is_private": false,
+  "enable_internet": false,
+  "kernel_sources": [],
+  "competition_sources": [
+    "titanic"
+  ],
+  "id": "matiasmgonzalez/kernel-nn-aproach",
+  "code_file": "kernel-nn-aproach.ipynb",
+  "keywords": [],
+  "kernel_type": "notebook",
+  "title": "kernel_nn_aproach",
+  "dataset_sources": []
+}

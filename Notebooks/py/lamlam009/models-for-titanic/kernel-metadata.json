@@ -1,0 +1,17 @@
+{
+  "kernel_sources": [],
+  "dataset_sources": [],
+  "kernel_type": "notebook",
+  "language": "python",
+  "competition_sources": [
+    "titanic"
+  ],
+  "id": "lamlam009/models-for-titanic",
+  "is_private": false,
+  "title": "Models for Titanic",
+  "code_file": "models-for-titanic.ipynb",
+  "enable_gpu": true,
+  "id_no": 863734,
+  "keywords": [],
+  "enable_internet": false
+}

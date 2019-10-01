@@ -1,0 +1,20 @@
+{
+  "id": "christianbh/titanic-analysis-and-survival-prediction",
+  "id_no": 692928,
+  "title": "Titanic: Analysis and Survival Prediction",
+  "code_file": "titanic-analysis-and-survival-prediction.ipynb",
+  "language": "python",
+  "kernel_type": "notebook",
+  "is_private": false,
+  "enable_gpu": false,
+  "enable_internet": false,
+  "keywords": [
+    "beginner",
+    "data visualization"
+  ],
+  "dataset_sources": [],
+  "kernel_sources": [],
+  "competition_sources": [
+    "titanic"
+  ]
+}

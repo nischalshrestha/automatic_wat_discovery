@@ -1,0 +1,17 @@
+{
+  "kernel_sources": [],
+  "is_private": false,
+  "keywords": [],
+  "code_file": "titanic-survival-predictor-my-first-in-kaggle.ipynb",
+  "id": "gracyf/titanic-survival-predictor-my-first-in-kaggle",
+  "dataset_sources": [],
+  "title": "Titanic Survival Predictor - My first in kaggle",
+  "language": "python",
+  "enable_gpu": false,
+  "kernel_type": "notebook",
+  "competition_sources": [
+    "titanic"
+  ],
+  "enable_internet": false,
+  "id_no": 664711
+}

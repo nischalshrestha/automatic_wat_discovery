@@ -1,0 +1,17 @@
+{
+  "enable_gpu": false,
+  "id": "mabernathy5/leo-dicaprio-should-win-an-oscar",
+  "code_file": "leo-dicaprio-should-win-an-oscar.ipynb",
+  "title": "Leo Dicaprio Should Win An Oscar",
+  "language": "python",
+  "keywords": [],
+  "is_private": false,
+  "id_no": 1894517,
+  "competition_sources": [
+    "titanic"
+  ],
+  "enable_internet": false,
+  "kernel_sources": [],
+  "dataset_sources": [],
+  "kernel_type": "notebook"
+}

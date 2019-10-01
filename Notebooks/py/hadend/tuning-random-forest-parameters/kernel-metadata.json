@@ -1,0 +1,17 @@
+{
+  "code_file": "tuning-random-forest-parameters.ipynb",
+  "enable_gpu": false,
+  "kernel_sources": [],
+  "title": "Tuning Random Forest Parameters",
+  "id": "hadend/tuning-random-forest-parameters",
+  "dataset_sources": [],
+  "is_private": false,
+  "kernel_type": "notebook",
+  "language": "python",
+  "id_no": 86851,
+  "enable_internet": false,
+  "keywords": [],
+  "competition_sources": [
+    "titanic"
+  ]
+}

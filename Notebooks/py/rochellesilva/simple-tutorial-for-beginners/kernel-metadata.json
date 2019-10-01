@@ -1,0 +1,17 @@
+{
+  "competition_sources": [
+    "titanic"
+  ],
+  "language": "python",
+  "kernel_type": "notebook",
+  "keywords": [],
+  "is_private": false,
+  "enable_internet": false,
+  "kernel_sources": [],
+  "code_file": "simple-tutorial-for-beginners.ipynb",
+  "title": "Simple tutorial for Beginners",
+  "id": "rochellesilva/simple-tutorial-for-beginners",
+  "dataset_sources": [],
+  "enable_gpu": false,
+  "id_no": 275113
+}

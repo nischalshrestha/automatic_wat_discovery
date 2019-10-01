@@ -1,0 +1,21 @@
+{
+  "competition_sources": [
+    "titanic"
+  ],
+  "kernel_sources": [],
+  "language": "python",
+  "code_file": "titanic-eda-to-ml-beginner.ipynb",
+  "enable_gpu": false,
+  "kernel_type": "notebook",
+  "dataset_sources": [],
+  "is_private": false,
+  "title": "Titanic : EDA to ML (Beginner)",
+  "id": "dejavu23/titanic-eda-to-ml-beginner",
+  "keywords": [
+    "beginner",
+    "eda",
+    "data visualization"
+  ],
+  "id_no": 510158,
+  "enable_internet": false
+}

@@ -1,0 +1,17 @@
+{
+  "title": "titanic_intro",
+  "kernel_type": "notebook",
+  "code_file": "notebookc153621939.irnb",
+  "enable_internet": false,
+  "is_private": false,
+  "kernel_sources": [],
+  "dataset_sources": [],
+  "enable_gpu": false,
+  "language": "r",
+  "competition_sources": [
+    "titanic"
+  ],
+  "keywords": [],
+  "id_no": 182830,
+  "id": "shanlu/notebookc153621939"
+}

@@ -1,0 +1,17 @@
+{
+  "code_file": "classification-predicting-titanic-survival.ipynb",
+  "language": "python",
+  "dataset_sources": [],
+  "id": "aoifebyrne/classification-predicting-titanic-survival",
+  "kernel_sources": [],
+  "enable_gpu": false,
+  "is_private": false,
+  "title": "Classification: Predicting Titanic survival",
+  "keywords": [],
+  "kernel_type": "notebook",
+  "competition_sources": [
+    "titanic"
+  ],
+  "id_no": 204368,
+  "enable_internet": false
+}

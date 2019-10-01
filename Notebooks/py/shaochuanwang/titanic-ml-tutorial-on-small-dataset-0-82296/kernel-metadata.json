@@ -1,0 +1,21 @@
+{
+  "competition_sources": [
+    "titanic"
+  ],
+  "enable_gpu": false,
+  "kernel_sources": [],
+  "enable_internet": false,
+  "title": "Titanic: ML tutorial on small dataset - [0.82296]",
+  "language": "python",
+  "id_no": 902619,
+  "id": "shaochuanwang/titanic-ml-tutorial-on-small-dataset-0-82296",
+  "is_private": false,
+  "kernel_type": "notebook",
+  "dataset_sources": [],
+  "keywords": [
+    "tutorial",
+    "classification",
+    "feature engineering"
+  ],
+  "code_file": "titanic-ml-tutorial-on-small-dataset-0-82296.ipynb"
+}

@@ -1,0 +1,17 @@
+{
+  "title": "Titanic TicketNumber visualization",
+  "enable_gpu": false,
+  "code_file": "titanic-ticketnumber-visualization.irnb",
+  "dataset_sources": [],
+  "kernel_sources": [],
+  "id_no": 253382,
+  "language": "r",
+  "id": "junjunjun/titanic-ticketnumber-visualization",
+  "keywords": [],
+  "enable_internet": false,
+  "is_private": false,
+  "kernel_type": "notebook",
+  "competition_sources": [
+    "titanic"
+  ]
+}

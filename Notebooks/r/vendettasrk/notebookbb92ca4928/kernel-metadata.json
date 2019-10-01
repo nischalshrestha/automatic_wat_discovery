@@ -1,0 +1,17 @@
+{
+  "id_no": 179057,
+  "dataset_sources": [],
+  "is_private": false,
+  "id": "vendettasrk/notebookbb92ca4928",
+  "language": "r",
+  "enable_internet": false,
+  "code_file": "notebookbb92ca4928.irnb",
+  "kernel_sources": [],
+  "keywords": [],
+  "kernel_type": "notebook",
+  "enable_gpu": false,
+  "competition_sources": [
+    "titanic"
+  ],
+  "title": "Notebookdbec96dc95"
+}

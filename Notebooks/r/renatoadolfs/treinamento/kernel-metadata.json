@@ -1,0 +1,17 @@
+{
+  "is_private": false,
+  "code_file": "treinamento.irnb",
+  "enable_internet": false,
+  "kernel_type": "notebook",
+  "id": "renatoadolfs/treinamento",
+  "title": "Treinamento",
+  "enable_gpu": false,
+  "language": "r",
+  "kernel_sources": [],
+  "dataset_sources": [],
+  "keywords": [],
+  "id_no": 340839,
+  "competition_sources": [
+    "titanic"
+  ]
+}

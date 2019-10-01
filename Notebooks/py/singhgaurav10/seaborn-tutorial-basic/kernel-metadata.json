@@ -1,0 +1,22 @@
+{
+  "title": "Seaborn Tutorial (basic)",
+  "id_no": 1813024,
+  "is_private": false,
+  "competition_sources": [
+    "titanic"
+  ],
+  "kernel_type": "notebook",
+  "keywords": [
+    "beginner",
+    "data visualization"
+  ],
+  "code_file": "seaborn-tutorial-basic.ipynb",
+  "enable_internet": true,
+  "enable_gpu": false,
+  "kernel_sources": [],
+  "id": "singhgaurav10/seaborn-tutorial-basic",
+  "language": "python",
+  "dataset_sources": [
+    "uciml/iris"
+  ]
+}

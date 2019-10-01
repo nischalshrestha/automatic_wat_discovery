@@ -1,0 +1,23 @@
+{
+  "id_no": 1296610,
+  "code_file": "data-exploration-list-of-models-on-titanic.ipynb",
+  "kernel_type": "notebook",
+  "enable_internet": false,
+  "title": "Data Exploration, list of models on Titanic",
+  "keywords": [
+    "tutorial",
+    "beginner",
+    "data cleaning",
+    "model comparison",
+    "starter code"
+  ],
+  "enable_gpu": false,
+  "competition_sources": [
+    "titanic"
+  ],
+  "id": "rvillalongar/data-exploration-list-of-models-on-titanic",
+  "kernel_sources": [],
+  "language": "python",
+  "is_private": false,
+  "dataset_sources": []
+}

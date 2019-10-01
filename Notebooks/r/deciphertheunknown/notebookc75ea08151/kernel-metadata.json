@@ -1,0 +1,17 @@
+{
+  "kernel_sources": [],
+  "id": "deciphertheunknown/notebookc75ea08151",
+  "enable_gpu": false,
+  "keywords": [],
+  "is_private": false,
+  "enable_internet": false,
+  "language": "r",
+  "title": "Notebookc75ea08151",
+  "id_no": 215693,
+  "code_file": "notebookc75ea08151.irnb",
+  "competition_sources": [
+    "titanic"
+  ],
+  "kernel_type": "notebook",
+  "dataset_sources": []
+}

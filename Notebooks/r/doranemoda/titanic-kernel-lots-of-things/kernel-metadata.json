@@ -1,0 +1,17 @@
+{
+  "dataset_sources": [],
+  "keywords": [],
+  "is_private": false,
+  "kernel_type": "notebook",
+  "id": "doranemoda/titanic-kernel-lots-of-things",
+  "kernel_sources": [],
+  "enable_internet": false,
+  "id_no": 1629724,
+  "competition_sources": [
+    "titanic"
+  ],
+  "language": "r",
+  "code_file": "titanic-kernel-lots-of-things.irnb",
+  "title": "Titanic kernel lots of things",
+  "enable_gpu": false
+}

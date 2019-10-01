@@ -1,0 +1,17 @@
+{
+  "id": "henrym624/notebook6abb37c60c",
+  "language": "python",
+  "kernel_sources": [],
+  "enable_gpu": false,
+  "id_no": 199854,
+  "title": "Notebook6abb37c60c",
+  "kernel_type": "notebook",
+  "code_file": "notebook6abb37c60c.ipynb",
+  "keywords": [],
+  "enable_internet": false,
+  "competition_sources": [
+    "titanic"
+  ],
+  "is_private": false,
+  "dataset_sources": []
+}

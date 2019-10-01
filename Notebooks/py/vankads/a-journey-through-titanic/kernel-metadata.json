@@ -1,0 +1,17 @@
+{
+  "id_no": 106554,
+  "kernel_sources": [],
+  "language": "python",
+  "competition_sources": [
+    "titanic"
+  ],
+  "keywords": [],
+  "enable_internet": false,
+  "code_file": "a-journey-through-titanic.ipynb",
+  "is_private": false,
+  "id": "vankads/a-journey-through-titanic",
+  "enable_gpu": false,
+  "dataset_sources": [],
+  "kernel_type": "notebook",
+  "title": "A Journey through Titanic"
+}

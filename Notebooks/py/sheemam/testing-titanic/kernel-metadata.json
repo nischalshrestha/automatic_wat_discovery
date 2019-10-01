@@ -1,0 +1,17 @@
+{
+  "is_private": false,
+  "enable_internet": false,
+  "language": "python",
+  "dataset_sources": [],
+  "competition_sources": [
+    "titanic"
+  ],
+  "kernel_type": "notebook",
+  "kernel_sources": [],
+  "enable_gpu": false,
+  "code_file": "testing-titanic.ipynb",
+  "title": "Testing Titanic",
+  "id": "sheemam/testing-titanic",
+  "keywords": [],
+  "id_no": 312667
+}

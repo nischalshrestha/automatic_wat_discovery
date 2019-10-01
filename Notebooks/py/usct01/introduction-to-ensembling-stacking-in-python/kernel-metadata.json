@@ -1,0 +1,17 @@
+{
+  "language": "r",
+  "enable_internet": false,
+  "id": "usct01/introduction-to-ensembling-stacking-in-python",
+  "is_private": false,
+  "competition_sources": [
+    "titanic"
+  ],
+  "enable_gpu": false,
+  "dataset_sources": [],
+  "kernel_type": "notebook",
+  "id_no": 201139,
+  "code_file": "introduction-to-ensembling-stacking-in-python.irnb",
+  "title": "Introduction to Ensembling/Stacking in Python",
+  "kernel_sources": [],
+  "keywords": []
+}

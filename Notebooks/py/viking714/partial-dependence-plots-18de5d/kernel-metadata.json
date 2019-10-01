@@ -1,0 +1,19 @@
+{
+  "enable_internet": false,
+  "competition_sources": [
+    "titanic"
+  ],
+  "language": "python",
+  "id": "viking714/partial-dependence-plots-18de5d",
+  "kernel_type": "notebook",
+  "enable_gpu": false,
+  "title": "Partial Dependence Plots 18de5d",
+  "dataset_sources": [
+    "dansbecker/melbourne-housing-snapshot"
+  ],
+  "is_private": false,
+  "kernel_sources": [],
+  "code_file": "partial-dependence-plots-18de5d.ipynb",
+  "id_no": 1493898,
+  "keywords": []
+}

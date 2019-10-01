@@ -1,0 +1,17 @@
+{
+  "keywords": [],
+  "enable_internet": false,
+  "kernel_sources": [],
+  "kernel_type": "notebook",
+  "id_no": 1476682,
+  "is_private": false,
+  "id": "ronggen/lr-for-tatanic",
+  "dataset_sources": [],
+  "code_file": "lr-for-tatanic.ipynb",
+  "competition_sources": [
+    "titanic"
+  ],
+  "language": "python",
+  "title": "LR for Tatanic ",
+  "enable_gpu": false
+}

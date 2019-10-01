@@ -1,0 +1,17 @@
+{
+  "dataset_sources": [],
+  "kernel_sources": [],
+  "title": "Notebookf275099980",
+  "code_file": "notebook6c6d468f74.irnb",
+  "competition_sources": [
+    "titanic"
+  ],
+  "enable_gpu": false,
+  "id": "ivanseverin/notebook6c6d468f74",
+  "is_private": false,
+  "enable_internet": false,
+  "id_no": 162801,
+  "language": "r",
+  "kernel_type": "notebook",
+  "keywords": []
+}

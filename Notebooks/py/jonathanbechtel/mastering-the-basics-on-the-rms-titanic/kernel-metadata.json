@@ -1,0 +1,17 @@
+{
+  "title": "Mastering the Basics on the RMS Titanic!",
+  "id_no": 96072,
+  "kernel_type": "notebook",
+  "is_private": false,
+  "kernel_sources": [],
+  "competition_sources": [
+    "titanic"
+  ],
+  "enable_gpu": false,
+  "id": "jonathanbechtel/mastering-the-basics-on-the-rms-titanic",
+  "code_file": "mastering-the-basics-on-the-rms-titanic.ipynb",
+  "dataset_sources": [],
+  "language": "python",
+  "keywords": [],
+  "enable_internet": false
+}

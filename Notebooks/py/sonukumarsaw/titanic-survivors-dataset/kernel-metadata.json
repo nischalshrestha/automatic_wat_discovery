@@ -1,0 +1,17 @@
+{
+  "title": "Titanic: Survivors dataset",
+  "is_private": false,
+  "code_file": "titanic-survivors-dataset.ipynb",
+  "kernel_type": "notebook",
+  "id_no": 1777232,
+  "enable_internet": false,
+  "keywords": [],
+  "enable_gpu": false,
+  "competition_sources": [
+    "titanic"
+  ],
+  "id": "sonukumarsaw/titanic-survivors-dataset",
+  "dataset_sources": [],
+  "language": "python",
+  "kernel_sources": []
+}

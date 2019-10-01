@@ -1,0 +1,17 @@
+{
+  "kernel_type": "notebook",
+  "code_file": "task-1.ipynb",
+  "language": "python",
+  "enable_internet": false,
+  "dataset_sources": [],
+  "id": "alhassanabdelglil/task-1",
+  "enable_gpu": true,
+  "title": "task_1",
+  "keywords": [],
+  "competition_sources": [
+    "titanic"
+  ],
+  "id_no": 1825836,
+  "kernel_sources": [],
+  "is_private": false
+}

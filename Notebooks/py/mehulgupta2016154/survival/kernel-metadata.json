@@ -1,0 +1,17 @@
+{
+  "language": "python",
+  "kernel_sources": [],
+  "kernel_type": "notebook",
+  "enable_gpu": false,
+  "enable_internet": false,
+  "keywords": [],
+  "dataset_sources": [],
+  "competition_sources": [
+    "titanic"
+  ],
+  "code_file": "survival.ipynb",
+  "id": "mehulgupta2016154/survival",
+  "id_no": 1066980,
+  "title": "Survival",
+  "is_private": false
+}

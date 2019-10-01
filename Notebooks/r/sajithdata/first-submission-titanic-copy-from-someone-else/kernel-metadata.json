@@ -1,0 +1,17 @@
+{
+  "competition_sources": [
+    "titanic"
+  ],
+  "kernel_sources": [],
+  "enable_internet": false,
+  "code_file": "first-submission-titanic-copy-from-someone-else.irnb",
+  "keywords": [],
+  "id": "sajithdata/first-submission-titanic-copy-from-someone-else",
+  "language": "r",
+  "dataset_sources": [],
+  "id_no": 239255,
+  "kernel_type": "notebook",
+  "enable_gpu": false,
+  "title": "first submission - titanic copy from someone else",
+  "is_private": false
+}

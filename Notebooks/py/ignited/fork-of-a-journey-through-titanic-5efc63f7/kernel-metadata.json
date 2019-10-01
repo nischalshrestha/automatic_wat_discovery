@@ -1,0 +1,17 @@
+{
+  "enable_gpu": false,
+  "enable_internet": false,
+  "is_private": false,
+  "code_file": "fork-of-a-journey-through-titanic-5efc63f7.ipynb",
+  "dataset_sources": [],
+  "language": "python",
+  "keywords": [],
+  "kernel_sources": [],
+  "title": "Fork of A Journey through Titanic 5efc63f7",
+  "id": "ignited/fork-of-a-journey-through-titanic-5efc63f7",
+  "kernel_type": "notebook",
+  "competition_sources": [
+    "titanic"
+  ],
+  "id_no": 173585
+}

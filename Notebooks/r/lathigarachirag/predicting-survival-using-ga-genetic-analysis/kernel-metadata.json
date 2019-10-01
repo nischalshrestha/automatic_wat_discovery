@@ -1,0 +1,17 @@
+{
+  "kernel_type": "notebook",
+  "competition_sources": [
+    "titanic"
+  ],
+  "enable_gpu": false,
+  "kernel_sources": [],
+  "language": "r",
+  "is_private": false,
+  "enable_internet": false,
+  "title": "Predicting Survival using GA (Genetic Analysis)",
+  "id_no": 344753,
+  "code_file": "predicting-survival-using-ga-genetic-analysis.irnb",
+  "keywords": [],
+  "dataset_sources": [],
+  "id": "lathigarachirag/predicting-survival-using-ga-genetic-analysis"
+}

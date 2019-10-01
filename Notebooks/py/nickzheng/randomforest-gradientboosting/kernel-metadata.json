@@ -1,0 +1,17 @@
+{
+  "kernel_sources": [],
+  "language": "python",
+  "dataset_sources": [],
+  "title": "randomforest+GradientBoosting",
+  "enable_gpu": false,
+  "keywords": [],
+  "competition_sources": [
+    "titanic"
+  ],
+  "enable_internet": false,
+  "code_file": "randomforest-gradientboosting.ipynb",
+  "kernel_type": "notebook",
+  "id_no": 212134,
+  "is_private": false,
+  "id": "nickzheng/randomforest-gradientboosting"
+}

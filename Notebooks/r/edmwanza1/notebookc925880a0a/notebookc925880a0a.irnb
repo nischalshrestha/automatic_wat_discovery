@@ -1,0 +1,856 @@
+{
+  "cells": [
+    {
+      "cell_type": "markdown",
+      "metadata": {
+        "_cell_guid": "9d5e5b0b-3db3-73f8-fbea-01da2d0ca80a"
+      },
+      "source": [
+        "In this blog post, the performance of multiple classification models (initially 10 classifiers were built but some models would not run in this Kernel i.e adaptive boosting & extreme gradient boosting) are explored on the titanic data set. The primary objective of this analysis is to predict passenger *Survival* aboard the *unsinkable*  **Titanic** ship.In order to achieve a fair model performance evaluation, I will use the *Caret* package from R which provides a convenient way to create a unified platform or interface to fit and analyze different models.Below is the road-map to achieving the intended objective."
+      ]
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {
+        "_cell_guid": "32d5352e-4730-2bd5-0b29-90a7b0f182f7"
+      },
+      "source": [
+        "**Workflow**\n",
+        "\n",
+        "* Load data & required packages\n",
+        "* Data exploration & cleansing\n",
+        "* Missing data analysis & correction\n",
+        "* Feature engineering & visualizations\n",
+        "* Feature importance analysis\n",
+        "* Model building (wide cardinality)\n",
+        "* Model performance evaluation & final candidate selection\n",
+        "* Prediction & summary\n"
+      ]
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {
+        "_cell_guid": "b40f4190-7ded-d32a-f5de-36b904379810"
+      },
+      "source": [
+        "**Load data & required packages**"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "_cell_guid": "2dee35b6-d14b-b341-9a49-c5f591f16a76"
+      },
+      "outputs": [],
+      "source": [
+        "\n",
+        "library(readr)\n",
+        "library(data.table)\n",
+        "library(ggplot2)\n",
+        "library(ggthemes)\n",
+        "library(scales)\n",
+        "library(Amelia)\n",
+        "library(tabplot)\n",
+        "library(dplyr)\n",
+        "library(mice)\n",
+        "library(randomForest)\n",
+        "library(VIM)\n",
+        "library(stringr)\n",
+        "library(caret)\n",
+        "\n",
+        "train <- read.csv('../input/train.csv', stringsAsFactors = F)\n",
+        "test  <- read.csv('../input/test.csv', stringsAsFactors = F)"
+      ]
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {
+        "_cell_guid": "95016b74-a9fb-201b-3fb7-1e919cb746f5"
+      },
+      "source": [
+        "**Data exploration & Cleansing**"
+      ]
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {
+        "_cell_guid": "4176e80b-af80-8644-010d-50b1cc622698"
+      },
+      "source": [
+        "I will begin by merging the *train* & *test* sets into a single set to massage the data all at once (no data leaks)!Why not kill 2 birds with a stone if you can? Then I will perform some brief but necessary data checks such as *summary()* function."
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "_cell_guid": "16016151-4f74-f532-a0db-b86b705bff70"
+      },
+      "outputs": [],
+      "source": [
+        "my_df <- bind_rows(train, test)#format and wrangle data together at once\n",
+        "str(my_df)\n",
+        "summary(my_df)\n",
+        "glimpse(my_df)\n",
+        "head(my_df, n = 10)"
+      ]
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {
+        "_cell_guid": "acfa3ca9-79ea-9f32-003c-c6649e4cde2b"
+      },
+      "source": [
+        "Some type-checking and coercion\n"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "_cell_guid": "8d5fcc30-5678-b265-75eb-6bdce3583a34"
+      },
+      "outputs": [],
+      "source": [
+        "sapply(my_df, class)\n",
+        "#Convert \"sex\"from char->factor\n",
+        "my_df$Sex <- as.factor(my_df$Sex)\n",
+        "str(my_df)"
+      ]
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {
+        "_cell_guid": "4afbde9a-a4a6-d57e-ce29-b9a4bed1c0c2"
+      },
+      "source": [
+        "This is not a massive data set, its easy to explore its integrity with a few lines of code. One of the **must** do's is missing data analysis and correction. This is mainly because missing data affects model performance more specifically regression models. But whether regression or not, it's recommended to analyze missing data and determine course of action to correct missing values. Several techniques for imputing missing data exist, however, in this post I will use a single predictive method from the *mice* package and a manual method inspired by some other bloggers."
+      ]
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {
+        "_cell_guid": "333e9011-249d-2fc5-3259-32dc5b271930"
+      },
+      "source": [
+        "**Missing data & Correction**"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "_cell_guid": "5822c7ab-a9b4-c133-885c-ef7f6ac37fa2"
+      },
+      "outputs": [],
+      "source": [
+        "#If a variable is \"numeric\" check for numerical special values otherwise just for NAs\n",
+        "is_special <- function(x){\n",
+        "  if(is.numeric(x)) !is.finite(x) else is.na(x)\n",
+        "}\n",
+        "sapply(my_df, is_special)"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "_cell_guid": "483f2147-53a5-5060-ef42-44091051afd0"
+      },
+      "outputs": [],
+      "source": [
+        "Missing_d <- function(x){sum(is.na(x))/length(x)*100} #USD to calculate % of missing data\n",
+        "apply(my_df, 2, Missing_d) #checking missing data variable-wise\n",
+        "md.pattern(my_df)"
+      ]
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {
+        "_cell_guid": "acdc65bb-5672-4401-c3c4-c9b9d84557e4"
+      },
+      "source": [
+        "As seen Age has about 20% missing data with Cabin being the worst having ~77%. Embarked & Fare have rather minimal missing data also notice that the response variable appears to have some missing values, that's just a reflection of the absence of labels in the test set which I merged to train! I will remove Cabin since imputing it would introduce a lot of bias into the data but Age missing values  will be imputed & pre- and post-imputation distributions visually analyzed for consistent distributions. But before I do that, its good practice to get a visual intuition of missing data."
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "_cell_guid": "723f1efb-c6db-57e3-fea0-4f834a8a1691"
+      },
+      "outputs": [],
+      "source": [
+        "missmap(my_df, main = \"Observed Vs Missing Data\")\n",
+        "aggr_plot <- aggr(my_df, col=c('navyblue','red'), numbers=TRUE, sortVars=TRUE, \n",
+        "                  labels=names(data), cex.axis=.7, gap=3, ylab=c(\"Histogram of missing data\",\"Pattern\"))"
+      ]
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {
+        "_cell_guid": "c0ec0f59-d8d4-17c7-d319-635909b14f4f"
+      },
+      "source": [
+        "It is evident that this is a case of *Missing data at random* as evidenced in the visualizations above. As stated earlier, it probably wouldn't assist much imputing Cabin's missing data, additionally, the feature being categorical poses its own issues with respect to imputation. Age on the other end, seems to be rather useful & the fact that its a continuous variable with enough presence of data points, imputation would probably provide lift to model performance. To start the missing data *correction* phase, Fare and Embarked are dealt with manually and then Age later using a predictive technique."
+      ]
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {
+        "_cell_guid": "ff85231e-0a2f-d63b-242d-f11ec0ee2109"
+      },
+      "source": [
+        "*1 Embarked*"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "_cell_guid": "d3f74fea-809d-e8d9-b22b-17355445ca4a"
+      },
+      "outputs": [],
+      "source": [
+        "\n",
+        "which(is.na(my_df$Embarked))\n",
+        "#observations 62 and 830 are missing embarkment. Where did these voyagers come from?\n",
+        "#Find out how much they paid (fare)\n",
+        "embark_miss <- subset(my_df, PassengerId == 62 | PassengerId== 830)\n",
+        "#They both paid $80, belonged to class 1 Lets impute based on similar passengers\n",
+        "embark_fare <- my_df %>%\n",
+        "  filter(PassengerId != 62 & PassengerId != 830)\n",
+        "#As inspired by some Kagglers\n",
+        "ggplot(data = embark_fare, aes(x = Embarked, y= Fare, fill = factor(Pclass))) +\n",
+        "  geom_boxplot()+\n",
+        "  geom_hline(aes(yintercept = 80),\n",
+        "             colour = 'blue', linetype = 'dashed', lwd = 2)+\n",
+        "  scale_y_continuous(labels = dollar_format())+\n",
+        "  theme_few()\n",
+        "#As observed, $80-dollar dash line coincides with the median for class 1. We can infer that the \n",
+        "#obervations 62 and 830 embarked from \"C\"\n",
+        "#CORRECTION:replace NA with \"C\"\n",
+        "my_df$Embarked[c(62, 830)] <- \"C\"\n",
+        "sum(is.na(my_df$Embarked))\n"
+      ]
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {
+        "_cell_guid": "13dcc296-42a5-0e57-961c-a703f894dbc4"
+      },
+      "source": [
+        "*2 Fare*"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "_cell_guid": "91f6b033-ec05-ec85-2c3e-b1367a2b1144"
+      },
+      "outputs": [],
+      "source": [
+        "\n",
+        "which(is.na(my_df$Fare))\n",
+        "#voyager 1044 has missing fare\n",
+        "fare_miss <- subset(my_df, PassengerId == 1044)\n",
+        "#This passenger embarked the unsinkable at port \"S\" and was Class \"3\", use same approach as embark\n",
+        "fare_fix <- my_df%>%\n",
+        "  filter(PassengerId != 1044)\n",
+        "#whats the median fare for class \"3\" passengers who emabarked at \"S\"?\n",
+        "fare_fix%>%\n",
+        "  filter(Pclass == 3 & Embarked == 'S')%>%\n",
+        "  summarise(avg_fare = round(median(Fare),digits = 2))\n"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "_cell_guid": "05beadac-50bf-0065-ee9d-1ab358a2cc74"
+      },
+      "outputs": [],
+      "source": [
+        "#median amount paid is ~ 8.05::Its safe to CORRECT the NA value with the median value\n",
+        "my_df$Fare[1044] <- 8.05\n",
+        "sum(is.na(my_df$Fare))"
+      ]
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {
+        "_cell_guid": "7515e459-c8df-255c-dacd-6540a1558a34"
+      },
+      "source": [
+        "*3 Predictive Imputation-Age*"
+      ]
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {
+        "_cell_guid": "6cc54cb7-09bc-e652-112c-ecbe175be291"
+      },
+      "source": [
+        "There are several methods of imputing missing data, best practice is to assess performance lift as a result of each method implemeted on data. In this post however, I will use a single method from the mice package leveraging the *pmm* (predictive mean matching) method."
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "_cell_guid": "16124227-ef83-d686-e326-1ac7216dcf9c"
+      },
+      "outputs": [],
+      "source": [
+        "mice_corr <- mice(my_df[c(\"Sex\",\"Age\")],m=5,maxit=50,meth='pmm',seed=500)\n",
+        "summary(mice_corr)\n"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "_cell_guid": "ac865dff-8314-d14c-34c6-0d5f7398bb01"
+      },
+      "outputs": [],
+      "source": [
+        "mice_corr$imp$Age #quick check of imputed data\n",
+        "mice_corr <- complete(mice_corr,1) #save the newly imputed data choosing the first of \n",
+        "#five data sets (m=5)!!\n",
+        "\n",
+        "#Check before & after distributions of the AGE variable\n",
+        "par(mfrow=c(1,2))\n",
+        "hist(my_df$Age, freq=F, main='Age: Original Data', \n",
+        "     col='darkgreen', ylim=c(0,0.04))\n",
+        "hist(mice_corr$Age, freq=F, main='Age: MICE imputation', \n",
+        "     col='lightgreen', ylim=c(0,0.04))\n",
+        "#Looks great!! Visual inspection shows NO change in distribution! \n",
+        "#Replace original age values with imputed values"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "_cell_guid": "511191d1-88bb-e6aa-7962-ba743c42051d"
+      },
+      "outputs": [],
+      "source": [
+        "my_df$Age <- mice_corr$Age\n",
+        "sum(is.na(my_df$Age))"
+      ]
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {
+        "_cell_guid": "dc213720-dea3-be5b-bbba-b375d95e80d7"
+      },
+      "source": [
+        "In the above code chunks, I performed imputation then verified before-and-after distributions using the histogram shown above then finally replaced the original with imputed Age variable."
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "_cell_guid": "15154a85-1093-e8cb-15e1-0f7286ba6e70"
+      },
+      "outputs": [],
+      "source": [
+        "my_df$Cabin <- NULL #remove Cabin\n"
+      ]
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {
+        "_cell_guid": "a56b5932-92a1-d124-3ac3-d81f7b25d25b"
+      },
+      "source": [
+        "**Feature engineering & Visualizations**"
+      ]
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {
+        "_cell_guid": "b2d2da00-eaa5-1b11-f96f-c1b0e937aec6"
+      },
+      "source": [
+        "Missing Age, Fare & Embark values have been successfully dealt with. Some features like Age can be decomposed to adequately expose the underlying structure. This consequently provides performance lift to models. Intuitively, passangers can be grouped into *Child*, *Adult* and *Ederly* by defining some rules, I will also define another variable *Status* (married/single). Title can be engineered too to expose its struture to the algorithms. In this post, I will focus on the 2 features Age & Name...it would also be interesting to compare model performance with and without these 2 features engineered to evaluate the significance of engineering these features."
+      ]
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {
+        "_cell_guid": "23c068f2-bd35-6f9f-2f4f-ef1b5c8d0c3f"
+      },
+      "source": [
+        "*1 Age*"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "_cell_guid": "0e32d69d-9148-bdd8-3164-828778492ee5"
+      },
+      "outputs": [],
+      "source": [
+        "#Before I decopose AGE, lets do some visual analyses related to the age variable\n",
+        "my_hist <- hist(my_df$Age, breaks = 100, plot = F )\n",
+        "my_col  <- ifelse(my_hist$breaks < 18, rgb(0.2,0.8,0.5,0.5), ifelse(my_hist$breaks >= 65, \"purple\"\n",
+        "                                                                     , rgb(0.2,0.2,0.2,0.2)))\n",
+        "plot(my_hist, col = my_col, border =F, xlab = \"color by age group\",main =\"\", xlim = c(0,100))"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "_cell_guid": "5120a157-ae6f-5704-6041-ff74fa2b05dc"
+      },
+      "outputs": [],
+      "source": [
+        "#I will define age group as child < 18, 18>adult<65 and elderly >= 65. As can be seen there was more #adults than the 2 age groups\n",
+        "\n",
+        "posn_jitter <- position_jitter(0.5, 0)\n",
+        "\n",
+        "ggplot(my_df[1:891,], aes(x = factor(Pclass), y = Age, col = factor(Sex))) + \n",
+        "  geom_jitter(size = 2, alpha = 0.5, position = posn_jitter) + \n",
+        "  facet_grid(. ~ Survived)\n",
+        "#It didnt help being a middle aged male in class 3!! On the contrary, majority females in class 1\n",
+        "#survived"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "_cell_guid": "566168af-01ae-230f-bbd4-2e521ee90c35"
+      },
+      "outputs": [],
+      "source": [
+        "#Decompose age \n",
+        "my_df$Group[my_df$Age < 18] <- 'Child'\n",
+        "my_df$Group[my_df$Age >= 18 & my_df$Age < 65] <- 'Adult'\n",
+        "my_df$Group[my_df$Age >= 65] <- 'Elderly'\n",
+        "\n",
+        "#Survival per age group\n",
+        "table(my_df$Group, my_df$Survived)"
+      ]
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {
+        "_cell_guid": "10a4ce79-1335-8af4-efc4-7de348901646"
+      },
+      "source": [
+        "The adult age group had many who perished (being the majority age group), notice the child age bracket almost tied between survival and death. The elderly barely survived!!!Let's examine survival by class and age group."
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "_cell_guid": "c1039008-a1fc-2c5e-32a2-a42e0a9d8035"
+      },
+      "outputs": [],
+      "source": [
+        "table(my_df$Survived, my_df$Pclass,my_df$Group)\n"
+      ]
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {
+        "_cell_guid": "91c96fb0-8b30-f623-fe37-72a66af81cd5"
+      },
+      "source": [
+        "Most third class adults perished & majority first class survived (oh that's not obvious!) and Only 1 child from first class perished. I would like to know if this child's parents (I assume they were on-board) survived or perished. The one elderly who survived was of-course from...(you guess it!) first class!"
+      ]
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {
+        "_cell_guid": "7eda5015-132b-431a-ceab-ba3181037101"
+      },
+      "source": [
+        "*2 Name*"
+      ]
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {
+        "_cell_guid": "52cf2d01-5223-a9f4-0e82-bef5be8a98aa"
+      },
+      "source": [
+        "Some basic string manipulation using *stringr*. I will clean the Name variable a bit by pulling titles from names and rearranging it in a more intuitive order i.e 'first-middle-last'. Then I will coerce some character variables to factors."
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "_cell_guid": "d9d5f8e4-c2b2-e397-449a-b8cb35775cc3"
+      },
+      "outputs": [],
+      "source": [
+        "my_df$Title <- stringr::str_replace_all(my_df$Name,'(.*,)|(\\\\..*)', '')\n",
+        "my_df$Name  <- stringr::str_replace_all(my_df$Name, \"(.*),.*\\\\. (.*)\", \"\\\\2 \\\\1\")"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "_cell_guid": "47b6b0cd-3066-ae8c-7128-7cd67ab3bacd"
+      },
+      "outputs": [],
+      "source": [
+        "factors <- c('Embarked', 'Group', 'Title', 'Pclass')#left survived out...\n",
+        "my_df[factors] <- lapply(my_df[factors], as.factor)\n",
+        "sapply(my_df, class)"
+      ]
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {
+        "_cell_guid": "617318fa-694b-ced5-e712-892e27873637"
+      },
+      "source": [
+        "The above wraps up some featue engineering. Before proceeding to further steps, I will remove some less useful variables and split the data back to *train* & *test* sets.\n"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "_cell_guid": "7deaa485-2cdb-8041-5b11-fa676cddaa63"
+      },
+      "outputs": [],
+      "source": [
+        "my_df$Ticket <- NULL\n",
+        "my_df$Name   <- NULL\n",
+        "train <- my_df[1:891,]\n",
+        "test  <- my_df[892:1309,]\n",
+        "#remove Survive from test set which is all NULL resulted from merging the 2 sets\n",
+        "test$Survived <- NULL\n",
+        "passenger_id <- test[,1]#pull passenger_id for submission\n",
+        "test <- test[,-1]#remove passenger_id from test set\n",
+        "train <- train[,-1]#remove passenger_id from train set its irrevalent\n",
+        "train$Survived <- ifelse(train$Survived == 1, 'Yes', 'No')\n",
+        "train$Survived <- as.factor(train$Survived)"
+      ]
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {
+        "_cell_guid": "a29254a7-fd48-9ed8-7f92-f7d285c63bb2"
+      },
+      "source": [
+        "**Feature Importance Analysis**"
+      ]
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {
+        "_cell_guid": "4fa7dd04-2c6b-bb7c-9782-5f302a9ef4fd"
+      },
+      "source": [
+        "This step is important more specifically for huge data sets. I like to evaluate variable importance and deteremine the right course of action given the use case. Removing 'less' important variables may not always be the best course of action, there are techniques that can be used to sort of 'transform' zero or near-zero-variance variables to more useful variables. In this post, I will rank features by importance and ignore the least important ones. One of the cons of removing the 'least' important is ofcourse loss of data, but more optimized run time could be considered a pro. So let's proceed by randomly shuffling the data for a fair distribution then rank features by importance."
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "_cell_guid": "7d743661-81a7-1f28-b4bc-3184fcc8c312"
+      },
+      "outputs": [],
+      "source": [
+        "set.seed(10)\n",
+        "shuffled <- sample(nrow(train))\n",
+        "train    <- train[shuffled,]"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "_cell_guid": "e84b354f-3e04-2c21-1f6c-9cb01f73ae05"
+      },
+      "outputs": [],
+      "source": [
+        "set.seed(34)\n",
+        "control <- trainControl(method=\"cv\", number=10, repeats=3)\n",
+        "model <- train(Survived~., data = train,trControl=control)\n",
+        "importance <- varImp(model, scale=FALSE)\n",
+        "print(importance)\n",
+        "plot(importance, main = \"feature importance\")"
+      ]
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {
+        "_cell_guid": "ac0c2943-6789-8b2c-765b-acf6943a7a21"
+      },
+      "source": [
+        "**Model building (Wide Cardinality)**"
+      ]
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {
+        "_cell_guid": "1af25afa-31be-6ff3-b5e3-89c189675e4d"
+      },
+      "source": [
+        "It is best practice to fit multiple models within the problem domain then evaluate their performance and make a selection based on the winner!*Caret* makes this step easy by providing a flexible technique of creating a trainControl object that can be used as an interface for fitting multiple models by changing 'method' in the *train* function. \n",
+        "\n",
+        "So lets fit some models!!First I will create a trainControl object that will be a platform for ALL models in order to compare apples-to-apples!\n"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "_cell_guid": "514ddb69-678b-792b-4072-040bc9152829"
+      },
+      "outputs": [],
+      "source": [
+        "set.seed(5048)\n",
+        "myControl <- trainControl(method = \"repeatedcv\", number = 10,repeats = 3, classProbs = T, \n",
+        "                          verboseIter = F, summaryFunction = twoClassSummary)\n",
+        "\n",
+        "metric <- 'ROC'"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "_cell_guid": "57c8bc5f-4e91-c86f-9adc-240d93daf2ac"
+      },
+      "outputs": [],
+      "source": [
+        "#1.RF\n",
+        "set.seed(5048)\n",
+        "RF_model <- train(Survived ~.,tuneLength = 3, data = train, method = \"rf\",\n",
+        "                  metric = metric,trControl = myControl)\n",
+        "print(RF_model)"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "_cell_guid": "be4e66d1-54a8-a3ac-1f0c-10bd9ff64ccc"
+      },
+      "outputs": [],
+      "source": [
+        "#2.rpart\n",
+        "set.seed(5048)\n",
+        "RP_model <- train(Survived ~.,tuneLength = 3, data = train, method = \"rpart\",\n",
+        "                  metric = metric,trControl = myControl)\n",
+        "print(RP_model)"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "_cell_guid": "63a036b4-401b-045f-2f1f-f1eaf3fa2987"
+      },
+      "outputs": [],
+      "source": [
+        "#3.logit\n",
+        "set.seed(5048)\n",
+        "Grid<- expand.grid(decay=c(0.0001,0.00001,0.000001))\n",
+        "LR_model <- train(Survived~., data = train, method = 'multinom',metric = metric,trControl=myControl,\n",
+        "                  tuneGrid=Grid, MaxNWts=2000)\n",
+        "\n",
+        "print(LR_model)\n"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "_cell_guid": "6ce86145-82de-d28d-891b-3c193d759018"
+      },
+      "outputs": [],
+      "source": [
+        "#4.glmnet\n",
+        "set.seed(5048)\n",
+        "GN_model <- train(Survived~.,train,tuneGrid = expand.grid(alpha = 0:1,lambda = seq(0.0001, 1, length = 20)),\n",
+        "                  method = \"glmnet\", metric = metric,trControl = myControl)\n",
+        "\n",
+        "print(GN_model)"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "_cell_guid": "1fe2556b-4827-b35b-7e78-be3c2c8780bd"
+      },
+      "outputs": [],
+      "source": [
+        "#5.SVM\n",
+        "set.seed(5048)\n",
+        "SVM_model <- train(Survived~.,data = train, method = \"svmRadial\",metric = metric,\n",
+        "                   trControl = myControl)\n",
+        "\n",
+        "print(SVM_model)\n"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "_cell_guid": "3be6a935-92fe-a53e-64e8-ce4640c3e06d"
+      },
+      "outputs": [],
+      "source": [
+        "#6.naive bayes\n",
+        "set.seed(5048)\n",
+        "NB_model <- train(Survived~., data = train, method=\"nb\", metric=metric, \n",
+        "                  trControl= myControl)\n",
+        "\n",
+        "print(NB_model)"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "_cell_guid": "c7373b8d-802b-6f5e-f6b5-a5f46c72b2af"
+      },
+      "outputs": [],
+      "source": [
+        "#8.Shrinkage Discrimant Analysis\n",
+        "set.seed(5048)\n",
+        "SDA_model <- train(Survived~., data = train, method=\"sda\", metric=metric, \n",
+        "                   trControl=myControl)\n",
+        "print(SDA_model)"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "_cell_guid": "81670e65-e1f9-bb2b-e3d7-71891a60cd86"
+      },
+      "outputs": [],
+      "source": [
+        "#9.glm\n",
+        "set.seed(5048)\n",
+        "GLM_model <- train(Survived~., data = train, method=\"glm\", metric=metric, \n",
+        "                   trControl=myControl)\n",
+        "print(GLM_model)"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "_cell_guid": "feb16038-b5b7-390c-448a-7bc3f41ef5f6"
+      },
+      "outputs": [],
+      "source": [
+        "#Using ROC as measure\n",
+        "#create resample object assigning models to their descriptive names\n",
+        "resample_results <- resamples(list(RF=RF_model,CART=RP_model,GLMNET=GN_model,\n",
+        "                                   SDA=SDA_model,SVM=SVM_model, GLM = GLM_model, LR=LR_model,\n",
+        "                                   NaiveBayes=NB_model))\n",
+        "#Check summary on all metrics\n",
+        "summary(resample_results, metric = c('ROC','Sens','Spec'))\n",
+        "#Analyze MODEL performance \n",
+        "bwplot(resample_results, metric = metric)\n"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "_cell_guid": "3801e9f2-a2e7-0c07-8ed4-dde600796fc9"
+      },
+      "outputs": [],
+      "source": [
+        "bwplot(resample_results, metric = c('ROC','Sens','Spec'))\n"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "_cell_guid": "e7ef9594-41b3-c91a-3c3e-2bfd39b5b6a4"
+      },
+      "outputs": [],
+      "source": [
+        "densityplot(resample_results, metric = metric, auto.key = list(columns = 3))"
+      ]
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {
+        "_cell_guid": "5ddd57ae-22a8-f048-eab7-d3f640750249"
+      },
+      "source": [
+        "For a complete (10) model evaluation please refer to my blog post on Rpubs on this [link](http://rpubs.com/EdMwa/232405)\n",
+        "\n",
+        "As seen from the model performance visualizations above, RF performed well  with SDA coming in second based on ROC/AUC values. Further parameter tuning can be performed to optimize model performance. RandomForest model will be used to perform prediction. Furthermore, in order to provide more optimal performance, an ensamble method called *Stacking* can be employed in which a set of algorithms are used as level 0 models to predict with and their output used by a level 1 model for optimal prediction. This will be demonstrated in my next blog post. Below is the prediction of survival on the test set thank you for reading and hope you learned something!"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "_cell_guid": "cc62ac57-f0ba-bf86-6b3c-346111b87baf"
+      },
+      "outputs": [],
+      "source": [
+        "prediction <- data.frame(passenger_id,predict(RF_model,test,type = \"raw\"))\n",
+        "#write.csv(prediction, \"RF_submission.csv\", row.names = FALSE)\n"
+      ]
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {
+        "_cell_guid": "c3673563-34fa-5a6e-567d-41dae153720e"
+      },
+      "source": [
+        "**Conclusion**"
+      ]
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {
+        "_cell_guid": "2c646b97-904c-0fff-7157-3f129183d124"
+      },
+      "source": [
+        "Thank you for your time! I hope you learned something...your feedback is highly valued. I look forward to publishing and contributing more to Kaggle competitions so stay tuned.\n",
+        "\n",
+        "Good Luck!"
+      ]
+    }
+  ],
+  "metadata": {
+    "_change_revision": 0,
+    "_is_fork": false,
+    "kernelspec": {
+      "display_name": "R",
+      "language": "R",
+      "name": "ir"
+    },
+    "language_info": {
+      "codemirror_mode": "r",
+      "file_extension": ".r",
+      "mimetype": "text/x-r-source",
+      "name": "R",
+      "pygments_lexer": "r",
+      "version": "3.3.2"
+    }
+  },
+  "nbformat": 4,
+  "nbformat_minor": 0
+}

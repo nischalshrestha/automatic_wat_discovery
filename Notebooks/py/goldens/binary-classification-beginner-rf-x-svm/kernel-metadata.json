@@ -1,0 +1,19 @@
+{
+  "dataset_sources": [],
+  "id": "goldens/binary-classification-beginner-rf-x-svm",
+  "kernel_type": "notebook",
+  "keywords": [
+    "beginner"
+  ],
+  "id_no": 2122699,
+  "competition_sources": [
+    "titanic"
+  ],
+  "is_private": false,
+  "enable_internet": false,
+  "code_file": "binary-classification-beginner-rf-x-svm.ipynb",
+  "title": "Binary Classification (beginner) - RF x SVM",
+  "enable_gpu": false,
+  "language": "python",
+  "kernel_sources": []
+}

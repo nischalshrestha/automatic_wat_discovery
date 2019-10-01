@@ -1,0 +1,22 @@
+{
+  "is_private": false,
+  "competition_sources": [
+    "titanic"
+  ],
+  "dataset_sources": [],
+  "code_file": "a-data-science-framework-to-achieve-99-accuracy.ipynb",
+  "enable_gpu": false,
+  "title": "A Data Science Framework: To Achieve 99% Accuracy",
+  "id_no": 449069,
+  "kernel_sources": [],
+  "id": "ldfreeman3/a-data-science-framework-to-achieve-99-accuracy",
+  "enable_internet": false,
+  "kernel_type": "notebook",
+  "language": "python",
+  "keywords": [
+    "tutorial",
+    "beginner",
+    "data visualization",
+    "feature engineering"
+  ]
+}

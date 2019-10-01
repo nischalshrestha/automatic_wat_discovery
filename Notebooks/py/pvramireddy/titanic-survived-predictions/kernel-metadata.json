@@ -1,0 +1,17 @@
+{
+  "is_private": false,
+  "kernel_type": "notebook",
+  "language": "python",
+  "keywords": [],
+  "dataset_sources": [],
+  "enable_internet": false,
+  "enable_gpu": false,
+  "title": "Titanic survived predictions",
+  "id_no": 1568644,
+  "code_file": "titanic-survived-predictions.ipynb",
+  "competition_sources": [
+    "titanic"
+  ],
+  "kernel_sources": [],
+  "id": "pvramireddy/titanic-survived-predictions"
+}

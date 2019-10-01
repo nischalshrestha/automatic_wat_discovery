@@ -1,0 +1,241 @@
+{
+  "cells": [
+    {
+      "cell_type": "markdown",
+      "metadata": {
+        "_cell_guid": "f3f3e33d-1442-56b5-7217-0b0208ea8d2e"
+      },
+      "source": [
+        "#Try to find survival of the Titanic\n",
+        "\n",
+        ">by xusparrow"
+      ]
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {
+        "_cell_guid": "d24f0063-b29d-1e3c-e6c1-da413bb09e7f"
+      },
+      "source": [
+        "Honestly,this is my first travel on Kaggle,and my English is very awful.I will try my best to solve this problem and write something."
+      ]
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {
+        "_cell_guid": "8411cc5b-7472-c49d-c4e9-5d17f13c7e14"
+      },
+      "source": [
+        "## I.   Loading Packages"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "_cell_guid": "2ab9d8cd-972a-b794-2bb3-956ecf4d855a"
+      },
+      "outputs": [],
+      "source": [
+        "library(grid)\n",
+        "library(Matrix)\n",
+        "library(foreach)\n",
+        "library(vcd)\n",
+        "library(ggplot2)\n",
+        "library(stringi)\n",
+        "library(gridExtra)\n",
+        "library(car)\n",
+        "library(glmnet)\n",
+        "library(tree)\n",
+        "library(rpart)\n",
+        "library(gbm)"
+      ]
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {
+        "_cell_guid": "722ced8b-b847-d52d-6715-0627623b499b"
+      },
+      "source": [
+        "##II.   Importing data"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "_cell_guid": "b3a04e08-7367-0bd7-8d31-fe9504fc5503"
+      },
+      "outputs": [],
+      "source": [
+        "#Importing data\n",
+        "train <- read.csv('../input/train.csv', header = TRUE, stringsAsFactors = FALSE)\n",
+        "test  <- read.csv('../input/test.csv', header = TRUE, stringsAsFactors = FALSE)\n",
+        "\n",
+        "#Seeing the details of train\n",
+        "str(train)"
+      ]
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {
+        "_cell_guid": "63855409-18d4-c3ae-be4f-8fa2912167b1"
+      },
+      "source": [
+        "According to the explanation of variables, I change some variables to right form. "
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "_cell_guid": "2bf59245-33ea-6788-c9d3-07d0d5f30e0e"
+      },
+      "outputs": [],
+      "source": [
+        "#changing variables to right form\n",
+        "train$Survived <- factor(train$Survived)\n",
+        "train$Pclass   <- factor(train$Pclass)\n",
+        "train$Sex      <- factor(train$Sex)\n",
+        "train$Embarked <- factor(train$Embarked )\n",
+        "train <- data.frame(train)"
+      ]
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {
+        "_cell_guid": "5ec0aeab-9b31-b28d-18c2-bf38b09d5dfb"
+      },
+      "source": [
+        "##III.  Clearing Data"
+      ]
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {
+        "_cell_guid": "1fe94570-719f-9942-1374-f906eaaeeaf0"
+      },
+      "source": [
+        "###1. Pclass"
+      ]
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {
+        "_cell_guid": "d1216443-e23a-76b3-abb1-fd4f6bd1ed8c"
+      },
+      "source": [
+        "Pclass represents a proxy for socio-economic status .(1 = upper, 3 = lower)"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "_cell_guid": "4605cb08-af32-5dec-57b1-cf2407cf0b7e"
+      },
+      "outputs": [],
+      "source": [
+        "#check missing values\n",
+        "which(is.na(train$Pclass))#No missing values\n",
+        "\n",
+        "library(vcd)\n",
+        "library(grid)\n",
+        "#mosaic plot\n",
+        "mosaic(Survived~Pclass,data=train,shade=T)\n",
+        "\n",
+        "library(ggplot2)\n",
+        "#barplot\n",
+        "ggplot(train,\n",
+        "       aes(x=Pclass,fill=Survived))+\n",
+        "       geom_bar()+\n",
+        "       guides(fill=guide_legend(reverse = T))"
+      ]
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {
+        "_cell_guid": "c9e6815a-c259-06be-32ad-b8c1a12b6329"
+      },
+      "source": [
+        "Pclass has an influence on Survived.The people from \"Pclass of 1\" have more chances to live."
+      ]
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {
+        "_cell_guid": "1bf2b819-af8c-a046-50d7-aac2f64fdea7"
+      },
+      "source": [
+        "## 2. Sex"
+      ]
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {
+        "_cell_guid": "62951085-2537-2cff-401c-119fa89cfad3"
+      },
+      "source": [
+        "Sex represents passenger\u2019s sex."
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "_cell_guid": "7e7984ea-1e3e-3eff-aaf4-16fcb56ab391"
+      },
+      "outputs": [],
+      "source": [
+        "#checking missing values\n",
+        "which(is.na(train$Sex))\n",
+        "\n",
+        "#mosaic\n",
+        "mosaic(Survived~Sex,data=train,shade=T)\n",
+        "\n",
+        "#barplot\n",
+        "ggplot(train,\n",
+        "       aes(x=Sex,fill=Survived))+\n",
+        "       geom_bar()+\n",
+        "       guides(fill=guide_legend(reverse = T))"
+      ]
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {
+        "_cell_guid": "e483c4cc-b8a2-cf80-2c7f-05c52a9dee98"
+      },
+      "source": [
+        "Sex has an influence on Survived.Women are more likely to live."
+      ]
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {
+        "_cell_guid": "812a535c-60cb-b700-3c25-34bc65391ed8"
+      },
+      "source": [
+        "## 3. Age"
+      ]
+    }
+  ],
+  "metadata": {
+    "_change_revision": 0,
+    "_is_fork": false,
+    "kernelspec": {
+      "display_name": "R",
+      "language": "R",
+      "name": "ir"
+    },
+    "language_info": {
+      "codemirror_mode": "r",
+      "file_extension": ".r",
+      "mimetype": "text/x-r-source",
+      "name": "R",
+      "pygments_lexer": "r",
+      "version": "3.3.2"
+    }
+  },
+  "nbformat": 4,
+  "nbformat_minor": 0
+}

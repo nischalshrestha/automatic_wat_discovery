@@ -1,0 +1,17 @@
+{
+  "title": "Surviving the Titanic using RandomForest",
+  "competition_sources": [
+    "titanic"
+  ],
+  "id_no": 177114,
+  "code_file": "surviving-the-titanic-using-randomforest.ipynb",
+  "language": "python",
+  "kernel_type": "notebook",
+  "enable_internet": false,
+  "is_private": false,
+  "enable_gpu": false,
+  "id": "rkakkad/surviving-the-titanic-using-randomforest",
+  "dataset_sources": [],
+  "keywords": [],
+  "kernel_sources": []
+}

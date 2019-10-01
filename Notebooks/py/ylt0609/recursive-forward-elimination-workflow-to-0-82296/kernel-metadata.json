@@ -1,0 +1,22 @@
+{
+  "dataset_sources": [],
+  "id_no": 1077466,
+  "enable_gpu": true,
+  "keywords": [
+    "tutorial",
+    "advanced",
+    "feature engineering",
+    "random forest"
+  ],
+  "code_file": "recursive-forward-elimination-workflow-to-0-82296.ipynb",
+  "kernel_sources": [],
+  "id": "ylt0609/recursive-forward-elimination-workflow-to-0-82296",
+  "enable_internet": false,
+  "language": "python",
+  "competition_sources": [
+    "titanic"
+  ],
+  "title": "Recursive Forward Elimination Workflow to 0.82296",
+  "kernel_type": "notebook",
+  "is_private": false
+}

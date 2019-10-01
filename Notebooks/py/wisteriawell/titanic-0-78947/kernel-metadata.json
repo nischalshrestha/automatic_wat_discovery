@@ -1,0 +1,17 @@
+{
+  "enable_internet": false,
+  "title": "Titanic",
+  "code_file": "titanic-0-78947.ipynb",
+  "language": "python",
+  "id_no": 1232501,
+  "id": "wisteriawell/titanic-0-78947",
+  "enable_gpu": true,
+  "competition_sources": [
+    "titanic"
+  ],
+  "dataset_sources": [],
+  "keywords": [],
+  "kernel_type": "notebook",
+  "kernel_sources": [],
+  "is_private": false
+}

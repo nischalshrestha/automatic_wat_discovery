@@ -1,0 +1,17 @@
+{
+  "code_file": "notebook082a61b7c4.ipynb",
+  "is_private": false,
+  "kernel_sources": [],
+  "dataset_sources": [],
+  "id_no": 262496,
+  "competition_sources": [
+    "titanic"
+  ],
+  "enable_gpu": false,
+  "enable_internet": false,
+  "kernel_type": "notebook",
+  "language": "python",
+  "title": "Notebook082a61b7c4",
+  "keywords": [],
+  "id": "nkrishnan/notebook082a61b7c4"
+}

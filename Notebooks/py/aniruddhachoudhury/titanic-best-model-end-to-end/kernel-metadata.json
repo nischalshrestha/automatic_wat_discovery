@@ -1,0 +1,23 @@
+{
+  "kernel_sources": [],
+  "code_file": "titanic-best-model-end-to-end.ipynb",
+  "kernel_type": "notebook",
+  "title": "Titanic Best Model end to end",
+  "id": "aniruddhachoudhury/titanic-best-model-end-to-end",
+  "language": "python",
+  "enable_gpu": false,
+  "competition_sources": [
+    "titanic"
+  ],
+  "enable_internet": false,
+  "dataset_sources": [],
+  "keywords": [
+    "eda",
+    "data cleaning",
+    "data visualization",
+    "feature engineering",
+    "starter code"
+  ],
+  "is_private": false,
+  "id_no": 2135887
+}

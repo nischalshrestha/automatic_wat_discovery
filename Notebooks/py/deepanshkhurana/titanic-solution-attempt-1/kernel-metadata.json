@@ -1,0 +1,20 @@
+{
+  "kernel_type": "notebook",
+  "competition_sources": [
+    "titanic"
+  ],
+  "language": "python",
+  "enable_internet": false,
+  "is_private": false,
+  "keywords": [
+    "beginner",
+    "decision tree"
+  ],
+  "dataset_sources": [],
+  "id": "deepanshkhurana/titanic-solution-attempt-1",
+  "kernel_sources": [],
+  "id_no": 1471976,
+  "code_file": "titanic-solution-attempt-1.ipynb",
+  "enable_gpu": false,
+  "title": "Titanic Solution Attempt #1"
+}

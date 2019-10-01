@@ -1,0 +1,17 @@
+{
+  "title": "Scikit-Learn ML from Start to Finish",
+  "id_no": 272212,
+  "language": "python",
+  "enable_gpu": false,
+  "keywords": [],
+  "id": "therealjawss/scikit-learn-ml-from-start-to-finish",
+  "enable_internet": false,
+  "kernel_type": "notebook",
+  "competition_sources": [
+    "titanic"
+  ],
+  "dataset_sources": [],
+  "code_file": "scikit-learn-ml-from-start-to-finish.ipynb",
+  "is_private": false,
+  "kernel_sources": []
+}

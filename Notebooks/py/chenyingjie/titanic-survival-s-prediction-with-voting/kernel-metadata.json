@@ -1,0 +1,23 @@
+{
+  "enable_internet": false,
+  "title": "Titanic survival's prediction with voting",
+  "language": "python",
+  "code_file": "titanic-survival-s-prediction-with-voting.ipynb",
+  "kernel_type": "notebook",
+  "id_no": 893910,
+  "keywords": [
+    "beginner",
+    "eda",
+    "data cleaning",
+    "classification",
+    "feature engineering"
+  ],
+  "is_private": false,
+  "kernel_sources": [],
+  "dataset_sources": [],
+  "enable_gpu": false,
+  "competition_sources": [
+    "titanic"
+  ],
+  "id": "chenyingjie/titanic-survival-s-prediction-with-voting"
+}

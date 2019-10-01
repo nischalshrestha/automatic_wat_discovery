@@ -1,0 +1,17 @@
+{
+  "code_file": "titanic-predictions.ipynb",
+  "is_private": false,
+  "dataset_sources": [],
+  "enable_internet": false,
+  "id_no": 1635641,
+  "competition_sources": [
+    "titanic"
+  ],
+  "language": "python",
+  "enable_gpu": false,
+  "id": "abdoubendaoud95/titanic-predictions",
+  "keywords": [],
+  "kernel_type": "notebook",
+  "kernel_sources": [],
+  "title": "titanic_predictions"
+}

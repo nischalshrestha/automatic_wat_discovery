@@ -1,0 +1,21 @@
+{
+  "kernel_type": "notebook",
+  "id": "liopic/refining-new-features-using-adaboostclassifier",
+  "language": "python",
+  "competition_sources": [
+    "titanic"
+  ],
+  "kernel_sources": [],
+  "enable_internet": false,
+  "enable_gpu": false,
+  "title": "Refining new features & using AdaBoostClassifier",
+  "code_file": "refining-new-features-using-adaboostclassifier.ipynb",
+  "is_private": false,
+  "dataset_sources": [],
+  "keywords": [
+    "tutorial",
+    "classification",
+    "feature engineering"
+  ],
+  "id_no": 713938
+}

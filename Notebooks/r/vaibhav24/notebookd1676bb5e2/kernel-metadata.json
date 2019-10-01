@@ -1,0 +1,17 @@
+{
+  "id_no": 213882,
+  "kernel_type": "notebook",
+  "kernel_sources": [],
+  "keywords": [],
+  "language": "python",
+  "is_private": false,
+  "id": "vaibhav24/notebookd1676bb5e2",
+  "dataset_sources": [],
+  "enable_internet": false,
+  "title": "Notebookd1676bb5e2",
+  "competition_sources": [
+    "titanic"
+  ],
+  "code_file": "notebookd1676bb5e2.ipynb",
+  "enable_gpu": false
+}

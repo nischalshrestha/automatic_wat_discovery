@@ -1,0 +1,17 @@
+{
+  "is_private": false,
+  "id": "shiv2503/notebookef7c788cfe",
+  "keywords": [],
+  "enable_internet": false,
+  "kernel_sources": [],
+  "competition_sources": [
+    "titanic"
+  ],
+  "enable_gpu": false,
+  "title": "Notebookef7c788cfe",
+  "id_no": 210429,
+  "code_file": "notebookef7c788cfe.ipynb",
+  "language": "python",
+  "kernel_type": "notebook",
+  "dataset_sources": []
+}

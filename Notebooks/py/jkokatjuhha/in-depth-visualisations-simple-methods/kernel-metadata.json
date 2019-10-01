@@ -1,0 +1,23 @@
+{
+  "code_file": "in-depth-visualisations-simple-methods.ipynb",
+  "kernel_sources": [],
+  "language": "python",
+  "id": "jkokatjuhha/in-depth-visualisations-simple-methods",
+  "keywords": [
+    "tutorial",
+    "beginner",
+    "eda",
+    "data visualization",
+    "feature engineering"
+  ],
+  "competition_sources": [
+    "titanic"
+  ],
+  "enable_internet": false,
+  "title": "In-Depth Visualisations - Simple Methods",
+  "id_no": 276862,
+  "is_private": false,
+  "kernel_type": "notebook",
+  "dataset_sources": [],
+  "enable_gpu": false
+}

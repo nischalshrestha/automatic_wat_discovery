@@ -1,0 +1,20 @@
+{
+  "dataset_sources": [],
+  "keywords": [
+    "beginner",
+    "feature engineering"
+  ],
+  "is_private": false,
+  "enable_gpu": false,
+  "title": "ML1: Predicting Survivor on the Titanic v6.3",
+  "code_file": "ml1-predicting-survivor-on-the-titanic-v6-3.ipynb",
+  "language": "python",
+  "kernel_type": "notebook",
+  "kernel_sources": [],
+  "competition_sources": [
+    "titanic"
+  ],
+  "id": "salh786/ml1-predicting-survivor-on-the-titanic-v6-3",
+  "id_no": 1884410,
+  "enable_internet": false
+}

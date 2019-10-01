@@ -1,0 +1,17 @@
+{
+  "title": "Fork of A Journey through Titanic 891107",
+  "enable_gpu": false,
+  "code_file": "fork-of-a-journey-through-titanic-891107.ipynb",
+  "keywords": [],
+  "enable_internet": false,
+  "kernel_type": "notebook",
+  "is_private": false,
+  "dataset_sources": [],
+  "id": "emachado94/fork-of-a-journey-through-titanic-891107",
+  "language": "python",
+  "id_no": 245616,
+  "competition_sources": [
+    "titanic"
+  ],
+  "kernel_sources": []
+}

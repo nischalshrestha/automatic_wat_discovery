@@ -1,0 +1,17 @@
+{
+  "enable_internet": false,
+  "code_file": "notebook98aaf21851.irnb",
+  "dataset_sources": [],
+  "kernel_sources": [],
+  "is_private": false,
+  "kernel_type": "notebook",
+  "keywords": [],
+  "enable_gpu": false,
+  "id": "drsimonj/notebook98aaf21851",
+  "language": "r",
+  "id_no": 126029,
+  "competition_sources": [
+    "titanic"
+  ],
+  "title": "Notebook98aaf21851"
+}

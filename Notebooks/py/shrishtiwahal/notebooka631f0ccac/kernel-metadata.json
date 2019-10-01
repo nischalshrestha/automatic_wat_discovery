@@ -1,0 +1,19 @@
+{
+  "enable_internet": false,
+  "id": "shrishtiwahal/notebooka631f0ccac",
+  "kernel_sources": [],
+  "code_file": "notebooka631f0ccac.ipynb",
+  "competition_sources": [
+    "titanic"
+  ],
+  "language": "python",
+  "dataset_sources": [],
+  "enable_gpu": false,
+  "id_no": 360707,
+  "keywords": [
+    "beginner"
+  ],
+  "is_private": false,
+  "kernel_type": "notebook",
+  "title": "Notebooka631f0ccac"
+}

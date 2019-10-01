@@ -1,0 +1,17 @@
+{
+  "enable_internet": false,
+  "kernel_type": "notebook",
+  "is_private": false,
+  "language": "python",
+  "dataset_sources": [],
+  "id_no": 1060729,
+  "title": "Beginner Titanic",
+  "enable_gpu": false,
+  "keywords": [],
+  "kernel_sources": [],
+  "competition_sources": [
+    "titanic"
+  ],
+  "code_file": "beginner-titanic.ipynb",
+  "id": "altunerberk/beginner-titanic"
+}

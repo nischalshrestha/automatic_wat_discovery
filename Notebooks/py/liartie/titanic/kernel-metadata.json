@@ -1,0 +1,17 @@
+{
+  "kernel_type": "notebook",
+  "id_no": 2127791,
+  "language": "python",
+  "enable_gpu": false,
+  "keywords": [],
+  "title": "Titanic",
+  "id": "liartie/titanic",
+  "competition_sources": [
+    "titanic"
+  ],
+  "kernel_sources": [],
+  "code_file": "titanic.ipynb",
+  "dataset_sources": [],
+  "is_private": false,
+  "enable_internet": false
+}

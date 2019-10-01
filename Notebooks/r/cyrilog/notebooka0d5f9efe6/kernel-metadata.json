@@ -1,0 +1,17 @@
+{
+  "is_private": false,
+  "title": "Notebooka0d5f9efe6",
+  "enable_gpu": false,
+  "id": "cyrilog/notebooka0d5f9efe6",
+  "kernel_sources": [],
+  "kernel_type": "notebook",
+  "dataset_sources": [],
+  "language": "r",
+  "id_no": 241401,
+  "code_file": "notebooka0d5f9efe6.irnb",
+  "keywords": [],
+  "enable_internet": false,
+  "competition_sources": [
+    "titanic"
+  ]
+}

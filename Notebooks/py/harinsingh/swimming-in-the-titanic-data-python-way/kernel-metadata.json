@@ -1,0 +1,17 @@
+{
+  "id": "harinsingh/swimming-in-the-titanic-data-python-way",
+  "kernel_sources": [],
+  "title": "Swimming in the Titanic Data - Python Way",
+  "code_file": "swimming-in-the-titanic-data-python-way.ipynb",
+  "id_no": 194437,
+  "language": "python",
+  "kernel_type": "notebook",
+  "enable_internet": false,
+  "keywords": [],
+  "competition_sources": [
+    "titanic"
+  ],
+  "is_private": false,
+  "dataset_sources": [],
+  "enable_gpu": false
+}

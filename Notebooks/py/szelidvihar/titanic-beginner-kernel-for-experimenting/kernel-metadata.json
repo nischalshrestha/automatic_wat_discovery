@@ -1,0 +1,23 @@
+{
+  "id": "szelidvihar/titanic-beginner-kernel-for-experimenting",
+  "kernel_sources": [],
+  "enable_gpu": false,
+  "enable_internet": false,
+  "code_file": "titanic-beginner-kernel-for-experimenting.ipynb",
+  "title": "Titanic beginner kernel for experimenting",
+  "competition_sources": [
+    "titanic"
+  ],
+  "is_private": false,
+  "keywords": [
+    "beginner",
+    "eda",
+    "data cleaning",
+    "data visualization",
+    "feature engineering"
+  ],
+  "id_no": 1987765,
+  "language": "python",
+  "kernel_type": "notebook",
+  "dataset_sources": []
+}

@@ -1,0 +1,17 @@
+{
+  "enable_gpu": false,
+  "enable_internet": false,
+  "language": "python",
+  "keywords": [],
+  "title": "KNN on the Titanic",
+  "id": "limitpointinf0/knn-on-the-titanic",
+  "kernel_type": "notebook",
+  "kernel_sources": [],
+  "is_private": false,
+  "dataset_sources": [],
+  "id_no": 999710,
+  "code_file": "knn-on-the-titanic.ipynb",
+  "competition_sources": [
+    "titanic"
+  ]
+}

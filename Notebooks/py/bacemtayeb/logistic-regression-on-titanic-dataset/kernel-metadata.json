@@ -1,0 +1,17 @@
+{
+  "enable_internet": false,
+  "language": "python",
+  "dataset_sources": [],
+  "kernel_sources": [],
+  "title": "Logistic Regression on Titanic Dataset",
+  "id_no": 1419110,
+  "enable_gpu": false,
+  "code_file": "logistic-regression-on-titanic-dataset.ipynb",
+  "competition_sources": [
+    "titanic"
+  ],
+  "is_private": false,
+  "keywords": [],
+  "kernel_type": "notebook",
+  "id": "bacemtayeb/logistic-regression-on-titanic-dataset"
+}

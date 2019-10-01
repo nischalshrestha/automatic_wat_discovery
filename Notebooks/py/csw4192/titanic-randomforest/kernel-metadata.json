@@ -1,0 +1,22 @@
+{
+  "language": "python",
+  "kernel_sources": [],
+  "id": "csw4192/titanic-randomforest",
+  "enable_gpu": false,
+  "keywords": [
+    "beginner",
+    "classification",
+    "feature engineering",
+    "starter code"
+  ],
+  "enable_internet": false,
+  "title": "Titanic_RandomForest",
+  "code_file": "titanic-randomforest.ipynb",
+  "dataset_sources": [],
+  "id_no": 1472711,
+  "competition_sources": [
+    "titanic"
+  ],
+  "kernel_type": "notebook",
+  "is_private": false
+}

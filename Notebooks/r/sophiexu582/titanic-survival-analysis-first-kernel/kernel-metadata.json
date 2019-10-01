@@ -1,0 +1,17 @@
+{
+  "kernel_type": "notebook",
+  "dataset_sources": [],
+  "kernel_sources": [],
+  "code_file": "titanic-survival-analysis-first-kernel.irnb",
+  "competition_sources": [
+    "titanic"
+  ],
+  "language": "r",
+  "id": "sophiexu582/titanic-survival-analysis-first-kernel",
+  "title": "Titanic analysis - first Kernel",
+  "is_private": false,
+  "enable_gpu": false,
+  "id_no": 990966,
+  "enable_internet": false,
+  "keywords": []
+}

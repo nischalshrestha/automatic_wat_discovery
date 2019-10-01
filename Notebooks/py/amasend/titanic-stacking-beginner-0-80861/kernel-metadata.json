@@ -1,0 +1,17 @@
+{
+  "language": "python",
+  "kernel_sources": [],
+  "competition_sources": [
+    "titanic"
+  ],
+  "is_private": false,
+  "code_file": "titanic-stacking-beginner-0-80861.ipynb",
+  "enable_gpu": false,
+  "keywords": [],
+  "title": "Titanic Stacking Beginner @0.80861",
+  "id": "amasend/titanic-stacking-beginner-0-80861",
+  "dataset_sources": [],
+  "kernel_type": "notebook",
+  "enable_internet": false,
+  "id_no": 1562384
+}

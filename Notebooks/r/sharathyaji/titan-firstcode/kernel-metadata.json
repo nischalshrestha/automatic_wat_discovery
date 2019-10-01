@@ -1,0 +1,17 @@
+{
+  "code_file": "titan-firstcode.irnb",
+  "id_no": 87514,
+  "dataset_sources": [],
+  "title": "titan_firstcode",
+  "kernel_type": "notebook",
+  "id": "sharathyaji/titan-firstcode",
+  "keywords": [],
+  "is_private": false,
+  "language": "r",
+  "enable_internet": false,
+  "kernel_sources": [],
+  "enable_gpu": false,
+  "competition_sources": [
+    "titanic"
+  ]
+}

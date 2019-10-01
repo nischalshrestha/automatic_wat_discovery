@@ -1,0 +1,17 @@
+{
+  "language": "python",
+  "kernel_sources": [],
+  "keywords": [],
+  "is_private": false,
+  "id": "bavdekar/titanic-data-maching-learning",
+  "title": "Titanic data: Maching learning",
+  "enable_gpu": false,
+  "kernel_type": "notebook",
+  "code_file": "titanic-data-maching-learning.ipynb",
+  "enable_internet": false,
+  "dataset_sources": [],
+  "competition_sources": [
+    "titanic"
+  ],
+  "id_no": 419488
+}

@@ -1,0 +1,21 @@
+{
+  "code_file": "learning-machine-learning-and-trying-not-to-sink.irnb",
+  "enable_gpu": false,
+  "keywords": [
+    "beginner",
+    "data visualization",
+    "ensembling"
+  ],
+  "competition_sources": [
+    "titanic"
+  ],
+  "dataset_sources": [],
+  "kernel_sources": [],
+  "title": "Learning Machine Learning and trying not to sink!",
+  "enable_internet": false,
+  "language": "r",
+  "kernel_type": "notebook",
+  "id": "williamrosa/learning-machine-learning-and-trying-not-to-sink",
+  "id_no": 441300,
+  "is_private": false
+}

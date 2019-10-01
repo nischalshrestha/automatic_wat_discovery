@@ -1,0 +1,19 @@
+{
+  "kernel_sources": [],
+  "id_no": 416140,
+  "competition_sources": [
+    "titanic"
+  ],
+  "enable_gpu": false,
+  "kernel_type": "notebook",
+  "title": "Survival Criteria on the RMS Titanic",
+  "language": "r",
+  "keywords": [
+    "data visualization"
+  ],
+  "id": "lornamariak/survival-criteria-on-the-rms-titanic",
+  "is_private": false,
+  "code_file": "survival-criteria-on-the-rms-titanic.irnb",
+  "enable_internet": false,
+  "dataset_sources": []
+}

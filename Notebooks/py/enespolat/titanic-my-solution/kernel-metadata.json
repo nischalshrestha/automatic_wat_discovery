@@ -1,0 +1,17 @@
+{
+  "kernel_sources": [],
+  "code_file": "titanic-my-solution.ipynb",
+  "enable_gpu": false,
+  "kernel_type": "notebook",
+  "dataset_sources": [],
+  "competition_sources": [
+    "titanic"
+  ],
+  "keywords": [],
+  "is_private": false,
+  "title": "Titanic: My Solution",
+  "id": "enespolat/titanic-my-solution",
+  "language": "python",
+  "enable_internet": false,
+  "id_no": 1465371
+}

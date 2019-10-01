@@ -1,0 +1,17 @@
+{
+  "title": "Notebookde9d55f2f4",
+  "language": "python",
+  "kernel_sources": [],
+  "enable_gpu": false,
+  "code_file": "notebookde9d55f2f4.ipynb",
+  "dataset_sources": [],
+  "is_private": false,
+  "kernel_type": "notebook",
+  "id_no": 262396,
+  "competition_sources": [
+    "titanic"
+  ],
+  "keywords": [],
+  "enable_internet": false,
+  "id": "etiennedumoulin/notebookde9d55f2f4"
+}

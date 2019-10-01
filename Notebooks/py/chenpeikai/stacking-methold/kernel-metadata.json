@@ -1,0 +1,17 @@
+{
+  "id": "chenpeikai/stacking-methold",
+  "id_no": 356882,
+  "title": "stacking methold",
+  "code_file": "stacking-methold.ipynb",
+  "language": "python",
+  "kernel_type": "notebook",
+  "is_private": false,
+  "enable_gpu": false,
+  "enable_internet": false,
+  "keywords": [],
+  "dataset_sources": [],
+  "kernel_sources": [],
+  "competition_sources": [
+    "titanic"
+  ]
+}

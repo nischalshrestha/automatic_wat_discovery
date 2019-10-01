@@ -1,0 +1,17 @@
+{
+  "enable_internet": false,
+  "enable_gpu": false,
+  "kernel_sources": [],
+  "id": "tang0604/titanic-random-forest-82-78",
+  "language": "python",
+  "is_private": false,
+  "title": "Titanic Random Forest: 82.78%",
+  "code_file": "titanic-random-forest-82-78.ipynb",
+  "dataset_sources": [],
+  "kernel_type": "notebook",
+  "keywords": [],
+  "id_no": 176234,
+  "competition_sources": [
+    "titanic"
+  ]
+}

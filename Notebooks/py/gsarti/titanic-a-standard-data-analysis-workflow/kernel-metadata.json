@@ -1,0 +1,23 @@
+{
+  "dataset_sources": [],
+  "code_file": "titanic-a-standard-data-analysis-workflow.ipynb",
+  "keywords": [
+    "tutorial",
+    "beginner",
+    "data cleaning",
+    "ensembling",
+    "starter code"
+  ],
+  "language": "python",
+  "kernel_type": "notebook",
+  "is_private": false,
+  "id": "gsarti/titanic-a-standard-data-analysis-workflow",
+  "enable_internet": false,
+  "enable_gpu": false,
+  "kernel_sources": [],
+  "title": "Titanic - A Standard Data Analysis Workflow",
+  "id_no": 1981782,
+  "competition_sources": [
+    "titanic"
+  ]
+}

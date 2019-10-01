@@ -1,0 +1,17 @@
+{
+  "competition_sources": [
+    "titanic"
+  ],
+  "enable_gpu": false,
+  "title": "Notebook6c52fa9116",
+  "dataset_sources": [],
+  "language": "r",
+  "kernel_type": "notebook",
+  "code_file": "notebook6c52fa9116.irnb",
+  "enable_internet": false,
+  "id": "bouncebackvaiv/notebook6c52fa9116",
+  "id_no": 235879,
+  "kernel_sources": [],
+  "is_private": false,
+  "keywords": []
+}

@@ -1,0 +1,17 @@
+{
+  "title": "titanic-xgboost",
+  "dataset_sources": [],
+  "enable_internet": false,
+  "language": "python",
+  "id": "orhaneee/titanic-xgboost",
+  "competition_sources": [
+    "titanic"
+  ],
+  "enable_gpu": false,
+  "keywords": [],
+  "kernel_type": "notebook",
+  "is_private": false,
+  "code_file": "titanic-xgboost.ipynb",
+  "kernel_sources": [],
+  "id_no": 1934138
+}

@@ -1,0 +1,23 @@
+{
+  "title": "Titanic // In-depth Analysis [Beginner Friendly]",
+  "kernel_sources": [],
+  "language": "python",
+  "is_private": false,
+  "competition_sources": [
+    "titanic"
+  ],
+  "id_no": 352333,
+  "enable_gpu": false,
+  "kernel_type": "notebook",
+  "code_file": "titanic-in-depth-analysis-beginner-friendly.ipynb",
+  "keywords": [
+    "beginner",
+    "data cleaning",
+    "data visualization",
+    "random forest",
+    "linear regression"
+  ],
+  "id": "ben1kaggle/titanic-in-depth-analysis-beginner-friendly",
+  "enable_internet": false,
+  "dataset_sources": []
+}

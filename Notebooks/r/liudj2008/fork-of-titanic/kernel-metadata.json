@@ -1,0 +1,17 @@
+{
+  "id_no": 262619,
+  "language": "r",
+  "kernel_sources": [],
+  "title": "Fork of Titanic",
+  "dataset_sources": [],
+  "kernel_type": "notebook",
+  "id": "liudj2008/fork-of-titanic",
+  "keywords": [],
+  "enable_gpu": false,
+  "code_file": "fork-of-titanic.irnb",
+  "competition_sources": [
+    "titanic"
+  ],
+  "enable_internet": false,
+  "is_private": false
+}

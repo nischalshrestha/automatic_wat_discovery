@@ -1,0 +1,17 @@
+{
+  "is_private": false,
+  "enable_gpu": false,
+  "dataset_sources": [],
+  "language": "python",
+  "keywords": [],
+  "id": "icinnamon/titanic-preprocessing-ml-tutorial",
+  "id_no": 117312,
+  "competition_sources": [
+    "titanic"
+  ],
+  "kernel_sources": [],
+  "code_file": "titanic-preprocessing-ml-tutorial.ipynb",
+  "title": "Titanic: PreProcessing + ML Tutorial",
+  "enable_internet": false,
+  "kernel_type": "notebook"
+}

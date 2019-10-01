@@ -1,0 +1,17 @@
+{
+  "language": "r",
+  "competition_sources": [
+    "titanic"
+  ],
+  "id": "alioancea/first-test",
+  "code_file": "first-test.irnb",
+  "id_no": 191027,
+  "keywords": [],
+  "dataset_sources": [],
+  "is_private": false,
+  "kernel_sources": [],
+  "title": "First test",
+  "enable_gpu": false,
+  "enable_internet": false,
+  "kernel_type": "notebook"
+}

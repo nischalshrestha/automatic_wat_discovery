@@ -1,0 +1,307 @@
+{
+  "cells": [
+    {
+      "cell_type": "markdown",
+      "metadata": {
+        "_cell_guid": "03db3a6c-4670-fae8-0318-7037e74e6b92"
+      },
+      "source": [
+        "**Steps of analysis on Titanic dataset :**\n",
+        "\n",
+        " 1. Read train.csv and test.csv data\n",
+        " 2. Tidy up the data \n",
+        " 3. Create model of prediction based on train.csv\n",
+        " 4. Make prediction based on test.csv"
+      ]
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {
+        "_cell_guid": "f3387d0b-5627-1e62-a973-88ce8f9952dc"
+      },
+      "source": [
+        "So okay, this is my first notebook in Kaggle and I am very excited writing this. First thing first, my name is Rhyando .......... Just kidding, I do not want to explain myself in the notebook. Ok straight to the point below.\n",
+        "\n",
+        "\n",
+        " **1. Read train.csv and test.csv data**\n",
+        "\n",
+        "Do not mind the very first line of the script, It was only to input the library that I usually need when I use R. So, I just copied and pasted every time to ensure I have every library that I might need.  The new library for me is \"rpart\" and \"rpart.plot\" to implement Arda Yildrim solution on decision tree prediction analysis."
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "_cell_guid": "b4156cf2-9692-74a2-4fcf-630e4f5e7f8f"
+      },
+      "outputs": [],
+      "source": [
+        "### from Arda Yildrim Solution ###\n",
+        "\n",
+        "###############################\n",
+        "######  READ ALL SOURCE  ######\n",
+        "###############################\n",
+        "\n",
+        "list.of.packages <- c(\"stringr\",\"data.table\",\"taRifx\",\"methods\",\"rgdal\",\"sp\",\"maptools\",\"zoo\",\"reshape2\",\"plyr\",\"rgeos\",\"reshape\",\"tidyr\",\"ggplot2\",\"rpart\",\"rpart.plot\")\n",
+        "new.packages <- list.of.packages[!(list.of.packages %in% installed.packages()[,\"Package\"])]\n",
+        "if(length(new.packages)) install.packages(new.packages,repos=\"http://cran.r-project.org\")\n",
+        "lapply(list.of.packages, library, character.only=T)\n",
+        "    \n",
+        "### Read data ###\n",
+        "test<-read.csv(\"../input/test.csv\",sep=\",\",header=TRUE)\n",
+        "train<-read.csv(\"../input/train.csv\",sep=\",\",header=TRUE)\n",
+        "    \n",
+        "head(train)\n"
+      ]
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {
+        "_cell_guid": "81726be8-8aa2-74f9-21a0-af1a0f851795"
+      },
+      "source": [
+        "If you read the data, there will be blank value and NA value, so the script below will make the NA value as our general value of [blank] and NA value. The plot below depicted missing value for each column within test and train dataset combined together. "
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "_cell_guid": "582a3d2b-2d46-7672-b80c-83e8912fc9c7"
+      },
+      "outputs": [],
+      "source": [
+        "# there are many blank data in the dataset, firstly, we need to generalized the missing value #\n",
+        "\n",
+        "### Tidy up NA data ###\n",
+        "test$Survived<-NA\n",
+        "combine<-rbind(test,train)\n",
+        "combine.r<-combine\n",
+        "combine<-as.data.frame(apply(combine, 2, function(x) gsub(\"^$|^ $\", NA, x)))\n",
+        "    \n",
+        "### See NA value ###\n",
+        "sapply(combine,function(x) sum(is.na(x)))\n",
+        "par(mar = c(7,4,4,2) + 0.1)\n",
+        "barplot(sapply(combine,function(x) sum(is.na(x))),las=3,mar=c(5,4,4,2),main=\"NA Value Count\")"
+      ]
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {
+        "_cell_guid": "23fff157-4e99-d100-4802-b434833ad4ca"
+      },
+      "source": [
+        "As you can see, we have Age, Fare, Cabin, and Embarked missing value. \"Survived\" column has a missing value as well but we neglect them because it was the column that we need to predict for \"test\" dataset. Maybe you are wondering why we combine the test and train dataset. The reason was to get more value on the missing value column so we could make the assumption better.\n",
+        "\n",
+        " **2. Tidy up the data**\n",
+        "\n",
+        "So now, we already know the column which had a missing value, than we could try to fill in those missing value with our own assumption. As a note, we neglect cabin data because of large missing value of almost 1.000 data and there is no pattern available as a causal relationship to cabin data.\n",
+        "\n",
+        " - Fare missing value = There is causal relationship between the Pclass and Fare value in the dataset, so we fill in the missing value based on Pclass factor and median Fare value."
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "_cell_guid": "33a33d55-a086-f16f-d5fa-28bb7e76b939"
+      },
+      "outputs": [],
+      "source": [
+        "# if you see on the plot or summary produced on the code above, there are 263,1,1014,2,and 418 missing value on Age, Fare, Cabin, Embarked, and Survived #\n",
+        "# Except survived parameter, whom we will find the result on, we will make an assumption based on causal relationship from the other parameter #\n",
+        "# first, to fill in the fare column, we take Pclass as our reference because it showed causal relationship with fare #\n",
+        "\n",
+        "### fill in NA in Fare ###\n",
+        "combine$Pclass<-as.character(combine$Pclass)\n",
+        "combine$Fare<-as.numeric(as.character(combine$Fare))\n",
+        "freq<-combine[,c(\"Pclass\",\"Fare\")]\n",
+        "ggplot(freq, aes(as.factor(Pclass), Fare)) + geom_boxplot()\n",
+        "# based on the plot at this step, there is a causal relationship for Pclass and Fare, so we use median value of Fare based on Pclass to fill in missing value in fare #\n",
+        "combine$fare.fill<-combine$Fare\n",
+        "combine[is.na(combine$fare.fill),]$fare.fill<-median(combine[combine$Pclass==combine[is.na(combine$fare.fill),]$Pclass,]$fare.fill,na.rm=TRUE)"
+      ]
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {
+        "_cell_guid": "8c413089-87aa-6374-1edc-69bfe04364df"
+      },
+      "source": [
+        " - Age missing value = If you see the \"Name\" data in our dataset, we have tittle nested inside of them, so we took out that tittle and create a column and see the causal relationship between the tittle of each person and age of them. The same as before, we create use median Age value of each tittle factor as our assumption."
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "_cell_guid": "de80678f-d782-d5f6-a27d-4fb5d8e1ea2e"
+      },
+      "outputs": [],
+      "source": [
+        "### separate the tittle ###\n",
+        "combine$tittle<-unlist(strsplit(as.character(combine$Name), \",\"))[c(F,T)]\n",
+        "combine$tittle<-substr(combine$tittle,2,str_locate(combine$tittle,\"[.]\")[,1])\n",
+        "\n",
+        "### tittle and age boxplot ###\n",
+        "combine$tittle<-as.character(combine$tittle)\n",
+        "combine$Age<-as.numeric(as.character(combine$Age))\n",
+        "freq<-combine[,c(\"tittle\",\"Age\")]\n",
+        "ggplot(freq, aes(as.factor(tittle), Age),las=3) + geom_boxplot()+theme(axis.text.x = element_text(angle = 90, hjust = 1))\n",
+        "\n",
+        "### fill in NA in Age ###\n",
+        "combine$Age<-as.numeric(as.character(combine$Age))\n",
+        "sumif<-aggregate(Age ~ tittle, data=combine, median)\n",
+        "names(sumif)[names(sumif)==\"Age\"]<-\"mean.tittle\"\n",
+        "combine$rownum<-c(1:nrow(combine))\n",
+        "combine<-merge(combine,sumif,by=\"tittle\",all.x=T,sort=FALSE)\n",
+        "combine<-combine[order(combine$rownum),]\n",
+        "combine$age.fill<-ifelse(is.na(combine$Age),round(combine$mean.tittle,0),combine$Age)"
+      ]
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {
+        "_cell_guid": "c4bc6ade-5aa5-e16a-95d9-a70de329fc7c"
+      },
+      "source": [
+        " - Embark missing value = We are skeptical about the point of embarkation in the relationship on survival of passenger. However, at second thoughts, we think that the survival capability of each nationality and people was different so we took embark point as our input to make the prediction. However, embark point has some missing value which we fill in with \"S\" or Southampton because of mostly people embarked from this point. "
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "_cell_guid": "519938a0-32f5-191f-57b2-6a37377d5f68"
+      },
+      "outputs": [],
+      "source": [
+        "### fill in NA in embark ###\n",
+        "combine$Embarked<-as.character(combine$Embarked)\n",
+        "combine$embarked.fill<-combine$Embarked\n",
+        "temp<-data.frame(table(combine$embarked.fill))\n",
+        "combine[is.na(combine$embarked.fill),]$embarked.fill<-as.character(temp[temp$Freq==max(temp$Freq),]$Var1)"
+      ]
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {
+        "_cell_guid": "7242e5c5-606d-e8da-f021-b420e9d211aa"
+      },
+      "source": [
+        "**3. Create model of prediction based on train.csv**\n",
+        "\n",
+        "After we fill in the missing data in our dataset, we need to create model based on whatever data that we have on the causal relationship that we have on each of column on the dataframe :\n",
+        "\n",
+        " - Age = If you see the titanic, which was based on true story, child comes first they are the priority inside the lifeboat.\n",
+        " - Sex = After child, the one that comes second was their mother or woman. \n",
+        " - tittle = tittle was the subset of the Name column and it indicate the status or occupation of each people which determine the survival rate of them in titanic sink disaster.\n",
+        " - Pclass = It was the economic status of each passenger which could indicate the priority of who dive in the ocean to save their life or safely drifting in the lifeboat.\n",
+        " - Fare = It is the power of money for your safety. the more money that you pay or you have, the more likely you will be saved on disastrous event.\n",
+        " - Total relative = the number of your spouse, children, and family relative is also the factor for passenger's survival.\n",
+        " - Embark = as explained earlier, the embark point is also the factor for passenger's survival. \n",
+        "\n",
+        "At the end, we create decision tree using train dataset as our prediction's model"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "_cell_guid": "ccce3967-4233-f77c-fed0-690bdd9c6ae2"
+      },
+      "outputs": [],
+      "source": [
+        "### total relative calculation ###\n",
+        "combine$SibS<-as.numeric(as.character(combine$SibS))\n",
+        "combine$Parch<-as.numeric(as.character(combine$Parch))\n",
+        "combine$total.relative<-combine$SibS+combine$Parch\n",
+        "\n",
+        "### tittle and survived plot ###\n",
+        "freq<-as.data.frame(table(combine[,c(\"tittle\",\"Survived\")]))\n",
+        "ggplot(freq, aes(tittle, Freq)) + geom_bar(aes(fill = Survived),stat=\"identity\", position = \"dodge\")+theme(axis.text.x = element_text(angle = 90, hjust = 1))\n",
+        "\n",
+        "### sex and survived plot ###\n",
+        "freq<-as.data.frame(table(combine[,c(\"Sex\",\"Survived\")]))\n",
+        "ggplot(freq, aes(Sex, Freq)) + geom_bar(aes(fill = Survived),stat=\"identity\", position = \"dodge\")\n",
+        "\n",
+        "### age range and survived plot ###\n",
+        "combine$age.range<-ifelse(combine$age.fill<5,\"TODDLER\",ifelse(combine$age.fill<10,\"HIGHSCHOOL\",ifelse(combine$age.fill<21,\"TEEN\",ifelse(combine$age.fill<35,\"ADULT\",ifelse(combine$age.fill<55,\"OLDADULT\",ifelse(combine$age.fill<200,\"ELDERLY\",))))))\n",
+        "freq<-as.data.frame(table(combine[,c(\"age.range\",\"Survived\")]))\n",
+        "ggplot(freq, aes(age.range, Freq)) + geom_bar(aes(fill = Survived),stat=\"identity\",, position = \"dodge\") + scale_x_discrete(limits=c(\"TODDLER\",\"HIGHSCHOOL\",\"TEEN\",\"ADULT\",\"OLDADULT\",\"ELDERLY\"))\n",
+        "\n",
+        "### Pclass and survived plot ###\n",
+        "freq<-as.data.frame(table(combine[,c(\"Pclass\",\"Survived\")]))\n",
+        "ggplot(freq, aes(Pclass, Freq)) + geom_bar(aes(fill = Survived),stat=\"identity\", position = \"dodge\")\n",
+        "\n",
+        "### Fare range and survived plot ###\n",
+        "combine$fare.range<-ifelse(combine$fare.fill==0,\"FREE\",ifelse(combine$fare.fill<=as.numeric(quantile(combine[combine$fare.fill>0,]$fare.fill)[2]),\"CHEAP\",ifelse(combine$fare.fill<=as.numeric(quantile(combine[combine$fare.fill>0,]$fare.fill)[3]),\"CHEAP-MODERATE\",ifelse(combine$fare.fill<=as.numeric(quantile(combine[combine$fare.fill>0,]$fare.fill)[4]),\"MODERATE-EXPENSIVE\",ifelse(combine$fare.fill<=as.numeric(quantile(combine[combine$fare.fill>0,]$fare.fill)[5]),\"EXPENSIVE\",\"\")))))\n",
+        "freq<-as.data.frame(table(combine[,c(\"fare.range\",\"Survived\")]))\n",
+        "ggplot(freq, aes(fare.range, Freq)) + geom_bar(aes(fill = Survived),stat=\"identity\", position = \"dodge\")\n",
+        "\n",
+        "### total relative range and survived plot ###\n",
+        "combine$total.relative.range<-ifelse(combine$total.relative==0,\"NO_RELATIVE\",ifelse(combine$total.relative<=as.numeric(quantile(combine[combine$total.relative>0,]$total.relative)[2]),\"SMALL_FAMILY\",ifelse(combine$total.relative<=as.numeric(quantile(combine[combine$total.relative>0,]$total.relative)[3]),\"SMALL-MODERATE_FAMILY\",ifelse(combine$total.relative<=as.numeric(quantile(combine[combine$total.relative>0,]$total.relative)[4]),\"MODERATE-BIG_FAMILY\",ifelse(combine$total.relative<=as.numeric(quantile(combine[combine$total.relative>0,]$total.relative)[5]),\"BIG_FAMILY\")))))\n",
+        "freq<-as.data.frame(table(combine[,c(\"total.relative.range\",\"Survived\")]))\n",
+        "ggplot(freq, aes(total.relative.range, Freq)) + geom_bar(aes(fill = Survived),stat=\"identity\", position = \"dodge\")+theme(axis.text.x = element_text(angle = 90, hjust = 1))+ scale_x_discrete(limits=c(\"NO_RELATIVE\",\"SMALL_FAMILY\",\"SMALL-MODERATE_FAMILY\",\"MODERATE-BIG_FAMILY\",\"BIG_FAMILY\"))\n",
+        "\n",
+        "### embarked and survived plot ###\n",
+        "freq<-as.data.frame(table(combine[,c(\"embarked.fill\",\"Survived\")]))\n",
+        "ggplot(freq, aes(embarked.fill, Freq)) + geom_bar(aes(fill = Survived),stat=\"identity\", position = \"dodge\")\n",
+        "\n",
+        "### ctree ###\n",
+        "test.edit<-combine[c(1:nrow(test)),]\n",
+        "train.edit<-combine[c(nrow(test)+1:nrow(train)),]\n",
+        "test.edit[test.edit$tittle==\"Dona.\",]$tittle<-\"Lady.\"\n",
+        "my_tree <- rpart(Survived ~  Sex + tittle + age.fill + Pclass + fare.fill  + total.relative + embarked.fill , data = combine, method = \"class\", control=rpart.control(cp=0.0001))\n",
+        "prp(my_tree, type = 4, extra = 100)"
+      ]
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {
+        "_cell_guid": "5058e47f-1606-e124-1dc6-01ba0481b0fd"
+      },
+      "source": [
+        " **4. Make prediction based on test.csv**\n",
+        "\n",
+        "Finally, applying the decision tree above, we tried to predict the likelihood of survival on the test dataset. "
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "_cell_guid": "31aba6d5-791b-b8f9-7269-3ced7608fc9c"
+      },
+      "outputs": [],
+      "source": [
+        "my_prediction <- predict(my_tree, test.edit, type = \"class\")\n",
+        "test.edit<-cbind(test.edit,my_prediction)\n",
+        "test.result<-as.data.frame(cbind(test.edit$PassengerId,as.character(test.edit$my_prediction)))\n",
+        "names(test.result)<-c(\"PassengerId\",\"Survived\")\n",
+        "write.csv(test.result, file = 'R-EMBULAN_Titanic.csv', sep=\",\", row.names = FALSE)\n",
+        "head(test.result)\n",
+        "#write.csv(test.result,\"C:/Users/ERHYADI/Desktop/Kaggle/Titanic/R-EMBULAN_Titanic.csv\", sep=\",\",row.names=FALSE)"
+      ]
+    }
+  ],
+  "metadata": {
+    "_change_revision": 0,
+    "_is_fork": false,
+    "kernelspec": {
+      "display_name": "R",
+      "language": "R",
+      "name": "ir"
+    },
+    "language_info": {
+      "codemirror_mode": "r",
+      "file_extension": ".r",
+      "mimetype": "text/x-r-source",
+      "name": "R",
+      "pygments_lexer": "r",
+      "version": "3.3.1"
+    }
+  },
+  "nbformat": 4,
+  "nbformat_minor": 0
+}

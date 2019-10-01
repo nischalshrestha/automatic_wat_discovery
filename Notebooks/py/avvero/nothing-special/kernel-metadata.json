@@ -1,0 +1,17 @@
+{
+  "code_file": "nothing-special.ipynb",
+  "competition_sources": [
+    "titanic"
+  ],
+  "kernel_type": "notebook",
+  "enable_gpu": false,
+  "keywords": [],
+  "dataset_sources": [],
+  "id_no": 181112,
+  "enable_internet": false,
+  "title": "Nothing special",
+  "is_private": false,
+  "id": "avvero/nothing-special",
+  "language": "python",
+  "kernel_sources": []
+}

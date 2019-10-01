@@ -1,0 +1,17 @@
+{
+  "competition_sources": [
+    "titanic"
+  ],
+  "language": "r",
+  "enable_internet": false,
+  "kernel_type": "notebook",
+  "enable_gpu": false,
+  "title": "Titanic sinking - Analysis",
+  "id_no": 174547,
+  "keywords": [],
+  "code_file": "titanic-sinking-analysis.irnb",
+  "kernel_sources": [],
+  "id": "rogrezende/titanic-sinking-analysis",
+  "dataset_sources": [],
+  "is_private": false
+}

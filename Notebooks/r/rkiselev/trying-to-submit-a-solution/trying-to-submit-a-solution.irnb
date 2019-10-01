@@ -1,0 +1,84 @@
+{
+  "cells": [
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "_cell_guid": "f9c46a9f-4680-995c-edee-524f056c650d"
+      },
+      "outputs": [],
+      "source": [
+        "library(ggplot2)\n",
+        "library(readr)\n",
+        "library(rpart)\n",
+        "library(rpart.plot)\n",
+        "library(RColorBrewer)\n",
+        "\n",
+        "train <- read.csv(\"../input/train.csv\")\n",
+        "test <- read.csv(\"../input/test.csv\")"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "_cell_guid": "85a5e7a8-b700-cf4e-baa2-f004b0d0ba02"
+      },
+      "outputs": [],
+      "source": [
+        "# Build the decision tree\n",
+        "my_tree <- rpart(Survived ~ Pclass + Sex +  Age + SibSp + Parch + Fare + Embarked, data = train, method = \"class\", cp=0, minsplit=50)\n",
+        "rpart.plot(my_tree, type=1)"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "_cell_guid": "456defb9-d2e5-02fb-6b8f-504abe2bdb91"
+      },
+      "outputs": [],
+      "source": [
+        "# Make predictions on the test set\n",
+        "my_prediction <- predict(my_tree, newdata = test, type = \"class\")\n",
+        "\n",
+        "# Finish the data.frame() call\n",
+        "my_solution <- data.frame(PassengerId = test$PassengerId, Survived = my_prediction)\n",
+        "\n",
+        "# Use nrow() on my_solution\n",
+        "nrow(my_solution)\n",
+        "\n",
+        "# Finish the write.csv() call\n",
+        "write.csv(my_solution, file = \"my_solution.csv\", row.names = FALSE)"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "_cell_guid": "e1fe9ad3-995f-0957-3577-f3a61af1e126"
+      },
+      "outputs": [],
+      "source": ""
+    }
+  ],
+  "metadata": {
+    "_change_revision": 0,
+    "_is_fork": false,
+    "kernelspec": {
+      "display_name": "R",
+      "language": "R",
+      "name": "ir"
+    },
+    "language_info": {
+      "codemirror_mode": "r",
+      "file_extension": ".r",
+      "mimetype": "text/x-r-source",
+      "name": "R",
+      "pygments_lexer": "r",
+      "version": "3.3.3"
+    }
+  },
+  "nbformat": 4,
+  "nbformat_minor": 0
+}

@@ -1,0 +1,17 @@
+{
+  "id_no": 1002303,
+  "dataset_sources": [],
+  "keywords": [],
+  "competition_sources": [
+    "titanic"
+  ],
+  "language": "python",
+  "id": "indramani/titanic2",
+  "code_file": "titanic2.ipynb",
+  "enable_internet": false,
+  "is_private": false,
+  "kernel_sources": [],
+  "title": "Titanic2",
+  "enable_gpu": false,
+  "kernel_type": "notebook"
+}

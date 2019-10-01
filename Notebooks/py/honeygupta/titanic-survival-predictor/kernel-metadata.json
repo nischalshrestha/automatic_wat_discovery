@@ -1,0 +1,19 @@
+{
+  "code_file": "titanic-survival-predictor.ipynb",
+  "keywords": [
+    "beginner"
+  ],
+  "enable_internet": false,
+  "id_no": 465257,
+  "language": "python",
+  "dataset_sources": [],
+  "kernel_type": "notebook",
+  "competition_sources": [
+    "titanic"
+  ],
+  "enable_gpu": false,
+  "title": "Titanic Survival Predictor",
+  "is_private": false,
+  "id": "honeygupta/titanic-survival-predictor",
+  "kernel_sources": []
+}

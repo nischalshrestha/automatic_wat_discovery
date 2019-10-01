@@ -1,0 +1,22 @@
+{
+  "dataset_sources": [],
+  "competition_sources": [
+    "titanic"
+  ],
+  "enable_gpu": false,
+  "is_private": false,
+  "kernel_sources": [],
+  "language": "python",
+  "id_no": 1405327,
+  "id": "wutrng/a-newbie-data-scientist-take-on-titanic-rfc",
+  "kernel_type": "notebook",
+  "title": "A newbie data scientist take on titanic - rfc",
+  "enable_internet": false,
+  "code_file": "a-newbie-data-scientist-take-on-titanic-rfc.ipynb",
+  "keywords": [
+    "beginner",
+    "data visualization",
+    "classification",
+    "starter code"
+  ]
+}

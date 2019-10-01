@@ -1,0 +1,17 @@
+{
+  "competition_sources": [
+    "titanic"
+  ],
+  "is_private": false,
+  "title": "Titanic_Sub1",
+  "kernel_sources": [],
+  "enable_gpu": false,
+  "id_no": 297109,
+  "dataset_sources": [],
+  "keywords": [],
+  "language": "r",
+  "code_file": "titanic-sub1.irnb",
+  "id": "hellovenkat/titanic-sub1",
+  "kernel_type": "notebook",
+  "enable_internet": false
+}

@@ -1,0 +1,17 @@
+{
+  "id_no": 1903544,
+  "competition_sources": [
+    "titanic"
+  ],
+  "keywords": [],
+  "dataset_sources": [],
+  "enable_gpu": false,
+  "id": "bubblride/titanic-random-forest-4-phonetic",
+  "title": "titanic, random forest 4, phonetic",
+  "language": "python",
+  "is_private": false,
+  "code_file": "titanic-random-forest-4-phonetic.ipynb",
+  "kernel_sources": [],
+  "kernel_type": "notebook",
+  "enable_internet": false
+}

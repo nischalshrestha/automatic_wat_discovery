@@ -1,0 +1,17 @@
+{
+  "dataset_sources": [],
+  "id": "shivamsizzling/titanic-ml-by-shivam",
+  "competition_sources": [
+    "titanic"
+  ],
+  "is_private": false,
+  "code_file": "titanic-ml-by-shivam.ipynb",
+  "id_no": 1834695,
+  "kernel_type": "notebook",
+  "keywords": [],
+  "kernel_sources": [],
+  "language": "python",
+  "title": "Titanic ML by Shivam",
+  "enable_internet": false,
+  "enable_gpu": false
+}

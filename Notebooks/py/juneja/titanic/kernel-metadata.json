@@ -1,0 +1,17 @@
+{
+  "enable_internet": false,
+  "title": "Titanic",
+  "kernel_type": "notebook",
+  "language": "python",
+  "enable_gpu": false,
+  "kernel_sources": [],
+  "keywords": [],
+  "dataset_sources": [],
+  "is_private": false,
+  "code_file": "titanic.ipynb",
+  "id": "juneja/titanic",
+  "id_no": 153260,
+  "competition_sources": [
+    "titanic"
+  ]
+}

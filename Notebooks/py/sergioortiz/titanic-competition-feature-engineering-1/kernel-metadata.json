@@ -1,0 +1,22 @@
+{
+  "enable_internet": false,
+  "code_file": "titanic-competition-feature-engineering-1.ipynb",
+  "id_no": 1970690,
+  "kernel_type": "notebook",
+  "title": "Titanic Competition: Feature Engineering #1",
+  "language": "python",
+  "dataset_sources": [],
+  "is_private": false,
+  "kernel_sources": [],
+  "enable_gpu": false,
+  "competition_sources": [
+    "titanic"
+  ],
+  "id": "sergioortiz/titanic-competition-feature-engineering-1",
+  "keywords": [
+    "tutorial",
+    "beginner",
+    "feature engineering",
+    "starter code"
+  ]
+}

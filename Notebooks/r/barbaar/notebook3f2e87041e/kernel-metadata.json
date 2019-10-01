@@ -1,0 +1,17 @@
+{
+  "kernel_sources": [],
+  "competition_sources": [
+    "titanic"
+  ],
+  "is_private": false,
+  "enable_internet": false,
+  "kernel_type": "notebook",
+  "language": "python",
+  "id": "barbaar/notebook3f2e87041e",
+  "dataset_sources": [],
+  "code_file": "notebook3f2e87041e.ipynb",
+  "title": "Notebook3f2e87041e",
+  "enable_gpu": false,
+  "keywords": [],
+  "id_no": 279759
+}

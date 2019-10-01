@@ -1,0 +1,17 @@
+{
+  "enable_gpu": false,
+  "title": "Notebookf71b9d6a7c",
+  "id": "alex3141/notebookf71b9d6a7c",
+  "language": "python",
+  "is_private": false,
+  "kernel_type": "notebook",
+  "code_file": "notebookf71b9d6a7c.ipynb",
+  "kernel_sources": [],
+  "dataset_sources": [],
+  "enable_internet": false,
+  "id_no": 218384,
+  "competition_sources": [
+    "titanic"
+  ],
+  "keywords": []
+}

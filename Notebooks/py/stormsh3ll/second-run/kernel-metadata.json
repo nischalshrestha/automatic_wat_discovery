@@ -1,0 +1,17 @@
+{
+  "keywords": [],
+  "is_private": false,
+  "kernel_sources": [],
+  "title": "Second Run",
+  "competition_sources": [
+    "titanic"
+  ],
+  "kernel_type": "notebook",
+  "enable_gpu": false,
+  "dataset_sources": [],
+  "id": "stormsh3ll/second-run",
+  "id_no": 940968,
+  "code_file": "second-run.ipynb",
+  "language": "python",
+  "enable_internet": false
+}

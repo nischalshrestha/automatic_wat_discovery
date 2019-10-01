@@ -1,0 +1,20 @@
+{
+  "title": "Titanic Survivors Prediction",
+  "keywords": [
+    "experimental design",
+    "data cleaning"
+  ],
+  "competition_sources": [
+    "titanic"
+  ],
+  "is_private": false,
+  "kernel_sources": [],
+  "dataset_sources": [],
+  "code_file": "titanic-survivors-prediction.ipynb",
+  "id": "vikasbz/titanic-survivors-prediction",
+  "enable_internet": false,
+  "language": "python",
+  "enable_gpu": false,
+  "id_no": 552715,
+  "kernel_type": "notebook"
+}

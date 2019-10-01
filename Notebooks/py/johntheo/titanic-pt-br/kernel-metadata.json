@@ -1,0 +1,17 @@
+{
+  "is_private": false,
+  "id": "johntheo/titanic-pt-br",
+  "kernel_type": "notebook",
+  "title": "Titanic[pt-br]",
+  "enable_gpu": true,
+  "dataset_sources": [],
+  "kernel_sources": [],
+  "language": "python",
+  "keywords": [],
+  "enable_internet": false,
+  "id_no": 1244075,
+  "competition_sources": [
+    "titanic"
+  ],
+  "code_file": "titanic-pt-br.ipynb"
+}

@@ -1,0 +1,17 @@
+{
+  "dataset_sources": [],
+  "id": "wonderkid/titanic-classifier",
+  "competition_sources": [
+    "titanic"
+  ],
+  "enable_internet": false,
+  "is_private": false,
+  "kernel_type": "notebook",
+  "keywords": [],
+  "id_no": 576435,
+  "code_file": "titanic-classifier.ipynb",
+  "kernel_sources": [],
+  "language": "python",
+  "title": "Titanic Classifier",
+  "enable_gpu": false
+}

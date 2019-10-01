@@ -1,0 +1,17 @@
+{
+  "kernel_sources": [],
+  "competition_sources": [
+    "titanic"
+  ],
+  "dataset_sources": [],
+  "kernel_type": "notebook",
+  "enable_internet": false,
+  "id": "traumong/notebook8e942e433a",
+  "enable_gpu": false,
+  "language": "python",
+  "title": "Notebook8e942e433a",
+  "is_private": false,
+  "id_no": 243265,
+  "code_file": "notebook8e942e433a.ipynb",
+  "keywords": []
+}

@@ -1,0 +1,17 @@
+{
+  "language": "python",
+  "enable_internet": false,
+  "code_file": "titanic-exploratory-analysis-with-pca.ipynb",
+  "id": "tiagoantao/titanic-exploratory-analysis-with-pca",
+  "kernel_type": "notebook",
+  "is_private": false,
+  "keywords": [],
+  "kernel_sources": [],
+  "enable_gpu": false,
+  "title": "Titanic - Exploratory Analysis (with PCA)",
+  "id_no": 92848,
+  "competition_sources": [
+    "titanic"
+  ],
+  "dataset_sources": []
+}

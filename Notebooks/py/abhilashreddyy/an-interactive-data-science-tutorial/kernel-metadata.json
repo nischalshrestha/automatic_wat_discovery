@@ -1,0 +1,17 @@
+{
+  "enable_internet": false,
+  "code_file": "an-interactive-data-science-tutorial.ipynb",
+  "id": "abhilashreddyy/an-interactive-data-science-tutorial",
+  "language": "python",
+  "kernel_type": "notebook",
+  "is_private": false,
+  "enable_gpu": false,
+  "keywords": [],
+  "title": "An Interactive Data Science Tutorial",
+  "dataset_sources": [],
+  "kernel_sources": [],
+  "id_no": 220370,
+  "competition_sources": [
+    "titanic"
+  ]
+}

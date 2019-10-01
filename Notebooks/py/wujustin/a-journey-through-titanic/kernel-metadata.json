@@ -1,0 +1,17 @@
+{
+  "language": "python",
+  "dataset_sources": [],
+  "kernel_type": "notebook",
+  "is_private": false,
+  "title": "A Journey through Titanic",
+  "kernel_sources": [],
+  "enable_internet": false,
+  "enable_gpu": false,
+  "id_no": 131024,
+  "keywords": [],
+  "id": "wujustin/a-journey-through-titanic",
+  "code_file": "a-journey-through-titanic.ipynb",
+  "competition_sources": [
+    "titanic"
+  ]
+}

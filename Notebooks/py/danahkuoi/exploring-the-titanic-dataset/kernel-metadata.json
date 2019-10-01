@@ -1,0 +1,17 @@
+{
+  "keywords": [],
+  "enable_internet": false,
+  "language": "python",
+  "is_private": false,
+  "id": "danahkuoi/exploring-the-titanic-dataset",
+  "code_file": "exploring-the-titanic-dataset.ipynb",
+  "competition_sources": [
+    "titanic"
+  ],
+  "id_no": 180980,
+  "title": "Exploring the Titanic dataset",
+  "dataset_sources": [],
+  "enable_gpu": false,
+  "kernel_sources": [],
+  "kernel_type": "notebook"
+}

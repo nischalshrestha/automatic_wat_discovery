@@ -1,0 +1,17 @@
+{
+  "title": "Titanic EDA with R",
+  "kernel_type": "notebook",
+  "id_no": 305593,
+  "keywords": [],
+  "competition_sources": [
+    "titanic"
+  ],
+  "kernel_sources": [],
+  "code_file": "titanic-eda-with-r.irnb",
+  "language": "r",
+  "is_private": false,
+  "id": "danedrmr/titanic-eda-with-r",
+  "enable_gpu": false,
+  "dataset_sources": [],
+  "enable_internet": false
+}

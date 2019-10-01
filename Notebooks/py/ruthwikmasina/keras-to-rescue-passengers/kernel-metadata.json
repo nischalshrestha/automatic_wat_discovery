@@ -1,0 +1,17 @@
+{
+  "id": "ruthwikmasina/keras-to-rescue-passengers",
+  "kernel_sources": [],
+  "is_private": false,
+  "enable_internet": false,
+  "title": "Keras To Rescue Passengers",
+  "enable_gpu": false,
+  "competition_sources": [
+    "titanic"
+  ],
+  "code_file": "keras-to-rescue-passengers.ipynb",
+  "dataset_sources": [],
+  "kernel_type": "notebook",
+  "language": "python",
+  "keywords": [],
+  "id_no": 1374365
+}

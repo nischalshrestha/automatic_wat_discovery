@@ -1,0 +1,17 @@
+{
+  "keywords": [],
+  "kernel_sources": [],
+  "code_file": "titanic-kernel.ipynb",
+  "language": "python",
+  "kernel_type": "notebook",
+  "enable_gpu": false,
+  "dataset_sources": [],
+  "id": "unstablematter/titanic-kernel",
+  "enable_internet": false,
+  "id_no": 364364,
+  "is_private": false,
+  "title": "Titanic Kernel",
+  "competition_sources": [
+    "titanic"
+  ]
+}

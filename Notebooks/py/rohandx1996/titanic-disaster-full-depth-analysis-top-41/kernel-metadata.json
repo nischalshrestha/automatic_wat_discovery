@@ -1,0 +1,23 @@
+{
+  "keywords": [
+    "beginner",
+    "data cleaning",
+    "data visualization",
+    "classification",
+    "feature engineering"
+  ],
+  "id_no": 1247425,
+  "title": "Titanic Disaster full depth Analysis TOP 41%",
+  "kernel_type": "notebook",
+  "enable_gpu": false,
+  "language": "python",
+  "code_file": "titanic-disaster-full-depth-analysis-top-41.ipynb",
+  "dataset_sources": [],
+  "kernel_sources": [],
+  "id": "rohandx1996/titanic-disaster-full-depth-analysis-top-41",
+  "is_private": false,
+  "enable_internet": false,
+  "competition_sources": [
+    "titanic"
+  ]
+}

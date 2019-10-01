@@ -1,0 +1,17 @@
+{
+  "language": "python",
+  "kernel_type": "notebook",
+  "kernel_sources": [],
+  "id_no": 342770,
+  "enable_gpu": false,
+  "dataset_sources": [],
+  "enable_internet": false,
+  "code_file": "titanic-leo.ipynb",
+  "id": "shay23/titanic-leo",
+  "competition_sources": [
+    "titanic"
+  ],
+  "is_private": false,
+  "keywords": [],
+  "title": "Titanic_Leo"
+}

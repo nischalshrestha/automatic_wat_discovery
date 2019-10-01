@@ -1,0 +1,17 @@
+{
+  "title": "titanic_v01",
+  "is_private": false,
+  "kernel_type": "notebook",
+  "dataset_sources": [],
+  "competition_sources": [
+    "titanic"
+  ],
+  "id": "sandeep8530/titanic-v01",
+  "keywords": [],
+  "enable_internet": false,
+  "id_no": 188780,
+  "enable_gpu": false,
+  "code_file": "titanic-v01.ipynb",
+  "language": "python",
+  "kernel_sources": []
+}

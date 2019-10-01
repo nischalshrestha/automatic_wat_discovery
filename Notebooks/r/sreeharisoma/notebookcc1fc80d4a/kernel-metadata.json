@@ -1,0 +1,17 @@
+{
+  "enable_internet": false,
+  "dataset_sources": [],
+  "language": "r",
+  "code_file": "notebookcc1fc80d4a.irnb",
+  "id_no": 216569,
+  "keywords": [],
+  "is_private": false,
+  "enable_gpu": false,
+  "id": "sreeharisoma/notebookcc1fc80d4a",
+  "competition_sources": [
+    "titanic"
+  ],
+  "kernel_sources": [],
+  "kernel_type": "notebook",
+  "title": "Notebookcc1fc80d4a"
+}

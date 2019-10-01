@@ -1,0 +1,17 @@
+{
+  "is_private": false,
+  "id_no": 206014,
+  "keywords": [],
+  "title": "Notebookd97a3d3f92",
+  "dataset_sources": [],
+  "code_file": "notebookd97a3d3f92.ipynb",
+  "kernel_sources": [],
+  "competition_sources": [
+    "titanic"
+  ],
+  "enable_internet": false,
+  "kernel_type": "notebook",
+  "id": "vijaygopal2005/notebookd97a3d3f92",
+  "enable_gpu": false,
+  "language": "python"
+}

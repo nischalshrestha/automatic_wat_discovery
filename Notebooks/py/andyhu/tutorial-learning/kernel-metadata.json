@@ -1,0 +1,17 @@
+{
+  "kernel_type": "notebook",
+  "enable_internet": false,
+  "competition_sources": [
+    "titanic"
+  ],
+  "language": "python",
+  "enable_gpu": false,
+  "id": "andyhu/tutorial-learning",
+  "title": "Tutorial learning",
+  "dataset_sources": [],
+  "code_file": "tutorial-learning.ipynb",
+  "keywords": [],
+  "is_private": false,
+  "kernel_sources": [],
+  "id_no": 227729
+}

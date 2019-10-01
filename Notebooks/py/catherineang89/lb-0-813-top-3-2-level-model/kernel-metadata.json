@@ -1,0 +1,17 @@
+{
+  "kernel_type": "notebook",
+  "competition_sources": [
+    "titanic"
+  ],
+  "code_file": "lb-0-813-top-3-2-level-model.ipynb",
+  "is_private": false,
+  "id": "catherineang89/lb-0-813-top-3-2-level-model",
+  "language": "python",
+  "enable_internet": false,
+  "kernel_sources": [],
+  "dataset_sources": [],
+  "enable_gpu": false,
+  "id_no": 333332,
+  "title": " LB 0.813~  TOP 3% 2 level model",
+  "keywords": []
+}

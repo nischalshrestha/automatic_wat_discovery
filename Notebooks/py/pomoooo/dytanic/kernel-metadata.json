@@ -1,0 +1,17 @@
+{
+  "is_private": false,
+  "kernel_sources": [],
+  "kernel_type": "notebook",
+  "keywords": [],
+  "enable_gpu": false,
+  "language": "python",
+  "id_no": 377661,
+  "title": "Dytanic",
+  "competition_sources": [
+    "titanic"
+  ],
+  "id": "pomoooo/dytanic",
+  "code_file": "dytanic.ipynb",
+  "enable_internet": false,
+  "dataset_sources": []
+}

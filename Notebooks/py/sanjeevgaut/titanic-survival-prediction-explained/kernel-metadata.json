@@ -1,0 +1,22 @@
+{
+  "competition_sources": [
+    "titanic"
+  ],
+  "id_no": 1501856,
+  "language": "python",
+  "dataset_sources": [],
+  "is_private": false,
+  "keywords": [
+    "beginner",
+    "random forest",
+    "logistic regression",
+    "linear regression"
+  ],
+  "enable_internet": false,
+  "enable_gpu": false,
+  "title": "Titanic Survival Prediction Explained",
+  "id": "sanjeevgaut/titanic-survival-prediction-explained",
+  "kernel_sources": [],
+  "kernel_type": "notebook",
+  "code_file": "titanic-survival-prediction-explained.ipynb"
+}

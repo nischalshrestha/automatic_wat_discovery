@@ -1,0 +1,17 @@
+{
+  "language": "python",
+  "is_private": false,
+  "kernel_type": "notebook",
+  "enable_gpu": false,
+  "title": "Random Forests",
+  "id_no": 62775,
+  "id": "milkingcows4u/random-forests",
+  "dataset_sources": [],
+  "kernel_sources": [],
+  "enable_internet": false,
+  "keywords": [],
+  "code_file": "random-forests.ipynb",
+  "competition_sources": [
+    "titanic"
+  ]
+}

@@ -1,0 +1,21 @@
+{
+  "code_file": "titanic-quick-model-first-then-data-manipulation.ipynb",
+  "language": "python",
+  "title": "Titanic: quick model first, then data manipulation",
+  "competition_sources": [
+    "titanic"
+  ],
+  "id": "szaitseff/titanic-quick-model-first-then-data-manipulation",
+  "enable_internet": false,
+  "enable_gpu": false,
+  "dataset_sources": [],
+  "id_no": 1248219,
+  "kernel_type": "notebook",
+  "is_private": false,
+  "kernel_sources": [],
+  "keywords": [
+    "beginner",
+    "classification",
+    "logistic regression"
+  ]
+}

@@ -1,0 +1,554 @@
+{
+  "cells": [
+    {
+      "cell_type": "markdown",
+      "metadata": {
+        "_cell_guid": "205eb00d-9fd6-ce98-7671-b2e68bb0e92f"
+      },
+      "source": [
+        "Here's my first shot at kaggle and machine learning. "
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "_cell_guid": "538dfe72-78bd-4204-a314-4394620e1baf"
+      },
+      "outputs": [],
+      "source": [
+        "# This R environment comes with all of CRAN preinstalled, as well as many other helpful packages\n",
+        "# The environment is defined by the kaggle/rstats docker image: https://github.com/kaggle/docker-rstats\n",
+        "# For example, here's several helpful packages to load in \n",
+        "\n",
+        "library(ggplot2)\n",
+        "library(readr)\n",
+        "library(plyr)\n",
+        "library(dplyr)\n",
+        "#library(mice) # imputation\n",
+        "library(randomForest) # classification algorithm\n",
+        "\n",
+        "# Input data files are available in the \"../input/\" directory.\n",
+        "# For example, running this (by clicking run or pressing Shift+Enter) will list the files in the input directory\n",
+        "\n",
+        "system(\"ls ../input\")\n",
+        "# Any results you write to the current directory are saved as output."
+      ]
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {
+        "_cell_guid": "afda4cc8-1e7d-2208-b0e3-a1f3e56e5419"
+      },
+      "source": [
+        "Lets have a quick look at the data."
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "_cell_guid": "660f29c1-2281-ec7a-0ff4-eab312ff2bee"
+      },
+      "outputs": [],
+      "source": [
+        "train <- read.csv(\"../input/train.csv\", stringsAsFactors=F)\n",
+        "test <- read.csv(\"../input/test.csv\", stringsAsFactors=F)\n",
+        "\n",
+        "str(train)\n",
+        "str(test)"
+      ]
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {
+        "_cell_guid": "e7e0b5b1-ac7e-8fe5-b5f7-e0e8263b5043"
+      },
+      "source": [
+        "It looks like the test set is about half the size of the training set, and it doesn't have the variable `Survived`. Most of the variable names are pretty self-explanatory, except for... `SibSp`? Parch? Embarked is also a little ambiguous. \n",
+        "\n",
+        "After having a look at the notes about the data,\n",
+        "\n",
+        " - `SibSp` is Number of Siblings/Spouses Aboard\n",
+        " - `Parch` is Number of Parents/Children Aboard\n",
+        " - `Embarked` is Port of Embarkation (C =    Cherbourg; Q =\n",
+        "   Queenstown; S = Southampton)\n",
+        "\n",
+        "Ok. I'm already seeing an NA in our Age variable and \"\" in Cabin. I wonder what else is missing in our data? "
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "_cell_guid": "2068e185-0e36-0e76-ea59-274c60e7f85d"
+      },
+      "outputs": [],
+      "source": [
+        "#First, make a full set from train and test\n",
+        "\n",
+        "#Check that there are no NAs in train$Survive\n",
+        "train %>%\n",
+        "summarise(numSurviveNAs = sum(is.na(Survived)))\n",
+        "\n",
+        "#Create a test$Survived column so we can combine train and test\n",
+        "test$Survived <- NA\n",
+        "full <- rbind(train, test)\n",
+        "\n",
+        "str(full)"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "_cell_guid": "27418721-9b1d-5069-a6d5-4a4eb655284f"
+      },
+      "outputs": [],
+      "source": [
+        "#Which variables have missing data?\n",
+        "varMissings <- c()\n",
+        "for(column in names(full)) {\n",
+        "    misses <- sapply(full[[column]], function(x) {return(x=='' | is.na(x))})\n",
+        "    varMissings <- c(varMissings, sum(misses))\n",
+        "}\n",
+        "names(varMissings) <- names(full)\n",
+        "\n",
+        "varMissings"
+      ]
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {
+        "_cell_guid": "22d11fae-7ce6-2917-b1c8-387b1a035096"
+      },
+      "source": [
+        "It seems like Age and Cabin have a lot of missing data, Fare has one, and Embarked has two missing. I'll fill in the missing data later. For now, I want to explore more about what the data looks like."
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "_cell_guid": "d7992e78-3486-84d3-538a-c58d142d6648"
+      },
+      "outputs": [],
+      "source": [
+        "\n",
+        "makeBarPlot <- function(df, column) {\n",
+        "    print(column)\n",
+        "    column <- as.name(column)\n",
+        "    #tabulatedDf <- df %>%\n",
+        "    #    group_by_(column) %>%\n",
+        "    #    summarise(count = n())\n",
+        "    tabulatedDf <- count(df, column) \n",
+        "    head(tabulatedDf)\n",
+        "    ggplot(tabulatedDf, aes(x=column, y=count, fill=factor(column), label=count)) +\n",
+        "        geom_bar(stat=\"identity\") +\n",
+        "        labs(title=\"Bar Graph of Survival\", fill=column)  +\n",
+        "       geom_text(aes(y = count + 10), position = position_dodge(0.9))\n",
+        "}\n",
+        "\n",
+        "makeBarPlot(full, \"Survived\")"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "_cell_guid": "961ca9ce-f073-eb0d-c765-0d4a7e8b9a80"
+      },
+      "outputs": [],
+      "source": [
+        "#Categorical variables\n",
+        "\n",
+        "survived <- full %>%\n",
+        "    group_by(Survived) %>%\n",
+        "    summarise(count = n())\n",
+        "ggplot(survived, aes(x=Survived, y=count, fill=factor(Survived), label=count)) +\n",
+        "    geom_bar(stat=\"identity\") +\n",
+        "    labs(title=\"Bar Graph of Survival\", fill=\"Survived\") +\n",
+        "    geom_text(aes(y = count + 10), position = position_dodge(0.9))\n",
+        "\n",
+        "pclass <- full %>%\n",
+        "    group_by(Pclass) %>%\n",
+        "    summarise(count = n())\n",
+        "ggplot(pclass, aes(x=Pclass, y=count, fill=factor(Pclass), label=count)) +\n",
+        "    geom_bar(stat=\"identity\") +\n",
+        "    labs(title=\"Bar Graph of Class\", fill=\"Survived\") +\n",
+        "    geom_text(aes(y = count + 10), position = position_dodge(0.9))\n",
+        "\n",
+        "sex <- full %>%\n",
+        "    group_by(Sex) %>%\n",
+        "    summarise(count = n())\n",
+        "ggplot(sex, aes(x=Sex, y=count, fill=Sex, label=count)) +\n",
+        "    geom_bar(stat=\"identity\") +\n",
+        "    labs(title=\"Bar Graph of Gender\", fill=\"Sex\")  +\n",
+        "   geom_text(aes(y = count + 10), position = position_dodge(0.9))\n",
+        "\n",
+        "embarked <- full %>%\n",
+        "    group_by(Embarked) %>%\n",
+        "    summarise(count = n())\n",
+        "ggplot(embarked, aes(x=Embarked, y=count, fill=factor(Embarked), label=count)) +\n",
+        "    geom_bar(stat=\"identity\") +\n",
+        "    labs(title=\"Bar Graph of Embarkment Location\", fill=\"Survived\") +\n",
+        "    geom_text(aes(y = count + 10), position = position_dodge(0.9))"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "_cell_guid": "a9f8f3e0-ad87-1d6f-6fbf-e43026ae2ea9"
+      },
+      "outputs": [],
+      "source": [
+        "#continuous variables\n",
+        "\n",
+        "ggplot(full, aes(x=Age)) +\n",
+        "    geom_histogram() +\n",
+        "    labs(title=\"Histogram of Age\")\n",
+        "\n",
+        "ggplot(full, aes(x=Sibsp)) +\n",
+        "    geom_histogram() +\n",
+        "    labs(title=\"Histogram of Siblings and Spouses\")\n",
+        "\n",
+        "ggplot(full, aes(x=Parch)) +\n",
+        "    geom_histogram() +\n",
+        "    labs(title=\"Histogram of Parents and Children\")\n",
+        "\n",
+        "ggplot(full, aes(x=Fare)) +\n",
+        "    geom_histogram() +\n",
+        "    labs(title=\"Histogram of Fare\")\n",
+        "\n",
+        "summary(full$Age)\n",
+        "#Sibsp\n",
+        "#Parch\n",
+        "#fare\n"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "_cell_guid": "24c67cc8-0296-dea1-9193-cea77544f147"
+      },
+      "outputs": [],
+      "source": [
+        "#Continuous\n",
+        "\n",
+        "ggplot(full, aes(Age)) +\n",
+        "    geom_histogram() +\n",
+        "    labs(title=\"Histogram of Age\")\n",
+        "ggplot(full, aes(Sibsp)) +\n",
+        "    geom_histogram() +\n",
+        "    labs(title=\"Histogram of Number of Siblings and Spouses\")\n",
+        "ggplot(full, aes(Parch)) +\n",
+        "    geom_histogram() +\n",
+        "    labs(title=\"Histogram of Number of Parents and Children\")\n",
+        "ggplot(full, aes(Fare)) +\n",
+        "    geom_histogram() +\n",
+        "    labs(title=\"Histogram of Fares\")\n"
+      ]
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {
+        "_cell_guid": "1f1155fe-f40c-2aee-8e65-cc366976c76d"
+      },
+      "source": [
+        "##Imputation"
+      ]
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {
+        "_cell_guid": "fbd37baa-2597-aada-4b1e-6e71974711c9"
+      },
+      "source": [
+        "A while ago, we noticed that Age and Cabin have a lot of missing data, Fare has one, and Embarked has two missing values.\n",
+        "\n",
+        "For the sake of time, I'll just tackle the small tasks and fill in Fare and Embarked, though [Megan Risdal's kernel][1] has a cool way of modeling and guessing age based on other things\n",
+        "\n",
+        "\n",
+        "  [1]: https://www.kaggle.com/mrisdal/titanic/exploring-survival-on-the-titanic"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "_cell_guid": "79ba322b-8c7d-ece5-d24e-cc1b35248f28"
+      },
+      "outputs": [],
+      "source": [
+        "#Check out the person who is missing fare\n",
+        "full[is.na(full$Fare),]"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "_cell_guid": "12d779b9-9ae5-f4c5-84c1-16e0914ed860"
+      },
+      "outputs": [],
+      "source": [
+        "#How much do people of his class and age tend to pay?\n",
+        "thirdClass <- full[full$Pclass==3,]\n",
+        "print(paste(\"The median fare of third class passengers is:\", median(thirdClass$Fare, na.rm=T)))\n",
+        "\n",
+        "par(mfrow=c(1, 2))\n",
+        "ggplot(thirdClass, aes(x=Age, y=Fare)) +\n",
+        "    geom_point() +\n",
+        "    labs(title=\"Scatterplot of Fares and Ages\")\n",
+        "ggplot(thirdClass, aes(Fare)) +\n",
+        "    geom_density() +\n",
+        "    labs(title=\"Density of Third Class Fares\")"
+      ]
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {
+        "_cell_guid": "91761251-f932-d400-8627-9f3a21694897"
+      },
+      "source": [
+        "Well, that median of $8.05 looks like an overwhelmingly popular price for fare, and there doesn't seem to be any senior elderly discounts, so I'll assume this guy paid $8.05."
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "_cell_guid": "1cd8f143-7e37-c228-2072-c3aaa6b1e067"
+      },
+      "outputs": [],
+      "source": [
+        "#Fill in missing fare\n",
+        "full$Fare[is.na(full$Fare)] <- median(thirdClass$Fare, na.rm=T)"
+      ]
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {
+        "_cell_guid": "d62f17b9-24fa-a116-ad01-5ca5a1ddbde6"
+      },
+      "source": [
+        "Now for filling in missing values for Embarked."
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "_cell_guid": "98540680-dd6c-cbaa-f717-7577008e7327"
+      },
+      "outputs": [],
+      "source": [
+        "#Have a look at who is missing embarkment\n",
+        "train[train$Embarked=='',]"
+      ]
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {
+        "_cell_guid": "b6fe7596-d1d4-d524-ed42-907fb466ccda"
+      },
+      "source": [
+        "They both were first class and had fares of $80. Where did they most likely embark?"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "_cell_guid": "805a3161-495a-9a10-be76-31e98fb9333c"
+      },
+      "outputs": [],
+      "source": [
+        "#Where would people of their class and fare would likely embark?\n",
+        "\n",
+        "# Get rid of our missing values\n",
+        "embarkFare <- train[train$Embarked!='',]\n",
+        "\n",
+        "# Use ggplot2 to visualize embarkment, passenger class, & median fare\n",
+        "ggplot(embarkFare, aes(x = Embarked, y = Fare, fill = factor(Pclass))) +\n",
+        "  geom_boxplot() +\n",
+        "  geom_hline(aes(yintercept=80), \n",
+        "    colour='red', linetype='dashed', lwd=1) +\n",
+        "  labs(title=\"Fares of Embarkment Locations by Class\", fill=\"Passenger Class\")"
+      ]
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {
+        "_cell_guid": "96f00ab1-5e03-a494-2549-2968ff8cc92d"
+      },
+      "source": [
+        "Cool. The median of first class passengers is right at $80 for those who embarked from C. We can probably assume that our passengers embarked from C."
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "_cell_guid": "50236568-cc03-3672-46bd-6bd432883c73"
+      },
+      "outputs": [],
+      "source": [
+        "#fill in missing embarkment value\n",
+        "train$Embarked[train$Embarked==''] <- 'C'"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "_cell_guid": "8e716859-4390-4aad-235f-73830fc38e0f"
+      },
+      "outputs": [],
+      "source": [
+        "\n",
+        "\n",
+        "# Make variables factors into factors\n",
+        "factor_vars <- c('PassengerId','Pclass','Sex','Embarked')\n",
+        "\n",
+        "full[factor_vars] <- lapply(full[factor_vars], function(x) as.factor(x))\n",
+        "\n",
+        "# Perform mice imputation, excluding certain less-than-useful variables:\n",
+        "mice_mod <- mice(full[, c(\"Pclass\", \"Fare\", \"Embarked\", \"SibSp\", \"Parch\", \"Survived\")], method='rf') \n",
+        "    \n",
+        "# Save the complete output \n",
+        "mice_output <- complete(mice_mod)"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "_cell_guid": "9c2ff52e-b9e6-9727-d65e-a83a396932f7"
+      },
+      "outputs": [],
+      "source": [
+        "# Plot age distributions\n",
+        "par(mfrow=c(1,2))\n",
+        "hist(full$Age, freq=F, main='Age: Original Data', \n",
+        "  col='darkgreen', ylim=c(0,0.04))\n",
+        "hist(mice_output$Age, freq=F, main='Age: MICE Output', \n",
+        "  col='lightgreen', ylim=c(0,0.04))"
+      ]
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {
+        "_cell_guid": "3ed2587a-3aa7-aac1-0480-f4a3211621c5"
+      },
+      "source": [
+        "## 3. Feature Engineering ##"
+      ]
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {
+        "_cell_guid": "968ab1a5-2c25-8f0f-cedf-469ee5f433c3"
+      },
+      "source": [
+        "Let's see what we can grab out of the names. I would imagine that possibly surnames tell something about a person."
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "_cell_guid": "64c7c6af-4949-2116-86c3-1543352fd54f"
+      },
+      "outputs": [],
+      "source": [
+        "# Get passenger surnames\n",
+        "train$Surname <- gsub(',.*', '', train$Name)\n",
+        "\n",
+        "freqs <- table(train$Surname)\n",
+        "head(freqs[order(-freqs)])\n",
+        "# Most common surnames"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "_cell_guid": "3783069a-9f1e-a85a-80a3-06771f24911d"
+      },
+      "outputs": [],
+      "source": [
+        "head(train$Cabin)"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "_cell_guid": "0cfc44c1-c030-376d-a727-693ccf1224d8"
+      },
+      "outputs": [],
+      "source": [
+        "library(corrplot)\n",
+        "nums <- sapply(train, is.numeric)\n",
+        "numericSubset <- train[, nums]\n",
+        "numericSubset <- numericSubset[!is.na(numericSubset$Age),]\n",
+        "c <- cor(numericSubset)\n",
+        "corrplot(c)"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "_cell_guid": "5a424bd2-0a55-7e1e-2eb8-d3621f83b243"
+      },
+      "outputs": [],
+      "source": [
+        "library(randomForest)\n",
+        "# Split the data back into a train set and a test set\n",
+        "train <- full[1:891,]\n",
+        "test <- full[892:1309,]\n",
+        "\n",
+        "# Build the model (note: not all possible variables are used)\n",
+        "rf_model <- randomForest(factor(Survived) ~ Pclass + Sex + Age + SibSp + Parch + \n",
+        "                                            Fare + Embarked,\n",
+        "                                            data = train)\n",
+        "\n",
+        "# Show model error\n",
+        "plot(rf_model, ylim=c(0,0.36))\n",
+        "legend('topright', colnames(rf_model$err.rate), col=1:3, fill=1:3)"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "_cell_guid": "86a701bb-72f1-282b-5c3c-e900170456b3"
+      },
+      "outputs": [],
+      "source": ""
+    }
+  ],
+  "metadata": {
+    "_change_revision": 0,
+    "_is_fork": false,
+    "kernelspec": {
+      "display_name": "R",
+      "language": "R",
+      "name": "ir"
+    },
+    "language_info": {
+      "codemirror_mode": "r",
+      "file_extension": ".r",
+      "mimetype": "text/x-r-source",
+      "name": "R",
+      "pygments_lexer": "r",
+      "version": "3.3.2"
+    }
+  },
+  "nbformat": 4,
+  "nbformat_minor": 0
+}

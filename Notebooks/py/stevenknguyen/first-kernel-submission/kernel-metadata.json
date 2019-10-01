@@ -1,0 +1,17 @@
+{
+  "enable_internet": false,
+  "dataset_sources": [],
+  "id_no": 176289,
+  "competition_sources": [
+    "titanic"
+  ],
+  "enable_gpu": false,
+  "is_private": false,
+  "keywords": [],
+  "kernel_sources": [],
+  "code_file": "first-kernel-submission.ipynb",
+  "kernel_type": "notebook",
+  "id": "stevenknguyen/first-kernel-submission",
+  "language": "python",
+  "title": "First Kernel submission"
+}

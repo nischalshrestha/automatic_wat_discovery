@@ -1,0 +1,17 @@
+{
+  "language": "r",
+  "enable_gpu": false,
+  "dataset_sources": [],
+  "code_file": "titanic.irnb",
+  "keywords": [],
+  "id_no": 712266,
+  "kernel_type": "notebook",
+  "id": "klashgari/titanic",
+  "competition_sources": [
+    "titanic"
+  ],
+  "kernel_sources": [],
+  "is_private": false,
+  "title": "titanic",
+  "enable_internet": false
+}

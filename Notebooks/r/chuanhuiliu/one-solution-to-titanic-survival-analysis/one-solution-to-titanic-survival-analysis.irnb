@@ -1,0 +1,388 @@
+{
+  "cells": [
+    {
+      "cell_type": "markdown",
+      "metadata": {
+        "_cell_guid": "b1c20c41-f691-6fea-ff50-6e14cc55ea9a"
+      },
+      "source": [
+        "## Introduction ##\n",
+        "This is my first note in Kaggle, and I am writing to show **what I learn from Tutorial** and **how to improve their models myself**. In this script, I have used classic Classification And Regression Trees(CART) to model and have tried, orientated for a better public score, different means of feature engineering. \n",
+        "\n",
+        "I'd appreciated any feedback, comment, forks on this script:)\n",
+        "\n",
+        "Btw, I am still figuring out a better layout of this note, any helps would be much appreciated.\n",
+        "\n",
+        "## What I learn from two Tutorials on R##\n",
+        "\n",
+        " **1. Tutorials:Exploring Survival on the Titanic**\n",
+        "\n",
+        " This [Exploring Survival on the Titanic][1] note have shown 1)a delicate data mining techniques create Titles from Names in Titanic dataset, 2)sensible imputation on missing values in column Embarked and Fare. \n",
+        "\n",
+        "\n",
+        "However, I believe it's less intuitive to impute Age, since there are almost 20% missing values in this column and age is more independent variables than Embarked or Fare, and thus the imputation of Age might contribute to a less robust\n",
+        " random forest. Also, this script might have used all the created and original features, namely, Pclass + Sex + Age + SibSp + Parch +Fare + Embarked + Title + FsizeD + Child + Mother, which might increase over-fitting.\n",
+        "\n",
+        "**2. Tutorials: Large families not good for Survival**\n",
+        "\n",
+        " This [Large families not good for Survival][2] note have shown 1)stepwise feature selection and model building and 2)Family size is a good indicator for survival analysis. \n",
+        "\n",
+        "Nonetheless, this script have split train.csv into sub-train and sub-test dataset, ignoring the test.csv and submit function in Kaggle. Therefore, the conclusion in this script might not lead to a 87% accuracy high score as it shows.\n",
+        "\n",
+        "So I guess I find a starting point.\n",
+        "\n",
+        "  [1]: https://www.kaggle.com/mrisdal/titanic/exploring-survival-on-the-titanic\n",
+        "  [2]: https://www.kaggle.com/jasonm/titanic/large-families-not-good-for-survival"
+      ]
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {
+        "_cell_guid": "99499373-0652-96e0-4ea0-3f012c99d659"
+      },
+      "source": [
+        "##Explanatory Data Analysis ##"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "_cell_guid": "bbc5f319-b00e-a91b-28f0-ded76720410e"
+      },
+      "outputs": [],
+      "source": [
+        "#Arthor: Chuanhui Liu\n",
+        "#Date:   2017-03-20\n",
+        "library(tidyverse)\n",
+        "library(rpart)\n",
+        "library(rpart.plot) \n",
+        "library(caret)\n",
+        "library(ggplot2)\n",
+        "library(Hmisc)\n",
+        "\n",
+        "#import dataset\n",
+        "train<-read_csv(\"../input/train.csv\") \n",
+        "test<-read_csv(\"../input/test.csv\") \n",
+        "\n",
+        "#basic information of dataset, finding missing values\n",
+        "#describe(train)\n",
+        "#describe(test)\n",
+        "\n",
+        "#head(train)\n",
+        "# PassengerId Survived Pclass                                                Name    Sex   Age SibSp Parch           Ticket    Fare Cabin Embarked\n",
+        "# <int>    <int>  <int>                                               <chr>  <chr> <dbl> <int> <int>            <chr>   <dbl> <chr>    <chr>\n",
+        "#   1        0      3                             Braund, Mr. Owen Harris   male    22     1     0        A/5 21171  7.2500  <NA>        S\n",
+        "#   2        1      1 Cumings, Mrs. John Bradley (Florence Briggs Thayer) female    38     1     0         PC 17599 71.2833   C85        C\n",
+        "#   3        1      3                              Heikkinen, Miss. Laina female    26     0     0 STON/O2. 3101282  7.9250  <NA>        S\n",
+        "#   4        1      1        Futrelle, Mrs. Jacques Heath (Lily May Peel) female    35     1     0           113803 53.1000  C123        S\n",
+        "#   5        0      3                            Allen, Mr. William Henry   male    35     0     0           373450  8.0500  <NA>        S\n",
+        "#   6        0      3                                    Moran, Mr. James   male    NA     0     0           330877  8.4583  <NA>        Q"
+      ]
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {
+        "_cell_guid": "6aa2e000-2a68-0495-a6ea-52051034ce8b"
+      },
+      "source": [
+        "**How does Embared impact the survival of passengers?**"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "_cell_guid": "2099037b-a31c-56ae-3435-e88a12b87f0e"
+      },
+      "outputs": [],
+      "source": [
+        "#\n",
+        "ggplot(train, aes(x = Embarked, fill = factor(Survived))) +\n",
+        "  geom_bar(stat='count', position='dodge') +\n",
+        "  labs(x = 'Embarked')\n",
+        "\n"
+      ]
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {
+        "_cell_guid": "b933cb78-21ef-bc16-3441-82d664df7a27"
+      },
+      "source": [
+        "**How Different Pclass impact the survival of male&female passengers\uff1f**"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "_cell_guid": "a2a04241-0649-de24-a08c-25624dd55280"
+      },
+      "outputs": [],
+      "source": [
+        "ggplot(train,aes(x=Sex,fill=factor(Survived)))+\n",
+        "  geom_bar(position='dodge')+\n",
+        "  facet_grid(.~Pclass)+\n",
+        "  labs(title = \"How Different Pclass impact the survival of male&female passengers\",x = \"Pclass\",y = \"Count\")"
+      ]
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {
+        "_cell_guid": "d50bc664-d781-74a5-3676-a996259709dd"
+      },
+      "source": [
+        "**How does different FamilySize impact the survival of passengers\uff1f**"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "_cell_guid": "bdeef710-44f9-22bb-60a7-de36ec6a63bb"
+      },
+      "outputs": [],
+      "source": [
+        "#Fsize<1 Fsize>=5 have penalty for survival chances\n",
+        "train$FamilySize<-train$SibSp+train$Parch\n",
+        "ggplot(train, aes(x = FamilySize, fill = factor(Survived))) +\n",
+        "  geom_bar(stat='count', position='dodge') +\n",
+        "  scale_x_continuous(breaks=c(1:11)) +\n",
+        "  labs(x = 'Family Size')\n",
+        "\n"
+      ]
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {
+        "_cell_guid": "2c9dd1d1-a6d9-9606-b5ee-56977573bf85"
+      },
+      "source": [
+        "**Did Child and Adult differ in survival rate?**"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "_cell_guid": "38f9cac5-c560-b0ab-bc7f-4f98b4933482"
+      },
+      "outputs": [],
+      "source": [
+        "\n",
+        "train$Child[train$Age < 16] <- 'Child'\n",
+        "train$Child[train$Age >= 16] <- 'Adult'\n",
+        "\n",
+        "table(train$Child,train$Survived)\n",
+        "\n",
+        "\n"
+      ]
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {
+        "_cell_guid": "9b2889f0-fd9f-065b-b5e0-deed125a3afa"
+      },
+      "source": [
+        "**Sensible impute missing values**"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "_cell_guid": "b813e7fb-2e96-6e39-dcdb-7265daab748b"
+      },
+      "outputs": [],
+      "source": [
+        "\n",
+        "#missing value(Embarked/Fare/age)\n",
+        "\n",
+        "ggplot(train, aes(x=Embarked,y=Fare))+geom_boxplot(aes(fill=factor(Pclass)))\n",
+        "#which means missing values in Embarked, most probably, is C\n",
+        "train$Embarked[is.na(train$Embarked)]<-'C'\n",
+        "\n",
+        "#test[is.na(test$Fare),]\n",
+        "#  PassengerId Pclass               Name   Sex   Age SibSp Parch Ticket  Fare Cabin Embarked\n",
+        "# <int>  <int>              <chr> <chr> <dbl> <int> <int>  <chr> <dbl> <chr>    <chr>\n",
+        "#   1        1044      3 Storey, Mr. Thomas  male  60.5     0     0   3701    NA  <NA>    S\n",
+        "test1<-test[c(test$Embarked=='S'),] \n",
+        "test2<-test1[c(test1$Pclass==3),]\n",
+        "test3<-test2[complete.cases(test2$Fare),]\n",
+        "test$Fare[is.na(test$Fare)]<-mean(test3$Fare)"
+      ]
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {
+        "_cell_guid": "243eb143-3077-c295-6a23-ed27d0d7b012"
+      },
+      "source": [
+        "**Feature engineering: Create title from passenger names\uff1bChild&Adult from Age** "
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "_cell_guid": "efc9d7c2-8d8a-7aff-ac6a-eaf11dce007a"
+      },
+      "outputs": [],
+      "source": [
+        "#feature engineering\n",
+        "# create title from passenger names\n",
+        "full<-bind_rows(train,test)\n",
+        "full$Child[full$Age < 16] <- 'Child'\n",
+        "full$Child[full$Age >= 16] <- 'Adult'\n",
+        "full$FamilySize<-full$SibSp+full$Parch\n",
+        "full$FsizeD[full$FamilySize == 0] <- 'singleton'\n",
+        "full$FsizeD[full$FamilySize< 4 & full$FamilySize > 0] <- 'small'\n",
+        "full$FsizeD[full$FamilySize >=4 ] <- 'large'\n",
+        "\n",
+        "full$Title <- gsub('(.*, )|(\\\\..*)', '', full$Name)\n",
+        "rare_title <- c('Dona', 'Lady', 'the Countess','Capt', 'Col', 'Don', \n",
+        "                'Dr', 'Major', 'Rev', 'Sir', 'Jonkheer')\n",
+        "full$Title[full$Title == 'Mlle']        <- 'Miss' \n",
+        "full$Title[full$Title == 'Ms']          <- 'Miss'\n",
+        "full$Title[full$Title == 'Mme']         <- 'Mrs' \n",
+        "full$Title[full$Title %in% rare_title]  <- 'Rare Title'\n",
+        "table(full$Sex, full$Title)\n",
+        "\n"
+      ]
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {
+        "_cell_guid": "f1901789-1cd6-de69-aaee-63d2f3dae192"
+      },
+      "source": [
+        "**Modeling: Trying different combinations of features**\n",
+        "-------------------------------------------------------"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "_cell_guid": "8eeac0a5-9ed6-8bd1-cc4d-edfdf6c39c70"
+      },
+      "outputs": [],
+      "source": [
+        "#factorize variables for modelling\n",
+        "full$Sex <- as.factor(full$Sex)\n",
+        "full$Pclass <- as.factor(full$Pclass)\n",
+        "full$Title<-as.factor(full$Title)\n",
+        "full$Embarked<-as.factor(full$Embarked)\n",
+        "full$FsizeD<-as.factor(full$FsizeD)\n",
+        "\n",
+        "train <- full[1:891,]\n",
+        "test <- full[892:1309,]\n",
+        "#Modeling\n",
+        "fol <- formula(Survived ~Title+ Fare+ Pclass+Age)\n",
+        "model <- rpart(fol, method=\"class\", data=train)"
+      ]
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {
+        "_cell_guid": "e6ea7fa8-3f61-29cb-de24-c796938282e3"
+      },
+      "source": [
+        "**Plot the CART\uff0c Show whether the tree change or not**"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "_cell_guid": "85377afd-e228-f85b-b069-239559e055a3"
+      },
+      "outputs": [],
+      "source": [
+        "rpart.plot(model,branch=0,branch.type=2,type=1,extra=102,shadow.col=\"pink\",box.col=\"gray\",split.col=\"magenta\",\n",
+        "           main=\"Decision tree for model\")\n",
+        "rpred <- predict(model, newdata=test, type=\"class\")"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "_cell_guid": "a03b6b4b-98f5-c999-7f55-270714e6ba4a"
+      },
+      "outputs": [],
+      "source": [
+        "#write into solutions\n",
+        "Survived<-as.numeric(levels(rpred)[rpred])\n",
+        "PassengerId<-test$PassengerId\n",
+        "solution<-cbind(PassengerId,Survived)\n",
+        "write.csv(data.frame(solution),file = 'my solution.csv',row.names= F)"
+      ]
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {
+        "_cell_guid": "cfa68beb-48cf-7780-3954-1867a4beaaa7"
+      },
+      "source": [
+        "\n",
+        "## Different Combinations ##\n",
+        "**a)** formula(Survived ~ Age + Sex + Pclass + FamilySize)                      #0.77512 This is how the tutorial performs\n",
+        "\n",
+        "**b)** formula(Survived ~ Title + Sex + Pclass + FamilySize)                            #0.78947\n",
+        "\n",
+        "**c)** formula(Survived ~ Title + Age + Pclass + FsizeD)                           #0.78947\n",
+        "\n",
+        "**d)** formula(Survived ~Title + Age + Pclass + FamilySize+Embarked) #0.78947\n",
+        "\n",
+        "**e)** formula(Survived ~Title+ Pclass +  Fare)                                            #0.79426\n",
+        "\n",
+        "**f)** formula(Survived~Title+ Fare+ Pclass+Age\uff09#0.80383"
+      ]
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {
+        "_cell_guid": "a54fbd86-b836-4045-d32f-93b344985d3e"
+      },
+      "source": [
+        "## Conclusion ##"
+      ]
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {
+        "_cell_guid": "578a14e8-b955-5286-2718-130f469d6ec8"
+      },
+      "source": [
+        "**1. Fare, Pclass is a good indicator for survival.**\n",
+        "\n",
+        "**2.Title is more predictive than Sex, so feature engineering pays off.**\n",
+        "\n",
+        "**3.Fare is more predictive than FamilySize.**\n",
+        "\n",
+        "**4.There is no need of completing Age column.**"
+      ]
+    }
+  ],
+  "metadata": {
+    "_change_revision": 0,
+    "_is_fork": false,
+    "kernelspec": {
+      "display_name": "R",
+      "language": "R",
+      "name": "ir"
+    },
+    "language_info": {
+      "codemirror_mode": "r",
+      "file_extension": ".r",
+      "mimetype": "text/x-r-source",
+      "name": "R",
+      "pygments_lexer": "r",
+      "version": "3.3.3"
+    }
+  },
+  "nbformat": 4,
+  "nbformat_minor": 0
+}

@@ -1,0 +1,17 @@
+{
+  "id": "hostfox/introduction-to-ensembling-stacking-in-python",
+  "dataset_sources": [],
+  "kernel_type": "notebook",
+  "kernel_sources": [],
+  "enable_gpu": false,
+  "id_no": 1326732,
+  "enable_internet": false,
+  "code_file": "introduction-to-ensembling-stacking-in-python.ipynb",
+  "is_private": false,
+  "keywords": [],
+  "language": "python",
+  "title": "Introduction to Ensembling/Stacking in Python",
+  "competition_sources": [
+    "titanic"
+  ]
+}

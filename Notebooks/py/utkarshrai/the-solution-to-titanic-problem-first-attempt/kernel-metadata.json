@@ -1,0 +1,17 @@
+{
+  "language": "python",
+  "enable_internet": false,
+  "title": "The solution to Titanic Problem: First Attempt",
+  "id_no": 232872,
+  "id": "utkarshrai/the-solution-to-titanic-problem-first-attempt",
+  "kernel_sources": [],
+  "enable_gpu": false,
+  "code_file": "the-solution-to-titanic-problem-first-attempt.ipynb",
+  "competition_sources": [
+    "titanic"
+  ],
+  "dataset_sources": [],
+  "keywords": [],
+  "kernel_type": "notebook",
+  "is_private": false
+}

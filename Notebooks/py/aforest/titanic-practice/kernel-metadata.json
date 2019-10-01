@@ -1,0 +1,17 @@
+{
+  "kernel_type": "notebook",
+  "kernel_sources": [],
+  "title": "Titanic Practice",
+  "enable_gpu": false,
+  "keywords": [],
+  "is_private": false,
+  "code_file": "titanic-practice.ipynb",
+  "id_no": 114280,
+  "dataset_sources": [],
+  "language": "python",
+  "id": "aforest/titanic-practice",
+  "enable_internet": false,
+  "competition_sources": [
+    "titanic"
+  ]
+}

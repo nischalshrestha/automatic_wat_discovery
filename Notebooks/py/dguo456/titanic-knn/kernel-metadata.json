@@ -1,0 +1,17 @@
+{
+  "is_private": false,
+  "competition_sources": [
+    "titanic"
+  ],
+  "title": "Titanic_KNN",
+  "dataset_sources": [],
+  "kernel_sources": [],
+  "id": "dguo456/titanic-knn",
+  "code_file": "titanic-knn.ipynb",
+  "kernel_type": "notebook",
+  "enable_gpu": false,
+  "enable_internet": false,
+  "id_no": 1394677,
+  "language": "python",
+  "keywords": []
+}

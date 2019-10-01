@@ -1,0 +1,17 @@
+{
+  "enable_internet": false,
+  "is_private": false,
+  "kernel_sources": [],
+  "id": "odujokod/a-journey-through-titanic-4693d418",
+  "code_file": "a-journey-through-titanic-4693d418.ipynb",
+  "enable_gpu": false,
+  "title": "A Journey through Titanic 4693d418",
+  "competition_sources": [
+    "titanic"
+  ],
+  "keywords": [],
+  "language": "python",
+  "kernel_type": "notebook",
+  "id_no": 175659,
+  "dataset_sources": []
+}

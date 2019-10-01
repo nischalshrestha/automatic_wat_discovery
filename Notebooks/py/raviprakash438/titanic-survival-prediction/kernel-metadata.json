@@ -1,0 +1,21 @@
+{
+  "competition_sources": [
+    "titanic"
+  ],
+  "id": "raviprakash438/titanic-survival-prediction",
+  "kernel_sources": [],
+  "is_private": false,
+  "code_file": "titanic-survival-prediction.ipynb",
+  "enable_internet": false,
+  "id_no": 1018930,
+  "language": "python",
+  "kernel_type": "notebook",
+  "enable_gpu": false,
+  "title": "Titanic Survival Prediction",
+  "keywords": [
+    "data cleaning",
+    "data visualization",
+    "feature engineering"
+  ],
+  "dataset_sources": []
+}

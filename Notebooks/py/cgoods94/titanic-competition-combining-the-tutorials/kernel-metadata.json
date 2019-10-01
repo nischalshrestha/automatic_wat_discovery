@@ -1,0 +1,17 @@
+{
+  "code_file": "titanic-competition-combining-the-tutorials.ipynb",
+  "title": "Titanic Competition - Combining the Tutorials",
+  "is_private": false,
+  "enable_internet": false,
+  "id_no": 369075,
+  "competition_sources": [
+    "titanic"
+  ],
+  "id": "cgoods94/titanic-competition-combining-the-tutorials",
+  "dataset_sources": [],
+  "keywords": [],
+  "kernel_sources": [],
+  "language": "python",
+  "kernel_type": "notebook",
+  "enable_gpu": false
+}

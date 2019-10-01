@@ -1,0 +1,17 @@
+{
+  "is_private": false,
+  "enable_internet": false,
+  "competition_sources": [
+    "titanic"
+  ],
+  "id": "subraminion/titanic-attempt-1-forked",
+  "keywords": [],
+  "dataset_sources": [],
+  "title": "Titanic - Attempt 1 (forked)",
+  "code_file": "titanic-attempt-1-forked.ipynb",
+  "id_no": 558768,
+  "enable_gpu": false,
+  "kernel_sources": [],
+  "language": "python",
+  "kernel_type": "notebook"
+}

@@ -1,0 +1,17 @@
+{
+  "id_no": 1802900,
+  "title": "My first competition - Titanic",
+  "keywords": [],
+  "language": "python",
+  "dataset_sources": [],
+  "competition_sources": [
+    "titanic"
+  ],
+  "kernel_type": "notebook",
+  "is_private": false,
+  "code_file": "my-first-competition-titanic.ipynb",
+  "kernel_sources": [],
+  "enable_gpu": false,
+  "enable_internet": false,
+  "id": "juancarloscamara/my-first-competition-titanic"
+}

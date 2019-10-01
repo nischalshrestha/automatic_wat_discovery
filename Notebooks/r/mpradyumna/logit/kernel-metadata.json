@@ -1,0 +1,17 @@
+{
+  "language": "r",
+  "is_private": false,
+  "id_no": 96278,
+  "id": "mpradyumna/logit",
+  "enable_internet": false,
+  "dataset_sources": [],
+  "code_file": "logit.irnb",
+  "enable_gpu": false,
+  "kernel_type": "notebook",
+  "title": "Logit",
+  "kernel_sources": [],
+  "keywords": [],
+  "competition_sources": [
+    "titanic"
+  ]
+}

@@ -1,0 +1,17 @@
+{
+  "keywords": [],
+  "language": "python",
+  "enable_internet": false,
+  "id": "poppyness/first-kernel-for-titanic",
+  "title": "First Kernel for Titanic",
+  "id_no": 1461788,
+  "enable_gpu": false,
+  "is_private": false,
+  "competition_sources": [
+    "titanic"
+  ],
+  "dataset_sources": [],
+  "kernel_sources": [],
+  "kernel_type": "notebook",
+  "code_file": "first-kernel-for-titanic.ipynb"
+}

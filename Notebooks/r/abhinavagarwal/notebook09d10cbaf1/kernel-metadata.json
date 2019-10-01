@@ -1,0 +1,17 @@
+{
+  "is_private": false,
+  "id_no": 217934,
+  "code_file": "notebook09d10cbaf1.ipynb",
+  "keywords": [],
+  "dataset_sources": [],
+  "kernel_type": "notebook",
+  "enable_internet": false,
+  "title": "Notebook09d10cbaf1",
+  "id": "abhinavagarwal/notebook09d10cbaf1",
+  "language": "python",
+  "kernel_sources": [],
+  "enable_gpu": false,
+  "competition_sources": [
+    "titanic"
+  ]
+}

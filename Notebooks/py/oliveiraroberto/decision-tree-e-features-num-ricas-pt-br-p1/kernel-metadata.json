@@ -1,0 +1,17 @@
+{
+  "keywords": [],
+  "id_no": 457891,
+  "code_file": "decision-tree-e-features-num-ricas-pt-br-p1.ipynb",
+  "dataset_sources": [],
+  "is_private": false,
+  "id": "oliveiraroberto/decision-tree-e-features-num-ricas-pt-br-p1",
+  "enable_internet": false,
+  "enable_gpu": false,
+  "kernel_type": "notebook",
+  "kernel_sources": [],
+  "language": "python",
+  "competition_sources": [
+    "titanic"
+  ],
+  "title": "Decision Tree e Features Num\u00e9ricas [pt-BR] - P1"
+}

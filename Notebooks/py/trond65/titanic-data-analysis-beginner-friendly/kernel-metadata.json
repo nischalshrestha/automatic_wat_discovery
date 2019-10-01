@@ -1,0 +1,17 @@
+{
+  "language": "python",
+  "id": "trond65/titanic-data-analysis-beginner-friendly",
+  "is_private": false,
+  "title": "Titanic Data Analysis - Beginner Friendly",
+  "id_no": 1635188,
+  "keywords": [],
+  "competition_sources": [
+    "titanic"
+  ],
+  "enable_internet": false,
+  "kernel_sources": [],
+  "code_file": "titanic-data-analysis-beginner-friendly.ipynb",
+  "dataset_sources": [],
+  "kernel_type": "notebook",
+  "enable_gpu": false
+}

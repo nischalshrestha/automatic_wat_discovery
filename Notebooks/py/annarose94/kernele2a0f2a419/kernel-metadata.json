@@ -1,0 +1,17 @@
+{
+  "id_no": 1481089,
+  "code_file": "kernele2a0f2a419.ipynb",
+  "enable_gpu": false,
+  "id": "annarose94/kernele2a0f2a419",
+  "dataset_sources": [],
+  "kernel_type": "notebook",
+  "language": "python",
+  "keywords": [],
+  "title": "kernele2a0f2a419",
+  "is_private": false,
+  "enable_internet": false,
+  "kernel_sources": [],
+  "competition_sources": [
+    "titanic"
+  ]
+}

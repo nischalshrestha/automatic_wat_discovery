@@ -1,0 +1,17 @@
+{
+  "id_no": 1491288,
+  "code_file": "titanic-using-xgboost.ipynb",
+  "is_private": false,
+  "id": "robertogargu/titanic-using-xgboost",
+  "language": "python",
+  "title": "Titanic Using XGBoost",
+  "dataset_sources": [],
+  "kernel_type": "notebook",
+  "keywords": [],
+  "enable_internet": false,
+  "enable_gpu": false,
+  "kernel_sources": [],
+  "competition_sources": [
+    "titanic"
+  ]
+}

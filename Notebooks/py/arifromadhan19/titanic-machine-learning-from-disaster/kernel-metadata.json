@@ -1,0 +1,17 @@
+{
+  "title": "Titanic: Machine Learning from Disaster",
+  "keywords": [],
+  "code_file": "titanic-machine-learning-from-disaster.ipynb",
+  "enable_internet": false,
+  "enable_gpu": false,
+  "id_no": 1521734,
+  "is_private": false,
+  "dataset_sources": [],
+  "kernel_type": "notebook",
+  "kernel_sources": [],
+  "competition_sources": [
+    "titanic"
+  ],
+  "language": "python",
+  "id": "arifromadhan19/titanic-machine-learning-from-disaster"
+}

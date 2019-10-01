@@ -1,0 +1,17 @@
+{
+  "id": "saboyutaka/at-koza-machine-learning-bootcamp",
+  "kernel_sources": [],
+  "enable_gpu": false,
+  "language": "python",
+  "kernel_type": "notebook",
+  "enable_internet": false,
+  "id_no": 134183,
+  "code_file": "at-koza-machine-learning-bootcamp.ipynb",
+  "keywords": [],
+  "competition_sources": [
+    "titanic"
+  ],
+  "title": "At Koza Machine Learning Bootcamp",
+  "is_private": false,
+  "dataset_sources": []
+}

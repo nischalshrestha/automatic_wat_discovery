@@ -1,0 +1,17 @@
+{
+  "competition_sources": [
+    "titanic"
+  ],
+  "is_private": false,
+  "kernel_sources": [],
+  "id_no": 35247,
+  "kernel_type": "notebook",
+  "dataset_sources": [],
+  "language": "python",
+  "title": "Titanic Visualization",
+  "id": "tfglaser/titanic-visualization",
+  "code_file": "titanic-visualization.ipynb",
+  "enable_internet": false,
+  "enable_gpu": false,
+  "keywords": []
+}

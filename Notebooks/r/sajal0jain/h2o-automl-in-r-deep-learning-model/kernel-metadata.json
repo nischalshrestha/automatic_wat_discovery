@@ -1,0 +1,20 @@
+{
+  "code_file": "h2o-automl-in-r-deep-learning-model.irnb",
+  "enable_gpu": true,
+  "competition_sources": [
+    "titanic"
+  ],
+  "is_private": false,
+  "id_no": 1421683,
+  "dataset_sources": [],
+  "id": "sajal0jain/h2o-automl-in-r-deep-learning-model",
+  "title": "H2O(autoML) in R - deep learning model",
+  "kernel_type": "notebook",
+  "language": "r",
+  "enable_internet": false,
+  "keywords": [
+    "classification",
+    "deep learning"
+  ],
+  "kernel_sources": []
+}

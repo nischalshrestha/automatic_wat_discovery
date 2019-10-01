@@ -1,0 +1,23 @@
+{
+  "enable_gpu": false,
+  "dataset_sources": [],
+  "kernel_type": "notebook",
+  "id_no": 439033,
+  "competition_sources": [
+    "titanic"
+  ],
+  "is_private": false,
+  "id": "nicapotato/titanic-voting-pipeline-stack-and-guide",
+  "language": "python",
+  "code_file": "titanic-voting-pipeline-stack-and-guide.ipynb",
+  "keywords": [
+    "tutorial",
+    "beginner",
+    "machine learning",
+    "classification",
+    "ensembling"
+  ],
+  "title": "Titanic: Voting, Pipeline, Stack, and Guide",
+  "enable_internet": false,
+  "kernel_sources": []
+}

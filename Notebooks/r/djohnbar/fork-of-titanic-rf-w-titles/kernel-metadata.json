@@ -1,0 +1,17 @@
+{
+  "dataset_sources": [],
+  "kernel_type": "notebook",
+  "keywords": [],
+  "competition_sources": [
+    "titanic"
+  ],
+  "code_file": "fork-of-titanic-rf-w-titles.irnb",
+  "language": "r",
+  "title": "Fork of Titanic RF w/titles",
+  "id": "djohnbar/fork-of-titanic-rf-w-titles",
+  "enable_internet": false,
+  "kernel_sources": [],
+  "is_private": false,
+  "id_no": 1376128,
+  "enable_gpu": false
+}

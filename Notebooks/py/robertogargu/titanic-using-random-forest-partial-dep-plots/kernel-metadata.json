@@ -1,0 +1,17 @@
+{
+  "code_file": "titanic-using-random-forest-partial-dep-plots.ipynb",
+  "kernel_type": "notebook",
+  "enable_gpu": false,
+  "keywords": [],
+  "competition_sources": [
+    "titanic"
+  ],
+  "language": "python",
+  "enable_internet": false,
+  "title": "Titanic Using Random Forest + Partial Dep. Plots",
+  "id": "robertogargu/titanic-using-random-forest-partial-dep-plots",
+  "dataset_sources": [],
+  "id_no": 1483225,
+  "kernel_sources": [],
+  "is_private": false
+}

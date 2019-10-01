@@ -1,0 +1,17 @@
+{
+  "id_no": 1659397,
+  "kernel_type": "notebook",
+  "kernel_sources": [],
+  "enable_gpu": true,
+  "dataset_sources": [],
+  "enable_internet": false,
+  "language": "python",
+  "keywords": [],
+  "competition_sources": [
+    "titanic"
+  ],
+  "id": "bapireddy/titanic-prediction",
+  "code_file": "titanic-prediction.ipynb",
+  "title": "Titanic Prediction",
+  "is_private": false
+}

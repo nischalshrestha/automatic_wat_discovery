@@ -1,0 +1,17 @@
+{
+  "title": "Machine Learning - Titanic (1st)",
+  "language": "r",
+  "kernel_type": "notebook",
+  "dataset_sources": [],
+  "enable_gpu": false,
+  "is_private": false,
+  "code_file": "machine-learning-titanic-1st.irnb",
+  "id_no": 230309,
+  "kernel_sources": [],
+  "keywords": [],
+  "id": "amitchauhan/machine-learning-titanic-1st",
+  "competition_sources": [
+    "titanic"
+  ],
+  "enable_internet": false
+}

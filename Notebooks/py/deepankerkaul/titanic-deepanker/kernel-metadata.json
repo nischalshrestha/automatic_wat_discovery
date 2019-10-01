@@ -1,0 +1,17 @@
+{
+  "title": "Titanic-Deepanker",
+  "kernel_sources": [],
+  "code_file": "titanic-deepanker.ipynb",
+  "competition_sources": [
+    "titanic"
+  ],
+  "kernel_type": "notebook",
+  "is_private": false,
+  "id_no": 2182666,
+  "id": "deepankerkaul/titanic-deepanker",
+  "dataset_sources": [],
+  "keywords": [],
+  "enable_gpu": false,
+  "language": "python",
+  "enable_internet": false
+}

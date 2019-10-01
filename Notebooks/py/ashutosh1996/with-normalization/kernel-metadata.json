@@ -1,0 +1,17 @@
+{
+  "title": "With normalization",
+  "kernel_sources": [],
+  "language": "python",
+  "id": "ashutosh1996/with-normalization",
+  "is_private": false,
+  "dataset_sources": [],
+  "competition_sources": [
+    "titanic"
+  ],
+  "keywords": [],
+  "id_no": 206056,
+  "enable_internet": false,
+  "enable_gpu": false,
+  "kernel_type": "notebook",
+  "code_file": "with-normalization.ipynb"
+}

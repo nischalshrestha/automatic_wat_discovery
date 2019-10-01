@@ -1,0 +1,17 @@
+{
+  "id": "yuanxuan/an-interactive-data-science-tutorial-94a9a7",
+  "keywords": [],
+  "language": "python",
+  "kernel_type": "notebook",
+  "code_file": "an-interactive-data-science-tutorial-94a9a7.ipynb",
+  "is_private": false,
+  "competition_sources": [
+    "titanic"
+  ],
+  "id_no": 244613,
+  "enable_internet": false,
+  "title": "An Interactive Data Science Tutorial 94a9a7",
+  "enable_gpu": false,
+  "dataset_sources": [],
+  "kernel_sources": []
+}

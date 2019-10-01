@@ -1,0 +1,47 @@
+{"cells":[
+ {
+  "cell_type": "code",
+  "execution_count": null,
+  "metadata": {
+   "collapsed": false
+  },
+  "outputs": [],
+  "source": "# This R environment comes with all of CRAN preinstalled, as well as many other helpful packages\n# The environment is defined by the kaggle/rstats docker image: https://github.com/kaggle/docker-rstats\n# For example, here's several helpful packages to load in \n\nlibrary(ggplot2) # Data visualization\nlibrary(readr) # CSV file I/O, e.g. the read_csv function\n\n# Input data files are available in the \"../input/\" directory.\n\n# For example, running this (by clicking run or pressing Shift+Enter) will list the files in the input directory\nlibrary('ggplot2') # visualization\nlibrary('ggthemes') # visualization\nlibrary('scales') # visualization\nlibrary('dplyr') # data manipulation\nlibrary('mice') # imputation\nlibrary('randomForest') # classification algorithm\nsystem(\"ls ../input\")\n\n# Any results you write to the current directory are saved as output.\nlibrary('ggplot2') # visualization\nlibrary('ggthemes') # visualization\nlibrary('scales') # visualization\nlibrary('dplyr') # data manipulation\nlibrary('mice') # imputation\nlibrary('randomForest') # classification algorithm\ntrain <- read.csv('../input/train.csv', stringsAsFactors = F)\ntrain\ntest  <- read.csv('../input/test.csv', stringsAsFactors = F)\ntest$PassengerId\nfull  <- bind_rows(train, test) \n\nfull\nstr(full)\ncolnames(full)\nfull$Title <- gsub('(.*, )|(\\\\..*)', '', full$Name)\ncolnames(full)\ntable(full$Sex, full$Title)\nrare_title <- c('Dona', 'Lady', 'the Countess','Capt', 'Col', 'Don', \n                'Dr', 'Major', 'Rev', 'Sir', 'Jonkheer')\nfull$Title[full$Title == 'Mlle']        <- 'Miss' \nfull$Title[full$Title == 'Ms']          <- 'Miss'\nfull$Title[full$Title == 'Mme']         <- 'Mrs' \n\nfull$Title[full$Title %in% rare_title]  <- 'Rare Title'\n\ntable(full$Sex, full$Title)\nfull$Surname <- sapply(full$Name,  \n                      function(x) strsplit(x, split = '[,.]')[[1]][1])\ncat(paste('We have <b>', nlevels(factor(full$Surname)), '</b> unique surnames. I would be interested to infer ethnicity based on surname --- another time.'))\nfull$SibSp\n\nfull$Fsize <- full$SibSp + full$Parch + 1\nfull$Family <- paste(full$Surname, full$Fsize, sep='_')\naes(x = Fsize, fill = factor(Survived))\n\nggplot(full[1:891,], aes(x = Fsize, fill = factor(Survived))) +\n  geom_bar(stat='count', position='dodge') +\n  scale_x_continuous(breaks=c(1:11)) \n\n"
+ },
+ {
+  "cell_type": "code",
+  "execution_count": null,
+  "metadata": {
+   "collapsed": false
+  },
+  "outputs": [],
+  "source": "colnames(full)"
+ },
+ {
+  "cell_type": "code",
+  "execution_count": null,
+  "metadata": {
+   "collapsed": false
+  },
+  "outputs": [],
+  "source": "full$FsizeD[full$Fsize == 1] <- 'singleton'\nfull$FsizeD[full$Fsize < 5 & full$Fsize > 1] <- 'small'\nfull$FsizeD[full$Fsize > 4] <- 'large'\n"
+ },
+ {
+  "cell_type": "code",
+  "execution_count": null,
+  "metadata": {
+   "collapsed": false
+  },
+  "outputs": [],
+  "source": "mosaicplot(table(full$FsizeD, full$Survived), main='Family Size by Survival', shade=TRUE)"
+ },
+ {
+  "cell_type": "code",
+  "execution_count": null,
+  "metadata": {
+   "collapsed": false
+  },
+  "outputs": [],
+  "source": "full\n"
+ }
+],"metadata":{"kernelspec":{"display_name":"R","language":"R","name":"ir"}}, "nbformat": 4, "nbformat_minor": 0}

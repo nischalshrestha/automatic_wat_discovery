@@ -1,0 +1,17 @@
+{
+  "dataset_sources": [],
+  "kernel_type": "notebook",
+  "competition_sources": [
+    "titanic"
+  ],
+  "enable_gpu": false,
+  "is_private": false,
+  "title": "titanic_xgb",
+  "enable_internet": false,
+  "language": "python",
+  "kernel_sources": [],
+  "id": "kuroironeko/titanic-xgb",
+  "code_file": "titanic-xgb.ipynb",
+  "keywords": [],
+  "id_no": 1411492
+}

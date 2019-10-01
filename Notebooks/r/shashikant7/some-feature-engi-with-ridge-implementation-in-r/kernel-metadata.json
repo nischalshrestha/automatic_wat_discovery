@@ -1,0 +1,17 @@
+{
+  "dataset_sources": [],
+  "id": "shashikant7/some-feature-engi-with-ridge-implementation-in-r",
+  "title": "Some feature engi. With Ridge Implementation in R",
+  "enable_gpu": false,
+  "language": "r",
+  "id_no": 710690,
+  "kernel_sources": [],
+  "is_private": false,
+  "competition_sources": [
+    "titanic"
+  ],
+  "keywords": [],
+  "kernel_type": "notebook",
+  "enable_internet": false,
+  "code_file": "some-feature-engi-with-ridge-implementation-in-r.irnb"
+}

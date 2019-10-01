@@ -1,0 +1,21 @@
+{
+  "id": "kthefoodie/ml-let-it-sink-in",
+  "id_no": 454155,
+  "title": "ML : Let it 'sink' in",
+  "code_file": "ml-let-it-sink-in.ipynb",
+  "language": "python",
+  "kernel_type": "notebook",
+  "is_private": false,
+  "enable_gpu": false,
+  "enable_internet": false,
+  "keywords": [
+    "beginner",
+    "eda",
+    "data visualization"
+  ],
+  "dataset_sources": [],
+  "kernel_sources": [],
+  "competition_sources": [
+    "titanic"
+  ]
+}

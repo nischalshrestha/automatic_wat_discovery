@@ -1,0 +1,20 @@
+{
+  "title": "Predicting Surviving in Titanic",
+  "id": "aceccon/predicting-surviving-in-titanic",
+  "is_private": false,
+  "keywords": [
+    "beginner",
+    "data visualization"
+  ],
+  "code_file": "predicting-surviving-in-titanic.ipynb",
+  "enable_internet": false,
+  "kernel_type": "notebook",
+  "dataset_sources": [],
+  "id_no": 476882,
+  "kernel_sources": [],
+  "enable_gpu": false,
+  "language": "python",
+  "competition_sources": [
+    "titanic"
+  ]
+}

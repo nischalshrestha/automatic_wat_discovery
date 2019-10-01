@@ -1,0 +1,17 @@
+{
+  "enable_internet": false,
+  "enable_gpu": false,
+  "title": "Notebookbcc5aa85d7",
+  "is_private": false,
+  "code_file": "notebookbcc5aa85d7.ipynb",
+  "kernel_type": "notebook",
+  "keywords": [],
+  "competition_sources": [
+    "titanic"
+  ],
+  "dataset_sources": [],
+  "language": "python",
+  "kernel_sources": [],
+  "id_no": 240909,
+  "id": "neshkeev/notebookbcc5aa85d7"
+}

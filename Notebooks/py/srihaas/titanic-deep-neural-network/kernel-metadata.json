@@ -1,0 +1,17 @@
+{
+  "language": "python",
+  "enable_internet": false,
+  "kernel_type": "notebook",
+  "enable_gpu": false,
+  "dataset_sources": [],
+  "keywords": [],
+  "id": "srihaas/titanic-deep-neural-network",
+  "id_no": 1263773,
+  "kernel_sources": [],
+  "is_private": false,
+  "title": "Titanic Deep Neural Network",
+  "code_file": "titanic-deep-neural-network.ipynb",
+  "competition_sources": [
+    "titanic"
+  ]
+}

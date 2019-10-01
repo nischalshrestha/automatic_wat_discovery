@@ -1,0 +1,17 @@
+{
+  "id_no": 1391835,
+  "id": "trendtonychu/trend-tony-chu-assignment2",
+  "dataset_sources": [],
+  "is_private": false,
+  "competition_sources": [
+    "titanic"
+  ],
+  "keywords": [],
+  "kernel_sources": [],
+  "title": "Trend-Tony-Chu: Assignment2",
+  "language": "python",
+  "code_file": "trend-tony-chu-assignment2.ipynb",
+  "enable_internet": false,
+  "enable_gpu": false,
+  "kernel_type": "notebook"
+}

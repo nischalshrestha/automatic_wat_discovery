@@ -1,0 +1,17 @@
+{
+  "language": "python",
+  "competition_sources": [
+    "titanic"
+  ],
+  "enable_internet": false,
+  "id": "tallbrian/can-brian-survive-the-titanic",
+  "dataset_sources": [],
+  "kernel_sources": [],
+  "code_file": "can-brian-survive-the-titanic.ipynb",
+  "title": "Can Brian Survive the Titanic?",
+  "id_no": 115879,
+  "keywords": [],
+  "enable_gpu": false,
+  "kernel_type": "notebook",
+  "is_private": false
+}

@@ -1,0 +1,23 @@
+{
+  "title": "kernel6116712777",
+  "enable_internet": false,
+  "code_file": "kernel6116712777.ipynb",
+  "id_no": 1479837,
+  "keywords": [
+    "beginner",
+    "eda",
+    "data visualization",
+    "logistic regression",
+    "starter code"
+  ],
+  "language": "python",
+  "id": "khrims/kernel6116712777",
+  "enable_gpu": false,
+  "kernel_type": "notebook",
+  "is_private": false,
+  "dataset_sources": [],
+  "competition_sources": [
+    "titanic"
+  ],
+  "kernel_sources": []
+}

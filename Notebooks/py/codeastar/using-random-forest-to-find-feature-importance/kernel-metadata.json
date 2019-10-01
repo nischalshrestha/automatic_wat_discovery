@@ -1,0 +1,21 @@
+{
+  "kernel_sources": [],
+  "enable_gpu": false,
+  "is_private": false,
+  "competition_sources": [
+    "titanic"
+  ],
+  "id_no": 550364,
+  "kernel_type": "notebook",
+  "code_file": "using-random-forest-to-find-feature-importance.ipynb",
+  "title": "Using Random Forest to find Feature Importance",
+  "enable_internet": false,
+  "language": "python",
+  "dataset_sources": [],
+  "keywords": [
+    "beginner",
+    "feature engineering",
+    "random forest"
+  ],
+  "id": "codeastar/using-random-forest-to-find-feature-importance"
+}

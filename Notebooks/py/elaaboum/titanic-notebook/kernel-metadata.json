@@ -1,0 +1,17 @@
+{
+  "dataset_sources": [],
+  "enable_gpu": false,
+  "competition_sources": [
+    "titanic"
+  ],
+  "language": "python",
+  "kernel_type": "notebook",
+  "code_file": "titanic-notebook.ipynb",
+  "title": "titanic_notebook",
+  "kernel_sources": [],
+  "keywords": [],
+  "id": "elaaboum/titanic-notebook",
+  "enable_internet": false,
+  "id_no": 1957862,
+  "is_private": false
+}

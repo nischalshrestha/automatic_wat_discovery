@@ -1,0 +1,19 @@
+{
+  "dataset_sources": [
+    "avinashanand/dataset2"
+  ],
+  "kernel_sources": [],
+  "is_private": false,
+  "title": "FEATURE_ENGG_TITANIC DATASET",
+  "kernel_type": "notebook",
+  "id_no": 1284091,
+  "code_file": "feature-engg-titanic-dataset.ipynb",
+  "enable_gpu": false,
+  "language": "python",
+  "id": "avinashanand/feature-engg-titanic-dataset",
+  "competition_sources": [
+    "titanic"
+  ],
+  "keywords": [],
+  "enable_internet": false
+}

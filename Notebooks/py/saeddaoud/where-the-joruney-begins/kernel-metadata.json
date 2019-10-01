@@ -1,0 +1,17 @@
+{
+  "enable_internet": false,
+  "kernel_type": "notebook",
+  "kernel_sources": [],
+  "dataset_sources": [],
+  "keywords": [],
+  "id_no": 553233,
+  "title": "Where the joruney begins",
+  "enable_gpu": false,
+  "competition_sources": [
+    "titanic"
+  ],
+  "id": "saeddaoud/where-the-joruney-begins",
+  "code_file": "where-the-joruney-begins.ipynb",
+  "language": "python",
+  "is_private": false
+}

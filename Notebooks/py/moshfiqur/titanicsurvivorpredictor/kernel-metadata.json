@@ -1,0 +1,17 @@
+{
+  "id": "moshfiqur/titanicsurvivorpredictor",
+  "language": "python",
+  "enable_gpu": true,
+  "id_no": 518782,
+  "dataset_sources": [],
+  "kernel_type": "notebook",
+  "code_file": "titanicsurvivorpredictor.ipynb",
+  "enable_internet": false,
+  "is_private": false,
+  "competition_sources": [
+    "titanic"
+  ],
+  "kernel_sources": [],
+  "keywords": [],
+  "title": "TitanicSurvivorPredictor"
+}

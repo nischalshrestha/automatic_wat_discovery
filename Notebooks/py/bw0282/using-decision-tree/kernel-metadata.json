@@ -1,0 +1,17 @@
+{
+  "id": "bw0282/using-decision-tree",
+  "id_no": 708374,
+  "title": "Using Decision Tree",
+  "code_file": "using-decision-tree.ipynb",
+  "language": "python",
+  "kernel_type": "notebook",
+  "is_private": false,
+  "enable_gpu": false,
+  "enable_internet": false,
+  "keywords": [],
+  "dataset_sources": [],
+  "kernel_sources": [],
+  "competition_sources": [
+    "titanic"
+  ]
+}

@@ -1,0 +1,17 @@
+{
+  "title": "Fork of First Pass Titanic",
+  "id": "ellecf/fork-of-first-pass-titanic",
+  "language": "python",
+  "competition_sources": [
+    "titanic"
+  ],
+  "is_private": false,
+  "kernel_type": "notebook",
+  "kernel_sources": [],
+  "keywords": [],
+  "id_no": 1484869,
+  "enable_internet": false,
+  "dataset_sources": [],
+  "code_file": "fork-of-first-pass-titanic.ipynb",
+  "enable_gpu": false
+}

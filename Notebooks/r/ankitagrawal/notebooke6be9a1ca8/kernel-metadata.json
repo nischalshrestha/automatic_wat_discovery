@@ -1,0 +1,17 @@
+{
+  "competition_sources": [
+    "titanic"
+  ],
+  "keywords": [],
+  "id": "ankitagrawal/notebooke6be9a1ca8",
+  "is_private": false,
+  "code_file": "notebooke6be9a1ca8.ipynb",
+  "kernel_sources": [],
+  "title": "Notebooke6be9a1ca8",
+  "id_no": 244511,
+  "enable_gpu": false,
+  "language": "python",
+  "dataset_sources": [],
+  "kernel_type": "notebook",
+  "enable_internet": false
+}

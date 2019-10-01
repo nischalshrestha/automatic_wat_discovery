@@ -1,0 +1,17 @@
+{
+  "kernel_type": "notebook",
+  "id": "sharmila94/titanic-svc-rf-dt-using-cross-validation",
+  "language": "python",
+  "dataset_sources": [],
+  "is_private": false,
+  "id_no": 1441739,
+  "enable_internet": false,
+  "kernel_sources": [],
+  "title": "Titanic-SVC, RF, DT using cross validation ",
+  "enable_gpu": false,
+  "competition_sources": [
+    "titanic"
+  ],
+  "code_file": "titanic-svc-rf-dt-using-cross-validation.ipynb",
+  "keywords": []
+}

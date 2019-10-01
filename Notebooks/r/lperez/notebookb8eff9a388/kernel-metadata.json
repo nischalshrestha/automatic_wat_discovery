@@ -1,0 +1,17 @@
+{
+  "enable_gpu": false,
+  "kernel_sources": [],
+  "language": "r",
+  "dataset_sources": [],
+  "is_private": false,
+  "kernel_type": "notebook",
+  "code_file": "notebookb8eff9a388.irnb",
+  "keywords": [],
+  "id": "lperez/notebookb8eff9a388",
+  "id_no": 265813,
+  "competition_sources": [
+    "titanic"
+  ],
+  "enable_internet": false,
+  "title": "Notebookb8eff9a388"
+}

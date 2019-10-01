@@ -1,0 +1,17 @@
+{
+  "enable_gpu": false,
+  "competition_sources": [
+    "titanic"
+  ],
+  "language": "python",
+  "kernel_type": "notebook",
+  "id_no": 1261428,
+  "keywords": [],
+  "is_private": false,
+  "title": "Titanic Kernel - Clean and Analyze",
+  "dataset_sources": [],
+  "kernel_sources": [],
+  "id": "shaynarh/titanic-kernel-clean-and-analyze",
+  "enable_internet": false,
+  "code_file": "titanic-kernel-clean-and-analyze.ipynb"
+}

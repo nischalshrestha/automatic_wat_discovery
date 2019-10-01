@@ -1,0 +1,17 @@
+{
+  "code_file": "titanic-0-82297.ipynb",
+  "is_private": false,
+  "kernel_type": "notebook",
+  "id": "johnzyh/titanic-0-82297",
+  "enable_gpu": false,
+  "kernel_sources": [],
+  "enable_internet": false,
+  "competition_sources": [
+    "titanic"
+  ],
+  "id_no": 249778,
+  "dataset_sources": [],
+  "title": "Titanic-0.82297",
+  "language": "python",
+  "keywords": []
+}

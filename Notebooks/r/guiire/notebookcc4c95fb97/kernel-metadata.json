@@ -1,0 +1,17 @@
+{
+  "dataset_sources": [],
+  "id": "guiire/notebookcc4c95fb97",
+  "keywords": [],
+  "kernel_type": "notebook",
+  "code_file": "notebookcc4c95fb97.ipynb",
+  "enable_internet": false,
+  "language": "python",
+  "enable_gpu": false,
+  "id_no": 219491,
+  "title": "Notebookcc4c95fb97",
+  "competition_sources": [
+    "titanic"
+  ],
+  "kernel_sources": [],
+  "is_private": false
+}

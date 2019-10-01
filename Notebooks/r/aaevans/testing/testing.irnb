@@ -1,0 +1,152 @@
+{
+  "cells": [
+    {
+      "cell_type": "markdown",
+      "metadata": {
+        "_cell_guid": "a7a01eec-8ce2-e064-0e19-2454c40b79e0"
+      },
+      "source": [
+        "Learning how to use Jupyter R notebooks. Test some basic machine learning techniques."
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "_cell_guid": "1da9ac79-6f07-fa9b-182a-34216d1fbd17"
+      },
+      "outputs": [],
+      "source": [
+        "# This R environment comes with all of CRAN preinstalled, as well as many other helpful packages\n",
+        "# The environment is defined by the kaggle/rstats docker image: https://github.com/kaggle/docker-rstats\n",
+        "# For example, here's several helpful packages to load in \n",
+        "\n",
+        "library('ggplot2') # visualization\n",
+        "library('ggthemes') # visualization\n",
+        "library('scales') # visualization\n",
+        "library('dplyr') # data manipulation\n",
+        "library('mice') # imputation\n",
+        "library('randomForest') # classification algorithm\n",
+        "\n",
+        "\n",
+        "# Input data files are available in the \"../input/\" directory.\n",
+        "# For example, running this (by clicking run or pressing Shift+Enter) will list the files in the input directory\n",
+        "\n",
+        "system(\"ls ../input\")\n",
+        "\n",
+        "# Any results you write to the current directory are saved as output.\n",
+        "\n",
+        "test_df <- read.csv(\"../input/test.csv\", stringsAsFactors = FALSE)\n",
+        "train_df <- read.csv(\"../input/train.csv\", stringsAsFactors = FALSE)\n",
+        "\n",
+        "full_df <- bind_rows(test,train)"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "_cell_guid": "1f754644-482b-f914-6d44-7de0a2a1c5c9"
+      },
+      "outputs": [],
+      "source": [
+        "str(full_df)"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "_cell_guid": "b4b9a7ad-120c-1efe-55ac-d7d2c0066b73"
+      },
+      "outputs": [],
+      "source": [
+        "summary(full_df)"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "_cell_guid": "68972a6f-7b8b-0db8-77e8-508b0a640877"
+      },
+      "outputs": [],
+      "source": [
+        "hist(full_df$Age)"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "_cell_guid": "ea75617b-d5a4-0e6d-9b7d-83bc1b7912cd"
+      },
+      "outputs": [],
+      "source": [
+        "model <- glm(Survived ~ Pclass, family = \"binomial\", train)\n",
+        "p <- predict(model, test, type = \"response\")\n"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "_cell_guid": "ab96ea2e-b995-605c-0a8d-5783dd49f8de"
+      },
+      "outputs": [],
+      "source": [
+        "str(p)"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "_cell_guid": "228949d7-07b0-3e30-d481-8aa225d240f3"
+      },
+      "outputs": [],
+      "source": [
+        "summary(p)"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "_cell_guid": "7d468c16-64c3-ccb2-16ad-6c352597c72c"
+      },
+      "outputs": [],
+      "source": [
+        "plot(p)"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "_cell_guid": "d5206df8-fe86-046f-b185-4f27470fdc96"
+      },
+      "outputs": [],
+      "source": ""
+    }
+  ],
+  "metadata": {
+    "_change_revision": 0,
+    "_is_fork": false,
+    "kernelspec": {
+      "display_name": "R",
+      "language": "R",
+      "name": "ir"
+    },
+    "language_info": {
+      "codemirror_mode": "r",
+      "file_extension": ".r",
+      "mimetype": "text/x-r-source",
+      "name": "R",
+      "pygments_lexer": "r",
+      "version": "3.4.0"
+    }
+  },
+  "nbformat": 4,
+  "nbformat_minor": 0
+}

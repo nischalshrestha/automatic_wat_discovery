@@ -1,0 +1,17 @@
+{
+  "is_private": false,
+  "code_file": "logistic-regression-with-titanic-data.ipynb",
+  "kernel_type": "notebook",
+  "id_no": 356998,
+  "enable_internet": false,
+  "enable_gpu": false,
+  "keywords": [],
+  "id": "hjbahng/logistic-regression-with-titanic-data",
+  "dataset_sources": [],
+  "title": "Logistic Regression with Titanic Data",
+  "competition_sources": [
+    "titanic"
+  ],
+  "kernel_sources": [],
+  "language": "python"
+}

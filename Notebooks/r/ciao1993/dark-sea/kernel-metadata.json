@@ -1,0 +1,17 @@
+{
+  "enable_gpu": false,
+  "kernel_sources": [],
+  "is_private": false,
+  "enable_internet": false,
+  "title": "Dark_Sea",
+  "id_no": 209441,
+  "dataset_sources": [],
+  "kernel_type": "notebook",
+  "language": "r",
+  "code_file": "dark-sea.irnb",
+  "competition_sources": [
+    "titanic"
+  ],
+  "keywords": [],
+  "id": "ciao1993/dark-sea"
+}

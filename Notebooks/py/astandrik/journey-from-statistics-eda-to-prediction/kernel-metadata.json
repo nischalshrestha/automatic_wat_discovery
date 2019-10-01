@@ -1,0 +1,22 @@
+{
+  "enable_internet": false,
+  "code_file": "journey-from-statistics-eda-to-prediction.ipynb",
+  "is_private": false,
+  "id_no": 494926,
+  "enable_gpu": false,
+  "title": "Journey from Statistics, EDA, to Prediction",
+  "language": "python",
+  "keywords": [
+    "statistics",
+    "eda",
+    "data cleaning",
+    "random forest"
+  ],
+  "competition_sources": [
+    "titanic"
+  ],
+  "dataset_sources": [],
+  "kernel_sources": [],
+  "kernel_type": "notebook",
+  "id": "astandrik/journey-from-statistics-eda-to-prediction"
+}

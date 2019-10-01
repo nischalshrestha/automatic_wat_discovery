@@ -1,0 +1,21 @@
+{
+  "enable_internet": false,
+  "title": "Tensorflow-Deep Learning with Embarked",
+  "id_no": 684271,
+  "kernel_type": "notebook",
+  "id": "hasanhasan/tensorflow-deep-learning-with-embarked",
+  "competition_sources": [
+    "titanic"
+  ],
+  "is_private": false,
+  "dataset_sources": [],
+  "kernel_sources": [],
+  "enable_gpu": false,
+  "language": "python",
+  "code_file": "tensorflow-deep-learning-with-embarked.ipynb",
+  "keywords": [
+    "beginner",
+    "data visualization",
+    "feature engineering"
+  ]
+}

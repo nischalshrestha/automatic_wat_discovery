@@ -1,0 +1,20 @@
+{
+  "language": "r",
+  "competition_sources": [
+    "titanic"
+  ],
+  "kernel_type": "notebook",
+  "id": "macrosp/logistic-regression-titanic-dataset",
+  "dataset_sources": [],
+  "enable_gpu": false,
+  "title": "Logistic Regression - Titanic dataset",
+  "is_private": false,
+  "enable_internet": false,
+  "keywords": [
+    "beginner",
+    "logistic regression"
+  ],
+  "id_no": 892666,
+  "kernel_sources": [],
+  "code_file": "logistic-regression-titanic-dataset.irnb"
+}

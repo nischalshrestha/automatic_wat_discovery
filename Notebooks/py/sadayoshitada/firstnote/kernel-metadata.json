@@ -1,0 +1,17 @@
+{
+  "title": "Firstnote",
+  "dataset_sources": [],
+  "competition_sources": [
+    "titanic"
+  ],
+  "enable_gpu": false,
+  "enable_internet": false,
+  "code_file": "firstnote.ipynb",
+  "kernel_type": "notebook",
+  "language": "python",
+  "id_no": 1708735,
+  "id": "sadayoshitada/firstnote",
+  "is_private": false,
+  "keywords": [],
+  "kernel_sources": []
+}

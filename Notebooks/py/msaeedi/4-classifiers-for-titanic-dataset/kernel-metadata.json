@@ -1,0 +1,22 @@
+{
+  "id_no": 380256,
+  "kernel_sources": [],
+  "code_file": "4-classifiers-for-titanic-dataset.ipynb",
+  "competition_sources": [
+    "titanic"
+  ],
+  "title": "4 classifiers for Titanic Dataset",
+  "language": "python",
+  "id": "msaeedi/4-classifiers-for-titanic-dataset",
+  "keywords": [
+    "categorical data",
+    "data cleaning",
+    "neural networks",
+    "svm"
+  ],
+  "enable_internet": false,
+  "kernel_type": "notebook",
+  "dataset_sources": [],
+  "enable_gpu": false,
+  "is_private": false
+}

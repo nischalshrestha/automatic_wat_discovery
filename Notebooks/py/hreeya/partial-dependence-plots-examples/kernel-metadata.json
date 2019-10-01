@@ -1,0 +1,18 @@
+{
+  "enable_internet": false,
+  "title": "PARTIAL DEPENDENCE PLOTS examples",
+  "dataset_sources": [],
+  "is_private": false,
+  "kernel_sources": [],
+  "enable_gpu": false,
+  "language": "python",
+  "keywords": [],
+  "kernel_type": "notebook",
+  "competition_sources": [
+    "titanic",
+    "house-prices-advanced-regression-techniques"
+  ],
+  "id": "hreeya/partial-dependence-plots-examples",
+  "code_file": "partial-dependence-plots-examples.ipynb",
+  "id_no": 1619159
+}

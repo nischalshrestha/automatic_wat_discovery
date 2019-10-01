@@ -1,0 +1,17 @@
+{
+  "enable_gpu": false,
+  "is_private": false,
+  "code_file": "a-journey-through-titanic-154aac.ipynb",
+  "competition_sources": [
+    "titanic"
+  ],
+  "enable_internet": false,
+  "title": "A Journey through Titanic 154aac",
+  "id": "jalfano/a-journey-through-titanic-154aac",
+  "id_no": 194270,
+  "dataset_sources": [],
+  "language": "python",
+  "keywords": [],
+  "kernel_type": "notebook",
+  "kernel_sources": []
+}

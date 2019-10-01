@@ -1,0 +1,17 @@
+{
+  "keywords": [],
+  "is_private": false,
+  "kernel_type": "notebook",
+  "enable_gpu": false,
+  "competition_sources": [
+    "titanic"
+  ],
+  "kernel_sources": [],
+  "dataset_sources": [],
+  "language": "python",
+  "code_file": "titanic-top-3-models.ipynb",
+  "id": "atuljhasg/titanic-top-3-models",
+  "enable_internet": false,
+  "id_no": 1016846,
+  "title": "Titanic | Top 3 Models."
+}

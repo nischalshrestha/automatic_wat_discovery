@@ -1,0 +1,17 @@
+{
+  "id": "metafire18/titanic-data-science-solutions",
+  "competition_sources": [
+    "titanic"
+  ],
+  "kernel_sources": [],
+  "is_private": false,
+  "enable_internet": false,
+  "language": "python",
+  "enable_gpu": false,
+  "code_file": "titanic-data-science-solutions.ipynb",
+  "keywords": [],
+  "title": "Titanic Data Science Solutions",
+  "kernel_type": "notebook",
+  "dataset_sources": [],
+  "id_no": 687689
+}

@@ -1,0 +1,17 @@
+{
+  "id": "sharmila94/titanic-dataframe-randomforest-starter-in-ml",
+  "dataset_sources": [],
+  "enable_internet": false,
+  "enable_gpu": false,
+  "kernel_type": "notebook",
+  "kernel_sources": [],
+  "is_private": false,
+  "title": "Titanic - DataFrame, RandomForest(Starter in ML)",
+  "code_file": "titanic-dataframe-randomforest-starter-in-ml.ipynb",
+  "language": "python",
+  "competition_sources": [
+    "titanic"
+  ],
+  "keywords": [],
+  "id_no": 1418497
+}

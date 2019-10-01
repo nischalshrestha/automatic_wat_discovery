@@ -1,0 +1,21 @@
+{
+  "dataset_sources": [],
+  "is_private": false,
+  "enable_internet": false,
+  "competition_sources": [
+    "titanic"
+  ],
+  "kernel_type": "notebook",
+  "title": "Titanic: Survival Predictions:Logistic Regression",
+  "kernel_sources": [],
+  "id_no": 2094931,
+  "code_file": "titanic-survival-predictions-logistic-regression.ipynb",
+  "keywords": [
+    "data cleaning",
+    "data visualization",
+    "regression analysis"
+  ],
+  "language": "python",
+  "id": "ralph090/titanic-survival-predictions-logistic-regression",
+  "enable_gpu": false
+}

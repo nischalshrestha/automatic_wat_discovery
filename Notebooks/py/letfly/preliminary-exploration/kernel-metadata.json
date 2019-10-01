@@ -1,0 +1,17 @@
+{
+  "id": "letfly/preliminary-exploration",
+  "kernel_sources": [],
+  "dataset_sources": [],
+  "kernel_type": "notebook",
+  "code_file": "preliminary-exploration.ipynb",
+  "language": "python",
+  "competition_sources": [
+    "titanic"
+  ],
+  "is_private": false,
+  "enable_gpu": false,
+  "id_no": 56356,
+  "enable_internet": false,
+  "title": "preliminary exploration",
+  "keywords": []
+}

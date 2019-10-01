@@ -1,0 +1,17 @@
+{
+  "keywords": [],
+  "kernel_type": "notebook",
+  "competition_sources": [
+    "titanic"
+  ],
+  "is_private": false,
+  "id": "eekeepaa/notebook5bd96fd478",
+  "enable_internet": false,
+  "title": "Notebook5bd96fd478",
+  "kernel_sources": [],
+  "id_no": 219607,
+  "code_file": "notebook5bd96fd478.ipynb",
+  "dataset_sources": [],
+  "enable_gpu": false,
+  "language": "python"
+}

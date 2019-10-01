@@ -1,0 +1,17 @@
+{
+  "id": "dingli/titanic-survivor-prediction-by-machine-learning",
+  "dataset_sources": [],
+  "kernel_sources": [],
+  "title": "Titanic Survivor Prediction by Machine Learning",
+  "language": "python",
+  "competition_sources": [
+    "titanic"
+  ],
+  "enable_internet": false,
+  "is_private": false,
+  "code_file": "titanic-survivor-prediction-by-machine-learning.ipynb",
+  "id_no": 814344,
+  "kernel_type": "notebook",
+  "enable_gpu": false,
+  "keywords": []
+}

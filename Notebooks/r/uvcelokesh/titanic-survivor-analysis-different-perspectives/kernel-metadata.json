@@ -1,0 +1,17 @@
+{
+  "dataset_sources": [],
+  "language": "r",
+  "code_file": "titanic-survivor-analysis-different-perspectives.irnb",
+  "is_private": false,
+  "id_no": 121470,
+  "id": "uvcelokesh/titanic-survivor-analysis-different-perspectives",
+  "competition_sources": [
+    "titanic"
+  ],
+  "enable_internet": false,
+  "title": "Titanic Survivor Analysis - Different Perspectives",
+  "kernel_type": "notebook",
+  "kernel_sources": [],
+  "keywords": [],
+  "enable_gpu": false
+}

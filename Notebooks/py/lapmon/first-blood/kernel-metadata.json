@@ -1,0 +1,17 @@
+{
+  "id_no": 65231,
+  "enable_gpu": false,
+  "keywords": [],
+  "enable_internet": false,
+  "dataset_sources": [],
+  "language": "python",
+  "competition_sources": [
+    "titanic"
+  ],
+  "is_private": false,
+  "code_file": "first-blood.ipynb",
+  "kernel_type": "notebook",
+  "title": "first blood",
+  "kernel_sources": [],
+  "id": "lapmon/first-blood"
+}

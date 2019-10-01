@@ -1,0 +1,17 @@
+{
+  "title": "Notebookcd1452b35e",
+  "is_private": false,
+  "competition_sources": [
+    "titanic"
+  ],
+  "enable_internet": false,
+  "keywords": [],
+  "enable_gpu": false,
+  "dataset_sources": [],
+  "language": "python",
+  "kernel_sources": [],
+  "id_no": 248441,
+  "code_file": "notebookcd1452b35e.ipynb",
+  "kernel_type": "notebook",
+  "id": "sunyuanfish/notebookcd1452b35e"
+}

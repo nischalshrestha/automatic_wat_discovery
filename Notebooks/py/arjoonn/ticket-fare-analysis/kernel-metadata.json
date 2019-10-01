@@ -1,0 +1,17 @@
+{
+  "keywords": [],
+  "competition_sources": [
+    "titanic"
+  ],
+  "language": "python",
+  "title": "Ticket_Fare analysis",
+  "kernel_type": "notebook",
+  "kernel_sources": [],
+  "id": "arjoonn/ticket-fare-analysis",
+  "dataset_sources": [],
+  "id_no": 37325,
+  "code_file": "ticket-fare-analysis.ipynb",
+  "enable_internet": false,
+  "is_private": false,
+  "enable_gpu": false
+}

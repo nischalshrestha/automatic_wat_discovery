@@ -1,0 +1,17 @@
+{
+  "enable_internet": false,
+  "enable_gpu": false,
+  "dataset_sources": [],
+  "id_no": 842697,
+  "language": "python",
+  "kernel_sources": [],
+  "title": "Titanic MVP",
+  "competition_sources": [
+    "titanic"
+  ],
+  "is_private": false,
+  "keywords": [],
+  "code_file": "titanic-mvp.ipynb",
+  "id": "bodek87/titanic-mvp",
+  "kernel_type": "notebook"
+}

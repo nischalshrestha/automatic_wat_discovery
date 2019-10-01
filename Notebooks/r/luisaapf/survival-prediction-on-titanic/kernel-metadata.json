@@ -1,0 +1,17 @@
+{
+  "kernel_sources": [],
+  "dataset_sources": [],
+  "kernel_type": "notebook",
+  "competition_sources": [
+    "titanic"
+  ],
+  "title": "Survival prediction on Titanic",
+  "enable_gpu": false,
+  "code_file": "survival-prediction-on-titanic.irnb",
+  "id": "luisaapf/survival-prediction-on-titanic",
+  "enable_internet": false,
+  "keywords": [],
+  "language": "r",
+  "is_private": false,
+  "id_no": 413556
+}

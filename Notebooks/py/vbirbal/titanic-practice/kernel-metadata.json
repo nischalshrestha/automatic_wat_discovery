@@ -1,0 +1,19 @@
+{
+  "competition_sources": [
+    "titanic"
+  ],
+  "enable_internet": false,
+  "kernel_sources": [],
+  "id": "vbirbal/titanic-practice",
+  "is_private": false,
+  "code_file": "titanic-practice.ipynb",
+  "title": "Titanic Practice",
+  "dataset_sources": [
+    "rganapathy/titanic-subset"
+  ],
+  "kernel_type": "notebook",
+  "language": "python",
+  "keywords": [],
+  "id_no": 279645,
+  "enable_gpu": false
+}

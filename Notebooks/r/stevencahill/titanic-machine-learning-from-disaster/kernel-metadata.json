@@ -1,0 +1,17 @@
+{
+  "language": "r",
+  "dataset_sources": [],
+  "competition_sources": [
+    "titanic"
+  ],
+  "title": "Titanic: Machine Learning from Disaster",
+  "id": "stevencahill/titanic-machine-learning-from-disaster",
+  "is_private": false,
+  "kernel_sources": [],
+  "id_no": 242955,
+  "enable_internet": false,
+  "kernel_type": "notebook",
+  "code_file": "titanic-machine-learning-from-disaster.irnb",
+  "enable_gpu": false,
+  "keywords": []
+}

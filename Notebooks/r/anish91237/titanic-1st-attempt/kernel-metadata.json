@@ -1,0 +1,17 @@
+{
+  "code_file": "titanic-1st-attempt.irnb",
+  "title": "titanic 1st attempt",
+  "id": "anish91237/titanic-1st-attempt",
+  "enable_internet": false,
+  "language": "r",
+  "id_no": 1384036,
+  "dataset_sources": [],
+  "kernel_type": "notebook",
+  "kernel_sources": [],
+  "is_private": false,
+  "enable_gpu": false,
+  "keywords": [],
+  "competition_sources": [
+    "titanic"
+  ]
+}

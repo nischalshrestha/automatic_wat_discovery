@@ -1,0 +1,17 @@
+{
+  "keywords": [],
+  "is_private": false,
+  "kernel_type": "notebook",
+  "language": "python",
+  "competition_sources": [
+    "titanic"
+  ],
+  "id": "rhkdtjqql/titanic-example-sub",
+  "title": "titanic_example_sub",
+  "code_file": "titanic-example-sub.ipynb",
+  "enable_internet": false,
+  "dataset_sources": [],
+  "kernel_sources": [],
+  "enable_gpu": false,
+  "id_no": 1649641
+}

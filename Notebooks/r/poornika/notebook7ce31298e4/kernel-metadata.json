@@ -1,0 +1,17 @@
+{
+  "kernel_type": "notebook",
+  "id": "poornika/notebook7ce31298e4",
+  "id_no": 222808,
+  "code_file": "notebook7ce31298e4.ipynb",
+  "kernel_sources": [],
+  "title": "Notebook7ce31298e4",
+  "competition_sources": [
+    "titanic"
+  ],
+  "keywords": [],
+  "dataset_sources": [],
+  "is_private": false,
+  "language": "python",
+  "enable_gpu": false,
+  "enable_internet": false
+}

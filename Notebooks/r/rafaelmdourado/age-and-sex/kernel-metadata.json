@@ -1,0 +1,17 @@
+{
+  "is_private": false,
+  "enable_internet": false,
+  "id": "rafaelmdourado/age-and-sex",
+  "dataset_sources": [],
+  "id_no": 260018,
+  "keywords": [],
+  "code_file": "age-and-sex.irnb",
+  "kernel_sources": [],
+  "kernel_type": "notebook",
+  "language": "r",
+  "competition_sources": [
+    "titanic"
+  ],
+  "enable_gpu": false,
+  "title": "Age and Sex"
+}

@@ -1,0 +1,17 @@
+{
+  "code_file": "precision-recall-and-accuracy-titanic-dataset.ipynb",
+  "is_private": false,
+  "keywords": [],
+  "id_no": 596550,
+  "enable_internet": false,
+  "competition_sources": [
+    "titanic"
+  ],
+  "id": "mohsun/precision-recall-and-accuracy-titanic-dataset",
+  "enable_gpu": false,
+  "title": "Precision/recall and accuracy - Titanic dataset",
+  "kernel_sources": [],
+  "language": "python",
+  "kernel_type": "notebook",
+  "dataset_sources": []
+}

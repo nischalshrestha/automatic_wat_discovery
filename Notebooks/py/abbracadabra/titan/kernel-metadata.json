@@ -1,0 +1,17 @@
+{
+  "enable_gpu": false,
+  "competition_sources": [
+    "titanic"
+  ],
+  "id_no": 1652584,
+  "kernel_type": "notebook",
+  "is_private": false,
+  "title": "titan",
+  "keywords": [],
+  "code_file": "titan.ipynb",
+  "enable_internet": false,
+  "id": "abbracadabra/titan",
+  "dataset_sources": [],
+  "language": "python",
+  "kernel_sources": []
+}

@@ -1,0 +1,17 @@
+{
+  "enable_gpu": false,
+  "dataset_sources": [],
+  "title": "titanic_survival_preds",
+  "is_private": false,
+  "id": "kierisi/notebook-c40866ae4c60b5e19703",
+  "kernel_type": "notebook",
+  "enable_internet": false,
+  "id_no": 72243,
+  "language": "r",
+  "kernel_sources": [],
+  "code_file": "notebook-c40866ae4c60b5e19703.irnb",
+  "keywords": [],
+  "competition_sources": [
+    "titanic"
+  ]
+}

@@ -1,0 +1,17 @@
+{
+  "kernel_sources": [],
+  "kernel_type": "notebook",
+  "dataset_sources": [],
+  "code_file": "cs-100-ml-with-the-titanic-dataset-21cd58.ipynb",
+  "title": "CS 100: ML with the Titanic Dataset 21cd58",
+  "language": "python",
+  "id_no": 1739103,
+  "enable_gpu": false,
+  "enable_internet": false,
+  "competition_sources": [
+    "titanic"
+  ],
+  "is_private": false,
+  "id": "djablonski/cs-100-ml-with-the-titanic-dataset-21cd58",
+  "keywords": []
+}

@@ -1,0 +1,23 @@
+{
+  "is_private": false,
+  "competition_sources": [
+    "titanic"
+  ],
+  "keywords": [
+    "tutorial",
+    "beginner",
+    "data cleaning",
+    "data visualization",
+    "feature engineering"
+  ],
+  "kernel_type": "notebook",
+  "id_no": 1542947,
+  "enable_internet": true,
+  "id": "sriyesh/titanic-survival-prediction-for-beginners",
+  "enable_gpu": true,
+  "title": "Titanic Survival Prediction For Beginners",
+  "code_file": "titanic-survival-prediction-for-beginners.ipynb",
+  "dataset_sources": [],
+  "language": "python",
+  "kernel_sources": []
+}

@@ -1,0 +1,17 @@
+{
+  "is_private": false,
+  "competition_sources": [
+    "titanic"
+  ],
+  "dataset_sources": [],
+  "kernel_type": "notebook",
+  "id_no": 103613,
+  "title": "Exploratory Tutorial - Titanic ",
+  "enable_gpu": false,
+  "code_file": "exploratory-tutorial-titanic.ipynb",
+  "language": "python",
+  "enable_internet": false,
+  "kernel_sources": [],
+  "keywords": [],
+  "id": "arthurlu/exploratory-tutorial-titanic"
+}

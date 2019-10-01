@@ -1,0 +1,17 @@
+{
+  "dataset_sources": [],
+  "competition_sources": [
+    "titanic"
+  ],
+  "keywords": [],
+  "kernel_sources": [],
+  "id": "rubiagatra/titanic-survival-try-number-2",
+  "is_private": false,
+  "code_file": "titanic-survival-try-number-2.ipynb",
+  "enable_internet": false,
+  "language": "python",
+  "title": "Titanic Survival: Try Number 2",
+  "kernel_type": "notebook",
+  "enable_gpu": false,
+  "id_no": 395966
+}

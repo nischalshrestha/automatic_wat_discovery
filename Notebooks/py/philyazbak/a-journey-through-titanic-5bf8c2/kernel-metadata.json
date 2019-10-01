@@ -1,0 +1,17 @@
+{
+  "kernel_sources": [],
+  "dataset_sources": [],
+  "language": "python",
+  "enable_gpu": false,
+  "id": "philyazbak/a-journey-through-titanic-5bf8c2",
+  "keywords": [],
+  "id_no": 479350,
+  "competition_sources": [
+    "titanic"
+  ],
+  "title": "A Journey through Titanic 5bf8c2",
+  "enable_internet": false,
+  "kernel_type": "notebook",
+  "code_file": "a-journey-through-titanic-5bf8c2.ipynb",
+  "is_private": false
+}

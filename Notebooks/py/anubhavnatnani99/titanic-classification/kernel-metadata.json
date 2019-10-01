@@ -1,0 +1,17 @@
+{
+  "code_file": "titanic-classification.ipynb",
+  "enable_internet": true,
+  "kernel_sources": [],
+  "dataset_sources": [],
+  "id_no": 1442426,
+  "keywords": [],
+  "language": "python",
+  "id": "anubhavnatnani99/titanic-classification",
+  "enable_gpu": false,
+  "competition_sources": [
+    "titanic"
+  ],
+  "is_private": false,
+  "kernel_type": "notebook",
+  "title": "Titanic classification"
+}

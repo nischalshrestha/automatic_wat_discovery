@@ -1,0 +1,17 @@
+{
+  "dataset_sources": [],
+  "kernel_sources": [],
+  "language": "r",
+  "competition_sources": [
+    "titanic"
+  ],
+  "enable_internet": false,
+  "id": "pearsonk/a-naive-approach-to-prediction",
+  "keywords": [],
+  "code_file": "a-naive-approach-to-prediction.irnb",
+  "kernel_type": "notebook",
+  "id_no": 730273,
+  "enable_gpu": false,
+  "title": "A naive approach to prediction",
+  "is_private": false
+}

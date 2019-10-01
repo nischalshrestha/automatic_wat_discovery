@@ -1,0 +1,20 @@
+{
+  "is_private": false,
+  "dataset_sources": [],
+  "kernel_sources": [],
+  "kernel_type": "notebook",
+  "title": "Titanic Passenger Survival Prediction",
+  "enable_gpu": false,
+  "enable_internet": false,
+  "code_file": "titanic-passenger-survival-prediction.ipynb",
+  "competition_sources": [
+    "titanic"
+  ],
+  "language": "python",
+  "keywords": [
+    "beginner",
+    "classification"
+  ],
+  "id": "ipg2014xxx/titanic-passenger-survival-prediction",
+  "id_no": 386826
+}

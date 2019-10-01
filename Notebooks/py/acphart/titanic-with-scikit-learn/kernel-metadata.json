@@ -1,0 +1,17 @@
+{
+  "id": "acphart/titanic-with-scikit-learn",
+  "dataset_sources": [],
+  "title": "Titanic\uff1a\u5e26\u5b8c\u6574\u601d\u8def\u7684\u673a\u5668\u5b66\u4e60\u9879\u76ee\uff08with scikit-learn\uff09",
+  "is_private": false,
+  "id_no": 1563487,
+  "kernel_type": "notebook",
+  "language": "python",
+  "enable_internet": false,
+  "code_file": "titanic-with-scikit-learn.ipynb",
+  "enable_gpu": false,
+  "keywords": [],
+  "kernel_sources": [],
+  "competition_sources": [
+    "titanic"
+  ]
+}

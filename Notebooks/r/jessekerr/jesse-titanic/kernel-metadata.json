@@ -1,0 +1,17 @@
+{
+  "id": "jessekerr/jesse-titanic",
+  "enable_internet": false,
+  "enable_gpu": false,
+  "kernel_type": "notebook",
+  "kernel_sources": [],
+  "language": "r",
+  "is_private": false,
+  "dataset_sources": [],
+  "title": "Jesse Titanic",
+  "code_file": "jesse-titanic.irnb",
+  "id_no": 987975,
+  "competition_sources": [
+    "titanic"
+  ],
+  "keywords": []
+}

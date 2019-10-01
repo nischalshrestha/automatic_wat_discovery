@@ -1,0 +1,17 @@
+{
+  "code_file": "sigmoid-function-for-logisticregression-neuralnets.ipynb",
+  "enable_gpu": false,
+  "keywords": [],
+  "enable_internet": false,
+  "title": "Sigmoid function for LogisticRegression/NeuralNets",
+  "kernel_type": "notebook",
+  "id": "vinay6666/sigmoid-function-for-logisticregression-neuralnets",
+  "id_no": 127488,
+  "language": "python",
+  "dataset_sources": [],
+  "is_private": false,
+  "competition_sources": [
+    "titanic"
+  ],
+  "kernel_sources": []
+}

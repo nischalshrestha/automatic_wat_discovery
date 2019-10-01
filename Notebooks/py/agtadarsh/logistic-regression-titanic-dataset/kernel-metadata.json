@@ -1,0 +1,17 @@
+{
+  "dataset_sources": [],
+  "is_private": false,
+  "competition_sources": [
+    "titanic"
+  ],
+  "id": "agtadarsh/logistic-regression-titanic-dataset",
+  "kernel_sources": [],
+  "enable_gpu": false,
+  "enable_internet": false,
+  "id_no": 1838726,
+  "title": "Logistic Regression Titanic Dataset",
+  "language": "python",
+  "code_file": "logistic-regression-titanic-dataset.ipynb",
+  "keywords": [],
+  "kernel_type": "notebook"
+}

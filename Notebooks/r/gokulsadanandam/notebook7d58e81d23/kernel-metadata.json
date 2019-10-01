@@ -1,0 +1,17 @@
+{
+  "is_private": false,
+  "competition_sources": [
+    "titanic"
+  ],
+  "enable_internet": false,
+  "enable_gpu": false,
+  "kernel_sources": [],
+  "title": "Notebooked5ce2cba0",
+  "language": "r",
+  "id_no": 174199,
+  "code_file": "notebook7d58e81d23.irnb",
+  "id": "gokulsadanandam/notebook7d58e81d23",
+  "dataset_sources": [],
+  "keywords": [],
+  "kernel_type": "notebook"
+}

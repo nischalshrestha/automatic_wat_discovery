@@ -1,0 +1,23 @@
+{
+  "language": "r",
+  "kernel_type": "notebook",
+  "enable_internet": false,
+  "id": "tnyont/who-survived-the-titanic-data-prep-and-analysis",
+  "competition_sources": [
+    "titanic"
+  ],
+  "enable_gpu": false,
+  "keywords": [
+    "beginner",
+    "data cleaning",
+    "data visualization",
+    "feature engineering",
+    "logistic regression"
+  ],
+  "id_no": 902876,
+  "dataset_sources": [],
+  "is_private": false,
+  "title": "Who Survived the Titanic? - Data Prep and Analysis",
+  "code_file": "who-survived-the-titanic-data-prep-and-analysis.irnb",
+  "kernel_sources": []
+}

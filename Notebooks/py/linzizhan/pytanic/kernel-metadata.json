@@ -1,0 +1,17 @@
+{
+  "id": "linzizhan/pytanic",
+  "code_file": "pytanic.ipynb",
+  "is_private": false,
+  "kernel_type": "notebook",
+  "keywords": [],
+  "kernel_sources": [],
+  "competition_sources": [
+    "titanic"
+  ],
+  "id_no": 338825,
+  "dataset_sources": [],
+  "language": "python",
+  "enable_gpu": false,
+  "enable_internet": false,
+  "title": "Pytanic"
+}

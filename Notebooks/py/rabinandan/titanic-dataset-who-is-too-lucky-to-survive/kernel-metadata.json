@@ -1,0 +1,17 @@
+{
+  "is_private": false,
+  "keywords": [],
+  "enable_internet": false,
+  "id": "rabinandan/titanic-dataset-who-is-too-lucky-to-survive",
+  "title": "Titanic Dataset : Who is too Lucky to survive",
+  "competition_sources": [
+    "titanic"
+  ],
+  "kernel_type": "notebook",
+  "id_no": 605034,
+  "code_file": "titanic-dataset-who-is-too-lucky-to-survive.ipynb",
+  "kernel_sources": [],
+  "language": "python",
+  "dataset_sources": [],
+  "enable_gpu": false
+}

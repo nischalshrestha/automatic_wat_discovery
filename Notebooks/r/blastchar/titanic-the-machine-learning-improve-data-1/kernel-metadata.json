@@ -1,0 +1,17 @@
+{
+  "competition_sources": [
+    "titanic"
+  ],
+  "kernel_type": "notebook",
+  "dataset_sources": [],
+  "id_no": 564688,
+  "keywords": [],
+  "title": "Titanic The Machine Learning Improve Data 1",
+  "enable_internet": false,
+  "language": "r",
+  "code_file": "titanic-the-machine-learning-improve-data-1.irnb",
+  "enable_gpu": false,
+  "kernel_sources": [],
+  "is_private": false,
+  "id": "blastchar/titanic-the-machine-learning-improve-data-1"
+}

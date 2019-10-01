@@ -1,0 +1,17 @@
+{
+  "kernel_sources": [],
+  "keywords": [],
+  "enable_internet": false,
+  "title": "Titanic Data pytorch",
+  "kernel_type": "notebook",
+  "id_no": 1524046,
+  "code_file": "titanic-data-pytorch.ipynb",
+  "language": "python",
+  "is_private": false,
+  "id": "mizomatic/titanic-data-pytorch",
+  "dataset_sources": [],
+  "enable_gpu": true,
+  "competition_sources": [
+    "titanic"
+  ]
+}

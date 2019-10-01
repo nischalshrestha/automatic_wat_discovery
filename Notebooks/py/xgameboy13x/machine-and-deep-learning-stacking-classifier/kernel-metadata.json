@@ -1,0 +1,17 @@
+{
+  "id_no": 198590,
+  "keywords": [],
+  "kernel_type": "notebook",
+  "language": "python",
+  "id": "xgameboy13x/machine-and-deep-learning-stacking-classifier",
+  "enable_internet": false,
+  "title": "Machine and Deep Learning - Stacking Classifier",
+  "is_private": false,
+  "competition_sources": [
+    "titanic"
+  ],
+  "code_file": "machine-and-deep-learning-stacking-classifier.ipynb",
+  "dataset_sources": [],
+  "kernel_sources": [],
+  "enable_gpu": false
+}

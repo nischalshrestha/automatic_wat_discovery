@@ -1,0 +1,17 @@
+{
+  "enable_internet": false,
+  "id_no": 177009,
+  "id": "lhy1989/learning-kaggle-using-rf",
+  "code_file": "learning-kaggle-using-rf.ipynb",
+  "language": "python",
+  "is_private": false,
+  "competition_sources": [
+    "titanic"
+  ],
+  "title": "learning kaggle using rf",
+  "enable_gpu": false,
+  "kernel_type": "notebook",
+  "kernel_sources": [],
+  "dataset_sources": [],
+  "keywords": []
+}

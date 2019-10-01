@@ -1,0 +1,21 @@
+{
+  "keywords": [
+    "tutorial",
+    "beginner",
+    "data visualization"
+  ],
+  "competition_sources": [
+    "titanic"
+  ],
+  "kernel_type": "notebook",
+  "is_private": false,
+  "language": "python",
+  "enable_internet": false,
+  "dataset_sources": [],
+  "enable_gpu": false,
+  "id": "chhuang0123/titanic-scikit-learn-lr-rfr-and-nn",
+  "kernel_sources": [],
+  "id_no": 1365585,
+  "code_file": "titanic-scikit-learn-lr-rfr-and-nn.ipynb",
+  "title": "titanic_scikit-learn-lr-rfr-and-nn"
+}

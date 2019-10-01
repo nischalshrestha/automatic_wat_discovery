@@ -1,0 +1,17 @@
+{
+  "competition_sources": [
+    "titanic"
+  ],
+  "is_private": false,
+  "kernel_type": "notebook",
+  "kernel_sources": [],
+  "id": "renatobentorocha/titanic-beginner",
+  "enable_gpu": false,
+  "enable_internet": false,
+  "language": "python",
+  "code_file": "titanic-beginner.ipynb",
+  "id_no": 1823605,
+  "keywords": [],
+  "title": "Titanic beginner",
+  "dataset_sources": []
+}

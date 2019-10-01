@@ -1,0 +1,17 @@
+{
+  "kernel_sources": [],
+  "kernel_type": "notebook",
+  "title": "Notebook1af392cf82",
+  "competition_sources": [
+    "titanic"
+  ],
+  "code_file": "notebook1af392cf82.irnb",
+  "id_no": 201337,
+  "language": "r",
+  "is_private": false,
+  "dataset_sources": [],
+  "enable_gpu": false,
+  "id": "hyan510/notebook1af392cf82",
+  "enable_internet": false,
+  "keywords": []
+}

@@ -1,0 +1,17 @@
+{
+  "keywords": [],
+  "dataset_sources": [],
+  "enable_internet": false,
+  "kernel_type": "notebook",
+  "title": "Notebook14b3e6ffe5",
+  "code_file": "notebook14b3e6ffe5.ipynb",
+  "kernel_sources": [],
+  "enable_gpu": false,
+  "competition_sources": [
+    "titanic"
+  ],
+  "id": "blambert/notebook14b3e6ffe5",
+  "language": "python",
+  "is_private": false,
+  "id_no": 269969
+}

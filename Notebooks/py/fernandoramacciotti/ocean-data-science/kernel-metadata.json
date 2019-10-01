@@ -1,0 +1,20 @@
+{
+  "enable_internet": false,
+  "kernel_sources": [],
+  "id": "fernandoramacciotti/ocean-data-science",
+  "id_no": 375204,
+  "code_file": "ocean-data-science.ipynb",
+  "kernel_type": "notebook",
+  "enable_gpu": false,
+  "language": "python",
+  "title": "Ocean Data Science",
+  "dataset_sources": [],
+  "keywords": [
+    "beginner",
+    "eda"
+  ],
+  "is_private": false,
+  "competition_sources": [
+    "titanic"
+  ]
+}

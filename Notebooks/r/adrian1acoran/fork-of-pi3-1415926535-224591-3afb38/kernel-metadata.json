@@ -1,0 +1,26 @@
+{
+  "kernel_sources": [],
+  "competition_sources": [
+    "titanic"
+  ],
+  "id_no": 1838552,
+  "enable_gpu": true,
+  "dataset_sources": [
+    "pytorch/vgg13bn",
+    "ramamet4/app-store-apple-data-set-10k-apps",
+    "lava18/google-play-store-apps",
+    "crawford/boston-public-schools",
+    "bigquery/patents",
+    "census/total-business-inventories-and-sales-data",
+    "san-francisco/sf-police-calls-for-service-and-incidents",
+    "theworldbank/education-statistics"
+  ],
+  "id": "adrian1acoran/fork-of-pi3-1415926535-224591-3afb38",
+  "code_file": "fork-of-pi3-1415926535-224591-3afb38.irnb",
+  "enable_internet": true,
+  "title": "Fork of Pi3.1415926535... 224591 3afb38",
+  "keywords": [],
+  "language": "r",
+  "is_private": false,
+  "kernel_type": "notebook"
+}

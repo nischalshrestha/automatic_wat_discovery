@@ -1,0 +1,23 @@
+{
+  "dataset_sources": [],
+  "is_private": false,
+  "enable_gpu": true,
+  "language": "python",
+  "enable_internet": false,
+  "code_file": "kaggle-titanic-kernel.ipynb",
+  "id": "joythabo33/kaggle-titanic-kernel",
+  "competition_sources": [
+    "titanic"
+  ],
+  "kernel_sources": [],
+  "title": "Kaggle Titanic Kernel",
+  "keywords": [
+    "tutorial",
+    "beginner",
+    "data visualization",
+    "classification",
+    "deep learning"
+  ],
+  "id_no": 1348464,
+  "kernel_type": "notebook"
+}

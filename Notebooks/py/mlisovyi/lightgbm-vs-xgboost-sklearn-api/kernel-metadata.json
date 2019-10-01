@@ -1,0 +1,22 @@
+{
+  "is_private": false,
+  "kernel_type": "notebook",
+  "dataset_sources": [],
+  "enable_gpu": false,
+  "keywords": [
+    "classification",
+    "model comparison",
+    "gradient boosting",
+    "xgboost"
+  ],
+  "title": "LightGBM vs XGBoost (sklearn API)",
+  "id": "mlisovyi/lightgbm-vs-xgboost-sklearn-api",
+  "language": "python",
+  "enable_internet": false,
+  "id_no": 945351,
+  "kernel_sources": [],
+  "competition_sources": [
+    "titanic"
+  ],
+  "code_file": "lightgbm-vs-xgboost-sklearn-api.ipynb"
+}

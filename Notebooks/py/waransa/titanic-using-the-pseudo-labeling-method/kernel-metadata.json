@@ -1,0 +1,17 @@
+{
+  "id": "waransa/titanic-using-the-pseudo-labeling-method",
+  "id_no": 376005,
+  "title": "Titanic using the pseudo-labeling method",
+  "code_file": "titanic-using-the-pseudo-labeling-method.ipynb",
+  "language": "python",
+  "kernel_type": "notebook",
+  "is_private": false,
+  "enable_gpu": false,
+  "enable_internet": false,
+  "keywords": [],
+  "dataset_sources": [],
+  "kernel_sources": [],
+  "competition_sources": [
+    "titanic"
+  ]
+}

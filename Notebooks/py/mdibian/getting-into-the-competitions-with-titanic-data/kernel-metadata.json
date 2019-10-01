@@ -1,0 +1,22 @@
+{
+  "id_no": 958748,
+  "language": "python",
+  "keywords": [
+    "beginner",
+    "data cleaning",
+    "data visualization",
+    "classification"
+  ],
+  "is_private": false,
+  "enable_gpu": false,
+  "id": "mdibian/getting-into-the-competitions-with-titanic-data",
+  "enable_internet": false,
+  "competition_sources": [
+    "titanic"
+  ],
+  "dataset_sources": [],
+  "title": "Getting into the Competitions with Titanic data",
+  "code_file": "getting-into-the-competitions-with-titanic-data.ipynb",
+  "kernel_type": "notebook",
+  "kernel_sources": []
+}

@@ -1,0 +1,17 @@
+{
+  "enable_gpu": false,
+  "competition_sources": [
+    "titanic"
+  ],
+  "language": "python",
+  "id": "carolinamunoznogales/carolina-titanic-version",
+  "enable_internet": false,
+  "id_no": 1894530,
+  "keywords": [],
+  "dataset_sources": [],
+  "code_file": "carolina-titanic-version.ipynb",
+  "kernel_type": "notebook",
+  "is_private": false,
+  "kernel_sources": [],
+  "title": "Carolina- Titanic Version"
+}

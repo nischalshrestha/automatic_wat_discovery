@@ -1,0 +1,20 @@
+{
+  "code_file": "titanic-with-deeplearning-simple-tensorflow.ipynb",
+  "kernel_type": "notebook",
+  "title": "Titanic with DeepLearning (simple tensorflow)",
+  "keywords": [
+    "deep learning",
+    "neural networks"
+  ],
+  "competition_sources": [
+    "titanic"
+  ],
+  "enable_gpu": false,
+  "id_no": 578227,
+  "kernel_sources": [],
+  "is_private": false,
+  "id": "mattsu/titanic-with-deeplearning-simple-tensorflow",
+  "language": "python",
+  "enable_internet": false,
+  "dataset_sources": []
+}

@@ -1,0 +1,17 @@
+{
+  "kernel_type": "notebook",
+  "competition_sources": [
+    "titanic"
+  ],
+  "id": "lekkiduchem/my-take-on-titanic",
+  "kernel_sources": [],
+  "is_private": false,
+  "enable_internet": false,
+  "keywords": [],
+  "enable_gpu": false,
+  "id_no": 319344,
+  "code_file": "my-take-on-titanic.ipynb",
+  "dataset_sources": [],
+  "language": "python",
+  "title": "my take on titanic"
+}

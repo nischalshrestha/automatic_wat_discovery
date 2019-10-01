@@ -1,0 +1,292 @@
+{
+  "cells": [
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "_cell_guid": "0dbfbbcf-6234-735c-ec0b-dee1d0717468"
+      },
+      "outputs": [],
+      "source": [
+        "# This R environment comes with all of CRAN preinstalled, as well as many other helpful packages\n",
+        "# The environment is defined by the kaggle/rstats docker image: https://github.com/kaggle/docker-rstats\n",
+        "# For example, here's several helpful packages to load in \n",
+        "\n",
+        "library(ggplot2) # Data visualization\n",
+        "library(readr) # CSV file I/O, e.g. the read_csv function\n",
+        "library(data.table)\n",
+        "library(caret)\n",
+        "\n",
+        "BinByCount <- function(x, n=10) {\n",
+        "\tfindInterval(x, sort(quantile(x, (1:n) * (1/n) - (1/n), na.rm=TRUE)))\n",
+        "}\n",
+        "\n",
+        "# Input data files are available in the \"../input/\" directory.\n",
+        "# For example, running this (by clicking run or pressing Shift+Enter) will list the files in the input directory\n",
+        "\n",
+        "system(\"ls ../input\")\n",
+        "\n",
+        "# Any results you write to the current directory are saved as output."
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "_cell_guid": "ea4bd4be-7aa2-5a30-d710-0e97d72c8982"
+      },
+      "outputs": [],
+      "source": [
+        "all_train <- fread('../input/train.csv')\n",
+        "test  <- fread('../input/test.csv')\n",
+        "summary(all_train)\n",
+        "\n",
+        "# combine them as a whole\n",
+        "test$Survived <- NA\n",
+        "in_train <- createDataPartition(all_train$Survived, p = 7/8, list = FALSE)\n",
+        "train = all_train[in_train]\n",
+        "pre_test = all_train[-in_train]\n",
+        "\n",
+        "nrow(train)\n",
+        "nrow(pre_test)\n",
+        "train[, Category := 'train']\n",
+        "pre_test[, Category := 'cv']\n",
+        "test[, Category := 'test']\n",
+        "full <- rbind(train, pre_test, test)\n"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "_cell_guid": "53db963c-8d83-31cb-fad9-e624bc2564c5"
+      },
+      "outputs": [],
+      "source": [
+        "# train[, list(Cabin)]\n",
+        "train[, NewCabin := sapply(Cabin, function(x) {length(strsplit(x, ' ')[[1]])})]\n",
+        "full[, NewCabin := sapply(Cabin, function(x) {length(strsplit(x, ' ')[[1]])})]\n",
+        "table(full$NewCabin)"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "_cell_guid": "91a054d2-7524-d4cc-7f72-7d6e8a07f5a4"
+      },
+      "outputs": [],
+      "source": [
+        "columns = colnames(train)\n",
+        "par(mfrow=c(3, 3))\n",
+        "for (column in c('Pclass', 'Age', 'Sex', 'SibSp', 'Parch', 'Ticket', 'Fare', 'NewCabin', 'Embarked')) {\n",
+        "    if (typeof(train[, eval(as.name(column))][1]) == 'double') {\n",
+        "        train[, Regressor := BinByCount(train[, eval(as.name(column))])]\n",
+        "    } else {\n",
+        "        train[, Regressor := as.factor(train[, eval(as.name(column))])]\n",
+        "    }\n",
+        "    train_summary = train[, list(FirstQuart=quantile(Survived, 0.25), Mean=mean(Survived), ThirdQuart=quantile(Survived, 0.75)), by=Regressor]\n",
+        "    plot(train_summary$Regressor, train_summary$Mean)\n",
+        "    title(column)\n",
+        "}"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "_cell_guid": "5d5f0ad5-23cd-fbfe-597e-918e5324b9d7"
+      },
+      "outputs": [],
+      "source": [
+        "columns = colnames(train)\n",
+        "par(mfrow=c(3, 3))\n",
+        "for (column in c('Pclass', 'Sex', 'SibSp', 'Parch', 'Ticket', 'Fare', 'Cabin', 'Embarked')) {\n",
+        "    if (typeof(train[, eval(as.name(column))][1]) == 'double') {\n",
+        "        plot(train[, eval(as.name(column))], train$Age)\n",
+        "    } else {\n",
+        "        plot(as.factor(train[, eval(as.name(column))]), train$Age, )\n",
+        "    }\n",
+        "    title(column)\n",
+        "}"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "_cell_guid": "6fd504fb-4594-d0f1-42a0-86c07d15fc8d"
+      },
+      "outputs": [],
+      "source": [
+        "full[, NewAge := Age]\n",
+        "set.seed(123)\n",
+        "full[is.na(Age), NewAge := sample(na.omit(full$Age), sum(is.na(full$Age)))]\n",
+        "par(mfrow=c(2,1))\n",
+        "hist(full$Age, freq=F)\n",
+        "hist(full$NewAge, freq=F)"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "_cell_guid": "46c19c31-c6c4-ee6f-894b-37560f6e2332"
+      },
+      "outputs": [],
+      "source": [
+        "full[, Title := sapply(Name, function(x) {strsplit(strsplit(x,\", \")[[1]][2], '\\\\.')[[1]][1]})]\n",
+        "full[, LastName := sapply(Name, function(x) {strsplit(x,\", \")[[1]][2]})]\n",
+        "table(full$Title)\n",
+        "full[!(Title %in% c('Master', 'Miss', 'Mr', 'Mrs')), Title := 'Other']\n",
+        "full[, Title := as.factor(Title)]\n",
+        "table(full$Title)"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "_cell_guid": "ba954f4f-cceb-23ac-3a55-5d724b51872e"
+      },
+      "outputs": [],
+      "source": [
+        "full[, Survived := as.factor(Survived)]\n",
+        "ctrl <- trainControl(method = \"repeatedcv\", repeats = 5, classProbs = TRUE)\n",
+        "rpart_mdl <- train(Survived ~ Pclass + Sex + NewAge + Title + SibSp + Parch + NewCabin + \n",
+        "                   Fare + Embarked, data=full[Category == 'train'],\n",
+        "                   method = \"rpart\")\n",
+        "rpart_mdl\n",
+        "confusionMatrix(rpart_mdl)\n",
+        "full[Category %in% c('train', 'cv'), RpartSurvived := predict(rpart_mdl, full[Category %in% c('train', 'cv')])]\n",
+        "full[Category == 'cv', sum(RpartSurvived == Survived)/length(Survived)]"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "_cell_guid": "d7235066-ce54-defb-11f2-d3f722ccc506"
+      },
+      "outputs": [],
+      "source": [
+        "rpart_mdl2 <- train(Survived ~ Pclass + Sex + Age + Title + SibSp + Parch + NewCabin + \n",
+        "                   Fare + Embarked, data=full[Category == 'train'],\n",
+        "                   method = \"rpart\",\n",
+        "                   preProc = c(\"center\", \"scale\", \"knnImpute\"),\n",
+        "                   na.action = na.pass\n",
+        "                   )\n",
+        "rpart_mdl2\n",
+        "confusionMatrix(rpart_mdl2)\n",
+        "full[Category %in% c('train', 'cv'), RpartSurvived2 := predict(rpart_mdl2, full[Category %in% c('train', 'cv')], na.action=na.pass)]\n",
+        "full[Category == 'cv', sum(RpartSurvived2 == Survived)/length(Survived)]\n",
+        "# almost same as random age assignment, maybe slightly better looking at accuracy"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "_cell_guid": "3542bca0-afa0-0a51-3d99-9f5fd3ebcceb"
+      },
+      "outputs": [],
+      "source": [
+        "rf_mdl <- train(Survived ~ Pclass + Sex + Age + Title + SibSp + Parch + NewCabin + \n",
+        "                   Fare + Embarked, data=full[Category == 'train'],\n",
+        "                   method = \"rf\",\n",
+        "                   preProc = c(\"center\", \"scale\", \"knnImpute\"),\n",
+        "                   na.action = na.pass\n",
+        "                   )\n",
+        "rf_mdl\n",
+        "confusionMatrix(rf_mdl)\n",
+        "full[Category %in% c('train', 'cv'), RfSurvived := predict(rf_mdl, full[Category %in% c('train', 'cv')], na.action=na.pass)]\n",
+        "full[Category == 'cv', sum(RfSurvived == Survived)/length(Survived)]"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "_cell_guid": "20a5ad5d-a7aa-6b8a-f50d-df407e93fc84"
+      },
+      "outputs": [],
+      "source": [
+        "glm_mdl <- train(Survived ~ Pclass + Sex + Age + Title + SibSp + Parch + NewCabin + \n",
+        "                   Fare + Embarked, data=full[Category == 'train'],\n",
+        "                   method = \"glm\",\n",
+        "                   preProc = c(\"center\", \"scale\", \"knnImpute\"),\n",
+        "                   na.action = na.pass\n",
+        "                   )\n",
+        "glm_mdl\n",
+        "confusionMatrix(glm_mdl)\n",
+        "full[Category %in% c('train', 'cv'), GlmSurvived := predict(glm_mdl, full[Category  %in% c('train', 'cv')], na.action=na.pass)]\n",
+        "full[Category == 'cv', sum(GlmSurvived == Survived)/length(Survived)]"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "_cell_guid": "46ba847a-8459-ab24-0040-ccfd45008595"
+      },
+      "outputs": [],
+      "source": [
+        "svm_mdl <- train(Survived ~ Pclass + Sex + Age + Title + SibSp + Parch + NewCabin + \n",
+        "                   Fare + Embarked, data=full[Category == 'train'],\n",
+        "                   method = \"svmLinearWeights2\",\n",
+        "                   preProc = c(\"center\", \"scale\", \"knnImpute\"),\n",
+        "                   na.action = na.pass\n",
+        "                   )\n",
+        "svm_mdl\n",
+        "confusionMatrix(svm_mdl)\n",
+        "full[Category %in% c('train', 'cv'), SvmSurvived := predict(svm_mdl, full[Category  %in% c('train', 'cv')], na.action=na.pass)]\n",
+        "full[Category == 'cv', sum(SvmSurvived == Survived)/length(Survived)]"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "_cell_guid": "f4066b0c-9708-b096-92de-eb93f5b56778"
+      },
+      "outputs": [],
+      "source": [
+        "full[Category %in% c('cv', 'train'), sum(RpartSurvived == Survived)/length(Survived)]"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "_cell_guid": "aa3f351a-73f8-3975-f08e-26b6c53e73f7"
+      },
+      "outputs": [],
+      "source": [
+        "full[Category %in% c('cv', 'train'), list(PctRpart=sum(RpartSurvived == Survived)/length(Survived), \n",
+        "                                          PctRpart2=sum(RpartSurvived2 == Survived)/length(Survived), \n",
+        "                                          PctRf=sum(RfSurvived == Survived)/length(Survived), \n",
+        "                                          PctGlm=sum(GlmSurvived == Survived)/length(Survived), \n",
+        "                                          PctSvm=sum(SvmSurvived == Survived)/length(Survived))]"
+      ]
+    }
+  ],
+  "metadata": {
+    "_change_revision": 0,
+    "_is_fork": false,
+    "kernelspec": {
+      "display_name": "R",
+      "language": "R",
+      "name": "ir"
+    },
+    "language_info": {
+      "codemirror_mode": "r",
+      "file_extension": ".r",
+      "mimetype": "text/x-r-source",
+      "name": "R",
+      "pygments_lexer": "r",
+      "version": "3.3.3"
+    }
+  },
+  "nbformat": 4,
+  "nbformat_minor": 0
+}

@@ -1,0 +1,17 @@
+{
+  "kernel_sources": [],
+  "is_private": false,
+  "kernel_type": "notebook",
+  "code_file": "notebooke36c0a7083.ipynb",
+  "keywords": [],
+  "id": "himanibhatt/notebooke36c0a7083",
+  "enable_internet": false,
+  "id_no": 220861,
+  "enable_gpu": false,
+  "language": "python",
+  "competition_sources": [
+    "titanic"
+  ],
+  "dataset_sources": [],
+  "title": "Notebooke36c0a7083"
+}

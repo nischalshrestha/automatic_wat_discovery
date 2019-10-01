@@ -1,0 +1,17 @@
+{
+  "kernel_type": "notebook",
+  "competition_sources": [
+    "titanic"
+  ],
+  "code_file": "notebook82e65d82c2.ipynb",
+  "is_private": false,
+  "title": "Notebook82e65d82c2",
+  "language": "python",
+  "keywords": [],
+  "dataset_sources": [],
+  "enable_internet": false,
+  "id": "robsonfveiga/notebook82e65d82c2",
+  "kernel_sources": [],
+  "id_no": 256313,
+  "enable_gpu": false
+}

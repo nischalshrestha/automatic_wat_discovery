@@ -1,0 +1,17 @@
+{
+  "code_file": "a-guide-to-titanic-challenge.ipynb",
+  "kernel_type": "notebook",
+  "competition_sources": [
+    "titanic"
+  ],
+  "dataset_sources": [],
+  "kernel_sources": [],
+  "enable_gpu": false,
+  "is_private": false,
+  "id_no": 226451,
+  "keywords": [],
+  "language": "python",
+  "title": "A guide to Titanic challenge",
+  "id": "battuzz94/a-guide-to-titanic-challenge",
+  "enable_internet": false
+}

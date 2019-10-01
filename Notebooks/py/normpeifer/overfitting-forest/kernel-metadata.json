@@ -1,0 +1,17 @@
+{
+  "id_no": 284073,
+  "kernel_type": "notebook",
+  "keywords": [],
+  "is_private": false,
+  "enable_internet": false,
+  "enable_gpu": false,
+  "id": "normpeifer/overfitting-forest",
+  "title": "Overfitting Forest?",
+  "language": "python",
+  "dataset_sources": [],
+  "code_file": "overfitting-forest.ipynb",
+  "competition_sources": [
+    "titanic"
+  ],
+  "kernel_sources": []
+}

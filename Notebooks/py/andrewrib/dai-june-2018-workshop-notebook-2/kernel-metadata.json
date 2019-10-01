@@ -1,0 +1,18 @@
+{
+  "competition_sources": [
+    "titanic",
+    "dai-june"
+  ],
+  "kernel_type": "notebook",
+  "id_no": 1110524,
+  "code_file": "dai-june-2018-workshop-notebook-2.ipynb",
+  "enable_internet": false,
+  "id": "andrewrib/dai-june-2018-workshop-notebook-2",
+  "title": "DAI June 2018: Workshop Notebook 2",
+  "is_private": false,
+  "enable_gpu": false,
+  "dataset_sources": [],
+  "kernel_sources": [],
+  "language": "python",
+  "keywords": []
+}

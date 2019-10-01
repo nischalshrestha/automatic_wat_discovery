@@ -1,0 +1,17 @@
+{
+  "id": "aruams/notebookeb43ba2c6f",
+  "code_file": "notebookeb43ba2c6f.irnb",
+  "id_no": 189346,
+  "kernel_sources": [],
+  "kernel_type": "notebook",
+  "title": "Notebooka078a278df",
+  "dataset_sources": [],
+  "language": "r",
+  "enable_gpu": false,
+  "keywords": [],
+  "is_private": false,
+  "enable_internet": false,
+  "competition_sources": [
+    "titanic"
+  ]
+}

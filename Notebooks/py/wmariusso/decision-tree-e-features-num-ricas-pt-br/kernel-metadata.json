@@ -1,0 +1,17 @@
+{
+  "code_file": "decision-tree-e-features-num-ricas-pt-br.ipynb",
+  "dataset_sources": [],
+  "language": "python",
+  "competition_sources": [
+    "titanic"
+  ],
+  "keywords": [],
+  "kernel_type": "notebook",
+  "id": "wmariusso/decision-tree-e-features-num-ricas-pt-br",
+  "id_no": 356377,
+  "enable_internet": false,
+  "title": "Decision Tree e Features Num\u00e9ricas [pt-BR]",
+  "is_private": false,
+  "kernel_sources": [],
+  "enable_gpu": false
+}

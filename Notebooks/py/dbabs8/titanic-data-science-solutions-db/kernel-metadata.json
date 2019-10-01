@@ -1,0 +1,17 @@
+{
+  "id": "dbabs8/titanic-data-science-solutions-db",
+  "enable_gpu": false,
+  "competition_sources": [
+    "titanic"
+  ],
+  "code_file": "titanic-data-science-solutions-db.ipynb",
+  "language": "python",
+  "dataset_sources": [],
+  "is_private": false,
+  "keywords": [],
+  "title": "Titanic Data Science Solutions - db",
+  "kernel_type": "notebook",
+  "id_no": 1542021,
+  "kernel_sources": [],
+  "enable_internet": false
+}

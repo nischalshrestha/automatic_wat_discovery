@@ -1,0 +1,17 @@
+{
+  "kernel_type": "notebook",
+  "kernel_sources": [],
+  "keywords": [],
+  "code_file": "predict-titanic-passangar-survival.ipynb",
+  "is_private": false,
+  "language": "python",
+  "enable_gpu": false,
+  "enable_internet": false,
+  "id_no": 116135,
+  "title": "Predict Titanic passangar survival",
+  "id": "jaykol/predict-titanic-passangar-survival",
+  "competition_sources": [
+    "titanic"
+  ],
+  "dataset_sources": []
+}

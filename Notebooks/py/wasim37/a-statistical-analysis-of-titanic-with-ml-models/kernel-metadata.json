@@ -1,0 +1,17 @@
+{
+  "competition_sources": [
+    "titanic"
+  ],
+  "enable_gpu": true,
+  "dataset_sources": [],
+  "kernel_type": "notebook",
+  "title": "A Statistical Analysis of Titanic with ML Models",
+  "language": "python",
+  "id_no": 1085923,
+  "id": "wasim37/a-statistical-analysis-of-titanic-with-ml-models",
+  "code_file": "a-statistical-analysis-of-titanic-with-ml-models.ipynb",
+  "kernel_sources": [],
+  "is_private": false,
+  "keywords": [],
+  "enable_internet": false
+}

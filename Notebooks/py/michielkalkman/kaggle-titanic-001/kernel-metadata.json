@@ -1,0 +1,17 @@
+{
+  "language": "python",
+  "dataset_sources": [],
+  "kernel_type": "notebook",
+  "is_private": false,
+  "enable_internet": false,
+  "keywords": [],
+  "title": "kaggle-titanic-001",
+  "id": "michielkalkman/kaggle-titanic-001",
+  "code_file": "kaggle-titanic-001.ipynb",
+  "enable_gpu": false,
+  "kernel_sources": [],
+  "id_no": 22311,
+  "competition_sources": [
+    "titanic"
+  ]
+}

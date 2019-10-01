@@ -1,0 +1,17 @@
+{
+  "kernel_type": "notebook",
+  "id_no": 1148606,
+  "is_private": false,
+  "language": "r",
+  "dataset_sources": [],
+  "code_file": "titanic-work.irnb",
+  "id": "hulloswin/titanic-work",
+  "kernel_sources": [],
+  "title": "Titanic Work",
+  "keywords": [],
+  "enable_internet": false,
+  "enable_gpu": false,
+  "competition_sources": [
+    "titanic"
+  ]
+}

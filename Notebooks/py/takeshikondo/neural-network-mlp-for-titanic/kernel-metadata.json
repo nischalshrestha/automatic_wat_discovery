@@ -1,0 +1,20 @@
+{
+  "enable_internet": false,
+  "enable_gpu": true,
+  "title": "Neural Network (MLP) for Titanic",
+  "kernel_sources": [],
+  "competition_sources": [
+    "titanic"
+  ],
+  "keywords": [
+    "deep learning",
+    "neural networks"
+  ],
+  "code_file": "neural-network-mlp-for-titanic.ipynb",
+  "id_no": 1701941,
+  "language": "python",
+  "kernel_type": "notebook",
+  "dataset_sources": [],
+  "id": "takeshikondo/neural-network-mlp-for-titanic",
+  "is_private": false
+}

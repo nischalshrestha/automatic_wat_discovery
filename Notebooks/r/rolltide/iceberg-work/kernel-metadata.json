@@ -1,0 +1,17 @@
+{
+  "is_private": false,
+  "title": "Iceberg Work",
+  "competition_sources": [
+    "titanic"
+  ],
+  "id_no": 161028,
+  "enable_internet": false,
+  "enable_gpu": false,
+  "language": "r",
+  "kernel_type": "notebook",
+  "kernel_sources": [],
+  "keywords": [],
+  "dataset_sources": [],
+  "id": "rolltide/iceberg-work",
+  "code_file": "iceberg-work.irnb"
+}

@@ -1,0 +1,17 @@
+{
+  "id": "sahrear/notebookad57bfb3b5",
+  "kernel_type": "notebook",
+  "title": "Notebookad57bfb3b5",
+  "enable_internet": false,
+  "code_file": "notebookad57bfb3b5.ipynb",
+  "kernel_sources": [],
+  "dataset_sources": [],
+  "id_no": 211013,
+  "competition_sources": [
+    "titanic"
+  ],
+  "enable_gpu": false,
+  "language": "python",
+  "keywords": [],
+  "is_private": false
+}

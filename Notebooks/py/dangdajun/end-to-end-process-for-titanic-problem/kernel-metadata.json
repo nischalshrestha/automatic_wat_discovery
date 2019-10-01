@@ -1,0 +1,17 @@
+{
+  "enable_internet": false,
+  "id": "dangdajun/end-to-end-process-for-titanic-problem",
+  "language": "python",
+  "enable_gpu": false,
+  "kernel_type": "notebook",
+  "competition_sources": [
+    "titanic"
+  ],
+  "title": "End-to-End process for Titanic problem",
+  "kernel_sources": [],
+  "keywords": [],
+  "id_no": 1678643,
+  "code_file": "end-to-end-process-for-titanic-problem.ipynb",
+  "is_private": false,
+  "dataset_sources": []
+}

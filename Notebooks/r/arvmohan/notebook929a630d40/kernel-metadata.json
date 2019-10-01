@@ -1,0 +1,17 @@
+{
+  "enable_gpu": false,
+  "language": "r",
+  "kernel_type": "notebook",
+  "is_private": false,
+  "code_file": "notebook929a630d40.irnb",
+  "id": "arvmohan/notebook929a630d40",
+  "title": "Notebook929a630d40",
+  "id_no": 123025,
+  "keywords": [],
+  "enable_internet": false,
+  "kernel_sources": [],
+  "competition_sources": [
+    "titanic"
+  ],
+  "dataset_sources": []
+}

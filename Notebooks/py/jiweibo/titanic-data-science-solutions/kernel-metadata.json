@@ -1,0 +1,17 @@
+{
+  "dataset_sources": [],
+  "kernel_type": "notebook",
+  "language": "python",
+  "competition_sources": [
+    "titanic"
+  ],
+  "enable_gpu": false,
+  "enable_internet": false,
+  "is_private": false,
+  "kernel_sources": [],
+  "id_no": 706222,
+  "code_file": "titanic-data-science-solutions.ipynb",
+  "keywords": [],
+  "id": "jiweibo/titanic-data-science-solutions",
+  "title": "Titanic Data Science Solutions"
+}

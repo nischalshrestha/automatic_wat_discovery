@@ -1,0 +1,17 @@
+{
+  "kernel_sources": [],
+  "keywords": [],
+  "enable_internet": false,
+  "language": "python",
+  "id": "rajashri/titanic-exploration",
+  "enable_gpu": false,
+  "competition_sources": [
+    "titanic"
+  ],
+  "kernel_type": "notebook",
+  "id_no": 2043904,
+  "title": "Titanic Exploration",
+  "dataset_sources": [],
+  "is_private": false,
+  "code_file": "titanic-exploration.ipynb"
+}

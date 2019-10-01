@@ -1,0 +1,58 @@
+{
+  "cells": [
+    {
+      "cell_type": "markdown",
+      "metadata": {
+        "_cell_guid": "e93fd188-ef86-81f4-8403-034ebbef70a6"
+      },
+      "source": [
+        "---\n",
+        "title: 'Titanic Initial Test'\n",
+        "author: 'smit072'\n",
+        "date: '27 February 2017'\n",
+        "output:\n",
+        "  html_document:\n",
+        "    number_sections: true\n",
+        "    toc: true\n",
+        "    fig_width: 7\n",
+        "    fig_height: 4.5\n",
+        "    theme: readable\n",
+        "    highlight: tango\n",
+        "---\n",
+        "\n",
+        "# Introduction\n",
+        "This is my first Kaggle script.  I intend to import the data and create some visualizations to get started.\n",
+        "\n",
+        "# Load libraries\n",
+        "```{r}\n",
+        "# Load packages\n",
+        "library('ggplot2') # visualization\n",
+        "library('ggthemes') # visualization\n",
+        "library('scales') # visualization\n",
+        "library('dplyr') # data manipulation\n",
+        "library('mice') # imputation\n",
+        "library('randomForest') # classification algorithm\n",
+        "```"
+      ]
+    }
+  ],
+  "metadata": {
+    "_change_revision": 0,
+    "_is_fork": false,
+    "kernelspec": {
+      "display_name": "R",
+      "language": "R",
+      "name": "ir"
+    },
+    "language_info": {
+      "codemirror_mode": "r",
+      "file_extension": ".r",
+      "mimetype": "text/x-r-source",
+      "name": "R",
+      "pygments_lexer": "r",
+      "version": "3.3.2"
+    }
+  },
+  "nbformat": 4,
+  "nbformat_minor": 0
+}

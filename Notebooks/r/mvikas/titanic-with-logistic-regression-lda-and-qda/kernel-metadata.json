@@ -1,0 +1,17 @@
+{
+  "id": "mvikas/titanic-with-logistic-regression-lda-and-qda",
+  "competition_sources": [
+    "titanic"
+  ],
+  "title": "Titanic With Logistic regression, LDA and QDA",
+  "enable_gpu": false,
+  "kernel_type": "notebook",
+  "language": "r",
+  "id_no": 2069800,
+  "dataset_sources": [],
+  "is_private": false,
+  "code_file": "titanic-with-logistic-regression-lda-and-qda.irnb",
+  "keywords": [],
+  "enable_internet": false,
+  "kernel_sources": []
+}

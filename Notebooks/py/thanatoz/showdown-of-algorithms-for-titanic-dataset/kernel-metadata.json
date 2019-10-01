@@ -1,0 +1,17 @@
+{
+  "kernel_type": "notebook",
+  "kernel_sources": [],
+  "language": "python",
+  "keywords": [],
+  "competition_sources": [
+    "titanic"
+  ],
+  "id_no": 504911,
+  "enable_gpu": false,
+  "is_private": false,
+  "enable_internet": false,
+  "code_file": "showdown-of-algorithms-for-titanic-dataset.ipynb",
+  "dataset_sources": [],
+  "title": "Showdown of algorithms for Titanic Dataset",
+  "id": "thanatoz/showdown-of-algorithms-for-titanic-dataset"
+}

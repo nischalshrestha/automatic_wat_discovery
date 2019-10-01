@@ -1,0 +1,17 @@
+{
+  "title": "Titanic regressions",
+  "kernel_type": "notebook",
+  "dataset_sources": [],
+  "code_file": "titanic-regressions.ipynb",
+  "enable_internet": false,
+  "enable_gpu": false,
+  "language": "python",
+  "competition_sources": [
+    "titanic"
+  ],
+  "id": "hmarlowe/titanic-regressions",
+  "keywords": [],
+  "kernel_sources": [],
+  "is_private": false,
+  "id_no": 498273
+}

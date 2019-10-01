@@ -1,0 +1,17 @@
+{
+  "kernel_type": "notebook",
+  "id": "slashtea/survival-prediction",
+  "competition_sources": [
+    "titanic"
+  ],
+  "is_private": false,
+  "id_no": 1274878,
+  "language": "python",
+  "keywords": [],
+  "code_file": "survival-prediction.ipynb",
+  "enable_internet": false,
+  "enable_gpu": false,
+  "kernel_sources": [],
+  "dataset_sources": [],
+  "title": "Survival prediction"
+}

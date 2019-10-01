@@ -1,0 +1,17 @@
+{
+  "id_no": 1925228,
+  "kernel_sources": [],
+  "title": "kernel8670889063",
+  "enable_gpu": true,
+  "kernel_type": "notebook",
+  "language": "python",
+  "enable_internet": false,
+  "competition_sources": [
+    "titanic"
+  ],
+  "is_private": false,
+  "code_file": "kernel8670889063.ipynb",
+  "dataset_sources": [],
+  "id": "glad78/kernel8670889063",
+  "keywords": []
+}

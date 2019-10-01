@@ -1,0 +1,17 @@
+{
+  "kernel_type": "notebook",
+  "code_file": "a-data-science-framework-to-achieve-99-accuracy.ipynb",
+  "enable_internet": false,
+  "is_private": false,
+  "title": "A Data Science Framework: To Achieve 99% Accuracy",
+  "enable_gpu": false,
+  "competition_sources": [
+    "titanic"
+  ],
+  "kernel_sources": [],
+  "id": "gaurav3010/a-data-science-framework-to-achieve-99-accuracy",
+  "dataset_sources": [],
+  "keywords": [],
+  "language": "python",
+  "id_no": 1366004
+}

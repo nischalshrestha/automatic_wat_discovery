@@ -1,0 +1,17 @@
+{
+  "competition_sources": [
+    "titanic"
+  ],
+  "code_file": "titanic-eda-using-speedml.ipynb",
+  "kernel_sources": [],
+  "is_private": false,
+  "id": "startupsci/titanic-eda-using-speedml",
+  "keywords": [],
+  "title": "Titanic EDA Using Speedml",
+  "id_no": 250073,
+  "kernel_type": "notebook",
+  "dataset_sources": [],
+  "language": "python",
+  "enable_internet": false,
+  "enable_gpu": false
+}

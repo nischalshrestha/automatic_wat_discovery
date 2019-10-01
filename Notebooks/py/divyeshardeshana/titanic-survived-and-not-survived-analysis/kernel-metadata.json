@@ -1,0 +1,22 @@
+{
+  "code_file": "titanic-survived-and-not-survived-analysis.ipynb",
+  "competition_sources": [
+    "titanic"
+  ],
+  "kernel_sources": [],
+  "is_private": false,
+  "id_no": 1915623,
+  "language": "python",
+  "id": "divyeshardeshana/titanic-survived-and-not-survived-analysis",
+  "enable_internet": false,
+  "dataset_sources": [],
+  "title": "Titanic Survived and Not Survived Analysis",
+  "keywords": [
+    "tutorial",
+    "data cleaning",
+    "data visualization",
+    "starter code"
+  ],
+  "enable_gpu": false,
+  "kernel_type": "notebook"
+}

@@ -1,0 +1,17 @@
+{
+  "language": "python",
+  "dataset_sources": [],
+  "enable_internet": false,
+  "code_file": "exploring-the-titanic-dataset-in-progress.ipynb",
+  "id": "multiw/exploring-the-titanic-dataset-in-progress",
+  "is_private": false,
+  "competition_sources": [
+    "titanic"
+  ],
+  "title": "Exploring the Titanic Dataset (In Progress)",
+  "kernel_sources": [],
+  "kernel_type": "notebook",
+  "id_no": 2065260,
+  "enable_gpu": false,
+  "keywords": []
+}

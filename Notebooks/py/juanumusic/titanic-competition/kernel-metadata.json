@@ -1,0 +1,17 @@
+{
+  "id": "juanumusic/titanic-competition",
+  "enable_gpu": false,
+  "enable_internet": false,
+  "kernel_sources": [],
+  "title": "Titanic Competition",
+  "keywords": [],
+  "language": "python",
+  "kernel_type": "notebook",
+  "competition_sources": [
+    "titanic"
+  ],
+  "code_file": "titanic-competition.ipynb",
+  "dataset_sources": [],
+  "id_no": 347018,
+  "is_private": false
+}

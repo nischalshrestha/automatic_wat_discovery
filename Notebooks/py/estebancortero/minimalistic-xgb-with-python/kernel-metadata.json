@@ -1,0 +1,20 @@
+{
+  "competition_sources": [
+    "titanic"
+  ],
+  "enable_gpu": false,
+  "dataset_sources": [],
+  "enable_internet": false,
+  "language": "python",
+  "id": "estebancortero/minimalistic-xgb-with-python",
+  "id_no": 713327,
+  "title": "Minimalistic XGB with Python",
+  "code_file": "minimalistic-xgb-with-python.ipynb",
+  "keywords": [
+    "beginner",
+    "xgboost"
+  ],
+  "kernel_type": "notebook",
+  "kernel_sources": [],
+  "is_private": false
+}

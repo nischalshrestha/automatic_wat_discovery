@@ -1,0 +1,17 @@
+{
+  "dataset_sources": [],
+  "title": "Titanic Top 4% with ensemble modeling",
+  "enable_internet": false,
+  "code_file": "titanic-top-4-with-ensemble-modeling.ipynb",
+  "keywords": [],
+  "id": "rahulkarnik/titanic-top-4-with-ensemble-modeling",
+  "enable_gpu": false,
+  "competition_sources": [
+    "titanic"
+  ],
+  "kernel_sources": [],
+  "kernel_type": "notebook",
+  "language": "python",
+  "id_no": 1981654,
+  "is_private": false
+}

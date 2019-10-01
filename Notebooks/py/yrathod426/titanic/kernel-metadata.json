@@ -1,0 +1,17 @@
+{
+  "keywords": [],
+  "title": "Titanic",
+  "kernel_type": "notebook",
+  "enable_internet": false,
+  "id": "yrathod426/titanic",
+  "kernel_sources": [],
+  "dataset_sources": [],
+  "id_no": 1529364,
+  "enable_gpu": false,
+  "competition_sources": [
+    "titanic"
+  ],
+  "language": "python",
+  "is_private": false,
+  "code_file": "titanic.ipynb"
+}

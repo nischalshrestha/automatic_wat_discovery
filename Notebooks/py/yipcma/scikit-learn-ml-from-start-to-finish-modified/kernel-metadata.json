@@ -1,0 +1,20 @@
+{
+  "enable_gpu": false,
+  "id": "yipcma/scikit-learn-ml-from-start-to-finish-modified",
+  "enable_internet": false,
+  "code_file": "scikit-learn-ml-from-start-to-finish-modified.ipynb",
+  "is_private": false,
+  "kernel_type": "notebook",
+  "language": "python",
+  "kernel_sources": [],
+  "title": "Scikit-Learn ML from Start to Finish (modified)",
+  "dataset_sources": [],
+  "competition_sources": [
+    "titanic"
+  ],
+  "keywords": [
+    "tutorial",
+    "beginner"
+  ],
+  "id_no": 483538
+}

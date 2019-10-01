@@ -1,0 +1,17 @@
+{
+  "enable_internet": false,
+  "keywords": [],
+  "enable_gpu": false,
+  "id": "zhangfan1990/notebook6818426199",
+  "kernel_type": "notebook",
+  "language": "python",
+  "title": "Notebook6818426199",
+  "is_private": false,
+  "code_file": "notebook6818426199.ipynb",
+  "competition_sources": [
+    "titanic"
+  ],
+  "dataset_sources": [],
+  "kernel_sources": [],
+  "id_no": 177384
+}

@@ -1,0 +1,17 @@
+{
+  "kernel_type": "notebook",
+  "id": "jackiy/titanic-machine-learning-from-disaster-svc",
+  "id_no": 414399,
+  "enable_gpu": false,
+  "is_private": false,
+  "keywords": [],
+  "competition_sources": [
+    "titanic"
+  ],
+  "enable_internet": false,
+  "title": "Titanic: Machine Learning from Disaster - SVC",
+  "dataset_sources": [],
+  "code_file": "titanic-machine-learning-from-disaster-svc.ipynb",
+  "kernel_sources": [],
+  "language": "python"
+}

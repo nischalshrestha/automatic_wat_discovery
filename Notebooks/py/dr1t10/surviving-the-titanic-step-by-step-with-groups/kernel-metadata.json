@@ -1,0 +1,20 @@
+{
+  "enable_gpu": false,
+  "competition_sources": [
+    "titanic"
+  ],
+  "kernel_type": "notebook",
+  "title": "Surviving the Titanic step-by-step with groups",
+  "id_no": 1410953,
+  "is_private": false,
+  "language": "python",
+  "enable_internet": false,
+  "code_file": "surviving-the-titanic-step-by-step-with-groups.ipynb",
+  "keywords": [
+    "learning",
+    "beginner"
+  ],
+  "kernel_sources": [],
+  "id": "dr1t10/surviving-the-titanic-step-by-step-with-groups",
+  "dataset_sources": []
+}

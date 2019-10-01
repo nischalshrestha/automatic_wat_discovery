@@ -1,0 +1,17 @@
+{
+  "language": "python",
+  "is_private": false,
+  "enable_gpu": true,
+  "id_no": 1907136,
+  "kernel_type": "notebook",
+  "id": "bubblride/titanic-xgboost-phonetic",
+  "enable_internet": false,
+  "competition_sources": [
+    "titanic"
+  ],
+  "keywords": [],
+  "kernel_sources": [],
+  "dataset_sources": [],
+  "title": "titanic, xgboost, phonetic",
+  "code_file": "titanic-xgboost-phonetic.ipynb"
+}

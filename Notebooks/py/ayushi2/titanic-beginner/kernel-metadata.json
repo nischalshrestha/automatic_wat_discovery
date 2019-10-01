@@ -1,0 +1,17 @@
+{
+  "code_file": "titanic-beginner.ipynb",
+  "is_private": false,
+  "language": "python",
+  "enable_gpu": false,
+  "title": "TITANIC: Beginner",
+  "id": "ayushi2/titanic-beginner",
+  "enable_internet": false,
+  "keywords": [],
+  "kernel_type": "notebook",
+  "id_no": 448614,
+  "dataset_sources": [],
+  "competition_sources": [
+    "titanic"
+  ],
+  "kernel_sources": []
+}

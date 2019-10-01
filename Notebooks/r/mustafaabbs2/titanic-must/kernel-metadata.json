@@ -1,0 +1,17 @@
+{
+  "keywords": [],
+  "title": "titanic_must",
+  "id_no": 89976,
+  "dataset_sources": [],
+  "code_file": "titanic-must.irnb",
+  "competition_sources": [
+    "titanic"
+  ],
+  "kernel_type": "notebook",
+  "language": "r",
+  "enable_internet": false,
+  "kernel_sources": [],
+  "enable_gpu": false,
+  "is_private": false,
+  "id": "mustafaabbs2/titanic-must"
+}

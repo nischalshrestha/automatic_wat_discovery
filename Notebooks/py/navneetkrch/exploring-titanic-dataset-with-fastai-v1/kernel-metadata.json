@@ -1,0 +1,17 @@
+{
+  "kernel_sources": [],
+  "enable_gpu": true,
+  "dataset_sources": [],
+  "language": "python",
+  "kernel_type": "notebook",
+  "is_private": false,
+  "title": "Exploring Titanic Dataset with FASTAI-V1",
+  "keywords": [],
+  "competition_sources": [
+    "titanic"
+  ],
+  "id_no": 2115114,
+  "id": "navneetkrch/exploring-titanic-dataset-with-fastai-v1",
+  "enable_internet": true,
+  "code_file": "exploring-titanic-dataset-with-fastai-v1.ipynb"
+}

@@ -1,0 +1,17 @@
+{
+  "kernel_sources": [],
+  "code_file": "titanic-data-science-solutions-fork2.ipynb",
+  "keywords": [],
+  "kernel_type": "notebook",
+  "language": "python",
+  "id_no": 252232,
+  "enable_gpu": false,
+  "enable_internet": false,
+  "id": "anuwatj/titanic-data-science-solutions-fork2",
+  "competition_sources": [
+    "titanic"
+  ],
+  "is_private": false,
+  "title": "Titanic Data Science Solutions (fork2)",
+  "dataset_sources": []
+}

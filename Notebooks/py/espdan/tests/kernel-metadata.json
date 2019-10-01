@@ -1,0 +1,17 @@
+{
+  "title": "Tests",
+  "kernel_sources": [],
+  "id_no": 111339,
+  "kernel_type": "notebook",
+  "language": "python",
+  "dataset_sources": [],
+  "code_file": "tests.ipynb",
+  "enable_gpu": false,
+  "keywords": [],
+  "enable_internet": false,
+  "competition_sources": [
+    "titanic"
+  ],
+  "id": "espdan/tests",
+  "is_private": false
+}

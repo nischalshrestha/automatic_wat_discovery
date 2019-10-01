@@ -1,0 +1,22 @@
+{
+  "kernel_type": "notebook",
+  "keywords": [
+    "tutorial",
+    "classification",
+    "feature engineering",
+    "xgboost"
+  ],
+  "id_no": 901846,
+  "enable_internet": false,
+  "is_private": false,
+  "id": "numbersareuseful/titanic-starter-with-xgboost-173-209-lb",
+  "competition_sources": [
+    "titanic"
+  ],
+  "code_file": "titanic-starter-with-xgboost-173-209-lb.ipynb",
+  "dataset_sources": [],
+  "enable_gpu": false,
+  "title": "Titanic Starter with XGBoost, 173/209 LB",
+  "kernel_sources": [],
+  "language": "python"
+}

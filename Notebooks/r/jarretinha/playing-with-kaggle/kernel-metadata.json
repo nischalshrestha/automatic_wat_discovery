@@ -1,0 +1,17 @@
+{
+  "code_file": "playing-with-kaggle.irnb",
+  "enable_gpu": false,
+  "title": "Playing with Kaggle",
+  "competition_sources": [
+    "titanic"
+  ],
+  "is_private": false,
+  "dataset_sources": [],
+  "enable_internet": false,
+  "language": "r",
+  "kernel_type": "notebook",
+  "id": "jarretinha/playing-with-kaggle",
+  "id_no": 253858,
+  "kernel_sources": [],
+  "keywords": []
+}

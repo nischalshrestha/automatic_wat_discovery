@@ -1,0 +1,23 @@
+{
+  "id": "serkanpeldek/object-oriented-titanics",
+  "kernel_type": "notebook",
+  "dataset_sources": [],
+  "title": "Object Oriented Titanics",
+  "competition_sources": [
+    "titanic"
+  ],
+  "keywords": [
+    "tutorial",
+    "advanced",
+    "preprocessing",
+    "classification",
+    "feature engineering"
+  ],
+  "code_file": "object-oriented-titanics.ipynb",
+  "kernel_sources": [],
+  "id_no": 1373360,
+  "is_private": false,
+  "enable_internet": false,
+  "enable_gpu": false,
+  "language": "python"
+}

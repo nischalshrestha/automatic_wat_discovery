@@ -1,0 +1,17 @@
+{
+  "kernel_sources": [],
+  "id_no": 240346,
+  "code_file": "notebookdc7a743add.ipynb",
+  "id": "damleadwait/notebookdc7a743add",
+  "dataset_sources": [],
+  "is_private": false,
+  "enable_internet": false,
+  "keywords": [],
+  "language": "python",
+  "competition_sources": [
+    "titanic"
+  ],
+  "title": "Notebookdc7a743add",
+  "enable_gpu": false,
+  "kernel_type": "notebook"
+}

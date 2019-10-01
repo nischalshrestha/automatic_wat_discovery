@@ -1,0 +1,17 @@
+{
+  "keywords": [],
+  "id": "junlinw/ai-group-meeting-hand-code",
+  "enable_internet": false,
+  "code_file": "ai-group-meeting-hand-code.ipynb",
+  "language": "python",
+  "kernel_type": "notebook",
+  "is_private": false,
+  "id_no": 673414,
+  "enable_gpu": false,
+  "competition_sources": [
+    "titanic"
+  ],
+  "title": "AI Group Meeting (hand code)",
+  "kernel_sources": [],
+  "dataset_sources": []
+}

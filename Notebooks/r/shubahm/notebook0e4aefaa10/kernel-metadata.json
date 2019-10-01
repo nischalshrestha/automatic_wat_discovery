@@ -1,0 +1,17 @@
+{
+  "enable_gpu": false,
+  "id_no": 213871,
+  "competition_sources": [
+    "titanic"
+  ],
+  "dataset_sources": [],
+  "code_file": "notebook0e4aefaa10.ipynb",
+  "kernel_sources": [],
+  "title": "Notebook0e4aefaa10",
+  "language": "python",
+  "id": "shubahm/notebook0e4aefaa10",
+  "keywords": [],
+  "is_private": false,
+  "kernel_type": "notebook",
+  "enable_internet": false
+}

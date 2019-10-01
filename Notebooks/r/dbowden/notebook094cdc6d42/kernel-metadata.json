@@ -1,0 +1,17 @@
+{
+  "language": "python",
+  "title": "Notebook094cdc6d42",
+  "enable_internet": false,
+  "keywords": [],
+  "is_private": false,
+  "id": "dbowden/notebook094cdc6d42",
+  "kernel_type": "notebook",
+  "code_file": "notebook094cdc6d42.ipynb",
+  "kernel_sources": [],
+  "id_no": 247346,
+  "dataset_sources": [],
+  "competition_sources": [
+    "titanic"
+  ],
+  "enable_gpu": false
+}

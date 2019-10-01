@@ -1,0 +1,17 @@
+{
+  "language": "python",
+  "enable_gpu": false,
+  "id": "hudanivy/ai-camp-logistic-regression-titanic-homework",
+  "enable_internet": false,
+  "id_no": 1645099,
+  "kernel_sources": [],
+  "competition_sources": [
+    "titanic"
+  ],
+  "kernel_type": "notebook",
+  "is_private": false,
+  "code_file": "ai-camp-logistic-regression-titanic-homework.ipynb",
+  "title": "AI Camp Logistic Regression Titanic Homework",
+  "dataset_sources": [],
+  "keywords": []
+}

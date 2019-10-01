@@ -1,0 +1,19 @@
+{
+  "id_no": 1674436,
+  "id": "ayumka/titanic-my-first-shakyo",
+  "title": "Titanic - My first Shakyo",
+  "code_file": "titanic-my-first-shakyo.ipynb",
+  "enable_gpu": true,
+  "enable_internet": false,
+  "kernel_type": "notebook",
+  "language": "python",
+  "kernel_sources": [],
+  "keywords": [
+    "beginner"
+  ],
+  "competition_sources": [
+    "titanic"
+  ],
+  "dataset_sources": [],
+  "is_private": false
+}

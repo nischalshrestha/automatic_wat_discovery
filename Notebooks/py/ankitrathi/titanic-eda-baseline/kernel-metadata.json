@@ -1,0 +1,17 @@
+{
+  "language": "python",
+  "id": "ankitrathi/titanic-eda-baseline",
+  "enable_gpu": false,
+  "title": "Titanic: EDA + Baseline",
+  "enable_internet": false,
+  "kernel_type": "notebook",
+  "id_no": 1143674,
+  "competition_sources": [
+    "titanic"
+  ],
+  "is_private": false,
+  "kernel_sources": [],
+  "dataset_sources": [],
+  "keywords": [],
+  "code_file": "titanic-eda-baseline.ipynb"
+}

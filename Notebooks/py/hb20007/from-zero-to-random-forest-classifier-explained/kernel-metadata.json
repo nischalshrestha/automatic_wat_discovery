@@ -1,0 +1,23 @@
+{
+  "keywords": [
+    "tutorial",
+    "beginner",
+    "eda",
+    "random forest",
+    "decision tree"
+  ],
+  "code_file": "from-zero-to-random-forest-classifier-explained.ipynb",
+  "enable_internet": false,
+  "dataset_sources": [],
+  "id": "hb20007/from-zero-to-random-forest-classifier-explained",
+  "competition_sources": [
+    "titanic"
+  ],
+  "kernel_type": "notebook",
+  "language": "python",
+  "enable_gpu": false,
+  "kernel_sources": [],
+  "title": "From Zero to Random Forest Classifier (Explained)",
+  "is_private": false,
+  "id_no": 694641
+}

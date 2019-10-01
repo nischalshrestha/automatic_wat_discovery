@@ -1,0 +1,17 @@
+{
+  "id_no": 279793,
+  "competition_sources": [
+    "titanic"
+  ],
+  "language": "python",
+  "title": "Titanic-Upstart",
+  "kernel_sources": [],
+  "enable_internet": false,
+  "enable_gpu": false,
+  "id": "sekhar0520/titanic-upstart",
+  "is_private": false,
+  "kernel_type": "notebook",
+  "keywords": [],
+  "dataset_sources": [],
+  "code_file": "titanic-upstart.ipynb"
+}

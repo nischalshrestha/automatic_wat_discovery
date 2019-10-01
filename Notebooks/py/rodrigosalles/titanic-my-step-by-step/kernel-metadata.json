@@ -1,0 +1,17 @@
+{
+  "id_no": 520474,
+  "id": "rodrigosalles/titanic-my-step-by-step",
+  "dataset_sources": [],
+  "kernel_type": "notebook",
+  "code_file": "titanic-my-step-by-step.ipynb",
+  "enable_gpu": false,
+  "enable_internet": false,
+  "keywords": [],
+  "kernel_sources": [],
+  "is_private": false,
+  "title": "Titanic: my step by step",
+  "competition_sources": [
+    "titanic"
+  ],
+  "language": "python"
+}

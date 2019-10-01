@@ -1,0 +1,241 @@
+{
+  "cells": [
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "_cell_guid": "60b2488d-f05d-c5b2-c4eb-fbb2ddade699"
+      },
+      "outputs": [],
+      "source": [
+        "# This R environment comes with all of CRAN preinstalled, as well as many other helpful packages\n",
+        "# The environment is defined by the kaggle/rstats docker image: https://github.com/kaggle/docker-rstats\n",
+        "# For example, here's several helpful packages to load in \n",
+        "\n",
+        "library(ggplot2) # Data visualization\n",
+        "library(readr) # CSV file I/O, e.g. the read_csv function\n",
+        "library(pROC)\n",
+        "\n",
+        "# Input data files are available in the \"../input/\" directory.\n",
+        "# For example, running this (by clicking run or pressing Shift+Enter) will list the files in the input directory\n",
+        "\n",
+        "system(\"ls ../input\")\n",
+        "\n",
+        "# Any results you write to the current directory are saved as output."
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "_cell_guid": "05aa6e2b-71f6-9bfb-3d07-0e258320088c"
+      },
+      "outputs": [],
+      "source": [
+        "my.train.data <- read.csv(\"../input/train.csv\")\n",
+        "\n",
+        "#head(my.train.data)"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "_cell_guid": "a11a2332-ac4b-6c63-a5a0-fa2f6a588191"
+      },
+      "outputs": [],
+      "source": [
+        "my.test.data <- read.csv(\"../input/test.csv\")\n",
+        "\n",
+        "#head(my.test.data)"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "_cell_guid": "7a2875ab-4da8-22db-eeaf-43f7b51f3db9"
+      },
+      "outputs": [],
+      "source": [
+        "#my.train.data[,c(\"PassengerId\", \"Name\", \"Ticket\", \"Cabin\")]\n",
+        "\n",
+        "my.train.data"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "_cell_guid": "957e6375-284f-e1e5-34d4-6543c5c60257"
+      },
+      "outputs": [],
+      "source": [
+        "my.train.data$Cabin <- ifelse(is.na(my.train.data$Cabin), \"NA\", my.train.data$Cabin)\n",
+        "\n",
+        "\n",
+        "#my.train.data"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "_cell_guid": "ecbb00e0-fdb0-5600-6ba0-714bdbd22126"
+      },
+      "outputs": [],
+      "source": [
+        "drop.cols <- c(\"PassengerId\", \"Name\", \"Ticket\", \"Cabin\")\n",
+        "my.train.data <- my.train.data[, !names(my.train.data) %in% drop.cols]\n",
+        "\n",
+        "#head(my.train.data)"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "_cell_guid": "011e12e8-8bba-0c14-d687-63e588f77ab6"
+      },
+      "outputs": [],
+      "source": [
+        "for(i in 1:ncol(my.train.data)){\n",
+        "    if(is.numeric(my.train.data[,i])){\n",
+        "        my.train.data[is.na(my.train.data[,i]), i] <- mean(my.train.data[,i], na.rm = TRUE)\n",
+        "    }\n",
+        "}\n",
+        "\n",
+        "#my.train.data"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "_cell_guid": "3b4aacca-075c-6a19-5673-944e7d970921"
+      },
+      "outputs": [],
+      "source": [
+        "#my.test.data$Cabin <- ifelse(is.na(my.test.data$Cabin), \"NA\", my.test.data$Cabin)\n",
+        "\n",
+        "for(i in 1:ncol(my.test.data)){\n",
+        "    if(is.numeric(my.test.data[,i])){\n",
+        "        my.test.data[is.na(my.test.data[,i]), i] <- mean(my.test.data[,i], na.rm = TRUE)\n",
+        "        }\n",
+        "}\n",
+        "\n",
+        "\n",
+        "#my.test.data"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "_cell_guid": "77e164a8-1135-a07a-04d5-396fb8d8fb85"
+      },
+      "outputs": [],
+      "source": [
+        "set.seed(1313)\n",
+        "analysis <- glm(Survived ~ ., data = my.train.data, family = binomial(link = \"logit\"))"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "_cell_guid": "9d02a455-2ae7-99ae-2f71-1599e86075f2"
+      },
+      "outputs": [],
+      "source": [
+        "summary(analysis)"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "_cell_guid": "81d0173a-3274-575c-b791-8949baeceabc"
+      },
+      "outputs": [],
+      "source": [
+        "#my.test.data <- my.test.data[complete.cases(my.test.data),]"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "_cell_guid": "15cffbb4-d1cd-979d-e192-ab439ea2d79f"
+      },
+      "outputs": [],
+      "source": [
+        "score <- data.frame(Survived = predict(analysis, newdata = my.test.data, type = \"response\"))\n",
+        "score_train <- data.frame(Prediction = predict(analysis, newdata = my.train.data, type = \"response\"))"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "_cell_guid": "8fb4a4d8-30f3-47d5-7567-567e21d932c9"
+      },
+      "outputs": [],
+      "source": [
+        "auc(my.train.data$Survived, score_train$Prediction)"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "_cell_guid": "3b47b215-10bc-31b9-9a3a-f2bbd7f170bf"
+      },
+      "outputs": [],
+      "source": [
+        "score$Survived <- ifelse(score$Survived > 0.5,1,0)"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "_cell_guid": "ec3b045e-9fe6-5cdd-82a5-ec28082f9974"
+      },
+      "outputs": [],
+      "source": [
+        "complete <- cbind(my.test.data, score)"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "_cell_guid": "535258f9-b1f9-bb90-df57-087244bb01b0"
+      },
+      "outputs": [],
+      "source": [
+        "write_csv(complete[,c(\"PassengerId\", \"Survived\")], path = \"myPredictions.csv\")"
+      ]
+    }
+  ],
+  "metadata": {
+    "_change_revision": 0,
+    "_is_fork": false,
+    "kernelspec": {
+      "display_name": "R",
+      "language": "R",
+      "name": "ir"
+    },
+    "language_info": {
+      "codemirror_mode": "r",
+      "file_extension": ".r",
+      "mimetype": "text/x-r-source",
+      "name": "R",
+      "pygments_lexer": "r",
+      "version": "3.3.3"
+    }
+  },
+  "nbformat": 4,
+  "nbformat_minor": 0
+}

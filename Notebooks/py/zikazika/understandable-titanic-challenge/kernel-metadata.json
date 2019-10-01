@@ -1,0 +1,23 @@
+{
+  "id": "zikazika/understandable-titanic-challenge",
+  "is_private": false,
+  "language": "python",
+  "title": "Understandable titanic challenge.",
+  "id_no": 1776697,
+  "code_file": "understandable-titanic-challenge.ipynb",
+  "enable_internet": false,
+  "dataset_sources": [],
+  "competition_sources": [
+    "titanic"
+  ],
+  "kernel_sources": [],
+  "enable_gpu": false,
+  "keywords": [
+    "tutorial",
+    "beginner",
+    "data visualization",
+    "classification",
+    "starter code"
+  ],
+  "kernel_type": "notebook"
+}

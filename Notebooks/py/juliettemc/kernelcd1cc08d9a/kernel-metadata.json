@@ -1,0 +1,17 @@
+{
+  "competition_sources": [
+    "titanic"
+  ],
+  "kernel_sources": [],
+  "dataset_sources": [],
+  "id": "juliettemc/kernelcd1cc08d9a",
+  "language": "python",
+  "title": "kernelcd1cc08d9a",
+  "kernel_type": "notebook",
+  "enable_gpu": false,
+  "enable_internet": false,
+  "code_file": "kernelcd1cc08d9a.ipynb",
+  "id_no": 1634623,
+  "is_private": false,
+  "keywords": []
+}

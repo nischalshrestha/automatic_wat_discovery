@@ -1,0 +1,17 @@
+{
+  "kernel_type": "notebook",
+  "enable_internet": false,
+  "id": "amolgijare/titanic-notebook",
+  "code_file": "titanic-notebook.ipynb",
+  "id_no": 1727820,
+  "enable_gpu": false,
+  "kernel_sources": [],
+  "keywords": [],
+  "dataset_sources": [],
+  "is_private": false,
+  "language": "python",
+  "title": "Titanic_notebook",
+  "competition_sources": [
+    "titanic"
+  ]
+}

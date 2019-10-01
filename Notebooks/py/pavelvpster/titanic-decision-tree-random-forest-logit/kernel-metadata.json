@@ -1,0 +1,22 @@
+{
+  "id": "pavelvpster/titanic-decision-tree-random-forest-logit",
+  "id_no": 619343,
+  "title": "Titanic: Decision Tree, Random Forest, Logit",
+  "code_file": "titanic-decision-tree-random-forest-logit.ipynb",
+  "language": "python",
+  "kernel_type": "notebook",
+  "is_private": false,
+  "enable_gpu": false,
+  "enable_internet": false,
+  "keywords": [
+    "beginner",
+    "random forest",
+    "logistic regression",
+    "decision tree"
+  ],
+  "dataset_sources": [],
+  "kernel_sources": [],
+  "competition_sources": [
+    "titanic"
+  ]
+}

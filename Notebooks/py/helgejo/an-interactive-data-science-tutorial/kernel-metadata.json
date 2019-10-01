@@ -1,0 +1,17 @@
+{
+  "kernel_type": "notebook",
+  "keywords": [],
+  "enable_gpu": false,
+  "kernel_sources": [],
+  "dataset_sources": [],
+  "is_private": false,
+  "code_file": "an-interactive-data-science-tutorial.ipynb",
+  "id_no": 167795,
+  "competition_sources": [
+    "titanic"
+  ],
+  "title": "An Interactive Data Science Tutorial",
+  "language": "python",
+  "id": "helgejo/an-interactive-data-science-tutorial",
+  "enable_internet": false
+}

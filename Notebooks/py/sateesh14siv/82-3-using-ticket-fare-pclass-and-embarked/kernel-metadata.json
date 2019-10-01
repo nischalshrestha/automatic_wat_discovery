@@ -1,0 +1,21 @@
+{
+  "id_no": 1280409,
+  "keywords": [
+    "beginner",
+    "classification",
+    "feature engineering"
+  ],
+  "kernel_sources": [],
+  "enable_internet": false,
+  "language": "python",
+  "enable_gpu": false,
+  "title": "82.3% Using ticket, fare, Pclass and embarked",
+  "dataset_sources": [],
+  "competition_sources": [
+    "titanic"
+  ],
+  "kernel_type": "notebook",
+  "id": "sateesh14siv/82-3-using-ticket-fare-pclass-and-embarked",
+  "is_private": false,
+  "code_file": "82-3-using-ticket-fare-pclass-and-embarked.ipynb"
+}

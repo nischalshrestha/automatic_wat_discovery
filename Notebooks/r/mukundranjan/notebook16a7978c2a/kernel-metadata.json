@@ -1,0 +1,17 @@
+{
+  "id_no": 229809,
+  "kernel_sources": [],
+  "dataset_sources": [],
+  "is_private": false,
+  "kernel_type": "notebook",
+  "competition_sources": [
+    "titanic"
+  ],
+  "keywords": [],
+  "code_file": "notebook16a7978c2a.irnb",
+  "id": "mukundranjan/notebook16a7978c2a",
+  "enable_gpu": false,
+  "title": "Notebook16a7978c2a",
+  "enable_internet": false,
+  "language": "r"
+}

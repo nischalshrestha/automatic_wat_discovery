@@ -1,0 +1,24 @@
+{
+  "code_file": "titanic-survivor-prediction.ipynb",
+  "language": "python",
+  "enable_internet": false,
+  "title": "Titanic Survivor Prediction",
+  "kernel_type": "notebook",
+  "enable_gpu": false,
+  "keywords": [
+    "beginner",
+    "data visualization",
+    "classification",
+    "random forest"
+  ],
+  "id": "anshumank/titanic-survivor-prediction",
+  "kernel_sources": [],
+  "dataset_sources": [
+    "anshumank/titanic-visualization"
+  ],
+  "competition_sources": [
+    "titanic"
+  ],
+  "is_private": false,
+  "id_no": 809886
+}

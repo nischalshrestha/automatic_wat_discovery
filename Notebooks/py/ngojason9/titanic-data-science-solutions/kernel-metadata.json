@@ -1,0 +1,17 @@
+{
+  "is_private": false,
+  "title": "Titanic Data Science Solutions",
+  "id_no": 1296403,
+  "keywords": [],
+  "dataset_sources": [],
+  "competition_sources": [
+    "titanic"
+  ],
+  "language": "python",
+  "code_file": "titanic-data-science-solutions.ipynb",
+  "enable_internet": false,
+  "id": "ngojason9/titanic-data-science-solutions",
+  "kernel_type": "notebook",
+  "kernel_sources": [],
+  "enable_gpu": false
+}

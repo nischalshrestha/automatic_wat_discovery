@@ -1,0 +1,17 @@
+{
+  "language": "python",
+  "enable_gpu": false,
+  "enable_internet": false,
+  "competition_sources": [
+    "titanic"
+  ],
+  "keywords": [],
+  "title": "Titanic dataset exploratory analysis",
+  "id_no": 273655,
+  "kernel_type": "notebook",
+  "dataset_sources": [],
+  "is_private": false,
+  "kernel_sources": [],
+  "id": "mona123/titanic-dataset-exploratory-analysis",
+  "code_file": "titanic-dataset-exploratory-analysis.ipynb"
+}

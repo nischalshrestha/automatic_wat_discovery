@@ -1,0 +1,17 @@
+{
+  "code_file": "titanic-with-scikit-learn.ipynb",
+  "id_no": 1398150,
+  "id": "jonathanlamar/titanic-with-scikit-learn",
+  "title": "Titanic with scikit-learn",
+  "dataset_sources": [],
+  "language": "python",
+  "enable_internet": false,
+  "kernel_sources": [],
+  "competition_sources": [
+    "titanic"
+  ],
+  "keywords": [],
+  "enable_gpu": false,
+  "kernel_type": "notebook",
+  "is_private": false
+}

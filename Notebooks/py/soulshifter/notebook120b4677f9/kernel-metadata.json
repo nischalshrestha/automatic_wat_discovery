@@ -1,0 +1,17 @@
+{
+  "id_no": 517727,
+  "title": "Notebook120b4677f9",
+  "code_file": "notebook120b4677f9.ipynb",
+  "kernel_sources": [],
+  "enable_gpu": false,
+  "enable_internet": false,
+  "id": "soulshifter/notebook120b4677f9",
+  "language": "python",
+  "keywords": [],
+  "dataset_sources": [],
+  "kernel_type": "notebook",
+  "is_private": false,
+  "competition_sources": [
+    "titanic"
+  ]
+}

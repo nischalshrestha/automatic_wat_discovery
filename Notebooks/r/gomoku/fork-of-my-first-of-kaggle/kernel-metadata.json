@@ -1,0 +1,17 @@
+{
+  "title": "Fork of My first of kaggle",
+  "id": "gomoku/fork-of-my-first-of-kaggle",
+  "code_file": "fork-of-my-first-of-kaggle.irnb",
+  "keywords": [],
+  "competition_sources": [
+    "titanic"
+  ],
+  "is_private": false,
+  "enable_internet": false,
+  "kernel_sources": [],
+  "dataset_sources": [],
+  "id_no": 210737,
+  "language": "r",
+  "enable_gpu": false,
+  "kernel_type": "notebook"
+}

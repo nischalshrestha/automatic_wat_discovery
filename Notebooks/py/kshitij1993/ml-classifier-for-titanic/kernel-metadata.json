@@ -1,0 +1,22 @@
+{
+  "code_file": "ml-classifier-for-titanic.ipynb",
+  "id": "kshitij1993/ml-classifier-for-titanic",
+  "kernel_type": "notebook",
+  "title": "ML classifier for titanic",
+  "enable_internet": false,
+  "is_private": false,
+  "language": "python",
+  "dataset_sources": [],
+  "competition_sources": [
+    "titanic"
+  ],
+  "id_no": 1269784,
+  "enable_gpu": false,
+  "keywords": [
+    "beginner",
+    "data cleaning",
+    "data visualization",
+    "classification"
+  ],
+  "kernel_sources": []
+}

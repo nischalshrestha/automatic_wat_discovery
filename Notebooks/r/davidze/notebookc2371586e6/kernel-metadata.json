@@ -1,0 +1,17 @@
+{
+  "kernel_type": "notebook",
+  "keywords": [],
+  "title": "Notebookc2371586e6",
+  "dataset_sources": [],
+  "id_no": 261572,
+  "enable_internet": false,
+  "is_private": false,
+  "enable_gpu": false,
+  "language": "python",
+  "competition_sources": [
+    "titanic"
+  ],
+  "code_file": "notebookc2371586e6.ipynb",
+  "kernel_sources": [],
+  "id": "davidze/notebookc2371586e6"
+}

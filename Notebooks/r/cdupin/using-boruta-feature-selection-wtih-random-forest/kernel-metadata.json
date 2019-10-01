@@ -1,0 +1,17 @@
+{
+  "enable_gpu": false,
+  "id_no": 164342,
+  "is_private": false,
+  "dataset_sources": [],
+  "competition_sources": [
+    "titanic"
+  ],
+  "enable_internet": false,
+  "id": "cdupin/using-boruta-feature-selection-wtih-random-forest",
+  "kernel_type": "notebook",
+  "code_file": "using-boruta-feature-selection-wtih-random-forest.irnb",
+  "keywords": [],
+  "title": "Using Boruta Feature Selection wtih Random Forest.",
+  "language": "r",
+  "kernel_sources": []
+}

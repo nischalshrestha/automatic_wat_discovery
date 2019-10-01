@@ -1,0 +1,17 @@
+{
+  "kernel_type": "notebook",
+  "id": "xelaoh/notebook67915918dd",
+  "id_no": 189508,
+  "competition_sources": [
+    "titanic"
+  ],
+  "is_private": false,
+  "keywords": [],
+  "enable_gpu": false,
+  "enable_internet": false,
+  "language": "r",
+  "title": "Notebookc072367166",
+  "dataset_sources": [],
+  "kernel_sources": [],
+  "code_file": "notebook67915918dd.irnb"
+}

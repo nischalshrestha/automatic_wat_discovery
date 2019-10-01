@@ -1,0 +1,17 @@
+{
+  "keywords": [],
+  "is_private": false,
+  "dataset_sources": [],
+  "competition_sources": [
+    "titanic"
+  ],
+  "title": "Titanic 0.8133 with KNN",
+  "code_file": "titanic-0-8133-with-knn.ipynb",
+  "enable_gpu": false,
+  "kernel_type": "notebook",
+  "enable_internet": false,
+  "id": "t0nberry/titanic-0-8133-with-knn",
+  "language": "python",
+  "id_no": 1574038,
+  "kernel_sources": []
+}

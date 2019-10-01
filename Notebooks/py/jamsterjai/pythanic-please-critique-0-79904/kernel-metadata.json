@@ -1,0 +1,17 @@
+{
+  "id_no": 299311,
+  "title": "Pythanic (Please Critique!) ~0.79904",
+  "competition_sources": [
+    "titanic"
+  ],
+  "kernel_type": "notebook",
+  "language": "python",
+  "enable_internet": false,
+  "id": "jamsterjai/pythanic-please-critique-0-79904",
+  "is_private": false,
+  "kernel_sources": [],
+  "dataset_sources": [],
+  "keywords": [],
+  "enable_gpu": false,
+  "code_file": "pythanic-please-critique-0-79904.ipynb"
+}

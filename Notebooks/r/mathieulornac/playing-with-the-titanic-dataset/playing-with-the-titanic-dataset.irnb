@@ -1,0 +1,175 @@
+{
+  "cells": [
+    {
+      "cell_type": "markdown",
+      "metadata": {
+        "_cell_guid": "03c1f0c1-33ec-55d0-6d69-73551b56cd47"
+      },
+      "source": [
+        "Linear regression implementation with R"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "_cell_guid": "66e203f3-ea24-d217-d5da-d71972ef2aca"
+      },
+      "outputs": [],
+      "source": [
+        "# This R environment comes with all of CRAN preinstalled, as well as many other helpful packages\n",
+        "# The environment is defined by the kaggle/rstats docker image: https://github.com/kaggle/docker-rstats\n",
+        "# For example, here's several helpful packages to load in \n",
+        "\n",
+        "library(ggplot2) # Data visualization\n",
+        "library(readr) # CSV file I/O, e.g. the read_csv function\n",
+        "\n",
+        "# Input data files are available in the \"../input/\" directory.\n",
+        "# For example, running this (by clicking run or pressing Shift+Enter) will list the files in the input directory\n",
+        "\n",
+        "system(\"ls ../input\")\n",
+        "\n",
+        "# Any results you write to the current directory are saved as output."
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "_cell_guid": "cad9081e-9dc0-8549-a25c-cf6b69267fc8"
+      },
+      "outputs": [],
+      "source": [
+        "# Reading training and test dataset\n",
+        "trainDS <- read.csv('../input/train.csv', stringsAsFactors = F)\n",
+        "testDS  <- read.csv('../input/test.csv', stringsAsFactors = F)\n",
+        "head(trainDS)"
+      ]
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {
+        "_cell_guid": "80f7c73d-9f72-eb6b-f6fc-c7f9e79e4183"
+      },
+      "source": [
+        "VARIABLE DESCRIPTIONS:\n",
+        "\n",
+        "* survival        Survival\n",
+        "                (0 = No; 1 = Yes)\n",
+        "* pclass          Passenger Class\n",
+        "                (1 = 1st; 2 = 2nd; 3 = 3rd)\n",
+        "* name            Name\n",
+        "* sibsp           Number of Siblings/Spouses Aboard\n",
+        "* parch           Number of Parents/Children Aboard\n",
+        "* ticket          Ticket Number\n",
+        "* fare            Passenger Fare\n",
+        "* cabin           Cabin\n",
+        "* embarked        Port of Embarkation\n",
+        "  * C = Cherbourg\n",
+        "  * Q = Queenstown\n",
+        "  * S = Southampton"
+      ]
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {
+        "_cell_guid": "853ef05e-c444-5474-79ee-f62b90636d6e"
+      },
+      "source": [
+        "# Features selection"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "_cell_guid": "71061a16-6f97-e4ba-b627-acce92fd94f5"
+      },
+      "outputs": [],
+      "source": [
+        "Features = trainDS[ , c(\"Pclass\", \"Age\", \"Sex\")]\n",
+        "head(Features)"
+      ]
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {
+        "_cell_guid": "b847e42a-944b-1dd4-38e9-2c125f1ec843"
+      },
+      "source": [
+        "# Feature Fixing\n",
+        "\n",
+        "Some features are incomplete. \n",
+        "\n",
+        "* Fixing age with the mean value (Could use mean value on sex)"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "_cell_guid": "a932f1ea-0520-c857-8c17-909aed01d631"
+      },
+      "outputs": [],
+      "source": [
+        "meanAge = mean(Features[, \"Age\"], na.rm=TRUE) #29.69\n",
+        "Features$Age[is.na(Features$Age)] <- meanAge"
+      ]
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {
+        "_cell_guid": "1f0273b1-797d-3360-3570-bbebf0a17a96"
+      },
+      "source": [
+        " # Playing with the plot fonctions"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "_cell_guid": "57ad7e6c-f87c-60cf-188a-e0bfaf24dfb3"
+      },
+      "outputs": [],
+      "source": [
+        "dat <- data.frame(X=Features[, \"Pclass\"],\n",
+        "                  Y=Features[, \"Age\"],\n",
+        "                  att1=trainDS[, \"Survived\"],\n",
+        "                  att2=trainDS[, \"Sex\"])\n",
+        "head(dat)\n",
+        "ggplot(dat) + geom_point(aes(x=X, y=Y, color=factor(att1),shape=att2), size=5) "
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "_cell_guid": "7dd642f1-9df1-aab9-1e9f-644f1580b913"
+      },
+      "outputs": [],
+      "source": [
+        "# "
+      ]
+    }
+  ],
+  "metadata": {
+    "_change_revision": 0,
+    "_is_fork": false,
+    "kernelspec": {
+      "display_name": "R",
+      "language": "R",
+      "name": "ir"
+    },
+    "language_info": {
+      "codemirror_mode": "r",
+      "file_extension": ".r",
+      "mimetype": "text/x-r-source",
+      "name": "R",
+      "pygments_lexer": "r",
+      "version": "3.3.2"
+    }
+  },
+  "nbformat": 4,
+  "nbformat_minor": 0
+}

@@ -1,0 +1,194 @@
+{
+  "cells": [
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "_cell_guid": "e599d119-5307-ce3d-c6c6-bbb5e7545e12"
+      },
+      "outputs": [],
+      "source": [
+        "# This R environment comes with all of CRAN preinstalled, as well as many other helpful packages\n",
+        "# The environment is defined by the kaggle/rstats docker image: https://github.com/kaggle/docker-rstats\n",
+        "# For example, here's several helpful packages to load in \n",
+        "\n",
+        "library(ggplot2) # Data visualization\n",
+        "library(readr) # CSV file I/O, e.g. the read_csv function\n",
+        "library(repr)\n",
+        "# Input data files are available in the \"../input/\" directory.\n",
+        "# For example, running this (by clicking run or pressing Shift+Enter) will list the files in the input directory\n",
+        "\n",
+        "system(\"ls ../input\")\n",
+        "\n",
+        "# Any results you write to the current directory are saved as output."
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "_cell_guid": "a95aa23e-a195-8529-a7c4-1736e72c9df8"
+      },
+      "outputs": [],
+      "source": [
+        "train_data = read.csv(\"../input/train.csv\")\n",
+        "nrow(train_data)"
+      ]
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {
+        "_cell_guid": "84976670-db00-c219-e188-2f29fa38c039"
+      },
+      "source": [
+        "# Get the relationship between survival and other info from the data."
+      ]
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {
+        "_cell_guid": "a8ad4e01-32cf-9f8f-3160-204d2ec1038a"
+      },
+      "source": [
+        "# 1- Age"
+      ]
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {
+        "_cell_guid": "3912c580-cf08-5835-8eb9-2236e95546c6"
+      },
+      "source": [
+        "## STEP 1"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "_cell_guid": "91d41aa7-f38e-b50d-816d-c3ce37a484ff"
+      },
+      "outputs": [],
+      "source": [
+        "# get the age and replace NAs with zeros\n",
+        "na_age <- is.na(train_data$Age)\n",
+        "\n",
+        "survived_age <- train_data$Age[train_data$Survived == 1]\n",
+        "survived_age[na_age] <- 0\n",
+        "not_survived_age <- train_data$Age[train_data$Survived == 0]\n",
+        "not_survived_age[na_age] <- 0"
+      ]
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {
+        "_cell_guid": "4b40a4f0-4649-4b00-99b1-49f13cb3a278"
+      },
+      "source": [
+        "Apparently, we need to remove the passengers with no age, because adding 0 instead of NA gives a high weight on the zero bin in the histogram."
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "_cell_guid": "71946c15-8436-01d2-5b75-caa2f05854ab"
+      },
+      "outputs": [],
+      "source": [
+        "# Histogram \n",
+        "options(repr.plot.width=6, repr.plot.height=4)\n",
+        "par(mfrow=c(1,2))\n",
+        "hist(survived_age, breaks = 15, main='Survived', \n",
+        "  col='green', xlab = \"Age\")\n",
+        "hist(not_survived_age, breaks = 15, main = 'NOT Survived', \n",
+        "  col ='red', xlab = \"Age\")"
+      ]
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {
+        "_cell_guid": "53ca3f52-b6fb-db00-9294-eb7c75c5b7e3"
+      },
+      "source": [
+        "## STEP 2 : remove passengers with no age"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "_cell_guid": "5325f209-4aa3-10d0-fef9-a8dd74168d48"
+      },
+      "outputs": [],
+      "source": [
+        "survived_age <- survived_age[survived_age != 0]\n",
+        "not_survived_age <- not_survived_age[not_survived_age != 0]"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "_cell_guid": "958f3575-26cd-4ed9-98fb-569bfeb9d988"
+      },
+      "outputs": [],
+      "source": [
+        "# Histogram \n",
+        "\n",
+        "par(mfrow=c(1,2))\n",
+        "hist(survived_age, main='Survived', col='green', xlab = \"Age\")\n",
+        "hist(not_survived_age, main = 'NOT Survived', col ='red', xlab = \"Age\")"
+      ]
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {
+        "_cell_guid": "7827d605-28b8-1c7c-3e05-57a1ed99dd83"
+      },
+      "source": [
+        "# 2- Gender"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "_cell_guid": "60d1d6fb-2793-cdc3-7c53-58fa5171ad33"
+      },
+      "outputs": [],
+      "source": [
+        "survived_gender = train_data$Sex[train_data$Survived == 1]\n",
+        "table(survived_gender)"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "_cell_guid": "b19f1c32-6873-0eed-3270-1fb7d1f83840"
+      },
+      "outputs": [],
+      "source": ""
+    }
+  ],
+  "metadata": {
+    "_change_revision": 0,
+    "_is_fork": false,
+    "kernelspec": {
+      "display_name": "R",
+      "language": "R",
+      "name": "ir"
+    },
+    "language_info": {
+      "codemirror_mode": "r",
+      "file_extension": ".r",
+      "mimetype": "text/x-r-source",
+      "name": "R",
+      "pygments_lexer": "r",
+      "version": "3.3.2"
+    }
+  },
+  "nbformat": 4,
+  "nbformat_minor": 0
+}

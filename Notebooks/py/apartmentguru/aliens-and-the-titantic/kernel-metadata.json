@@ -1,0 +1,17 @@
+{
+  "code_file": "aliens-and-the-titantic.ipynb",
+  "competition_sources": [
+    "titanic"
+  ],
+  "language": "python",
+  "title": "Aliens and the Titantic",
+  "id_no": 37728,
+  "keywords": [],
+  "id": "apartmentguru/aliens-and-the-titantic",
+  "dataset_sources": [],
+  "enable_gpu": false,
+  "enable_internet": false,
+  "kernel_type": "notebook",
+  "is_private": false,
+  "kernel_sources": []
+}

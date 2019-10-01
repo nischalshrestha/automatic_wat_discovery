@@ -1,0 +1,17 @@
+{
+  "code_file": "eda-to-prediction-dietanic.ipynb",
+  "is_private": false,
+  "id": "saurabhrathor/eda-to-prediction-dietanic",
+  "title": "EDA To Prediction(DieTanic)",
+  "dataset_sources": [],
+  "keywords": [],
+  "id_no": 589584,
+  "kernel_sources": [],
+  "competition_sources": [
+    "titanic"
+  ],
+  "language": "python",
+  "kernel_type": "notebook",
+  "enable_internet": false,
+  "enable_gpu": false
+}

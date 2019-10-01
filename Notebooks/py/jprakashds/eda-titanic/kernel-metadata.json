@@ -1,0 +1,22 @@
+{
+  "code_file": "eda-titanic.ipynb",
+  "is_private": false,
+  "keywords": [
+    "tutorial",
+    "beginner",
+    "eda",
+    "data visualization"
+  ],
+  "kernel_sources": [],
+  "kernel_type": "notebook",
+  "id_no": 1632940,
+  "dataset_sources": [],
+  "competition_sources": [
+    "titanic"
+  ],
+  "language": "python",
+  "title": "EDA - Titanic ",
+  "enable_internet": false,
+  "id": "jprakashds/eda-titanic",
+  "enable_gpu": false
+}

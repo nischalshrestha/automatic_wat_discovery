@@ -1,0 +1,17 @@
+{
+  "code_file": "titanic-framework-jiuzhang-hw.ipynb",
+  "is_private": false,
+  "id_no": 1545897,
+  "enable_internet": false,
+  "id": "hotrank/titanic-framework-jiuzhang-hw",
+  "dataset_sources": [],
+  "language": "python",
+  "competition_sources": [
+    "titanic"
+  ],
+  "keywords": [],
+  "title": " Titanic Framework - Jiuzhang HW",
+  "kernel_type": "notebook",
+  "kernel_sources": [],
+  "enable_gpu": false
+}

@@ -1,0 +1,17 @@
+{
+  "kernel_sources": [],
+  "code_file": "exploring-titanic-dataset-in-python.ipynb",
+  "id": "vishnugangineni/exploring-titanic-dataset-in-python",
+  "dataset_sources": [],
+  "enable_gpu": false,
+  "keywords": [],
+  "competition_sources": [
+    "titanic"
+  ],
+  "title": "Exploring Titanic dataset in Python",
+  "language": "python",
+  "id_no": 238060,
+  "enable_internet": false,
+  "is_private": false,
+  "kernel_type": "notebook"
+}

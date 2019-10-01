@@ -1,0 +1,17 @@
+{
+  "code_file": "my-first-ml-project-titanic-updated-20171010.irnb",
+  "title": "My first ML project: Titanic (Updated: 20171010)",
+  "competition_sources": [
+    "titanic"
+  ],
+  "keywords": [],
+  "id": "kitivan/my-first-ml-project-titanic-updated-20171010",
+  "enable_internet": false,
+  "kernel_type": "notebook",
+  "kernel_sources": [],
+  "dataset_sources": [],
+  "language": "r",
+  "id_no": 331424,
+  "enable_gpu": false,
+  "is_private": false
+}

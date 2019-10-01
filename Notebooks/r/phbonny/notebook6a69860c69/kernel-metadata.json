@@ -1,0 +1,17 @@
+{
+  "kernel_type": "notebook",
+  "id": "phbonny/notebook6a69860c69",
+  "competition_sources": [
+    "titanic"
+  ],
+  "enable_gpu": false,
+  "kernel_sources": [],
+  "title": "Notebookbd70b64d41",
+  "is_private": false,
+  "language": "r",
+  "enable_internet": false,
+  "code_file": "notebook6a69860c69.irnb",
+  "id_no": 159393,
+  "keywords": [],
+  "dataset_sources": []
+}

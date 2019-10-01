@@ -1,0 +1,23 @@
+{
+  "code_file": "titanic-machine-learning-from-disaster-solution.ipynb",
+  "language": "python",
+  "enable_internet": false,
+  "id": "arshid/titanic-machine-learning-from-disaster-solution",
+  "title": "Titanic: Machine Learning from Disaster Solution",
+  "kernel_type": "notebook",
+  "id_no": 691661,
+  "enable_gpu": false,
+  "is_private": false,
+  "dataset_sources": [],
+  "kernel_sources": [],
+  "keywords": [
+    "beginner",
+    "model comparison",
+    "random forest",
+    "logistic regression",
+    "binary classification"
+  ],
+  "competition_sources": [
+    "titanic"
+  ]
+}

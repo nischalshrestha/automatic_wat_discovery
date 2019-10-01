@@ -1,0 +1,38 @@
+{
+  "enable_gpu": true,
+  "enable_internet": false,
+  "kernel_type": "notebook",
+  "id": "adrian1acoran/fork-of-fork-of-fork-of-fork-of-learn-pi-3-1415926",
+  "is_private": false,
+  "language": "python",
+  "kernel_sources": [
+    "mrisdal/quick-dirty-randomforest",
+    "ldfreeman3/a-data-science-framework-to-achieve-99-accuracy",
+    "kanncaa1/data-sciencetutorial-for-beginners",
+    "sudalairajkumar/simple-exploration-baseline-ga-customer-revenue",
+    "adrian1acoran/simple-exploration-baseline-ga-customer-revenue",
+    "adrian1acoran/sql-scavenger-hunt-handbook-98967c",
+    "mjbahmani/machine-learning-workflow-for-house-prices",
+    "allunia/hidden-treasures-in-our-groceries"
+  ],
+  "title": "Fork of Fork of Fork of Fork of Learn pi 3.1415926",
+  "code_file": "fork-of-fork-of-fork-of-fork-of-learn-pi-3-1415926.ipynb",
+  "competition_sources": [
+    "titanic",
+    "the-allen-ai-science-challenge",
+    "house-prices-advanced-regression-techniques",
+    "two-sigma-financial-news",
+    "human-protein-atlas-image-classification"
+  ],
+  "keywords": [],
+  "id_no": 2000591,
+  "dataset_sources": [
+    "salvadordali/racingkings",
+    "allenai/ai2-science-questions",
+    "datasnaek/chess",
+    "pytorch/vgg13bn",
+    "kiva/data-science-for-good-kiva-crowdfunding",
+    "bigquery/patents",
+    "adrian1acoran/pi-31415"
+  ]
+}

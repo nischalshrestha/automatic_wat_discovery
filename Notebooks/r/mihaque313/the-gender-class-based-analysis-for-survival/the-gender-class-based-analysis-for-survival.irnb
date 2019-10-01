@@ -1,0 +1,124 @@
+{
+  "cells": [
+    {
+      "cell_type": "markdown",
+      "metadata": {
+        "_cell_guid": "3dd9a706-7c57-9f86-dcce-3119a04e23a6"
+      },
+      "source": [
+        "The Gender-class based analysis for survival"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "_cell_guid": "14170830-9c9a-89fb-0054-88c8a1138c23"
+      },
+      "outputs": [],
+      "source": [
+        "library(readr)\n",
+        "train <- read_csv(\"../input/train.csv\") #importing the train.csv file"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "_cell_guid": "81253988-2c3e-5e60-4f4e-a2148bd01248"
+      },
+      "outputs": [],
+      "source": [
+        "test <- read_csv(\"../input/test.csv\")   #importing the test.csv file"
+      ]
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {
+        "_cell_guid": "fe5fdf81-a67f-e764-f568-b19456f6ea88"
+      },
+      "source": [
+        "Making a variable to define the range of fare in which passenger lies"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "_cell_guid": "f03b3b55-64f2-7343-733c-bb832a988af7"
+      },
+      "outputs": [],
+      "source": [
+        "train$fareRange<-'30+'\n",
+        "train$fareRange[train$Fare<30 & train$Fare>=20] <-'20-30'\n",
+        "train$fareRange[train$Fare<20 & train$Fare>=10] <-'10-20'\n",
+        "train$fareRange[train$Fare<10] <-'<10'"
+      ]
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {
+        "_cell_guid": "0f0d2a09-e5a0-ff6a-3079-18445e879e53"
+      },
+      "source": [
+        "Checking the survival proportions for different subsets taking the features - 'fareRange' , 'Pclass' & 'Sex'"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "_cell_guid": "48d89218-b6da-f697-0ad3-e907a44e8e6c"
+      },
+      "outputs": [],
+      "source": [
+        "aggregate(Survived~Sex+Pclass+fareRange, data=train, FUN = function(x){sum(x)/length(x)})"
+      ]
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {
+        "_cell_guid": "bca26b14-b749-2343-bb7b-39bf4cf2760f"
+      },
+      "source": [
+        "While the majority of males, regardless of class or fare still don\u2019t do so well, we notice that most of the class 3 women who paid more than $20 for their ticket actually also miss out on a lifeboat.\n",
+        "\n",
+        "So, I'm making a new prediction based on the new insights and submit the output file to kaggle."
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "_cell_guid": "b84cf823-95b9-6b5a-81d4-3676d2150d96"
+      },
+      "outputs": [],
+      "source": [
+        "test$Survived<-0\n",
+        "test$Survived[test$Sex=='female']<-1\n",
+        "test$Survived[test$Sex=='female' & test$Pclass==3 & test$Fare>=20]<-0\n",
+        "submit <- data.frame(PassengerId = test$PassengerId, Survived = test$Survived)\n",
+        "write.csv(submit, file = \"ResultGC.csv\", row.names = FALSE)"
+      ]
+    }
+  ],
+  "metadata": {
+    "_change_revision": 0,
+    "_is_fork": false,
+    "kernelspec": {
+      "display_name": "R",
+      "language": "R",
+      "name": "ir"
+    },
+    "language_info": {
+      "codemirror_mode": "r",
+      "file_extension": ".r",
+      "mimetype": "text/x-r-source",
+      "name": "R",
+      "pygments_lexer": "r",
+      "version": "3.3.3"
+    }
+  },
+  "nbformat": 4,
+  "nbformat_minor": 0
+}

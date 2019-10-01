@@ -1,0 +1,17 @@
+{
+  "id_no": 214851,
+  "kernel_type": "notebook",
+  "dataset_sources": [],
+  "kernel_sources": [],
+  "is_private": false,
+  "keywords": [],
+  "id": "raquelspain/titanic-prediction-on-r",
+  "language": "r",
+  "enable_gpu": false,
+  "title": "Titanic Prediction on R",
+  "competition_sources": [
+    "titanic"
+  ],
+  "code_file": "titanic-prediction-on-r.irnb",
+  "enable_internet": false
+}

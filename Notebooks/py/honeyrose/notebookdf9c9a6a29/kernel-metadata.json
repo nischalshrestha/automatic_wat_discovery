@@ -1,0 +1,17 @@
+{
+  "kernel_type": "notebook",
+  "title": "Notebookdf9c9a6a29",
+  "language": "python",
+  "is_private": false,
+  "competition_sources": [
+    "titanic"
+  ],
+  "id": "honeyrose/notebookdf9c9a6a29",
+  "id_no": 128010,
+  "code_file": "notebookdf9c9a6a29.ipynb",
+  "keywords": [],
+  "dataset_sources": [],
+  "kernel_sources": [],
+  "enable_gpu": false,
+  "enable_internet": false
+}

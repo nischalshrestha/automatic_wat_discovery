@@ -1,0 +1,17 @@
+{
+  "kernel_type": "notebook",
+  "kernel_sources": [],
+  "enable_internet": false,
+  "language": "r",
+  "keywords": [],
+  "competition_sources": [
+    "titanic"
+  ],
+  "id_no": 222119,
+  "is_private": false,
+  "title": "Notebook57c894e350",
+  "dataset_sources": [],
+  "enable_gpu": false,
+  "id": "vikas08/notebook57c894e350",
+  "code_file": "notebook57c894e350.irnb"
+}

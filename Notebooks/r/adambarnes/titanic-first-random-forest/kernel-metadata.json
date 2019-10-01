@@ -1,0 +1,17 @@
+{
+  "is_private": false,
+  "code_file": "titanic-first-random-forest.irnb",
+  "enable_gpu": false,
+  "kernel_sources": [],
+  "id_no": 231413,
+  "enable_internet": false,
+  "competition_sources": [
+    "titanic"
+  ],
+  "dataset_sources": [],
+  "keywords": [],
+  "kernel_type": "notebook",
+  "title": "Titanic - first random forest",
+  "id": "adambarnes/titanic-first-random-forest",
+  "language": "r"
+}

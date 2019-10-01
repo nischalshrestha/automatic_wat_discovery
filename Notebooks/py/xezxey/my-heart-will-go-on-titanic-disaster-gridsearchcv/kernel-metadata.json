@@ -1,0 +1,23 @@
+{
+  "kernel_sources": [],
+  "id_no": 1075652,
+  "kernel_type": "notebook",
+  "keywords": [
+    "tutorial",
+    "beginner",
+    "data cleaning",
+    "classification",
+    "feature engineering"
+  ],
+  "enable_internet": false,
+  "enable_gpu": true,
+  "id": "xezxey/my-heart-will-go-on-titanic-disaster-gridsearchcv",
+  "competition_sources": [
+    "titanic"
+  ],
+  "title": "My Heart Will Go On~Titanic Disaster(GridSearchCV)",
+  "dataset_sources": [],
+  "language": "python",
+  "code_file": "my-heart-will-go-on-titanic-disaster-gridsearchcv.ipynb",
+  "is_private": false
+}

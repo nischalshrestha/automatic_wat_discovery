@@ -1,0 +1,17 @@
+{
+  "kernel_sources": [],
+  "enable_gpu": false,
+  "id": "ciao1993/notebook2ae6593231",
+  "competition_sources": [
+    "titanic"
+  ],
+  "enable_internet": false,
+  "is_private": false,
+  "id_no": 211393,
+  "kernel_type": "notebook",
+  "title": "Notebook2ae6593231",
+  "dataset_sources": [],
+  "language": "python",
+  "keywords": [],
+  "code_file": "notebook2ae6593231.ipynb"
+}

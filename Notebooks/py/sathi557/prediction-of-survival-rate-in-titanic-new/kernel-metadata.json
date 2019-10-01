@@ -1,0 +1,17 @@
+{
+  "code_file": "prediction-of-survival-rate-in-titanic-new.ipynb",
+  "enable_internet": false,
+  "dataset_sources": [],
+  "enable_gpu": false,
+  "keywords": [],
+  "kernel_type": "notebook",
+  "is_private": false,
+  "title": "Prediction of survival rate in Titanic New",
+  "id": "sathi557/prediction-of-survival-rate-in-titanic-new",
+  "id_no": 1502647,
+  "kernel_sources": [],
+  "competition_sources": [
+    "titanic"
+  ],
+  "language": "python"
+}

@@ -1,0 +1,17 @@
+{
+  "is_private": false,
+  "enable_internet": false,
+  "code_file": "kaggle-tit-r.ipynb",
+  "competition_sources": [
+    "titanic"
+  ],
+  "id_no": 207628,
+  "enable_gpu": false,
+  "title": "kaggle_tit_R",
+  "kernel_sources": [],
+  "id": "gralgomez/kaggle-tit-r",
+  "language": "python",
+  "keywords": [],
+  "dataset_sources": [],
+  "kernel_type": "notebook"
+}

@@ -1,0 +1,17 @@
+{
+  "code_file": "glm-titanic.irnb",
+  "kernel_sources": [],
+  "language": "r",
+  "title": "glm titanic",
+  "id": "fhlgood/glm-titanic",
+  "enable_internet": false,
+  "kernel_type": "notebook",
+  "keywords": [],
+  "enable_gpu": false,
+  "id_no": 39474,
+  "dataset_sources": [],
+  "competition_sources": [
+    "titanic"
+  ],
+  "is_private": false
+}

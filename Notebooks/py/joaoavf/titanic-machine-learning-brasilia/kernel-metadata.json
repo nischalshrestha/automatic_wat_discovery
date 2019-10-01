@@ -1,0 +1,17 @@
+{
+  "enable_internet": false,
+  "dataset_sources": [],
+  "kernel_sources": [],
+  "enable_gpu": false,
+  "code_file": "titanic-machine-learning-brasilia.ipynb",
+  "kernel_type": "notebook",
+  "id": "joaoavf/titanic-machine-learning-brasilia",
+  "language": "python",
+  "keywords": [],
+  "id_no": 1289565,
+  "competition_sources": [
+    "titanic"
+  ],
+  "is_private": false,
+  "title": "Titanic - Machine Learning Brasilia"
+}

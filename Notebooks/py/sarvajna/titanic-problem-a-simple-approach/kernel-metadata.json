@@ -1,0 +1,21 @@
+{
+  "kernel_type": "notebook",
+  "enable_gpu": false,
+  "kernel_sources": [],
+  "dataset_sources": [],
+  "id": "sarvajna/titanic-problem-a-simple-approach",
+  "language": "python",
+  "enable_internet": false,
+  "is_private": false,
+  "title": "Titanic problem : A simple approach",
+  "code_file": "titanic-problem-a-simple-approach.ipynb",
+  "keywords": [
+    "classification",
+    "random forest",
+    "logistic regression"
+  ],
+  "id_no": 507291,
+  "competition_sources": [
+    "titanic"
+  ]
+}

@@ -1,0 +1,17 @@
+{
+  "language": "python",
+  "enable_internet": false,
+  "kernel_sources": [],
+  "keywords": [],
+  "title": "Feature selection and classifier testing",
+  "id_no": 234671,
+  "kernel_type": "notebook",
+  "id": "mgoldey/feature-selection-and-classifier-testing",
+  "is_private": false,
+  "enable_gpu": false,
+  "competition_sources": [
+    "titanic"
+  ],
+  "dataset_sources": [],
+  "code_file": "feature-selection-and-classifier-testing.ipynb"
+}

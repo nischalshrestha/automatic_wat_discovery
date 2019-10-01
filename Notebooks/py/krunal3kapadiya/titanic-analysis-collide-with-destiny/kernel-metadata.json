@@ -1,0 +1,23 @@
+{
+  "competition_sources": [
+    "titanic"
+  ],
+  "kernel_sources": [],
+  "code_file": "titanic-analysis-collide-with-destiny.ipynb",
+  "kernel_type": "notebook",
+  "keywords": [
+    "beginner",
+    "random forest",
+    "xgboost",
+    "logistic regression",
+    "starter code"
+  ],
+  "enable_internet": false,
+  "id": "krunal3kapadiya/titanic-analysis-collide-with-destiny",
+  "dataset_sources": [],
+  "enable_gpu": false,
+  "id_no": 657296,
+  "is_private": false,
+  "title": "Titanic Analysis: Collide with destiny",
+  "language": "python"
+}

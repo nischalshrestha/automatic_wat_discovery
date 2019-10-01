@@ -1,0 +1,159 @@
+{
+  "cells": [
+    {
+      "cell_type": "markdown",
+      "metadata": {
+        "_cell_guid": "d9b7de9e-7c56-6837-266b-06e838858239"
+      },
+      "source": [
+        "Debut titanic sample"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "_cell_guid": "a01161ff-f1e8-38e2-09e1-36d365eec96e"
+      },
+      "outputs": [],
+      "source": [
+        "\n",
+        "# This script trains a Random Forest model based on the data,\n",
+        "# saves a sample submission, and plots the relative importance\n",
+        "# of the variables in making predictions\n",
+        "\n",
+        "# Download 1_random_forest_r_submission.csv from the output below\n",
+        "# and submit it through https://www.kaggle.com/c/titanic-gettingStarted/submissions/attach\n",
+        "# to enter this getting started competition!\n",
+        "\n",
+        "library(ggplot2)\n",
+        "library(randomForest)\n",
+        "\n",
+        "set.seed(1)\n",
+        "train <- read.csv(\"../input/train.csv\", stringsAsFactors=FALSE)\n",
+        "test  <- read.csv(\"../input/test.csv\",  stringsAsFactors=FALSE)\n",
+        "\n",
+        "extractFeatures <- function(data) {\n",
+        "  features <- c(\"Pclass\",\n",
+        "                \"Age\",\n",
+        "                \"Sex\",\n",
+        "                \"Parch\",\n",
+        "                \"SibSp\",\n",
+        "                \"Fare\",\n",
+        "                \"Embarked\")\n",
+        "  fea <- data[,features]\n",
+        "  fea$Age[is.na(fea$Age)] <- -1\n",
+        "  fea$Fare[is.na(fea$Fare)] <- median(fea$Fare, na.rm=TRUE)\n",
+        "  fea$Embarked[fea$Embarked==\"\"] = \"S\"\n",
+        "  fea$Sex      <- as.factor(fea$Sex)\n",
+        "  fea$Embarked <- as.factor(fea$Embarked)\n",
+        "  return(fea)\n",
+        "}\n",
+        "\n",
+        "rf <- randomForest(extractFeatures(train), as.factor(train$Survived), ntree=100, importance=TRUE)\n",
+        "\n",
+        "submission <- data.frame(PassengerId = test$PassengerId)\n",
+        "submission$Survived <- predict(rf, extractFeatures(test))\n",
+        "write.csv(submission, file = \"1_random_forest_r_submission.csv\", row.names=FALSE)\n",
+        "\n",
+        "imp <- importance(rf, type=1)\n",
+        "featureImportance <- data.frame(Feature=row.names(imp), Importance=imp[,1])\n",
+        "\n",
+        "p <- ggplot(featureImportance, aes(x=reorder(Feature, Importance), y=Importance)) +\n",
+        "     geom_bar(stat=\"identity\", fill=\"#53cfff\") +\n",
+        "     coord_flip() + \n",
+        "     theme_light(base_size=20) +\n",
+        "     xlab(\"\") +\n",
+        "     ylab(\"Importance\") + \n",
+        "     ggtitle(\"Random Forest Feature Importance\\n\") +\n",
+        "     theme(plot.title=element_text(size=18))\n",
+        "\n",
+        "ggsave(\"2_feature_importance.png\", p)"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "_cell_guid": "53b391b8-9dae-8588-a8c5-3d61e7006d38"
+      },
+      "outputs": [],
+      "source": ""
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "_cell_guid": "609e47d3-6298-76dc-59e6-18077fa1a515"
+      },
+      "outputs": [],
+      "source": ""
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "_cell_guid": "ac77931b-2f44-6d3d-6184-16f3c34c4502"
+      },
+      "outputs": [],
+      "source": ""
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "_cell_guid": "9d8f74b8-bb45-756c-f9f1-3732af80412c"
+      },
+      "outputs": [],
+      "source": ""
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "_cell_guid": "d3b0a253-a427-e633-47e4-e9e5fedfe8d1"
+      },
+      "outputs": [],
+      "source": [
+        ""
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "_cell_guid": "4c4abd47-fc31-9795-5f29-918b99ebf717"
+      },
+      "outputs": [],
+      "source": ""
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "_cell_guid": "fb1d3f9e-3c59-53b5-39ee-bd7a9dc5a9cb"
+      },
+      "outputs": [],
+      "source": ""
+    }
+  ],
+  "metadata": {
+    "_change_revision": 0,
+    "_is_fork": false,
+    "kernelspec": {
+      "display_name": "R",
+      "language": "R",
+      "name": "ir"
+    },
+    "language_info": {
+      "codemirror_mode": "r",
+      "file_extension": ".r",
+      "mimetype": "text/x-r-source",
+      "name": "R",
+      "pygments_lexer": "r",
+      "version": "3.3.2"
+    }
+  },
+  "nbformat": 4,
+  "nbformat_minor": 0
+}

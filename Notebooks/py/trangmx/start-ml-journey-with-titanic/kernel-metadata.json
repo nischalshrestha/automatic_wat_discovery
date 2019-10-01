@@ -1,0 +1,17 @@
+{
+  "id": "trangmx/start-ml-journey-with-titanic",
+  "id_no": 107870,
+  "title": "Start ML Journey with Titanic",
+  "code_file": "start-ml-journey-with-titanic.ipynb",
+  "language": "python",
+  "kernel_type": "notebook",
+  "is_private": false,
+  "enable_gpu": false,
+  "enable_internet": false,
+  "keywords": [],
+  "dataset_sources": [],
+  "kernel_sources": [],
+  "competition_sources": [
+    "titanic"
+  ]
+}

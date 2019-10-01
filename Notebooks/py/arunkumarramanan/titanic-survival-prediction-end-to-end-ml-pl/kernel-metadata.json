@@ -1,0 +1,17 @@
+{
+  "keywords": [],
+  "language": "python",
+  "is_private": false,
+  "competition_sources": [
+    "titanic"
+  ],
+  "kernel_type": "notebook",
+  "id": "arunkumarramanan/titanic-survival-prediction-end-to-end-ml-pl",
+  "title": "Titanic Survival Prediction End to End ML PL",
+  "kernel_sources": [],
+  "code_file": "titanic-survival-prediction-end-to-end-ml-pl.ipynb",
+  "id_no": 1879301,
+  "enable_internet": false,
+  "enable_gpu": false,
+  "dataset_sources": []
+}

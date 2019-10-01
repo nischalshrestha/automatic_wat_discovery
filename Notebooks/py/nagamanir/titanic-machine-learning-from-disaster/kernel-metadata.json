@@ -1,0 +1,20 @@
+{
+  "is_private": false,
+  "kernel_sources": [],
+  "language": "python",
+  "enable_gpu": false,
+  "id": "nagamanir/titanic-machine-learning-from-disaster",
+  "enable_internet": false,
+  "competition_sources": [
+    "titanic"
+  ],
+  "keywords": [
+    "beginner",
+    "data visualization"
+  ],
+  "id_no": 551914,
+  "dataset_sources": [],
+  "kernel_type": "notebook",
+  "title": "Titanic: Machine Learning from Disaster",
+  "code_file": "titanic-machine-learning-from-disaster.ipynb"
+}

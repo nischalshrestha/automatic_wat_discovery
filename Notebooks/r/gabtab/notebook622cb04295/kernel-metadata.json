@@ -1,0 +1,17 @@
+{
+  "competition_sources": [
+    "titanic"
+  ],
+  "keywords": [],
+  "kernel_type": "notebook",
+  "code_file": "notebook622cb04295.ipynb",
+  "enable_internet": false,
+  "kernel_sources": [],
+  "language": "python",
+  "id": "gabtab/notebook622cb04295",
+  "dataset_sources": [],
+  "title": "Notebook622cb04295",
+  "id_no": 204622,
+  "enable_gpu": false,
+  "is_private": false
+}

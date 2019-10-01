@@ -1,0 +1,17 @@
+{
+  "competition_sources": [
+    "titanic"
+  ],
+  "language": "python",
+  "dataset_sources": [],
+  "title": "Notebook4707a33f39",
+  "keywords": [],
+  "enable_internet": false,
+  "code_file": "notebook4707a33f39.ipynb",
+  "id_no": 237740,
+  "id": "leclem/notebook4707a33f39",
+  "kernel_sources": [],
+  "enable_gpu": false,
+  "is_private": false,
+  "kernel_type": "notebook"
+}

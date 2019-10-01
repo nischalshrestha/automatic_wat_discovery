@@ -1,0 +1,17 @@
+{
+  "kernel_sources": [],
+  "keywords": [],
+  "enable_internet": false,
+  "enable_gpu": false,
+  "competition_sources": [
+    "titanic"
+  ],
+  "id_no": 266899,
+  "dataset_sources": [],
+  "kernel_type": "notebook",
+  "language": "python",
+  "is_private": false,
+  "id": "stronger/an-interactive-data-science-tutorial-2",
+  "code_file": "an-interactive-data-science-tutorial-2.ipynb",
+  "title": "An Interactive Data Science Tutorial 2"
+}

@@ -1,0 +1,17 @@
+{
+  "dataset_sources": [],
+  "language": "python",
+  "competition_sources": [
+    "titanic"
+  ],
+  "code_file": "titanic-eda-with-ml.ipynb",
+  "enable_gpu": false,
+  "keywords": [],
+  "id_no": 1258034,
+  "id": "dvgvarma/titanic-eda-with-ml",
+  "kernel_type": "notebook",
+  "kernel_sources": [],
+  "title": "Titanic EDA with ML",
+  "enable_internet": false,
+  "is_private": false
+}

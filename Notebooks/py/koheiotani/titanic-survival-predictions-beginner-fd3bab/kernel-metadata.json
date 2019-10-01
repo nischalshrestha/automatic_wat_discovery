@@ -1,0 +1,17 @@
+{
+  "enable_gpu": false,
+  "code_file": "titanic-survival-predictions-beginner-fd3bab.ipynb",
+  "is_private": false,
+  "keywords": [],
+  "competition_sources": [
+    "titanic"
+  ],
+  "kernel_sources": [],
+  "enable_internet": false,
+  "id": "koheiotani/titanic-survival-predictions-beginner-fd3bab",
+  "language": "python",
+  "kernel_type": "notebook",
+  "id_no": 423430,
+  "title": "Titanic Survival Predictions (Beginner) fd3bab",
+  "dataset_sources": []
+}

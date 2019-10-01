@@ -1,0 +1,17 @@
+{
+  "enable_internet": false,
+  "kernel_type": "notebook",
+  "dataset_sources": [],
+  "code_file": "titanic-classification-models-and-prediction.ipynb",
+  "competition_sources": [
+    "titanic"
+  ],
+  "is_private": false,
+  "enable_gpu": false,
+  "kernel_sources": [],
+  "keywords": [],
+  "id": "bdmj12/titanic-classification-models-and-prediction",
+  "id_no": 1514094,
+  "language": "python",
+  "title": "Titanic Classification Models and Prediction"
+}

@@ -1,0 +1,17 @@
+{
+  "enable_internet": false,
+  "language": "r",
+  "kernel_type": "notebook",
+  "id": "eladkatz/notebook37b4cb30ec",
+  "is_private": false,
+  "keywords": [],
+  "enable_gpu": false,
+  "id_no": 187331,
+  "dataset_sources": [],
+  "kernel_sources": [],
+  "competition_sources": [
+    "titanic"
+  ],
+  "code_file": "notebook37b4cb30ec.irnb",
+  "title": "Notebook9f41538956"
+}

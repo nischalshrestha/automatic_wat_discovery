@@ -1,0 +1,21 @@
+{
+  "kernel_type": "notebook",
+  "competition_sources": [
+    "titanic"
+  ],
+  "kernel_sources": [],
+  "id": "ngbolin/notebookdbe84ae9cd",
+  "dataset_sources": [],
+  "language": "r",
+  "code_file": "notebookdbe84ae9cd.irnb",
+  "id_no": 258321,
+  "enable_gpu": false,
+  "title": "Notebookdbe84ae9cd",
+  "keywords": [
+    "eda",
+    "data visualization",
+    "xgboost"
+  ],
+  "enable_internet": false,
+  "is_private": false
+}

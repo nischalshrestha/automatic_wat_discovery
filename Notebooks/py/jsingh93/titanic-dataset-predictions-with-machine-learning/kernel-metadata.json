@@ -1,0 +1,17 @@
+{
+  "enable_internet": false,
+  "is_private": false,
+  "title": "Titanic Dataset predictions with machine learning",
+  "kernel_sources": [],
+  "id_no": 1172117,
+  "language": "python",
+  "dataset_sources": [],
+  "id": "jsingh93/titanic-dataset-predictions-with-machine-learning",
+  "kernel_type": "notebook",
+  "code_file": "titanic-dataset-predictions-with-machine-learning.ipynb",
+  "competition_sources": [
+    "titanic"
+  ],
+  "keywords": [],
+  "enable_gpu": false
+}

@@ -1,0 +1,17 @@
+{
+  "keywords": [],
+  "enable_internet": false,
+  "kernel_type": "notebook",
+  "id_no": 1537645,
+  "id": "shalkumari/titanic-dataset",
+  "dataset_sources": [],
+  "enable_gpu": false,
+  "code_file": "titanic-dataset.ipynb",
+  "kernel_sources": [],
+  "is_private": false,
+  "title": "Titanic Dataset",
+  "competition_sources": [
+    "titanic"
+  ],
+  "language": "python"
+}

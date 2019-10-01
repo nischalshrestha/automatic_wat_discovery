@@ -1,0 +1,17 @@
+{
+  "keywords": [],
+  "code_file": "titanic-notebook.ipynb",
+  "title": "Titanic Notebook",
+  "kernel_sources": [],
+  "id_no": 117250,
+  "kernel_type": "notebook",
+  "dataset_sources": [],
+  "enable_internet": false,
+  "language": "python",
+  "id": "charlescostello/titanic-notebook",
+  "enable_gpu": false,
+  "competition_sources": [
+    "titanic"
+  ],
+  "is_private": false
+}

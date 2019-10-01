@@ -1,0 +1,17 @@
+{
+  "code_file": "hypothesis-and-visualization-for-titanic-in-kaggle.ipynb",
+  "title": "Hypothesis and Visualization for Titanic in Kaggle",
+  "is_private": false,
+  "language": "python",
+  "id": "sishihara/hypothesis-and-visualization-for-titanic-in-kaggle",
+  "id_no": 1947995,
+  "keywords": [],
+  "dataset_sources": [],
+  "competition_sources": [
+    "titanic"
+  ],
+  "enable_internet": false,
+  "enable_gpu": false,
+  "kernel_sources": [],
+  "kernel_type": "notebook"
+}

@@ -1,0 +1,17 @@
+{
+  "title": "Headstart Data Science - Titanic Classification",
+  "id_no": 1533621,
+  "id": "mdhrumil/headstart-data-science-titanic-classification",
+  "language": "python",
+  "keywords": [],
+  "enable_gpu": false,
+  "is_private": false,
+  "dataset_sources": [],
+  "kernel_type": "notebook",
+  "enable_internet": false,
+  "competition_sources": [
+    "titanic"
+  ],
+  "code_file": "headstart-data-science-titanic-classification.ipynb",
+  "kernel_sources": []
+}

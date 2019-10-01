@@ -1,0 +1,21 @@
+{
+  "keywords": [
+    "beginner",
+    "classification",
+    "feature engineering"
+  ],
+  "id_no": 1530416,
+  "kernel_type": "notebook",
+  "title": "Beginner trying for titanic",
+  "is_private": false,
+  "enable_internet": false,
+  "id": "vashishtarora/beginner-trying-for-titanic",
+  "enable_gpu": false,
+  "dataset_sources": [],
+  "competition_sources": [
+    "titanic"
+  ],
+  "code_file": "beginner-trying-for-titanic.ipynb",
+  "kernel_sources": [],
+  "language": "python"
+}

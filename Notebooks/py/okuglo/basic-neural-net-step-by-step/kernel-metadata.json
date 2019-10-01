@@ -1,0 +1,17 @@
+{
+  "competition_sources": [
+    "titanic"
+  ],
+  "is_private": false,
+  "title": "Basic Neural net Step by Step",
+  "code_file": "basic-neural-net-step-by-step.ipynb",
+  "enable_gpu": false,
+  "kernel_type": "notebook",
+  "id_no": 275269,
+  "keywords": [],
+  "kernel_sources": [],
+  "dataset_sources": [],
+  "enable_internet": false,
+  "language": "python",
+  "id": "okuglo/basic-neural-net-step-by-step"
+}

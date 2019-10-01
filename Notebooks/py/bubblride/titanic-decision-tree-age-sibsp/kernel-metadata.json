@@ -1,0 +1,17 @@
+{
+  "kernel_type": "notebook",
+  "enable_internet": false,
+  "keywords": [],
+  "is_private": false,
+  "title": "titanic, decision tree, Age + SibSp",
+  "dataset_sources": [],
+  "id_no": 1898683,
+  "enable_gpu": false,
+  "competition_sources": [
+    "titanic"
+  ],
+  "code_file": "titanic-decision-tree-age-sibsp.ipynb",
+  "language": "python",
+  "kernel_sources": [],
+  "id": "bubblride/titanic-decision-tree-age-sibsp"
+}

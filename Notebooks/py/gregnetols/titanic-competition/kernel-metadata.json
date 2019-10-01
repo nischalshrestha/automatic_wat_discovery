@@ -1,0 +1,17 @@
+{
+  "dataset_sources": [],
+  "enable_internet": false,
+  "enable_gpu": false,
+  "competition_sources": [
+    "titanic"
+  ],
+  "language": "python",
+  "is_private": false,
+  "keywords": [],
+  "id": "gregnetols/titanic-competition",
+  "code_file": "titanic-competition.ipynb",
+  "kernel_type": "notebook",
+  "title": "Titanic competition",
+  "kernel_sources": [],
+  "id_no": 265310
+}

@@ -1,0 +1,17 @@
+{
+  "enable_internet": false,
+  "enable_gpu": false,
+  "kernel_sources": [],
+  "is_private": false,
+  "code_file": "notebook2bad76aeb7.irnb",
+  "keywords": [],
+  "kernel_type": "notebook",
+  "language": "r",
+  "dataset_sources": [],
+  "id_no": 230310,
+  "title": "Notebook2bad76aeb7",
+  "id": "nasrullah/notebook2bad76aeb7",
+  "competition_sources": [
+    "titanic"
+  ]
+}

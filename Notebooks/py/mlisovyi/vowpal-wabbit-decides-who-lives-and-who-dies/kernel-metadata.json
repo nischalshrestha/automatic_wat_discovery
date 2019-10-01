@@ -1,0 +1,21 @@
+{
+  "language": "python",
+  "enable_internet": false,
+  "enable_gpu": false,
+  "id_no": 1261014,
+  "competition_sources": [
+    "titanic"
+  ],
+  "id": "mlisovyi/vowpal-wabbit-decides-who-lives-and-who-dies",
+  "keywords": [
+    "data visualization",
+    "logistic regression",
+    "text data"
+  ],
+  "kernel_sources": [],
+  "title": "Vowpal Wabbit decides who lives and who dies",
+  "code_file": "vowpal-wabbit-decides-who-lives-and-who-dies.ipynb",
+  "dataset_sources": [],
+  "is_private": false,
+  "kernel_type": "notebook"
+}

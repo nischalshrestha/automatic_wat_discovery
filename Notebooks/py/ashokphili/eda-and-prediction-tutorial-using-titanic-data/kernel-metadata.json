@@ -1,0 +1,21 @@
+{
+  "code_file": "eda-and-prediction-tutorial-using-titanic-data.ipynb",
+  "language": "python",
+  "dataset_sources": [],
+  "title": "EDA  And Prediction Tutorial using Titanic data",
+  "is_private": false,
+  "id": "ashokphili/eda-and-prediction-tutorial-using-titanic-data",
+  "keywords": [
+    "eda",
+    "data visualization",
+    "preprocessing"
+  ],
+  "enable_gpu": false,
+  "competition_sources": [
+    "titanic"
+  ],
+  "kernel_type": "notebook",
+  "kernel_sources": [],
+  "id_no": 531112,
+  "enable_internet": false
+}

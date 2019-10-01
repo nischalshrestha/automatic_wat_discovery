@@ -1,0 +1,17 @@
+{
+  "id_no": 232157,
+  "id": "bgvijay/titanic-1",
+  "kernel_type": "notebook",
+  "is_private": false,
+  "dataset_sources": [],
+  "kernel_sources": [],
+  "competition_sources": [
+    "titanic"
+  ],
+  "language": "python",
+  "keywords": [],
+  "title": "Titanic-1",
+  "enable_gpu": false,
+  "code_file": "titanic-1.ipynb",
+  "enable_internet": false
+}

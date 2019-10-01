@@ -1,0 +1,19 @@
+{
+  "is_private": false,
+  "code_file": "let-s-step-into-the-world-of-ml-and-ds-beginner.ipynb",
+  "id": "ranjanhunt/let-s-step-into-the-world-of-ml-and-ds-beginner",
+  "kernel_sources": [],
+  "enable_gpu": false,
+  "enable_internet": false,
+  "competition_sources": [
+    "titanic"
+  ],
+  "title": "Let's step into the world of ML and DS (Beginner)",
+  "kernel_type": "notebook",
+  "language": "python",
+  "dataset_sources": [],
+  "keywords": [
+    "classification"
+  ],
+  "id_no": 1873554
+}

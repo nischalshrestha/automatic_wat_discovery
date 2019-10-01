@@ -1,0 +1,17 @@
+{
+  "is_private": false,
+  "dataset_sources": [],
+  "keywords": [],
+  "language": "python",
+  "competition_sources": [
+    "titanic"
+  ],
+  "id_no": 161625,
+  "kernel_type": "notebook",
+  "code_file": "titanic-tutorial-python-ii-pandas.ipynb",
+  "title": "Titanic - tutorial - python II (pandas)",
+  "enable_gpu": false,
+  "enable_internet": false,
+  "kernel_sources": [],
+  "id": "catherineb/titanic-tutorial-python-ii-pandas"
+}

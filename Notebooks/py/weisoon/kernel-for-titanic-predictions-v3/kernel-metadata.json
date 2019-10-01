@@ -1,0 +1,17 @@
+{
+  "keywords": [],
+  "code_file": "kernel-for-titanic-predictions-v3.ipynb",
+  "id": "weisoon/kernel-for-titanic-predictions-v3",
+  "language": "python",
+  "competition_sources": [
+    "titanic"
+  ],
+  "is_private": false,
+  "dataset_sources": [],
+  "id_no": 1324021,
+  "enable_gpu": false,
+  "kernel_type": "notebook",
+  "title": "kernel for Titanic Predictions v3",
+  "enable_internet": false,
+  "kernel_sources": []
+}

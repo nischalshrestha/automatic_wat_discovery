@@ -1,0 +1,22 @@
+{
+  "id_no": 232566,
+  "title": "Pytanic",
+  "code_file": "pytanic.ipynb",
+  "dataset_sources": [],
+  "kernel_sources": [],
+  "kernel_type": "notebook",
+  "id": "headsortails/pytanic",
+  "is_private": false,
+  "language": "python",
+  "enable_internet": false,
+  "keywords": [
+    "eda",
+    "data cleaning",
+    "feature engineering",
+    "model comparison"
+  ],
+  "competition_sources": [
+    "titanic"
+  ],
+  "enable_gpu": false
+}

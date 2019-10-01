@@ -1,0 +1,17 @@
+{
+  "id": "mlsmall/titanic-competition-a-complete-explanation",
+  "enable_gpu": false,
+  "kernel_sources": [],
+  "is_private": false,
+  "dataset_sources": [],
+  "competition_sources": [
+    "titanic"
+  ],
+  "enable_internet": false,
+  "id_no": 1327690,
+  "language": "python",
+  "kernel_type": "notebook",
+  "keywords": [],
+  "code_file": "titanic-competition-a-complete-explanation.ipynb",
+  "title": "Titanic Competition: A Complete Explanation"
+}

@@ -1,0 +1,22 @@
+{
+  "dataset_sources": [],
+  "keywords": [
+    "ensembling",
+    "feature engineering",
+    "dimensionality reduction",
+    "xgboost"
+  ],
+  "language": "python",
+  "id": "navendux/stacking-strategy-lgbm-and-xgboost-wrappers",
+  "is_private": false,
+  "kernel_type": "notebook",
+  "title": "Stacking Strategy LGBM and XGBoost Wrappers",
+  "competition_sources": [
+    "titanic"
+  ],
+  "kernel_sources": [],
+  "enable_internet": false,
+  "code_file": "stacking-strategy-lgbm-and-xgboost-wrappers.ipynb",
+  "enable_gpu": false,
+  "id_no": 1632464
+}

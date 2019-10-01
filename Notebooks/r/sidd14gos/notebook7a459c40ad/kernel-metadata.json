@@ -1,0 +1,17 @@
+{
+  "title": "Notebook7a459c40ad",
+  "kernel_type": "notebook",
+  "language": "python",
+  "dataset_sources": [],
+  "is_private": false,
+  "code_file": "notebook7a459c40ad.ipynb",
+  "enable_internet": false,
+  "id_no": 278568,
+  "kernel_sources": [],
+  "keywords": [],
+  "enable_gpu": false,
+  "id": "sidd14gos/notebook7a459c40ad",
+  "competition_sources": [
+    "titanic"
+  ]
+}

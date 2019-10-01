@@ -1,0 +1,17 @@
+{
+  "enable_gpu": false,
+  "id_no": 359879,
+  "competition_sources": [
+    "titanic"
+  ],
+  "code_file": "my-first-attempt-in-titanic-analysis.ipynb",
+  "keywords": [],
+  "id": "sanjames/my-first-attempt-in-titanic-analysis",
+  "kernel_sources": [],
+  "kernel_type": "notebook",
+  "language": "python",
+  "is_private": false,
+  "enable_internet": false,
+  "title": "My first attempt in Titanic Analysis",
+  "dataset_sources": []
+}

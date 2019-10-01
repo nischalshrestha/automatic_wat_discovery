@@ -1,0 +1,17 @@
+{
+  "keywords": [],
+  "competition_sources": [
+    "titanic"
+  ],
+  "code_file": "predictive-analysis-of-survival-rate-on-titanic.irnb",
+  "id": "beiqiwang/predictive-analysis-of-survival-rate-on-titanic",
+  "enable_gpu": false,
+  "dataset_sources": [],
+  "id_no": 217832,
+  "title": "Predictive Analysis of Survival Rate on Titanic",
+  "kernel_type": "notebook",
+  "is_private": false,
+  "enable_internet": false,
+  "language": "r",
+  "kernel_sources": []
+}

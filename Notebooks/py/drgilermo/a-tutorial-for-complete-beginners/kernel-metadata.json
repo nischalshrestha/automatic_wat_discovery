@@ -1,0 +1,20 @@
+{
+  "competition_sources": [
+    "titanic"
+  ],
+  "id": "drgilermo/a-tutorial-for-complete-beginners",
+  "enable_internet": false,
+  "keywords": [
+    "tutorial",
+    "beginner"
+  ],
+  "is_private": false,
+  "title": "A tutorial for COMPLETE BEGINNERS ",
+  "code_file": "a-tutorial-for-complete-beginners.ipynb",
+  "id_no": 494489,
+  "dataset_sources": [],
+  "kernel_type": "notebook",
+  "language": "python",
+  "kernel_sources": [],
+  "enable_gpu": false
+}

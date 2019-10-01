@@ -1,0 +1,17 @@
+{
+  "kernel_sources": [],
+  "id_no": 1580217,
+  "competition_sources": [
+    "titanic"
+  ],
+  "code_file": "fork-of-titanic-competition-dataset-predict-e5654e.ipynb",
+  "keywords": [],
+  "enable_internet": false,
+  "title": "Fork of Titanic Competition Dataset Predict e5654e",
+  "enable_gpu": false,
+  "dataset_sources": [],
+  "is_private": false,
+  "kernel_type": "notebook",
+  "language": "python",
+  "id": "shindeshubham85/fork-of-titanic-competition-dataset-predict-e5654e"
+}

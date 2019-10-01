@@ -1,0 +1,17 @@
+{
+  "is_private": false,
+  "id_no": 1343108,
+  "enable_gpu": false,
+  "keywords": [],
+  "kernel_sources": [],
+  "competition_sources": [
+    "titanic"
+  ],
+  "language": "python",
+  "kernel_type": "notebook",
+  "enable_internet": false,
+  "code_file": "titanic-survival-prediction-the-easy-way.ipynb",
+  "id": "senpuja13/titanic-survival-prediction-the-easy-way",
+  "title": "Titanic Survival Prediction: The easy way",
+  "dataset_sources": []
+}

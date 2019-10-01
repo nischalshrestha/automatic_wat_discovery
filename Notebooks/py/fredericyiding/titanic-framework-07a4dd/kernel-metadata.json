@@ -1,0 +1,17 @@
+{
+  "kernel_type": "notebook",
+  "id": "fredericyiding/titanic-framework-07a4dd",
+  "competition_sources": [
+    "titanic"
+  ],
+  "code_file": "titanic-framework-07a4dd.ipynb",
+  "language": "python",
+  "title": " Titanic Framework 07a4dd",
+  "keywords": [],
+  "enable_gpu": false,
+  "kernel_sources": [],
+  "dataset_sources": [],
+  "is_private": false,
+  "id_no": 1630027,
+  "enable_internet": false
+}

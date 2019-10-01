@@ -1,0 +1,17 @@
+{
+  "competition_sources": [
+    "titanic"
+  ],
+  "is_private": false,
+  "keywords": [],
+  "title": "Notebook3cfee85c91",
+  "kernel_sources": [],
+  "kernel_type": "notebook",
+  "enable_gpu": false,
+  "id": "icetime/notebook3cfee85c91",
+  "dataset_sources": [],
+  "code_file": "notebook3cfee85c91.irnb",
+  "id_no": 263198,
+  "language": "r",
+  "enable_internet": false
+}

@@ -1,0 +1,17 @@
+{
+  "kernel_type": "notebook",
+  "dataset_sources": [],
+  "code_file": "notebook0f5c4c678b.ipynb",
+  "id": "defeatnelly/notebook0f5c4c678b",
+  "enable_gpu": false,
+  "enable_internet": false,
+  "title": "Notebook0f5c4c678b",
+  "competition_sources": [
+    "titanic"
+  ],
+  "is_private": false,
+  "id_no": 236009,
+  "kernel_sources": [],
+  "keywords": [],
+  "language": "python"
+}

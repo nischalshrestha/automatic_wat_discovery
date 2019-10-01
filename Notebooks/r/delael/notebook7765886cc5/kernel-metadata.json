@@ -1,0 +1,17 @@
+{
+  "is_private": false,
+  "code_file": "notebook7765886cc5.ipynb",
+  "dataset_sources": [],
+  "kernel_type": "notebook",
+  "enable_gpu": false,
+  "keywords": [],
+  "enable_internet": false,
+  "id": "delael/notebook7765886cc5",
+  "kernel_sources": [],
+  "language": "python",
+  "id_no": 247139,
+  "title": "Notebook7765886cc5",
+  "competition_sources": [
+    "titanic"
+  ]
+}

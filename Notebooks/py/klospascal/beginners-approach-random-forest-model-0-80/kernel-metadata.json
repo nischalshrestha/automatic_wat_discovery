@@ -1,0 +1,17 @@
+{
+  "enable_gpu": false,
+  "keywords": [],
+  "enable_internet": false,
+  "dataset_sources": [],
+  "is_private": false,
+  "id_no": 1728456,
+  "id": "klospascal/beginners-approach-random-forest-model-0-80",
+  "code_file": "beginners-approach-random-forest-model-0-80.ipynb",
+  "title": "Beginners Approach - Random Forest Model (~ 0.80)",
+  "kernel_type": "notebook",
+  "competition_sources": [
+    "titanic"
+  ],
+  "language": "python",
+  "kernel_sources": []
+}

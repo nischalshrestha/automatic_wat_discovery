@@ -1,0 +1,17 @@
+{
+  "is_private": false,
+  "keywords": [],
+  "code_file": "notebook486dcc4deb.ipynb",
+  "competition_sources": [
+    "titanic"
+  ],
+  "title": "Notebook486dcc4deb",
+  "kernel_type": "notebook",
+  "enable_gpu": false,
+  "id_no": 209806,
+  "kernel_sources": [],
+  "enable_internet": false,
+  "language": "python",
+  "dataset_sources": [],
+  "id": "jpfonseca/notebook486dcc4deb"
+}

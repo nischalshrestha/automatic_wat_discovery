@@ -1,0 +1,17 @@
+{
+  "enable_internet": false,
+  "language": "r",
+  "keywords": [],
+  "title": "Notebookf97a3a16c8",
+  "is_private": false,
+  "competition_sources": [
+    "titanic"
+  ],
+  "dataset_sources": [],
+  "code_file": "notebookb3ba40d096.irnb",
+  "kernel_type": "notebook",
+  "id_no": 183081,
+  "kernel_sources": [],
+  "enable_gpu": false,
+  "id": "erettic/notebookb3ba40d096"
+}

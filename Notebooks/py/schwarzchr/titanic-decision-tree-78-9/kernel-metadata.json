@@ -1,0 +1,17 @@
+{
+  "is_private": false,
+  "title": "Titanic - Decision Tree (78.9%)",
+  "language": "python",
+  "kernel_type": "notebook",
+  "competition_sources": [
+    "titanic"
+  ],
+  "dataset_sources": [],
+  "code_file": "titanic-decision-tree-78-9.ipynb",
+  "enable_gpu": false,
+  "keywords": [],
+  "enable_internet": false,
+  "kernel_sources": [],
+  "id_no": 401526,
+  "id": "schwarzchr/titanic-decision-tree-78-9"
+}

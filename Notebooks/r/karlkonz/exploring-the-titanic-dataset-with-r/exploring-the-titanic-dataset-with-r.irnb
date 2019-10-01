@@ -1,0 +1,491 @@
+{
+  "cells": [
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "_cell_guid": "2b798e49-c75f-1142-6fd7-85975622c0d2"
+      },
+      "outputs": [],
+      "source": [
+        "suppressPackageStartupMessages(library(ggplot2))\n",
+        "suppressPackageStartupMessages(library(xgboost))\n",
+        "suppressPackageStartupMessages(library(data.table))\n",
+        "suppressPackageStartupMessages(library(Matrix))\n",
+        "suppressPackageStartupMessages(library(dplyr))\n",
+        "suppressPackageStartupMessages(library(e1071))\n",
+        "suppressPackageStartupMessages(library(party))"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "_cell_guid": "eb9079fc-08b0-d701-1946-22a938b805e2"
+      },
+      "outputs": [],
+      "source": [
+        "set.seed(123456789)\n",
+        "train <- read.csv('../input/train.csv', stringsAsFactors = F)\n",
+        "test  <- read.csv('../input/test.csv', stringsAsFactors = F)\n",
+        "\n",
+        "total  <- bind_rows(train, test) \n",
+        "\n",
+        "# Extract title based on proximiy to . in string\n",
+        "total$Title <- gsub('(.*, )|(\\\\..*)', '', total$Name) \n",
+        "\n",
+        "# Get counts of titles\n",
+        "table(total$Title)\n",
+        "\n",
+        "# Titles with very low cell counts to be combined to \"rare\" level\n",
+        "rare_title <- c('Dona', 'Lady', 'the Countess','Capt', 'Col', 'Don', \n",
+        "                'Dr', 'Major', 'Rev', 'Sir', 'Jonkheer')\n",
+        "\n",
+        "# Also reassign mlle, ms, and mme accordingly\n",
+        "total$Title[total$Title == 'Mlle']        <- 'Miss' \n",
+        "total$Title[total$Title == 'Ms']          <- 'Miss'\n",
+        "total$Title[total$Title == 'Mme']         <- 'Mrs' \n",
+        "total$Title[total$Title %in% rare_title]  <- 'Rare'\n",
+        "\n",
+        "# Show title counts by sex again\n",
+        "table(total$Title)\n",
+        "\n",
+        "total$Embarked <- ifelse(total$Embarked == \"\", \"S\", total$Embarked)\n",
+        "#total$Embarked\n",
+        "total$Surname <- sapply(total$Name,  \n",
+        "                      function(x) strsplit(x, split = '[,.]')[[1]][1])\n",
+        "#table(total$Surname)\n",
+        "# Create a family size variable including the passenger themselves\n",
+        "total$Fsize <- total$SibSp + total$Parch + 1\n",
+        "\n",
+        "                                                \n",
+        "                          \n",
+        "# Create a family variable \n",
+        "total$Family <- paste(total$Surname, total$Fsize, sep='_')\n",
+        "\n",
+        "\n",
+        "# Discretize family size\n",
+        "total$FsizeD[total$Fsize == 1] <- 'NoDep'\n",
+        "total$FsizeD[total$Fsize < 5 & total$Fsize > 1] <- 'mDep'\n",
+        "total$FsizeD[total$Fsize >= 5] <- 'MDep'\n",
+        "\n",
+        "                          \n",
+        "\n",
+        "total$CabinType <- ifelse(substring(total$Cabin, 1, 1) == 'A', 'A', \n",
+        "                  ifelse(substring(total$Cabin, 1, 1) == 'B', 'B', \n",
+        "                  ifelse(substring(total$Cabin, 1, 1) == 'C', 'C', \n",
+        "                  ifelse(substring(total$Cabin, 1, 1) == 'D', 'D',  \n",
+        "                  ifelse(substring(total$Cabin, 1, 1) == 'E', 'E', \n",
+        "                  ifelse(substring(total$Cabin, 1, 1) == 'F', 'F',      \n",
+        "                  'zzz'))))))                       \n",
+        "                          \n",
+        "                          "
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "_cell_guid": "ed75568c-9a0c-0ca5-b554-0a9835d5ca94"
+      },
+      "outputs": [],
+      "source": [
+        "Cabins <- total[which(total$Cabin != '' & total$Cabin != is.na(total$Cabin)), ]\n",
+        "# Find the median of Age for each cabin type\n",
+        "ACabins <- median(Cabins[which(substring(Cabins$Cabin, 1, 1) == 'A'\n",
+        "                                & Cabins$Title != 'Master'), ]$Age, na.rm = TRUE)\n",
+        "BCabins <- median(Cabins[which(substring(Cabins$Cabin, 1, 1) == 'B'\n",
+        "                                & Cabins$Title != 'Master'), ]$Age, na.rm = TRUE)\n",
+        "CCabins <- median(Cabins[which(substring(Cabins$Cabin, 1, 1) == 'C'\n",
+        "                                & Cabins$Title != 'Master'), ]$Age, na.rm = TRUE)\n",
+        "DCabins <- median(Cabins[which(substring(Cabins$Cabin, 1, 1) == 'D'\n",
+        "                                & Cabins$Title != 'Master'), ]$Age, na.rm = TRUE)\n",
+        "ECabins <- median(Cabins[which(substring(Cabins$Cabin, 1, 1) == 'E'\n",
+        "                                & Cabins$Title != 'Master'), ]$Age, na.rm = TRUE)\n",
+        "FCabins <- median(Cabins[which(substring(Cabins$Cabin, 1, 1) == 'F'\n",
+        "                                & Cabins$Title != 'Master'), ]$Age, na.rm = TRUE)\n",
+        "GCabins <- median(Cabins[which(substring(Cabins$Cabin, 1, 1) == 'G'\n",
+        "                                & Cabins$Title != 'Master'), ]$Age, na.rm = TRUE)                         \n",
+        "                    \n",
+        "\n",
+        "                       "
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "_cell_guid": "a79b9f36-7acd-cbda-7d18-07edabf3eb6f"
+      },
+      "outputs": [],
+      "source": [
+        "MasterMedianAge <- median(total[which(total$Title == 'Master'), ]$Age, na.rm = TRUE)"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "_cell_guid": "d95e7d62-1d99-c3a7-7f6d-84466089b8e0"
+      },
+      "outputs": [],
+      "source": [
+        "MissingAge <- total[is.na(total$Age), ]                        \n",
+        "# Impute the missing ages for those who have Cabin Fares:\n",
+        "\n",
+        "MedianS <- median(subset(total, Embarked == 'S')$Age , na.rm = TRUE)\n",
+        "MedianC <- median(subset(total, Embarked == 'C')$Age , na.rm = TRUE)\n",
+        "MedianQ <- median(subset(total, Embarked == 'Q')$Age , na.rm = TRUE)\n",
+        "                          \n",
+        "MissingAge$Age <- ifelse(substring(MissingAge$Cabin, 1, 1) == 'A'\n",
+        "                                & MissingAge$Title != 'Master', ACabins, \n",
+        "                  ifelse(substring(MissingAge$Cabin, 1, 1) == 'B'\n",
+        "                                & MissingAge$Title != 'Master', BCabins, \n",
+        "                  ifelse(substring(MissingAge$Cabin, 1, 1) == 'C'\n",
+        "                                & MissingAge$Title != 'Master', CCabins, \n",
+        "                  ifelse(substring(MissingAge$Cabin, 1, 1) == 'D'\n",
+        "                                & MissingAge$Title != 'Master', DCabins,  \n",
+        "                  ifelse(substring(MissingAge$Cabin, 1, 1) == 'E'\n",
+        "                                & MissingAge$Title != 'Master', ECabins, \n",
+        "                  ifelse(substring(MissingAge$Cabin, 1, 1) == 'F'\n",
+        "                                & MissingAge$Title != 'Master', FCabins,  \n",
+        "                  ifelse(substring(MissingAge$Cabin, 1, 1) == 'G'\n",
+        "                                & MissingAge$Title != 'Master', GCabins, \n",
+        "                  ifelse(is.na(MissingAge$Age) & MissingAge$Embarked == 'S'\n",
+        "                                & MissingAge$Title != 'Master', MedianS,\n",
+        "                  ifelse(is.na(MissingAge$Age) & MissingAge$Embarked == 'C'\n",
+        "                                & MissingAge$Title != 'Master', MedianC,\n",
+        "                  ifelse(is.na(MissingAge$Age) & MissingAge$Embarked == 'Q'\n",
+        "                                & MissingAge$Title != 'Master', MedianQ,\n",
+        "                  MasterMedianAge))))))))))"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "_cell_guid": "8b6f80fb-bb53-08b0-cac5-1918634d7457"
+      },
+      "outputs": [],
+      "source": [
+        "# Merge the data\n",
+        "CleanTotal <- merge(total[ ,c(1:ncol(total))] , MissingAge[ ,c(1, 6)], by = \"PassengerId\", all.x = TRUE)\n",
+        "# Merge the 2 Age columns\n",
+        "CleanTotal$Age <- ifelse(is.na(CleanTotal$Age.x), CleanTotal$Age.y, CleanTotal$Age.x)\n",
+        "\n",
+        "                          \n",
+        "CleanTotal$Adult <- ifelse(CleanTotal$Age > 15, 1, 0)     \n",
+        "CleanTotal[which(CleanTotal$PassengerId == 1044), ]$Fare <- median(CleanTotal$Fare, na.rm=TRUE)                      \n",
+        " \n",
+        "\n",
+        "CleanTotal$lFare <- log(CleanTotal$Fare + .01)                         \n",
+        "                          #Remove the Age.x and Age.y columns\n",
+        "\n",
+        "CleanTotal$lFareRange <- ifelse(CleanTotal$lFare > 3.344, \"High\",\n",
+        "                         ifelse(CleanTotal$lFare > 2.851, \"Med-High\",\n",
+        "                         ifelse(CleanTotal$lFare > 2.068, \"Med\", \"Low\"\n",
+        "                               )))\n",
+        "\n",
+        "\n",
+        "names(CleanTotal)\n",
+        "\n",
+        "MLTotal <- CleanTotal[ , c(\"PassengerId\", \"Survived\", \"Pclass\",\"Name\", \n",
+        "                             \"Sex\", \"Adult\", \"SibSp\", \"Parch\", \"Ticket\",\n",
+        "                             \"Embarked\", \"Surname\", \"Family\",\n",
+        "                             \"Fsize\", \"FsizeD\", \"CabinType\", \"Title\", \"lFareRange\", \"lFare\")]      \n",
+        "\n",
+        "\n",
+        "LogRegTotal <- CleanTotal[ , c(\"PassengerId\", \"Survived\", #\"Pclass\",\n",
+        "                              #\"Name\", \n",
+        "                              \"Sex\", \n",
+        "                              \"Adult\", \n",
+        "                             #\"SibSp\", \"Parch\", \n",
+        "                              \"lFare\", #\"Fsize\",  \n",
+        "                              \"FsizeD\",\n",
+        "                              \"CabinType\", \"Title\")]                   \n",
+        "\n",
+        "                          \n",
+        "# Read in the training and test data                          \n",
+        "LRtrain <- LogRegTotal[1:891,]\n",
+        "LRtest <- LogRegTotal[892:1309,]\n",
+        "LRtest <- LRtest[, -2]\n",
+        "                          \n",
+        "\n",
+        "\n",
+        "MLtrain <- MLTotal[1:891,]\n",
+        "MLtest <- MLTotal[892:1309,]\n",
+        "MLtest <- MLtest[, -2]\n",
+        "                     \n",
+        "\n",
+        "\n",
+        "#names(train)\n",
+        "       \n",
+        "#train_orig <- train\n",
+        "#train <- train[ ,c(1, 2, 3, 4, 5, 8)]\n",
+        "                          \n",
+        "                          \n",
+        "# Check which columns contain NA values\n",
+        "#colnames(train)[colSums(is.na(train)) > 0]\n",
+        "\n",
+        "# Examine how many records are missing Age\n",
+        "#nrow(train[which(is.na(train$Age)), ])\n",
+        "                          \n",
+        "                          \n",
+        "                          "
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "_cell_guid": "09bb6931-1ca8-0741-4e33-0b5631dd4613"
+      },
+      "outputs": [],
+      "source": [
+        "str(MLtrain)\n",
+        "str(MLtest)"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "_cell_guid": "5f02d7e4-4291-72d5-7321-f6c8ce8336ef"
+      },
+      "outputs": [],
+      "source": [
+        "clnTrn <- suppressWarnings(sapply(data.frame(MLtrain[ ,-c(2, 17)]),as.numeric))\n",
+        "clnTst <- suppressWarnings(sapply(data.frame(MLtest[, -16]),as.numeric))\n",
+        "#clnTrn\n",
+        "clnTrn<-as.matrix(clnTrn, sparse = TRUE)\n",
+        "clnTst<-as.matrix(clnTst, sparse = TRUE)\n",
+        "sparse_matrix_train <- clnTrn\n",
+        "sparse_matrix_test <- clnTst\n",
+        "\n",
+        "outputMat = as.data.table(train)\n",
+        "\n",
+        "output_vector = outputMat[,Y:=0][Survived == 1,Y:=1][,Y]"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "_cell_guid": "1c0c345e-af9b-1b75-ec98-2ed008fabcc6"
+      },
+      "outputs": [],
+      "source": [
+        "bst <- xgboost(data = sparse_matrix_train, label = output_vector, max.depth = 25,\n",
+        "                              eta = .1, nthread = 2, nround = 101,objective = \"binary:logistic\")\n",
+        "\n",
+        "importance <- xgb.importance(feature_names = colnames(sparse_matrix_train), model = bst)\n",
+        "\n",
+        "xgb.plot.importance(importance_matrix = importance)"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "_cell_guid": "ec72de98-ee1d-bf7b-0a17-d70aa470aeee"
+      },
+      "outputs": [],
+      "source": [
+        "str(MLtrain)\n",
+        "cTrain <- MLtrain[ , -c(1, 4, 9, 11, 12, 13, 15, 18)]\n",
+        "\n",
+        "cTrain$Sex <- as.factor(cTrain$Sex)\n",
+        "#cTrain$Name <- as.factor(cTrain$Name)\n",
+        "#cTrain$CabinType <- as.factor(cTrain$CabinType)\n",
+        "#cTrain$Ticket <- as.factor(cTrain$Ticket)\n",
+        "cTrain$Title <- as.factor(cTrain$Title)\n",
+        "cTrain$FsizeD <- as.factor(cTrain$FsizeD)\n",
+        "cTrain$Embarked <- as.factor(cTrain$Embarked)\n",
+        "#cTrain$Surname <- as.factor(cTrain$Surname)\n",
+        "#cTrain$Family <- as.factor(cTrain$Family)\n",
+        "cTrain$lFareRange <- as.factor(cTrain$lFareRange)\n",
+        "str(cTrain)\n",
+        "CondForest <- ctree(Survived ~ ., data = cTrain)#,\n",
+        "plot(CondForest)\n",
+        "#controls = ctree_control(maxsurrogate = 2))"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "_cell_guid": "81ad2c51-c9cb-5455-d368-1dbc45033e93"
+      },
+      "outputs": [],
+      "source": [
+        "fit <- glm(Survived~ lFare + Adult ,data=LRtrain,family=binomial())\n",
+        "summary(fit)"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "_cell_guid": "8fa9e65b-0929-8de0-e4f1-2f7da8c834b1"
+      },
+      "outputs": [],
+      "source": [
+        "# Create SVM binary classifier\n",
+        "#svmTrain <- train[ ,-1]\n",
+        "#str(svmTrain)\n",
+        "#svm_model <- svm(as.factor(Survived) ~., data=svmTrain)\n",
+        "#summary(svm_model)"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "_cell_guid": "6e190c4d-8faa-4214-6d68-5baef8862868"
+      },
+      "outputs": [],
+      "source": [
+        "str(MLtest)\n",
+        "cTest <- MLtest[ ,-c(1, 3, 8, 10, 11, 12, 14)]\n",
+        "#str(MLtrain)\n",
+        "cTest$Sex <- as.factor(cTest$Sex)\n",
+        "cTest$Title <- as.factor(cTest$Title)\n",
+        "cTest$FsizeD <- as.factor(cTest$FsizeD)\n",
+        "cTest$Embarked <- as.factor(cTest$Embarked)\n",
+        "#cTrain$Surname <- as.factor(cTrain$Surname)\n",
+        "#cTrain$Family <- as.factor(cTrain$Family)\n",
+        "cTest$lFareRange <- as.factor(cTest$lFareRange)\n",
+        "str(cTest)"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "_cell_guid": "6c30d2b8-71b2-0600-4411-b9ca7edff874"
+      },
+      "outputs": [],
+      "source": [
+        "# Convert to numeric (by arbitrarily map the characters to numbers.)\n",
+        "#clnTst<-suppressWarnings(sapply(data.frame(test),as.numeric))\n",
+        "#clnTst<-as.matrix(clnTst, spare = TRUE)\n",
+        "#names(test)\n",
+        "#test <- test[ , c(\"PassengerId\", #\"Pclass\",\n",
+        "#                              #\"Name\", \n",
+        "#                              \"Sex\", \n",
+        "#                              \"Adult\", \n",
+        "#                             #\"SibSp\", \"Parch\", \n",
+        "#                              \"lFare\", #\"Fsize\",  \n",
+        "#                              \"FsizeD\",\n",
+        "#                              \"CabinType\", \"Title\")]     \n",
+        "\n",
+        "#test$predSVM <- predict(svm_model, test, type = \"raw\")\n",
+        "\n",
+        "#test$boolSVM <- ifelse(test$predSVM >= .5, 1, 0)\n",
+        "\n",
+        "\n",
+        "test$predLogGLM <- predict(fit, LRtest, type = \"response\")\n",
+        "\n",
+        "test$predCondForest <- predict(CondForest, cTest, type = \"response\")\n",
+        "\n",
+        "\n",
+        "#test$predCondForest <- predict(CondForest, cTest)\n",
+        "test$predXGBoost <- predict(bst, clnTst, type = \"response\")\n",
+        "\n",
+        "#confusion.matrix(obs, CleanTest$pred, threshold = 0.5)\n",
+        "\n",
+        "#CleanTest$boolLogGLM <- ifelse(test$predLogGLM >= .5, 1, 0)\n",
+        "\n",
+        "\n",
+        "#head(test$predLogGLM)\n",
+        "#head(test$predXGBoost)\n",
+        "#head(test$predSVM)\n",
+        "#class(test$predSVM)\n",
+        "\n",
+        "#test$predSVM <- as.numeric(as.character(test$predSVM))\n",
+        "\n",
+        "#class(test$predSVM)\n",
+        "#head(mean(test$predLogGLM, test$predXGBoost, as.numeric(as.character(test$predSVM))))\n",
+        "\n",
+        "\n",
+        "test$AvgProb <- rowMeans(data.frame(test$predLogGLM, \n",
+        "                                    #test$predXGBoost, #test$predSVM, \n",
+        "                                   test$predCondForest))\n",
+        "\n",
+        "\n",
+        "\n",
+        "\n",
+        "#test$AvgProb <- sum(test$predLogGLM, test$predXGBoost + test$predSVM)/3\n",
+        "#, (test$predSVM + .01))\n",
+        "\n",
+        "#test$boolXGBoost <- ifelse(test$predXGBoost >= .5, 1, 0)\n",
+        "\n",
+        "test"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "_cell_guid": "3ee78623-75ad-0652-c560-6af61cfbb152"
+      },
+      "outputs": [],
+      "source": [
+        "class(test$AvgProb)\n",
+        "test$pred <- ifelse(test$AvgProb > .5, 1, 0)\n",
+        "test"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "_cell_guid": "a226e488-0994-b993-c424-d66279ce6365"
+      },
+      "outputs": [],
+      "source": [
+        "# Finish the data.frame() call\n",
+        "my_solution <- data.frame(test$PassengerId, test$pred)\n",
+        "\n",
+        "# Next Submit the XGboost model\n",
+        "colnames(my_solution) <- c(\"PassengerId\", \"Survived\")\n",
+        "# Use nrow() on my_solution\n",
+        "nrow(my_solution)\n",
+        "#nrow(test)\n",
+        "\n",
+        "# Finish the write.csv() call\n",
+        "write.csv(my_solution, file = \"kaggle.csv\", row.names = FALSE)"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "_cell_guid": "88b84298-8fb2-be85-8db6-38b93f91348c"
+      },
+      "outputs": [],
+      "source": [
+        ""
+      ]
+    }
+  ],
+  "metadata": {
+    "_change_revision": 0,
+    "_is_fork": false,
+    "kernelspec": {
+      "display_name": "R",
+      "language": "R",
+      "name": "ir"
+    },
+    "language_info": {
+      "codemirror_mode": "r",
+      "file_extension": ".r",
+      "mimetype": "text/x-r-source",
+      "name": "R",
+      "pygments_lexer": "r",
+      "version": "3.3.3"
+    }
+  },
+  "nbformat": 4,
+  "nbformat_minor": 0
+}

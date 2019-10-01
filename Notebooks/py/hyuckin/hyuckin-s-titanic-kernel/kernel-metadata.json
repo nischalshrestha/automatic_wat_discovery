@@ -1,0 +1,17 @@
+{
+  "id_no": 103121,
+  "title": "Hyuckin's Titanic Kernel",
+  "enable_internet": false,
+  "kernel_type": "notebook",
+  "code_file": "hyuckin-s-titanic-kernel.ipynb",
+  "is_private": false,
+  "competition_sources": [
+    "titanic"
+  ],
+  "id": "hyuckin/hyuckin-s-titanic-kernel",
+  "enable_gpu": false,
+  "dataset_sources": [],
+  "kernel_sources": [],
+  "keywords": [],
+  "language": "python"
+}

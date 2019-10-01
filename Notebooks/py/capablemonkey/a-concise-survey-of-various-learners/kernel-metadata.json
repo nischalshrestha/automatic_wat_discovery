@@ -1,0 +1,17 @@
+{
+  "keywords": [],
+  "competition_sources": [
+    "titanic"
+  ],
+  "kernel_type": "notebook",
+  "title": "A concise survey of various learners",
+  "language": "python",
+  "is_private": false,
+  "dataset_sources": [],
+  "enable_gpu": false,
+  "id": "capablemonkey/a-concise-survey-of-various-learners",
+  "kernel_sources": [],
+  "enable_internet": false,
+  "id_no": 447091,
+  "code_file": "a-concise-survey-of-various-learners.ipynb"
+}

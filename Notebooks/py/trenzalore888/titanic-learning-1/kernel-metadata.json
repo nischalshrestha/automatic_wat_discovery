@@ -1,0 +1,17 @@
+{
+  "kernel_sources": [],
+  "is_private": false,
+  "id": "trenzalore888/titanic-learning-1",
+  "keywords": [],
+  "kernel_type": "notebook",
+  "language": "python",
+  "code_file": "titanic-learning-1.ipynb",
+  "dataset_sources": [],
+  "enable_gpu": false,
+  "competition_sources": [
+    "titanic"
+  ],
+  "id_no": 213100,
+  "enable_internet": false,
+  "title": "Titanic Learning"
+}

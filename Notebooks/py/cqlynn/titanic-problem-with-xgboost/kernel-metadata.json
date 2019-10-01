@@ -1,0 +1,17 @@
+{
+  "language": "python",
+  "kernel_sources": [],
+  "code_file": "titanic-problem-with-xgboost.ipynb",
+  "competition_sources": [
+    "titanic"
+  ],
+  "enable_internet": false,
+  "is_private": false,
+  "id_no": 1219094,
+  "keywords": [],
+  "id": "cqlynn/titanic-problem-with-xgboost",
+  "dataset_sources": [],
+  "title": "Titanic Problem with Xgboost",
+  "enable_gpu": false,
+  "kernel_type": "notebook"
+}

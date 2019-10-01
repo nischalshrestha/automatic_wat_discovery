@@ -1,0 +1,17 @@
+{
+  "enable_gpu": false,
+  "enable_internet": false,
+  "id_no": 229864,
+  "kernel_type": "notebook",
+  "dataset_sources": [],
+  "language": "python",
+  "kernel_sources": [],
+  "title": "Titanic Survival Forecast: A First Kaggle Submit",
+  "is_private": false,
+  "id": "ark2393/titanic-survival-forecast-a-first-kaggle-submit",
+  "competition_sources": [
+    "titanic"
+  ],
+  "keywords": [],
+  "code_file": "titanic-survival-forecast-a-first-kaggle-submit.ipynb"
+}

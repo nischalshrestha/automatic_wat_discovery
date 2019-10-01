@@ -1,0 +1,17 @@
+{
+  "kernel_type": "notebook",
+  "id_no": 1609962,
+  "enable_internet": false,
+  "kernel_sources": [],
+  "language": "python",
+  "enable_gpu": false,
+  "dataset_sources": [],
+  "is_private": false,
+  "keywords": [],
+  "competition_sources": [
+    "titanic"
+  ],
+  "title": "An Interactive Data Science Tutorial 51a022",
+  "id": "dmxich/an-interactive-data-science-tutorial-51a022",
+  "code_file": "an-interactive-data-science-tutorial-51a022.ipynb"
+}

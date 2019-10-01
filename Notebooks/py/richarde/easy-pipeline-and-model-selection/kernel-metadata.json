@@ -1,0 +1,17 @@
+{
+  "title": "Easy Pipeline and Model Selection",
+  "kernel_sources": [],
+  "id_no": 423621,
+  "keywords": [],
+  "dataset_sources": [],
+  "language": "python",
+  "competition_sources": [
+    "titanic"
+  ],
+  "enable_gpu": false,
+  "is_private": false,
+  "enable_internet": false,
+  "kernel_type": "notebook",
+  "id": "richarde/easy-pipeline-and-model-selection",
+  "code_file": "easy-pipeline-and-model-selection.ipynb"
+}

@@ -1,0 +1,17 @@
+{
+  "is_private": false,
+  "id_no": 525517,
+  "title": "TitanicModel",
+  "id": "rennocks/titanicmodel",
+  "kernel_type": "notebook",
+  "dataset_sources": [],
+  "code_file": "titanicmodel.irnb",
+  "kernel_sources": [],
+  "competition_sources": [
+    "titanic"
+  ],
+  "keywords": [],
+  "language": "r",
+  "enable_internet": false,
+  "enable_gpu": false
+}

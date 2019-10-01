@@ -1,0 +1,17 @@
+{
+  "id": "joseadiazg02/descriptive-statistics-and-exploratory-analysis",
+  "keywords": [],
+  "title": "Descriptive statistics and exploratory analysis",
+  "id_no": 157486,
+  "code_file": "descriptive-statistics-and-exploratory-analysis.irnb",
+  "language": "r",
+  "enable_gpu": false,
+  "dataset_sources": [],
+  "kernel_sources": [],
+  "competition_sources": [
+    "titanic"
+  ],
+  "enable_internet": false,
+  "is_private": false,
+  "kernel_type": "notebook"
+}

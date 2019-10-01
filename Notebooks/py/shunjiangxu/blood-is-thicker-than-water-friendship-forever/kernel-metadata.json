@@ -1,0 +1,17 @@
+{
+  "kernel_type": "notebook",
+  "language": "python",
+  "keywords": [],
+  "competition_sources": [
+    "titanic"
+  ],
+  "is_private": false,
+  "dataset_sources": [],
+  "kernel_sources": [],
+  "enable_gpu": false,
+  "id_no": 368440,
+  "id": "shunjiangxu/blood-is-thicker-than-water-friendship-forever",
+  "code_file": "blood-is-thicker-than-water-friendship-forever.ipynb",
+  "enable_internet": false,
+  "title": "Blood is thicker than water & friendship forever"
+}

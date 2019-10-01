@@ -1,0 +1,17 @@
+{
+  "keywords": [],
+  "language": "python",
+  "kernel_sources": [],
+  "is_private": false,
+  "title": "Introduction to Ensembling/Stacking in Pyth b30bbe",
+  "id": "dhdsjy/introduction-to-ensembling-stacking-in-pyth-b30bbe",
+  "competition_sources": [
+    "titanic"
+  ],
+  "enable_gpu": false,
+  "dataset_sources": [],
+  "kernel_type": "notebook",
+  "enable_internet": false,
+  "id_no": 230120,
+  "code_file": "introduction-to-ensembling-stacking-in-pyth-b30bbe.ipynb"
+}

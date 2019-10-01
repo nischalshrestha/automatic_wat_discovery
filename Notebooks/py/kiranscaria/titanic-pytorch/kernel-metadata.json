@@ -1,0 +1,17 @@
+{
+  "code_file": "titanic-pytorch.ipynb",
+  "id": "kiranscaria/titanic-pytorch",
+  "keywords": [],
+  "enable_internet": false,
+  "language": "python",
+  "competition_sources": [
+    "titanic"
+  ],
+  "dataset_sources": [],
+  "title": "Titanic - PyTorch",
+  "is_private": false,
+  "enable_gpu": false,
+  "kernel_type": "notebook",
+  "id_no": 1085563,
+  "kernel_sources": []
+}

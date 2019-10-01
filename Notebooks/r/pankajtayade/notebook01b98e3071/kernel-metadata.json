@@ -1,0 +1,17 @@
+{
+  "kernel_sources": [],
+  "is_private": false,
+  "id": "pankajtayade/notebook01b98e3071",
+  "enable_internet": false,
+  "title": "Notebook01b98e3071",
+  "kernel_type": "notebook",
+  "code_file": "notebook01b98e3071.ipynb",
+  "dataset_sources": [],
+  "keywords": [],
+  "language": "python",
+  "enable_gpu": false,
+  "id_no": 223505,
+  "competition_sources": [
+    "titanic"
+  ]
+}

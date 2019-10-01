@@ -1,0 +1,17 @@
+{
+  "is_private": false,
+  "kernel_sources": [],
+  "enable_gpu": false,
+  "kernel_type": "notebook",
+  "code_file": "a-journey-through-titanic-a18651b5.ipynb",
+  "competition_sources": [
+    "titanic"
+  ],
+  "keywords": [],
+  "dataset_sources": [],
+  "language": "python",
+  "enable_internet": false,
+  "id": "wangpan/a-journey-through-titanic-a18651b5",
+  "title": "A Journey through Titanic a18651b5",
+  "id_no": 122860
+}

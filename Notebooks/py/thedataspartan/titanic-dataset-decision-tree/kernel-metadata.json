@@ -1,0 +1,17 @@
+{
+  "competition_sources": [
+    "titanic"
+  ],
+  "is_private": false,
+  "dataset_sources": [],
+  "enable_gpu": false,
+  "code_file": "titanic-dataset-decision-tree.ipynb",
+  "kernel_sources": [],
+  "kernel_type": "notebook",
+  "title": "Titanic dataset - Decision Tree",
+  "id_no": 1610900,
+  "id": "thedataspartan/titanic-dataset-decision-tree",
+  "language": "python",
+  "enable_internet": false,
+  "keywords": []
+}

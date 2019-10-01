@@ -1,0 +1,17 @@
+{
+  "kernel_type": "notebook",
+  "is_private": false,
+  "keywords": [],
+  "enable_gpu": false,
+  "id": "flagma/my-first-competition-on-kaggle-top-11",
+  "enable_internet": false,
+  "language": "python",
+  "code_file": "my-first-competition-on-kaggle-top-11.ipynb",
+  "kernel_sources": [],
+  "competition_sources": [
+    "titanic"
+  ],
+  "id_no": 953625,
+  "title": "My first competition on Kaggle (top 11%)",
+  "dataset_sources": []
+}

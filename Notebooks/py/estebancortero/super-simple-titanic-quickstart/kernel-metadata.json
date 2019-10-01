@@ -1,0 +1,22 @@
+{
+  "title": "Super Simple Titanic Quickstart",
+  "kernel_type": "notebook",
+  "is_private": false,
+  "id": "estebancortero/super-simple-titanic-quickstart",
+  "dataset_sources": [],
+  "code_file": "super-simple-titanic-quickstart.ipynb",
+  "keywords": [
+    "beginner",
+    "pipeline code",
+    "model comparison",
+    "logistic regression"
+  ],
+  "id_no": 694119,
+  "enable_gpu": false,
+  "language": "python",
+  "competition_sources": [
+    "titanic"
+  ],
+  "kernel_sources": [],
+  "enable_internet": false
+}

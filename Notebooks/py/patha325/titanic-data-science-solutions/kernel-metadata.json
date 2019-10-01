@@ -1,0 +1,17 @@
+{
+  "id": "patha325/titanic-data-science-solutions",
+  "title": "Titanic Data Science Solutions",
+  "kernel_sources": [],
+  "language": "python",
+  "enable_internet": false,
+  "dataset_sources": [],
+  "competition_sources": [
+    "titanic"
+  ],
+  "kernel_type": "notebook",
+  "id_no": 279706,
+  "code_file": "titanic-data-science-solutions.ipynb",
+  "enable_gpu": false,
+  "keywords": [],
+  "is_private": false
+}

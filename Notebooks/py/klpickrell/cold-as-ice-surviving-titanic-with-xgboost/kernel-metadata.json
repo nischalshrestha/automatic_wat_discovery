@@ -1,0 +1,17 @@
+{
+  "language": "python",
+  "enable_gpu": false,
+  "kernel_type": "notebook",
+  "id_no": 168893,
+  "code_file": "cold-as-ice-surviving-titanic-with-xgboost.ipynb",
+  "enable_internet": false,
+  "keywords": [],
+  "dataset_sources": [],
+  "kernel_sources": [],
+  "competition_sources": [
+    "titanic"
+  ],
+  "id": "klpickrell/cold-as-ice-surviving-titanic-with-xgboost",
+  "title": "Cold as ice...  surviving Titanic with xgboost",
+  "is_private": false
+}

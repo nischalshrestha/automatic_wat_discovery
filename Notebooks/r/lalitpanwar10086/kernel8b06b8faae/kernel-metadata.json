@@ -1,0 +1,17 @@
+{
+  "enable_internet": false,
+  "competition_sources": [
+    "titanic"
+  ],
+  "keywords": [],
+  "dataset_sources": [],
+  "id_no": 828752,
+  "language": "r",
+  "code_file": "kernel8b06b8faae.irnb",
+  "id": "lalitpanwar10086/kernel8b06b8faae",
+  "kernel_type": "notebook",
+  "title": "Kernel8b06b8faae",
+  "is_private": false,
+  "enable_gpu": false,
+  "kernel_sources": []
+}

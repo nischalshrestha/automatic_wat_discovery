@@ -1,0 +1,17 @@
+{
+  "kernel_type": "notebook",
+  "is_private": false,
+  "title": "Notebook94cb8392ee",
+  "enable_gpu": false,
+  "keywords": [],
+  "kernel_sources": [],
+  "enable_internet": false,
+  "code_file": "notebook94cb8392ee.ipynb",
+  "id_no": 265483,
+  "competition_sources": [
+    "titanic"
+  ],
+  "id": "saisri/notebook94cb8392ee",
+  "dataset_sources": [],
+  "language": "python"
+}

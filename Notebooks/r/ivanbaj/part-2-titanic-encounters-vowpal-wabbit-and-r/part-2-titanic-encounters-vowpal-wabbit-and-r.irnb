@@ -1,0 +1,168 @@
+{
+  "cells": [
+    {
+      "cell_type": "markdown",
+      "metadata": {
+        "_cell_guid": "01236657-a76b-294b-bebc-fd893877e44f"
+      },
+      "source": [
+        "Contemplate on what is our goal.\n",
+        "================================"
+      ]
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {
+        "_cell_guid": "2a1762ae-e8e2-c420-6cc9-63c7795d616a"
+      },
+      "source": [
+        "In the competition description we see:\n",
+        "\n",
+        "Find *\"what sorts of people were likely to survive?\"*\n",
+        "\n",
+        "The evaluation is: \n",
+        "\n",
+        "*\"For each passenger in the test set, you must predict whether or not they survived the sinking ( 0 for deceased, 1 for survived ).  Your score is the percentage of passengers you correctly predict.\"*\n",
+        "\n",
+        "Let's briefly discuss probability.\n",
+        "\n",
+        "In Part 1 we saw that given the training data set, there is 100% chance for survival for a passenger who is over 60 years old and female.\n",
+        "\n",
+        "Also we saw that there is 8.82%  chance for survival for a male teenager.\n",
+        "\n",
+        "I believe that this information is useless.\n",
+        "\n",
+        "The passengers on Titanic, and in general all of us, will most likely be in an accident of this kind at the most one time.\n",
+        "\n",
+        "Discussing probability for an event that will happen one time is useless.\n",
+        "\n",
+        "If one is going to be in a such accident let say 10 times then knowing the probability of dying will be helpful.\n",
+        "\n",
+        "An old women will most likely survive 10 accidents and a male teenager will most likely die.\n",
+        "\n",
+        "Why do we need to make the prediction then? Perhaps to show that the British did the moral thing and saved the infants, kids and woman first, or the immoral thing and left the lower class passengers behind.\n",
+        "\n",
+        "We all know that the main reason for the loss of life was \"that there were not enough lifeboats for the passengers and crew.\"\n",
+        "\n",
+        "However the data will not show us that. \n",
+        "\n",
+        "Overall this exercise is meaningless.\n",
+        "\n",
+        "However we can try to do some ML for fun.\n",
+        "\n",
+        "========================================================\n",
+        "\n",
+        "There is some true function f() that given X will produce a decision if a passenger lives or dies.\n",
+        "\n",
+        "f() is the mind of the Grim Reaper.\n",
+        "\n",
+        "We have no way of knowing the true nature of f(). Only the Grim Reaper knows that.\n",
+        "\n",
+        "What we have is a small sample with 891 passengers  with a X for each of them and the actual result of f().\n",
+        "\n",
+        "We are tasked to find a function h() that is as close as possible to the true function f(), where given the same X we get the smallest error possible in estimating the result.\n",
+        "\n",
+        "so:\n",
+        "\n",
+        "h(X) = Y` as close to f(X) = Y as possible.\n",
+        "\n",
+        "Y belongs to the set {0,1}\n",
+        "\n",
+        "X is a vector in {Pclass, Name, Sex, Age, SibSp, Parch, Ticket, Fare, Cabin, Embarked}\n",
+        "\n",
+        "If we were to setup h() so that it is 100% correct for all the samples in the training set we will most certainly be far off from the true nature of f(). We will fool ourselves that we have found how the mind of the Grim Reaper works.\n",
+        "\n",
+        "This is also true if we find h() that is 100% accurate for the entire test file. However we will win the competition.\n",
+        "\n",
+        "The point is that we can never find f() we can only come close.\n",
+        "\n",
+        "So how close? Is 85% good? Are these 100% results real?\n",
+        "\n",
+        "I don't know. Let's try few things.\n",
+        "\n",
+        "First lets submit a prediction that they all die:\n"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "_cell_guid": "0c738552-76b7-38be-95eb-45194a1dac50"
+      },
+      "outputs": [],
+      "source": [
+        "library(dplyr, warn.conflicts = FALSE)\n",
+        "\n",
+        "test_tbl <- tbl_df(read.csv('../input/test.csv', stringsAsFactors = FALSE))\n",
+        "\n",
+        "submit <- tbl_df(select(test_tbl,PassengerId))\n",
+        "submit <- mutate(submit, Survived = 0)\n",
+        "write.csv(submit,file = \"submit_all_die.csv\", row.names = F)"
+      ]
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {
+        "_cell_guid": "c8a0cb92-8bed-b744-f875-6cc97b54fc26"
+      },
+      "source": [
+        "Click on the [Output (1)] tab above and submit.\n",
+        "\n",
+        "You will get:\n",
+        "\n",
+        "0.62679\n",
+        "\n",
+        "Our accuracy is 63%. h() is 63% as good as f(). Where h() is to output 0 for any X.\n",
+        "\n",
+        "What if we predict that all will survive?"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "_cell_guid": "5755208f-031d-9e2d-d2bc-34f79a613828"
+      },
+      "outputs": [],
+      "source": [
+        "submit <- tbl_df(select(test_tbl,PassengerId))\n",
+        "submit <- mutate(submit, Survived = 1)\n",
+        "write.csv(submit,file = \"submit_all_survive.csv\", row.names = F)"
+      ]
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {
+        "_cell_guid": "fef8b0aa-d2bf-491b-a866-d8cf3231ede1"
+      },
+      "source": [
+        "We get 0.37321\n",
+        "\n",
+        "This makes sense 0.62679 + 0.37321 = 1\n",
+        "\n",
+        "0.62679 of the passengers in the test sample file died and 0.37321 of them lived.\n",
+        "\n",
+        "So our baseline is 62.68% accuracy."
+      ]
+    }
+  ],
+  "metadata": {
+    "_change_revision": 0,
+    "_is_fork": false,
+    "kernelspec": {
+      "display_name": "R",
+      "language": "R",
+      "name": "ir"
+    },
+    "language_info": {
+      "codemirror_mode": "r",
+      "file_extension": ".r",
+      "mimetype": "text/x-r-source",
+      "name": "R",
+      "pygments_lexer": "r",
+      "version": "3.3.2"
+    }
+  },
+  "nbformat": 4,
+  "nbformat_minor": 0
+}

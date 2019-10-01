@@ -1,0 +1,17 @@
+{
+  "enable_gpu": false,
+  "language": "python",
+  "dataset_sources": [],
+  "enable_internet": false,
+  "kernel_sources": [],
+  "is_private": false,
+  "id": "gaurav76/notebook3471f50a33",
+  "competition_sources": [
+    "titanic"
+  ],
+  "keywords": [],
+  "title": "Notebook3471f50a33",
+  "code_file": "notebook3471f50a33.ipynb",
+  "id_no": 218969,
+  "kernel_type": "notebook"
+}

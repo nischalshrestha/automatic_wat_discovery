@@ -1,0 +1,17 @@
+{
+  "language": "python",
+  "kernel_type": "notebook",
+  "competition_sources": [
+    "titanic"
+  ],
+  "enable_internet": false,
+  "enable_gpu": false,
+  "id": "kwonyoung234/using-various-ml-methods-of-titanic",
+  "code_file": "using-various-ml-methods-of-titanic.ipynb",
+  "title": "Using various ML methods of Titanic",
+  "dataset_sources": [],
+  "keywords": [],
+  "is_private": false,
+  "kernel_sources": [],
+  "id_no": 2080242
+}

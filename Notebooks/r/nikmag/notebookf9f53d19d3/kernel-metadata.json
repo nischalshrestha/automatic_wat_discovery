@@ -1,0 +1,17 @@
+{
+  "kernel_sources": [],
+  "title": "Notebookf9f53d19d3",
+  "kernel_type": "notebook",
+  "competition_sources": [
+    "titanic"
+  ],
+  "enable_internet": false,
+  "dataset_sources": [],
+  "keywords": [],
+  "code_file": "notebookf9f53d19d3.ipynb",
+  "id_no": 226394,
+  "id": "nikmag/notebookf9f53d19d3",
+  "enable_gpu": false,
+  "is_private": false,
+  "language": "python"
+}

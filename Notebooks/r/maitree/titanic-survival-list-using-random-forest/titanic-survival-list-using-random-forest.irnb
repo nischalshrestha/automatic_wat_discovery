@@ -1,0 +1,446 @@
+{
+  "cells": [
+    {
+      "cell_type": "markdown",
+      "metadata": {
+        "_cell_guid": "431f1f76-ce5f-e648-8cf7-7b6895718ecf"
+      },
+      "source": [
+        "Titanic disaster Survival prediction classification "
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "_cell_guid": "46cf96b2-e211-ba30-f5c6-e719628453a2"
+      },
+      "outputs": [],
+      "source": [
+        "# This R environment comes with all of CRAN preinstalled, as well as many other helpful packages\n",
+        "# The environment is defined by the kaggle/rstats docker image: https://github.com/kaggle/docker-rstats\n",
+        "# For example, here's several helpful packages to load in \n",
+        "\n",
+        "library(ggplot2) # Data visualization\n",
+        "library(readr) # CSV file I/O, e.g. the read_csv function\n",
+        "\n",
+        "# Input data files are available in the \"../input/\" directory.\n",
+        "# For example, running this (by clicking run or pressing Shift+Enter) will list the files in the input directory\n",
+        "\n",
+        "system(\"ls ../input\")\n",
+        "\n",
+        "# Any results you write to the current directory are saved as output."
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "_cell_guid": "a8f90220-675a-5d24-ba8a-94088039d4a9"
+      },
+      "outputs": [],
+      "source": [
+        "train <- read.csv('../input/train.csv')\n",
+        "test  <- read.csv('../input/test.csv')"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "_cell_guid": "6b9e6295-178d-443c-d794-457447407ad9"
+      },
+      "outputs": [],
+      "source": [
+        "## find the NA fields in the dataset\n",
+        "\n",
+        "sapply(train,function(x) sum(is.na(x)))\n",
+        "\n",
+        "sapply(train,function(x) summary(is.na(x)))\n",
+        "       ## There is one value in Fare which is NA and many values in Age which has NA values"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "_cell_guid": "2635dd3c-84f4-2c1d-c3c3-3a5b98b89ebd"
+      },
+      "outputs": [],
+      "source": [
+        "## getting a backup of train dataset\n",
+        "\n",
+        "train1 <- train "
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "_cell_guid": "3105200b-4723-0cc4-03ab-98a63b624a9a"
+      },
+      "outputs": [],
+      "source": [
+        "## since some of the data are missing, lets combine the two datasets to apply my logic to get values\n",
+        "## for the NA fields\n",
+        "\n",
+        "train$Survived<-NULL\n",
+        "\n",
+        "## join the two datasets to get a new combined dataset\n",
+        "\n",
+        "combo<-rbind(train,test)"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "_cell_guid": "e7d23018-cd15-ec86-57ba-6a230c4f70c8"
+      },
+      "outputs": [],
+      "source": [
+        "## I will generate a function to get the missing values. \n",
+        "\n",
+        "## to get the age values, lets do some analysis on age column\n",
+        "\n",
+        "## age vs Class\n",
+        "\n",
+        "library(ggplot2)\n",
+        "\n",
+        "ggplot(data=combo,aes(x=factor(Pclass),y=Age,fill=factor(Pclass)))+\n",
+        "  geom_bar(stat=\"identity\",position = position_dodge())"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "_cell_guid": "ead54032-af8e-f392-8466-ce66753e9dfe"
+      },
+      "outputs": [],
+      "source": [
+        "## age vs Class grouped dodge\n",
+        "\n",
+        "ggplot(combo,aes(Age,fill=factor(Pclass)))+\n",
+        "  geom_bar(binwidth=1,position = position_dodge())"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "_cell_guid": "dc79fe8f-f42c-6a54-6906-1e500e70d325"
+      },
+      "outputs": [],
+      "source": [
+        "## the plot shows the class depend on different age group people. we will generate the \n",
+        "## NA age columns as depending on the class\n",
+        "## Function to get the mean of the age for the Pclass\n",
+        "## for a missing age, get the Pclass and get the mean of age for that Pclass and replace this \n",
+        "## mean value for the missing age\n",
+        "\n",
+        "\n",
+        "mean_class <- function(class){\n",
+        "  classvec<-subset(combo,Pclass==class)\n",
+        "  mean_age<-mean(classvec$Age,na.rm=TRUE)\n",
+        "  return(mean_age)\n",
+        "}\n",
+        "\n",
+        "l_age <- length(combo$Age)\n",
+        "library(dplyr)\n",
+        "\n",
+        "i<-1\n",
+        "for(i in 1:l_age) {\n",
+        "  if (is.na(combo$Age[i])==TRUE){\n",
+        "    class_value<-combo$Pclass[i]\n",
+        "    combo$Age[i]<-mean_class(class_value)\n",
+        "  }\n",
+        "\n",
+        "  }"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "_cell_guid": "976be925-42f6-c019-77b3-393e9e726909"
+      },
+      "outputs": [],
+      "source": [
+        "## Class vs fare\n",
+        "  \n",
+        "  ggplot(combo,aes(Fare,fill=factor(Pclass)))+\n",
+        "    geom_bar(stat = \"identity\",position = position_dodge(),binwidth = 5)"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "_cell_guid": "8a69c97d-2b8f-8904-8cfe-cf1760ac14bc"
+      },
+      "outputs": [],
+      "source": [
+        "## class 3 has the highest fare\n",
+        "  \n",
+        "  fare_na_index <- which(is.na(combo$Fare))\n",
+        "  \n",
+        " df<-subset(combo,Pclass=3)\n",
+        " vec<-df$Fare\n",
+        " \n",
+        " \n",
+        " mean(vec,na.rm = TRUE)\n",
+        " combo$Fare[fare_na_index]<-mean(vec,na.rm = TRUE)"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "_cell_guid": "65210a8b-a8cd-f4d3-a669-9233879ac79e"
+      },
+      "outputs": [],
+      "source": [
+        "## Calculate the number of cabins per passenger id\n",
+        " cabin_no<-function(string){\n",
+        "   return(length(strsplit(string,\" \")[[1]]))\n",
+        " }\n",
+        " \n",
+        " l_cabin<-length(combo$Cabin)\n",
+        " combo$Cabin<-as.character(combo$Cabin)\n",
+        " \n",
+        " l<-0\n",
+        " for(l in 1:l_cabin){\n",
+        "     \n",
+        "   cabin_string<-combo$Cabin[l]\n",
+        "   if (cabin_string==\" \"){\n",
+        "     combo$Cabin[l]<-0\n",
+        "   }\n",
+        "   else{\n",
+        "   cabin_count<-cabin_no(cabin_string)\n",
+        "   combo$Cabin[l]<-cabin_count\n",
+        "   }\n",
+        "   \n",
+        " }\n",
+        " \n",
+        " combo$Cabin<-as.numeric(combo$Cabin)\n",
+        " "
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "_cell_guid": "ad47e17e-3863-e243-5abc-122097874992"
+      },
+      "outputs": [],
+      "source": [
+        "## converting the factor values to numeric\n",
+        " combo$Sex <- factor(x=combo$Sex,labels = c(1,2))\n",
+        " combo$Embarked<-replace(combo$Embarked,combo$Embarked==\"\",\"S\")\n",
+        " combo$Embarked<-factor(x=combo$Embarked,labels=c(1,2,3))\n",
+        " "
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "_cell_guid": "87a68db9-6f15-c62a-7c14-9bfac9d0ed39"
+      },
+      "outputs": [],
+      "source": [
+        "## getting the family member number\n",
+        " \n",
+        " names(combo)\n",
+        " combo$family<-combo$SibSp + combo$Parch\n",
+        " combo$SibSp<-NULL\n",
+        " combo$Parch<-NULL"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "_cell_guid": "179763c7-3181-fef1-1992-9e4c41b5ec56"
+      },
+      "outputs": [],
+      "source": [
+        "## Ignoring the name and Ticket\n",
+        " \n",
+        " combo$Name<-NULL\n",
+        " combo$Ticket<-NULL\n",
+        " \n",
+        " "
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "_cell_guid": "1b295837-6ecf-cb49-53e6-38b9de187518"
+      },
+      "outputs": [],
+      "source": [
+        "names(combo)"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "_cell_guid": "00dd7bc8-bdf1-d0eb-0eb2-8935e631f8e9"
+      },
+      "outputs": [],
+      "source": [
+        "## At this point I have got my entire data, from here I can apply any model I want on my data. \n",
+        "\n",
+        "## I would want to go in the conventional process and will apply a simple classification on this data.\n",
+        "\n",
+        "## for classification, I first need to divide my data again\n",
+        "\n",
+        "nrow(train)\n",
+        "nrow(test)"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "_cell_guid": "3fbc9207-0cee-56f5-f91b-fd66cb20af14"
+      },
+      "outputs": [],
+      "source": [
+        "## Let me create another training dataset\n",
+        "\n",
+        "train <- combo[1:891,]\n",
+        "test <- combo[892:1309,]\n",
+        "train$Survived <- train1$Survived\n",
+        "names(train)\n"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "_cell_guid": "5295c4cf-da77-4519-689f-d7f75c865a32"
+      },
+      "outputs": [],
+      "source": [
+        "## Random Forest formula\n",
+        "library(randomForest)\n",
+        "train$Survived<-as.character(train$Survived)\n",
+        "train$Survived<-as.factor(train$Survived)\n",
+        "classifier<- randomForest(x=train[-8],y=train$Survived,ntree=500)\n"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "_cell_guid": "244fb4a2-91c5-f392-7b1a-0a11e99ab1fb"
+      },
+      "outputs": [],
+      "source": [
+        "class(train$Survived)"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "_cell_guid": "bce7ad18-c5da-88d5-a66c-f674ce1bf0fd"
+      },
+      "outputs": [],
+      "source": [
+        "test$Survived<-rep(c(0,1))"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "_cell_guid": "9d0f3eda-85a3-b2b8-b2e8-8b3d5a115b08"
+      },
+      "outputs": [],
+      "source": [
+        "test$Survived<-as.factor(test$Survived)"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "_cell_guid": "2183ab6f-53f8-aeea-e777-a30d8ec901ef"
+      },
+      "outputs": [],
+      "source": [
+        "str(train)\n",
+        "str(test)"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "_cell_guid": "198e96c1-5515-362e-c29a-bc434385bc9f"
+      },
+      "outputs": [],
+      "source": [
+        "\n",
+        "\n",
+        "y_pred=predict(classifier,newdata=test)"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "_cell_guid": "e81aa248-6707-6d25-8ad2-1c1ed0f08d96"
+      },
+      "outputs": [],
+      "source": [
+        "## From the above summary details, we will remove the columns which are least co related to Survival\n",
+        "## so new formula is \n",
+        "\n",
+        "test$Survived<-y_pred"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "_cell_guid": "fae58000-f4d3-4695-6fca-fd44705308bf"
+      },
+      "outputs": [],
+      "source": [
+        "## Prediction is \n",
+        "\n",
+        "\n",
+        "submit<-data.frame(test$PassengerId,test$Survived)\n",
+        "names(submit)<-c(\"PassengerId\",\"Survived\")\n",
+        "\n",
+        "write.csv(submit,file='survivalRF.csv',row.names=FALSE)"
+      ]
+    }
+  ],
+  "metadata": {
+    "_change_revision": 0,
+    "_is_fork": false,
+    "kernelspec": {
+      "display_name": "R",
+      "language": "R",
+      "name": "ir"
+    },
+    "language_info": {
+      "codemirror_mode": "r",
+      "file_extension": ".r",
+      "mimetype": "text/x-r-source",
+      "name": "R",
+      "pygments_lexer": "r",
+      "version": "3.4.0"
+    }
+  },
+  "nbformat": 4,
+  "nbformat_minor": 0
+}

@@ -1,0 +1,17 @@
+{
+  "code_file": "titanic-survived.ipynb",
+  "competition_sources": [
+    "titanic"
+  ],
+  "dataset_sources": [],
+  "id_no": 1593176,
+  "is_private": false,
+  "kernel_sources": [],
+  "language": "python",
+  "enable_gpu": false,
+  "kernel_type": "notebook",
+  "title": "Titanic survived",
+  "id": "itukaiti/titanic-survived",
+  "keywords": [],
+  "enable_internet": false
+}

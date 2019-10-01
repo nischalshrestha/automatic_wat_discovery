@@ -1,0 +1,17 @@
+{
+  "id": "tommylees112/notebook2bf433333f",
+  "id_no": 203752,
+  "title": "Notebook2bf433333f",
+  "dataset_sources": [],
+  "competition_sources": [
+    "titanic"
+  ],
+  "kernel_sources": [],
+  "kernel_type": "notebook",
+  "is_private": false,
+  "enable_gpu": false,
+  "code_file": "notebook2bf433333f.ipynb",
+  "enable_internet": false,
+  "language": "python",
+  "keywords": []
+}

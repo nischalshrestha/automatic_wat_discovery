@@ -1,0 +1,17 @@
+{
+  "is_private": false,
+  "kernel_sources": [],
+  "enable_gpu": false,
+  "id": "mdtoufique/titanic-disaster",
+  "competition_sources": [
+    "titanic"
+  ],
+  "code_file": "titanic-disaster.ipynb",
+  "kernel_type": "notebook",
+  "dataset_sources": [],
+  "language": "python",
+  "keywords": [],
+  "enable_internet": false,
+  "id_no": 1608988,
+  "title": "Titanic_disaster"
+}

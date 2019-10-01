@@ -1,0 +1,17 @@
+{
+  "competition_sources": [
+    "titanic"
+  ],
+  "dataset_sources": [],
+  "is_private": false,
+  "title": "Titanic-survival-prediction",
+  "id_no": 149790,
+  "kernel_type": "notebook",
+  "language": "python",
+  "kernel_sources": [],
+  "code_file": "titanic-survival-prediction.ipynb",
+  "keywords": [],
+  "id": "frednavruzov/titanic-survival-prediction",
+  "enable_gpu": false,
+  "enable_internet": false
+}

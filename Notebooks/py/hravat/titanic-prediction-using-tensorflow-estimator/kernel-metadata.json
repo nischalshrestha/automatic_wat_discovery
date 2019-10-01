@@ -1,0 +1,17 @@
+{
+  "id_no": 1536294,
+  "title": "Titanic Prediction using Tensorflow Estimator ",
+  "keywords": [],
+  "id": "hravat/titanic-prediction-using-tensorflow-estimator",
+  "is_private": false,
+  "kernel_type": "notebook",
+  "enable_internet": false,
+  "kernel_sources": [],
+  "competition_sources": [
+    "titanic"
+  ],
+  "enable_gpu": false,
+  "code_file": "titanic-prediction-using-tensorflow-estimator.ipynb",
+  "dataset_sources": [],
+  "language": "python"
+}

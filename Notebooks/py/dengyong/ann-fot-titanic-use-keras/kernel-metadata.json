@@ -1,0 +1,17 @@
+{
+  "id": "dengyong/ann-fot-titanic-use-keras",
+  "kernel_sources": [],
+  "is_private": false,
+  "kernel_type": "notebook",
+  "enable_internet": false,
+  "title": "ANN  fot  Titanic  use keras ",
+  "keywords": [],
+  "code_file": "ann-fot-titanic-use-keras.ipynb",
+  "competition_sources": [
+    "titanic"
+  ],
+  "id_no": 1301166,
+  "language": "python",
+  "dataset_sources": [],
+  "enable_gpu": true
+}

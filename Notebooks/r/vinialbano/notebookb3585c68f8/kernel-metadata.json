@@ -1,0 +1,17 @@
+{
+  "kernel_type": "notebook",
+  "language": "r",
+  "id": "vinialbano/notebookb3585c68f8",
+  "id_no": 186226,
+  "enable_internet": false,
+  "enable_gpu": false,
+  "code_file": "notebookb3585c68f8.irnb",
+  "kernel_sources": [],
+  "keywords": [],
+  "competition_sources": [
+    "titanic"
+  ],
+  "is_private": false,
+  "dataset_sources": [],
+  "title": "Getting started with Titanic"
+}

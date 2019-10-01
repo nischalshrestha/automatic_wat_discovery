@@ -1,0 +1,23 @@
+{
+  "keywords": [
+    "beginner",
+    "eda",
+    "data visualization",
+    "ensembling",
+    "feature engineering"
+  ],
+  "title": "A Comprehensive Guide to Titanic Machine Learning ",
+  "kernel_sources": [],
+  "id": "eraaz1/a-comprehensive-guide-to-titanic-machine-learning",
+  "id_no": 1523691,
+  "dataset_sources": [],
+  "kernel_type": "notebook",
+  "language": "python",
+  "competition_sources": [
+    "titanic"
+  ],
+  "code_file": "a-comprehensive-guide-to-titanic-machine-learning.ipynb",
+  "enable_gpu": true,
+  "is_private": false,
+  "enable_internet": false
+}

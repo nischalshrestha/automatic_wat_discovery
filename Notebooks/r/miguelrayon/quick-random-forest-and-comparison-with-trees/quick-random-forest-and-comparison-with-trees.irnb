@@ -1,0 +1,111 @@
+{
+  "cells": [
+    {
+      "cell_type": "markdown",
+      "metadata": {
+        "_cell_guid": "a2bc9c17-5659-e03a-8b46-7648fd702376"
+      },
+      "source": [
+        "I did a submission using decission trees, with which I got a public score of 0.79904.\n",
+        "I am now trying a quick random forest, without any data exploration"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "_cell_guid": "2c5063c2-65db-1d0b-8490-1f100d701475"
+      },
+      "outputs": [],
+      "source": [
+        "## First, get the data\n",
+        "data<-read.csv(\"../input/train.csv\",header=T)\n",
+        "## Definimos Pclass; Survived como factor variables\n",
+        "factors<-c(2,3)\n",
+        "data[,factors]<-lapply(data[,factors],factor)\n",
+        "data<-data[,-1]\n",
+        "\n",
+        "##dividimos entre test set y train set\n",
+        "\n",
+        "trainset<-sample(1:nrow(data),250)\n",
+        "test.titanic<-data[trainset,]\n",
+        "train.titanic<-data[-trainset,]\n",
+        "str(train.titanic)\n",
+        "\n",
+        "\n",
+        "train.titanic<-train.titanic[,-8]\n",
+        "str(train.titanic)"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "_cell_guid": "aee652c9-3756-bafb-bc2f-7c2927ffa5dc"
+      },
+      "outputs": [],
+      "source": [
+        "## Load Libraries\n",
+        "library(plyr)\n",
+        "library(dplyr)\n",
+        "library(randomForest)\n",
+        "library(rpart)"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "_cell_guid": "143fa577-358e-8621-441d-bfaa615b2789"
+      },
+      "outputs": [],
+      "source": [
+        "## Random FOrest requires non NA's... so it is time to substitute NA's"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "_cell_guid": "54a6da9f-f6f5-65cb-a048-95d208ff9db1"
+      },
+      "outputs": [],
+      "source": [
+        "## once I manage to \n",
+        "\n",
+        "set.seed(1)\n",
+        "\n",
+        "modbag<-randomForest(Survived~.,data=train.titanic ,mtry=7, importance=TRUE)\n",
+        "## me da error de missing values\n",
+        "\n",
+        "## voy a quitar ticket poorque es un factor de muchos numeros\n",
+        "\n",
+        "data<-data[,-]\n",
+        "## random forest\n",
+        "modrandomf<-randomForest(Survived~.,data=train.titanic ,mtry=3, importance=TRUE)\n",
+        "\n",
+        "## random forest con otro par\u00e1metro\n",
+        "modrandomf2<-randomForest(Survived~.,train.titanic ,mtry=2, importance=TRUE)"
+      ]
+    }
+  ],
+  "metadata": {
+    "_change_revision": 0,
+    "_is_fork": false,
+    "kernelspec": {
+      "display_name": "R",
+      "language": "R",
+      "name": "ir"
+    },
+    "language_info": {
+      "codemirror_mode": "r",
+      "file_extension": ".r",
+      "mimetype": "text/x-r-source",
+      "name": "R",
+      "pygments_lexer": "r",
+      "version": "3.3.1"
+    }
+  },
+  "nbformat": 4,
+  "nbformat_minor": 0
+}

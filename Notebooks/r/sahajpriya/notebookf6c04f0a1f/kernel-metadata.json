@@ -1,0 +1,17 @@
+{
+  "keywords": [],
+  "id": "sahajpriya/notebookf6c04f0a1f",
+  "is_private": false,
+  "kernel_sources": [],
+  "competition_sources": [
+    "titanic"
+  ],
+  "enable_gpu": false,
+  "code_file": "notebookf6c04f0a1f.irnb",
+  "enable_internet": false,
+  "language": "r",
+  "dataset_sources": [],
+  "title": "Notebookf6c04f0a1f",
+  "id_no": 222165,
+  "kernel_type": "notebook"
+}

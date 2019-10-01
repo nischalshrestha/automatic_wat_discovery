@@ -1,0 +1,17 @@
+{
+  "kernel_type": "notebook",
+  "id_no": 817239,
+  "id": "billfreeman44/titanic-basics",
+  "keywords": [],
+  "title": "Titanic Basics",
+  "language": "python",
+  "kernel_sources": [],
+  "code_file": "titanic-basics.ipynb",
+  "enable_internet": false,
+  "dataset_sources": [],
+  "competition_sources": [
+    "titanic"
+  ],
+  "is_private": false,
+  "enable_gpu": false
+}

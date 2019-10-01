@@ -1,0 +1,17 @@
+{
+  "code_file": "titanic-decision-tree-competition.ipynb",
+  "keywords": [],
+  "language": "python",
+  "enable_internet": false,
+  "title": "Titanic Decision Tree - Competition",
+  "id": "bengwalt/titanic-decision-tree-competition",
+  "is_private": false,
+  "dataset_sources": [],
+  "kernel_sources": [],
+  "competition_sources": [
+    "titanic"
+  ],
+  "kernel_type": "notebook",
+  "enable_gpu": true,
+  "id_no": 1913350
+}

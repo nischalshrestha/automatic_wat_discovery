@@ -1,0 +1,17 @@
+{
+  "language": "python",
+  "title": "Titanic Survival prediction",
+  "keywords": [],
+  "competition_sources": [
+    "titanic"
+  ],
+  "is_private": false,
+  "dataset_sources": [],
+  "kernel_type": "notebook",
+  "id": "doing007/titanic-survival-prediction",
+  "code_file": "titanic-survival-prediction.ipynb",
+  "enable_internet": false,
+  "enable_gpu": false,
+  "kernel_sources": [],
+  "id_no": 1710420
+}

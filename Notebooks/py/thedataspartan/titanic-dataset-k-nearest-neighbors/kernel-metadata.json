@@ -1,0 +1,17 @@
+{
+  "is_private": false,
+  "kernel_type": "notebook",
+  "language": "python",
+  "dataset_sources": [],
+  "code_file": "titanic-dataset-k-nearest-neighbors.ipynb",
+  "enable_gpu": false,
+  "title": "Titanic dataset - K-Nearest Neighbors",
+  "competition_sources": [
+    "titanic"
+  ],
+  "keywords": [],
+  "id_no": 1612876,
+  "id": "thedataspartan/titanic-dataset-k-nearest-neighbors",
+  "enable_internet": false,
+  "kernel_sources": []
+}

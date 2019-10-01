@@ -1,0 +1,17 @@
+{
+  "is_private": false,
+  "enable_gpu": false,
+  "id": "danspace/titanic-knn",
+  "id_no": 1762144,
+  "dataset_sources": [],
+  "language": "python",
+  "kernel_sources": [],
+  "competition_sources": [
+    "titanic"
+  ],
+  "title": "Titanic KNN",
+  "enable_internet": false,
+  "code_file": "titanic-knn.ipynb",
+  "keywords": [],
+  "kernel_type": "notebook"
+}

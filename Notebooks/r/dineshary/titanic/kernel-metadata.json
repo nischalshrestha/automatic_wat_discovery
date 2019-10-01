@@ -1,0 +1,17 @@
+{
+  "enable_internet": false,
+  "language": "r",
+  "title": "Titanic",
+  "kernel_type": "notebook",
+  "keywords": [],
+  "competition_sources": [
+    "titanic"
+  ],
+  "id_no": 257157,
+  "code_file": "titanic.irnb",
+  "id": "dineshary/titanic",
+  "dataset_sources": [],
+  "enable_gpu": false,
+  "is_private": false,
+  "kernel_sources": []
+}

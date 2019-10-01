@@ -1,0 +1,17 @@
+{
+  "keywords": [],
+  "competition_sources": [
+    "titanic"
+  ],
+  "id_no": 177518,
+  "id": "demborg/learning-regression-in-r-from-titanic",
+  "code_file": "learning-regression-in-r-from-titanic.irnb",
+  "is_private": false,
+  "enable_gpu": false,
+  "language": "r",
+  "kernel_type": "notebook",
+  "enable_internet": false,
+  "kernel_sources": [],
+  "dataset_sources": [],
+  "title": "Learning regression in R from titanic"
+}

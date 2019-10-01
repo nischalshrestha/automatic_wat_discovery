@@ -1,0 +1,279 @@
+{
+  "cells": [
+    {
+      "cell_type": "markdown",
+      "metadata": {
+        "_cell_guid": "7b3ef767-9835-8870-0238-ace108a41cd0"
+      },
+      "source": [
+        ""
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "_cell_guid": "300d301e-e894-fba9-1d16-a4da29001ac9"
+      },
+      "outputs": [],
+      "source": [
+        "# This R environment comes with all of CRAN preinstalled, as well as many other helpful packages\n",
+        "# The environment is defined by the kaggle/rstats docker image: https://github.com/kaggle/docker-rstats\n",
+        "# For example, here's several helpful packages to load in \n",
+        "\n",
+        "library(ggplot2) # Data visualization\n",
+        "library(readr) # CSV file I/O, e.g. the read_csv function\n",
+        "# Input data files are available in the \"../input/\" directory.\n",
+        "# For example, running this (by clicking run or pressing Shift+Enter) will list the files in the input directory\n",
+        "\n",
+        "system(\"ls ../input\")\n",
+        "\n",
+        "# Any results you write to the current directory are saved as output."
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "_cell_guid": "157a04aa-df39-aa99-ec65-8a1c9826f34f"
+      },
+      "outputs": [],
+      "source": [
+        "library(dplyr) #Data Manipulation\n",
+        "library(rpart) \n",
+        "library(rpart.plot)\n",
+        "library(randomForest)\n",
+        "library(ggplot2)\n",
+        "library(ggthemes)\n",
+        "train <- read.csv(\"../input/train.csv\", stringsAsFactors= F)\n",
+        "test <- read.csv(\"../input/test.csv\", stringsAsFactors= F)\n",
+        "\n",
+        "full_data <-bind_rows(train,test)\n",
+        "str(full_data)"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "_cell_guid": "61ac45a6-c551-b756-c773-f5d793e7b01d"
+      },
+      "outputs": [],
+      "source": [
+        "full_data$AgeRange[full_data$Age <= 9] <- 'lessthan9'\n",
+        "full_data$AgeRange[full_data$Age <= 25 & full_data$Age> 9] <- 'bw9and25' \n",
+        "full_data$AgeRange[full_data$Age <=50 & full_data$Age > 25] <- 'bw25and50' \n",
+        "full_data$AgeRange[full_data$Age > 50] <- 'greaterthan50'\n"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "_cell_guid": "f8baefe3-5430-e12b-1629-2b79b41da800"
+      },
+      "outputs": [],
+      "source": [
+        "full_data$Title <- sapply(full_data$Name, FUN=function(x) {strsplit(x, split='[,.]')[[1]][2]})\n",
+        "full_data$Title <- sub(' ', '', full_data$Title)\n",
+        "#table(full_data$Title)\n",
+        "#table(full_data$Title, full_data$Sex)\n",
+        "\n",
+        "full_data$Title[full_data$Title == 'Mlle']        <- 'Miss' \n",
+        "full_data$Title[full_data$Title == 'Ms']          <- 'Miss'\n",
+        "full_data$Title[full_data$Title == 'Mme']         <- 'Mrs'\n",
+        "\n",
+        "high_rank_male <- c('Capt','Col','Don','Jonkheer','Rev','Sir')\n",
+        "high_rank_female <- c('Dona','Lady','the Countess')\n",
+        "\n",
+        "\n",
+        "full_data$Title[full_data$Title %in% high_rank_male] <- 'High_rank_male'\n",
+        "full_data$Title[full_data$Title %in% high_rank_female] <- 'High_rank_female'"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "_cell_guid": "3921625a-3807-c07c-acce-f700d319296b"
+      },
+      "outputs": [],
+      "source": [
+        "table(full_data$Title)"
+      ]
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {
+        "_cell_guid": "d8e4add5-65bd-3316-d99d-4a834ca85ea0"
+      },
+      "source": [
+        "Jonkheer (female equivalent: Jonkvrouw) is a Dutch honorific of nobility. In Belgium, the title of \u00c9cuyer (in French) or Jonkheer/Jonkvrouw (in Dutch) is the lowest title within the nobility system, recognised by the Court of Cassation.\n",
+        "\n",
+        "Capt, Col\n",
+        "\n",
+        "don. (initial capital letter) Mr.; Sir: a Spanish title prefixed to a man's given name. (in Spanish-speaking countries) a lord or gentleman. (initial capital letter) an Italian title of address, especially for a priest."
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "_cell_guid": "a8e5508d-6fcc-d3a3-85dd-fc4ecd6cddfb"
+      },
+      "outputs": [],
+      "source": [
+        "#table(full_data$Fare)\n",
+        "full_data$FareRange[full_data$Fare < 10] <- 'lessthan10'\n",
+        "full_data$FareRange[full_data$Fare <20 & full_data$Fare >= 10] <- 'bw10and20'\n",
+        "full_data$FareRange[full_data$Fare <30 & full_data$Fare >= 20] <- 'bw20and30'\n",
+        "full_data$FareRange[full_data$Fare >= 30] <- 'morethan30'\n",
+        "table(full_data$FareRange)\n"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "_cell_guid": "f96b0dc9-bf66-d27e-8cf4-604305ba0196"
+      },
+      "outputs": [],
+      "source": [
+        "full_data$familysize = full_data$SibSp + full_data$Parch + 1\n",
+        "table(full_data$familysize)"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "_cell_guid": "fcdc5bca-5f71-ba3d-73c8-70ef5b4f074a"
+      },
+      "outputs": [],
+      "source": [
+        "full_data$Sex = as.factor(full_data$Sex)\n",
+        "full_data$FareRange = as.factor(full_data$FareRange)\n",
+        "full_data$AgeRange = as.factor(full_data$AgeRange)\n",
+        "mod_train <- full_data[1:891,]\n",
+        "mod_test <- full_data[892:1309,]"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "_cell_guid": "f66339cd-6d62-7f56-b3e5-c24ab65da565"
+      },
+      "outputs": [],
+      "source": [
+        "str(mod_train)"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "_cell_guid": "97dd29e6-9487-d554-74ae-19f63fb7ef59"
+      },
+      "outputs": [],
+      "source": [
+        "Tree1 <- rpart(Survived ~ Pclass + Sex + AgeRange + FareRange + Embarked + Title + familysize + SibSp + Parch,\n",
+        "               data=mod_train, \n",
+        "               method=\"class\",\n",
+        "              control=rpart.control(minsplit=2, cp=0))"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "_cell_guid": "b2b3e3b7-8430-6a94-f57d-06c53bf4cfa6"
+      },
+      "outputs": [],
+      "source": [
+        "prp(Tree1)"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "_cell_guid": "d6352a12-e4b9-788b-e502-aec66531c69d"
+      },
+      "outputs": [],
+      "source": [
+        "Tree1Prediction <- predict(Tree1, mod_test, type = \"class\")\n",
+        "submit <- data.frame(PassengerId = mod_test$PassengerId, Survived = Tree1Prediction)\n",
+        "write.csv(submit, file = \"Tree1Prediction.csv\", row.names = FALSE)"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "_cell_guid": "1de560c6-9c6d-e18d-a5cf-3a9ccd856481"
+      },
+      "outputs": [],
+      "source": [
+        "table(mod_test$AgeRange, Tree1Prediction)"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "_cell_guid": "13b581a9-44f5-7ea9-1536-975d11e80952"
+      },
+      "outputs": [],
+      "source": [
+        "aggregate(Survived ~ FareRange + Pclass + Sex, data=mod_train, FUN=function(x) {sum(x)/length(x)})\n"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "_cell_guid": "efb9f3bd-834a-e07c-e4ed-685cee12d7eb"
+      },
+      "outputs": [],
+      "source": [
+        "mod_test2 <-mod_test\n",
+        "table(Tree1Prediction)\n",
+        "mod_test2$Survived <- Tree1Prediction\n",
+        "str(mod_test2)\n",
+        "#aggregate(Survived ~ FareRange + Pclass + Sex, data=mod_test2, FUN=function(x) {sum(x)/length(x)})\n",
+        "\n"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "_cell_guid": "ac5e4429-3ceb-792d-ee02-e40d2032eb24"
+      },
+      "outputs": [],
+      "source": [
+        ""
+      ]
+    }
+  ],
+  "metadata": {
+    "_change_revision": 0,
+    "_is_fork": false,
+    "kernelspec": {
+      "display_name": "R",
+      "language": "R",
+      "name": "ir"
+    },
+    "language_info": {
+      "codemirror_mode": "r",
+      "file_extension": ".r",
+      "mimetype": "text/x-r-source",
+      "name": "R",
+      "pygments_lexer": "r",
+      "version": "3.3.1"
+    }
+  },
+  "nbformat": 4,
+  "nbformat_minor": 0
+}

@@ -1,0 +1,17 @@
+{
+  "id_no": 196758,
+  "id": "immorlee/lichengrant-s-notebook-001",
+  "competition_sources": [
+    "titanic"
+  ],
+  "dataset_sources": [],
+  "language": "r",
+  "title": "lichengrant's notebook 001",
+  "kernel_type": "notebook",
+  "enable_internet": false,
+  "keywords": [],
+  "is_private": false,
+  "kernel_sources": [],
+  "code_file": "lichengrant-s-notebook-001.irnb",
+  "enable_gpu": false
+}

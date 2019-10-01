@@ -1,0 +1,17 @@
+{
+  "kernel_sources": [],
+  "is_private": false,
+  "competition_sources": [
+    "titanic"
+  ],
+  "code_file": "introduction-to-ensembling-stacking-in-pyth-ace527.ipynb",
+  "enable_internet": false,
+  "id_no": 232088,
+  "keywords": [],
+  "language": "python",
+  "title": "Introduction to Ensembling/Stacking in Pyth ace527",
+  "dataset_sources": [],
+  "enable_gpu": false,
+  "kernel_type": "notebook",
+  "id": "gwwang/introduction-to-ensembling-stacking-in-pyth-ace527"
+}

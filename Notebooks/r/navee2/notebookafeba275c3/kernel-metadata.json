@@ -1,0 +1,17 @@
+{
+  "id_no": 210030,
+  "language": "python",
+  "competition_sources": [
+    "titanic"
+  ],
+  "id": "navee2/notebookafeba275c3",
+  "enable_gpu": false,
+  "kernel_type": "notebook",
+  "code_file": "notebookafeba275c3.ipynb",
+  "title": "Notebookafeba275c3",
+  "keywords": [],
+  "enable_internet": false,
+  "is_private": false,
+  "kernel_sources": [],
+  "dataset_sources": []
+}

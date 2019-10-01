@@ -1,0 +1,17 @@
+{
+  "dataset_sources": [],
+  "kernel_sources": [],
+  "keywords": [],
+  "kernel_type": "notebook",
+  "competition_sources": [
+    "titanic"
+  ],
+  "language": "python",
+  "id_no": 215516,
+  "code_file": "titanic-basic-eda-output.ipynb",
+  "enable_gpu": false,
+  "is_private": false,
+  "id": "viswanathravindran/titanic-basic-eda-output",
+  "title": "Titanic Basic EDA & Output",
+  "enable_internet": false
+}

@@ -1,0 +1,22 @@
+{
+  "enable_internet": false,
+  "kernel_sources": [],
+  "is_private": false,
+  "dataset_sources": [],
+  "language": "python",
+  "title": "Titanic Survivors Prediction with One Feature",
+  "competition_sources": [
+    "titanic"
+  ],
+  "enable_gpu": false,
+  "id_no": 1911072,
+  "id": "mathfour/titanic-survivors-prediction-with-one-feature",
+  "code_file": "titanic-survivors-prediction-with-one-feature.ipynb",
+  "kernel_type": "notebook",
+  "keywords": [
+    "covariance and correlation",
+    "beginner",
+    "classification",
+    "logistic regression"
+  ]
+}

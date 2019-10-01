@@ -1,0 +1,17 @@
+{
+  "competition_sources": [
+    "titanic"
+  ],
+  "id": "ambika04/notebook031d764e41",
+  "kernel_sources": [],
+  "is_private": false,
+  "title": "Notebook031d764e41",
+  "language": "python",
+  "enable_gpu": false,
+  "kernel_type": "notebook",
+  "enable_internet": false,
+  "dataset_sources": [],
+  "keywords": [],
+  "id_no": 212087,
+  "code_file": "notebook031d764e41.ipynb"
+}

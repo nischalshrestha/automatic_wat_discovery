@@ -1,0 +1,17 @@
+{
+  "dataset_sources": [],
+  "title": "1st_TitanicSurvivalPrediction",
+  "kernel_sources": [],
+  "is_private": false,
+  "enable_gpu": false,
+  "id_no": 396296,
+  "code_file": "1st-titanicsurvivalprediction.ipynb",
+  "language": "python",
+  "keywords": [],
+  "enable_internet": false,
+  "kernel_type": "notebook",
+  "competition_sources": [
+    "titanic"
+  ],
+  "id": "feixianhu/1st-titanicsurvivalprediction"
+}

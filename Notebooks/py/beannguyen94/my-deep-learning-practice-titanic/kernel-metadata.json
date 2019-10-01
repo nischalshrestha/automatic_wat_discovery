@@ -1,0 +1,17 @@
+{
+  "kernel_type": "notebook",
+  "competition_sources": [
+    "titanic"
+  ],
+  "title": "My Deep Learning Practice: Titanic",
+  "dataset_sources": [],
+  "code_file": "my-deep-learning-practice-titanic.ipynb",
+  "enable_gpu": true,
+  "enable_internet": false,
+  "id": "beannguyen94/my-deep-learning-practice-titanic",
+  "kernel_sources": [],
+  "language": "python",
+  "is_private": false,
+  "id_no": 1431873,
+  "keywords": []
+}

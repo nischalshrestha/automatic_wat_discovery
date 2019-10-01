@@ -1,0 +1,17 @@
+{
+  "is_private": false,
+  "kernel_sources": [],
+  "id": "xutao226/prediction-of-titanic-survived",
+  "code_file": "prediction-of-titanic-survived.ipynb",
+  "dataset_sources": [],
+  "keywords": [],
+  "enable_gpu": false,
+  "id_no": 1435210,
+  "kernel_type": "notebook",
+  "title": "prediction of Titanic Survived",
+  "enable_internet": false,
+  "competition_sources": [
+    "titanic"
+  ],
+  "language": "python"
+}

@@ -1,0 +1,17 @@
+{
+  "id": "pliptor/minimalistic-titanic-in-python-lightgbm",
+  "code_file": "minimalistic-titanic-in-python-lightgbm.ipynb",
+  "kernel_type": "notebook",
+  "enable_internet": false,
+  "id_no": 713863,
+  "keywords": [],
+  "is_private": false,
+  "title": "Minimalistic Titanic in Python LightGBM ",
+  "competition_sources": [
+    "titanic"
+  ],
+  "language": "python",
+  "enable_gpu": false,
+  "kernel_sources": [],
+  "dataset_sources": []
+}

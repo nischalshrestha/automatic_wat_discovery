@@ -1,0 +1,17 @@
+{
+  "title": "Notebook329bea42c2",
+  "id_no": 374192,
+  "keywords": [],
+  "enable_gpu": false,
+  "dataset_sources": [],
+  "enable_internet": false,
+  "code_file": "notebook329bea42c2.ipynb",
+  "id": "ojimah391/notebook329bea42c2",
+  "kernel_sources": [],
+  "kernel_type": "notebook",
+  "language": "python",
+  "competition_sources": [
+    "titanic"
+  ],
+  "is_private": false
+}

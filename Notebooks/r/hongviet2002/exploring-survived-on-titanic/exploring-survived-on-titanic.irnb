@@ -1,0 +1,131 @@
+{
+  "cells": [
+    {
+      "cell_type": "markdown",
+      "metadata": {
+        "_cell_guid": "5c7ff0eb-f04c-f83d-ebe0-cacae883c9bd"
+      },
+      "source": [
+        "Exploring Survived On Titanic"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "_cell_guid": "9bb5bb66-ba8f-6ee9-7220-3cb30ad48f90"
+      },
+      "outputs": [],
+      "source": [
+        "# This R environment comes with all of CRAN preinstalled, as well as many other helpful packages\n",
+        "# The environment is defined by the kaggle/rstats docker image: https://github.com/kaggle/docker-rstats\n",
+        "# For example, here's several helpful packages to load in \n",
+        "\n",
+        "library(ggplot2) # Data visualization\n",
+        "library(readr) # CSV file I/O, e.g. the read_csv function\n",
+        "library(rpart)\n",
+        "library(rpart.plot)\t\n",
+        "\n",
+        "# Input data files are available in the \"../input/\" directory.\n",
+        "# For example, running this (by clicking run or pressing Shift+Enter) will list the files in the input directory\n",
+        "#setwd(\"..\\\\DataMining\\\\LeViet_Work\")\n",
+        "train <- read.csv(\"../input/train.csv\")\n",
+        "test<-read.csv(\"../input/test.csv\")\n",
+        "test$Survived <- 0\n",
+        "\n",
+        "New_Data <- rbind(train, test)\n",
+        "#View(New_Data)\n",
+        "write.csv(New_Data,\"New_Data_LeViet.csv\")\n",
+        "New_Data$Name <- as.character(New_Data$Name)\n",
+        "New_Data$Title <- sapply(New_Data$Name, FUN=function(x) {strsplit(x, split=\"[,.]\")[[1]][2]})\n",
+        "New_Data$Title <- sub(' ', '', New_Data$Title)\n",
+        "New_Data$Title[New_Data$PassengerId == 797] <- 'Mrs' # female doctor\n",
+        "New_Data$Title[New_Data$Title %in% c('Lady', 'the Countess', 'Mlle', 'Mee', 'Ms')] <- 'Miss'\n",
+        "New_Data$Title[New_Data$Title %in% c('Capt', 'Don', 'Major', 'Sir', 'Col', 'Jonkheer', 'Rev', 'Dr', 'Master')] <- 'Mr'\n",
+        "New_Data$Title[New_Data$Title %in% c('Dona')] <- 'Mrs'\n",
+        "New_Data$Title <- factor(New_Data$Title)\n",
+        "New_Data$Embarked[c(62,830)] = \"S\"\n",
+        "New_Data$Embarked <- factor(New_Data$Embarked)\n",
+        "New_Data$Fare[1044] <-median(New_Data$Fare, na.rm = TRUE)\n",
+        "New_Data$family_size <- New_Data$SibSp + New_Data$Parch + 1\n",
+        "write.csv(New_Data,\"New_Data_LeViet_02.csv\")\n",
+        "#View(New_Data)\n",
+        "predicted_age <- rpart(Age ~ Pclass + Sex + SibSp + Parch + Fare + Embarked + Title + family_size,\n",
+        "                       data=New_Data[!is.na(New_Data$Age),], method=\"anova\")\n",
+        "\n",
+        "predicted_age <- rpart(Age ~ Pclass + Sex + SibSp + Parch + Fare + Embarked + Title + family_size,\n",
+        "                       data=New_Data[!is.na(New_Data$Age),], method=\"anova\")\n",
+        "New_Data$Age[is.na(New_Data$Age)] <- predict(predicted_age, New_Data[is.na(New_Data$Age),])\n",
+        "write.csv(New_Data,\"New_Data_LeViet_02.csv\")\n",
+        "train_new_LeViet <- New_Data[1:891,]\n",
+        "test_new_Leviet <- New_Data[892:1309,]\n",
+        "#View(train_new_LeViet)\n",
+        "#View(test_new_Leviet)\n",
+        "\n",
+        "test_new_Leviet$Survived <- NULL\n",
+        "#View(test_new_Leviet)\n",
+        "train_new_LeViet$Cabin <- substr(train_new_LeViet$Cabin,1,1)\n",
+        "test_new_Leviet$Cabin <- substr(test_new_Leviet$Cabin,1,1)\n",
+        "\n",
+        "train_new_LeViet$Cabin[train_new_LeViet$Cabin == \"\"] <- \"H\"\n",
+        "test_new_Leviet$Cabin[test_new_Leviet$Cabin == \"\"] <- \"H\"\n",
+        "\n",
+        "train_new_LeViet$Cabin[train_new_LeViet$Cabin == \"T\"] <- \"H\"\n",
+        "\n",
+        "train_new_LeViet$Cabin <- factor(train_new_LeViet$Cabin)\n",
+        "test_new_Leviet$Cabin <- factor(test_new_Leviet$Cabin)\n",
+        "\n",
+        "str(train_new_LeViet)\n",
+        "str(test_new_Leviet)\n",
+        "\n",
+        "LeViet_Tree <- rpart(Survived ~ Age + Sex + Pclass  + family_size, data = train_new_LeViet, method = \"class\", control=rpart.control(cp=0.0001))\n",
+        "\n",
+        "summary(LeViet_Tree)\n",
+        "\n",
+        "\n",
+        "prp(LeViet_Tree, type = 4, extra = 100)\n",
+        "\n",
+        "LeViet_prediction <- predict(LeViet_Tree, test_new_Leviet, type = \"class\")\n",
+        "head(LeViet_prediction)\n",
+        "\n",
+        "vector_passengerid <- test_new_Leviet$PassengerId\n",
+        "\n",
+        "LeViet_Solution <- data.frame(PassengerId = vector_passengerid, Survived = LeViet_prediction)\n",
+        "\n",
+        "head(LeViet_Solution)\n",
+        "\n",
+        "write.csv(LeViet_Solution, file = \"LeViet_Solution.csv\",row.names=FALSE)"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "_cell_guid": "d4343b2f-1823-c3cf-02bc-a898974dff4a"
+      },
+      "outputs": [],
+      "source": [
+        ""
+      ]
+    }
+  ],
+  "metadata": {
+    "_change_revision": 0,
+    "_is_fork": false,
+    "kernelspec": {
+      "display_name": "R",
+      "language": "R",
+      "name": "ir"
+    },
+    "language_info": {
+      "codemirror_mode": "r",
+      "file_extension": ".r",
+      "mimetype": "text/x-r-source",
+      "name": "R",
+      "pygments_lexer": "r",
+      "version": "3.3.1"
+    }
+  },
+  "nbformat": 4,
+  "nbformat_minor": 0
+}

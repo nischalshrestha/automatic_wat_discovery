@@ -1,0 +1,947 @@
+{
+  "cells": [
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "_cell_guid": "9dbada65-50a8-57b2-7802-5d535ea06589"
+      },
+      "outputs": [],
+      "source": [
+        "library('ggplot2') # visualization\n",
+        "library('readr') # CSV file I/O, e.g. the read_csv function\n",
+        "library('ggthemes') # visualization\n",
+        "library('scales') # visualization\n",
+        "library('dplyr') # data manipulation\n",
+        "library('mice') # imputation\n",
+        "library('randomForest') # classification algorithm"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "_cell_guid": "bbc77d77-a00b-3332-e04e-520d44a4d743"
+      },
+      "outputs": [],
+      "source": [
+        "train <- read.csv('../input/train.csv', stringsAsFactors = F)\n",
+        "test  <- read.csv('../input/test.csv', stringsAsFactors = F)\n",
+        "\n",
+        "full  <- bind_rows(train, test) # bind training & test data\n",
+        "\n",
+        "# check data\n",
+        "str(full)"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "_cell_guid": "7848d463-1a24-0dbc-2dde-bd15910e6b22"
+      },
+      "outputs": [],
+      "source": [
+        "# Grab title from passenger names\n",
+        "full$Title <- gsub('(.*, )|(\\\\..*)', '', full$Name)\n",
+        "\n",
+        "# Show title counts by sex\n",
+        "table(full$Sex, full$Title)"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "_cell_guid": "5ec287f0-6449-9d15-8cb7-df1e152cfbba"
+      },
+      "outputs": [],
+      "source": [
+        "# Titles with very low cell counts to be combined to \"rare\" level\n",
+        "rare_title <- c('Dona', 'Lady', 'the Countess','Capt', 'Col', 'Don', \n",
+        "                'Dr', 'Major', 'Rev', 'Sir', 'Jonkheer')\n",
+        "\n",
+        "# Also reassign mlle, ms, and mme accordingly\n",
+        "full$Title[full$Title == 'Mlle']        <- 'Miss' \n",
+        "full$Title[full$Title == 'Ms']          <- 'Miss'\n",
+        "full$Title[full$Title == 'Mme']         <- 'Mrs' \n",
+        "full$Title[full$Title %in% rare_title]  <- 'Rare Title'\n",
+        "\n",
+        "# Show title counts by sex again\n",
+        "table(full$Sex, full$Title)"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "_cell_guid": "9ad55f83-a2e1-e023-b669-94b9e206710e"
+      },
+      "outputs": [],
+      "source": [
+        "# Finally, grab surname from passenger name\n",
+        "full$Surname <- sapply(full$Name,  \n",
+        "                      function(x) strsplit(x, split = '[,.]')[[1]][1])"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "_cell_guid": "a97c312a-c278-4637-b14d-2cee6d7db7b2"
+      },
+      "outputs": [],
+      "source": [
+        "cat(paste('We have <b>', nlevels(factor(full$Surname)), '</b> unique surnames. I would be interested to infer ethnicity based on surname --- another time.'))"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "_cell_guid": "7959533a-f47f-3d07-1c57-dde92decd704"
+      },
+      "outputs": [],
+      "source": [
+        "# Create a family size variable including the passenger themselves\n",
+        "full$Fsize <- full$SibSp + full$Parch + 1\n",
+        "\n",
+        "# Create a family variable \n",
+        "full$Family <- paste(full$Surname, full$Fsize, sep='_')"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "_cell_guid": "76a35152-6df9-435d-0292-b1f2355fe9b5"
+      },
+      "outputs": [],
+      "source": [
+        "# Use ggplot2 to visualize the relationship between family size & survival\n",
+        "ggplot(full[1:891,], aes(x = Fsize, fill = factor(Survived))) +\n",
+        "  geom_bar(stat='count', position='dodge') +\n",
+        "  scale_x_continuous(breaks=c(1:11)) +\n",
+        "  labs(x = 'Family Size') +\n",
+        "  theme_few()"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "_cell_guid": "6204004f-5fe3-79e0-4571-4226519d55b9"
+      },
+      "outputs": [],
+      "source": [
+        "# Discretize family size\n",
+        "full$FsizeD[full$Fsize == 1] <- 'singleton'\n",
+        "full$FsizeD[full$Fsize < 5 & full$Fsize > 1] <- 'small'\n",
+        "full$FsizeD[full$Fsize > 4] <- 'large'\n",
+        "\n",
+        "# Show family size by survival using a mosaic plot\n",
+        "mosaicplot(table(full$FsizeD, full$Survived), main='Family Size by Survival', shade=TRUE)"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "_cell_guid": "a5d72dc7-4d48-50ee-4755-1e184bf630a3"
+      },
+      "outputs": [],
+      "source": [
+        "# This variable appears to have a lot of missing values\n",
+        "full$Cabin[1:28]"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "_cell_guid": "c5ccf897-a0ab-5519-cd88-6beeb5310e07"
+      },
+      "outputs": [],
+      "source": [
+        "# The first character is the deck. For example:\n",
+        "strsplit(full$Cabin[2], NULL)[[1]]"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "_cell_guid": "799cc067-37f8-4399-e6bc-d827636528f7"
+      },
+      "outputs": [],
+      "source": [
+        "# Create a Deck variable. Get passenger deck A - F:\n",
+        "full$Deck<-factor(sapply(full$Cabin, function(x) strsplit(x, NULL)[[1]][1]))"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "_cell_guid": "cb91a9d2-c645-4ccb-e5df-88383b813f9e"
+      },
+      "outputs": [],
+      "source": [
+        "# Passengers 62 and 830 are missing Embarkment\n",
+        "full[c(62, 830), 'Embarked']"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "_cell_guid": "ce49985a-3870-e9d2-7be1-b9cf370c9ac7"
+      },
+      "outputs": [],
+      "source": [
+        "cat(paste('We will infer their values for **embarkment** based on present data that we can imagine may be relevant: **passenger class** and **fare**. We see that they paid<b> $', full[c(62, 830), 'Fare'][[1]][1], '</b>and<b> $', full[c(62, 830), 'Fare'][[1]][2], '</b>respectively and their classes are<b>', full[c(62, 830), 'Pclass'][[1]][1], '</b>and<b>', full[c(62, 830), 'Pclass'][[1]][2], '</b>. So from where did they embark?'))"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "_cell_guid": "f56cce41-b177-6254-76ef-d0b7d5b0eeb5"
+      },
+      "outputs": [],
+      "source": [
+        "# Get rid of our missing passenger IDs\n",
+        "embark_fare <- full %>%\n",
+        "  filter(PassengerId != 62 & PassengerId != 830)\n",
+        "\n",
+        "# Use ggplot2 to visualize embarkment, passenger class, & median fare\n",
+        "ggplot(embark_fare, aes(x = Embarked, y = Fare, fill = factor(Pclass))) +\n",
+        "  geom_boxplot() +\n",
+        "  geom_hline(aes(yintercept=80), \n",
+        "    colour='red', linetype='dashed', lwd=2) +\n",
+        "  scale_y_continuous(labels=dollar_format()) +\n",
+        "  theme_few()"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "_cell_guid": "879a1819-b7fb-1e96-4797-1247c8de5ac1"
+      },
+      "outputs": [],
+      "source": [
+        "# Since their fare was $80 for 1st class, they most likely embarked from 'C'\n",
+        "full$Embarked[c(62, 830)] <- 'C'"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "_cell_guid": "ca5cb572-8d24-03db-f3a4-e06e9674ec1f"
+      },
+      "outputs": [],
+      "source": [
+        "# Show row 1044\n",
+        "full[1044, ]"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "_cell_guid": "0e92e36a-9a93-e67d-e282-de2e3b5e80c0"
+      },
+      "outputs": [],
+      "source": [
+        "ggplot(full[full$Pclass == '3' & full$Embarked == 'S', ], \n",
+        "  aes(x = Fare)) +\n",
+        "  geom_density(fill = '#99d6ff', alpha=0.4) + \n",
+        "  geom_vline(aes(xintercept=median(Fare, na.rm=T)),\n",
+        "    colour='red', linetype='dashed', lwd=1) +\n",
+        "  scale_x_continuous(labels=dollar_format()) +\n",
+        "  theme_few()"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "_cell_guid": "84b96976-3601-7608-7578-ff020562a838"
+      },
+      "outputs": [],
+      "source": [
+        "# Replace missing fare value with median fare for class/embarkment\n",
+        "full$Fare[1044] <- median(full[full$Pclass == '3' & full$Embarked == 'S', ]$Fare, na.rm = TRUE)"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "_cell_guid": "817cafdf-4efe-754d-4e1f-e31ab1c91852"
+      },
+      "outputs": [],
+      "source": [
+        "# Show number of missing Age values\n",
+        "sum(is.na(full$Age))"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "_cell_guid": "770dde62-d04c-a465-d45c-5494e0b12f7d"
+      },
+      "outputs": [],
+      "source": [
+        "# Make variables factors into factors\n",
+        "factor_vars <- c('PassengerId','Pclass','Sex','Embarked',\n",
+        "                 'Title','Surname','Family','FsizeD')\n",
+        "\n",
+        "full[factor_vars] <- lapply(full[factor_vars], function(x) as.factor(x))\n",
+        "\n",
+        "# Set a random seed\n",
+        "set.seed(129)\n",
+        "\n",
+        "# Perform mice imputation, excluding certain less-than-useful variables:\n",
+        "mice_mod <- mice(full[, !names(full) %in% c('PassengerId','Name','Ticket','Cabin','Family','Surname','Survived')], method='rf') "
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "_cell_guid": "28ca63d6-4f8c-7b24-3d40-88943ecfa798"
+      },
+      "outputs": [],
+      "source": [
+        "# Save the complete output \n",
+        "mice_output <- complete(mice_mod)"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "_cell_guid": "38465d93-34ec-5e90-be42-76e2c3ba7de8"
+      },
+      "outputs": [],
+      "source": [
+        "# Plot age distributions\n",
+        "par(mfrow=c(1,2))\n",
+        "hist(full$Age, freq=F, main='Age: Original Data', \n",
+        "  col='darkgreen', ylim=c(0,0.04))\n",
+        "hist(mice_output$Age, freq=F, main='Age: MICE Output', \n",
+        "  col='lightgreen', ylim=c(0,0.04))"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "_cell_guid": "afd2e288-8107-4875-dce5-34388987185d"
+      },
+      "outputs": [],
+      "source": [
+        "# Replace Age variable from the mice model.\n",
+        "full$Age <- mice_output$Age\n",
+        "\n",
+        "# Show new number of missing Age values\n",
+        "sum(is.na(full$Age))"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "_cell_guid": "e6136012-d935-641e-77ad-02a335c32cbf"
+      },
+      "outputs": [],
+      "source": [
+        "# First we'll look at the relationship between age & survival\n",
+        "ggplot(full[1:891,], aes(Age, fill = factor(Survived))) + \n",
+        "  geom_histogram() + \n",
+        "  # I include Sex since we know (a priori) it's a significant predictor\n",
+        "  facet_grid(.~Sex) + \n",
+        "  theme_few()"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "_cell_guid": "b3176cf9-892b-251c-6223-2e67e6aa2808"
+      },
+      "outputs": [],
+      "source": [
+        "# Create the column child, and indicate whether child or adult\n",
+        "full$Child[full$Age < 18] <- 'Child'\n",
+        "full$Child[full$Age >= 18] <- 'Adult'\n",
+        "\n",
+        "# Show counts\n",
+        "table(full$Child, full$Survived)"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "_cell_guid": "f3347fdc-f8c1-f042-de3e-6327eb938048"
+      },
+      "outputs": [],
+      "source": [
+        "# Adding Mother variable\n",
+        "full$Mother <- 'Not Mother'\n",
+        "full$Mother[full$Sex == 'female' & full$Parch > 0 & full$Age > 18 & full$Title != 'Miss'] <- 'Mother'\n",
+        "\n",
+        "# Show counts\n",
+        "table(full$Mother, full$Survived)"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "_cell_guid": "50463781-290e-7454-8fde-f800dd1bbb94"
+      },
+      "outputs": [],
+      "source": [
+        "# Finish by factorizing our two new factor variables\n",
+        "full$Child  <- factor(full$Child)\n",
+        "full$Mother <- factor(full$Mother)"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "_cell_guid": "58a2ba9a-9165-08a5-26a9-38d88b1e5516"
+      },
+      "outputs": [],
+      "source": [
+        "md.pattern(full)"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "_cell_guid": "87d38df8-1fdf-b4f3-7e92-ff239d34a322"
+      },
+      "outputs": [],
+      "source": [
+        "# Split the data back into a train set and a test set\n",
+        "train <- full[1:891,]\n",
+        "test <- full[892:1309,]"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "_cell_guid": "7b6b250a-41f2-b121-44b2-c3c81ef5a369"
+      },
+      "outputs": [],
+      "source": [
+        "# Set a random seed\n",
+        "set.seed(754)\n",
+        "\n",
+        "# Build the model (note: not all possible variables are used)\n",
+        "rf_model <- randomForest(factor(Survived) ~ Pclass + Sex + Age + SibSp + Parch + \n",
+        "                                            Fare + Embarked + Title + \n",
+        "                                            FsizeD + Child + Mother,\n",
+        "                                            data = train)\n",
+        "\n",
+        "# Show model error\n",
+        "plot(rf_model, ylim=c(0,0.36))\n",
+        "legend('topright', colnames(rf_model$err.rate), col=1:3, fill=1:3)"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "_cell_guid": "7befedee-5d63-ff1e-af45-ae6271ba99af"
+      },
+      "outputs": [],
+      "source": [
+        "# Get importance\n",
+        "importance    <- importance(rf_model)\n",
+        "varImportance <- data.frame(Variables = row.names(importance), \n",
+        "                            Importance = round(importance[ ,'MeanDecreaseGini'],2))\n",
+        "\n",
+        "# Create a rank variable based on importance\n",
+        "rankImportance <- varImportance %>%\n",
+        "  mutate(Rank = paste0('#',dense_rank(desc(Importance))))\n",
+        "\n",
+        "# Use ggplot2 to visualize the relative importance of variables\n",
+        "ggplot(rankImportance, aes(x = reorder(Variables, Importance), \n",
+        "    y = Importance, fill = Importance)) +\n",
+        "  geom_bar(stat='identity') + \n",
+        "  geom_text(aes(x = Variables, y = 0.5, label = Rank),\n",
+        "    hjust=0, vjust=0.55, size = 4, colour = 'red') +\n",
+        "  labs(x = 'Variables') +\n",
+        "  coord_flip() + \n",
+        "  theme_few()"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "_cell_guid": "f4680a0a-5167-b517-93db-ddec1f36bf33"
+      },
+      "outputs": [],
+      "source": [
+        "# Predict using the test set\n",
+        "prediction <- predict(rf_model, test)\n",
+        "\n",
+        "# Save the solution to a dataframe with two columns: PassengerId and Survived (prediction)\n",
+        "solution <- data.frame(PassengerID = test$PassengerId, Survived = prediction)\n",
+        "\n",
+        "# Write the solution to file\n",
+        "write.csv(solution, file = 'rf_mod_Solution.csv', row.names = F)"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "_cell_guid": "d6b1f0ba-f730-1cef-05ac-515aa50589d4"
+      },
+      "outputs": [],
+      "source": [
+        "# Grab title from passenger names\n",
+        "full$Title <- gsub('(.*, )|(\\\\..*)', '', full$Name)\n",
+        "\n",
+        "# Show title counts by sex\n",
+        "table(full$Sex, full$Title)\n",
+        "\n",
+        "# Titles with very low cell counts to be combined to \"rare\" level\n",
+        "rare_title <- c('Dona', 'Lady', 'the Countess','Capt', 'Col', 'Don', \n",
+        "                'Dr', 'Major', 'Rev', 'Sir', 'Jonkheer')\n",
+        "\n",
+        "# Also reassign mlle, ms, and mme accordingly\n",
+        "full$Title[full$Title == 'Mlle']        <- 'Miss' \n",
+        "full$Title[full$Title == 'Ms']          <- 'Miss'\n",
+        "full$Title[full$Title == 'Mme']         <- 'Mrs' \n",
+        "full$Title[full$Title %in% rare_title]  <- 'Rare Title'\n",
+        "\n",
+        "# Show title counts by sex again\n",
+        "table(full$Sex, full$Title)\n",
+        "\n",
+        "# Finally, grab surname from passenger name\n",
+        "full$Surname <- sapply(full$Name,  \n",
+        "                      function(x) strsplit(x, split = '[,.]')[[1]][1])"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "_cell_guid": "2cf7fa13-ef1d-0c33-a9ca-b1d4b99f5d34"
+      },
+      "outputs": [],
+      "source": [
+        "cat(paste('We have <b>', nlevels(factor(full$Surname)), '</b> unique surnames. I would be interested to infer ethnicity based on surname --- another time.'))"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "_cell_guid": "209e2f09-f758-e14f-f5eb-de842183d2cd"
+      },
+      "outputs": [],
+      "source": [
+        "# Create a family size variable including the passenger themselves\n",
+        "full$Fsize <- full$SibSp + full$Parch + 1\n",
+        "\n",
+        "# Create a family variable \n",
+        "full$Family <- paste(full$Surname, full$Fsize, sep='_')"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "_cell_guid": "37b1ee8f-d365-4391-b30b-219e0134aa8a"
+      },
+      "outputs": [],
+      "source": [
+        "# Use ggplot2 to visualize the relationship between family size & survival\n",
+        "ggplot(full[1:891,], aes(x = Fsize, fill = factor(Survived))) +\n",
+        "  geom_bar(stat='count', position='dodge') +\n",
+        "  scale_x_continuous(breaks=c(1:11)) +\n",
+        "  labs(x = 'Family Size') +\n",
+        "  theme_few()"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "_cell_guid": "5ed23fc2-1bb9-4346-2373-cfb0f6d0869c"
+      },
+      "outputs": [],
+      "source": [
+        "# Discretize family size\n",
+        "full$FsizeD[full$Fsize == 1] <- 'singleton'\n",
+        "full$FsizeD[full$Fsize < 5 & full$Fsize > 1] <- 'small'\n",
+        "full$FsizeD[full$Fsize > 4] <- 'large'\n",
+        "\n",
+        "# Show family size by survival using a mosaic plot\n",
+        "mosaicplot(table(full$FsizeD, full$Survived), main='Family Size by Survival', shade=TRUE)"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "_cell_guid": "a7cd4aa1-3667-4611-6b2f-09fda6d3b670"
+      },
+      "outputs": [],
+      "source": [
+        "# This variable appears to have a lot of missing values\n",
+        "full$Cabin[1:28]\n",
+        "\n",
+        "# The first character is the deck. For example:\n",
+        "strsplit(full$Cabin[2], NULL)[[1]]\n",
+        "\n",
+        "# Create a Deck variable. Get passenger deck A - F:\n",
+        "full$Deck<-factor(sapply(full$Cabin, function(x) strsplit(x, NULL)[[1]][1]))"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "_cell_guid": "b0100dc1-b4c0-67d6-0aca-c6974f6f0c43"
+      },
+      "outputs": [],
+      "source": [
+        "# Passengers 62 and 830 are missing Embarkment\n",
+        "full[c(62, 830), 'Embarked']"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "_cell_guid": "e60c1a4c-dbdf-1887-dc93-af9326469b00"
+      },
+      "outputs": [],
+      "source": [
+        "cat(paste('We will infer their values for **embarkment** based on present data that we can imagine may be relevant: **passenger class** and **fare**. We see that they paid<b> $', full[c(62, 830), 'Fare'][[1]][1], '</b>and<b> $', full[c(62, 830), 'Fare'][[1]][2], '</b>respectively and their classes are<b>', full[c(62, 830), 'Pclass'][[1]][1], '</b>and<b>', full[c(62, 830), 'Pclass'][[1]][2], '</b>. So from where did they embark?'))"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "_cell_guid": "fe6299e6-06b8-7b17-5b75-ef3b9c710446"
+      },
+      "outputs": [],
+      "source": [
+        "# Get rid of our missing passenger IDs\n",
+        "embark_fare <- full %>%\n",
+        "  filter(PassengerId != 62 & PassengerId != 830)\n",
+        "\n",
+        "# Use ggplot2 to visualize embarkment, passenger class, & median fare\n",
+        "ggplot(embark_fare, aes(x = Embarked, y = Fare, fill = factor(Pclass))) +\n",
+        "  geom_boxplot() +\n",
+        "  geom_hline(aes(yintercept=80), \n",
+        "    colour='red', linetype='dashed', lwd=2) +\n",
+        "  scale_y_continuous(labels=dollar_format()) +\n",
+        "  theme_few()"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "_cell_guid": "96f1a861-13a8-4a0b-33fb-e3c767289a55"
+      },
+      "outputs": [],
+      "source": [
+        "# Since their fare was $80 for 1st class, they most likely embarked from 'C'\n",
+        "full$Embarked[c(62, 830)] <- 'C'"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "_cell_guid": "4acd3d39-f9cf-26a2-0022-9cc0698750a3"
+      },
+      "outputs": [],
+      "source": [
+        "# Show row 1044\n",
+        "full[1044, ]"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "_cell_guid": "38367c37-334e-7829-a14e-499fb06ea6c8"
+      },
+      "outputs": [],
+      "source": [
+        "ggplot(full[full$Pclass == '3' & full$Embarked == 'S', ], \n",
+        "  aes(x = Fare)) +\n",
+        "  geom_density(fill = '#99d6ff', alpha=0.4) + \n",
+        "  geom_vline(aes(xintercept=median(Fare, na.rm=T)),\n",
+        "    colour='red', linetype='dashed', lwd=1) +\n",
+        "  scale_x_continuous(labels=dollar_format()) +\n",
+        "  theme_few()"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "_cell_guid": "52e9b27e-e090-43e2-441b-e47837f8588f"
+      },
+      "outputs": [],
+      "source": [
+        "# Replace missing fare value with median fare for class/embarkment\n",
+        "full$Fare[1044] <- median(full[full$Pclass == '3' & full$Embarked == 'S', ]$Fare, na.rm = TRUE)"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "_cell_guid": "3be63064-6c12-a88a-7814-619db2b083c2"
+      },
+      "outputs": [],
+      "source": [
+        "# Show number of missing Age values\n",
+        "sum(is.na(full$Age))"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "_cell_guid": "562d68e3-6fc6-d961-a344-1e4e41aeef64"
+      },
+      "outputs": [],
+      "source": [
+        "# Make variables factors into factors\n",
+        "factor_vars <- c('PassengerId','Pclass','Sex','Embarked',\n",
+        "                 'Title','Surname','Family','FsizeD')\n",
+        "\n",
+        "full[factor_vars] <- lapply(full[factor_vars], function(x) as.factor(x))\n",
+        "\n",
+        "# Set a random seed\n",
+        "set.seed(129)\n",
+        "\n",
+        "# Perform mice imputation, excluding certain less-than-useful variables:\n",
+        "mice_mod <- mice(full[, !names(full) %in% c('PassengerId','Name','Ticket','Cabin','Family','Surname','Survived')], method='rf') \n",
+        "\n",
+        "# Save the complete output \n",
+        "mice_output <- complete(mice_mod)"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "_cell_guid": "3e169cf4-52de-209e-3237-12ed437336ac"
+      },
+      "outputs": [],
+      "source": [
+        "# Plot age distributions\n",
+        "par(mfrow=c(1,2))\n",
+        "hist(full$Age, freq=F, main='Age: Original Data', \n",
+        "  col='darkgreen', ylim=c(0,0.04))\n",
+        "hist(mice_output$Age, freq=F, main='Age: MICE Output', \n",
+        "  col='lightgreen', ylim=c(0,0.04))"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "_cell_guid": "d55678d1-288d-9701-5369-da5d1c68b50f"
+      },
+      "outputs": [],
+      "source": [
+        "# Replace Age variable from the mice model.\n",
+        "full$Age <- mice_output$Age\n",
+        "\n",
+        "# Show new number of missing Age values\n",
+        "sum(is.na(full$Age))"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "_cell_guid": "8917cfa1-f53a-1823-70b0-327147a3eeab"
+      },
+      "outputs": [],
+      "source": [
+        "# First we'll look at the relationship between age & survival\n",
+        "ggplot(full[1:891,], aes(Age, fill = factor(Survived))) + \n",
+        "  geom_histogram() + \n",
+        "  # I include Sex since we know (a priori) it's a significant predictor\n",
+        "  facet_grid(.~Sex) + \n",
+        "  theme_few()\n",
+        "\n",
+        "# Create the column child, and indicate whether child or adult\n",
+        "full$Child[full$Age < 18] <- 'Child'\n",
+        "full$Child[full$Age >= 18] <- 'Adult'\n",
+        "\n",
+        "# Show counts\n",
+        "table(full$Child, full$Survived)"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "_cell_guid": "2b94b497-b6ec-917f-929d-2d34b3bae87f"
+      },
+      "outputs": [],
+      "source": [
+        "# Adding Mother variable\n",
+        "full$Mother <- 'Not Mother'\n",
+        "full$Mother[full$Sex == 'female' & full$Parch > 0 & full$Age > 18 & full$Title != 'Miss'] <- 'Mother'\n",
+        "\n",
+        "# Show counts\n",
+        "table(full$Mother, full$Survived)\n",
+        "\n",
+        "# Finish by factorizing our two new factor variables\n",
+        "full$Child  <- factor(full$Child)\n",
+        "full$Mother <- factor(full$Mother)"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "_cell_guid": "ea935ef0-f214-1d32-f239-d5ef1e50a231"
+      },
+      "outputs": [],
+      "source": [
+        "md.pattern(full)"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "_cell_guid": "9933adb1-612b-197c-d94f-1bfa01308618"
+      },
+      "outputs": [],
+      "source": [
+        "# Split the data back into a train set and a test set\n",
+        "train <- full[1:891,]\n",
+        "test <- full[892:1309,]"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "_cell_guid": "ef68f0c0-5d2e-c741-5092-fe32c9020c27"
+      },
+      "outputs": [],
+      "source": [
+        "# Set a random seed\n",
+        "set.seed(754)\n",
+        "\n",
+        "# Build the model (note: not all possible variables are used)\n",
+        "rf_model <- randomForest(factor(Survived) ~ Pclass + Sex + Age + SibSp + Parch + \n",
+        "                                            Fare + Embarked + Title + \n",
+        "                                            FsizeD + Child + Mother,\n",
+        "                                            data = train)\n",
+        "\n",
+        "# Show model error\n",
+        "plot(rf_model, ylim=c(0,0.36))\n",
+        "legend('topright', colnames(rf_model$err.rate), col=1:3, fill=1:3)"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "_cell_guid": "8102fdb3-0e79-4d23-f240-bbaa0d8d535f"
+      },
+      "outputs": [],
+      "source": [
+        "# Get importance\n",
+        "importance    <- importance(rf_model)\n",
+        "varImportance <- data.frame(Variables = row.names(importance), \n",
+        "                            Importance = round(importance[ ,'MeanDecreaseGini'],2))\n",
+        "\n",
+        "# Create a rank variable based on importance\n",
+        "rankImportance <- varImportance %>%\n",
+        "  mutate(Rank = paste0('#',dense_rank(desc(Importance))))\n",
+        "\n",
+        "# Use ggplot2 to visualize the relative importance of variables\n",
+        "ggplot(rankImportance, aes(x = reorder(Variables, Importance), \n",
+        "    y = Importance, fill = Importance)) +\n",
+        "  geom_bar(stat='identity') + \n",
+        "  geom_text(aes(x = Variables, y = 0.5, label = Rank),\n",
+        "    hjust=0, vjust=0.55, size = 4, colour = 'red') +\n",
+        "  labs(x = 'Variables') +\n",
+        "  coord_flip() + \n",
+        "  theme_few()"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "_cell_guid": "33a59255-fa11-1cf8-e171-c96177e2b4ad"
+      },
+      "outputs": [],
+      "source": [
+        "# Predict using the test set\n",
+        "prediction <- predict(rf_model, test)\n",
+        "\n",
+        "# Save the solution to a dataframe with two columns: PassengerId and Survived (prediction)\n",
+        "solution <- data.frame(PassengerID = test$PassengerId, Survived = prediction)\n",
+        "\n",
+        "# Write the solution to file\n",
+        "write.csv(solution, file = 'rf_mod_Solution.csv', row.names = F)"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "_cell_guid": "0fbbeeef-a174-3637-c0b6-49172b889d08"
+      },
+      "outputs": [],
+      "source": [
+        "data.frame(PassengerID = test$PassengerId, Survived = prediction)"
+      ]
+    }
+  ],
+  "metadata": {
+    "_change_revision": 0,
+    "_is_fork": false,
+    "kernelspec": {
+      "display_name": "R",
+      "language": "R",
+      "name": "ir"
+    },
+    "language_info": {
+      "codemirror_mode": "r",
+      "file_extension": ".r",
+      "mimetype": "text/x-r-source",
+      "name": "R",
+      "pygments_lexer": "r",
+      "version": "3.3.2"
+    }
+  },
+  "nbformat": 4,
+  "nbformat_minor": 0
+}

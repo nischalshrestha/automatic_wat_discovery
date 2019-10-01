@@ -1,0 +1,17 @@
+{
+  "competition_sources": [
+    "titanic"
+  ],
+  "kernel_type": "notebook",
+  "code_file": "titanic-xgboost.irnb",
+  "dataset_sources": [],
+  "enable_internet": false,
+  "enable_gpu": false,
+  "id_no": 297123,
+  "language": "r",
+  "is_private": false,
+  "title": "Titanic XGBoost",
+  "keywords": [],
+  "id": "mustfkeskin/titanic-xgboost",
+  "kernel_sources": []
+}

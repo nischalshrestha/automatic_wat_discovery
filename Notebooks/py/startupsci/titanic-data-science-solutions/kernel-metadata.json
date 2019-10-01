@@ -1,0 +1,21 @@
+{
+  "code_file": "titanic-data-science-solutions.ipynb",
+  "id_no": 149281,
+  "is_private": false,
+  "language": "python",
+  "enable_gpu": false,
+  "competition_sources": [
+    "titanic"
+  ],
+  "dataset_sources": [],
+  "keywords": [
+    "tutorial",
+    "feature engineering",
+    "model comparison"
+  ],
+  "kernel_type": "notebook",
+  "kernel_sources": [],
+  "id": "startupsci/titanic-data-science-solutions",
+  "enable_internet": false,
+  "title": "Titanic Data Science Solutions"
+}

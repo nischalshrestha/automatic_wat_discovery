@@ -1,0 +1,17 @@
+{
+  "kernel_type": "notebook",
+  "keywords": [],
+  "id_no": 256976,
+  "enable_internet": false,
+  "dataset_sources": [],
+  "id": "ybelsare/notebook16101856ad",
+  "is_private": false,
+  "kernel_sources": [],
+  "title": "Notebook16101856ad",
+  "code_file": "notebook16101856ad.ipynb",
+  "enable_gpu": false,
+  "language": "python",
+  "competition_sources": [
+    "titanic"
+  ]
+}

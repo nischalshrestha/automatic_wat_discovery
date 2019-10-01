@@ -1,0 +1,17 @@
+{
+  "keywords": [],
+  "is_private": false,
+  "competition_sources": [
+    "titanic"
+  ],
+  "kernel_type": "notebook",
+  "enable_gpu": false,
+  "kernel_sources": [],
+  "title": "Simple aproach With tidyverse and caret",
+  "enable_internet": false,
+  "id": "rickrock89/simple-aproach-with-tidyverse-and-caret",
+  "code_file": "simple-aproach-with-tidyverse-and-caret.irnb",
+  "language": "r",
+  "id_no": 278973,
+  "dataset_sources": []
+}

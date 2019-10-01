@@ -1,0 +1,17 @@
+{
+  "enable_gpu": false,
+  "is_private": false,
+  "id": "prasadhegde/titanic-voting-ensemble",
+  "dataset_sources": [],
+  "kernel_sources": [],
+  "code_file": "titanic-voting-ensemble.ipynb",
+  "keywords": [],
+  "language": "python",
+  "kernel_type": "notebook",
+  "id_no": 1224438,
+  "enable_internet": false,
+  "competition_sources": [
+    "titanic"
+  ],
+  "title": "Titanic_voting_ensemble"
+}

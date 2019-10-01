@@ -1,0 +1,17 @@
+{
+  "competition_sources": [
+    "titanic"
+  ],
+  "is_private": false,
+  "enable_internet": false,
+  "enable_gpu": true,
+  "keywords": [],
+  "dataset_sources": [],
+  "kernel_sources": [],
+  "title": "Titanic: Machine Learning from Disaster!",
+  "id": "tulrose/titanic-machine-learning-from-disaster",
+  "language": "python",
+  "code_file": "titanic-machine-learning-from-disaster.ipynb",
+  "kernel_type": "notebook",
+  "id_no": 1461322
+}

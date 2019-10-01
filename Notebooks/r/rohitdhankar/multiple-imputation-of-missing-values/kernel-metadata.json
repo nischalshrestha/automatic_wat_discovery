@@ -1,0 +1,17 @@
+{
+  "title": "Multiple Imputation of Missing_Values",
+  "dataset_sources": [],
+  "language": "r",
+  "keywords": [],
+  "enable_internet": false,
+  "kernel_type": "notebook",
+  "id": "rohitdhankar/multiple-imputation-of-missing-values",
+  "is_private": false,
+  "id_no": 158981,
+  "competition_sources": [
+    "titanic"
+  ],
+  "kernel_sources": [],
+  "code_file": "multiple-imputation-of-missing-values.irnb",
+  "enable_gpu": false
+}

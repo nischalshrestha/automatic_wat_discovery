@@ -1,0 +1,17 @@
+{
+  "competition_sources": [
+    "titanic"
+  ],
+  "code_file": "titanic-logreg.ipynb",
+  "language": "python",
+  "dataset_sources": [],
+  "is_private": false,
+  "keywords": [],
+  "kernel_type": "notebook",
+  "id": "gvbgduh/titanic-logreg",
+  "id_no": 479773,
+  "title": "Titanic_LogReg",
+  "enable_internet": false,
+  "enable_gpu": false,
+  "kernel_sources": []
+}

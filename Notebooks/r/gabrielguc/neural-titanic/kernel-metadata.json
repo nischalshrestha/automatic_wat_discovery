@@ -1,0 +1,19 @@
+{
+  "enable_internet": false,
+  "competition_sources": [
+    "titanic"
+  ],
+  "title": "Neural Titanic",
+  "keywords": [
+    "neural networks"
+  ],
+  "dataset_sources": [],
+  "enable_gpu": false,
+  "id_no": 521922,
+  "is_private": false,
+  "code_file": "neural-titanic.irnb",
+  "language": "r",
+  "kernel_sources": [],
+  "kernel_type": "notebook",
+  "id": "gabrielguc/neural-titanic"
+}

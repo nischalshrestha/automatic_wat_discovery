@@ -1,0 +1,22 @@
+{
+  "dataset_sources": [],
+  "keywords": [
+    "eda",
+    "data visualization",
+    "feature engineering",
+    "logistic regression"
+  ],
+  "competition_sources": [
+    "titanic"
+  ],
+  "is_private": false,
+  "title": "Data analysis and feature extraction with Python",
+  "enable_gpu": false,
+  "kernel_sources": [],
+  "id_no": 1420432,
+  "id": "rohankuntoji/data-analysis-and-feature-extraction-with-python",
+  "kernel_type": "notebook",
+  "language": "python",
+  "code_file": "data-analysis-and-feature-extraction-with-python.ipynb",
+  "enable_internet": false
+}

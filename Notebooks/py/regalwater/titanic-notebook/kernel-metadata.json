@@ -1,0 +1,17 @@
+{
+  "kernel_type": "notebook",
+  "language": "python",
+  "is_private": false,
+  "enable_internet": false,
+  "keywords": [],
+  "title": "titanic_notebook",
+  "kernel_sources": [],
+  "code_file": "titanic-notebook.ipynb",
+  "id_no": 1541332,
+  "competition_sources": [
+    "titanic"
+  ],
+  "dataset_sources": [],
+  "id": "regalwater/titanic-notebook",
+  "enable_gpu": false
+}

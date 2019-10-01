@@ -1,0 +1,17 @@
+{
+  "id": "castrofoliver/notebook1fd4216424",
+  "keywords": [],
+  "id_no": 204718,
+  "enable_gpu": false,
+  "title": "Notebook1fd4216424",
+  "dataset_sources": [],
+  "kernel_sources": [],
+  "competition_sources": [
+    "titanic"
+  ],
+  "kernel_type": "notebook",
+  "code_file": "notebook1fd4216424.irnb",
+  "enable_internet": false,
+  "is_private": false,
+  "language": "r"
+}

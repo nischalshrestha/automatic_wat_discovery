@@ -1,0 +1,17 @@
+{
+  "id": "lakshmipk/titanic-data-analysis-beginner-friendly",
+  "keywords": [],
+  "id_no": 1628550,
+  "language": "python",
+  "title": "Titanic Data Analysis - Beginner Friendly",
+  "enable_gpu": false,
+  "enable_internet": false,
+  "is_private": false,
+  "kernel_type": "notebook",
+  "kernel_sources": [],
+  "dataset_sources": [],
+  "code_file": "titanic-data-analysis-beginner-friendly.ipynb",
+  "competition_sources": [
+    "titanic"
+  ]
+}

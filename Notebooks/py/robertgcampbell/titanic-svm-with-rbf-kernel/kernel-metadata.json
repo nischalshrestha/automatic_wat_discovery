@@ -1,0 +1,17 @@
+{
+  "kernel_type": "notebook",
+  "kernel_sources": [],
+  "enable_internet": false,
+  "dataset_sources": [],
+  "id_no": 1410599,
+  "title": "Titanic - SVM with RBF Kernel",
+  "competition_sources": [
+    "titanic"
+  ],
+  "keywords": [],
+  "code_file": "titanic-svm-with-rbf-kernel.ipynb",
+  "enable_gpu": false,
+  "language": "python",
+  "is_private": false,
+  "id": "robertgcampbell/titanic-svm-with-rbf-kernel"
+}

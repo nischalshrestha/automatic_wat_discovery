@@ -1,0 +1,76 @@
+{
+  "cells": [
+    {
+      "cell_type": "markdown",
+      "metadata": {
+        "_cell_guid": "e595a6f5-3383-80e5-d209-7bfcc7c5ba61"
+      },
+      "source": [
+        "This is my first foray into the world of data science on Kaggle.com. As suggested on the site, I'm starting with the Titanic competition. Although the competition has been over for years, it poses an interesting problem and is an opportunity to further my skills."
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "_cell_guid": "21171a17-c8a6-5857-3a33-f657b8b299f2"
+      },
+      "outputs": [],
+      "source": [
+        "# This R environment comes with all of CRAN preinstalled, as well as many other helpful packages\n",
+        "# The environment is defined by the kaggle/rstats docker image: https://github.com/kaggle/docker-rstats\n",
+        "# For example, here's several helpful packages to load in \n",
+        "\n",
+        "library(ggplot2) # Data visualization\n",
+        "library(readr) # CSV file I/O, e.g. the read_csv function\n",
+        "\n",
+        "# Input data files are available in the \"../input/\" directory.\n",
+        "# For example, running this (by clicking run or pressing Shift+Enter) will list the files in the input directory\n",
+        "\n",
+        "system(\"ls ../input\")\n",
+        "\n",
+        "# Any results you write to the current directory are saved as output."
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "_cell_guid": "bb2e7266-8089-d8ae-035f-d081218642b7"
+      },
+      "outputs": [],
+      "source": [
+        "train <- read.csv(\"../input/train.csv\", stringsAsFactors=FALSE);\n",
+        "test  <- read.csv(\"../input/test.csv\",  stringsAsFactors=FALSE);"
+      ]
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {
+        "_cell_guid": "c715ca57-49d6-eb61-4235-074da37f9c8d"
+      },
+      "source": [
+        "The first thing we do is explore the dataset and handle in particular missing values $x$"
+      ]
+    }
+  ],
+  "metadata": {
+    "_change_revision": 0,
+    "_is_fork": false,
+    "kernelspec": {
+      "display_name": "R",
+      "language": "R",
+      "name": "ir"
+    },
+    "language_info": {
+      "codemirror_mode": "r",
+      "file_extension": ".r",
+      "mimetype": "text/x-r-source",
+      "name": "R",
+      "pygments_lexer": "r",
+      "version": "3.3.2"
+    }
+  },
+  "nbformat": 4,
+  "nbformat_minor": 0
+}

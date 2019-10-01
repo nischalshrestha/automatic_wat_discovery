@@ -1,0 +1,23 @@
+{
+  "id": "neshmwaniki/machine-learning-for-disaster-control",
+  "enable_internet": false,
+  "competition_sources": [
+    "titanic"
+  ],
+  "enable_gpu": false,
+  "kernel_type": "notebook",
+  "language": "python",
+  "id_no": 1311996,
+  "is_private": false,
+  "kernel_sources": [],
+  "keywords": [
+    "beginner",
+    "data cleaning",
+    "data visualization",
+    "random forest",
+    "binary classification"
+  ],
+  "code_file": "machine-learning-for-disaster-control.ipynb",
+  "dataset_sources": [],
+  "title": "Machine Learning for Disaster Control"
+}

@@ -1,0 +1,17 @@
+{
+  "dataset_sources": [],
+  "kernel_sources": [],
+  "id_no": 210309,
+  "is_private": false,
+  "code_file": "notebooke4366c6561.ipynb",
+  "title": "Notebooke4366c6561",
+  "id": "praveen7728/notebooke4366c6561",
+  "kernel_type": "notebook",
+  "enable_internet": false,
+  "competition_sources": [
+    "titanic"
+  ],
+  "keywords": [],
+  "language": "python",
+  "enable_gpu": false
+}

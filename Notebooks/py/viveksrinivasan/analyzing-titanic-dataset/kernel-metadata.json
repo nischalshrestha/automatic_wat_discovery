@@ -1,0 +1,17 @@
+{
+  "competition_sources": [
+    "titanic"
+  ],
+  "code_file": "analyzing-titanic-dataset.ipynb",
+  "title": "Analyzing Titanic Dataset",
+  "dataset_sources": [],
+  "language": "python",
+  "kernel_type": "notebook",
+  "enable_internet": false,
+  "kernel_sources": [],
+  "id": "viveksrinivasan/analyzing-titanic-dataset",
+  "is_private": false,
+  "keywords": [],
+  "id_no": 172395,
+  "enable_gpu": false
+}

@@ -1,0 +1,17 @@
+{
+  "kernel_sources": [],
+  "competition_sources": [
+    "titanic"
+  ],
+  "kernel_type": "notebook",
+  "id": "paulocressoni/notebook36a53fb139",
+  "code_file": "notebook36a53fb139.ipynb",
+  "is_private": false,
+  "enable_internet": false,
+  "title": "Notebook36a53fb139",
+  "id_no": 205656,
+  "dataset_sources": [],
+  "enable_gpu": false,
+  "keywords": [],
+  "language": "python"
+}

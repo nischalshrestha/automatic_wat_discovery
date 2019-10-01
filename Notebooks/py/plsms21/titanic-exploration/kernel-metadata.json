@@ -1,0 +1,17 @@
+{
+  "keywords": [],
+  "code_file": "titanic-exploration.ipynb",
+  "dataset_sources": [],
+  "is_private": false,
+  "enable_gpu": false,
+  "title": "Titanic Exploration",
+  "competition_sources": [
+    "titanic"
+  ],
+  "language": "python",
+  "kernel_type": "notebook",
+  "enable_internet": false,
+  "kernel_sources": [],
+  "id": "plsms21/titanic-exploration",
+  "id_no": 2149973
+}

@@ -1,0 +1,17 @@
+{
+  "is_private": false,
+  "id_no": 1342678,
+  "code_file": "assignment-2-titanic.ipynb",
+  "competition_sources": [
+    "titanic"
+  ],
+  "enable_internet": false,
+  "keywords": [],
+  "enable_gpu": false,
+  "kernel_type": "notebook",
+  "title": "Assignment 2 Titanic",
+  "dataset_sources": [],
+  "kernel_sources": [],
+  "id": "tino76/assignment-2-titanic",
+  "language": "python"
+}

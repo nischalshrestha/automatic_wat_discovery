@@ -1,0 +1,17 @@
+{
+  "kernel_sources": [],
+  "language": "r",
+  "is_private": false,
+  "keywords": [],
+  "dataset_sources": [],
+  "id": "sachid/mlearn-210-assignment-6",
+  "competition_sources": [
+    "titanic"
+  ],
+  "kernel_type": "notebook",
+  "id_no": 671019,
+  "title": "**MLEARN-210 - Assignment-6**",
+  "enable_internet": false,
+  "code_file": "mlearn-210-assignment-6.irnb",
+  "enable_gpu": false
+}

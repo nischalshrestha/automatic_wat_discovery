@@ -1,0 +1,17 @@
+{
+  "code_file": "code-initial.ipynb",
+  "kernel_sources": [],
+  "keywords": [],
+  "id": "adisayshello/code-initial",
+  "enable_internet": true,
+  "id_no": 1378078,
+  "language": "python",
+  "dataset_sources": [],
+  "kernel_type": "notebook",
+  "title": "Code_initial",
+  "is_private": false,
+  "competition_sources": [
+    "titanic"
+  ],
+  "enable_gpu": false
+}

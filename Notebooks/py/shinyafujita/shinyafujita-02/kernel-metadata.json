@@ -1,0 +1,17 @@
+{
+  "keywords": [],
+  "language": "python",
+  "id": "shinyafujita/shinyafujita-02",
+  "code_file": "shinyafujita-02.ipynb",
+  "enable_internet": false,
+  "title": "shinyafujita_02",
+  "enable_gpu": false,
+  "competition_sources": [
+    "titanic"
+  ],
+  "id_no": 1010255,
+  "kernel_type": "notebook",
+  "dataset_sources": [],
+  "is_private": false,
+  "kernel_sources": []
+}

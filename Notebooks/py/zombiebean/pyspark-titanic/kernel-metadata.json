@@ -1,0 +1,19 @@
+{
+  "enable_gpu": false,
+  "kernel_type": "notebook",
+  "id": "zombiebean/pyspark-titanic",
+  "title": "PySpark_Titanic",
+  "dataset_sources": [],
+  "code_file": "pyspark-titanic.ipynb",
+  "id_no": 1757672,
+  "kernel_sources": [],
+  "language": "python",
+  "is_private": false,
+  "keywords": [
+    "beginner"
+  ],
+  "enable_internet": false,
+  "competition_sources": [
+    "titanic"
+  ]
+}

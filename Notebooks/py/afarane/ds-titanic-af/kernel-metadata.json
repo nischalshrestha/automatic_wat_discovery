@@ -1,0 +1,17 @@
+{
+  "title": "DS_Titanic_AF",
+  "id": "afarane/ds-titanic-af",
+  "competition_sources": [
+    "titanic"
+  ],
+  "language": "python",
+  "dataset_sources": [],
+  "enable_gpu": false,
+  "kernel_type": "notebook",
+  "id_no": 1823782,
+  "code_file": "ds-titanic-af.ipynb",
+  "enable_internet": false,
+  "is_private": false,
+  "kernel_sources": [],
+  "keywords": []
+}

@@ -1,0 +1,19 @@
+{
+  "title": "Titanic top 4% using NetworkX Feature Engineering",
+  "id_no": 1630407,
+  "id": "allanalberts/titanic-top-4-using-networkx-feature-engineering",
+  "enable_gpu": false,
+  "dataset_sources": [],
+  "enable_internet": false,
+  "code_file": "titanic-top-4-using-networkx-feature-engineering.ipynb",
+  "kernel_type": "notebook",
+  "competition_sources": [
+    "titanic"
+  ],
+  "kernel_sources": [],
+  "language": "python",
+  "keywords": [
+    "feature engineering"
+  ],
+  "is_private": false
+}

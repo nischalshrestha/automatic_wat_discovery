@@ -1,0 +1,21 @@
+{
+  "competition_sources": [
+    "titanic"
+  ],
+  "kernel_type": "notebook",
+  "title": "Titanic WCG+XGBoost [0.84688]",
+  "is_private": false,
+  "enable_gpu": true,
+  "dataset_sources": [],
+  "enable_internet": false,
+  "id_no": 1091633,
+  "keywords": [
+    "tutorial",
+    "data visualization",
+    "feature engineering"
+  ],
+  "kernel_sources": [],
+  "id": "cdeotte/titanic-wcg-xgboost-0-84688",
+  "code_file": "titanic-wcg-xgboost-0-84688.irnb",
+  "language": "r"
+}

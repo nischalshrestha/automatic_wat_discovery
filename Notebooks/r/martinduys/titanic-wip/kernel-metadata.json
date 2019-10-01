@@ -1,0 +1,17 @@
+{
+  "dataset_sources": [],
+  "competition_sources": [
+    "titanic"
+  ],
+  "is_private": false,
+  "language": "r",
+  "kernel_type": "notebook",
+  "code_file": "titanic-wip.irnb",
+  "title": "Titanic (WIP)",
+  "keywords": [],
+  "enable_gpu": false,
+  "enable_internet": false,
+  "id": "martinduys/titanic-wip",
+  "id_no": 149979,
+  "kernel_sources": []
+}

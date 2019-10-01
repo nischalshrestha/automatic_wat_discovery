@@ -1,0 +1,17 @@
+{
+  "enable_internet": false,
+  "id_no": 597793,
+  "is_private": false,
+  "code_file": "titanic-sunk.ipynb",
+  "id": "mikelkn/titanic-sunk",
+  "enable_gpu": false,
+  "competition_sources": [
+    "titanic"
+  ],
+  "language": "python",
+  "keywords": [],
+  "dataset_sources": [],
+  "title": "titanic sunk",
+  "kernel_sources": [],
+  "kernel_type": "notebook"
+}

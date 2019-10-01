@@ -1,0 +1,17 @@
+{
+  "kernel_sources": [],
+  "competition_sources": [
+    "titanic"
+  ],
+  "code_file": "notebook62d8f6429b.irnb",
+  "enable_gpu": false,
+  "keywords": [],
+  "dataset_sources": [],
+  "title": "Notebook62d8f6429b",
+  "id_no": 197994,
+  "kernel_type": "notebook",
+  "language": "r",
+  "is_private": false,
+  "enable_internet": false,
+  "id": "kazutan/notebook62d8f6429b"
+}
