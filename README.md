@@ -2,13 +2,15 @@
 
 This repo contains modules to parse Kaggle jupyter notebooks/scripts from competitions like [Titanic](https://www.kaggle.com/c/titanic) in order to find similar code snippets across Python and R.
 
-# Installation/Running:
+# Installation:
 
 It's easiest to use [baker](https://docs.getbaker.io/bakerScript/basic/) which makes use of VirtualBox to quickly spin up a VM for the project. Once baker/VirtualBox is installed on your computer, simply execute the following in the root directory:
 
 `baker bake --local .` 
 
 This sets up a VM for the project synced with the local folder and installs Python and R including all dependencies (`requirements.txt`).
+
+## Running with baker:
 
 Then execute the following in the root directory:
 
@@ -18,9 +20,11 @@ Where `cmd` runs one of the phases described below and detailed in the default c
 
 `baker run filterPy`
 
-You can also directly run the modules if you need more control:
+## Running modules directly:
 
-Within root:
+You can also directly run the modules if you need more control or for testing.
+
+**Within root:**
 
 `python parseNotebooks.py [py|r]`
 
@@ -28,13 +32,13 @@ Within root:
 
 where `number of snippets` are how many snippets in total you want to cluster, and `SIM_T` is the similarity score. 
 
-Within `py_side`:
+**Within `py_side`:**
 
 `python filter.py [notebook|script]`
 
 `python execute.py [number of inputs to test <= 256] [(dataframe | series | array)]`
 
-Within `r_side`:
+**Within `r_side`:**
 
 `python filterR.py [notebook|script]`
 
