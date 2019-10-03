@@ -140,14 +140,15 @@ if __name__ == '__main__':
                     OUTPUT_TYPE_FILTER = np.ndarray
             # generated_args = generate_args(NUM_ARGS, lang="r")
             # generated_args = generate_simple_arg(lang="r")
-            ints = [i for i in range(0, 7)]
-            ints.extend([1,2,3])
+            ints = [i for i in range(0, 8)]
+            ints.extend([8,8])
             sints = [i for i in range(0, 10)]
             # shuffle(sints)
             strs = [f"ID_{i}" for i in range(0, 8)]
-            strs.extend(["ID_1", "ID_2"])
+            strs.extend(["ID_8", "ID_8"])
             sstrs = [f"P_{i}" for i in reversed(range(10))]
-            df = pd.DataFrame({'col1':ints, 'col3':sints, 'col2':strs, 'col4':sstrs})
+            df = pd.DataFrame({'col0':sints[::-1], 'col1':ints, 'col3':ints, 'col2':strs, 'col4':sstrs})
+            # print(df)
             generated_args = generate_args_from_df(df, n_args=NUM_ARGS, lang="r")
             executions = execute_statements()
             df_store = DataframeStore(executions)

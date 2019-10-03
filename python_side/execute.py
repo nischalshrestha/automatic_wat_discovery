@@ -47,9 +47,10 @@ def eval_expr(mslacc, expr):
         # actually produced a dataframe; TODO a solution is to add another meta data
         # indicating that the expr had returned a NULL.
         if output is None:
+            print('none')
             output = locals()['mslacc']
         return expr, output
-        # print('out', out)
+        print('out', out)
     except Exception as e:
         # print(e)
         return e
@@ -82,6 +83,7 @@ def execute_statement(snip):
             return None
             # For now throwing out the ones where there was an Exception
             # return None
+    # print(snip, test_results)
     rtn = {'expr': snip, 'test_results': test_results}
     return rtn
 
@@ -134,15 +136,15 @@ if __name__ == '__main__':
                 elif "array" in sys.argv[2]:
                     OUTPUT_TYPE_FILTER = np.ndarray
             # generated_args = generate_args(NUM_ARGS)
-            ints = [i for i in range(0, 7)]
-            ints.extend([1,2,3])
+            ints = [i for i in range(0, 8)]
+            ints.extend([8,8])
             sints = [i for i in range(0, 10)]
             # shuffle(sints)
             strs = [f"ID_{i}" for i in range(0, 8)]
-            strs.extend(["ID_1", "ID_2"])
+            strs.extend(["ID_8", "ID_8"])
             sstrs = [f"P_{i}" for i in reversed(range(10))]
-            df = pd.DataFrame({'col1':ints, 'col3':sints, 'col2':strs, 'col4':sstrs})
-            print(df)
+            df = pd.DataFrame({'col0':sints[::-1], 'col1':ints, 'col3':ints, 'col2':strs, 'col4':sstrs})
+            # print(df)
             generated_args = generate_args_from_df(df, n_args=NUM_ARGS)
             # print(generated_args)
             executions = execute_statements()

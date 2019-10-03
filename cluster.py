@@ -53,24 +53,25 @@ def compare_results(rep, r):
     # We will call compare on each of the results
     rep_results = rep['test_results']
     r_results = r['test_results']
-    scores = []
-    for t1 in rep_results:
-        # Collect and store the max score from all test results
-        t1_scores = []
-        for t2 in r_results:
-            score = compare(t1, t2)
-            if type(score) == tuple:
-                t1_scores.append(score[0])
-            else:
-                t1_scores.append(score)
-        scores.append(max(t1_scores))
-    overall_score = max(scores)
-    # overall_score = sum(scores)/len(scores)
     py_expr = rep['expr']
     r_expr = r['expr']
     # print(py_expr, r_expr)
-    edit_distance = jaro(py_expr, r_expr)
-    return round(overall_score, 3), round(edit_distance, 3)
+    results = []
+    for t1 in rep_results:
+        # Collect and store the max score from all test results
+        edit_distance = round(jaro(py_expr, r_expr), 3)
+        for t2 in r_results:
+            score = compare(t1, t2)
+            # Store  tuple:
+            # py expr, r expr, pytest, rtest, row_diff, col_diff, semantic score, edit dist
+            if type(score) == tuple and score[0] >= SIM_T:
+                rounded = round(score[0],3)
+                results.append((py_expr, r_expr, t1, t2, score[1], score[2], rounded, edit_distance))
+            elif type(score) != tuple and score >= SIM_T:
+                rounded = round(score, 3)
+                # For the non-dataframe output case we just report 0 for row/col diff
+                results.append((py_expr, r_expr, t1, t2, 0, 0, rounded, edit_distance))
+    return flatten(results)
 
 def compare_rpy(py):
     """
@@ -80,9 +81,11 @@ def compare_rpy(py):
     max_score = 0
     results = []
     for r in rsnips:
-        score = compare_results(py, r)
-        if score[0] >= SIM_T:
-            results.append((py['expr'], r['expr'], py['test_results'][0], r['test_results'][0], score[0], score[1]))
+        compare_scores = compare_results(py, r)
+        if len(compare_scores) > 0:
+            results.append(compare_scores)
+        # if score[0] >= SIM_T:
+            # results.append((py['expr'], r['expr'], py['test_results'][0], r['test_results'][0], score[0], score[1]))
             # print('score', score)
     return results if len(results) > 0 else None
 
@@ -172,14 +175,15 @@ def print_snips(snips):
     for s in snips:
         print(s['expr'], len(s['test_results']))
 
+# TODO turn this function into another store clusters 
 def print_clusters(clusters):
     """Use this to debug clusters found"""
-    for c in clusters[2:3]:
+    for c in clusters:
         if len(c['snippets'].items()) > 0:
             print('----\n', c['rep']['expr'], len(c['snippets'].items()), '\n~~~~')
             for k, v in c['snippets'].items():
                 print(f"{k} {v[0]} {round(v[1], 3)}")
-            print(3*(c['rep']['expr']))
+            # print(3*(c['rep']['expr']))
             print('----\n')
         else:
             print(c['rep']['expr'], len(c['snippets'].items()))
@@ -189,7 +193,9 @@ def store_clusters(clusters):
     Stores clusters which is a list of tuples where each element is a 
     column value
     """ 
-    df = pd.DataFrame(clusters, columns =['Python', 'R', 'PyDf', 'Rdf', 'Semantic', 'Edit Distance'])
+    # TODO store row_diff / col_diff as well
+    df = pd.DataFrame(clusters, columns =['Python', 'R', 'Python result', \
+            'R result', 'Row Diff', 'Col Diff', 'Semantic', 'Edit Distance'])
     tolerance = round(1-SIM_T, 2)
     df.to_csv(f"{CLUSTERS_PATH}clusters_{tolerance}.csv", index=False)
             
