@@ -25,13 +25,14 @@ from execute import DataframeStore
 NUM_WORKERS = 4
 PY_PICKLE_PATH = './files/py_dfs.pkl'
 R_PICKLE_PATH = './files/r_dfs.pkl'
+CLUSTERS_PATH = './files/'
 SIM_T = 0.85
 
 flatten = lambda l: [item for sublist in l for item in sublist]
 
-from itertools import chain, zip_longest
-def twolists(l1, l2):
-    return [x for x in chain(*zip_longest(l1, l2)) if x is not None]
+ # Load executed python and r snippets with their results
+pysnips = pickle.load(open(PY_PICKLE_PATH, "rb")).pairs
+rsnips = pickle.load(open(R_PICKLE_PATH, "rb")).pairs
 
 # PassengerId      int64
 # Survived         int64 (level) - randomize
@@ -47,64 +48,65 @@ def twolists(l1, l2):
 # Embarked        object (level) - randomize
 # df = pd.read_csv("../train.csv")
 
-def compare_rpy(r):
-    max_score = 0
-    for p in range(len(pysnips)):
-        # print(r['test_results'][0], pysnips[p]['test_results'][0])
-        # print(r['test_results'][0].shape, pysnips[p]['test_results'][0].shape)
-        sim_score = compare(r['test_results'][0], pysnips[p]['test_results'][0])
-        max_score = sim_score if sim_score > max_score else max_score
-        # print('score', sim_score)
-    return max_score
-
-count = 0
 def compare_results(rep, r):
-    # Compare test results of rep and r
+    """Compares test results of rep and r"""
     # We will call compare on each of the results
     rep_results = rep['test_results']
     r_results = r['test_results']
     scores = []
     for t1 in rep_results:
-        if type(t1) == str and "ERROR:" in t1: 
-            scores.append(0)
-            continue
         # Collect and store the max score from all test results
         t1_scores = []
         for t2 in r_results:
-            if type(t2) == str and "ERROR:" in t2: 
-                t1_scores.append(0)
-                continue
-            t1_scores.append(compare(t1, t2))
+            score = compare(t1, t2)
+            if type(score) == tuple:
+                t1_scores.append(score[0])
+            else:
+                t1_scores.append(score)
         scores.append(max(t1_scores))
-    avg_score = max(scores)
+    overall_score = max(scores)
+    # overall_score = sum(scores)/len(scores)
     py_expr = rep['expr']
     r_expr = r['expr']
     # print(py_expr, r_expr)
     edit_distance = jaro(py_expr, r_expr)
-    return round(avg_score, 3), edit_distance
+    return round(overall_score, 3), round(edit_distance, 3)
+
+def compare_rpy(py):
+    """
+    Compares a Python snippet's execution results against all of the R snippets
+    and their execution results.
+    """
+    max_score = 0
+    results = []
+    for r in rsnips:
+        score = compare_results(py, r)
+        if score[0] >= SIM_T:
+            results.append((py['expr'], r['expr'], py['test_results'][0], r['test_results'][0], score[0], score[1]))
+            # print('score', score)
+    return results if len(results) > 0 else None
 
 def simple_cluster(pynsips, rsnips):
-    """A more naiive approach that is slower but seems to yield better results"""
-    # TODO use SIM_T and return the clusters found
-    max_score = 0
+    """
+    A naive pair-wise comparison approach to cluster Python/R snippets according
+    to their execution output results. Each Python snippet and its execution result
+    gets compared to all the other R snippets and their results.
+    
+    It is slower than a representative-based approach but seems to yield better results.
+    """
     scores = []
-    best = []
-    counter = 0
-    for p in pysnips[:]:
-        print(counter)
-        counter += 1
-        pyexpr = p['expr']
-        # pair_score = []
-        # TODO only keep ones that meet threshold
-        for r in rsnips:
-            rexpr = r['expr']
-            score = compare_results(p, r)
-            # print(score)
-            scores.append((pyexpr, rexpr, score))
-            if score[0] >= 0.9:
-                best.append((pyexpr, rexpr, score))
-    for b in best:
-        print(b[0], b[1], b[2], '\n')
+    start_time = time.time()
+    results = None
+    with multiprocessing.Pool(processes=NUM_WORKERS) as pool:
+        results = pool.map_async(compare_rpy, pysnips)
+        results.wait()
+        result = results.get()
+        result = list(filter(None, result))
+        results = flatten(list(result))
+        # print(results)
+    end_time = time.time()
+    print(f"Time taken: {round((end_time - start_time), 2)} secs")
+    return results
 
 # TODO store results into a pickle
 def cluster(pysnips, rsnips):
@@ -166,44 +168,43 @@ def jaro(r_snippet, py_snippet):
 def jaro_winkler(r_snippet, py_snippet):
   return 1.0 - Levenshtein.jaro_winkler(r_snippet, py_snippet)
 
+def print_snips(snips):
+    for s in snips:
+        print(s['expr'], len(s['test_results']))
+
 def print_clusters(clusters):
     """Use this to debug clusters found"""
-    for c in clusters:
+    for c in clusters[2:3]:
         if len(c['snippets'].items()) > 0:
             print('----\n', c['rep']['expr'], len(c['snippets'].items()), '\n~~~~')
             for k, v in c['snippets'].items():
-                print(f"R: semantic score: {v[0]} edit distance: {round(v[1], 3)} {k}")
+                print(f"{k} {v[0]} {round(v[1], 3)}")
+            print(3*(c['rep']['expr']))
             print('----\n')
         else:
             print(c['rep']['expr'], len(c['snippets'].items()))
 
 def store_clusters(clusters):
-    # TODO store clusters in a csv file to query for pairs later
-    data = OrderedDict()
-    for c in clusters:
-        data['rep'] = c['rep']
-        if len(c['snippets'].items()) > 0:
-            for k, v in c['snippets']:
-                print(k, v)
-
-def print_snips(snips):
-    for s in snips:
-        print(s['expr'], len(s['test_results']))
+    """
+    Stores clusters which is a list of tuples where each element is a 
+    column value
+    """ 
+    df = pd.DataFrame(clusters, columns =['Python', 'R', 'PyDf', 'Rdf', 'Semantic', 'Edit Distance'])
+    tolerance = round(1-SIM_T, 2)
+    df.to_csv(f"{CLUSTERS_PATH}clusters_{tolerance}.csv", index=False)
             
 if __name__ == '__main__':
     if len(sys.argv) > 1:
-        num_snippets = sys.argv[1]
-        # Load executed python and r snippets with their results
-        pysnips = pickle.load(open(PY_PICKLE_PATH, "rb")).pairs
-        rsnips = pickle.load(open(R_PICKLE_PATH, "rb")).pairs
-        if len(sys.argv) > 2:
-            SIM_T = float(sys.argv[2])
-            SIM_T = min(1.0, max(0, SIM_T)) # lower bound to 0 and upper bound to 1
+        SIM_T = float(sys.argv[1])
+        SIM_T = min(1.0, max(0, SIM_T)) # lower bound to 0 and upper bound to 1
+        # George's method
         # clusters = cluster(pysnips, rsnips)
         # print_clusters(clusters)
-        simple_cluster(pysnips, rsnips)
+        # Naive method
+        clusters = simple_cluster(pysnips, rsnips)
+        store_clusters(clusters)
     else:
         print("invalid option!")
-        print("usage: python cluster.py [number of snippets >= 2] [0 <= SIM_T <= 1.0]")
+        print("usage: python cluster.py [0 <= SIM_T <= 1.0]")
         sys.exit(1)
    

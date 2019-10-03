@@ -6,13 +6,14 @@ train[['col1']].shape
 train.head()
 # basic slicing
 train.iloc[:8]
-train[:5][:2]
 # filter 
-train.query('col1 == 1 & col2 == 1')
+train.query('col1 == 1 & col3 == 1')
 # [ subsetting
-train[(train.col1 == 1) & (train.col2 == 1)]
+train.iloc[0:5, 0:3]
+train[(train.col1 == 1) & (train.col3 == 1)]
 # [[
 train[['col1', 'col2']]
+# train[['col1', 'col3']]
 train[['col1']]
 # loc
 train.loc[:, 'col1':'col3']
@@ -26,7 +27,7 @@ train[['col1']].drop_duplicates()
 df.sort_values(['col1', 'col2'])
 df.sort_values('col1', ascending=False)
 # summary
-df.describe()
+# df.describe()
 
 # train = train.loc[1:2, 'a']
 # train = train.iloc[:9]

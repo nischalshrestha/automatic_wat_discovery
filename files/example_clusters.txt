@@ -1,2 +1,0 @@
-invalid option! name 'e' is not defined
-usage: python cluster.py [number of snippets >= 2] [0 <= SIM_T <= 1.0]

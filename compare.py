@@ -120,7 +120,6 @@ def compare_df(df1, df2):
                 common = sum([curr_bottom[r][c] == curr_top[r][c] for c in range(cbc) for r in range(cbr)])
             except e:
                 common = 0
-                
                 print("ERROR", e)
             sim_score = common / (cbr*cbc)
             windows.append(sim_score)
@@ -134,8 +133,8 @@ def compare_df(df1, df2):
         wb += 1
     # print('windows:', windows)
     # overall_score = max(windows)
-    overall_score = sum(windows)/len(windows)
-    return overall_score
+    overall_score = sum(windows)/len(windows) # this reduces lots of noise
+    return overall_score, row_diff, col_diff
 
 def compare(a, b):
     """

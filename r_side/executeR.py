@@ -1,6 +1,7 @@
 import time
 import multiprocessing
 import pickle
+from random import shuffle
 import pandas as pd
 import numpy as np
 import rpy2
@@ -90,7 +91,7 @@ def execute_statement(snip):
             test_results.append("ERROR: "+err)
         else:
             return None
-    rtn = {'expr': snip, 'test_results': test_results}
+    rtn = {'expr': snip, 'test_results': test_results, 'args': generated_args}
     return rtn
     
 def execute_statements():
@@ -139,10 +140,15 @@ if __name__ == '__main__':
                     OUTPUT_TYPE_FILTER = np.ndarray
             # generated_args = generate_args(NUM_ARGS, lang="r")
             # generated_args = generate_simple_arg(lang="r")
-            ints = [i for i in range(1, 10)]
-            df = pd.DataFrame({'col1':ints, 'col2':ints, 'col3':ints})
+            ints = [i for i in range(0, 7)]
+            ints.extend([1,2,3])
+            sints = [i for i in range(0, 10)]
+            # shuffle(sints)
+            strs = [f"ID_{i}" for i in range(0, 8)]
+            strs.extend(["ID_1", "ID_2"])
+            sstrs = [f"P_{i}" for i in reversed(range(10))]
+            df = pd.DataFrame({'col1':ints, 'col3':sints, 'col2':strs, 'col4':sstrs})
             generated_args = generate_args_from_df(df, n_args=NUM_ARGS, lang="r")
-            # print(generated_args[0])
             executions = execute_statements()
             df_store = DataframeStore(executions)
             pickle.dump(df_store, open(R_PICKLE_PATH, "wb"))

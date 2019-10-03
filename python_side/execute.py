@@ -2,6 +2,7 @@
 import time
 import multiprocessing
 import pickle
+from random import shuffle
 import pandas as pd
 import numpy as np
 import sys
@@ -104,7 +105,6 @@ def execute_statements():
         results.wait()
         result = results.get()
     end_time = time.time()
-    print('before', len(result))
     filtered = list(filter(None, result))
     print(f"Total snips executed: {len(filtered)}")
     print(f"Time taken: {round((end_time - start_time), 2)} secs")
@@ -134,11 +134,17 @@ if __name__ == '__main__':
                 elif "array" in sys.argv[2]:
                     OUTPUT_TYPE_FILTER = np.ndarray
             # generated_args = generate_args(NUM_ARGS)
-            ints = [i for i in range(1, 10)]
-            df = pd.DataFrame({'col1':ints, 'col2':ints, 'col3':ints})
+            ints = [i for i in range(0, 7)]
+            ints.extend([1,2,3])
+            sints = [i for i in range(0, 10)]
+            # shuffle(sints)
+            strs = [f"ID_{i}" for i in range(0, 8)]
+            strs.extend(["ID_1", "ID_2"])
+            sstrs = [f"P_{i}" for i in reversed(range(10))]
+            df = pd.DataFrame({'col1':ints, 'col3':sints, 'col2':strs, 'col4':sstrs})
+            print(df)
             generated_args = generate_args_from_df(df, n_args=NUM_ARGS)
             # print(generated_args)
-            # print(len(generated_args))
             executions = execute_statements()
             # Save results
             df_store = DataframeStore(executions)
