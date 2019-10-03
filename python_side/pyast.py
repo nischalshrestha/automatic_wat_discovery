@@ -16,7 +16,8 @@ import pandas as pd
 # CALLS = ['.', 'loc', 'iloc', 'head', 'shape', 'query', 'drop', 'drop_duplicates', 
 #         'sort_values', 'rename', 'assign', 'describe', 'groupby', 'len', 'read_csv', \
 #         'to_csv', 'DataFrame']
-CALLS = ['.', 'loc', 'iloc', 'head', 'shape', 'query', 'drop', 'drop_duplicates', 'describe', 'read_csv'] 
+CALLS = ['read_csv', '.', 'loc', 'iloc', 'head', 'shape', 'query', 'drop', \
+        'drop_duplicates', 'describe', 'sort_values'] 
 ASSIGN_CALLS = ['read_csv', 'drop', 'query']
 
 class CallChecker(ast.NodeVisitor):

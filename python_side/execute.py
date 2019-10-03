@@ -6,7 +6,7 @@ import pandas as pd
 import numpy as np
 import sys
 sys.path.append("../")
-from generate import generate_args, generate_simple_arg
+from generate import generate_args, generate_simple_arg, generate_args_from_df
 
 NUM_WORKERS=4
 PY_PICKLE_PATH = '../files/py_dfs.pkl'
@@ -17,6 +17,8 @@ MAX_ARGS = 256 # the max number of arguments
 # we can control the number of execution results that are stored; None by default
 # meaning we accept all types of outputs except for errors.
 OUTPUT_TYPE_FILTER = None 
+# However, we want these types in general if we aren't specifically filtering for a type
+OUTPUT_TYPES = ['DataFrame', 'Series', 'int', 'int64', 'float', 'float64', 'str', 'list', 'tuple']
 
 flatten = lambda l: [item for sublist in l for item in sublist]
 
@@ -66,13 +68,19 @@ def execute_statement(snip):
                     test_results.append(output)
                 else:
                     return None
-            else:
+            elif type(output).__name__ in OUTPUT_TYPES:
+                if type(output) == tuple:
+                    output = list(output)
                 test_results.append(output)
+            else:
+                return None
+        elif type(result) == Exception:
+            err = str(result)
+            test_results.append("ERROR: "+err)
         else:
-            # err = str(result)
-            # test_results.append("ERROR: "+err)
-            # For now throwing out the ones where there was an Exception
             return None
+            # For now throwing out the ones where there was an Exception
+            # return None
     rtn = {'expr': snip, 'test_results': test_results}
     return rtn
 
@@ -96,12 +104,17 @@ def execute_statements():
         results.wait()
         result = results.get()
     end_time = time.time()
+    print('before', len(result))
     filtered = list(filter(None, result))
     print(f"Total snips executed: {len(filtered)}")
     print(f"Time taken: {round((end_time - start_time), 2)} secs")
     # For ~6.6K snippets:
     # Time taken: 1.05 secs
     return filtered
+
+# TODO add a method called execute_custom_snippets() that takes in a list of
+# snippets so that we can test that the generate -> execute -> cluster is working
+# properly
 
 if __name__ == '__main__':
     if len(sys.argv) > 1:
@@ -120,7 +133,11 @@ if __name__ == '__main__':
                     OUTPUT_TYPE_FILTER = pd.Series
                 elif "array" in sys.argv[2]:
                     OUTPUT_TYPE_FILTER = np.ndarray
-            generated_args = generate_args(NUM_ARGS)
+            # generated_args = generate_args(NUM_ARGS)
+            ints = [i for i in range(1, 10)]
+            df = pd.DataFrame({'col1':ints, 'col2':ints, 'col3':ints})
+            generated_args = generate_args_from_df(df, n_args=NUM_ARGS)
+            # print(generated_args)
             # print(len(generated_args))
             executions = execute_statements()
             # Save results

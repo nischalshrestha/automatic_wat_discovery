@@ -15,6 +15,7 @@ from rast import *
 NUM_WORKERS = 4
 R_NOTEBOOK_LIST = "../files/filelist_rnb.txt"
 R_LIST = "../files/filelist_r.txt"
+EXPERIMENT_LIST = "../experiments/filelist_r.txt"
 
 flatten = lambda l: [item for sublist in l for item in sublist]
 
@@ -57,6 +58,7 @@ def filter_code_lines(fname, base="../"):
                         # print(snippet, '\n', valid)
                     else:
                         excluded += 1
+                        print(snippet, '\n', valid)
                 except Exception as e:
                     # print(e, snippet)
                     pass
@@ -92,8 +94,9 @@ def filter_code_cells(fname, base="../"):
                             # print(snippet, '\n', valid)
                         else:
                             excluded += 1
+                            # print(snippet, '\n', valid)
                     except Exception as e:
-                        # print('issue parsing code')
+                        # print('issue parsing code',e)
                         pass
     return excluded, snippets
 
@@ -106,6 +109,9 @@ if __name__ == '__main__':
             filter_func = filter_code_cells
         elif language == "script":
             file_list = [f.rstrip() for f in open(R_LIST, "r").readlines()]
+            filter_func = filter_code_lines
+        elif language == "experiments":
+            file_list = [f.rstrip() for f in open(EXPERIMENT_LIST, "r").readlines()]
             filter_func = filter_code_lines
         else:
             print(f"Invalid option {sys.argv[1]}, please enter either 'notebook' or 'script'")

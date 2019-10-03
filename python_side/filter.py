@@ -14,6 +14,7 @@ from pyast import ASTChecker, Normalizer
 NUM_WORKERS = 4
 PYTHON_NOTEBOOK_LIST = "../files/filelist_pynb.txt"
 PYTHON_LIST = "../files/filelist_py.txt"
+EXPERIMENT_LIST = "../experiments/filelist_py.txt"
 
 flatten = lambda l: [item for sublist in l for item in sublist]
 
@@ -104,6 +105,9 @@ if __name__ == '__main__':
             filter_func = filter_code_cells
         elif language == "script":
             file_list = [f.rstrip() for f in open(PYTHON_LIST, "r").readlines()]
+            filter_func = filter_code_lines
+        elif language == "experiments":
+            file_list = [f.rstrip() for f in open(EXPERIMENT_LIST, "r").readlines()]
             filter_func = filter_code_lines
         else:
             print(f"Invalid option {sys.argv[1]}, please enter either 'notebook' or 'script'")

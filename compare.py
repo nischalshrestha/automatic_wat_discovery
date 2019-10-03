@@ -16,6 +16,8 @@ def df_diff(df1, df2):
     # print(df1)
     # print("----")
     # print(df2)
+    if df1.empty or df2.empty:
+        return 0
     row_diff = abs(df1.shape[0] - df2.shape[0])
     col_diff = abs(df1.shape[1] - df2.shape[1])
     diff = df1.eq(df2)
@@ -131,15 +133,17 @@ def compare_df(df1, df2):
         i += 1
         wb += 1
     # print('windows:', windows)
-    overall_score = max(windows)
-    # overall_score = sum(windows)/len(windows)
+    # overall_score = max(windows)
+    overall_score = sum(windows)/len(windows)
     return overall_score
 
 def compare(a, b):
     """
     Given two data a and b, determine and return the semantic similarity score.
     """
-    if (type(a) == int or type(a) == float) and (type(b) == int or type(b) == float) \
+    if (type(a) == str and "ERROR:" in a) or (type(b) == str and "ERROR:" in b):
+        sim_score = 0
+    elif (type(a) == int or type(a) == float) and (type(b) == int or type(b) == float) \
     or (type(a) == bool and type(b) == bool):
         if type(a) == int or type(a) == float:
             sim_score = int(a == b)
@@ -171,6 +175,7 @@ def compare(a, b):
         # print(f'sim_score: {sim_score}')
     elif type(a) == pd.DataFrame and type(b) == pd.DataFrame:
         sim_score = compare_df(a, b)
+        # sim_score = df_diff(a,b)
         # print(f'sim_score: {sim_score}')
     elif type(a) != type(b):
         sim_score = 0

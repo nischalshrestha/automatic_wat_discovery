@@ -7,10 +7,16 @@ import rpy2
 import rpy2.robjects as robjects
 from rpy2.robjects import pandas2ri
 pandas2ri.activate()
+from rpy2.robjects.packages import importr
 
-import sys
+import sys, os
 sys.path.append("../")
-from generate import generate_args, generate_simple_arg
+sys.stderr = open(os.devnull, 'w') # silences all errors
+
+from generate import generate_args, generate_simple_arg, generate_args_from_df
+
+# importr("base")
+# importr("dplyr")
 
 NUM_WORKERS = 4
 R_PICKLE_PATH = '../files/r_dfs.pkl'
@@ -21,6 +27,8 @@ MAX_ARGS = 256 # the max number of arguments
 # we can control the number of execution results that are stored; None by default
 # meaning we accept all types of outputs except for errors.
 OUTPUT_TYPE_FILTER = None 
+# However, we want these types in general if we aren't specifically filtering for a type
+OUTPUT_TYPES = ['DataFrame', 'Series', 'int', 'int64', 'float', 'float64', 'str', 'ndarray', 'list']
 
 flatten = lambda l: [item for sublist in l for item in sublist]
 
@@ -42,7 +50,7 @@ def eval_expr(df, expr):
         robjects.globalenv['mslacc'] = df
         # Rpy2 when evaluating using 'r', returns _something_ no matter what
         # even if expr is just an assignment
-        output = robjects.r(f"""{expr}""")
+        output = robjects.r(f"""library(dplyr); {expr}""")
         # If the output is a NULL it means expression doesn't return anything.
         # For e.g. when setting a column to NULL and deleting it
         # In such a case, simply return the original dataframe as the output
@@ -55,7 +63,7 @@ def eval_expr(df, expr):
         robjects.r("rm(list = ls())") # clear locals after execution
         return expr, output
     except Exception as e:
-        # print(e)
+        print(expr, e)
         return e
     
 def execute_statement(snip):
@@ -73,11 +81,14 @@ def execute_statement(snip):
                     test_results.append(output)
                 else:
                     return None
-            else:
+            elif type(output).__name__ in OUTPUT_TYPES:
                 test_results.append(output)
+            else:
+                return None
+        elif type(result) == Exception:
+            err = str(result)
+            test_results.append("ERROR: "+err)
         else:
-            # err = str(result)
-            # test_results.append("ERROR: "+err)
             return None
     rtn = {'expr': snip, 'test_results': test_results}
     return rtn
@@ -126,7 +137,12 @@ if __name__ == '__main__':
                     OUTPUT_TYPE_FILTER = pd.Series
                 elif "array" in sys.argv[2]:
                     OUTPUT_TYPE_FILTER = np.ndarray
-            generated_args = generate_args(NUM_ARGS, lang="r")
+            # generated_args = generate_args(NUM_ARGS, lang="r")
+            # generated_args = generate_simple_arg(lang="r")
+            ints = [i for i in range(1, 10)]
+            df = pd.DataFrame({'col1':ints, 'col2':ints, 'col3':ints})
+            generated_args = generate_args_from_df(df, n_args=NUM_ARGS, lang="r")
+            # print(generated_args[0])
             executions = execute_statements()
             df_store = DataframeStore(executions)
             pickle.dump(df_store, open(R_PICKLE_PATH, "wb"))

@@ -35,6 +35,7 @@ def construct_df(template: pd.DataFrame, max_row_num: int=100, col_num: int=20) 
     """Construct dataframe based on a template with psuedo-random values"""
     data = OrderedDict()
     n_rows = np.random.randint(1, max_row_num + 1)
+    # n_rows = max_row_num
     for col_name in template.columns.values:
         data[col_name] = generate_series(template, col_name, n_rows)
     return pd.DataFrame(data=data)
@@ -99,11 +100,13 @@ def generate_args(n_args=256, max_rows=100, lang="py"):
         args.append(new_df)
     return args
 
-def generate_arg_from_df(df, lang="py"):
+def generate_args_from_df(df_template, n_args=1, lang="py"):
     """This will create one dataframe based on a supplied dataframe"""
     args = []
+    max_rows = df_template.shape[0]
     for n in range(n_args):
-        new_df = construct_simple_df(df)
+        # new_df = construct_simple_df(df_template)
+        new_df = construct_df(df_template, max_rows)
         if lang == "r":
             new_df = pandas2ri.py2rpy(new_df)
         args.append(new_df)
