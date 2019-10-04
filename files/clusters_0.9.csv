@@ -1,0 +1,974 @@
+Python,R,Python result,R result,Row Diff,Col Diff,Semantic,Largest Common,Edit Distance
+"mslacc.loc[:, 'col1':'col3']","arrange(mslacc, desc(col1))","   col1  col2  col3
+0     0  ID_4     5","   col0  col1  col2  col3
+1     3     0  ID_4     5",0,1,1.0,"Row: 0:0, Col: 1:3",0.538
+"mslacc.loc[:, 'col1':'col3']","mslacc[1:7, ]","   col1  col2  col3
+0     0  ID_4     5","            col0        col1  col2        col3
+0              3           0  ID_4           5
+NA   -2147483648 -2147483648    NA -2147483648
+NA.1 -2147483648 -2147483648    NA -2147483648
+NA.2 -2147483648 -2147483648    NA -2147483648
+NA.3 -2147483648 -2147483648    NA -2147483648
+NA.4 -2147483648 -2147483648    NA -2147483648
+NA.5 -2147483648 -2147483648    NA -2147483648",6,1,1.0,"Row: 0:0, Col: 1:3",0.694
+"mslacc.loc[:, 'col1':'col3']","select(mslacc, -c(col1, col2))","   col1  col2  col3
+0     0  ID_4     5","   col0  col3
+0     3     5",0,1,0.5,"Row: 0:0, Col: 1:2",0.586
+"mslacc.loc[:, 'col1':'col3']","mslacc[mslacc$col1 == 1 & mslacc$col3 == 1, ]","   col1  col2  col3
+0     0  ID_4     5","   col0  col1  col2  col3
+5     2     1  ID_4     1",0,1,0.333,"Row: 0:0, Col: 1:3",0.63
+"mslacc.loc[:, 'col1':'col3']",head(mslacc),"   col1  col2  col3
+0     0  ID_4     5","   col0  col1  col2  col3
+0     3     0  ID_4     5",0,1,1.0,"Row: 0:0, Col: 1:3",0.463
+"mslacc.loc[:, 'col1':'col3']","filter(mslacc, col1 == 1, col3 == 1)","   col1  col2  col3
+0     0  ID_4     5","   col0  col1  col2  col3
+1     2     1  ID_4     1",0,1,0.333,"Row: 0:0, Col: 1:3",0.573
+"mslacc.loc[:, 'col1':'col3']","select(mslacc, col1:col3)","   col1  col2  col3
+0     0  ID_4     5","   col1  col2  col3
+0     0  ID_4     5",0,0,1.0,"Row: 0:0, Col: 0:2",0.657
+"mslacc.loc[:, 'col1':'col3']","select(mslacc, col1, col2)","   col1  col2  col3
+0     0  ID_4     5","   col1  col2
+0     0  ID_4",0,1,1.0,"Row: 0:0, Col: 0:1",0.597
+"mslacc.loc[:, 'col1':'col3']","distinct(select(mslacc, col1, col2))","   col1  col2  col3
+0     0  ID_4     5","   col1  col2
+1     0  ID_4",0,1,1.0,"Row: 0:0, Col: 0:1",0.548
+"mslacc.loc[:, 'col1':'col3']","arrange(mslacc, col1, col2)","   col1  col2  col3
+0     0  ID_4     5","   col0  col1  col2  col3
+1     3     0  ID_4     5",0,1,1.0,"Row: 0:0, Col: 1:3",0.55
+"mslacc.loc[:, 'col1':'col3']","distinct(select(mslacc, col1))","   col1  col2  col3
+0     0  ID_4     5","   col1
+1     0",0,2,1.0,"Row: 0:0, Col: 0:0",0.508
+"mslacc.loc[:, 'col1':'col3']","mslacc[1:5, 1:3]","   col1  col2  col3
+0     0  ID_4     5","            col0        col1  col2
+0              4           5  ID_4
+1              0           8  ID_4
+NA   -2147483648 -2147483648    NA
+NA.1 -2147483648 -2147483648    NA
+NA.2 -2147483648 -2147483648    NA",4,0,0.333,"Row: 1:1, Col: 0:2",0.714
+"mslacc.loc[:, 'col1':'col3']","mslacc[1:8, ]","   col1  col2  col3
+0     0  ID_4     5","            col0        col1  col2        col3
+0              3           0  ID_4           5
+NA   -2147483648 -2147483648    NA -2147483648
+NA.1 -2147483648 -2147483648    NA -2147483648
+NA.2 -2147483648 -2147483648    NA -2147483648
+NA.3 -2147483648 -2147483648    NA -2147483648
+NA.4 -2147483648 -2147483648    NA -2147483648
+NA.5 -2147483648 -2147483648    NA -2147483648
+NA.6 -2147483648 -2147483648    NA -2147483648",7,1,1.0,"Row: 0:0, Col: 1:3",0.694
+"mslacc.sort_values('col1', ascending=False)","arrange(mslacc, desc(col1))","   col0  col1  col2  col3
+0     3     0  ID_4     5","   col0  col1  col2  col3
+1     3     0  ID_4     5",0,0,1.0,"Row: 0:0, Col: 0:3",0.55
+"mslacc.sort_values('col1', ascending=False)","mslacc[1:7, ]","   col0  col1  col2  col3
+0     3     0  ID_4     5","            col0        col1  col2        col3
+0              3           0  ID_4           5
+NA   -2147483648 -2147483648    NA -2147483648
+NA.1 -2147483648 -2147483648    NA -2147483648
+NA.2 -2147483648 -2147483648    NA -2147483648
+NA.3 -2147483648 -2147483648    NA -2147483648
+NA.4 -2147483648 -2147483648    NA -2147483648
+NA.5 -2147483648 -2147483648    NA -2147483648",6,0,1.0,"Row: 0:0, Col: 0:3",0.548
+"mslacc.sort_values('col1', ascending=False)","select(mslacc, -c(col1, col2))","   col0  col1  col2  col3
+0     3     0  ID_4     5","   col0  col3
+0     3     5",0,2,0.5,"Row: 0:0, Col: 0:1",0.58
+"mslacc.sort_values('col1', ascending=False)","mslacc[mslacc$col1 == 1 & mslacc$col3 == 1, ]","   col0  col1  col2  col3
+0     3     0  ID_4     5","   col0  col1  col2  col3
+5     2     1  ID_4     1",0,0,0.25,"Row: 0:0, Col: 0:3",0.568
+"mslacc.sort_values('col1', ascending=False)",head(mslacc),"   col0  col1  col2  col3
+0     3     0  ID_4     5","   col0  col1  col2  col3
+0     3     0  ID_4     5",0,0,1.0,"Row: 0:0, Col: 0:3",0.417
+"mslacc.sort_values('col1', ascending=False)","filter(mslacc, col1 == 1, col3 == 1)","   col0  col1  col2  col3
+0     3     0  ID_4     5","   col0  col1  col2  col3
+1     2     1  ID_4     1",0,0,0.25,"Row: 0:0, Col: 0:3",0.598
+"mslacc.sort_values('col1', ascending=False)","select(mslacc, col1:col3)","   col0  col1  col2  col3
+0     3     0  ID_4     5","   col1  col2  col3
+0     0  ID_4     5",0,1,1.0,"Row: 0:0, Col: 1:3",0.567
+"mslacc.sort_values('col1', ascending=False)","select(mslacc, col1, col2)","   col0  col1  col2  col3
+0     3     0  ID_4     5","   col1  col2
+0     0  ID_4",0,2,1.0,"Row: 0:0, Col: 1:2",0.567
+"mslacc.sort_values('col1', ascending=False)","distinct(select(mslacc, col1, col2))","   col0  col1  col2  col3
+0     3     0  ID_4     5","   col1  col2
+1     0  ID_4",0,2,1.0,"Row: 0:0, Col: 1:2",0.58
+"mslacc.sort_values('col1', ascending=False)","arrange(mslacc, col1, col2)","   col0  col1  col2  col3
+0     3     0  ID_4     5","   col0  col1  col2  col3
+1     3     0  ID_4     5",0,0,1.0,"Row: 0:0, Col: 0:3",0.55
+"mslacc.sort_values('col1', ascending=False)","distinct(select(mslacc, col1))","   col0  col1  col2  col3
+0     3     0  ID_4     5","   col1
+1     0",0,3,1.0,"Row: 0:0, Col: 1:1",0.563
+"mslacc.sort_values('col1', ascending=False)","mslacc[1:5, 1:3]","   col0  col1  col2  col3
+0     3     0  ID_4     5","            col0        col1  col2
+0              3           0  ID_4
+NA   -2147483648 -2147483648    NA
+NA.1 -2147483648 -2147483648    NA
+NA.2 -2147483648 -2147483648    NA
+NA.3 -2147483648 -2147483648    NA",4,1,1.0,"Row: 4:4, Col: 0:2",0.514
+"mslacc.sort_values('col1', ascending=False)","mslacc[1:8, ]","   col0  col1  col2  col3
+0     3     0  ID_4     5","            col0        col1  col2        col3
+0              3           0  ID_4           5
+NA   -2147483648 -2147483648    NA -2147483648
+NA.1 -2147483648 -2147483648    NA -2147483648
+NA.2 -2147483648 -2147483648    NA -2147483648
+NA.3 -2147483648 -2147483648    NA -2147483648
+NA.4 -2147483648 -2147483648    NA -2147483648
+NA.5 -2147483648 -2147483648    NA -2147483648
+NA.6 -2147483648 -2147483648    NA -2147483648",7,0,1.0,"Row: 0:0, Col: 0:3",0.548
+mslacc.iloc[:8],"arrange(mslacc, desc(col1))","   col0  col1  col2  col3
+0     3     0  ID_4     5","   col0  col1  col2  col3
+1     3     0  ID_4     5",0,0,1.0,"Row: 0:0, Col: 0:3",0.483
+mslacc.iloc[:8],"mslacc[1:7, ]","   col0  col1  col2  col3
+0     3     0  ID_4     5","            col0        col1  col2        col3
+0              3           0  ID_4           5
+NA   -2147483648 -2147483648    NA -2147483648
+NA.1 -2147483648 -2147483648    NA -2147483648
+NA.2 -2147483648 -2147483648    NA -2147483648
+NA.3 -2147483648 -2147483648    NA -2147483648
+NA.4 -2147483648 -2147483648    NA -2147483648
+NA.5 -2147483648 -2147483648    NA -2147483648",6,0,1.0,"Row: 0:0, Col: 0:3",0.783
+mslacc.iloc[:8],"select(mslacc, -c(col1, col2))","   col0  col1  col2  col3
+0     3     0  ID_4     5","   col0  col3
+0     3     5",0,2,0.5,"Row: 0:0, Col: 0:1",0.461
+mslacc.iloc[:8],"mslacc[mslacc$col1 == 1 & mslacc$col3 == 1, ]","   col0  col1  col2  col3
+0     3     0  ID_4     5","   col0  col1  col2  col3
+5     2     1  ID_4     1",0,0,0.25,"Row: 0:0, Col: 0:3",0.593
+mslacc.iloc[:8],head(mslacc),"   col0  col1  col2  col3
+0     3     0  ID_4     5","   col0  col1  col2  col3
+0     3     0  ID_4     5",0,0,1.0,"Row: 0:0, Col: 0:3",0.522
+mslacc.iloc[:8],"filter(mslacc, col1 == 1, col3 == 1)","   col0  col1  col2  col3
+0     3     0  ID_4     5","   col0  col1  col2  col3
+1     2     1  ID_4     1",0,0,0.25,"Row: 0:0, Col: 0:3",0.5
+mslacc.iloc[:8],"select(mslacc, col1:col3)","   col0  col1  col2  col3
+0     3     0  ID_4     5","   col1  col2  col3
+0     0  ID_4     5",0,1,1.0,"Row: 0:0, Col: 1:3",0.544
+mslacc.iloc[:8],"select(mslacc, col1, col2)","   col0  col1  col2  col3
+0     3     0  ID_4     5","   col1  col2
+0     0  ID_4",0,2,1.0,"Row: 0:0, Col: 1:2",0.492
+mslacc.iloc[:8],"distinct(select(mslacc, col1, col2))","   col0  col1  col2  col3
+0     3     0  ID_4     5","   col1  col2
+1     0  ID_4",0,2,1.0,"Row: 0:0, Col: 1:2",0.327
+mslacc.iloc[:8],"arrange(mslacc, col1, col2)","   col0  col1  col2  col3
+0     3     0  ID_4     5","   col0  col1  col2  col3
+1     3     0  ID_4     5",0,0,1.0,"Row: 0:0, Col: 0:3",0.493
+mslacc.iloc[:8],"distinct(select(mslacc, col1))","   col0  col1  col2  col3
+0     3     0  ID_4     5","   col1
+1     0",0,3,1.0,"Row: 0:0, Col: 1:1",0.335
+mslacc.iloc[:8],"mslacc[1:5, 1:3]","   col0  col1  col2  col3
+0     3     0  ID_4     5","            col0        col1  col2
+0              3           0  ID_4
+NA   -2147483648 -2147483648    NA
+NA.1 -2147483648 -2147483648    NA
+NA.2 -2147483648 -2147483648    NA
+NA.3 -2147483648 -2147483648    NA",4,1,1.0,"Row: 4:4, Col: 0:2",0.733
+mslacc.iloc[:8],"mslacc[1:8, ]","   col0  col1  col2  col3
+0     3     0  ID_4     5","            col0        col1  col2        col3
+0              3           0  ID_4           5
+NA   -2147483648 -2147483648    NA -2147483648
+NA.1 -2147483648 -2147483648    NA -2147483648
+NA.2 -2147483648 -2147483648    NA -2147483648
+NA.3 -2147483648 -2147483648    NA -2147483648
+NA.4 -2147483648 -2147483648    NA -2147483648
+NA.5 -2147483648 -2147483648    NA -2147483648
+NA.6 -2147483648 -2147483648    NA -2147483648",7,0,1.0,"Row: 0:0, Col: 0:3",0.833
+"mslacc[['col1', 'col2']].drop_duplicates()","arrange(mslacc, desc(col1))","   col1  col2
+0     0  ID_4","   col0  col1  col2  col3
+1     3     0  ID_4     5",0,2,1.0,"Row: 0:0, Col: 1:2",0.465
+"mslacc[['col1', 'col2']].drop_duplicates()","mslacc[1:7, ]","   col1  col2
+0     0  ID_4","            col0        col1  col2        col3
+0              3           0  ID_4           5
+NA   -2147483648 -2147483648    NA -2147483648
+NA.1 -2147483648 -2147483648    NA -2147483648
+NA.2 -2147483648 -2147483648    NA -2147483648
+NA.3 -2147483648 -2147483648    NA -2147483648
+NA.4 -2147483648 -2147483648    NA -2147483648
+NA.5 -2147483648 -2147483648    NA -2147483648",6,2,1.0,"Row: 0:0, Col: 1:2",0.657
+"mslacc[['col1', 'col2']].drop_duplicates()","select(mslacc, -c(col1, col2))","   col1  col2
+0     0  ID_4","   col0  col3
+0     4     1
+1     9     5
+2     2     4
+3     9     1
+4     6     0
+5     4     1
+6     1     3
+7     0     1
+8     7     1",8,0,0.5,"Row: 7:7, Col: 0:1",0.546
+"mslacc[['col1', 'col2']].drop_duplicates()","mslacc[mslacc$col1 == 1 & mslacc$col3 == 1, ]","   col1  col2
+0     0  ID_4","   col0  col1  col2  col3
+5     2     1  ID_4     1",0,2,0.5,"Row: 0:0, Col: 1:2",0.558
+"mslacc[['col1', 'col2']].drop_duplicates()",head(mslacc),"   col1  col2
+0     0  ID_4","   col0  col1  col2  col3
+0     3     0  ID_4     5",0,2,1.0,"Row: 0:0, Col: 1:2",0.438
+"mslacc[['col1', 'col2']].drop_duplicates()","filter(mslacc, col1 == 1, col3 == 1)","   col1  col2
+0     0  ID_4","   col0  col1  col2  col3
+1     2     1  ID_4     1",0,2,0.5,"Row: 0:0, Col: 1:2",0.495
+"mslacc[['col1', 'col2']].drop_duplicates()","select(mslacc, col1:col3)","   col1  col2
+0     0  ID_4","   col1  col2  col3
+0     0  ID_4     5",0,1,1.0,"Row: 0:0, Col: 0:1",0.508
+"mslacc[['col1', 'col2']].drop_duplicates()","select(mslacc, col1, col2)","   col1  col2
+0     0  ID_4","   col1  col2
+0     0  ID_4",0,0,1.0,"Row: 0:0, Col: 0:1",0.519
+"mslacc[['col1', 'col2']].drop_duplicates()","distinct(select(mslacc, col1, col2))","   col1  col2
+0     0  ID_4","   col1  col2
+1     0  ID_4",0,0,1.0,"Row: 0:0, Col: 0:1",0.517
+"mslacc[['col1', 'col2']].drop_duplicates()","arrange(mslacc, col1, col2)","   col1  col2
+0     0  ID_4","   col0  col1  col2  col3
+1     3     0  ID_4     5",0,2,1.0,"Row: 0:0, Col: 1:2",0.555
+"mslacc[['col1', 'col2']].drop_duplicates()","distinct(select(mslacc, col1))","   col1  col2
+0     0  ID_4","   col1
+1     0",0,1,1.0,"Row: 0:0, Col: 0:0",0.473
+"mslacc[['col1', 'col2']].drop_duplicates()","mslacc[1:5, 1:3]","   col1  col2
+0     0  ID_4","            col0        col1  col2
+0              3           0  ID_4
+NA   -2147483648 -2147483648    NA
+NA.1 -2147483648 -2147483648    NA
+NA.2 -2147483648 -2147483648    NA
+NA.3 -2147483648 -2147483648    NA",4,1,1.0,"Row: 0:0, Col: 1:2",0.637
+"mslacc[['col1', 'col2']].drop_duplicates()","mslacc[1:8, ]","   col1  col2
+0     0  ID_4","            col0        col1  col2        col3
+0              3           0  ID_4           5
+NA   -2147483648 -2147483648    NA -2147483648
+NA.1 -2147483648 -2147483648    NA -2147483648
+NA.2 -2147483648 -2147483648    NA -2147483648
+NA.3 -2147483648 -2147483648    NA -2147483648
+NA.4 -2147483648 -2147483648    NA -2147483648
+NA.5 -2147483648 -2147483648    NA -2147483648
+NA.6 -2147483648 -2147483648    NA -2147483648",7,2,1.0,"Row: 0:0, Col: 1:2",0.657
+mslacc.iloc[:7],"arrange(mslacc, desc(col1))","   col0  col1  col2  col3
+0     3     0  ID_4     5","   col0  col1  col2  col3
+1     3     0  ID_4     5",0,0,1.0,"Row: 0:0, Col: 0:3",0.483
+mslacc.iloc[:7],"mslacc[1:7, ]","   col0  col1  col2  col3
+0     3     0  ID_4     5","            col0        col1  col2        col3
+0              3           0  ID_4           5
+NA   -2147483648 -2147483648    NA -2147483648
+NA.1 -2147483648 -2147483648    NA -2147483648
+NA.2 -2147483648 -2147483648    NA -2147483648
+NA.3 -2147483648 -2147483648    NA -2147483648
+NA.4 -2147483648 -2147483648    NA -2147483648
+NA.5 -2147483648 -2147483648    NA -2147483648",6,0,1.0,"Row: 0:0, Col: 0:3",0.833
+mslacc.iloc[:7],"select(mslacc, -c(col1, col2))","   col0  col1  col2  col3
+0     3     0  ID_4     5","   col0  col3
+0     3     5",0,2,0.5,"Row: 0:0, Col: 0:1",0.461
+mslacc.iloc[:7],"mslacc[mslacc$col1 == 1 & mslacc$col3 == 1, ]","   col0  col1  col2  col3
+0     3     0  ID_4     5","   col0  col1  col2  col3
+5     2     1  ID_4     1",0,0,0.25,"Row: 0:0, Col: 0:3",0.593
+mslacc.iloc[:7],head(mslacc),"   col0  col1  col2  col3
+0     3     0  ID_4     5","   col0  col1  col2  col3
+0     3     0  ID_4     5",0,0,1.0,"Row: 0:0, Col: 0:3",0.522
+mslacc.iloc[:7],"filter(mslacc, col1 == 1, col3 == 1)","   col0  col1  col2  col3
+0     3     0  ID_4     5","   col0  col1  col2  col3
+1     2     1  ID_4     1",0,0,0.25,"Row: 0:0, Col: 0:3",0.5
+mslacc.iloc[:7],"select(mslacc, col1:col3)","   col0  col1  col2  col3
+0     3     0  ID_4     5","   col1  col2  col3
+0     0  ID_4     5",0,1,1.0,"Row: 0:0, Col: 1:3",0.544
+mslacc.iloc[:7],"select(mslacc, col1, col2)","   col0  col1  col2  col3
+0     3     0  ID_4     5","   col1  col2
+0     0  ID_4",0,2,1.0,"Row: 0:0, Col: 1:2",0.492
+mslacc.iloc[:7],"distinct(select(mslacc, col1, col2))","   col0  col1  col2  col3
+0     3     0  ID_4     5","   col1  col2
+1     0  ID_4",0,2,1.0,"Row: 0:0, Col: 1:2",0.327
+mslacc.iloc[:7],"arrange(mslacc, col1, col2)","   col0  col1  col2  col3
+0     3     0  ID_4     5","   col0  col1  col2  col3
+1     3     0  ID_4     5",0,0,1.0,"Row: 0:0, Col: 0:3",0.493
+mslacc.iloc[:7],"distinct(select(mslacc, col1))","   col0  col1  col2  col3
+0     3     0  ID_4     5","   col1
+1     0",0,3,1.0,"Row: 0:0, Col: 1:1",0.335
+mslacc.iloc[:7],"mslacc[1:5, 1:3]","   col0  col1  col2  col3
+0     3     0  ID_4     5","            col0        col1  col2
+0              3           0  ID_4
+NA   -2147483648 -2147483648    NA
+NA.1 -2147483648 -2147483648    NA
+NA.2 -2147483648 -2147483648    NA
+NA.3 -2147483648 -2147483648    NA",4,1,1.0,"Row: 4:4, Col: 0:2",0.733
+mslacc.iloc[:7],"mslacc[1:8, ]","   col0  col1  col2  col3
+0     3     0  ID_4     5","            col0        col1  col2        col3
+0              3           0  ID_4           5
+NA   -2147483648 -2147483648    NA -2147483648
+NA.1 -2147483648 -2147483648    NA -2147483648
+NA.2 -2147483648 -2147483648    NA -2147483648
+NA.3 -2147483648 -2147483648    NA -2147483648
+NA.4 -2147483648 -2147483648    NA -2147483648
+NA.5 -2147483648 -2147483648    NA -2147483648
+NA.6 -2147483648 -2147483648    NA -2147483648",7,0,1.0,"Row: 0:0, Col: 0:3",0.783
+mslacc.shape,dim(mslacc),"[1, 4]",[1 4],,,1.0,,0.682
+mslacc.shape,"mslacc[[""col1""]]","[1, 4]",[7 7 5 2 2 0 0 2 1],,,0.167,,0.625
+mslacc.shape,"dim(mslacc[c(""col1"")])","[1, 4]",[1 1],,,0.5,,0.591
+mslacc.shape,"mslacc[2, ""col1""]","[1, 4]",[4],,,0.5,,0.625
+"mslacc[['col1', 'col2']]","arrange(mslacc, desc(col1))","   col1  col2
+0     0  ID_4","   col0  col1  col2  col3
+1     3     0  ID_4     5",0,2,1.0,"Row: 0:0, Col: 1:2",0.522
+"mslacc[['col1', 'col2']]","mslacc[1:7, ]","   col1  col2
+0     0  ID_4","            col0        col1  col2        col3
+0              3           0  ID_4           5
+NA   -2147483648 -2147483648    NA -2147483648
+NA.1 -2147483648 -2147483648    NA -2147483648
+NA.2 -2147483648 -2147483648    NA -2147483648
+NA.3 -2147483648 -2147483648    NA -2147483648
+NA.4 -2147483648 -2147483648    NA -2147483648
+NA.5 -2147483648 -2147483648    NA -2147483648",6,2,1.0,"Row: 0:0, Col: 1:2",0.714
+"mslacc[['col1', 'col2']]","select(mslacc, -c(col1, col2))","   col1  col2
+0     0  ID_4","   col0  col3
+0     4     1
+1     9     5
+2     2     4
+3     9     1
+4     6     0
+5     4     1
+6     1     3
+7     0     1
+8     7     1",8,0,0.5,"Row: 7:7, Col: 0:1",0.574
+"mslacc[['col1', 'col2']]","mslacc[mslacc$col1 == 1 & mslacc$col3 == 1, ]","   col1  col2
+0     0  ID_4","   col0  col1  col2  col3
+5     2     1  ID_4     1",0,2,0.5,"Row: 0:0, Col: 1:2",0.559
+"mslacc[['col1', 'col2']]",head(mslacc),"   col1  col2
+0     0  ID_4","   col0  col1  col2  col3
+0     3     0  ID_4     5",0,2,1.0,"Row: 0:0, Col: 1:2",0.476
+"mslacc[['col1', 'col2']]","filter(mslacc, col1 == 1, col3 == 1)","   col1  col2
+0     0  ID_4","   col0  col1  col2  col3
+1     2     1  ID_4     1",0,2,0.5,"Row: 0:0, Col: 1:2",0.525
+"mslacc[['col1', 'col2']]","select(mslacc, col1:col3)","   col1  col2
+0     0  ID_4","   col1  col2  col3
+0     0  ID_4     5",0,1,1.0,"Row: 0:0, Col: 0:1",0.564
+"mslacc[['col1', 'col2']]","select(mslacc, col1, col2)","   col1  col2
+0     0  ID_4","   col1  col2
+0     0  ID_4",0,0,1.0,"Row: 0:0, Col: 0:1",0.604
+"mslacc[['col1', 'col2']]","distinct(select(mslacc, col1, col2))","   col1  col2
+0     0  ID_4","   col1  col2
+1     0  ID_4",0,0,1.0,"Row: 0:0, Col: 0:1",0.51
+"mslacc[['col1', 'col2']]","arrange(mslacc, col1, col2)","   col1  col2
+0     0  ID_4","   col0  col1  col2  col3
+1     3     0  ID_4     5",0,2,1.0,"Row: 0:0, Col: 1:2",0.651
+"mslacc[['col1', 'col2']]","distinct(select(mslacc, col1))","   col1  col2
+0     0  ID_4","   col1
+1     0",0,1,1.0,"Row: 0:0, Col: 0:0",0.493
+"mslacc[['col1', 'col2']]","mslacc[1:5, 1:3]","   col1  col2
+0     0  ID_4","            col0        col1  col2
+0              3           0  ID_4
+NA   -2147483648 -2147483648    NA
+NA.1 -2147483648 -2147483648    NA
+NA.2 -2147483648 -2147483648    NA
+NA.3 -2147483648 -2147483648    NA",4,1,1.0,"Row: 0:0, Col: 1:2",0.7
+"mslacc[['col1', 'col2']]","mslacc[1:8, ]","   col1  col2
+0     0  ID_4","            col0        col1  col2        col3
+0              3           0  ID_4           5
+NA   -2147483648 -2147483648    NA -2147483648
+NA.1 -2147483648 -2147483648    NA -2147483648
+NA.2 -2147483648 -2147483648    NA -2147483648
+NA.3 -2147483648 -2147483648    NA -2147483648
+NA.4 -2147483648 -2147483648    NA -2147483648
+NA.5 -2147483648 -2147483648    NA -2147483648
+NA.6 -2147483648 -2147483648    NA -2147483648",7,2,1.0,"Row: 0:0, Col: 1:2",0.714
+"mslacc.loc[1:2, ('col1')]",dim(mslacc),"1    7
+2    5
+Name: col1, dtype: int64",[5 4],,,0.333,,0.598
+"mslacc.loc[1:2, ('col1')]","mslacc[[""col1""]]","1    7
+2    5
+Name: col1, dtype: int64",[7 7 5 2 2 0 0 2 1],,,0.4,,0.694
+"mslacc.loc[1:2, ('col1')]","dim(mslacc[c(""col1"")])","1    7
+2    5
+Name: col1, dtype: int64",[5 1],,,0.333,,0.691
+"mslacc.loc[1:2, ('col1')]","mslacc[2, ""col1""]","1    7
+2    5
+Name: col1, dtype: int64",[7],,,0.5,,0.736
+mslacc[['col1']].drop_duplicates(),"arrange(mslacc, desc(col1))","   col1
+0     0","   col0  col1  col2  col3
+1     3     0  ID_4     5",0,3,1.0,"Row: 0:0, Col: 1:1",0.519
+mslacc[['col1']].drop_duplicates(),"mslacc[1:7, ]","   col1
+0     0","            col0        col1  col2        col3
+0              3           0  ID_4           5
+NA   -2147483648 -2147483648    NA -2147483648
+NA.1 -2147483648 -2147483648    NA -2147483648
+NA.2 -2147483648 -2147483648    NA -2147483648
+NA.3 -2147483648 -2147483648    NA -2147483648
+NA.4 -2147483648 -2147483648    NA -2147483648
+NA.5 -2147483648 -2147483648    NA -2147483648",6,3,1.0,"Row: 0:0, Col: 1:1",0.672
+mslacc[['col1']].drop_duplicates(),"select(mslacc, -c(col1, col2))","   col1
+0     0","   col0  col3
+0     4     1
+1     9     5
+2     2     4
+3     9     1
+4     6     0
+5     4     1
+6     1     3
+7     0     1
+8     7     1",8,1,1.0,"Row: 4:4, Col: 1:1",0.482
+mslacc[['col1']].drop_duplicates(),"mslacc[mslacc$col1 == 1 & mslacc$col3 == 1, ]","   col1
+0     0","   col0  col1  col2  col3
+0     0     1  ID_7     1
+8     5     1  ID_6     1",1,3,1.0,"Row: 0:0, Col: 0:0",0.547
+mslacc[['col1']].drop_duplicates(),head(mslacc),"   col1
+0     0","   col0  col1  col2  col3
+0     3     0  ID_4     5",0,3,1.0,"Row: 0:0, Col: 1:1",0.448
+mslacc[['col1']].drop_duplicates(),"filter(mslacc, col1 == 1, col3 == 1)","   col1
+0     0","   col0  col1  col2  col3
+1     0     1  ID_7     1
+2     5     1  ID_6     1",1,3,1.0,"Row: 0:0, Col: 0:0",0.492
+mslacc[['col1']].drop_duplicates(),"select(mslacc, col1:col3)","   col1
+0     0","   col1  col2  col3
+0     0  ID_4     5",0,2,1.0,"Row: 0:0, Col: 0:0",0.51
+mslacc[['col1']].drop_duplicates(),"select(mslacc, col1, col2)","   col1
+0     0","   col1  col2
+0     0  ID_4",0,1,1.0,"Row: 0:0, Col: 0:0",0.51
+mslacc[['col1']].drop_duplicates(),"distinct(select(mslacc, col1, col2))","   col1
+0     0","   col1  col2
+1     0  ID_4",0,1,1.0,"Row: 0:0, Col: 0:0",0.538
+mslacc[['col1']].drop_duplicates(),"arrange(mslacc, col1, col2)","   col1
+0     0","   col0  col1  col2  col3
+1     3     0  ID_4     5",0,3,1.0,"Row: 0:0, Col: 1:1",0.574
+mslacc[['col1']].drop_duplicates(),"distinct(select(mslacc, col1))","   col1
+0     0","   col1
+1     0",0,0,1.0,"Row: 0:0, Col: 0:0",0.524
+mslacc[['col1']].drop_duplicates(),"mslacc[1:5, 1:3]","   col1
+0     0","            col0        col1  col2
+0              3           0  ID_4
+NA   -2147483648 -2147483648    NA
+NA.1 -2147483648 -2147483648    NA
+NA.2 -2147483648 -2147483648    NA
+NA.3 -2147483648 -2147483648    NA",4,2,1.0,"Row: 0:0, Col: 1:1",0.622
+mslacc[['col1']].drop_duplicates(),"mslacc[1:8, ]","   col1
+0     0","            col0        col1  col2        col3
+0              3           0  ID_4           5
+NA   -2147483648 -2147483648    NA -2147483648
+NA.1 -2147483648 -2147483648    NA -2147483648
+NA.2 -2147483648 -2147483648    NA -2147483648
+NA.3 -2147483648 -2147483648    NA -2147483648
+NA.4 -2147483648 -2147483648    NA -2147483648
+NA.5 -2147483648 -2147483648    NA -2147483648
+NA.6 -2147483648 -2147483648    NA -2147483648",7,3,1.0,"Row: 0:0, Col: 1:1",0.672
+mslacc.query('col1 == 1 & col3 == 1'),"arrange(mslacc, desc(col1))","   col0  col1  col2  col3
+8     7     1  ID_1     1","   col0  col1  col2  col3
+1     4     7  ID_7     1
+2     9     7  ID_6     5
+3     2     5  ID_5     4
+4     9     2  ID_4     1
+5     6     2  ID_5     0
+6     0     2  ID_3     1
+7     7     1  ID_1     1
+8     4     0  ID_7     1
+9     1     0  ID_5     3",8,0,1.0,"Row: 6:6, Col: 0:3",0.542
+mslacc.query('col1 == 1 & col3 == 1'),"mslacc[1:7, ]","   col0  col1  col2  col3
+8     7     1  ID_1     1","   col0  col1  col2  col3
+0     4     7  ID_7     1
+1     9     7  ID_6     5
+2     2     5  ID_5     4
+3     9     2  ID_4     1
+4     6     2  ID_5     0
+5     4     0  ID_7     1
+6     1     0  ID_5     3",6,0,0.25,"Row: 0:0, Col: 0:3",0.565
+mslacc.query('col1 == 1 & col3 == 1'),"select(mslacc, -c(col1, col2))","   col0  col1  col2  col3
+8     7     1  ID_1     1","   col0  col3
+0     4     1
+1     9     5
+2     2     4
+3     9     1
+4     6     0
+5     4     1
+6     1     3
+7     0     1
+8     7     1",8,2,1.0,"Row: 0:0, Col: 0:1",0.55
+mslacc.query('col1 == 1 & col3 == 1'),"mslacc[mslacc$col1 == 1 & mslacc$col3 == 1, ]","   col0  col1  col2  col3
+8     7     1  ID_1     1","   col0  col1  col2  col3
+8     7     1  ID_1     1",0,0,1.0,"Row: 0:0, Col: 0:3",0.656
+mslacc.query('col1 == 1 & col3 == 1'),head(mslacc),"   col0  col1  col2  col3
+8     7     1  ID_1     1","   col0  col1  col2  col3
+0     4     7  ID_7     1
+1     9     7  ID_6     5
+2     2     5  ID_5     4
+3     9     2  ID_4     1
+4     6     2  ID_5     0
+5     4     0  ID_7     1",5,0,0.25,"Row: 0:0, Col: 0:3",0.453
+mslacc.query('col1 == 1 & col3 == 1'),"filter(mslacc, col1 == 1, col3 == 1)","   col0  col1  col2  col3
+8     7     1  ID_1     1","   col0  col1  col2  col3
+1     7     1  ID_1     1",0,0,1.0,"Row: 0:0, Col: 0:3",0.726
+mslacc.query('col1 == 1 & col3 == 1'),"select(mslacc, col1:col3)","   col0  col1  col2  col3
+8     7     1  ID_1     1","   col1  col2  col3
+0     7  ID_7     1
+1     7  ID_6     5
+2     5  ID_5     4
+3     2  ID_4     1
+4     2  ID_5     0
+5     0  ID_7     1
+6     0  ID_5     3
+7     2  ID_3     1
+8     1  ID_1     1",8,1,1.0,"Row: 0:0, Col: 1:3",0.615
+mslacc.query('col1 == 1 & col3 == 1'),"select(mslacc, col1, col2)","   col0  col1  col2  col3
+8     7     1  ID_1     1","   col1  col2
+0     7  ID_7
+1     7  ID_6
+2     5  ID_5
+3     2  ID_4
+4     2  ID_5
+5     0  ID_7
+6     0  ID_5
+7     2  ID_3
+8     1  ID_1",8,2,1.0,"Row: 0:0, Col: 1:2",0.582
+mslacc.query('col1 == 1 & col3 == 1'),"distinct(select(mslacc, col1, col2))","   col0  col1  col2  col3
+8     7     1  ID_1     1","   col1  col2
+1     7  ID_7
+2     7  ID_6
+3     5  ID_5
+4     2  ID_4
+5     2  ID_5
+6     0  ID_7
+7     0  ID_5
+8     2  ID_3
+9     1  ID_1",8,2,1.0,"Row: 0:0, Col: 1:2",0.516
+mslacc.query('col1 == 1 & col3 == 1'),"arrange(mslacc, col1, col2)","   col0  col1  col2  col3
+8     7     1  ID_1     1","   col0  col1  col2  col3
+1     1     0  ID_5     3
+2     4     0  ID_7     1
+3     7     1  ID_1     1
+4     0     2  ID_3     1
+5     9     2  ID_4     1
+6     6     2  ID_5     0
+7     2     5  ID_5     4
+8     9     7  ID_6     5
+9     4     7  ID_7     1",8,0,1.0,"Row: 2:2, Col: 0:3",0.655
+mslacc.query('col1 == 1 & col3 == 1'),"distinct(select(mslacc, col1))","   col0  col1  col2  col3
+8     7     1  ID_1     1","   col1
+1     7
+2     5
+3     2
+4     0
+5     1",4,3,1.0,"Row: 0:0, Col: 1:1",0.482
+mslacc.query('col1 == 1 & col3 == 1'),"mslacc[1:5, 1:3]","   col0  col1  col2  col3
+8     7     1  ID_1     1","   col0  col1  col2
+0     1     7  ID_3
+1     5     4  ID_1
+2     8     4  ID_8
+3     1     8  ID_8
+4     5     7  ID_8",4,1,0.333,"Row: 1:1, Col: 1:3",0.564
+mslacc.query('col1 == 1 & col3 == 1'),"mslacc[1:8, ]","   col0  col1  col2  col3
+8     7     1  ID_1     1","   col0  col1  col2  col3
+0     4     7  ID_7     1
+1     9     7  ID_6     5
+2     2     5  ID_5     4
+3     9     2  ID_4     1
+4     6     2  ID_5     0
+5     4     0  ID_7     1
+6     1     0  ID_5     3
+7     0     2  ID_3     1",7,0,0.25,"Row: 0:0, Col: 0:3",0.565
+mslacc[(mslacc.col1 == 1) & (mslacc.col3 == 1)],"arrange(mslacc, desc(col1))","   col0  col1  col2  col3
+8     7     1  ID_1     1","   col0  col1  col2  col3
+1     4     7  ID_7     1
+2     9     7  ID_6     5
+3     2     5  ID_5     4
+4     9     2  ID_4     1
+5     6     2  ID_5     0
+6     0     2  ID_3     1
+7     7     1  ID_1     1
+8     4     0  ID_7     1
+9     1     0  ID_5     3",8,0,1.0,"Row: 6:6, Col: 0:3",0.523
+mslacc[(mslacc.col1 == 1) & (mslacc.col3 == 1)],"mslacc[1:7, ]","   col0  col1  col2  col3
+8     7     1  ID_1     1","   col0  col1  col2  col3
+0     4     7  ID_7     1
+1     9     7  ID_6     5
+2     2     5  ID_5     4
+3     9     2  ID_4     1
+4     6     2  ID_5     0
+5     4     0  ID_7     1
+6     1     0  ID_5     3",6,0,0.25,"Row: 0:0, Col: 0:3",0.585
+mslacc[(mslacc.col1 == 1) & (mslacc.col3 == 1)],"select(mslacc, -c(col1, col2))","   col0  col1  col2  col3
+8     7     1  ID_1     1","   col0  col3
+0     4     1
+1     9     5
+2     2     4
+3     9     1
+4     6     0
+5     4     1
+6     1     3
+7     0     1
+8     7     1",8,2,1.0,"Row: 0:0, Col: 0:1",0.611
+mslacc[(mslacc.col1 == 1) & (mslacc.col3 == 1)],"mslacc[mslacc$col1 == 1 & mslacc$col3 == 1, ]","   col0  col1  col2  col3
+8     7     1  ID_1     1","   col0  col1  col2  col3
+8     7     1  ID_1     1",0,0,1.0,"Row: 0:0, Col: 0:3",0.925
+mslacc[(mslacc.col1 == 1) & (mslacc.col3 == 1)],head(mslacc),"   col0  col1  col2  col3
+8     7     1  ID_1     1","   col0  col1  col2  col3
+0     4     7  ID_7     1
+1     9     7  ID_6     5
+2     2     5  ID_5     4
+3     9     2  ID_4     1
+4     6     2  ID_5     0
+5     4     0  ID_7     1",5,0,0.25,"Row: 0:0, Col: 0:3",0.454
+mslacc[(mslacc.col1 == 1) & (mslacc.col3 == 1)],"filter(mslacc, col1 == 1, col3 == 1)","   col0  col1  col2  col3
+8     7     1  ID_1     1","   col0  col1  col2  col3
+1     7     1  ID_1     1",0,0,1.0,"Row: 0:0, Col: 0:3",0.624
+mslacc[(mslacc.col1 == 1) & (mslacc.col3 == 1)],"select(mslacc, col1:col3)","   col0  col1  col2  col3
+8     7     1  ID_1     1","   col1  col2  col3
+0     7  ID_7     1
+1     7  ID_6     5
+2     5  ID_5     4
+3     2  ID_4     1
+4     2  ID_5     0
+5     0  ID_7     1
+6     0  ID_5     3
+7     2  ID_3     1
+8     1  ID_1     1",8,1,1.0,"Row: 0:0, Col: 1:3",0.561
+mslacc[(mslacc.col1 == 1) & (mslacc.col3 == 1)],"select(mslacc, col1, col2)","   col0  col1  col2  col3
+8     7     1  ID_1     1","   col1  col2
+0     7  ID_7
+1     7  ID_6
+2     5  ID_5
+3     2  ID_4
+4     2  ID_5
+5     0  ID_7
+6     0  ID_5
+7     2  ID_3
+8     1  ID_1",8,2,1.0,"Row: 0:0, Col: 1:2",0.561
+mslacc[(mslacc.col1 == 1) & (mslacc.col3 == 1)],"distinct(select(mslacc, col1, col2))","   col0  col1  col2  col3
+8     7     1  ID_1     1","   col1  col2
+1     7  ID_7
+2     7  ID_6
+3     5  ID_5
+4     2  ID_4
+5     2  ID_5
+6     0  ID_7
+7     0  ID_5
+8     2  ID_3
+9     1  ID_1",8,2,1.0,"Row: 0:0, Col: 1:2",0.576
+mslacc[(mslacc.col1 == 1) & (mslacc.col3 == 1)],"arrange(mslacc, col1, col2)","   col0  col1  col2  col3
+8     7     1  ID_1     1","   col0  col1  col2  col3
+1     1     0  ID_5     3
+2     4     0  ID_7     1
+3     7     1  ID_1     1
+4     0     2  ID_3     1
+5     9     2  ID_4     1
+6     6     2  ID_5     0
+7     2     5  ID_5     4
+8     9     7  ID_6     5
+9     4     7  ID_7     1",8,0,1.0,"Row: 2:2, Col: 0:3",0.51
+mslacc[(mslacc.col1 == 1) & (mslacc.col3 == 1)],"distinct(select(mslacc, col1))","   col0  col1  col2  col3
+8     7     1  ID_1     1","   col1
+1     7
+2     5
+3     2
+4     0
+5     1",4,3,1.0,"Row: 0:0, Col: 1:1",0.557
+mslacc[(mslacc.col1 == 1) & (mslacc.col3 == 1)],"mslacc[1:5, 1:3]","   col0  col1  col2  col3
+8     7     1  ID_1     1","   col0  col1  col2
+0     1     7  ID_3
+1     5     4  ID_1
+2     8     4  ID_8
+3     1     8  ID_8
+4     5     7  ID_8",4,1,0.333,"Row: 1:1, Col: 1:3",0.576
+mslacc[(mslacc.col1 == 1) & (mslacc.col3 == 1)],"mslacc[1:8, ]","   col0  col1  col2  col3
+8     7     1  ID_1     1","   col0  col1  col2  col3
+0     4     7  ID_7     1
+1     9     7  ID_6     5
+2     2     5  ID_5     4
+3     9     2  ID_4     1
+4     6     2  ID_5     0
+5     4     0  ID_7     1
+6     1     0  ID_5     3
+7     0     2  ID_3     1",7,0,0.25,"Row: 0:0, Col: 0:3",0.585
+"mslacc.drop(['col1', 'col2'], axis=1)","arrange(mslacc, desc(col1))","   col0  col3
+0     3     5","   col0  col1  col2  col3
+1     3     0  ID_4     5",0,2,0.5,"Row: 0:0, Col: 0:1",0.545
+"mslacc.drop(['col1', 'col2'], axis=1)","mslacc[1:7, ]","   col0  col3
+0     3     5","            col0        col1  col2        col3
+0              3           0  ID_4           5
+NA   -2147483648 -2147483648    NA -2147483648
+NA.1 -2147483648 -2147483648    NA -2147483648
+NA.2 -2147483648 -2147483648    NA -2147483648
+NA.3 -2147483648 -2147483648    NA -2147483648
+NA.4 -2147483648 -2147483648    NA -2147483648
+NA.5 -2147483648 -2147483648    NA -2147483648",6,2,0.5,"Row: 0:0, Col: 0:1",0.594
+"mslacc.drop(['col1', 'col2'], axis=1)","select(mslacc, -c(col1, col2))","   col0  col3
+0     3     5","   col0  col3
+0     3     5",0,0,1.0,"Row: 0:0, Col: 0:1",0.571
+"mslacc.drop(['col1', 'col2'], axis=1)","mslacc[mslacc$col1 == 1 & mslacc$col3 == 1, ]","   col0  col3
+0     3     5","   col0  col1  col2  col3
+1     3     1  ID_1     1",0,2,0.5,"Row: 0:0, Col: 0:1",0.583
+"mslacc.drop(['col1', 'col2'], axis=1)",head(mslacc),"   col0  col3
+0     3     5","   col0  col1  col2  col3
+0     3     0  ID_4     5",0,2,0.5,"Row: 0:0, Col: 0:1",0.428
+"mslacc.drop(['col1', 'col2'], axis=1)","filter(mslacc, col1 == 1, col3 == 1)","   col0  col3
+0     3     5","   col0  col1  col2  col3
+1     3     1  ID_1     1",0,2,0.5,"Row: 0:0, Col: 0:1",0.596
+"mslacc.drop(['col1', 'col2'], axis=1)","select(mslacc, col1:col3)","   col0  col3
+0     3     5","   col1  col2  col3
+0     0  ID_4     5",0,1,0.5,"Row: 0:0, Col: 1:2",0.562
+"mslacc.drop(['col1', 'col2'], axis=1)","select(mslacc, col1, col2)","   col0  col3
+0     3     5","   col1  col2
+0     0  ID_3
+1     0  ID_6
+2     0  ID_4
+3     4  ID_2
+4     3  ID_2
+5     7  ID_7",5,0,0.5,"Row: 4:4, Col: 0:1",0.607
+"mslacc.drop(['col1', 'col2'], axis=1)","distinct(select(mslacc, col1, col2))","   col0  col3
+0     3     5","   col1  col2
+1     0  ID_3
+2     0  ID_6
+3     0  ID_4
+4     4  ID_2
+5     3  ID_2
+6     7  ID_7",5,0,0.5,"Row: 4:4, Col: 0:1",0.578
+"mslacc.drop(['col1', 'col2'], axis=1)","arrange(mslacc, col1, col2)","   col0  col3
+0     3     5","   col0  col1  col2  col3
+1     3     0  ID_4     5",0,2,0.5,"Row: 0:0, Col: 0:1",0.645
+"mslacc.drop(['col1', 'col2'], axis=1)","distinct(select(mslacc, col1))","   col0  col3
+0     3     5","   col1
+1     7
+2     5
+3     2
+4     0
+5     1",4,1,1.0,"Row: 3:3, Col: 1:1",0.524
+"mslacc.drop(['col1', 'col2'], axis=1)","mslacc[1:5, 1:3]","   col0  col3
+0     3     5","            col0        col1  col2
+0              3           0  ID_4
+NA   -2147483648 -2147483648    NA
+NA.1 -2147483648 -2147483648    NA
+NA.2 -2147483648 -2147483648    NA
+NA.3 -2147483648 -2147483648    NA",4,1,0.5,"Row: 0:0, Col: 0:1",0.587
+"mslacc.drop(['col1', 'col2'], axis=1)","mslacc[1:8, ]","   col0  col3
+0     3     5","            col0        col1  col2        col3
+0              3           0  ID_4           5
+NA   -2147483648 -2147483648    NA -2147483648
+NA.1 -2147483648 -2147483648    NA -2147483648
+NA.2 -2147483648 -2147483648    NA -2147483648
+NA.3 -2147483648 -2147483648    NA -2147483648
+NA.4 -2147483648 -2147483648    NA -2147483648
+NA.5 -2147483648 -2147483648    NA -2147483648
+NA.6 -2147483648 -2147483648    NA -2147483648",7,2,0.5,"Row: 0:0, Col: 0:1",0.594
+mslacc[['col1']].shape,dim(mslacc),"[1, 1]",[1 4],,,0.5,,0.606
+mslacc[['col1']].shape,"mslacc[[""col1""]]","[1, 1]",[7 7 5 2 2 0 0 2 1],,,0.2,,0.837
+mslacc[['col1']].shape,"dim(mslacc[c(""col1"")])","[1, 1]",[1 1],,,1.0,,0.697
+mslacc[['col1']].shape,"mslacc[2, ""col1""]","[1, 1]",[1],,,1.0,,0.765
+mslacc[['col1']],"arrange(mslacc, desc(col1))","   col1
+0     0","   col0  col1  col2  col3
+1     3     0  ID_4     5",0,3,1.0,"Row: 0:0, Col: 1:1",0.424
+mslacc[['col1']],"mslacc[1:7, ]","   col1
+0     0","            col0        col1  col2        col3
+0              3           0  ID_4           5
+NA   -2147483648 -2147483648    NA -2147483648
+NA.1 -2147483648 -2147483648    NA -2147483648
+NA.2 -2147483648 -2147483648    NA -2147483648
+NA.3 -2147483648 -2147483648    NA -2147483648
+NA.4 -2147483648 -2147483648    NA -2147483648
+NA.5 -2147483648 -2147483648    NA -2147483648",6,3,1.0,"Row: 0:0, Col: 1:1",0.771
+mslacc[['col1']],"select(mslacc, -c(col1, col2))","   col1
+0     0","   col0  col3
+0     4     1
+1     9     5
+2     2     4
+3     9     1
+4     6     0
+5     4     1
+6     1     3
+7     0     1
+8     7     1",8,1,1.0,"Row: 4:4, Col: 1:1",0.511
+mslacc[['col1']],"mslacc[mslacc$col1 == 1 & mslacc$col3 == 1, ]","   col1
+0     0","   col0  col1  col2  col3
+0     0     1  ID_7     1
+8     5     1  ID_6     1",1,3,1.0,"Row: 0:0, Col: 0:0",0.614
+mslacc[['col1']],head(mslacc),"   col1
+0     0","   col0  col1  col2  col3
+0     3     0  ID_4     5",0,3,1.0,"Row: 0:0, Col: 1:1",0.514
+mslacc[['col1']],"filter(mslacc, col1 == 1, col3 == 1)","   col1
+0     0","   col0  col1  col2  col3
+1     0     1  ID_7     1
+2     5     1  ID_6     1",1,3,1.0,"Row: 0:0, Col: 0:0",0.503
+mslacc[['col1']],"select(mslacc, col1:col3)","   col1
+0     0","   col1  col2  col3
+0     0  ID_4     5",0,2,1.0,"Row: 0:0, Col: 0:0",0.531
+mslacc[['col1']],"select(mslacc, col1, col2)","   col1
+0     0","   col1  col2
+0     0  ID_4",0,1,1.0,"Row: 0:0, Col: 0:0",0.531
+mslacc[['col1']],"distinct(select(mslacc, col1, col2))","   col1
+0     0","   col1  col2
+1     0  ID_4",0,1,1.0,"Row: 0:0, Col: 0:0",0.373
+mslacc[['col1']],"arrange(mslacc, col1, col2)","   col1
+0     0","   col0  col1  col2  col3
+1     3     0  ID_4     5",0,3,1.0,"Row: 0:0, Col: 1:1",0.608
+mslacc[['col1']],"distinct(select(mslacc, col1))","   col1
+0     0","   col1
+1     0",0,0,1.0,"Row: 0:0, Col: 0:0",0.379
+mslacc[['col1']],"mslacc[1:5, 1:3]","   col1
+0     0","            col0        col1  col2
+0              3           0  ID_4
+NA   -2147483648 -2147483648    NA
+NA.1 -2147483648 -2147483648    NA
+NA.2 -2147483648 -2147483648    NA
+NA.3 -2147483648 -2147483648    NA",4,2,1.0,"Row: 0:0, Col: 1:1",0.721
+mslacc[['col1']],"mslacc[1:8, ]","   col1
+0     0","            col0        col1  col2        col3
+0              3           0  ID_4           5
+NA   -2147483648 -2147483648    NA -2147483648
+NA.1 -2147483648 -2147483648    NA -2147483648
+NA.2 -2147483648 -2147483648    NA -2147483648
+NA.3 -2147483648 -2147483648    NA -2147483648
+NA.4 -2147483648 -2147483648    NA -2147483648
+NA.5 -2147483648 -2147483648    NA -2147483648
+NA.6 -2147483648 -2147483648    NA -2147483648",7,3,1.0,"Row: 0:0, Col: 1:1",0.771
+"mslacc.sort_values(['col1', 'col2'])","arrange(mslacc, desc(col1))","   col0  col1  col2  col3
+0     3     0  ID_4     5","   col0  col1  col2  col3
+1     3     0  ID_4     5",0,0,1.0,"Row: 0:0, Col: 0:3",0.578
+"mslacc.sort_values(['col1', 'col2'])","mslacc[1:7, ]","   col0  col1  col2  col3
+0     3     0  ID_4     5","            col0        col1  col2        col3
+0              3           0  ID_4           5
+NA   -2147483648 -2147483648    NA -2147483648
+NA.1 -2147483648 -2147483648    NA -2147483648
+NA.2 -2147483648 -2147483648    NA -2147483648
+NA.3 -2147483648 -2147483648    NA -2147483648
+NA.4 -2147483648 -2147483648    NA -2147483648
+NA.5 -2147483648 -2147483648    NA -2147483648",6,0,1.0,"Row: 0:0, Col: 0:3",0.557
+"mslacc.sort_values(['col1', 'col2'])","select(mslacc, -c(col1, col2))","   col0  col1  col2  col3
+0     3     0  ID_4     5","   col0  col3
+0     3     5",0,2,0.5,"Row: 0:0, Col: 0:1",0.64
+"mslacc.sort_values(['col1', 'col2'])","mslacc[mslacc$col1 == 1 & mslacc$col3 == 1, ]","   col0  col1  col2  col3
+0     3     0  ID_4     5","   col0  col1  col2  col3
+5     2     1  ID_4     1",0,0,0.25,"Row: 0:0, Col: 0:3",0.591
+"mslacc.sort_values(['col1', 'col2'])",head(mslacc),"   col0  col1  col2  col3
+0     3     0  ID_4     5","   col0  col1  col2  col3
+0     3     0  ID_4     5",0,0,1.0,"Row: 0:0, Col: 0:3",0.428
+"mslacc.sort_values(['col1', 'col2'])","filter(mslacc, col1 == 1, col3 == 1)","   col0  col1  col2  col3
+0     3     0  ID_4     5","   col0  col1  col2  col3
+1     2     1  ID_4     1",0,0,0.25,"Row: 0:0, Col: 0:3",0.621
+"mslacc.sort_values(['col1', 'col2'])","select(mslacc, col1:col3)","   col0  col1  col2  col3
+0     3     0  ID_4     5","   col1  col2  col3
+0     0  ID_4     5",0,1,1.0,"Row: 0:0, Col: 1:3",0.616
+"mslacc.sort_values(['col1', 'col2'])","select(mslacc, col1, col2)","   col0  col1  col2  col3
+0     3     0  ID_4     5","   col1  col2
+0     0  ID_4",0,2,1.0,"Row: 0:0, Col: 1:2",0.668
+"mslacc.sort_values(['col1', 'col2'])","distinct(select(mslacc, col1, col2))","   col0  col1  col2  col3
+0     3     0  ID_4     5","   col1  col2
+1     0  ID_4",0,2,1.0,"Row: 0:0, Col: 1:2",0.615
+"mslacc.sort_values(['col1', 'col2'])","arrange(mslacc, col1, col2)","   col0  col1  col2  col3
+0     3     0  ID_4     5","   col0  col1  col2  col3
+1     3     0  ID_4     5",0,0,1.0,"Row: 0:0, Col: 0:3",0.64
+"mslacc.sort_values(['col1', 'col2'])","distinct(select(mslacc, col1))","   col0  col1  col2  col3
+0     3     0  ID_4     5","   col1
+1     0",0,3,1.0,"Row: 0:0, Col: 1:1",0.591
+"mslacc.sort_values(['col1', 'col2'])","mslacc[1:5, 1:3]","   col0  col1  col2  col3
+0     3     0  ID_4     5","            col0        col1  col2
+0              3           0  ID_4
+NA   -2147483648 -2147483648    NA
+NA.1 -2147483648 -2147483648    NA
+NA.2 -2147483648 -2147483648    NA
+NA.3 -2147483648 -2147483648    NA",4,1,1.0,"Row: 4:4, Col: 0:2",0.524
+"mslacc.sort_values(['col1', 'col2'])","mslacc[1:8, ]","   col0  col1  col2  col3
+0     3     0  ID_4     5","            col0        col1  col2        col3
+0              3           0  ID_4           5
+NA   -2147483648 -2147483648    NA -2147483648
+NA.1 -2147483648 -2147483648    NA -2147483648
+NA.2 -2147483648 -2147483648    NA -2147483648
+NA.3 -2147483648 -2147483648    NA -2147483648
+NA.4 -2147483648 -2147483648    NA -2147483648
+NA.5 -2147483648 -2147483648    NA -2147483648
+NA.6 -2147483648 -2147483648    NA -2147483648",7,0,1.0,"Row: 0:0, Col: 0:3",0.557
+mslacc.head(),"arrange(mslacc, desc(col1))","   col0  col1  col2  col3
+0     3     0  ID_4     5","   col0  col1  col2  col3
+1     3     0  ID_4     5",0,0,1.0,"Row: 0:0, Col: 0:3",0.453
+mslacc.head(),"mslacc[1:7, ]","   col0  col1  col2  col3
+0     3     0  ID_4     5","            col0        col1  col2        col3
+0              3           0  ID_4           5
+NA   -2147483648 -2147483648    NA -2147483648
+NA.1 -2147483648 -2147483648    NA -2147483648
+NA.2 -2147483648 -2147483648    NA -2147483648
+NA.3 -2147483648 -2147483648    NA -2147483648
+NA.4 -2147483648 -2147483648    NA -2147483648
+NA.5 -2147483648 -2147483648    NA -2147483648",6,0,1.0,"Row: 0:0, Col: 0:3",0.654
+mslacc.head(),"select(mslacc, -c(col1, col2))","   col0  col1  col2  col3
+0     3     0  ID_4     5","   col0  col3
+0     3     5",0,2,0.5,"Row: 0:0, Col: 0:1",0.488
+mslacc.head(),"mslacc[mslacc$col1 == 1 & mslacc$col3 == 1, ]","   col0  col1  col2  col3
+0     3     0  ID_4     5","   col0  col1  col2  col3
+5     2     1  ID_4     1",0,0,0.25,"Row: 0:0, Col: 0:3",0.574
+mslacc.head(),head(mslacc),"   col0  col1  col2  col3
+0     3     0  ID_4     5","   col0  col1  col2  col3
+0     3     0  ID_4     5",0,0,1.0,"Row: 0:0, Col: 0:3",0.615
+mslacc.head(),"filter(mslacc, col1 == 1, col3 == 1)","   col0  col1  col2  col3
+0     3     0  ID_4     5","   col0  col1  col2  col3
+1     2     1  ID_4     1",0,0,0.25,"Row: 0:0, Col: 0:3",0.461
+mslacc.head(),"select(mslacc, col1:col3)","   col0  col1  col2  col3
+0     3     0  ID_4     5","   col1  col2  col3
+0     0  ID_4     5",0,1,1.0,"Row: 0:0, Col: 1:3",0.504
+mslacc.head(),"select(mslacc, col1, col2)","   col0  col1  col2  col3
+0     3     0  ID_4     5","   col1  col2
+0     0  ID_4",0,2,1.0,"Row: 0:0, Col: 1:2",0.504
+mslacc.head(),"distinct(select(mslacc, col1, col2))","   col0  col1  col2  col3
+0     3     0  ID_4     5","   col1  col2
+1     0  ID_4",0,2,1.0,"Row: 0:0, Col: 1:2",0.392
+mslacc.head(),"arrange(mslacc, col1, col2)","   col0  col1  col2  col3
+0     3     0  ID_4     5","   col0  col1  col2  col3
+1     3     0  ID_4     5",0,0,1.0,"Row: 0:0, Col: 0:3",0.428
+mslacc.head(),"distinct(select(mslacc, col1))","   col0  col1  col2  col3
+0     3     0  ID_4     5","   col1
+1     0",0,3,1.0,"Row: 0:0, Col: 1:1",0.399
+mslacc.head(),"mslacc[1:5, 1:3]","   col0  col1  col2  col3
+0     3     0  ID_4     5","            col0        col1  col2
+0              3           0  ID_4
+NA   -2147483648 -2147483648    NA
+NA.1 -2147483648 -2147483648    NA
+NA.2 -2147483648 -2147483648    NA
+NA.3 -2147483648 -2147483648    NA",4,1,1.0,"Row: 4:4, Col: 0:2",0.621
+mslacc.head(),"mslacc[1:8, ]","   col0  col1  col2  col3
+0     3     0  ID_4     5","            col0        col1  col2        col3
+0              3           0  ID_4           5
+NA   -2147483648 -2147483648    NA -2147483648
+NA.1 -2147483648 -2147483648    NA -2147483648
+NA.2 -2147483648 -2147483648    NA -2147483648
+NA.3 -2147483648 -2147483648    NA -2147483648
+NA.4 -2147483648 -2147483648    NA -2147483648
+NA.5 -2147483648 -2147483648    NA -2147483648
+NA.6 -2147483648 -2147483648    NA -2147483648",7,0,1.0,"Row: 0:0, Col: 0:3",0.654
+"mslacc.iloc[0:5, 0:3]","arrange(mslacc, desc(col1))","   col0  col1  col2
+0     3     0  ID_4","   col0  col1  col2  col3
+1     3     0  ID_4     5",0,1,1.0,"Row: 0:0, Col: 0:2",0.444
+"mslacc.iloc[0:5, 0:3]","mslacc[1:7, ]","   col0  col1  col2
+0     3     0  ID_4","            col0        col1  col2        col3
+0              3           0  ID_4           5
+NA   -2147483648 -2147483648    NA -2147483648
+NA.1 -2147483648 -2147483648    NA -2147483648
+NA.2 -2147483648 -2147483648    NA -2147483648
+NA.3 -2147483648 -2147483648    NA -2147483648
+NA.4 -2147483648 -2147483648    NA -2147483648
+NA.5 -2147483648 -2147483648    NA -2147483648",6,1,1.0,"Row: 0:0, Col: 0:2",0.733
+"mslacc.iloc[0:5, 0:3]","select(mslacc, -c(col1, col2))","   col0  col1  col2
+0     3     0  ID_4","   col0  col3
+0     3     5",0,1,0.5,"Row: 0:0, Col: 0:1",0.452
+"mslacc.iloc[0:5, 0:3]","mslacc[mslacc$col1 == 1 & mslacc$col3 == 1, ]","   col0  col1  col2
+0     3     0  ID_4","   col0  col1  col2  col3
+5     2     1  ID_4     1",0,1,0.333,"Row: 0:0, Col: 0:2",0.538
+"mslacc.iloc[0:5, 0:3]",head(mslacc),"   col0  col1  col2
+0     3     0  ID_4","   col0  col1  col2  col3
+0     3     0  ID_4     5",0,1,1.0,"Row: 0:0, Col: 0:2",0.489
+"mslacc.iloc[0:5, 0:3]","filter(mslacc, col1 == 1, col3 == 1)","   col0  col1  col2
+0     3     0  ID_4","   col0  col1  col2  col3
+1     2     1  ID_4     1",0,1,0.333,"Row: 0:0, Col: 0:2",0.528
+"mslacc.iloc[0:5, 0:3]","select(mslacc, col1:col3)","   col0  col1  col2
+0     3     0  ID_4","   col1  col2  col3
+0     0  ID_3     1
+1     0  ID_6     4
+2     0  ID_4     6
+3     4  ID_2     1
+4     3  ID_2     1
+5     7  ID_7     6",5,0,0.333,"Row: 4:4, Col: 0:2",0.547
+"mslacc.iloc[0:5, 0:3]","select(mslacc, col1, col2)","   col0  col1  col2
+0     3     0  ID_4","   col1  col2
+0     0  ID_4",0,1,1.0,"Row: 0:0, Col: 1:2",0.472
+"mslacc.iloc[0:5, 0:3]","distinct(select(mslacc, col1, col2))","   col0  col1  col2
+0     3     0  ID_4","   col1  col2
+1     0  ID_4",0,1,1.0,"Row: 0:0, Col: 1:2",0.462
+"mslacc.iloc[0:5, 0:3]","arrange(mslacc, col1, col2)","   col0  col1  col2
+0     3     0  ID_4","   col0  col1  col2  col3
+1     3     0  ID_4     5",0,1,1.0,"Row: 0:0, Col: 0:2",0.5
+"mslacc.iloc[0:5, 0:3]","distinct(select(mslacc, col1))","   col0  col1  col2
+0     3     0  ID_4","   col1
+1     0",0,2,1.0,"Row: 0:0, Col: 1:1",0.475
+"mslacc.iloc[0:5, 0:3]","mslacc[1:5, 1:3]","   col0  col1  col2
+0     3     0  ID_4","            col0        col1  col2
+0              3           0  ID_4
+NA   -2147483648 -2147483648    NA
+NA.1 -2147483648 -2147483648    NA
+NA.2 -2147483648 -2147483648    NA
+NA.3 -2147483648 -2147483648    NA",4,0,1.0,"Row: 0:0, Col: 0:2",0.839
+"mslacc.iloc[0:5, 0:3]","mslacc[1:8, ]","   col0  col1  col2
+0     3     0  ID_4","            col0        col1  col2        col3
+0              3           0  ID_4           5
+NA   -2147483648 -2147483648    NA -2147483648
+NA.1 -2147483648 -2147483648    NA -2147483648
+NA.2 -2147483648 -2147483648    NA -2147483648
+NA.3 -2147483648 -2147483648    NA -2147483648
+NA.4 -2147483648 -2147483648    NA -2147483648
+NA.5 -2147483648 -2147483648    NA -2147483648
+NA.6 -2147483648 -2147483648    NA -2147483648",7,1,1.0,"Row: 0:0, Col: 0:2",0.733

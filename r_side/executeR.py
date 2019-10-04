@@ -20,6 +20,7 @@ from generate import generate_args, generate_simple_arg, generate_args_from_df
 # importr("dplyr")
 
 NUM_WORKERS = 4
+ARGS_PICKLE_PATH = "../files/args.pkl"
 R_PICKLE_PATH = '../files/r_dfs.pkl'
 RSNIPS_PATH = "rsnips.csv"
 NUM_ARGS = 1 # the default number of arguments (dataframes) to generate as inputs
@@ -122,39 +123,30 @@ def print_full(x):
 if __name__ == '__main__':
     if len(sys.argv) > 1:
         try:
-            NUM_ARGS = int(sys.argv[1]) 
-            NUM_ARGS = 1 if NUM_ARGS <= 0 else NUM_ARGS
-            if NUM_ARGS > MAX_ARGS: 
-                print("beyond max arguments of 256 inputs")
-                sys.exit(1)
             # If user specifies, the particular type of outputs to store
             # to reduce number of executions
-            if len(sys.argv) > 2:
-                if "dataframe" in sys.argv[2]:
-                    OUTPUT_TYPE_FILTER = pd.DataFrame
-                elif "series" in sys.argv[2]: 
-                    # Note: for R, rpy2 isn't converting properly to Series
-                    # and this means there are no Series as output (use array instead)
-                    OUTPUT_TYPE_FILTER = pd.Series
-                elif "array" in sys.argv[2]:
-                    OUTPUT_TYPE_FILTER = np.ndarray
-            # generated_args = generate_args(NUM_ARGS, lang="r")
-            # generated_args = generate_simple_arg(lang="r")
-            # NOTE: need to first run python_side/execute.py before running this!
-            # Reason for this is when we generate random dfs we want to use
-            # the same ones for R execution as well
-            generated_args = pickle.load(open("../files/args.pkl", "rb"))
+            filter_for = sys.argv[1]
+            if filter_for == "dataframe":
+                OUTPUT_TYPE_FILTER = pd.DataFrame
+            elif filter_for == "series":
+                OUTPUT_TYPE_FILTER = pd.Series
+            elif filter_for == "array":
+                OUTPUT_TYPE_FILTER = np.ndarray
+            elif filter_for == "all":
+                pass
+            else:
+                raise Exception("invalid data type to filter!")
+            generated_args = pickle.load(open(ARGS_PICKLE_PATH, "rb"))
             print(generated_args[0])
             executions = execute_statements()
             df_store = DataframeStore(executions)
             pickle.dump(df_store, open(R_PICKLE_PATH, "wb"))
         except Exception as e:
-            print(e)
-            print("invalid option!")
-            print("usage: python executeR.py [number of inputs to test <= 256]")
+            print("invalid command!", e)
+            print("usage: python executeR.py [all | dataframe | series | array]")
             sys.exit(1)
     else:
-        print("invalid option!")
-        print("usage: python executeR.py [number of inputs to test <= 256]")
+        print("invalid command!")
+        print("usage: python executeR.py [all | dataframe | series | array]")
         sys.exit(1)
 

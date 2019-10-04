@@ -8,6 +8,7 @@ Main functions are:
 - generate_series (and variants)
 """
 
+import pickle
 import random as random
 import pandas as pd
 import numpy as np
@@ -16,8 +17,10 @@ pandas2ri.activate()
 
 from collections import OrderedDict
 
+NUM_ARGS = 256
+ARGS_PATH = "./files/args.pkl"
 # Using absolute path is safest: update as necessary
-TEMPLATE_PATH = "../titanic/train.csv"
+TEMPLATE_PATH = "./titanic/train.csv"
 # PassengerId      int64
 # Survived         int64 (level) - randomize
 # Pclass           int64 (level) - randomize
@@ -100,7 +103,23 @@ def generate_args(n_args=256, max_rows=100, lang="py"):
         args.append(new_df)
     return args
 
-def generate_args_from_df(df_template, n_args=1, lang="py", simple=True):
+def generate_simple_arg():
+    """This will create one dataframe based on templated (TEMPLATE_PATH)"""
+    print('df')
+    df = pd.read_csv(TEMPLATE_PATH)
+    new_df = construct_simple_df(df)
+    return [new_df]
+
+def construct_custom_df():
+    ints = [i for i in range(0, 8)]
+    ints.extend([8,8])
+    sints = [i for i in range(0, 10)]
+    strs = [f"ID_{i}" for i in range(0, 8)]
+    strs.extend(["ID_8", "ID_8"])
+    df = pd.DataFrame({'col0':sints[::-1], 'col1':ints, 'col2':strs, 'col3':ints})
+    return df
+
+def generate_args_from_df(df_template, n_args=1, simple=True):
     """This will create one dataframe based on a supplied dataframe"""
     args = []
     max_rows = df_template.shape[0]
@@ -111,23 +130,37 @@ def generate_args_from_df(df_template, n_args=1, lang="py", simple=True):
             return args
         else:
             new_df = construct_df(df_template, max_rows)
-        if lang == "r":
-            new_df = pandas2ri.py2rpy(new_df)
         args.append(new_df)
     return args
 
-def generate_simple_arg(lang="py"):
-    """This will create one dataframe based on templated (TEMPLATE_PATH)"""
-    df = pd.read_csv(TEMPLATE_PATH)
-    new_df = construct_simple_df(df)
-    if lang == "r":
-        new_df = pandas2ri.py2rpy(new_df)
-    return [new_df]
+def store_args(arguments):
+    pickle.dump(arguments, open(ARGS_PATH, "wb"))
 
 if __name__ == '__main__':
-    # Testing module
-    # df = pd.read_csv(TEMPLATE_PATH)
-    # new_df = construct_df(df, df.shape[0])
-    # print(new_df.shape)
-    args = generate_args(10)
-    print(args)
+    import sys
+    if len(sys.argv) == 4:
+        try:
+            corpus = sys.argv[1]
+            NUM_ARGS = max(1, min(NUM_ARGS, int(sys.argv[2])))
+            simple = True if "-s" in sys.argv[3] else False
+            if corpus == "experiments":
+                df = construct_custom_df()
+                generated_args = generate_args_from_df(df, n_args=NUM_ARGS, simple=simple)
+            elif corpus == "kaggle":
+                if simple:
+                    generated_args = generate_simple_arg()
+                else:
+                    generated_args = generate_args(NUM_ARGS)
+            else:
+                raise Exception(f"corpus not available {corpus}")
+            print(f"Generated and stored {len(generated_args)} arguments in {ARGS_PATH}")
+            store_args(generated_args)
+        except Exception as e:
+            print("something went wrong", e)
+            sys.exit(1)
+    else:
+        print("invalid command!")
+        # TODO improve this cli argument order, it's weird to have to type 1 for -s
+        print("usage: python generate.py [kaggle|experiments] [number of inputs to test <= 256] [-s single dataframe | -r random dataframes]")
+        sys.exit(1)
+

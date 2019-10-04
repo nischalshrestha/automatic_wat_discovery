@@ -10,8 +10,9 @@ sys.path.append("../")
 from generate import generate_args, generate_simple_arg, generate_args_from_df
 
 NUM_WORKERS=4
-PY_PICKLE_PATH = '../files/py_dfs.pkl'
-PYSNIPS_PATH = 'pysnips.csv'
+ARGS_PICKLE_PATH = "../files/args.pkl"
+PY_PICKLE_PATH = "../files/py_dfs.pkl"
+PYSNIPS_PATH = "pysnips.csv"
 NUM_ARGS = 1 # the default number of arguments (dataframes) to generate as inputs
 MAX_ARGS = 256 # the max number of arguments
 # this is the type of outputs we want to store when executing snippets so that
@@ -116,49 +117,30 @@ def execute_statements():
 if __name__ == '__main__':
     if len(sys.argv) > 1:
         try:
-            NUM_ARGS = int(sys.argv[1]) 
-            NUM_ARGS = 1 if NUM_ARGS <= 0 else NUM_ARGS
-            if NUM_ARGS > MAX_ARGS: 
-                print("beyond max arguments of 256 inputs")
-                sys.exit(1)
             # If user specifies, the particular type of outputs to store
             # to reduce number of executions
-            if len(sys.argv) > 2:
-                if "dataframe" in sys.argv[2]:
-                    OUTPUT_TYPE_FILTER = pd.DataFrame
-                elif "series" in sys.argv[2]:
-                    OUTPUT_TYPE_FILTER = pd.Series
-                elif "array" in sys.argv[2]:
-                    OUTPUT_TYPE_FILTER = np.ndarray
-            # generated_args = generate_args(NUM_ARGS)
-            # generated_args = generate_simple_arg()
-            ints = [i for i in range(0, 8)]
-            ints.extend([8,8])
-            sints = [i for i in range(0, 10)]
-            # shuffle(sints)
-            strs = [f"ID_{i}" for i in range(0, 8)]
-            strs.extend(["ID_8", "ID_8"])
-            # sstrs = [f"P_{i}" for i in reversed(range(10))]
-            df = pd.DataFrame({'col0':sints[::-1], 'col1':ints, 'col2':strs, 'col3':ints})
-            # shuffle(df)
-            # print(df)
-            # TODO: user supplies argument to switch from single to multiple random dfs
-            # generated_args = generate_args_from_df(df)
-            generated_args = generate_args_from_df(df, n_args=NUM_ARGS, simple=False)
+            filter_for = sys.argv[1]
+            if filter_for == "dataframe":
+                OUTPUT_TYPE_FILTER = pd.DataFrame
+            elif filter_for == "series":
+                OUTPUT_TYPE_FILTER = pd.Series
+            elif filter_for == "array":
+                OUTPUT_TYPE_FILTER = np.ndarray
+            elif filter_for == "all":
+                pass
+            else:
+                raise Exception("invalid data type to filter!")
+            generated_args = pickle.load(open(ARGS_PICKLE_PATH, "rb"))
             print(generated_args[0])
             executions = execute_statements()
-            # Save results
             df_store = DataframeStore(executions)
             pickle.dump(df_store, open(PY_PICKLE_PATH, "wb"))
-            # TODO: maybe move generation functionality to generate module only
-            pickle.dump(generated_args, open("../files/args.pkl", "wb"))
         except Exception as e:
-            print(e)
-            print("invalid option!")
-            print("usage: python execute.py [number of inputs to test <= 256] [(dataframe | series | array)]")
+            print("invalid command!", e)
+            print("usage: python execute.py [all | dataframe | series | array]")
             sys.exit(1)
     else:
-        print("invalid option!")
-        print("usage: python execute.py [number of inputs to test <= 256] [(dataframe | series | array)]")
+        print("invalid command!")
+        print("usage: python execute.py [all | dataframe | series | array]")
         sys.exit(1)
 
