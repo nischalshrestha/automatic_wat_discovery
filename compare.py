@@ -88,6 +88,7 @@ def compare_df(df1, df2):
     trs = 0
     # Stores the windows with the dimension of both top and bottom and the scores
     windows = []
+    lcas = []
     # Slide top across the bottom until hitting the edge of bottom 
     while (i + lca_row - 1 < brow) or (trow > brow and trs < trow):  
         # Need to handle the case when top is taller so its window starts from the bottom
@@ -123,6 +124,7 @@ def compare_df(df1, df2):
                 print("ERROR", e)
             sim_score = common / (cbr*cbc)
             windows.append(sim_score)
+            lcas.append(f"Row: {wt}:{wb-1}, Col: {wl}:{wr-1}")
             # print("current window's sim_score", sim_score)
             j += 1
         # Update the trs flag if the top is taller than bottom
@@ -132,9 +134,10 @@ def compare_df(df1, df2):
         i += 1
         wb += 1
     # print('windows:', windows)
-    # overall_score = max(windows)
-    overall_score = sum(windows)/len(windows) # this reduces lots of noise
-    return overall_score, row_diff, col_diff
+    overall_score = max(windows)
+    lca_max = lcas[windows.index(overall_score)]
+    # overall_score = sum(windows)/len(windows) # this reduces lots of noise
+    return overall_score, row_diff, col_diff, lca_max
 
 def compare(a, b):
     """

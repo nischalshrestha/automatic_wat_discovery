@@ -91,7 +91,7 @@ class ASTChecker(ast.NodeVisitor):
         # Excluding assignments for now except for calls in CALLS
         self.valid = False
         # Check rhs of assignment on this visitor
-        self.valid = self.check(node.value)
+        # self.valid = self.check(node.value)
     
     # Exclude these:
 

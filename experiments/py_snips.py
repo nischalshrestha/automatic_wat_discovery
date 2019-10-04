@@ -6,6 +6,7 @@ train[['col1']].shape
 train.head()
 # basic slicing
 train.iloc[:8]
+train.iloc[:7]
 # filter 
 train.query('col1 == 1 & col3 == 1')
 # [ subsetting

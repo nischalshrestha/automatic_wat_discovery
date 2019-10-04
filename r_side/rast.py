@@ -82,17 +82,17 @@ def parse_r(parsed_df: pd.DataFrame) -> bool:
         elif terminals.token[0] == SYMBOL and terminals.token[1] == LB:
             # print('subsetting')
             valid = True
-        elif terminals.token[0] == SYMBOL and terminals.token[1] == LEFT_ASSIGN:
-            # print('assignment')
-            if terminals.token[2] == SYMBOL_FUNCTION_CALL:
-        #         # print('call')
-        #         # Handle calls
-                valid = is_valid_call(terminals)
-            elif len(terminals) >= 4:  # Handle other types of rhs exprs
-                if terminals.token[2] == SYMBOL \
-                    and (terminals.token[3] == LB or terminals.token[3] == LBB):
-                    if not terminals.token[4] == NUM_CONST:
-                       valid = True
+        # elif terminals.token[0] == SYMBOL and terminals.token[1] == LEFT_ASSIGN:
+        #     # print('assignment')
+        #     if terminals.token[2] == SYMBOL_FUNCTION_CALL:
+        # #         # print('call')
+        # #         # Handle calls
+        #         valid = is_valid_call(terminals)
+        #     elif len(terminals) >= 4:  # Handle other types of rhs exprs
+        #         if terminals.token[2] == SYMBOL \
+        #             and (terminals.token[3] == LB or terminals.token[3] == LBB):
+        #             if not terminals.token[4] == NUM_CONST:
+        #                valid = True
         # elif terminals.token[0] == SYMBOL and terminals.token[1] == SPECIAL \
         #     and terminals.token[2] == SYMBOL_FUNCTION_CALL:
         # #     # print('pipe')

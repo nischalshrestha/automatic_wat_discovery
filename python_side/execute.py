@@ -47,7 +47,6 @@ def eval_expr(mslacc, expr):
         # actually produced a dataframe; TODO a solution is to add another meta data
         # indicating that the expr had returned a NULL.
         if output is None:
-            print('none')
             output = locals()['mslacc']
         return expr, output
         print('out', out)
@@ -114,10 +113,6 @@ def execute_statements():
     # Time taken: 1.05 secs
     return filtered
 
-# TODO add a method called execute_custom_snippets() that takes in a list of
-# snippets so that we can test that the generate -> execute -> cluster is working
-# properly
-
 if __name__ == '__main__':
     if len(sys.argv) > 1:
         try:
@@ -136,21 +131,27 @@ if __name__ == '__main__':
                 elif "array" in sys.argv[2]:
                     OUTPUT_TYPE_FILTER = np.ndarray
             # generated_args = generate_args(NUM_ARGS)
+            # generated_args = generate_simple_arg()
             ints = [i for i in range(0, 8)]
             ints.extend([8,8])
             sints = [i for i in range(0, 10)]
             # shuffle(sints)
             strs = [f"ID_{i}" for i in range(0, 8)]
             strs.extend(["ID_8", "ID_8"])
-            sstrs = [f"P_{i}" for i in reversed(range(10))]
-            df = pd.DataFrame({'col0':sints[::-1], 'col1':ints, 'col3':ints, 'col2':strs, 'col4':sstrs})
+            # sstrs = [f"P_{i}" for i in reversed(range(10))]
+            df = pd.DataFrame({'col0':sints[::-1], 'col1':ints, 'col2':strs, 'col3':ints})
+            # shuffle(df)
             # print(df)
-            generated_args = generate_args_from_df(df, n_args=NUM_ARGS)
-            # print(generated_args)
+            # TODO: user supplies argument to switch from single to multiple random dfs
+            # generated_args = generate_args_from_df(df)
+            generated_args = generate_args_from_df(df, n_args=NUM_ARGS, simple=False)
+            print(generated_args[0])
             executions = execute_statements()
             # Save results
             df_store = DataframeStore(executions)
             pickle.dump(df_store, open(PY_PICKLE_PATH, "wb"))
+            # TODO: maybe move generation functionality to generate module only
+            pickle.dump(generated_args, open("../files/args.pkl", "wb"))
         except Exception as e:
             print(e)
             print("invalid option!")

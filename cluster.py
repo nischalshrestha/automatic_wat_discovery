@@ -16,8 +16,6 @@ import Levenshtein
 
 from compare import compare
 
-# from generate import generate_arg_from_df
-
 import sys
 sys.path.append("./python_side")
 from execute import DataframeStore
@@ -31,8 +29,9 @@ SIM_T = 0.85
 flatten = lambda l: [item for sublist in l for item in sublist]
 
  # Load executed python and r snippets with their results
-pysnips = pickle.load(open(PY_PICKLE_PATH, "rb")).pairs
-rsnips = pickle.load(open(R_PICKLE_PATH, "rb")).pairs
+SPLIT = 16
+pysnips = pickle.load(open(PY_PICKLE_PATH, "rb")).pairs[:SPLIT]
+rsnips = pickle.load(open(R_PICKLE_PATH, "rb")).pairs[:SPLIT]
 
 # PassengerId      int64
 # Survived         int64 (level) - randomize
@@ -49,29 +48,37 @@ rsnips = pickle.load(open(R_PICKLE_PATH, "rb")).pairs
 # df = pd.read_csv("../train.csv")
 
 def compare_results(rep, r):
-    """Compares test results of rep and r"""
+    """
+    Compares test results of rep and r and returns a tuple to store later:
+
+    (py expr, r expr, pytest, rtest, row_diff, col_diff, semantic score, edit distance)
+    """
     # We will call compare on each of the results
     rep_results = rep['test_results']
     r_results = r['test_results']
     py_expr = rep['expr']
     r_expr = r['expr']
+    py_reformat = py_expr.replace(",", ", ").replace("&", " & ").replace("==", " == ")
+    r_reformat = r_expr.replace(",", ", ").replace("&", " & ").replace("==", " == ")
     # print(py_expr, r_expr)
     results = []
     for t1 in rep_results:
         # Collect and store the max score from all test results
         edit_distance = round(jaro(py_expr, r_expr), 3)
         for t2 in r_results:
+            # print(t1)
             score = compare(t1, t2)
-            # Store  tuple:
-            # py expr, r expr, pytest, rtest, row_diff, col_diff, semantic score, edit dist
+            # include score in results if 
             if type(score) == tuple and score[0] >= SIM_T:
-                rounded = round(score[0],3)
-                results.append((py_expr, r_expr, t1, t2, score[1], score[2], rounded, edit_distance))
+                results.append((py_reformat, r_reformat, t1, t2, score[1], score[2], round(score[0], 3), score[3], edit_distance))
+                # results.append((py_reformat, r_reformat, score[1], score[2], round(score[0], 3), score[3], edit_distance))
+                return results
             elif type(score) != tuple and score >= SIM_T:
-                rounded = round(score, 3)
-                # For the non-dataframe output case we just report 0 for row/col diff
-                results.append((py_expr, r_expr, t1, t2, 0, 0, rounded, edit_distance))
-    return flatten(results)
+                # For the non-dataframe output case we leave row/col, lca diff blank
+                results.append((py_reformat, r_reformat, t1, t2, "", "", round(score, 3), "", edit_distance))
+                # results.append((py_reformat, r_reformat, "", "", round(score, 3), "", edit_distance))
+                return results
+    return results
 
 def compare_rpy(py):
     """
@@ -84,12 +91,9 @@ def compare_rpy(py):
         compare_scores = compare_results(py, r)
         if len(compare_scores) > 0:
             results.append(compare_scores)
-        # if score[0] >= SIM_T:
-            # results.append((py['expr'], r['expr'], py['test_results'][0], r['test_results'][0], score[0], score[1]))
-            # print('score', score)
-    return results if len(results) > 0 else None
+    return flatten(results) if len(results) > 0 else None
 
-def simple_cluster(pynsips, rsnips):
+def simple_cluster():
     """
     A naive pair-wise comparison approach to cluster Python/R snippets according
     to their execution output results. Each Python snippet and its execution result
@@ -106,7 +110,7 @@ def simple_cluster(pynsips, rsnips):
         result = results.get()
         result = list(filter(None, result))
         results = flatten(list(result))
-        # print(results)
+        # print(len(results))
     end_time = time.time()
     print(f"Time taken: {round((end_time - start_time), 2)} secs")
     return results
@@ -134,9 +138,11 @@ def cluster(pysnips, rsnips):
                 C ← C ∪ C 
         return C
     """ 
-    snips = [pair for pair in itertools.zip_longest(pysnips,rsnips)]
+    snips = [pair for pair in itertools.zip_longest(pysnips, rsnips)]
     snips = list(filter(None, snips))
+    # snips = pysnips + rsnips
     clusters = [] # list of dicts {"rep": s, snip, snip,...}
+    py_expr_set = set()
     start_time = time.time()
     for s in snips:
         # print(s)
@@ -146,16 +152,18 @@ def cluster(pysnips, rsnips):
         # print('py', py['expr'], 'r', r['expr'])
         for c in clusters:
             rep = c['rep']
-            scores = compare_results(rep, r)
-            if scores[0] >= SIM_T:
-                # Saving tuple of (expr, semantic score, edit distance?)
-                if len(c['snippets'].items()) == 0:
-                    c['snippets'] = {}
-                c['snippets'][r['expr']] = (scores[0], scores[1])
+            scores = flatten(compare_results(rep, r))
+            # print(scores)
+            if len(scores) > 0:
+                c['snippets'][r['expr']] = \
+                    (scores[0], scores[1], scores[2], scores[3], \
+                    scores[4], scores[5], scores[6], scores[7], scores[8])
                 break
-        if sum([py['expr'] in c['rep']['expr'] for c in clusters]) == 0:
+        if py['expr'] not in py_expr_set:
+        # if sum([py['expr'] in c['rep']['expr'] for c in clusters]) == 0:
             cluster = {'rep': py, 'snippets':{}}
             clusters.append(cluster)
+            py_expr_set.add(py['expr'])
     print(f"Time taken: {round((time.time() - start_time), 2)}") # 200 snippets takes ~2min
     return clusters
 
@@ -176,28 +184,28 @@ def print_snips(snips):
         print(s['expr'], len(s['test_results']))
 
 # TODO turn this function into another store clusters 
-def print_clusters(clusters):
+def gather_clusters(clusters):
     """Use this to debug clusters found"""
+    tuple_list = []
     for c in clusters:
         if len(c['snippets'].items()) > 0:
-            print('----\n', c['rep']['expr'], len(c['snippets'].items()), '\n~~~~')
+            # print('----\n', c['rep']['expr'], len(c['snippets'].items()), '\n~~~~')
             for k, v in c['snippets'].items():
-                print(f"{k} {v[0]} {round(v[1], 3)}")
-            # print(3*(c['rep']['expr']))
-            print('----\n')
-        else:
-            print(c['rep']['expr'], len(c['snippets'].items()))
+                tuple_list.append((v[0], v[1], v[2], v[3], v[4], v[5], v[6], v[7], v[8]))
+                # tuple_list.append((v[0], v[1], v[2], v[5], v[6], v[7], v[8]))
+    return tuple_list
 
 def store_clusters(clusters):
     """
     Stores clusters which is a list of tuples where each element is a 
     column value
     """ 
-    # TODO store row_diff / col_diff as well
+    # TODO provide option to save Python/R execution result in csv
     df = pd.DataFrame(clusters, columns =['Python', 'R', 'Python result', \
-            'R result', 'Row Diff', 'Col Diff', 'Semantic', 'Edit Distance'])
+            'R result', 'Row Diff', 'Col Diff', 'Semantic', 'Largest Common', 'Edit Distance'])
+    # df = pd.DataFrame(clusters, columns =['Python', 'R', 'Row Diff', 'Col Diff', 'Semantic', 'Largest Common', 'Edit Distance'])
     tolerance = round(1-SIM_T, 2)
-    df.to_csv(f"{CLUSTERS_PATH}clusters_{tolerance}.csv", index=False)
+    df.to_csv(f"{CLUSTERS_PATH}clusters_randomdfs_{tolerance}.csv", index=False)
             
 if __name__ == '__main__':
     if len(sys.argv) > 1:
@@ -205,12 +213,13 @@ if __name__ == '__main__':
         SIM_T = min(1.0, max(0, SIM_T)) # lower bound to 0 and upper bound to 1
         # George's method
         # clusters = cluster(pysnips, rsnips)
-        # print_clusters(clusters)
+        # tuple_list = gather_clusters(clusters)
+        # store_clusters(tuple_list)
         # Naive method
-        clusters = simple_cluster(pysnips, rsnips)
+        clusters = simple_cluster()
         store_clusters(clusters)
     else:
         print("invalid option!")
         print("usage: python cluster.py [0 <= SIM_T <= 1.0]")
         sys.exit(1)
-   
+

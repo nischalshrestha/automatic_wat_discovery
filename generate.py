@@ -100,13 +100,17 @@ def generate_args(n_args=256, max_rows=100, lang="py"):
         args.append(new_df)
     return args
 
-def generate_args_from_df(df_template, n_args=1, lang="py"):
+def generate_args_from_df(df_template, n_args=1, lang="py", simple=True):
     """This will create one dataframe based on a supplied dataframe"""
     args = []
     max_rows = df_template.shape[0]
     for n in range(n_args):
-        new_df = construct_simple_df(df_template)
-        # new_df = construct_df(df_template, max_rows)
+        if simple:
+            new_df = construct_simple_df(df_template)
+            args.append(new_df)
+            return args
+        else:
+            new_df = construct_df(df_template, max_rows)
         if lang == "r":
             new_df = pandas2ri.py2rpy(new_df)
         args.append(new_df)

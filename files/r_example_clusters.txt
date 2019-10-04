@@ -1,0 +1,354 @@
+Time taken: 2247.98
+----
+ head(mslacc) 3 
+~~~~
+head(mslacc,5) row_diff: 1 col_diff:0 semantic: 0.65 edit_distance 0.952
+head(mslacc,n=5L) row_diff: 1 col_diff:0 semantic: 0.65 edit_distance 0.902
+mslacc[1:5,] row_diff: 1 col_diff:0 semantic: 0.65 edit_distance 0.556
+----
+
+titanic.test<-mslacc[is.na(mslacc$Survived),] 0
+cherbourg_df_<-mslacc[mslacc$Embarked=="C",] 0
+mslacc[is.na(mslacc$Fare),] 0
+----
+ mslacc<-mslacc[c(3,5,6,7,8,10,12,2)] 2 
+~~~~
+knn_test<-mslacc[,-c(1,2,4,9,11,14,16)] row_diff: 0 col_diff:1 semantic: 0.535 edit_distance 0.625
+knn_train<-mslacc[,-c(1,2,4,9,11,14,16)] row_diff: 0 col_diff:1 semantic: 0.535 edit_distance 0.62
+----
+
+----
+ trRF<-mslacc[!is.na(mslacc$Survived),] 67 
+~~~~
+mslacc<-mslacc[,-11] row_diff: 0 col_diff:1 semantic: 0.529 edit_distance 0.446
+y.names<-mslacc[grep("Output",mslacc$unitName),"unitName"] row_diff: 0 col_diff:0 semantic: 0.983 edit_distance 0.571
+mslacc$Ticket=NULL row_diff: 0 col_diff:1 semantic: 0.529 edit_distance 0.524
+test.column.types<-mslacc[-2] row_diff: 0 col_diff:1 semantic: 0.529 edit_distance 0.55
+mslacc<-mslacc[,] row_diff: 0 col_diff:0 semantic: 0.983 edit_distance 0.479
+mslacc$Name<-NULL row_diff: 0 col_diff:1 semantic: 0.529 edit_distance 0.394
+mslacc<-mslacc[!is.na(mslacc$Embarked),] row_diff: 0 col_diff:0 semantic: 0.983 edit_distance 0.709
+df<-subset(mslacc,Pclass=3) row_diff: 0 col_diff:0 semantic: 0.983 edit_distance 0.525
+mslacc$SibSp<-NULL row_diff: 0 col_diff:1 semantic: 0.529 edit_distance 0.412
+test3<-mslacc[complete.cases(mslacc$Fare),] row_diff: 0 col_diff:0 semantic: 0.983 edit_distance 0.622
+titanic.train<-mslacc[!is.na(mslacc$Survived),] row_diff: 0 col_diff:0 semantic: 0.983 edit_distance 0.77
+train.df<-mslacc[which(!is.na(mslacc$Survived)),] row_diff: 0 col_diff:0 semantic: 0.983 edit_distance 0.769
+mslacc$Title row_diff: 0 col_diff:0 semantic: 0.983 edit_distance 0.589
+mslacc$PassengerId<-NULL row_diff: 0 col_diff:1 semantic: 0.529 edit_distance 0.493
+mslacc$Sex=NULL row_diff: 0 col_diff:1 semantic: 0.529 edit_distance 0.519
+mslacc$ens_model row_diff: 0 col_diff:0 semantic: 0.983 edit_distance 0.57
+plot_data<-mslacc[-c(62,830),] row_diff: 2 col_diff:0 semantic: 0.537 edit_distance 0.534
+mslacc$method row_diff: 0 col_diff:0 semantic: 0.983 edit_distance 0.54
+struct.out<-c(mslacc$nInputs,mslacc$archParams$size,mslacc$nOutputs) row_diff: 0 col_diff:0 semantic: 0.983 edit_distance 0.542
+mslacc$Survived=NULL row_diff: 0 col_diff:1 semantic: 0.529 edit_distance 0.391
+mslacc$Child row_diff: 0 col_diff:0 semantic: 0.983 edit_distance 0.589
+mslacc$confusion row_diff: 0 col_diff:0 semantic: 0.983 edit_distance 0.563
+mslacc<-mslacc[mslacc$Embarked!="",] row_diff: 0 col_diff:0 semantic: 0.983 edit_distance 0.62
+mslacc$Cabin<-NULL row_diff: 0 col_diff:1 semantic: 0.529 edit_distance 0.44
+mslacc$ticketsCnt<-NULL row_diff: 0 col_diff:0 semantic: 0.983 edit_distance 0.449
+full_mod<-mslacc[,-10] row_diff: 0 col_diff:1 semantic: 0.529 edit_distance 0.43
+mslacc$table row_diff: 0 col_diff:0 semantic: 0.983 edit_distance 0.553
+mslacc<-mslacc[order(mslacc$PassengerId),] row_diff: 0 col_diff:0 semantic: 0.983 edit_distance 0.636
+mslacc$PassengerId=NULL row_diff: 0 col_diff:1 semantic: 0.529 edit_distance 0.499
+Xtrainset<-mslacc[,-1] row_diff: 0 col_diff:1 semantic: 0.529 edit_distance 0.525
+mslacc$values row_diff: 0 col_diff:0 semantic: 0.983 edit_distance 0.574
+mslacc$Ticket<-NULL row_diff: 0 col_diff:1 semantic: 0.529 edit_distance 0.404
+mslacc$bestTune row_diff: 0 col_diff:0 semantic: 0.983 edit_distance 0.581
+mslacc$survived row_diff: 0 col_diff:0 semantic: 0.983 edit_distance 0.446
+mslacc$Surname row_diff: 0 col_diff:0 semantic: 0.983 edit_distance 0.594
+mslacc$FamilyID2<-mslacc$FamilyID row_diff: 0 col_diff:0 semantic: 0.983 edit_distance 0.578
+mslacc$RareTitle<-mslacc$Title row_diff: 0 col_diff:0 semantic: 0.983 edit_distance 0.657
+mslacc<-mslacc[-length(mslacc)] row_diff: 0 col_diff:1 semantic: 0.529 edit_distance 0.627
+arrange(mslacc) row_diff: 0 col_diff:0 semantic: 0.983 edit_distance 0.435
+mslacc<-mslacc[grep("out",names(mslacc),invert=T)] row_diff: 0 col_diff:0 semantic: 0.983 edit_distance 0.605
+embarkFare<-mslacc[mslacc$Embarked!="",] row_diff: 0 col_diff:0 semantic: 0.983 edit_distance 0.633
+mslacc$median row_diff: 0 col_diff:0 semantic: 0.983 edit_distance 0.606
+hid.struct<-mslacc[-c(length(mslacc))] row_diff: 0 col_diff:1 semantic: 0.529 edit_distance 0.625
+mslacc$byClass[["F1"]] row_diff: 0 col_diff:0 semantic: 0.983 edit_distance 0.523
+mslacc$Parch<-NULL row_diff: 0 col_diff:1 semantic: 0.529 edit_distance 0.412
+mslacc$results row_diff: 0 col_diff:0 semantic: 0.983 edit_distance 0.448
+mslacc<-mslacc[,-10] row_diff: 0 col_diff:1 semantic: 0.529 edit_distance 0.446
+mslacc$Name=NULL row_diff: 0 col_diff:1 semantic: 0.529 edit_distance 0.511
+mslacc$familyID2<-mslacc$familyID row_diff: 0 col_diff:0 semantic: 0.983 edit_distance 0.562
+full1<-mslacc[,-9] row_diff: 0 col_diff:1 semantic: 0.529 edit_distance 0.486
+mslacc<-mslacc[,-grep("Survived",names(mslacc))] row_diff: 0 col_diff:1 semantic: 0.529 edit_distance 0.659
+x.names<-mslacc[grep("Input",mslacc$unitName),"unitName"] row_diff: 0 col_diff:0 semantic: 0.983 edit_distance 0.594
+mslacc$deck<-mslacc$Deck row_diff: 0 col_diff:0 semantic: 0.983 edit_distance 0.571
+mslacc$age[is.na(mslacc$age)]<-median(mslacc$age,na.rm=TRUE) row_diff: 0 col_diff:0 semantic: 0.983 edit_distance 0.597
+mslacc$surname<-NULL row_diff: 0 col_diff:0 semantic: 0.983 edit_distance 0.497
+mslacc$models row_diff: 0 col_diff:0 semantic: 0.983 edit_distance 0.574
+mslacc$TitleCat<-mslacc$Title row_diff: 0 col_diff:0 semantic: 0.983 edit_distance 0.63
+mslacc$TitleGroup<-mslacc$Title row_diff: 0 col_diff:0 semantic: 0.983 edit_distance 0.6
+mslacc$Survived<-NULL row_diff: 0 col_diff:1 semantic: 0.529 edit_distance 0.413
+mslacc<-mslacc[,-8] row_diff: 0 col_diff:1 semantic: 0.529 edit_distance 0.456
+mslacc$ticketLetter<-NULL row_diff: 0 col_diff:0 semantic: 0.983 edit_distance 0.403
+mslacc$importance row_diff: 0 col_diff:0 semantic: 0.983 edit_distance 0.584
+mslacc$finalModel row_diff: 0 col_diff:0 semantic: 0.983 edit_distance 0.617
+mslacc$Cabin=NULL row_diff: 0 col_diff:1 semantic: 0.529 edit_distance 0.56
+mslacc$Embarked=NULL row_diff: 0 col_diff:1 semantic: 0.529 edit_distance 0.37
+mslacc$error row_diff: 0 col_diff:0 semantic: 0.983 edit_distance 0.553
+mslacc<-mslacc[,-c(12,13)] row_diff: 0 col_diff:1 semantic: 0.529 edit_distance 0.583
+----
+
+----
+ head(mslacc,2) 4 
+~~~~
+head(mslacc,3) row_diff: 1 col_diff:0 semantic: 0.604 edit_distance 0.952
+head(mslacc,1) row_diff: 1 col_diff:0 semantic: 0.583 edit_distance 0.952
+mslacc[1:2,] row_diff: 0 col_diff:0 semantic: 1.0 edit_distance 0.621
+head(mslacc,n=3) row_diff: 1 col_diff:0 semantic: 0.604 edit_distance 0.914
+----
+
+----
+ train_Pclass1<-filter(mslacc,Pclass==1) 3 
+~~~~
+val_Pclass1<-filter(mslacc,Pclass==1) row_diff: 0 col_diff:0 semantic: 0.988 edit_distance 0.819
+first_class_test<-filter(mslacc,Pclass==1) row_diff: 0 col_diff:0 semantic: 0.988 edit_distance 0.767
+first_class<-filter(mslacc,Pclass==1) row_diff: 0 col_diff:0 semantic: 0.988 edit_distance 0.876
+----
+
+titanic.train<-mslacc[mslacc$flag==0,] 0
+mslacc<-mslacc[,-11] 0
+----
+ newdata<-subset(mslacc,Sex=="male") 3 
+~~~~
+survived_dudes<-filter(mslacc,Sex=="male") row_diff: 0 col_diff:0 semantic: 0.982 edit_distance 0.685
+mister<-mslacc[which(mslacc$Sex=="male"),] row_diff: 0 col_diff:0 semantic: 0.982 edit_distance 0.656
+train_male<-subset(mslacc,mslacc$Sex=="male") row_diff: 0 col_diff:0 semantic: 0.982 edit_distance 0.746
+----
+
+mslacc[mslacc$Embarked=="",] 0
+----
+ ageTrain<-mslacc[is.na(mslacc$Age),] 2 
+~~~~
+data.test<-mslacc[is.na(mslacc[,"Age"]),] row_diff: 0 col_diff:0 semantic: 0.917 edit_distance 0.761
+agesToPredict<-mslacc[is.na(mslacc$Age),] row_diff: 0 col_diff:0 semantic: 0.917 edit_distance 0.856
+----
+
+mslacc[which(is.na(mslacc$Fare)),] 0
+----
+ mslacc[mslacc$Fare==0,] 1 
+~~~~
+mslacc[153,] row_diff: 14 col_diff:0 semantic: 0.5 edit_distance 0.629
+----
+
+y.names<-mslacc[grep("Output",mslacc$unitName),"unitName"] 0
+----
+ mslacc<-subset(mslacc,select=c(2,3,5,6,7,8,12)) 6 
+~~~~
+mslacc<-mslacc[c(2,4,5,6,7,9,11)] row_diff: 0 col_diff:0 semantic: 0.543 edit_distance 0.72
+data<-subset(mslacc,select=c(2,3,5,6,7,8,10,12)) row_diff: 0 col_diff:1 semantic: 0.546 edit_distance 0.828
+titanic2<-mslacc[,-c(1,4,9,11)] row_diff: 0 col_diff:1 semantic: 0.546 edit_distance 0.558
+mslacc<-select(mslacc,-PassengerId,-Name,-Ticket,-Cabin) row_diff: 0 col_diff:1 semantic: 0.546 edit_distance 0.63
+new_titanic<-mslacc[,c(2,3,5,6,7,8,10,12)] row_diff: 0 col_diff:1 semantic: 0.546 edit_distance 0.729
+mslacc<-mslacc[,c(-1,-4,-9,-11)] row_diff: 0 col_diff:1 semantic: 0.546 edit_distance 0.65
+----
+
+----
+ second_class<-filter(mslacc,Pclass==2) 1 
+~~~~
+second_class_test<-filter(mslacc,Pclass==2) row_diff: 0 col_diff:0 semantic: 0.995 edit_distance 0.869
+----
+
+head(mslacc,3) 0
+mslacc$Ticket=NULL 0
+prRF<-mslacc[is.na(mslacc$Survived),] 0
+test.column.types<-mslacc[-2] 0
+mslacc<-mslacc[,] 0
+mslacc$Name<-NULL 0
+----
+ agesIntact<-mslacc[!is.na(mslacc$Age),] 8 
+~~~~
+mslacc<-mslacc[!is.na(mslacc$Age),] row_diff: 0 col_diff:0 semantic: 1.0 edit_distance 0.802
+data_sub<-mslacc[!is.na(mslacc$Age),] row_diff: 0 col_diff:0 semantic: 1.0 edit_distance 0.791
+age.data<-mslacc[!is.na(mslacc$Age),] row_diff: 0 col_diff:0 semantic: 1.0 edit_distance 0.832
+ageV<-mslacc[is.na(mslacc$Age)==FALSE,] row_diff: 0 col_diff:0 semantic: 1.0 edit_distance 0.756
+data.clean<-mslacc[!is.na(mslacc$Age),] row_diff: 0 col_diff:0 semantic: 1.0 edit_distance 0.813
+trainCompleteCases<-mslacc[complete.cases(mslacc),] row_diff: 0 col_diff:0 semantic: 1.0 edit_distance 0.681
+data.train<-mslacc[!is.na(mslacc[,"Age"]),] row_diff: 0 col_diff:0 semantic: 1.0 edit_distance 0.72
+train_glm<-mslacc[!is.na(mslacc$Age),] row_diff: 0 col_diff:0 semantic: 1.0 edit_distance 0.804
+----
+
+mslacc<-mslacc[!is.na(mslacc$Embarked),] 0
+mslacc<-mslacc[c(2,4,5,7)] 0
+df<-subset(mslacc,Pclass=3) 0
+mslacc$SibSp<-NULL 0
+test3<-mslacc[complete.cases(mslacc$Fare),] 0
+titanic.train<-mslacc[!is.na(mslacc$Survived),] 0
+mslacc<-mslacc[!is.na(mslacc$Age),] 0
+head(mslacc,1) 0
+train.df<-mslacc[which(!is.na(mslacc$Survived)),] 0
+mslacc<-mslacc[c(2,4,5,6,7,9,11)] 0
+----
+ mslacc[1044,] 1 
+~~~~
+mslacc[1040:1045,] row_diff: 5 col_diff:0 semantic: 0.833 edit_distance 0.907
+----
+
+----
+ mslacc<-select(mslacc,PassengerId,Survived) 5 
+~~~~
+nodes<-mslacc[,c("PassengerId","Survived")] row_diff: 0 col_diff:0 semantic: 1.0 edit_distance 0.723
+submission_df<-mslacc[,c("PassengerId","Survived")] row_diff: 0 col_diff:0 semantic: 1.0 edit_distance 0.733
+mslacc<-mslacc[c(1,12)] row_diff: 0 col_diff:0 semantic: 0.5 edit_distance 0.633
+NTicket<-mslacc[,1:2] row_diff: 0 col_diff:0 semantic: 1.0 edit_distance 0.464
+select(mslacc,Survived) row_diff: 0 col_diff:1 semantic: 0.5 edit_distance 0.575
+----
+
+----
+ third_class<-filter(mslacc,Pclass==3) 3 
+~~~~
+third_class_test<-filter(mslacc,Pclass==3) row_diff: 0 col_diff:0 semantic: 0.977 edit_distance 0.866
+test2<-mslacc[c(mslacc$Pclass==3),] row_diff: 0 col_diff:0 semantic: 0.977 edit_distance 0.692
+thirdClass<-mslacc[mslacc$Pclass==3,] row_diff: 0 col_diff:0 semantic: 0.977 edit_distance 0.724
+----
+
+loss<-mslacc[which(mslacc$Survived==0),] 0
+mslacc$Title 0
+----
+ head(mslacc,n=20) 1 
+~~~~
+head(mslacc,20) row_diff: 0 col_diff:0 semantic: 0.988 edit_distance 0.961
+----
+
+data_sub<-mslacc[!is.na(mslacc$Age),] 0
+mslacc$PassengerId<-NULL 0
+mslacc$Sex=NULL 0
+----
+ data<-subset(mslacc,select=c(2,3,5,6,7,8,10,12)) 3 
+~~~~
+Xtestset<-mslacc[,c(-1,-3,-8,-10)] row_diff: 0 col_diff:0 semantic: 0.6 edit_distance 0.645
+mslacc<-mslacc[,-c(1,10,3,8)] row_diff: 0 col_diff:0 semantic: 0.6 edit_distance 0.56
+mslacc<-mslacc[,c(-1,-3,-8,-10)] row_diff: 0 col_diff:0 semantic: 0.6 edit_distance 0.609
+----
+
+mslacc$ens_model 0
+plot_data<-mslacc[-c(62,830),] 0
+select(mslacc,Age,Sex,Fare,Embarked) 0
+age.data<-mslacc[!is.na(mslacc$Age),] 0
+mslacc[!complete.cases(mslacc$Fare),] 0
+val_Pclass1<-filter(mslacc,Pclass==1) 0
+mslacc$method 0
+struct.out<-c(mslacc$nInputs,mslacc$archParams$size,mslacc$nOutputs) 0
+mslacc[1:2,] 0
+mslacc$Survived=NULL 0
+mslacc$Child 0
+mslacc$confusion 0
+miss<-mslacc[which(mslacc$title=="Miss."),] 0
+first_class_test<-filter(mslacc,Pclass==1) 0
+third_class_test<-filter(mslacc,Pclass==3) 0
+mslacc<-mslacc[mslacc$Embarked!="",] 0
+mslacc$Cabin<-NULL 0
+----
+ head(mslacc,10) 1 
+~~~~
+head(mslacc,n=10) row_diff: 0 col_diff:0 semantic: 0.992 edit_distance 0.961
+----
+
+mslacc$ticketsCnt<-NULL 0
+survived_dudes<-filter(mslacc,Sex=="male") 0
+full_mod<-mslacc[,-10] 0
+----
+ survived_all<-filter(mslacc,Survived==1) 1 
+~~~~
+survival<-mslacc[which(mslacc$Survived==1),] row_diff: 0 col_diff:0 semantic: 0.987 edit_distance 0.717
+----
+
+nodes<-mslacc[,c("PassengerId","Survived")] 0
+mslacc$table 0
+ageV<-mslacc[is.na(mslacc$Age)==FALSE,] 0
+mslacc<-mslacc[order(mslacc$PassengerId),] 0
+titanic2<-mslacc[,-c(1,4,9,11)] 0
+data.test<-mslacc[is.na(mslacc[,"Age"]),] 0
+submission_df<-mslacc[,c("PassengerId","Survived")] 0
+mslacc<-mslacc[c(1,12)] 0
+Xtestset<-mslacc[,c(-1,-3,-8,-10)] 0
+mslacc$PassengerId=NULL 0
+Xtrainset<-mslacc[,-1] 0
+mister<-mslacc[which(mslacc$Sex=="male"),] 0
+head(mslacc,5) 0
+mslacc$values 0
+head(mslacc,n=5L) 0
+mslacc$Ticket<-NULL 0
+test<-mslacc[mslacc$isTrain==FALSE,] 0
+mslacc$bestTune 0
+smallFamId<-mslacc[mslacc$Freq==3,] 0
+NTicket<-mslacc[,1:2] 0
+FareM<-mslacc[is.na(mslacc$Fare),] 0
+mslacc$survived 0
+second_class_test<-filter(mslacc,Pclass==2) 0
+mslacc$Surname 0
+mslacc[mslacc$PassengerId==503,] 0
+agesToPredict<-mslacc[is.na(mslacc$Age),] 0
+test_clean<-mslacc[-(1:891),] 0
+mslacc<-mslacc[mslacc$from!=mslacc$to,] 0
+test1<-mslacc[c(mslacc$Embarked=="S"),] 0
+mslacc$FamilyID2<-mslacc$FamilyID 0
+train<-mslacc[mslacc$cat=="train",] 0
+mslacc$RareTitle<-mslacc$Title 0
+mslacc<-mslacc[-length(mslacc)] 0
+train_female<-subset(mslacc,mslacc$Sex=="female") 0
+test2<-mslacc[c(mslacc$Pclass==3),] 0
+mslacc<-select(mslacc,-PassengerId,-Name,-Ticket,-Cabin) 0
+arrange(mslacc) 0
+mslacc<-mslacc[grep("out",names(mslacc),invert=T)] 0
+embarkFare<-mslacc[mslacc$Embarked!="",] 0
+mslacc<-mslacc[mslacc$Freq<=2,] 0
+mslacc$median 0
+mslacc[1:5,] 0
+hid.struct<-mslacc[-c(length(mslacc))] 0
+test<-mslacc[mslacc$cat=="test",] 0
+data.clean<-mslacc[!is.na(mslacc$Age),] 0
+knn_test<-mslacc[,-c(1,2,4,9,11,14,16)] 0
+mslacc<-subset(mslacc,select=c(2,4,5,6,7,11)) 0
+mslacc$byClass[["F1"]] 0
+train<-mslacc[mslacc$isTrain==TRUE,] 0
+mslacc$Parch<-NULL 0
+mslacc<-mslacc[,-c(1,10,3,8)] 0
+mslacc$results 0
+mslacc<-mslacc[,c(-1,-3,-8,-10)] 0
+mslacc<-mslacc[,-10] 0
+mslacc$Name=NULL 0
+mslacc$familyID2<-mslacc$familyID 0
+full1<-mslacc[,-9] 0
+knn_train<-mslacc[,-c(1,2,4,9,11,14,16)] 0
+head(mslacc,20) 0
+trainCompleteCases<-mslacc[complete.cases(mslacc),] 0
+mslacc[c(62,830),] 0
+mslacc<-mslacc[,-grep("Survived",names(mslacc))] 0
+x.names<-mslacc[grep("Input",mslacc$unitName),"unitName"] 0
+mslacc[mslacc$PassengerId[is.na(mslacc$Fare)],] 0
+mslacc[which.min(mslacc$combined_err),] 0
+mslacc$deck<-mslacc$Deck 0
+mslacc$age[is.na(mslacc$age)]<-median(mslacc$age,na.rm=TRUE) 0
+mast<-mslacc[which(mslacc$title=="Master."),] 0
+mslacc$surname<-NULL 0
+mslacc$models 0
+titanic.test<-mslacc[mslacc$flag==1,] 0
+mslacc[1040:1045,] 0
+first_class<-filter(mslacc,Pclass==1) 0
+mslacc$TitleCat<-mslacc$Title 0
+mslacc[mslacc$PassengerId[is.na(mslacc$Embarked)],] 0
+mslacc$TitleGroup<-mslacc$Title 0
+mslacc$Survived<-NULL 0
+head(mslacc,n=10) 0
+mslacc<-mslacc[,-8] 0
+survival<-mslacc[which(mslacc$Survived==1),] 0
+train_male<-subset(mslacc,mslacc$Sex=="male") 0
+mslacc$ticketLetter<-NULL 0
+new_titanic<-mslacc[,c(2,3,5,6,7,8,10,12)] 0
+data.train<-mslacc[!is.na(mslacc[,"Age"]),] 0
+mslacc$importance 0
+select(mslacc,Age,Sex,Fare,Embarked,Survived) 0
+mslacc<-mslacc[,c(-1,-4,-9,-11)] 0
+head(mslacc,n=3) 0
+mslacc$finalModel 0
+mslacc$Cabin=NULL 0
+train_glm<-mslacc[!is.na(mslacc$Age),] 0
+mslacc$Embarked=NULL 0
+mslacc[which(is.na(mslacc$Embarked)),] 0
+select(mslacc,Survived) 0
+mslacc$error 0
+smallFamId<-mslacc[mslacc$Freq<=2,] 0
+mslacc<-mslacc[,-c(12,13)] 0
+mslacc[153,] 0
+thirdClass<-mslacc[mslacc$Pclass==3,] 0

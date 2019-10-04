@@ -64,7 +64,7 @@ def eval_expr(df, expr):
         robjects.r("rm(list = ls())") # clear locals after execution
         return expr, output
     except Exception as e:
-        print(expr, e)
+        # print(expr, e)
         return e
     
 def execute_statement(snip):
@@ -124,7 +124,7 @@ if __name__ == '__main__':
         try:
             NUM_ARGS = int(sys.argv[1]) 
             NUM_ARGS = 1 if NUM_ARGS <= 0 else NUM_ARGS
-            if NUM_ARGS >= MAX_ARGS: 
+            if NUM_ARGS > MAX_ARGS: 
                 print("beyond max arguments of 256 inputs")
                 sys.exit(1)
             # If user specifies, the particular type of outputs to store
@@ -140,16 +140,11 @@ if __name__ == '__main__':
                     OUTPUT_TYPE_FILTER = np.ndarray
             # generated_args = generate_args(NUM_ARGS, lang="r")
             # generated_args = generate_simple_arg(lang="r")
-            ints = [i for i in range(0, 8)]
-            ints.extend([8,8])
-            sints = [i for i in range(0, 10)]
-            # shuffle(sints)
-            strs = [f"ID_{i}" for i in range(0, 8)]
-            strs.extend(["ID_8", "ID_8"])
-            sstrs = [f"P_{i}" for i in reversed(range(10))]
-            df = pd.DataFrame({'col0':sints[::-1], 'col1':ints, 'col3':ints, 'col2':strs, 'col4':sstrs})
-            # print(df)
-            generated_args = generate_args_from_df(df, n_args=NUM_ARGS, lang="r")
+            # NOTE: need to first run python_side/execute.py before running this!
+            # Reason for this is when we generate random dfs we want to use
+            # the same ones for R execution as well
+            generated_args = pickle.load(open("../files/args.pkl", "rb"))
+            print(generated_args[0])
             executions = execute_statements()
             df_store = DataframeStore(executions)
             pickle.dump(df_store, open(R_PICKLE_PATH, "wb"))

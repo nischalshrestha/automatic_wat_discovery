@@ -1,0 +1,27 @@
+Time taken: 122.98
+mslacc=mslacc[['Pclass','Fare','Parch','Sex','Embarked','SibSp','Age']] 0
+----
+ mslacc=mslacc.drop('PassengerId',axis=1) 2 
+~~~~
+trRF<-mslacc[!is.na(mslacc$Survived),] row_diff: 0 col_diff:1 semantic: 0.529 edit_distance 0.591
+y.names<-mslacc[grep("Output",mslacc$unitName),"unitName"] row_diff: 0 col_diff:1 semantic: 0.529 edit_distance 0.505
+----
+
+mslacc.drop(labels=['PassengerId','Name'],axis=1,inplace=True) 0
+mslacc=mslacc.iloc[:,([0,1,2,5])] 0
+mslacc.drop(labels=['Ticket','Cabin'],axis=1,inplace=True) 0
+mslacc=mslacc.loc[(mslacc['Sex']=='female'),:] 0
+mslacc=mslacc[['Survived','Pclass','Sex','Age','SibSp','Fare']] 0
+mslacc.loc[(mslacc['Fare']>500),:] 0
+mslacc.query('Age!=Age').head() 0
+mslacc.drop(['SibSp','Parch'],1,inplace=True) 0
+mslacc=mslacc.describe() 0
+mslacc[(mslacc.Age<1.0)&(mslacc.Survived==0)] 0
+mslacc.head(6) 0
+mslacc=mslacc.iloc[891:,:].drop('Survived',axis=1) 0
+mslacc[152:153] 0
+mslacc=mslacc.loc[mslacc['Sex']=='female',['Survived','Sex','Age']] 0
+mslacc=mslacc.loc[:,(['Pclass','Sex'])] 0
+mslacc=mslacc.iloc[891:] 0
+mslacc=mslacc.iloc[:,2:6] 0
+mslacc.drop(['Fare'],1,inplace=True) 0
