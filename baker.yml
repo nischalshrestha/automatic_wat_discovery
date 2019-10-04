@@ -5,16 +5,20 @@ lang:
   - python3.6
   - R
 commands:
-  # filter/normalize the snippets in Kaggle .py/.r files
+  # filter/normalize the snippets in experiments .py/.r files
   # output: [lang]snips.csv in [lang]_side directory
-  filterPy: cd python_side/; python filter.py script; cd ..
-  filterR: cd r_side/; python filterR.py script; cd ..
+  filterPy: cd python_side/; python filter.py experiments; cd ..
+  filterR: cd r_side/; python filterR.py experiments; cd ..
+  # generate dataframes for arguments
+  # default here is 256 dataframes (max)
+  # output: args.pkl file in files directory
+  generate: python generate.py experiments 256 -r
   # execute the filtered snippets for each language
   # default here is 5 input arguments (dataframes) and only store dataframe outputs
   # output: [lang]_dfs.pkl file in [lang]_side directory
-  executePy: cd python_side/; python execute.py 20 dataframe; cd ..
-  executeR: cd r_side/; python executeR.py 20 dataframe; cd ..
+  executePy: cd python_side/; python execute.py all; cd ..
+  executeR: cd r_side/; python executeR.py all; cd ..
   # cluster the executed results in pickle files for both languages
-  # output: clustered.txt file containing pairs of snippets with semantic scores / edit distances
-  # TODO instead, output a csv file
-  cluster: python cluster.py 600 0.5 > files/example_clusters.txt
+  # default here is .1 which captures most of the similarity score spectrum from 0.1 to 1.0
+  # output: cluster_[tolerance].csv file containing pairs of snippets with semantic scores / edit distances
+  cluster: python cluster.py 0.1

@@ -28,6 +28,8 @@ You can also directly run the modules if you need more control or for testing.
 
 `python parseNotebooks.py [py|r]`
 
+`python generate.py [kaggle|experiments] [number of inputs to test <= 256] [-s single dataframe | -r random dataframes]`
+
 `python cluster.py [number of snippets >= 2] [0 <= SIM_T <= 1.0]` 
 
 where `number of snippets` are how many snippets in total you want to cluster, and `SIM_T` is the similarity score. 
