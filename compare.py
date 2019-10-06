@@ -51,9 +51,6 @@ def compare_df(df1, df2):
     df2_row = df2.shape[0]
     df2_col = df2.shape[1]
     lca = (min(df1_row, df2_row), min(df1_col, df2_col))
-    # Note the row and col dimension diff
-    row_diff = abs(df1_row - df2_row)
-    col_diff = abs(df1_col - df2_col)
     # Convert to ndarrays for a more efficient comparison
     df1_arr = df1.values
     df2_arr = df2.values
@@ -77,6 +74,7 @@ def compare_df(df1, df2):
     # Store the top and bottom dataframe row/col dimensions
     trow, brow = top.shape[0], bottom.shape[0]
     tcol, bcol = top.shape[1], bottom.shape[1]
+    
     # print(trow, brow, tcol, bcol)
     # i is the current LCA row and j is the current LCA col when sliding
     i, j = 0, 0
@@ -136,8 +134,13 @@ def compare_df(df1, df2):
     # print('windows:', windows)
     overall_score = max(windows)
     lca_max = lcas[windows.index(overall_score)]
+    # Note the row and col dimension diff
+    row_diff = abs(df1_row - df2_row)
+    col_diff = abs(df1_col - df2_col)
+    row_score = (trow-row_diff) / trow
+    col_score = (bcol-col_diff) / bcol
     # overall_score = sum(windows)/len(windows) # this reduces lots of noise
-    return overall_score, row_diff, col_diff, lca_max
+    return overall_score, row_score, col_score, lca_max
 
 def compare(a, b):
     """
@@ -169,11 +172,12 @@ def compare(a, b):
             a = a.values
         if type(b) == pd.Series:
             b = b.values
-        # for arrays, use jaccard
-        s1 = set(a)
-        s2 = set(b)
-        unioned = len(s1.union(s2))
-        sim_score = len(s1.intersection(s2)) / unioned if unioned > 0 else 0
+        if len(a) > len(b):
+            bigger, smaller = a, b
+        else:
+            bigger, smaller = b, a
+        intersection = [s for s in range(len(smaller)) if smaller[s] == bigger[s]]
+        sim_score = len(intersection) / len(bigger)
         # print(f'sim_score: {sim_score}')
     elif type(a) == pd.DataFrame and type(b) == pd.DataFrame:
         sim_score = compare_df(a, b)

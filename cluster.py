@@ -20,11 +20,12 @@ import sys
 sys.path.append("./python_side")
 from execute import DataframeStore
 
-NUM_WORKERS = 4
+NUM_WORKERS = 12
 PY_PICKLE_PATH = './files/py_dfs.pkl'
 R_PICKLE_PATH = './files/r_dfs.pkl'
 CLUSTERS_PATH = './files/'
-SIM_T = 0.85
+SIM_T = 0.85 
+KEEP_RESULTS = True
 
 flatten = lambda l: [item for sublist in l for item in sublist]
 
@@ -46,7 +47,7 @@ rsnips = pickle.load(open(R_PICKLE_PATH, "rb")).pairs
 # Embarked        object (level) - randomize
 # df = pd.read_csv("../train.csv")
 
-def compare_results(rep, r):
+def compare_results(rep, r, ):
     """
     Compares test results of rep and r and returns a tuple to store later:
 
@@ -68,13 +69,23 @@ def compare_results(rep, r):
             # print(t1)
             score = compare(t1, t2)
             # include score in results if 
-            if type(score) == tuple and score[0] >= SIM_T:
-                results.append((py_reformat, r_reformat, t1, t2, score[1], score[2], round(score[0], 3), score[3], edit_distance))
-                return results
+            if type(score) == tuple:
+                overall = round((score[0]*score[1]*score[2]), 3)
+                if overall >= SIM_T:
+                    if KEEP_RESULTS:
+                        results.append((py_reformat, r_reformat, t1, t2, overall, score[1], score[2], round(score[0], 3), score[3], edit_distance))
+                    else:
+                        results.append((py_reformat, r_reformat, overall, score[1], score[2], round(score[0], 3), score[3], edit_distance))
+                    return results
             elif type(score) != tuple and score >= SIM_T:
-                # For the non-dataframe output case we leave row/col, lca diff blank
-                results.append((py_reformat, r_reformat, t1, t2, "", "", round(score, 3), "", edit_distance))
-                return results
+                overall = round(score, 3)
+                if overall >= SIM_T:
+                    # For the non-dataframe output case we leave row/col, lca diff blank
+                    if KEEP_RESULTS:
+                        results.append((py_reformat, r_reformat, t1, t2, overall, "", "", overall, "", edit_distance))
+                    else:
+                        results.append((py_reformat, r_reformat, overall, "", "", overall, "", edit_distance))
+                    return results
     return results
 
 def compare_rpy(py):
@@ -100,11 +111,11 @@ def simple_cluster():
     start_time = time.time()
     results = None
     with multiprocessing.Pool(processes=NUM_WORKERS) as pool:
-        results = pool.map_async(compare_rpy, pysnips)
+        results = pool.map_async(compare_rpy, pysnips, chunksize=len(pysnips)//NUM_WORKERS)
         results.wait()
         result = results.get()
         result = list(filter(None, result))
-        results = flatten(list(result))
+        results = flatten(result)
         # print(len(results))
     end_time = time.time()
     print(f"Time taken: {round((end_time - start_time), 2)} secs")
@@ -134,10 +145,10 @@ def store_clusters(clusters, keep_outputs=False):
     # TODO provide option to save Python/R execution result in csv
     if keep_outputs:
         df = pd.DataFrame(clusters, columns =['Python', 'R', 'Python result', \
-            'R result', 'Row Diff', 'Col Diff', 'Semantic', 'Largest Common', \
+            'R result', 'Overall', 'Row Diff', 'Col Diff', 'Semantic', 'Largest Common', \
             'Edit Distance'])
     else:
-        df = pd.DataFrame(clusters, columns =['Python', 'R', 'Row Diff', 'Col Diff', \
+        df = pd.DataFrame(clusters, columns =['Python', 'R', 'Overall', 'Row Diff', 'Col Diff', \
             'Semantic', 'Largest Common', 'Edit Distance'])
     tolerance = round(1-SIM_T, 2)
     df.to_csv(f"{CLUSTERS_PATH}clusters_{tolerance}.csv", index=False)
@@ -146,8 +157,9 @@ if __name__ == '__main__':
     if len(sys.argv) > 1:
         SIM_T = float(sys.argv[1])
         SIM_T = min(1.0, max(0, SIM_T)) # lower bound to 0 and upper bound to 1
+        KEEP_RESULTS = True
         clusters = simple_cluster()
-        store_clusters(clusters, keep_outputs=True)
+        store_clusters(clusters, keep_outputs=KEEP_RESULTS)
     else:
         print("invalid option!")
         print("usage: python cluster.py [0 <= SIM_T <= 1.0]")

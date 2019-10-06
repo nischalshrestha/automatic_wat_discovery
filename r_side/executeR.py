@@ -19,7 +19,7 @@ from generate import generate_args, generate_simple_arg, generate_args_from_df
 # importr("base")
 # importr("dplyr")
 
-NUM_WORKERS = 4
+NUM_WORKERS = 12
 ARGS_PICKLE_PATH = "../files/args.pkl"
 R_PICKLE_PATH = '../files/r_dfs.pkl'
 RSNIPS_PATH = "rsnips.csv"
@@ -103,7 +103,7 @@ def execute_statements():
     # Eval expressions and collect successful ones paired with output: (expr, output)
     start_time = time.time()
     with multiprocessing.Pool(processes=NUM_WORKERS) as pool:
-        results = pool.map_async(execute_statement, snippets, chunksize=len(snippets)//4)
+        results = pool.map_async(execute_statement, snippets)
         results.wait()
         result = results.get()
     end_time = time.time()

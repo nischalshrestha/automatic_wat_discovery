@@ -12,7 +12,7 @@ import pandas as pd
 import ast
 from rast import *
 
-NUM_WORKERS = 4
+NUM_WORKERS = 12
 R_NOTEBOOK_LIST = "../files/filelist_rnb.txt"
 R_LIST = "../files/filelist_r.txt"
 EXPERIMENT_LIST = "../experiments/filelist_r.txt"

@@ -9,7 +9,7 @@ import sys
 sys.path.append("../")
 from generate import generate_args, generate_simple_arg, generate_args_from_df
 
-NUM_WORKERS=4
+NUM_WORKERS=12
 ARGS_PICKLE_PATH = "../files/args.pkl"
 PY_PICKLE_PATH = "../files/py_dfs.pkl"
 PYSNIPS_PATH = "pysnips.csv"
