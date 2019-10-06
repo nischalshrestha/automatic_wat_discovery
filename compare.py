@@ -55,17 +55,18 @@ def compare_df(df1, df2):
     df1_arr = df1.values
     df2_arr = df2.values
     # print(df1_arr, '\n---\n', df2_arr)
+    # If tied, make the one with more rows be bottom
+    if df1_row > df2_row:
+        taller, shorter = df1_arr, df2_arr
+    else:
+        taller, shorter = df2_arr, df1_arr
     # Make the one with more columns be bottom
     if df2_col > df1_col:
         bottom, top = df2_arr, df1_arr
     elif df2_col < df1_col:
         bottom, top = df1_arr, df2_arr
     else:
-        # If tied, make the one with more rows be bottom
-        if df1_row > df2_row:
-            bottom, top = df1_arr, df2_arr
-        else:
-            bottom, top = df2_arr, df1_arr
+        bottom, top = taller, shorter
     # print('lca', lca)
     # print('bottom\n', bottom)
     lca_row = lca[0]
@@ -74,7 +75,6 @@ def compare_df(df1, df2):
     # Store the top and bottom dataframe row/col dimensions
     trow, brow = top.shape[0], bottom.shape[0]
     tcol, bcol = top.shape[1], bottom.shape[1]
-    
     # print(trow, brow, tcol, bcol)
     # i is the current LCA row and j is the current LCA col when sliding
     i, j = 0, 0
@@ -134,11 +134,12 @@ def compare_df(df1, df2):
     # print('windows:', windows)
     overall_score = max(windows)
     lca_max = lcas[windows.index(overall_score)]
-    # Note the row and col dimension diff
+    # Calcuate the row and col dimension differences
     row_diff = abs(df1_row - df2_row)
     col_diff = abs(df1_col - df2_col)
-    row_score = (trow-row_diff) / trow
-    col_score = (bcol-col_diff) / bcol
+    # Use the diffs to calculate the row / col scores
+    row_score = (taller.shape[0] - row_diff) / taller.shape[0]
+    col_score = (bcol - col_diff) / bcol
     # overall_score = sum(windows)/len(windows) # this reduces lots of noise
     return overall_score, row_score, col_score, lca_max
 
