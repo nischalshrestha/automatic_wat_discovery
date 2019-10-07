@@ -1,31 +1,10 @@
+"""
+This module has functions to compare outputs between Python/R
+"""
+
 import numpy as np
 import pandas as pd
 import time, os, sys
-
-def df_diff(df1, df2):
-    """
-    This simply uses pandas `eq` to calculate difference between two dataframes.
-    It's here to compare its performance versus compare_df (below)
-
-    The semantic similarity score is also calculated differently:
-
-    sim_score = diff dataframe / number of elements in diff dataframe
-
-    """
-    # print("~~~~")
-    # print(df1)
-    # print("----")
-    # print(df2)
-    if df1.empty or df2.empty:
-        return 0
-    row_diff = abs(df1.shape[0] - df2.shape[0])
-    col_diff = abs(df1.shape[1] - df2.shape[1])
-    diff = df1.eq(df2)
-    # print("----")
-    # print(f"{df1.eq(df2)}\nrow_diff: {row_diff} col_diff: {col_diff}")
-    total_cells = diff.shape[0]*diff.shape[1]
-    sim_score = sum(diff.sum()) / (diff.shape[0]*diff.shape[1])
-    return sim_score
 
 def compare_df(df1, df2):
     """
@@ -147,6 +126,7 @@ def compare(a, b):
     """
     Given two data a and b, determine and return the semantic similarity score.
     """
+    
     if (type(a) == str and "ERROR:" in a) or (type(b) == str and "ERROR:" in b):
         sim_score = 0
     elif (type(a) == int or type(a) == float) and (type(b) == int or type(b) == float) \
@@ -167,22 +147,23 @@ def compare(a, b):
     # pandas stuff
     # Pandas output for series were saved as Series but output for R was
     # converted to ndarray so need to check for either possibility
-    elif (type(a) == np.ndarray or type(a) == list) and (type(b) == np.ndarray or type(b) == list)\
+    elif (type(a) == np.ndarray or type(a) == list or type(a) == tuple) and (type(b) == np.ndarray or type(b) == list) \
         or (type(a) == pd.Series or type(a) == np.ndarray) and (type(b) == pd.Series or type(b) == np.ndarray):
         if type(a) == pd.Series:
             a = a.values
         if type(b) == pd.Series:
             b = b.values
+        if type(a) == tuple:
+            a = list(a)
         if len(a) > len(b):
             bigger, smaller = a, b
         else:
             bigger, smaller = b, a
         intersection = [s for s in range(len(smaller)) if smaller[s] == bigger[s]]
         sim_score = len(intersection) / len(bigger)
-        # print(f'sim_score: {sim_score}')
+        # print(f'{a} {b} sim_score: {sim_score}')
     elif type(a) == pd.DataFrame and type(b) == pd.DataFrame:
         sim_score = compare_df(a, b)
-        # sim_score = df_diff(a,b)
         # print(f'sim_score: {sim_score}')
     elif type(a) != type(b):
         sim_score = 0

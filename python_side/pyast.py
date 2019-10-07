@@ -129,7 +129,7 @@ class Normalizer(ast.NodeTransformer):
 
     def visit_Assign(self, node):
         # print('assign', astor.dump_tree(node))
-        node.targets[0].id = "mslacc"
+        node.targets[0].id = "df"
         self.visit(node.value)
         return node
     
@@ -138,9 +138,9 @@ class Normalizer(ast.NodeTransformer):
         # rename the main variable and a nested Subscript if there is one
         for child in ast.iter_child_nodes(node):
             if type(child) == ast.Subscript:
-                child.value.id = "mslacc"
+                child.value.id = "df"
             elif type(child) == ast.Name:
-                child.id = "mslacc"
+                child.id = "df"
         # then rename if there are attributes inside of the slice
         if 'slice' in node.__dict__:
             node.slice = self.visit(node.slice)
@@ -159,7 +159,7 @@ class Normalizer(ast.NodeTransformer):
                     if type(child.value) != ast.Name:
                         child.value = self.visit(child.value)
                     else:
-                        child.value.id = "mslacc"
+                        child.value.id = "df"
         return node
     
     def visit_Attribute(self, node):
@@ -167,7 +167,7 @@ class Normalizer(ast.NodeTransformer):
         if type(node.value) != ast.Name:
             node.value = self.visit(node.value)
         else:
-            node.value.id = "mslacc"
+            node.value.id = "df"
         return node
 
 def test_pyast():

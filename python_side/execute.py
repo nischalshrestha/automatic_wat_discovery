@@ -29,7 +29,7 @@ def print_full(x):
     print(x)
     pd.reset_option('display.max_rows')
 
-def eval_expr(mslacc, expr):
+def eval_expr(df, expr):
     """
     Evals an expression given a dataframe given a dataframe and an expression.
 
@@ -48,8 +48,8 @@ def eval_expr(mslacc, expr):
         # actually produced a dataframe; TODO a solution is to add another meta data
         # indicating that the expr had returned a NULL.
         if output is None:
-            output = locals()['mslacc']
-        return expr, output
+            output = locals()['df']
+        return expr, df, output
         print('out', out)
     except Exception as e:
         # print(e)
@@ -64,16 +64,16 @@ def execute_statement(snip):
     for i, arg in enumerate(generated_args):
         result = eval_expr(arg, snip)
         if type(result) == tuple:
-            output = result[1]
+            output = result[2]
             if OUTPUT_TYPE_FILTER != None:
                 if type(output) == OUTPUT_TYPE_FILTER:
-                    test_results.append(output)
+                    test_results.append(result)
                 else:
                     return None
             elif type(output).__name__ in OUTPUT_TYPES:
                 if type(output) == tuple:
                     output = list(output)
-                test_results.append(output)
+                test_results.append(result)
             else:
                 return None
         elif type(result) == Exception:
@@ -131,7 +131,7 @@ if __name__ == '__main__':
             else:
                 raise Exception("invalid data type to filter!")
             generated_args = pickle.load(open(ARGS_PICKLE_PATH, "rb"))
-            print(generated_args[0])
+            # print(generated_args[0])
             executions = execute_statements()
             df_store = DataframeStore(executions)
             pickle.dump(df_store, open(PY_PICKLE_PATH, "wb"))

@@ -30,7 +30,7 @@ MAX_ARGS = 256 # the max number of arguments
 # meaning we accept all types of outputs except for errors.
 OUTPUT_TYPE_FILTER = None 
 # However, we want these types in general if we aren't specifically filtering for a type
-OUTPUT_TYPES = ['DataFrame', 'Series', 'int', 'int64', 'float', 'float64', 'str', 'ndarray', 'list']
+OUTPUT_TYPES = ['DataFrame', 'Series', 'int', 'int64', 'float', 'float64', 'str', 'list', 'ndarray', 'tuple']
 
 flatten = lambda l: [item for sublist in l for item in sublist]
 
@@ -49,7 +49,7 @@ def eval_expr(df, expr):
     """
     try:
         # Introduce df as mslacc into global env
-        robjects.globalenv['mslacc'] = df
+        robjects.globalenv['df'] = df
         # Rpy2 when evaluating using 'r', returns _something_ no matter what
         # even if expr is just an assignment
         output = robjects.r(f"""library(dplyr); {expr}""")
@@ -60,10 +60,10 @@ def eval_expr(df, expr):
         # actually produced a dataframe; TODO a solution is to add another meta data
         # indicating that the expr had returned a NULL.
         if type(output) == rpy2.rinterface.NULLType:
-            output = robjects.globalenv['mslacc']
+            output = robjects.globalenv['df']
         # print(expr, type(output))
         robjects.r("rm(list = ls())") # clear locals after execution
-        return expr, output
+        return expr, df, output
     except Exception as e:
         # print(expr, e)
         return e
@@ -77,14 +77,14 @@ def execute_statement(snip):
     for i, arg in enumerate(generated_args):
         result = eval_expr(arg, snip)
         if type(result) == tuple:
-            output = result[1]
+            output = result[2]
             if OUTPUT_TYPE_FILTER != None:
                 if type(output) == OUTPUT_TYPE_FILTER:
-                    test_results.append(output)
+                    test_results.append(result)
                 else:
                     return None
             elif type(output).__name__ in OUTPUT_TYPES:
-                test_results.append(output)
+                test_results.append(result)
             else:
                 return None
         elif type(result) == Exception:
@@ -92,7 +92,7 @@ def execute_statement(snip):
             test_results.append("ERROR: "+err)
         else:
             return None
-    rtn = {'expr': snip, 'test_results': test_results, 'args': generated_args}
+    rtn = {'expr': snip, 'test_results': test_results}
     return rtn
     
 def execute_statements():
@@ -137,7 +137,7 @@ if __name__ == '__main__':
             else:
                 raise Exception("invalid data type to filter!")
             generated_args = pickle.load(open(ARGS_PICKLE_PATH, "rb"))
-            print(generated_args[0])
+            # print(generated_args[0])
             executions = execute_statements()
             df_store = DataframeStore(executions)
             pickle.dump(df_store, open(R_PICKLE_PATH, "wb"))

@@ -37,7 +37,7 @@ TEMPLATE_PATH = "./titanic/train.csv"
 def construct_df(template: pd.DataFrame, max_row_num: int=100, col_num: int=20) -> pd.DataFrame:
     """Construct dataframe based on a template with psuedo-random values"""
     data = OrderedDict()
-    n_rows = np.random.randint(1, max_row_num + 1)
+    n_rows = np.random.randint(template.shape[0], max_row_num + 1)
     # n_rows = max_row_num
     for col_name in template.columns.values:
         data[col_name] = generate_series(template, col_name, n_rows)
@@ -123,6 +123,7 @@ def generate_args_from_df(df_template, n_args=1, simple=True):
     """This will create one dataframe based on a supplied dataframe"""
     args = []
     max_rows = df_template.shape[0]
+    # max_rows = 20
     for n in range(n_args):
         if simple:
             new_df = construct_simple_df(df_template)

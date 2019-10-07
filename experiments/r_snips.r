@@ -14,19 +14,20 @@ filter(train, col1 == 1, col3 == 1)
 train[1:5, 1:3]
 train[train$col1 == 1 & train$col3 == 1, ]
 # [[ equivalents
+# select(train, col1)
 select(train, col1, col2)
 # train[c('col1', 'col2')]
 # select(train, col1)
-# train[c('col1')]
-train[['col1']]
+train[c('col1')]
+# train[['col1']]
 # loc equivalents
 select(train, col1:col3)
-train[2, 'col1']
+train[2:3, 'col1']
 # drop
 select(train, -c(col1, col2))
 # train[ , -c('col1', 'col2')]
 # drop duplicates
-distinct(select(df, col1, col2))
+distinct(select(train, col1, col2))
 distinct(select(train, col1))
 # sort
 arrange(train, col1, col2)
