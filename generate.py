@@ -37,7 +37,7 @@ TEMPLATE_PATH = "./titanic/train.csv"
 def construct_df(template: pd.DataFrame, max_row_num: int=100, col_num: int=20) -> pd.DataFrame:
     """Construct dataframe based on a template with psuedo-random values"""
     data = OrderedDict()
-    n_rows = np.random.randint(template.shape[0], max_row_num + 1)
+    n_rows = np.random.randint(1, max_row_num + 1)
     # n_rows = max_row_num
     for col_name in template.columns.values:
         data[col_name] = generate_series(template, col_name, n_rows)
@@ -58,23 +58,19 @@ def generate_series(template: pd.DataFrame, column: str, rows: int) -> pd.Series
                 arr = pd.Series(np.random.uniform(min_val, max_val, size=(rows,)))
         else:
             arr = pd.Series(np.random.randint(min_val, max_val + 1, rows))
-        # throw in some random NAs if there were any in the original column
-        # if template[column].isna().sum() > 0:
-        # for i in range(len(arr)):
-        #     chance = random.random()
-        #     if chance < 0.1:
-        #         arr[i] = np.NaN
     elif template.dtypes[column] == np.bool:
         arr = np.random.randint(0, 2, rows, bool)
     elif template.dtypes[column] == np.object:
         unique = set(template[column])
         arr = [str(random.choice(template[column])) for _ in range(rows)]
-        # throw in some random NAs if there were any in the original column
-        # if template[column].isna().sum() > 0:
+    # throw in some random NAs
     for i in range(len(arr)):
         chance = random.random()
         if chance < 0.1:
-            arr[i] = np.NaN
+            if type(arr[i]) == str:
+                arr[i] = ''
+            else:
+                arr[i] = np.NaN
     return np.asarray(arr)
 
 def construct_simple_df(df_template: pd.DataFrame) -> pd.DataFrame:

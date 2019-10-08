@@ -142,16 +142,11 @@ def jaro(r_snippet, py_snippet):
 def jaro_winkler(r_snippet, py_snippet):
   return 1.0 - Levenshtein.jaro_winkler(r_snippet, py_snippet)
 
-def print_snips(snips):
-    for s in snips:
-        print(s['expr'], len(s['test_results']))
-
 def store_clusters(clusters):
     """
     Stores clusters which is a list of tuples where each element is a 
     column value
     """ 
-    # TODO provide option to save Python/R execution result in csv
     df = pd.DataFrame(clusters, columns =['Python', 'R', 'Test Case', 'Python result', \
             'R result', 'Overall', 'Row Diff', 'Col Diff', 'Semantic', 'Largest Common', \
             'Edit Distance'])
