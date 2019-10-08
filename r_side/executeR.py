@@ -1,23 +1,16 @@
 import time
 import multiprocessing
 import pickle
-from random import shuffle
 import pandas as pd
 import numpy as np
 import rpy2
 import rpy2.robjects as robjects
 from rpy2.robjects import pandas2ri
 pandas2ri.activate()
-from rpy2.robjects.packages import importr
 
 import sys, os
 sys.path.append("../")
 sys.stderr = open(os.devnull, 'w') # silences all errors
-
-from generate import generate_args, generate_simple_arg, generate_args_from_df
-
-# importr("base")
-# importr("dplyr")
 
 NUM_WORKERS = 12
 ARGS_PICKLE_PATH = "../files/args.pkl"

@@ -12,7 +12,7 @@ commands:
   # generate dataframes for arguments
   # default here is 256 dataframes (max)
   # output: args.pkl file in files directory
-  generate: python generate.py experiments 256 -r
+  generate: python generate.py experiments -r 20
   # execute the filtered snippets for each language
   # default here is 5 input arguments (dataframes) and only store dataframe outputs
   # output: [lang]_dfs.pkl file in [lang]_side directory

@@ -6,19 +6,15 @@ similary scores.
 
 import numpy as np
 import pandas as pd
-from collections import OrderedDict
-import itertools
 import time
 import pickle
 import multiprocessing
-import random
 import Levenshtein
-
-from compare import compare
 
 import sys
 sys.path.append("./python_side")
 from execute import DataframeStore
+from compare import compare
 
 NUM_WORKERS = 12
 PY_PICKLE_PATH = './files/py_dfs.pkl'
@@ -30,9 +26,10 @@ KEEP_ALL_RESULTS = False
 
 flatten = lambda l: [item for sublist in l for item in sublist]
 
-# Load executed python and r snippets with their results
-pysnips = pickle.load(open(PY_PICKLE_PATH, "rb")).pairs
-rsnips = pickle.load(open(R_PICKLE_PATH, "rb")).pairs
+# Load executed python and r snippets if running module directly
+# Note: these two are global vars that are be used with below functions
+pysnips = None
+rsnips = None
 
 # PassengerId      int64
 # Survived         int64 (level) - randomize
@@ -50,8 +47,8 @@ rsnips = pickle.load(open(R_PICKLE_PATH, "rb")).pairs
 
 def compare_results(py, r):
     """
-    Compares test results of py and r and returns a List of tuple(s) to store later
-    into a csv results file:
+    Compares test results of a Python and R snippet pair and returns a List of tuple(s) 
+    to store later into a csv results file:
 
     (py expr, r expr, pytest, rtest, row_diff, col_diff, semantic score, edit distance)
     TODO create a class that represents a test case to make it easier to work with
@@ -69,41 +66,30 @@ def compare_results(py, r):
     scores = []
     discarded = []
     for t1, t2 in zip(py_results, r_results):
-        # Collect and store the max score from all test results
+        # Collect and store comparison scores of py x r test results
         edit_distance = round(jaro(py_expr, r_expr), 3)
         py_out, r_out = t1[2], t2[2]
+        # print(py_expr, r_expr)
         score = compare(py_out, r_out)
-        # print(py_expr, r_expr, score)
         # The same test case is used for corresponding R snippet, so just get the Python result's argument
         test_case = t1[1]
         if type(score) == tuple:
-            overall = round((score[0]*score[1]*score[2]), 3)
-            scores.append(overall)
-            if KEEP_RESULTS:
-                tuple_result = (py_reformat, r_reformat, test_case, py_out, r_out, overall, score[1], score[2], round(score[0], 3), score[3], edit_distance)
-            else:
-                tuple_result = (py_reformat, r_reformat, overall, score[1], score[2], round(score[0], 3), score[3], edit_distance)
-            if KEEP_ALL_RESULTS:
-                results.append(tuple_result)
+            overall = score[0]*score[1]*score[2]
+            tuple_result = (py_reformat, r_reformat, test_case, py_out, r_out, overall, score[1], score[2], round(score[0], 3), score[3], edit_distance)
         else:
-            overall = round(score, 3)
-            scores.append(overall)    
+            overall = score
             # For the non-dataframe output case we leave row/col, lca diff blank
-            if KEEP_RESULTS:
-                tuple_result = (py_reformat, r_reformat, test_case, py_out, r_out, overall, "", "", overall, "", edit_distance)
-            else:
-                tuple_result = (py_reformat, r_reformat, overall, "", "", overall, "", edit_distance)
+            tuple_result = (py_reformat, r_reformat, test_case, py_out, r_out, overall, "", "", overall, "", edit_distance)
                 # return results
-            if KEEP_ALL_RESULTS:
-                results.append(tuple_result)
+        scores.append(overall)    
+        if KEEP_RESULTS:
+            results.append(tuple_result)
     mean_score = sum(scores) / len(scores) if len(scores) > 0 else 0
+    mean_score = round(mean_score, 3)
     # print(mean_score)
     # For now, have an overall score for the cluster
     # TODO Restructure the csv to make it more clear in the future
-    if KEEP_RESULTS:
-        results.insert(0, (py_reformat, r_reformat, "", "", "", mean_score, "", "", "", "", ""))
-    else:
-        results.insert(0, (py_reformat, r_reformat, mean_score, "", "", "", "", ""))
+    results.insert(0, (py_reformat, r_reformat, "", "", "", mean_score, "", "", "", "", ""))
     # Only if the mean score satisfies threshold do we return the results
     return results if mean_score >= SIM_T else []
 
@@ -122,9 +108,6 @@ def compare_rpy(py):
         for s in compare_scores:
             if len(s) >= 1:
                 results.append(s)
-                # scores.append(s[4])
-    # if len(scores) > 0:
-    #     print(py['expr'], sum(scores)/len(scores), len(scores))
     return results if len(results) > 0 else None
 
 def simple_cluster():
@@ -137,7 +120,7 @@ def simple_cluster():
     start_time = time.time()
     results = None
     with multiprocessing.Pool(processes=NUM_WORKERS) as pool:
-        results = pool.map_async(compare_rpy, pysnips, chunksize=len(pysnips)//NUM_WORKERS)
+        results = pool.map_async(compare_rpy, pysnips)
         results.wait()
         result = results.get()
         result = list(filter(None, result))
@@ -163,38 +146,29 @@ def print_snips(snips):
     for s in snips:
         print(s['expr'], len(s['test_results']))
 
-def store_clusters(clusters, keep_outputs=False):
+def store_clusters(clusters):
     """
     Stores clusters which is a list of tuples where each element is a 
     column value
     """ 
     # TODO provide option to save Python/R execution result in csv
-    if keep_outputs:
-        df = pd.DataFrame(clusters, columns =['Python', 'R', 'Test Case', 'Python result', \
+    df = pd.DataFrame(clusters, columns =['Python', 'R', 'Test Case', 'Python result', \
             'R result', 'Overall', 'Row Diff', 'Col Diff', 'Semantic', 'Largest Common', \
             'Edit Distance'])
-    else:
-        # df = pd.DataFrame(clusters, columns =['Python', 'R', 'Test Case', 'Overall', \
-        #     'Row Diff', 'Col Diff', 'Semantic', 'Largest Common', 'Edit Distance'])
-        df = pd.DataFrame(clusters, columns =['Python', 'R', 'Overall', \
-            'Row Diff', 'Col Diff', 'Semantic', 'Largest Common', 'Edit Distance'])
     tolerance = round(1-SIM_T, 2)
     df.to_csv(f"{CLUSTERS_PATH}clusters_{tolerance}.csv", index=False)
             
 if __name__ == '__main__':
     if len(sys.argv) > 1:
-        try:
-            sim_t = float(sys.argv[1])
-            SIM_T = min(1.0, max(0, sim_t)) # lower bound to 0 and upper bound to 1
-            # TODO make these two be cli arguments
-            KEEP_RESULTS = True if "keep" in sys.argv[2] else False
-            KEEP_ALL_RESULTS = True if "all" in sys.argv[3] else False
-            clusters = simple_cluster()
-            store_clusters(clusters, keep_outputs=KEEP_RESULTS)
-        except:
-            raise Exception("something went wrong")
+        sim_t = float(sys.argv[1])
+        SIM_T = min(1.0, max(0, sim_t)) # lower bound to 0 and upper bound to 1
+        KEEP_RESULTS = True if len(sys.argv) == 3 and "keep" in sys.argv[2] else False
+        pysnips = pickle.load(open(PY_PICKLE_PATH, "rb")).pairs
+        rsnips = pickle.load(open(R_PICKLE_PATH, "rb")).pairs
+        clusters = simple_cluster()
+        store_clusters(clusters)
     else:
         print("invalid command!")
-        print("usage: python cluster.py [0 <= SIM_T <= 1.0]")
+        print("usage: python cluster.py SIM_T (<= 1.0) [keep]")
         sys.exit(1)
 

@@ -4,7 +4,14 @@ This module has functions to compare outputs between Python/R
 
 import numpy as np
 import pandas as pd
-import time, os, sys
+import time
+
+def compare_np(c1, c2):
+    # TODO figure out if there is a better way to test for numpy numerics
+    if (type(c1) == float or type(c2) == float) or (type(c1) == np.float64 or type(c2) == np.float64): 
+        c1 = np.nan_to_num(c1)
+        c2 = np.nan_to_num(c2)
+    return c1 == c2
 
 def compare_df(df1, df2):
     """
@@ -22,7 +29,9 @@ def compare_df(df1, df2):
     Once all the similarity scores for all windows have been calculated, the average
     is returned as the overall semantic similarity score between df1 and df2.
     """
-    if df1.empty or df2.empty:
+    if df1.empty and df2.empty:
+        return 1
+    elif df1.empty or df2.empty:
         return 0
     # Find the largest common area between the two
     df1_row = df1.shape[0]
@@ -66,6 +75,7 @@ def compare_df(df1, df2):
     # Stores the windows with the dimension of both top and bottom and the scores
     windows = []
     lcas = []
+    max_score = 0
     # Slide top across the bottom until hitting the edge of bottom 
     while (i + lca_row - 1 < brow) or (trow > brow and trs < trow):  
         # Need to handle the case when top is taller so its window starts from the bottom
@@ -94,12 +104,14 @@ def compare_df(df1, df2):
             # print('wl', wl, 'wr', wr, '\nbot\n', curr_bottom)
             # Compare current top and current bottom
             cbr, cbc = curr_bottom.shape[0], curr_bottom.shape[1]
+            common = 0
             try:
-                common = sum([curr_bottom[r][c] == curr_top[r][c] for c in range(cbc) for r in range(cbr)])
+                # common = sum([curr_bottom[r][c] == curr_top[r][c] for c in range(cbc) for r in range(cbr)])
+                common = sum([compare_np(curr_bottom[r][c], curr_top[r][c]) for c in range(cbc) for r in range(cbr)])
             except e:
-                common = 0
                 print("ERROR", e)
             sim_score = common / (cbr*cbc)
+            # print(sim_score, common, (cbr*cbc))
             windows.append(sim_score)
             lcas.append(f"Row: {wt}:{wb-1}, Col: {wl}:{wr-1}")
             # print("current window's sim_score", sim_score)
@@ -112,6 +124,7 @@ def compare_df(df1, df2):
         wb += 1
     # print('windows:', windows)
     overall_score = max(windows)
+    # print('max:',overall_score)
     lca_max = lcas[windows.index(overall_score)]
     # Calcuate the row and col dimension differences
     row_diff = abs(df1_row - df2_row)
@@ -119,7 +132,6 @@ def compare_df(df1, df2):
     # Use the diffs to calculate the row / col scores
     row_score = (taller.shape[0] - row_diff) / taller.shape[0]
     col_score = (bcol - col_diff) / bcol
-    # overall_score = sum(windows)/len(windows) # this reduces lots of noise
     return overall_score, row_score, col_score, lca_max
 
 def compare(a, b):
@@ -129,10 +141,11 @@ def compare(a, b):
     
     if (type(a) == str and "ERROR:" in a) or (type(b) == str and "ERROR:" in b):
         sim_score = 0
-    elif (type(a) == int or type(a) == float) and (type(b) == int or type(b) == float) \
+    elif (type(a) == int or type(a) == float or type(a) == np.float64) \
+        and (type(b) == int or type(b) == float or type(b) == np.float64) \
     or (type(a) == bool and type(b) == bool):
         if type(a) == int or type(a) == float:
-            sim_score = int(a == b)
+            sim_score = int(compare_np(a, b))
             size_diff = abs(a-b)
             # print(f'sim_score: {sim_score}, size diff: {size_diff}')
         elif type(a) == bool:
@@ -159,7 +172,8 @@ def compare(a, b):
             bigger, smaller = a, b
         else:
             bigger, smaller = b, a
-        intersection = [s for s in range(len(smaller)) if smaller[s] == bigger[s]]
+        intersection = [s for s in range(len(smaller)) if compare_np(smaller[s], bigger[s])]
+        # intersection = [s for s in range(len(smaller)) if smaller[s] == bigger[s]]
         sim_score = len(intersection) / len(bigger)
         # print(f'{a} {b} sim_score: {sim_score}')
     elif type(a) == pd.DataFrame and type(b) == pd.DataFrame:

@@ -28,23 +28,28 @@ You can also directly run the modules if you need more control or for testing.
 
 `python parseNotebooks.py [py|r]`
 
-`python generate.py [kaggle|experiments] [number of inputs to test <= 256] [-s single dataframe | -r random dataframes]`
+`python generate.py [kaggle|experiments] [-s single_dataframe | -r random_dataframes] [number of inputs to test <= 256]`
 
-`python cluster.py [number of snippets >= 2] [0 <= SIM_T <= 1.0]` 
+where `number of inputs` are how many arguments in total you want to produce when using `-r`. If supplying `-s`, there is 
+no need for supplying an additional number; a CSV template or dataframe template is used. 
 
-where `number of snippets` are how many snippets in total you want to cluster, and `SIM_T` is the similarity score. 
+`python cluster.py SIM_T (<= 1.0) [keep]` 
+
+where `SIM_T` is the similarity score and `keep` is an optional argument to also store test results and their scores.
 
 **Within `py_side`:**
 
 `python filter.py [notebook|script]`
 
-`python execute.py [number of inputs to test <= 256] [(dataframe | series | array)]`
+`python execute.py [number of inputs to test <= 256] [all | dataframe | series | array]`
+
+where the 3rd argument specifies where you want to filter outputs; supply `all` to not filter any particular data type.
 
 **Within `r_side`:**
 
 `python filterR.py [notebook|script]`
 
-`python executeR.py [number of inputs to test <= 256] [(dataframe | series | array)]`
+`python executeR.py [number of inputs to test <= 256] [all | dataframe | series | array]`
 
 # Execution Phases:
 
@@ -56,7 +61,7 @@ First, the Kaggle Notebooks are traversed and the file paths are gathered for bo
 - [parseNotebooks.py](https://github.com/nischalshrestha/kaggle_parsing/blob/master/parseNotebooks.py) to traverse Notebooks and create file path lists for both Python/R Notebooks/Scripts stored in [files](https://github.com/nischalshrestha/kaggle_parsing/tree/master/files)
 
 ### 2. Segmentation + Filter + Normalization phase
-Next, both the Python/R notebooks/scripts are segmented, where each line is considered a candidate expression. These candidates are then  filtered for one-liner stand-alone expressions, discarding block expressions that span multiple lines like `if` or `def` in Python, or `function` and `for` in R. In this filtering process, each line must also fit a subset of the the grammar for each language (Python/pandas and R). Once the expressions meet these requirements, they are noramlized: 1) Dataframe variable names are renamed to `mslacc` to standardize the dataframe variables for execution in the Execution phase 2) Whitespace within the expressions are stripped to unbias during the calculation of syntactical edit distances in the Cluster phase.
+Next, both the Python/R notebooks/scripts are segmented, where each line is considered a candidate expression. These candidates are then  filtered for one-liner stand-alone expressions, discarding block expressions that span multiple lines like `if` or `def` in Python, or `function` and `for` in R. In this filtering process, each line must also fit a subset of the the grammar for each language (Python/pandas and R). Once the expressions meet these requirements, they are noramlized: 1) Dataframe variable names are renamed to `df` to standardize the dataframe variables for execution in the Execution phase 2) Whitespace within the expressions are stripped to unbias during the calculation of syntactical edit distances in the Cluster phase.
 
 For Python, the built-in `ast` module is used to parse Python code and filter for certain expressions using the `ast.Visitor` class. The filtered expressions are then normalized using the `ast.Transformer` class. Relevant files:
 

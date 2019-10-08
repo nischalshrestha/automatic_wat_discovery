@@ -58,17 +58,23 @@ def generate_series(template: pd.DataFrame, column: str, rows: int) -> pd.Series
                 arr = pd.Series(np.random.uniform(min_val, max_val, size=(rows,)))
         else:
             arr = pd.Series(np.random.randint(min_val, max_val + 1, rows))
+        # throw in some random NAs if there were any in the original column
+        # if template[column].isna().sum() > 0:
+        # for i in range(len(arr)):
+        #     chance = random.random()
+        #     if chance < 0.1:
+        #         arr[i] = np.NaN
     elif template.dtypes[column] == np.bool:
         arr = np.random.randint(0, 2, rows, bool)
     elif template.dtypes[column] == np.object:
         unique = set(template[column])
         arr = [str(random.choice(template[column])) for _ in range(rows)]
-    # throw in some random NAs if there were any in the original column
-    if template[column].isna().sum() > 0:
-        for i in range(len(arr)):
-            chance = random.random()
-            if chance < 0.1:
-                arr[i] = np.NAN
+        # throw in some random NAs if there were any in the original column
+        # if template[column].isna().sum() > 0:
+    for i in range(len(arr)):
+        chance = random.random()
+        if chance < 0.1:
+            arr[i] = np.NaN
     return np.asarray(arr)
 
 def construct_simple_df(df_template: pd.DataFrame) -> pd.DataFrame:
@@ -105,7 +111,6 @@ def generate_args(n_args=256, max_rows=100, lang="py"):
 
 def generate_simple_arg():
     """This will create one dataframe based on templated (TEMPLATE_PATH)"""
-    print('df')
     df = pd.read_csv(TEMPLATE_PATH)
     new_df = construct_simple_df(df)
     return [new_df]
@@ -119,11 +124,9 @@ def construct_custom_df():
     df = pd.DataFrame({'col0':sints[::-1], 'col1':ints, 'col2':strs, 'col3':ints})
     return df
 
-def generate_args_from_df(df_template, n_args=1, simple=True):
+def generate_args_from_df(df_template, n_args=1, max_rows=100, simple=True):
     """This will create one dataframe based on a supplied dataframe"""
     args = []
-    max_rows = df_template.shape[0]
-    # max_rows = 20
     for n in range(n_args):
         if simple:
             new_df = construct_simple_df(df_template)
@@ -139,14 +142,28 @@ def store_args(arguments):
 
 if __name__ == '__main__':
     import sys
-    if len(sys.argv) == 4:
+    if len(sys.argv) >= 3:
         try:
             corpus = sys.argv[1]
-            NUM_ARGS = max(1, min(NUM_ARGS, int(sys.argv[2])))
-            simple = True if "-s" in sys.argv[3] else False
+            arg_type = sys.argv[2]
+            if "-s" in arg_type:
+                simple = True
+            elif "-r" in arg_type:
+                simple = False
+                try:
+                    n_args = int(sys.argv[3])
+                    NUM_ARGS = max(1, min(NUM_ARGS, n_args))
+                except:
+                    raise Exception("invalid format for number of inputs")
+            else:
+                raise Exception(f"invalid argument {sys.argv[2]}")
             if corpus == "experiments":
                 df = construct_custom_df()
-                generated_args = generate_args_from_df(df, n_args=NUM_ARGS, simple=simple)
+                if simple:
+                    print('yo')
+                    generated_args = generate_args_from_df(df, simple=simple)
+                else:
+                    generated_args = generate_args_from_df(df, n_args=NUM_ARGS, simple=simple)
             elif corpus == "kaggle":
                 if simple:
                     generated_args = generate_simple_arg()
@@ -157,11 +174,11 @@ if __name__ == '__main__':
             print(f"Generated and stored {len(generated_args)} arguments in {ARGS_PATH}")
             store_args(generated_args)
         except Exception as e:
-            print("something went wrong", e)
+            print(f"something went wrong: {e}")
             sys.exit(1)
     else:
         print("invalid command!")
         # TODO improve this cli argument order, it's weird to have to type 1 for -s
-        print("usage: python generate.py [kaggle|experiments] [number of inputs to test <= 256] [-s single dataframe | -r random dataframes]")
+        print("usage: python generate.py [kaggle|experiments] [-s single_dataframe | -r random_dataframes] [number of inputs to test <= 256] ")
         sys.exit(1)
 

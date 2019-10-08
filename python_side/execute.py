@@ -2,12 +2,9 @@
 import time
 import multiprocessing
 import pickle
-from random import shuffle
 import pandas as pd
 import numpy as np
 import sys
-sys.path.append("../")
-from generate import generate_args, generate_simple_arg, generate_args_from_df
 
 NUM_WORKERS=12
 ARGS_PICKLE_PATH = "../files/args.pkl"
