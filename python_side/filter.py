@@ -11,7 +11,7 @@ import pandas as pd
 import ast
 from pyast import ASTChecker, Normalizer
 
-NUM_WORKERS = 4
+NUM_WORKERS = multiprocessing.cpu_count()
 PYTHON_NOTEBOOK_LIST = "../files/filelist_pynb.txt"
 PYTHON_LIST = "../files/filelist_py.txt"
 EXPERIMENT_LIST = "../experiments/filelist_py.txt"

@@ -16,7 +16,7 @@ sys.path.append("./python_side")
 from execute import DataframeStore
 from compare import compare
 
-NUM_WORKERS = 12
+NUM_WORKERS = multiprocessing.cpu_count()
 PY_PICKLE_PATH = './files/py_dfs.pkl'
 R_PICKLE_PATH = './files/r_dfs.pkl'
 CLUSTERS_PATH = './files/'

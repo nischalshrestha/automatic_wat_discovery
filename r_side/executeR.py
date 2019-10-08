@@ -12,7 +12,7 @@ import sys, os
 sys.path.append("../")
 sys.stderr = open(os.devnull, 'w') # silences all errors
 
-NUM_WORKERS = 12
+NUM_WORKERS = multiprocessing.cpu_count()
 ARGS_PICKLE_PATH = "../files/args.pkl"
 R_PICKLE_PATH = '../files/r_dfs.pkl'
 RSNIPS_PATH = "rsnips.csv"

@@ -6,7 +6,7 @@ import pandas as pd
 import numpy as np
 import sys
 
-NUM_WORKERS=12
+NUM_WORKERS = multiprocessing.cpu_count()
 ARGS_PICKLE_PATH = "../files/args.pkl"
 PY_PICKLE_PATH = "../files/py_dfs.pkl"
 PYSNIPS_PATH = "pysnips.csv"
