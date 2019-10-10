@@ -120,7 +120,7 @@ def construct_custom_df():
     df = pd.DataFrame({'col0':sints[::-1], 'col1':ints, 'col2':strs, 'col3':ints})
     return df
 
-def generate_args_from_df(df_template, n_args=1, max_rows=100, simple=True):
+def generate_args_from_df(df_template, n_args=1, max_rows=20, simple=True):
     """This will create one dataframe based on a supplied dataframe"""
     args = []
     for n in range(n_args):
@@ -156,7 +156,6 @@ if __name__ == '__main__':
             if corpus == "experiments":
                 df = construct_custom_df()
                 if simple:
-                    print('yo')
                     generated_args = generate_args_from_df(df, simple=simple)
                 else:
                     generated_args = generate_args_from_df(df, n_args=NUM_ARGS, simple=simple)

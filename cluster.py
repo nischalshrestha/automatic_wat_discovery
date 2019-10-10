@@ -22,7 +22,6 @@ R_PICKLE_PATH = './files/r_dfs.pkl'
 CLUSTERS_PATH = './files/'
 SIM_T = 0.85 
 KEEP_RESULTS = True
-KEEP_ALL_RESULTS = False
 
 flatten = lambda l: [item for sublist in l for item in sublist]
 
@@ -58,6 +57,7 @@ def compare_results(py, r):
     r_results = r['test_results']
     py_expr = py['expr']
     r_expr = r['expr']
+    edit_distance = round(jaro(py_expr, r_expr), 3)
     # This is so that when we write the results to a csv, the expressions are readable
     py_reformat = py_expr.replace(",", ", ").replace("&", " & ").replace("==", " == ")
     r_reformat = r_expr.replace(",", ", ").replace("&", " & ").replace("==", " == ")
@@ -66,8 +66,7 @@ def compare_results(py, r):
     scores = []
     discarded = []
     for t1, t2 in zip(py_results, r_results):
-        # Collect and store comparison scores of py x r test results
-        edit_distance = round(jaro(py_expr, r_expr), 3)
+        # Collect and store comparison scores of py vs r test cases
         py_out, r_out = t1[2], t2[2]
         # print(py_expr, r_expr)
         score = compare(py_out, r_out)
@@ -89,7 +88,10 @@ def compare_results(py, r):
     # print(mean_score)
     # For now, have an overall score for the cluster
     # TODO Restructure the csv to make it more clear in the future
-    results.insert(0, (py_reformat, r_reformat, "", "", "", mean_score, "", "", "", "", ""))
+    if KEEP_RESULTS:
+        results.insert(0, (py_reformat, r_reformat, "", "", "", mean_score, "", "", "", "", edit_distance))
+    else:
+        results.insert(0, (py_reformat, r_reformat, mean_score, edit_distance))
     # Only if the mean score satisfies threshold do we return the results
     return results if mean_score >= SIM_T else []
 
@@ -147,9 +149,12 @@ def store_clusters(clusters):
     Stores clusters which is a list of tuples where each element is a 
     column value
     """ 
-    df = pd.DataFrame(clusters, columns =['Python', 'R', 'Test Case', 'Python result', \
-            'R result', 'Overall', 'Row Diff', 'Col Diff', 'Semantic', 'Largest Common', \
-            'Edit Distance'])
+    if KEEP_RESULTS:
+        df = pd.DataFrame(clusters, columns =['Python', 'R', 'Test Case', 'Python result', \
+                'R result', 'Overall', 'Row Diff', 'Col Diff', 'Semantic', 'Largest Common', \
+                'Edit Distance'])
+    else:
+        df = pd.DataFrame(clusters, columns =['Python', 'R', 'Overall', 'Edit Distance'])
     tolerance = round(1-SIM_T, 2)
     df.to_csv(f"{CLUSTERS_PATH}clusters_{tolerance}.csv", index=False)
             

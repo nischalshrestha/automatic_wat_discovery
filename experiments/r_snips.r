@@ -19,7 +19,7 @@ select(train, col1, col2)
 # train[c('col1', 'col2')]
 # select(train, col1)
 train[c('col1')]
-# train[['col1']]
+train[['col1']]
 # loc equivalents
 select(train, col1:col3)
 train[2:3, 'col1']
