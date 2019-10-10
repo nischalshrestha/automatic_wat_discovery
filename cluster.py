@@ -70,8 +70,12 @@ def compare_results(py, r):
         py_out, r_out = t1[2], t2[2]
         # print(py_expr, r_expr)
         score = compare(py_out, r_out)
+        if type(py_out) == pd.DataFrame or type(py_out) == pd.Series:
+            py_out = py_out.to_csv(index=False)
+        if type(r_out) == pd.DataFrame or type(r_out) == pd.Series:
+            r_out = r_out.to_csv(index=False)
         # The same test case is used for corresponding R snippet, so just get the Python result's argument
-        test_case = t1[1]
+        test_case = t1[1].to_csv(index=False)
         if type(score) == tuple:
             overall = score[0]*score[1]*score[2]
             tuple_result = (py_reformat, r_reformat, test_case, py_out, r_out, overall, score[1], score[2], round(score[0], 3), score[3], edit_distance)
@@ -150,11 +154,11 @@ def store_clusters(clusters):
     column value
     """ 
     if KEEP_RESULTS:
-        df = pd.DataFrame(clusters, columns =['Python', 'R', 'Test Case', 'Python result', \
-                'R result', 'Overall', 'Row Diff', 'Col Diff', 'Semantic', 'Largest Common', \
-                'Edit Distance'])
+        df = pd.DataFrame(clusters, columns =['python', 'r', 'test_case', 'python_result', \
+                'r_result', 'overall', 'row_diff', 'col_diff', 'semantic_score', 'largest_common', \
+                'edit_distance'])
     else:
-        df = pd.DataFrame(clusters, columns =['Python', 'R', 'Overall', 'Edit Distance'])
+        df = pd.DataFrame(clusters, columns =['python', 'r', 'overall', 'Edit edit_distance'])
     tolerance = round(1-SIM_T, 2)
     df.to_csv(f"{CLUSTERS_PATH}clusters_{tolerance}.csv", index=False)
             

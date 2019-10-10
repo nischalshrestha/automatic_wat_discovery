@@ -37,6 +37,47 @@ no need for supplying an additional number; a CSV template or dataframe template
 
 where `SIM_T` is the similarity score and `keep` is an optional argument to also store test results and their scores.
 
+To query from Python/R snippets with test cases and results, the cluster use the query.py module:
+
+`python query.py cluster_file low_score high_score edit_score` 
+
+where `cluster_file` is the name of the file within the files directory (.csv is not required), `low_score` is the 
+lower bound of the overal similarity score, the `high_score` is the upper bound and the `edit_score` is the 
+syntactic distance between the snippets. For e.g., running:
+
+`python query.py clusters_0.3 .6 .9 .5`
+
+outputs:
+
+```
+~~~~
+df.iloc[0:5, 0:3] df[1:5, 1:3]
+Row score: 0.6
+Column score: 1.0
+Overall score: 0.6
+Edit distance: 0.794
+Test case:
+
+   col0  col1  col2  col3
+0     0     6   NaN     5
+1     1     3  ID_6     7
+2     2     3  ID_4     7
+Python output:
+
+   col0  col1  col2
+0     0     6   NaN
+1     1     3  ID_6
+2     2     3  ID_4
+R output:
+
+         col0        col1  col2
+0           0           6   NaN
+1           1           3  ID_6
+2           2           3  ID_4
+3 -2147483648 -2147483648   NaN
+4 -2147483648 -2147483648   NaN
+```
+
 **Within `py_side`:**
 
 `python filter.py [notebook|script]`
