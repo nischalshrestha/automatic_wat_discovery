@@ -78,7 +78,7 @@ def compare_results(py, r):
         test_case = t1[1].to_csv(index=False)
         if type(score) == tuple:
             overall = score[0]*score[1]*score[2]
-            tuple_result = (py_reformat, r_reformat, test_case, py_out, r_out, overall, score[1], score[2], round(score[0], 3), score[3], edit_distance)
+            tuple_result = (py_reformat, r_reformat, test_case, py_out, r_out, overall, round(score[1], 3), round(score[2], 3), round(score[0], 3), score[3], edit_distance)
         else:
             overall = score
             # For the non-dataframe output case we leave row/col, lca diff blank
@@ -94,8 +94,8 @@ def compare_results(py, r):
     # TODO Restructure the csv to make it more clear in the future
     if KEEP_RESULTS:
         results.insert(0, (py_reformat, r_reformat, "", "", "", mean_score, "", "", "", "", edit_distance))
-    else:
-        results.insert(0, (py_reformat, r_reformat, mean_score, edit_distance))
+    # else:
+        # results.insert(0, (py_reformat, r_reformat, mean_score, edit_distance))
     # Only if the mean score satisfies threshold do we return the results
     return results if mean_score >= SIM_T else []
 
@@ -158,7 +158,7 @@ def store_clusters(clusters):
                 'r_result', 'overall', 'row_diff', 'col_diff', 'semantic_score', 'largest_common', \
                 'edit_distance'])
     else:
-        df = pd.DataFrame(clusters, columns =['python', 'r', 'overall', 'Edit edit_distance'])
+        df = pd.DataFrame(clusters, columns =['python', 'r', 'overall', 'edit_distance'])
     tolerance = round(1-SIM_T, 2)
     df.to_csv(f"{CLUSTERS_PATH}clusters_{tolerance}.csv", index=False)
             

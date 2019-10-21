@@ -30,7 +30,7 @@ def compare_df(df1, df2):
     is returned as the overall semantic similarity score between df1 and df2.
     """
     if df1.empty and df2.empty:
-        return 1
+        return 1, 1, 1, ""
     elif df1.empty or df2.empty:
         return 0
     # Find the largest common area between the two
