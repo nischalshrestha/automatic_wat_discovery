@@ -10,6 +10,7 @@ import pandas as pd
 
 import ast
 from pyast import ASTChecker, Normalizer
+from lark_parser import parse
 
 NUM_WORKERS = multiprocessing.cpu_count()
 PYTHON_NOTEBOOK_LIST = "../files/filelist_pynb.txt"
@@ -58,7 +59,7 @@ def filter_code_lines(fname, base="../"):
                     else:
                         excluded += 1
                 except Exception as e:
-                    # print(e, snippet)
+                    print(e, snippet)
                     pass
     return excluded, snippets
 
