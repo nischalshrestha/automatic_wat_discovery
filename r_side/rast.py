@@ -21,7 +21,9 @@ SYMBOL_FUNCTION_CALL = "SYMBOL_FUNCTION_CALL"
 DOLLA = "\'$\'"
 SPECIAL = "SPECIAL"
 EQ_ASSIGN = "EQ_ASSIGN"
-CALLS = ["c", "read.csv", "dim", "head", "slice", "filter", "select", "subset", "distinct", "arrange", "desc", "summary", "summarise"]
+CALLS = ["c", "read.csv", "dim", "head", "slice", "filter", "select", "subset", \
+    "distinct", "arrange", "desc", "summary", "summarise", "mutate", "rename", \
+    "is.na", "which"]
 
 # Load R functions for parsing
 srcfile = robjects.r['srcfile']
