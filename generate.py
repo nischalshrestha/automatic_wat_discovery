@@ -158,7 +158,7 @@ if __name__ == '__main__':
                 if simple:
                     generated_args = generate_args_from_df(df, simple=simple)
                 else:
-                    generated_args = generate_args_from_df(df, n_args=NUM_ARGS, simple=simple)
+                    generated_args = generate_args_from_df(df, n_args=NUM_ARGS, max_rows=df.shape[0], simple=simple)
             elif corpus == "kaggle":
                 if simple:
                     generated_args = generate_simple_arg()

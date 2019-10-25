@@ -1,3 +1,4 @@
+# TODO Normalize and add to rsnips
 # subsetting on a particular column with a filter
 df['Age'][df['Survived'] == 1]
 df['Isalone'].loc[df['FamilyMembers'] > 1]

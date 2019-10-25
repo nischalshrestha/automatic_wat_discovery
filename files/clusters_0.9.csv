@@ -1,0 +1,146 @@
+"python","r","overall","edit_distance"
+"df.loc[:, 'col1':'col3']","select(df, col1:col3)",1,0.627
+"df[['col1', 'col2']]","select(df, col1, col2)",1,0.558
+"df.shape","dim(df)",1,0.512
+"df[['col1']].drop_duplicates()","distinct(select(df, col1))",1,0.478
+"df.drop(['col1', 'col2'], axis=1)","select(df, -c(col1, col2))",1,0.524
+"df[['col1']].shape","dim(df[c(""col1"")])",1,0.63
+"df[['col1']]","df[c(""col1"")]",1,0.761
+"df[['col1', 'col2']].drop_duplicates()","distinct(select(df, col1, col2))",1,0.52
+"df.query('col1 == 1 & col3 == 1')","filter(df, col1 == 1, col3 == 1)",1,0.737
+"df.sort_values('col1', ascending=False)","arrange(df, desc(col1))",1,0.49
+"df[(df.col1 == 1) & (df.col3 == 1)]","filter(df, col1 == 1, col3 == 1)",1,0.655
+"df.iloc[:8]","slice(df, 1:8)",1,0.606
+"df.sort_values(['col1', 'col2'])","arrange(df, col1, col2)",1,0.614
+"df[['col1', 'col2']]","distinct(select(df, col1, col2))",0.961,0.486
+"df[['col1', 'col2']].drop_duplicates()","select(df, col1, col2)",0.961,0.464
+"df.iloc[:7]","slice(df, 1:8)",0.938,0.53
+"df.iloc[:7]","head(df)",0.914,0.405
+"df.head()","head(df)",0.9,0.741
+"df.query('col1 == 1 & col3 == 1')","df[df$col1 == 1 & df$col3 == 1, ]",0.9,0.761
+"df[(df.col1 == 1) & (df.col3 == 1)]","df[df$col1 == 1 & df$col3 == 1, ]",0.9,0.893
+"df.iloc[:8]","head(df)",0.861,0.405
+"df.head()","slice(df, 1:8)",0.784,0.501
+"df[['col1']].drop_duplicates()","df[c(""col1"")]",0.747,0.627
+"df[['col1']]","distinct(select(df, col1))",0.747,0.457
+"df.loc[:, 'col1':'col3']","slice(df, 1:8)",0.71,0.448
+"df.iloc[:8]","select(df, col1:col3)",0.71,0.438
+"df.iloc[0:5, 0:3]","df[1:5, 1:3]",0.7,0.794
+"df.iloc[0:5, 0:3]","head(df)",0.675,0.396
+"df.iloc[:7]","df[1:7, ]",0.671,0.693
+"df.iloc[:7]","select(df, col1:col3)",0.668,0.438
+"df.loc[:, 'col1':'col3']","select(df, col1, col2)",0.667,0.554
+"df[['col1', 'col2']]","select(df, col1:col3)",0.667,0.509
+"df.loc[1:2, ('col1')]","df[2:3, ""col1""]",0.65,0.657
+"df.iloc[:8]","df[1:8, ]",0.65,0.693
+"df.loc[:, 'col1':'col3']","distinct(select(df, col1, col2))",0.641,0.494
+"df[['col1', 'col2']].drop_duplicates()","select(df, col1:col3)",0.641,0.423
+"df.sort_values('col1', ascending=False)","slice(df, 1:8)",0.628,0.27
+"df.iloc[:8]","arrange(df, desc(col1))",0.628,0
+"df.loc[:, 'col1':'col3']","head(df)",0.616,0.389
+"df.iloc[:8]","df[1:7, ]",0.609,0.621
+"df.iloc[:7]","arrange(df, desc(col1))",0.605,0
+"df.sort_values('col1', ascending=False)","head(df)",0.599,0.384
+"df.head()","arrange(df, desc(col1))",0.597,0.375
+"df.iloc[:7]","df[1:8, ]",0.588,0.621
+"df.iloc[0:5, 0:3]","slice(df, 1:8)",0.588,0.492
+"df.head()","select(df, col1:col3)",0.563,0.383
+"df.head()","df[1:5, 1:3]",0.525,0.468
+"df.iloc[0:5, 0:3]","distinct(select(df, col1, col2))",0.523,0.426
+"df.head()","df[1:7, ]",0.5,0.491
+"df.shape","dim(df[c(""col1"")])",0.5,0.454
+"df.iloc[0:5, 0:3]","select(df, col1, col2)",0.5,0.392
+"df[['col1']].shape","dim(df)",0.5,0.466
+"df.iloc[:8]","arrange(df, col1, col2)",0.477,0.38
+"df.sort_values(['col1', 'col2'])","slice(df, 1:8)",0.477,0.276
+"df[['col1', 'col2']]","slice(df, 1:8)",0.473,0.426
+"df.iloc[:8]","select(df, col1, col2)",0.473,0.363
+"df[['col1', 'col2']].drop_duplicates()","slice(df, 1:8)",0.463,0.375
+"df.iloc[:8]","distinct(select(df, col1, col2))",0.463,0.458
+"df.head()","arrange(df, col1, col2)",0.45,0.378
+"df.sort_values('col1', ascending=False)","arrange(df, col1, col2)",0.45,0.512
+"df.sort_values(['col1', 'col2'])","arrange(df, desc(col1))",0.45,0.529
+"df.iloc[0:5, 0:3]","arrange(df, desc(col1))",0.448,0.394
+"df.loc[:, 'col1':'col3']","df[1:8, ]",0.447,0.614
+"df.iloc[:7]","arrange(df, col1, col2)",0.447,0.38
+"df.sort_values(['col1', 'col2'])","head(df)",0.446,0.386
+"df.iloc[:7]","select(df, col1, col2)",0.445,0.363
+"df.loc[:, 'col1':'col3']","arrange(df, desc(col1))",0.442,0.529
+"df.sort_values('col1', ascending=False)","select(df, col1:col3)",0.442,0.497
+"df.head()","df[1:8, ]",0.438,0.491
+"df.iloc[:7]","distinct(select(df, col1, col2))",0.435,0.458
+"df.loc[:, 'col1':'col3']","df[1:7, ]",0.422,0.614
+"df[['col1', 'col2']].drop_duplicates()","head(df)",0.412,0.384
+"df[['col1', 'col2']]","head(df)",0.41,0.393
+"df.iloc[:7]","df[1:5, 1:3]",0.396,0.636
+"df.head()","distinct(select(df, col1, col2))",0.392,0.43
+"df.head()","select(df, col1, col2)",0.375,0.383
+"df.iloc[0:5, 0:3]","df[1:7, ]",0.375,0.458
+"df.iloc[:8]","df[1:5, 1:3]",0.363,0.636
+"df[['col1', 'col2']]","df[c(""col1"")]",0.359,0.648
+"df[['col1']]","select(df, col1, col2)",0.359,0.386
+"df.loc[:, 'col1':'col3']","arrange(df, col1, col2)",0.353,0.504
+"df.sort_values(['col1', 'col2'])","select(df, col1:col3)",0.353,0.562
+"df[['col1']]","distinct(select(df, col1, col2))",0.339,0.45
+"df[['col1', 'col2']].drop_duplicates()","df[c(""col1"")]",0.339,0.571
+"df.iloc[0:5, 0:3]","arrange(df, col1, col2)",0.334,0.45
+"df.iloc[0:5, 0:3]","df[1:8, ]",0.328,0.458
+"df[['col1', 'col2']].drop_duplicates()","df[1:5, 1:3]",0.323,0.53
+"df.loc[:, 'col1':'col3']","select(df, -c(col1, col2))",0.306,0.549
+"df.drop(['col1', 'col2'], axis=1)","select(df, col1:col3)",0.306,0.468
+"df[['col1', 'col2']]","df[1:5, 1:3]",0.3,0.573
+"df[['col1', 'col2']]","df[1:8, ]",0.298,0.57
+"df[['col1', 'col2']].drop_duplicates()","arrange(df, desc(col1))",0.296,0.421
+"df.sort_values('col1', ascending=False)","distinct(select(df, col1, col2))",0.296,0.573
+"df[['col1', 'col2']]","arrange(df, desc(col1))",0.294,0.515
+"df.sort_values('col1', ascending=False)","select(df, col1, col2)",0.294,0.523
+"df[['col1', 'col2']].drop_duplicates()","df[1:8, ]",0.29,0.536
+"df.sort_values('col1', ascending=False)","df[1:8, ]",0.284,0.434
+"df[['col1', 'col2']]","df[1:7, ]",0.281,0.57
+"df.sort_values('col1', ascending=False)","df[1:7, ]",0.277,0.434
+"df[['col1', 'col2']].drop_duplicates()","df[1:7, ]",0.271,0.536
+"df[['col1']].drop_duplicates()","distinct(select(df, col1, col2))",0.264,0.494
+"df[['col1', 'col2']].drop_duplicates()","distinct(select(df, col1))",0.264,0.457
+"df.iloc[0:5, 0:3]","select(df, -c(col1, col2))",0.253,0.374
+"df[['col1', 'col2']]","distinct(select(df, col1))",0.25,0.502
+"df[['col1']].drop_duplicates()","select(df, col1, col2)",0.25,0.461
+"df[['col1', 'col2']].drop_duplicates()","arrange(df, col1, col2)",0.24,0.531
+"df.sort_values(['col1', 'col2'])","distinct(select(df, col1, col2))",0.24,0.617
+"df.loc[:, 'col1':'col3']","df[c(""col1"")]",0.239,0.55
+"df[['col1']]","select(df, col1:col3)",0.239,0.386
+"df[['col1', 'col2']]","arrange(df, col1, col2)",0.237,0.625
+"df.sort_values(['col1', 'col2'])","select(df, col1, col2)",0.237,0.626
+"df.drop(['col1', 'col2'], axis=1)","slice(df, 1:8)",0.236,0.385
+"df.iloc[:8]","select(df, -c(col1, col2))",0.236,0.422
+"df.iloc[:7]","select(df, -c(col1, col2))",0.225,0.422
+"df.sort_values('col1', ascending=False)","df[1:5, 1:3]",0.223,0.411
+"df.sort_values(['col1', 'col2'])","df[1:8, ]",0.223,0.438
+"df.drop(['col1', 'col2'], axis=1)","head(df)",0.207,0.379
+"df.sort_values(['col1', 'col2'])","df[1:7, ]",0.204,0.438
+"df.head()","select(df, -c(col1, col2))",0.19,0.375
+"df.iloc[0:5, 0:3]","df[c(""col1"")]",0.171,0.563
+"df.sort_values(['col1', 'col2'])","df[1:5, 1:3]",0.169,0.415
+"df.iloc[0:5, 0:3]","distinct(select(df, col1))",0.168,0.438
+"df.loc[:, 'col1':'col3']","distinct(select(df, col1))",0.166,0.436
+"df[['col1']].drop_duplicates()","select(df, col1:col3)",0.166,0.461
+"df[['col1']]","slice(df, 1:8)",0.166,0.467
+"df.iloc[:8]","df[c(""col1"")]",0.166,0.63
+"df.drop(['col1', 'col2'], axis=1)","arrange(df, desc(col1))",0.159,0.491
+"df.sort_values('col1', ascending=False)","select(df, -c(col1, col2))",0.159,0.496
+"df.iloc[:7]","df[c(""col1"")]",0.158,0.63
+"df.drop(['col1', 'col2'], axis=1)","df[1:5, 1:3]",0.153,0.498
+"df.drop(['col1', 'col2'], axis=1)","df[1:8, ]",0.148,0.438
+"df.drop(['col1', 'col2'], axis=1)","df[1:7, ]",0.143,0.438
+"df[['col1']]","head(df)",0.143,0.403
+"df[['col1']].drop_duplicates()","slice(df, 1:8)",0.133,0.384
+"df.iloc[:8]","distinct(select(df, col1))",0.133,0.464
+"df.head()","df[c(""col1"")]",0.128,0.584
+"df.head()","distinct(select(df, col1))",0.126,0.434
+"df[['col1']]","df[1:5, 1:3]",0.124,0.624
+"df[['col1']]","df[1:8, ]",0.123,0.611
+"df.iloc[:7]","distinct(select(df, col1))",0.122,0.464
+"df[['col1']].drop_duplicates()","df[1:5, 1:3]",0.122,0.54
+"df[['col1']].drop_duplicates()","head(df)",0.12,0.386
+"df.drop(['col1', 'col2'], axis=1)","arrange(df, col1, col2)",0.118,0.622
+"df[['col1']]","df[1:7, ]",0.118,0.611
+"df.sort_values(['col1', 'col2'])","select(df, -c(col1, col2))",0.118,0.644

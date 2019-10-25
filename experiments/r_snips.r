@@ -7,6 +7,7 @@ head(train)
 # basic slicing
 slice(train, 1:8)
 train[1:8, ]
+slice(train, 1:7)
 train[1:7, ]
 # filter
 filter(train, col1 == 1, col3 == 1)

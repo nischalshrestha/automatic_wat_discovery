@@ -22,6 +22,7 @@ R_PICKLE_PATH = './files/r_dfs.pkl'
 CLUSTERS_PATH = './files/'
 SIM_T = 0.85 
 KEEP_RESULTS = True
+PRETTY_DF = False
 
 flatten = lambda l: [item for sublist in l for item in sublist]
 
@@ -70,12 +71,15 @@ def compare_results(py, r):
         py_out, r_out = t1[2], t2[2]
         # print(py_expr, r_expr)
         score = compare(py_out, r_out)
-        if type(py_out) == pd.DataFrame or type(py_out) == pd.Series:
-            py_out = py_out.to_csv(index=False)
-        if type(r_out) == pd.DataFrame or type(r_out) == pd.Series:
-            r_out = r_out.to_csv(index=False)
+        if not PRETTY_DF:
+            if type(py_out) == pd.DataFrame or type(py_out) == pd.Series:
+                py_out = py_out.to_csv(index=False)
+            if type(r_out) == pd.DataFrame or type(r_out) == pd.Series:
+                r_out = r_out.to_csv(index=False)
         # The same test case is used for corresponding R snippet, so just get the Python result's argument
-        test_case = t1[1].to_csv(index=False)
+            test_case = t1[1].to_csv(index=False)
+        else:
+            test_case = t1[1]
         if type(score) == tuple:
             overall = score[0]*score[1]*score[2]
             tuple_result = (py_reformat, r_reformat, test_case, py_out, r_out, \
@@ -159,20 +163,22 @@ def store_clusters(clusters):
     Stores clusters which is a list of tuples where each element is a 
     column value
     """ 
+    tolerance = round(1-SIM_T, 2)
     if KEEP_RESULTS:
         df = pd.DataFrame(clusters, columns =['python', 'r', 'test_case', 'python_result', \
                 'r_result', 'overall', 'row_diff', 'col_diff', 'semantic_score', 'largest_common', \
                 'edit_distance'])
+        df.to_csv(f"{CLUSTERS_PATH}clusters_{tolerance}_keep.csv", index=False)
     else:
         df = pd.DataFrame(clusters, columns =['python', 'r', 'overall', 'edit_distance'])
-    tolerance = round(1-SIM_T, 2)
-    df.to_csv(f"{CLUSTERS_PATH}clusters_{tolerance}_nokeep.csv", index=False)
+        df.to_csv(f"{CLUSTERS_PATH}clusters_{tolerance}.csv", index=False)
             
 if __name__ == '__main__':
     if len(sys.argv) > 1:
         sim_t = float(sys.argv[1])
         SIM_T = min(1.0, max(0, sim_t)) # lower bound to 0 and upper bound to 1
         KEEP_RESULTS = True if len(sys.argv) == 3 and "keep" in sys.argv[2] else False
+        PRETTY_DF = True if len(sys.argv) == 4 and KEEP_RESULTS and sys.argv[3] == "-p" else False
         pysnips = pickle.load(open(PY_PICKLE_PATH, "rb")).pairs
         rsnips = pickle.load(open(R_PICKLE_PATH, "rb")).pairs
         clusters = simple_cluster()

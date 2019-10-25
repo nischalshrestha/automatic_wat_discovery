@@ -1,3 +1,4 @@
+# TODO Normalize and add to rsnips
 # subsetting on a particular column with a filter
 full_data$Title[full_data$Title == 'Mlle'] 
 # subsetting on main dataframe then referencing a column

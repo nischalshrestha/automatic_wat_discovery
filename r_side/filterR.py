@@ -53,9 +53,8 @@ def filter_code_lines(fname, base="../"):
                 try:
                     valid = check_r(snippet)
                     if valid and snippet not in snippets:
-                        # normalized = normalize(snippet)
-                        # snippets.append(normalized)
-                        snippets.append(snippet)
+                        normalized = normalize(snippet)
+                        snippets.append(normalized)
                         # print(snippet, '\n', valid)
                     else:
                         excluded += 1
