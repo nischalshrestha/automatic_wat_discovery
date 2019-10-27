@@ -19,7 +19,6 @@ df[(df['NoPerTicket'] == 1) & (df['Age'].isnull() == False) & ((df['Parch'] > 0)
 df[df.Title.isin(['Rev', 'Dr', 'Col', 'Capt', 'Major']) & (df.Sex != 'male')]
 df[df.Name.isin(['Connolly, Miss. Kate', 'Kelly, Mr. James'])].sort_values(by='Name')
 
-
 # function call on subsetting operation(s)
 df[numeric_variables].head(3)
 df[(df['Embarked'] == 'C') & (df.Fare > 200)].head()

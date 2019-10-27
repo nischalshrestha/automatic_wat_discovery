@@ -49,7 +49,7 @@ def eval_expr(df, expr):
         return expr, df, output
         print('out', out)
     except Exception as e:
-        # print(e)
+        # print(e, expr)
         return e
 
 def execute_statement(snip):

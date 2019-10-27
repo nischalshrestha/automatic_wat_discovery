@@ -21,12 +21,13 @@ combined.df$TitleGroup[which(combined.df$Title %in% c("Rev"))] <- "MrRev"
 # subsetting while retaining the original dimension (keeping it a data frame)
 data[[i]] <- full[train_dev_idx, var[[i]], drop=F]
 
-
 # function call on subsetting operation(s)
 head(whole.data)
 head(full_data$Name)
 head(train_data[,coloumns.to.fit],10)
 head(data[c("FamilyName", "Sector")])
+head(subset(df,fpr<0.2))
+
 
 # chained function calls
 age[age_na_rows] = sample(na.omit(full$Age), length(age_na_rows))

@@ -20,10 +20,11 @@ LB = "\'[\'"
 SYMBOL_FUNCTION_CALL = "SYMBOL_FUNCTION_CALL"
 DOLLA = "\'$\'"
 SPECIAL = "SPECIAL"
+IN = "%in%"
 EQ_ASSIGN = "EQ_ASSIGN"
 CALLS = ["c", "read.csv", "dim", "head", "slice", "filter", "select", "subset", \
-    "distinct", "arrange", "desc", "summary", "summarise", "mutate", "rename", \
-    "is.na", "which"]
+    "distinct", "arrange", "order", "desc", "summary", "summarise", "mutate", "rename", \
+    "is.na", "which", "%in%"]
 
 # Load R functions for parsing
 srcfile = robjects.r['srcfile']
@@ -57,7 +58,11 @@ def parse_r(parsed_df: pd.DataFrame) -> bool:
     terminals = parsed_df[parsed_df.terminal == 1]
     # print(terminals.token)
     if sum(terminals.token == SPECIAL) > 0:
-        valid = False
+        # print(terminals.token)
+        if terminals.loc[terminals.token == SPECIAL, 'text'][0] == IN:
+            valid = True
+        else:
+            valid = False
     elif len(terminals) == 3:
         # print('column reference')
         if terminals.token[0] == SYMBOL \
@@ -134,7 +139,7 @@ def check_r(source: str) -> bool:
         r_df = pandas2ri.rpy2py_dataframe(parse_df)
         # print(r_df)
         return parse_r(r_df)
-    except:
+    except Exception as e:
         pass
     return False
 

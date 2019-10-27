@@ -1,11 +1,14 @@
 
-### Wats
+# Wats
 
 How can we explain discrepancies to answer what the programmer might be asking:
 
-1) Show code clone (not just near-miss): Show a code clone pair which **does** have a perfect or close to perfect score for the test case.
+###Show code clone (not just near-miss)
+
+Show a code clone pair which **does** have a perfect or close to perfect score for the test case.
 
 This is like trying to show user another clone that does produce the output:
+
 - Is there another R snippet I could've used to produce the Python output?
 
 **Challenge:** The operation that did produce the output might be performing unrelated operation(s)
@@ -14,9 +17,10 @@ This is like trying to show user another clone that does produce the output:
 **Challenge:** There are no other clones that have a good enough score
 
 
-2) Show an example test case dataframe (input) and highlight those cells/rows/cols that is the root cause.
+### Show an example test case dataframe (input) and highlight those cells/rows/cols that is the root cause.
 
 This is like trying to explain the similarity score:
+
 - Why is the score lower/higher than you expected?
 
 Would be simple to automate generation of explanation if based on row/col difference.
@@ -32,6 +36,15 @@ For e.g. R's `[` pads NA rows:
 
 **Message:** R output *added x rows* when given *df*
 
+**Challenge:** How do you explain the why?
+
+One solution would be a template based approach: discrepancy type => message (with slots)
+
+For e.g. we can tell if the output discrepancy is a `NA` issue due to padding or due to comparison of `NA`
+
+For padding, R adds rows where all cols are `NA` **including** the row index
+
+For filter issue, it's when the values for the columns is `NA`
 
 **TODO:** Find more examples that are more complex
 

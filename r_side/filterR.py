@@ -58,7 +58,7 @@ def filter_code_lines(fname, base="../"):
                         # print(snippet, '\n', valid)
                     else:
                         excluded += 1
-                        # print(snippet, '\n', valid)
+                        print(snippet, '\n', valid)
                 except Exception as e:
                     # print(e, snippet)
                     pass

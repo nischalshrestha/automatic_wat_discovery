@@ -139,6 +139,7 @@ class Normalizer(ast.NodeTransformer):
         for child in ast.iter_child_nodes(node):
             if type(child) == ast.Subscript:
                 child.value.id = "df"
+                self.visit(child)
             elif type(child) == ast.Name:
                 child.id = "df"
         # then rename if there are attributes inside of the slice
@@ -193,6 +194,7 @@ def test_pyast():
         "train = train[['col1']]",
         "train[['col1', 'col2']]", 
         "train.loc[:, 'col1':'col3']",
+        "train[train['col3'] == 1]['col1']",
         "train.drop(cols_to_drop, axis=1)", 
         "train[['col1']].drop_duplicates()", 
         "train = train[['col1']].drop_duplicates()",
@@ -225,7 +227,6 @@ def test_pyast():
         test_tree = ast.parse(t)
         normalizer = Normalizer(test_tree)
         tree = normalizer.normalize()
-        # print(t, tree)
         checker = ASTChecker()
         if not checker.check(test_tree):
             failed += 1
