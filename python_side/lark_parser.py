@@ -27,13 +27,14 @@ pandas_grammar = """
     ascending: "," "ascending" "=" ("True" | "False")
     
     // single [
-    default_subset: "[" word "]" | _rows_cols | "[" logical ("&" logical)* "]"
-    logical: "(" llhs logical_op rrhs ")"
-    logical_op: "!=" | "==" | "<" | ">" | "<=" | ">="
-    llhs: data col
-    logical_quoted: "'" logical_q ("&" logical_q)* "'"
-    logical_q: llhs_q logical_op rrhs
+    default_subset: "[" word "]" | _rows_cols | "[" logical (logical_op logical)* "]"
+    logical: "(" llhs compare_op rrhs ")"
+    logical_quoted: "'" logical_q (logical_op logical_q)* "'"
+    logical_q: llhs_q compare_op rrhs
+    logical_op: "&" | "|"
+    compare_op: "!=" | "==" | "<" | ">" | "<=" | ">="
     llhs_q: CNAME
+    llhs: data col
     rrhs: NUMBER | SNUMBER | FLOAT | SFLOAT | WORD
 
     // iloc

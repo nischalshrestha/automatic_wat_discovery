@@ -14,7 +14,6 @@
 # 8     1     8  ID_8     8
 # 9     0     8  ID_8     8
 
-
 # shape
 dim(train)
 dim(train[c('col1')])
