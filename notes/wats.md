@@ -36,6 +36,8 @@ For e.g. R's `arrange` and `order` preserves row order but Python's `sort_values
 
 > kind : {‘quicksort’, ‘mergesort’, ‘heapsort’}, default ‘quicksort’ Choice of sorting algorithm. See also ndarray.np.sort for more information. mergesort is the only stable algorithm. 
 
+Discussion [here](https://stackoverflow.com/questions/19580900/how-is-pandas-deciding-order-in-a-sort-when-there-is-a-tie)
+
 If no default params are being set, it could lead to these subtle discrepancies bc Pandas
 chose a different default. Copout solution for now:
 
