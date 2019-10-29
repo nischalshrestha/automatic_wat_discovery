@@ -3,7 +3,7 @@
 
 How can we explain discrepancies to answer what the programmer might be asking:
 
-###Show code clone (not just near-miss)
+### Show code clone (not just near-miss)
 
 Show a code clone pair which **does** have a perfect or close to perfect score for the test case.
 
@@ -78,6 +78,7 @@ NA rows when row has NA for any columns used to compare (last one compared seems
 Sorting using default expression in Pandas vs R causes discrepancy because Pandas uses quicksort:
 
 `df.sort_values('col1', ascending=False)` vs `arrange(df, desc(col1))` 0.599
+
 `df.sort_values('col1', ascending=False)` vs `df[order(-df$col1), ]` 0.599
 
 To preserve rows like R does by default, you would need to specify the `kind` param and choose a stable
