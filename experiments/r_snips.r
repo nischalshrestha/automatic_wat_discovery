@@ -62,7 +62,8 @@ train[train$col3 == 1, ]$col1
 
 # subsetting with a mix of a functions inside [] (notnull, isnull, isin)
 train[is.na(train$col1), ]
-train[train$col2 %in% c('ID_3', 'ID_4'), ]
+train[train$col2 %in% c('ID_0', 'ID_1'), ]
+train[!is.na(train['col2']) & train$col2 %in% c('ID_3', 'ID_4'),]
 train[!is.na(train['col2']) & train$col2 %in% c('ID_3', 'ID_4')]
 
 # function call on subsetting operation(s)

@@ -25,11 +25,11 @@ r_grammar = """
     which: "which" "(" logical (logical_op logical)* ")"
     head: "head" "(" (data | subset) ("," NUMBER)? ")"
     dim: "dim" "(" operation ")" // for now we'll accept the operations
-    slice: "slice" "(" (data | subset) "," range ")"
-    select: "select" "(" (data | subset) (("," label)+ | "," (range | func) | ("," select_label)+) ")"
-    filter: "filter" "(" (data | subset) ("," logical)+ ")"
+    slice: "slice" "(" (data | subset | func) "," range ")"
+    select: "select" "(" (data | subset | func) (("," label)+ | "," (range | func) | ("," select_label)+) ")"
+    filter: "filter" "(" (data | subset | func) ("," logical)+ ")"
     distinct: "distinct" "(" (data | subset | func) ")"
-    arrange: "arrange" "(" data ("," (label | CNAME))* ")"
+    arrange: "arrange" "(" (data | subset | func) ("," (label | CNAME))* ")"
     order: "order" "(" negate? (data | data col) ("," negate? data col)* ")"
     select_label: negate? label
 
@@ -37,7 +37,7 @@ r_grammar = """
     col: "$" CNAME 
     cols: "[" c "]" | "[[" label "]]" 
     default_subset: "[" word "]" | _rows_cols | "[" logical (logical_op logical)* "," "]"
-    logical: llhs compare_op rrhs
+    logical: func | llhs compare_op rrhs
     logical_op: "&" | "|"
     compare_op: "!=" | "==" | "<" | ">" | "<=" | ">=" | "%in%"
     llhs: data col | CNAME | func
@@ -95,7 +95,7 @@ train$col1[train$col3 == 1]
 train[train$col3 == 1, ]$col1
 train[is.na(train$col1), ]
 train[train$col2 %in% c('ID_3', 'ID_4'), ]
-train[!is.na(train['col2']) & train$col2 %in% c('ID_3', 'ID_4')]"""
+train[!is.na(train['col2']) & train$col2 %in% c('ID_3', 'ID_4'),]"""
 
 def test():
     for s in rsnips.split('\n'):

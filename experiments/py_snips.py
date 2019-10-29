@@ -40,7 +40,8 @@ train[['col1', 'col2']].drop_duplicates()
 train[['col1']].drop_duplicates()
 # sort
 train.sort_values(['col1', 'col2'])
-train.sort_values('col1', ascending=False)
+train.sort_values('col1', ascending=False) # unsafe (single col case)
+df.sort_values('col1', ascending=False, kind='mergesort') # safe
 # summary
 # df.describe()
 
@@ -52,8 +53,8 @@ train[train['col3'] == 1]['col1']
 
 # subsetting with a mix of a functions inside [] (notnull, isnull, isin)
 train.loc[train.col1.isnull(), :]
-train[train.col2.isin(['ID_3', 'ID_4'])]
-train[(train['col2'].notnull()) & (train.col2.isin(['ID_0', 'ID_1']))]
+train[train.col2.isin(['ID_0', 'ID_1'])]
+train[(train['col2'].notnull()) & (train.col2.isin(['ID_3', 'ID_4']))]
 
 # function call on subsetting operation(s)
 train[(train.col1 == 1) & (train.col3 == 1)].head()

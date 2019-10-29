@@ -30,7 +30,9 @@ For e.g. R's `head` has different number of rows printed by default btw Python/R
 
 It could be possible to know inconsistency in default behavior when function accepts params but aren't supplied any.
 
-For e.g. R's `arrange` and `order` preserves row order but Python's `sort_values` does not.
+**Message':** Python prints *5 rows by default* whereas R *prints 6 rows* by default.
+
+R's `arrange` and `order` preserves row order but Python's `sort_values` does not.
 
 `sort_values` has a parameter which uses quicksort algorithm to sort which is not stable:
 
@@ -42,6 +44,10 @@ If no default params are being set, it could lead to these subtle discrepancies 
 chose a different default. Copout solution for now:
 
 **Message:** R output *contains x rows* with *y cells* that are different when given *df*. Consider checking default parameters for both languages.
+
+If row indices are checked and compared between the two it's possible to tell user that it's because of the default value of `kind`.
+
+**Message:** R output *contains x rows* with *y cells* that are different when given *df*. R preserves order of row indices when sorting whereas Python does not preserve order by default. The `kind` parameter of Python must be set to 'mergesort' to preserve order of row indices.
 
 ### Use in/out highlight but also use a criteria to deliver message:
 
@@ -58,6 +64,8 @@ For e.g. we can tell if the output discrepancy is a `NA` issue due to padding or
 For padding, R adds rows where all cols are `NA` **including** the row index
 
 For filter issue, it's when the values for the columns is `NA`
+
+**Message':** R output *added x rows* when given *df* because `[` sliced for more rows than the dataframe has. R fills the gaps with `NA`s.
 
 # Wats
 
@@ -77,18 +85,7 @@ NA rows when row has NA for any columns used to compare (last one compared seems
 
 `df[(df.col1 == 1) & (df.col3 == 1)]` vs `df[df$col1 == 1 & df$col3 == 1, ]` 0.9
 
-Sorting using default expression in Pandas vs R causes discrepancy because Pandas uses quicksort:
-
-`df.sort_values('col1', ascending=False)` vs `arrange(df, desc(col1))` 0.599
-
-`df.sort_values('col1', ascending=False)` vs `df[order(-df$col1), ]` 0.599
-
-To preserve rows like R does by default, you would need to specify the `kind` param and choose a stable
-algorithm like mergesort:
-
-`df.sort_values('col1', ascending=False, kind='mergesort')`
-
-NA padding
+NA padding at the end of dataframe
 
 `df.iloc[:8]` vs `df[1:8, ]` 0.65
 
@@ -101,6 +98,18 @@ More NA padding
 `df.iloc[0:5, 0:3]` vs `df[1:5, 1:3]` 0.7
 
 `df.iloc[:7]` vs `df[1:7, ]` 0.671
+
+Sorting using default expression in Pandas vs R causes discrepancy because Pandas uses quicksort:
+
+`df.sort_values('col1', ascending=False)` vs `arrange(df, desc(col1))` 0.97
+
+`df.sort_values('col1', ascending=False)` vs `df[order(-df$col1), ]` 0.97
+
+To preserve rows like R does by default, you would need to specify the `kind` param and choose a stable
+algorithm like mergesort:
+
+`df.sort_values('col1', ascending=False, kind='mergesort')` vs `arrange(df, desc(col1))` 1.0
+
 
 
 

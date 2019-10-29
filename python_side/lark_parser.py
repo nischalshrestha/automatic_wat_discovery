@@ -134,7 +134,7 @@ train['col1'][train['col3'] == 8]
 train[train['col3'] == 1]['col1']
 train.loc[train.col1.isnull(), :]
 train[train.col2.isin(['ID_3', 'ID_4'])]
-train[(train['col2'].notnull()) & (train.col2.isin(['ID_0', 'ID_1']))]
+train[(train['col2'].notnull()) & (train.col2.isin(['ID_3', 'ID_4']))]
 train[(train.col1 == 1) & (train.col3 == 1)].head()
 train.query('col1 < 5').head()"""
 

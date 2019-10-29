@@ -8,9 +8,9 @@ import time
 
 def compare_np(c1, c2):
     # TODO figure out if there is a better way to test for numpy numerics
-    # if (type(c1) == float and type(c2) == float) or (type(c1) == np.float64 and type(c2) == np.float64): 
-    #     c1 = np.nan_to_num(c1)
-    #     c2 = np.nan_to_num(c2)
+    if (type(c1) == float and type(c2) == float) or (type(c1) == np.float64 and type(c2) == np.float64): 
+        c1 = np.nan_to_num(c1)
+        c2 = np.nan_to_num(c2)
     return c1 == c2
 
 def compare_df(df1, df2):
