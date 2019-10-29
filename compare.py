@@ -11,6 +11,7 @@ def compare_np(c1, c2):
     if (type(c1) == float and type(c2) == float) or (type(c1) == np.float64 and type(c2) == np.float64): 
         c1 = np.nan_to_num(c1)
         c2 = np.nan_to_num(c2)
+        return round(c1, 3) == round(c2, 3)
     return c1 == c2
 
 def compare_df(df1, df2):
@@ -140,9 +141,14 @@ def compare(a, b):
     
     if (type(a) == str and "ERROR:" in a) or (type(b) == str and "ERROR:" in b):
         sim_score = 0
+    elif (type(a) == np.float64 and a.size == 1) and (type(b) == np.ndarray and b.size == 1): 
+        # this case is for scenarios where a Pandas operation like mean results in a float
+        # whereas the same operation in R results in a vector of size 1
+        sim_score = int(compare_np(a, b[0]))
+        size_diff = abs(a-b)
     elif (type(a) == int or type(a) == float or type(a) == np.float64) \
         and (type(b) == int or type(b) == float or type(b) == np.float64) \
-    or (type(a) == bool and type(b) == bool):
+        or (type(a) == bool and type(b) == bool):
         if type(a) == int or type(a) == float:
             sim_score = int(compare_np(a, b))
             size_diff = abs(a-b)

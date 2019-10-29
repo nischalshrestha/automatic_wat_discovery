@@ -9,8 +9,8 @@ pandas_grammar = """
     start: operation
     // after parsing dataframe variable gets labelled as df
     data: WORD -> df
-    operation: data func | data subset?
-    func: (head | shape | query | drop | drop_duplicates | sort_values | isnull | notnull | isin) func*
+    operation: data func | data subset
+    func: (head | shape | query | drop | drop_duplicates | sort_values | isnull | notnull | isin | mean) func*
     subset: (col | default_subset | rows | cols | iloc | loc) (subset* | func)
 
     // funcs or attrs
@@ -22,12 +22,14 @@ pandas_grammar = """
     drop_list: label | "[" label ("," label?)*  "]" axis?
     axis: "," "axis" "=" ("0" | "1")
     inplace: (","? "inplace" "=" ("True" | "False"))?
-    sort_values: "." "sort_values" "(" sort_list ascending? ")" 
+    sort_values: "." "sort_values" "(" sort_list ascending? kind? ")" 
     sort_list: label | "[" label ("," label?)*  "]" 
     ascending: "," "ascending" "=" ("True" | "False")
+    kind: "," "kind" "=" ("'" "mergesort" "'" | "'" "quicksort" "'" | "'" "heapsort" "'")
     isnull: "." "isnull" "(" ")"
     notnull: "." "notnull" "(" ")"
     isin: "." "isin" "(" "[" label ("," label?)* "]" ")"
+    mean: "." "mean" "(" ")"
     
     // single [
     default_subset: "[" word "]" | _rows_cols | "[" logical (logical_op logical)* "]"
@@ -53,7 +55,7 @@ pandas_grammar = """
     loc: ".loc" _lrows_cols loc*
     _lrows_cols: "[" lleft ("," lright?)? "]"           
     lleft: _lindex | operation                  -> left
-    lright: _rindex                                 -> right
+    lright: _rindex | operation                 -> right
     _lindex: lrange | label
     _rindex: word | rrange
     rrange: word ":" word?                           -> range
@@ -130,13 +132,15 @@ train.drop_duplicates(['col1', 'col2'])
 train.sort_values(['col1', 'col2'])
 train.sort_values('col1')
 train.sort_values('col1', ascending=False)
+train.sort_values('col1', ascending=False, kind='mergesort')
 train['col1'][train['col3'] == 8]
 train[train['col3'] == 1]['col1']
 train.loc[train.col1.isnull(), :]
 train[train.col2.isin(['ID_3', 'ID_4'])]
 train[(train['col2'].notnull()) & (train.col2.isin(['ID_3', 'ID_4']))]
 train[(train.col1 == 1) & (train.col3 == 1)].head()
-train.query('col1 < 5').head()"""
+train.query('col1 < 5').head()
+train.col1.mean()"""
 
 def test():
     for s in basics.split('\n') + pysnips.split('\n'):
@@ -155,7 +159,7 @@ def parse(snippet):
         # print(s)
         return True
     except Exception as e:
-        # print('woa', e)
+        print('woa', e)
         return False
 
 """

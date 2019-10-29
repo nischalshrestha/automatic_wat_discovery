@@ -14,7 +14,7 @@ r_grammar = """
     // after parsing dataframe variable gets labelled as df
     data: WORD -> df
     operation: func | data subset?
-    func: negate? (c | isna | which | head | dim | slice | select | filter | distinct | arrange | order)
+    func: negate? (c | isna | which | head | dim | slice | select | filter | _subset | distinct | arrange | order | mean)
     negate: "-" | "!"
     subset: (col | cols | default_subset) subset*
 
@@ -23,20 +23,24 @@ r_grammar = """
     c: "c" "(" (label) ("," (label))* ")"
     isna: "is.na" "(" (data | data subset) ")"
     which: "which" "(" logical (logical_op logical)* ")"
-    head: "head" "(" (data | subset) ("," NUMBER)? ")"
+    head: "head" "(" operation ("," NUMBER)? ")"
     dim: "dim" "(" operation ")" // for now we'll accept the operations
     slice: "slice" "(" (data | subset | func) "," range ")"
     select: "select" "(" (data | subset | func) (("," label)+ | "," (range | func) | ("," select_label)+) ")"
     filter: "filter" "(" (data | subset | func) ("," logical)+ ")"
+    _subset: "subset" "(" data "," logical ")"
     distinct: "distinct" "(" (data | subset | func) ")"
-    arrange: "arrange" "(" (data | subset | func) ("," (label | CNAME))* ")"
+    arrange: "arrange" "(" (data | subset | func) (("," (label | col_name))* | ("," desc)?) ")"
+    desc: "desc" "(" col_name ")"
     order: "order" "(" negate? (data | data col) ("," negate? data col)* ")"
     select_label: negate? label
+    mean: "mean" "(" operation ("," "na.rm" "=" ("TRUE" | "FALSE"))? ")"
 
     // single [
     col: "$" CNAME 
+    col_name: CNAME
     cols: "[" c "]" | "[[" label "]]" 
-    default_subset: "[" word "]" | _rows_cols | "[" logical (logical_op logical)* "," "]"
+    default_subset: "[" word "]" | _rows_cols | "[" logical (logical_op logical)* ","? "]"
     logical: func | llhs compare_op rrhs
     logical_op: "&" | "|"
     compare_op: "!=" | "==" | "<" | ">" | "<=" | ">=" | "%in%"
@@ -95,7 +99,10 @@ train$col1[train$col3 == 1]
 train[train$col3 == 1, ]$col1
 train[is.na(train$col1), ]
 train[train$col2 %in% c('ID_3', 'ID_4'), ]
-train[!is.na(train['col2']) & train$col2 %in% c('ID_3', 'ID_4'),]"""
+train[!is.na(train['col2']) & train$col2 %in% c('ID_3', 'ID_4')]
+train[!is.na(train['col2']) & train$col2 %in% c('ID_3', 'ID_4'),]
+mean(train$col1)
+mean(train$col1, na.rm=TRUE)"""
 
 def test():
     for s in rsnips.split('\n'):
@@ -114,7 +121,7 @@ def parse(snippet):
         # print(s)
         return True
     except Exception as e:
-        # print('woa', e)
+        print('woa', e)
         return False
 
 if __name__ == '__main__':

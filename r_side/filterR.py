@@ -12,6 +12,8 @@ import pandas as pd
 import ast
 from rast import *
 
+from lark_parserR import parse
+
 NUM_WORKERS = multiprocessing.cpu_count()
 R_NOTEBOOK_LIST = "../files/filelist_rnb.txt"
 R_LIST = "../files/filelist_r.txt"
@@ -51,14 +53,15 @@ def filter_code_lines(fname, base="../"):
                         # print('file is using data.table')
                         return 0, []
                 try:
-                    valid = check_r(snippet)
+                    # valid = check_r(snippet)
+                    valid = parse(snippet)
                     if valid and snippet not in snippets:
                         normalized = normalize(snippet)
                         snippets.append(normalized)
                         # print(snippet, '\n', valid)
                     else:
                         excluded += 1
-                        # print(snippet, '\n', valid)
+                        print(snippet, '\n', valid)
                 except Exception as e:
                     # print(e, snippet)
                     pass

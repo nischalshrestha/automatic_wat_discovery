@@ -32,7 +32,11 @@ It could be possible to know inconsistency in default behavior when function acc
 
 **Message':** Python prints *5 rows by default* whereas R *prints 6 rows* by default.
 
-R's `arrange` and `order` preserves row order but Python's `sort_values` does not.
+Similarly, `NA` is not removed by default for calculating mean in R but Python does so:
+
+**Message:** R output was *NA*. Make sure to remove `NA`s before calculating mean by setting `na.rm` parameter to `TRUE`
+
+A more subtle example is R's `arrange` and `order` preserves row order but Python's `sort_values` does not.
 
 `sort_values` has a parameter which uses quicksort algorithm to sort which is not stable:
 
@@ -110,8 +114,14 @@ algorithm like mergesort:
 
 `df.sort_values('col1', ascending=False, kind='mergesort')` vs `arrange(df, desc(col1))` 1.0
 
+Another example of a default parameter causing a discrepancy, R by default does not remove `NA`
+before calculating the mean of a column: 
 
+`df.col1.mean()`vs `mean(df$col1)` 0.352
 
+as opposed to
+
+`df.col1.mean()` vs `mean(df$col1, na.rm=TRUE)`	1
 
 
 

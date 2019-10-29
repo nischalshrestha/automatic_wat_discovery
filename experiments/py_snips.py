@@ -41,7 +41,7 @@ train[['col1']].drop_duplicates()
 # sort
 train.sort_values(['col1', 'col2'])
 train.sort_values('col1', ascending=False) # unsafe (single col case)
-df.sort_values('col1', ascending=False, kind='mergesort') # safe
+train.sort_values('col1', ascending=False, kind='mergesort') # safe
 # summary
 # df.describe()
 
@@ -60,14 +60,8 @@ train[(train['col2'].notnull()) & (train.col2.isin(['ID_3', 'ID_4']))]
 train[(train.col1 == 1) & (train.col3 == 1)].head()
 train.query('col1 < 5').head()
 
+# Stats
+train.col1.mean()
 
-# train = train.loc[1:2, 'a']
-# train = train.iloc[:9]
-# train[train.col1 == 1]
-# train = train[train.col1 == 1]
-# train = train.query('col1 == 1 & col2 == 1')
-# train = train[(train.col1 == 1) & (train.col2 == 1)]
-# train = train[['col1']].drop_duplicates()
-# train = train.drop([cols_to_drop], axis=1)
 
 

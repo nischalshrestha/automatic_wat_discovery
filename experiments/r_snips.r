@@ -70,13 +70,6 @@ train[!is.na(train['col2']) & train$col2 %in% c('ID_3', 'ID_4')]
 head(train[train$col1 == 1 & train$col3 == 1, ])
 head(subset(train, col1 < 5))
 
-
-# convert these to R
-# train = train.loc[1:2, 'a']
-# train = train.iloc[:9]
-# train = train[train.col1 == 1]
-# train = train.query('col1 == 1 & col2 == 1')
-# train = train[(train.col1 == 1) & (train.col2 == 1)]
-# train = train[['col1']]
-# train = train[['col1']].drop_duplicates()
-# train = train.drop([cols_to_drop], axis=1)
+# Stats
+mean(df$col1)
+mean(df$col1, na.rm=TRUE)

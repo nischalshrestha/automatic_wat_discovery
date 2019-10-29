@@ -16,6 +16,7 @@ NUM_WORKERS = multiprocessing.cpu_count()
 PYTHON_NOTEBOOK_LIST = "../files/filelist_pynb.txt"
 PYTHON_LIST = "../files/filelist_py.txt"
 EXPERIMENT_LIST = "../experiments/filelist_py.txt"
+PARSER = 'ast'
 
 flatten = lambda l: [item for sublist in l for item in sublist]
 
@@ -49,8 +50,9 @@ def filter_code_lines(fname, base="../"):
                 # print(snippet)
                 try:
                     tree = ast.parse(snippet)
-                    checker = ASTChecker()
-                    valid = checker.check(tree)
+                    # checker = ASTChecker()
+                    # valid = checker.check(tree)
+                    valid = parse(snippet)
                     if valid and snippet not in snippets:
                         n = Normalizer(tree)
                         normalized = n.normalize()
@@ -59,7 +61,7 @@ def filter_code_lines(fname, base="../"):
                     else:
                         excluded += 1
                 except Exception as e:
-                    print(e, snippet)
+                    # print(e, snippet)
                     pass
     return excluded, snippets
 

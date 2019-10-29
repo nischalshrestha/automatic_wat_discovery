@@ -179,8 +179,8 @@ if __name__ == '__main__':
         SIM_T = min(1.0, max(0, sim_t)) # lower bound to 0 and upper bound to 1
         KEEP_RESULTS = True if len(sys.argv) == 3 and "keep" in sys.argv[2] else False
         PRETTY_DF = True if len(sys.argv) == 4 and KEEP_RESULTS and sys.argv[3] == "-p" else False
-        pysnips = pickle.load(open(PY_PICKLE_PATH, "rb")).pairs
-        rsnips = pickle.load(open(R_PICKLE_PATH, "rb")).pairs
+        pysnips = pickle.load(open(PY_PICKLE_PATH, "rb")).pairs[:50]
+        rsnips = pickle.load(open(R_PICKLE_PATH, "rb")).pairs[:50]
         clusters = simple_cluster()
         store_clusters(clusters)
     else:
