@@ -8,9 +8,9 @@ import time
 
 def compare_np(c1, c2):
     # TODO figure out if there is a better way to test for numpy numerics
-    if (type(c1) == float and type(c2) == float) or (type(c1) == np.float64 and type(c2) == np.float64): 
-        c1 = np.nan_to_num(c1)
-        c2 = np.nan_to_num(c2)
+    # if (type(c1) == float and type(c2) == float) or (type(c1) == np.float64 and type(c2) == np.float64): 
+    #     c1 = np.nan_to_num(c1)
+    #     c2 = np.nan_to_num(c2)
     return c1 == c2
 
 def compare_df(df1, df2):
@@ -106,7 +106,6 @@ def compare_df(df1, df2):
             cbr, cbc = curr_bottom.shape[0], curr_bottom.shape[1]
             common = 0
             try:
-                # common = sum([curr_bottom[r][c] == curr_top[r][c] for c in range(cbc) for r in range(cbr)])
                 common = sum([compare_np(curr_bottom[r][c], curr_top[r][c]) for c in range(cbc) for r in range(cbr)])
             except e:
                 print("ERROR", e)
@@ -174,7 +173,7 @@ def compare(a, b):
             bigger, smaller = b, a
         intersection = [s for s in range(len(smaller)) if compare_np(smaller[s], bigger[s])]
         # intersection = [s for s in range(len(smaller)) if smaller[s] == bigger[s]]
-        sim_score = len(intersection) / len(bigger)
+        sim_score = len(intersection) / len(bigger) if len(bigger) > 0 else 0
         # print(f'{a} {b} sim_score: {sim_score}')
     elif type(a) == pd.DataFrame and type(b) == pd.DataFrame:
         sim_score = compare_df(a, b)

@@ -48,7 +48,7 @@ train.sort_values('col1', ascending=False)
 
 # subsetting on a particular column with a filter
 train['col1'][train['col3'] == 8]
-train[train['col3'] == 1]['col1'] # TODO fix normalization on this
+train[train['col3'] == 1]['col1']
 
 # subsetting with a mix of a functions inside [] (notnull, isnull, isin)
 train.loc[train.col1.isnull(), :]

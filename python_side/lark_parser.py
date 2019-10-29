@@ -9,9 +9,9 @@ pandas_grammar = """
     start: operation
     // after parsing dataframe variable gets labelled as df
     data: WORD -> df
-    operation: func | subset
-    func: data (head | shape | query | drop | drop_duplicates | sort_values)
-    subset: data (col | default_subset | rows | cols | iloc | loc)   
+    operation: data func | data subset?
+    func: (head | shape | query | drop | drop_duplicates | sort_values | isnull | notnull | isin) func*
+    subset: (col | default_subset | rows | cols | iloc | loc) (subset* | func)
 
     // funcs or attrs
     head: "." "head" "(" NUMBER? ")"
@@ -25,30 +25,34 @@ pandas_grammar = """
     sort_values: "." "sort_values" "(" sort_list ascending? ")" 
     sort_list: label | "[" label ("," label?)*  "]" 
     ascending: "," "ascending" "=" ("True" | "False")
+    isnull: "." "isnull" "(" ")"
+    notnull: "." "notnull" "(" ")"
+    isin: "." "isin" "(" "[" label ("," label?)* "]" ")"
     
     // single [
     default_subset: "[" word "]" | _rows_cols | "[" logical (logical_op logical)* "]"
-    logical: "(" llhs compare_op rrhs ")"
+    logical: "(" llhs compare_op rrhs ")" | "(" data col func ")" | llhs compare_op rrhs
     logical_quoted: "'" logical_q (logical_op logical_q)* "'"
     logical_q: llhs_q compare_op rrhs
     logical_op: "&" | "|"
     compare_op: "!=" | "==" | "<" | ">" | "<=" | ">="
     llhs_q: CNAME
-    llhs: data col
-    rrhs: NUMBER | SNUMBER | FLOAT | SFLOAT | WORD
+    llhs: data col | data col func
+    rrhs: NUMBER | SNUMBER | FLOAT | SFLOAT | WORD | func
 
     // iloc
     rows: iloc
+    col: "." CNAME | "[" label "]"
     cols: "[[" label ("," label?)* "]]" (shape | drop_duplicates)?
     iloc: "." "iloc" _rows_cols iloc*
     _rows_cols: "[" left ("," right?)? "]"
-    left: _index
-    right: _index
+    left: _index | logical | data col func
+    right: _index | label
 
     // loc 
     loc: ".loc" _lrows_cols loc*
     _lrows_cols: "[" lleft ("," lright?)? "]"           
-    lleft: _lindex                                  -> left
+    lleft: _lindex | operation                  -> left
     lright: _rindex                                 -> right
     _lindex: lrange | label
     _rindex: word | rrange
@@ -58,7 +62,6 @@ pandas_grammar = """
     lend:   (NUMBER | "'" NUMBER "'")?               -> end_idx
 
     // common
-    col: "." CNAME
     _index: range | NUMBER
     range: start_idx ":" end_idx
     start_idx: NUMBER*
@@ -124,9 +127,16 @@ train[['col1', 'col2']].drop_duplicates()
 train[['col1']].drop_duplicates()
 train.drop_duplicates(inplace=True)
 train.drop_duplicates(['col1', 'col2'])
-df.sort_values(['col1', 'col2'])
-df.sort_values('col1')
-df.sort_values('col1', ascending=False)"""
+train.sort_values(['col1', 'col2'])
+train.sort_values('col1')
+train.sort_values('col1', ascending=False)
+train['col1'][train['col3'] == 8]
+train[train['col3'] == 1]['col1']
+train.loc[train.col1.isnull(), :]
+train[train.col2.isin(['ID_3', 'ID_4'])]
+train[(train['col2'].notnull()) & (train.col2.isin(['ID_0', 'ID_1']))]
+train[(train.col1 == 1) & (train.col3 == 1)].head()
+train.query('col1 < 5').head()"""
 
 def test():
     for s in basics.split('\n') + pysnips.split('\n'):

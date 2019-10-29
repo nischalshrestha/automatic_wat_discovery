@@ -15,13 +15,13 @@ r_grammar = """
     data: WORD -> df
     operation: func | data subset?
     func: negate? (c | isna | which | head | dim | slice | select | filter | distinct | arrange | order)
-    negate: "-"
-    subset: col | cols | default_subset
+    negate: "-" | "!"
+    subset: (col | cols | default_subset) subset*
 
     // funcs or attrs
     // todo: add nested functions
     c: "c" "(" (label) ("," (label))* ")"
-    isna: "is.na" "(" (data | subset) ")"
+    isna: "is.na" "(" (data | data subset) ")"
     which: "which" "(" logical (logical_op logical)* ")"
     head: "head" "(" (data | subset) ("," NUMBER)? ")"
     dim: "dim" "(" operation ")" // for now we'll accept the operations
@@ -34,17 +34,17 @@ r_grammar = """
     select_label: negate? label
 
     // single [
-    col: "$" CNAME
-    cols: "[" c "]" | "[[" label "]]"
-    default_subset: "[" word "]" | _rows_cols | "[" logical (logical_op logical)* "," "]" default_subset*
+    col: "$" CNAME 
+    cols: "[" c "]" | "[[" label "]]" 
+    default_subset: "[" word "]" | _rows_cols | "[" logical (logical_op logical)* "," "]"
     logical: llhs compare_op rrhs
     logical_op: "&" | "|"
-    compare_op: "!=" | "==" | "<" | ">" | "<=" | ">="
-    llhs: data col | CNAME
-    rrhs: NUMBER | SNUMBER | FLOAT | SFLOAT | WORD
+    compare_op: "!=" | "==" | "<" | ">" | "<=" | ">=" | "%in%"
+    llhs: data col | CNAME | func
+    rrhs: NUMBER | SNUMBER | FLOAT | SFLOAT | WORD | func
 
     _rows_cols: "[" left ("," right?)? "]"
-    left: _index | func
+    left: _index | logical | func
     right: _index | label | func
 
     // common
@@ -90,7 +90,12 @@ distinct(select(train, col1, col2))
 distinct(select(train, col1))
 arrange(train, col1, col2)
 train[order(train$col1, train$col2), ] 
-train[order(-train$col1), ]"""
+train[order(-train$col1), ]
+train$col1[train$col3 == 1]
+train[train$col3 == 1, ]$col1
+train[is.na(train$col1), ]
+train[train$col2 %in% c('ID_3', 'ID_4'), ]
+train[!is.na(train['col2']) & train$col2 %in% c('ID_3', 'ID_4')]"""
 
 def test():
     for s in rsnips.split('\n'):

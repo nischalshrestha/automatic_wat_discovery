@@ -120,6 +120,8 @@ def construct_custom_df():
     df = pd.DataFrame({'col0':sints[::-1], 'col1':ints, 'col2':strs, 'col3':ints})
     return df
 
+    # 'ID_8', 'ID_8', 'ID_7', 'ID_6', 'ID_5', 'ID_4', 'ID_3', 'ID_2', 'ID_1', 'ID_0'
+
 def generate_args_from_df(df_template, n_args=1, max_rows=20, simple=True):
     """This will create one dataframe based on a supplied dataframe"""
     args = []
@@ -158,7 +160,7 @@ if __name__ == '__main__':
                 if simple:
                     generated_args = generate_args_from_df(df, simple=simple)
                 else:
-                    generated_args = generate_args_from_df(df, n_args=NUM_ARGS, max_rows=df.shape[0], simple=simple)
+                    generated_args = generate_args_from_df(df, n_args=NUM_ARGS, simple=simple)
             elif corpus == "kaggle":
                 if simple:
                     generated_args = generate_simple_arg()
