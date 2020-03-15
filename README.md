@@ -1,6 +1,6 @@
-# Kaggle Parsing
+# Automatic _WAT_ Discovery
 
-This repo contains modules to parse Kaggle jupyter notebooks/scripts from competitions like [Titanic](https://www.kaggle.com/c/titanic) in order to find similar code snippets across Python and R.
+This is an ongoing project to automatically discover code behavior inconsistencies ([WATs](https://www.destroyallsoftware.com/talks/wat)) between Python and R. This repo contains modules to parse Kaggle jupyter notebooks/scripts from competitions like [Titanic](https://www.kaggle.com/c/titanic) in order to find similar code snippets across Python and R.
 
 # Installation:
 
